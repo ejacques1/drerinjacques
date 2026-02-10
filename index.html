@@ -65,6 +65,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 60px 40px;
+            background: #fff;
         }
         
         .hero-top {
@@ -537,8 +538,8 @@
             }
             
             .card-front h3 {
-                font-size: 1.1rem;
-                margin-bottom: 10px;
+                font-size: 1.05rem;
+                margin-bottom: 8px;
             }
             
             .card-front p {
@@ -550,13 +551,22 @@
                 line-height: 1.5;
             }
             
+            /* Add tap hint on mobile */
+            .card-front::after {
+                content: "Tap to explore";
+                display: block;
+                font-size: 0.7rem;
+                color: #999;
+                margin-top: 15px;
+                font-style: italic;
+            }
+            
             .research {
                 padding: 40px 20px;
             }
             
             .section-title {
                 font-size: 1.8rem;
-                margin-bottom: 10px;
             }
             
             .section-subtitle {
