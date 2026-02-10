@@ -723,15 +723,27 @@
             .nav-links {
                 display: none;
             }
-            
+        }
+        
+        @media (max-width: 900px) {
             .free-resources-container {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 25px;
+                text-align: center;
             }
             
             .free-resources h2,
             .free-resources-description {
                 text-align: center;
+            }
+            
+            .free-resources {
+                padding: 30px 20px;
+            }
+            
+            .subscribe-form {
+                max-width: 500px;
+                margin: 0 auto;
             }
         }
         
@@ -751,6 +763,24 @@
             
             .hero-content h1 {
                 font-size: 1.8rem;
+            }
+            
+            .form-group input {
+                padding: 15px 110px 15px 15px;
+                font-size: 0.95rem;
+            }
+            
+            .form-group button {
+                padding: 0 20px;
+                font-size: 0.9rem;
+            }
+            
+            .free-resources h2 {
+                font-size: 1.6rem;
+            }
+            
+            .free-resources-description {
+                font-size: 0.95rem;
             }
         }
         
