@@ -24,8 +24,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Call Systeme.io API to create contact with tag
-    const response = await fetch('https://api.systeme.io/api/contacts', {
+    // STEP 1: Create contact
+    const createResponse = await fetch('https://api.systeme.io/api/contacts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -33,34 +33,63 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         email: email,
-        language: 'en',
-        tags: ['Website-Subscriber']
+        language: 'en'
       })
     });
 
-    const data = await response.json();
+    const createData = await createResponse.json();
 
-    // Check if request was successful
-    if (!response.ok) {
-      console.error('Systeme.io API error:', data);
+    // Handle errors from contact creation
+    if (!createResponse.ok) {
+      console.error('Systeme.io API error (create contact):', createData);
       
-      // Handle specific error cases - email already exists
+      // Email already exists
       if (
-        response.status === 409 || 
-        response.status === 422 ||
-        data.message?.includes('already exists') ||
-        data.message?.includes('already used') ||
-        data.detail?.includes('already used')
+        createResponse.status === 409 || 
+        createResponse.status === 422 ||
+        createData.message?.includes('already exists') ||
+        createData.message?.includes('already used') ||
+        createData.detail?.includes('already used')
       ) {
-        // Contact already exists - still a success from user perspective
         return res.status(200).json({ 
           success: true, 
           message: 'You are already subscribed!' 
         });
       }
       
-      return res.status(response.status).json({ 
-        error: data.message || 'Failed to subscribe. Please try again.' 
+      return res.status(createResponse.status).json({ 
+        error: createData.message || 'Failed to subscribe. Please try again.' 
+      });
+    }
+
+    // Get the contact ID from the response
+    const contactId = createData.id;
+    
+    if (!contactId) {
+      console.error('No contact ID returned:', createData);
+      return res.status(500).json({ error: 'Contact created but ID missing' });
+    }
+
+    // STEP 2: Add tag to the contact
+    const tagResponse = await fetch(`https://api.systeme.io/api/contacts/${contactId}/tags`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-API-Key': apiKey
+      },
+      body: JSON.stringify({
+        tags: ['Website-Subscriber']
+      })
+    });
+
+    // Check if tag was added successfully
+    if (!tagResponse.ok) {
+      const tagData = await tagResponse.json();
+      console.error('Failed to add tag:', tagData);
+      // Don't fail the whole request - contact was created
+      return res.status(200).json({ 
+        success: true, 
+        message: 'Subscribed! (Tag pending)' 
       });
     }
 
