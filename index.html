@@ -64,7 +64,7 @@
         .hero {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 80px 40px;
+            padding: 60px 40px;
         }
         
         .hero-top {
@@ -72,7 +72,7 @@
             grid-template-columns: 250px 1fr;
             gap: 50px;
             align-items: start;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
         
         .headshot {
@@ -124,7 +124,7 @@
         /* Framework Section */
         .framework-intro {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
         
         .framework-intro h2 {
@@ -222,7 +222,7 @@
         /* Research Section */
         .research {
             background: #f9f9f9;
-            padding: 80px 40px;
+            padding: 60px 40px;
         }
         
         .research-container {
@@ -240,7 +240,7 @@
         .section-subtitle {
             font-size: 1.2rem;
             color: #666;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             line-height: 1.7;
         }
         
@@ -327,7 +327,7 @@
         
         /* Entrepreneurship Section */
         .entrepreneurship {
-            padding: 80px 40px;
+            padding: 60px 40px;
             background: #fff;
         }
         
@@ -340,12 +340,12 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
-            margin-top: 40px;
+            margin-top: 30px;
         }
         
         .speaking-banner {
-            margin-top: 50px;
-            padding: 40px;
+            margin-top: 40px;
+            padding: 35px;
             border: 2px solid #FFD700;
             background: #fffef5;
             text-align: center;
@@ -373,7 +373,7 @@
         }
         
         .column {
-            padding: 40px;
+            padding: 35px;
             border: 2px solid #000;
         }
         
@@ -475,25 +475,131 @@
         
         /* Responsive */
         @media (max-width: 968px) {
+            .hero {
+                padding: 40px 20px;
+            }
+            
             .hero-top {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 25px;
+                margin-bottom: 30px;
             }
             
             .headshot {
                 margin: 0 auto;
+                width: 180px;
+                height: 180px;
             }
             
             .hero-content h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
+                margin-bottom: 8px;
+            }
+            
+            .title-line {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+                line-height: 1.6;
+                margin-bottom: 10px;
+            }
+            
+            .framework-intro {
+                margin-bottom: 30px;
+            }
+            
+            .framework-intro h2 {
+                font-size: 1.6rem;
+                margin-bottom: 12px;
+            }
+            
+            .framework-intro p {
+                font-size: 1rem;
+                line-height: 1.5;
             }
             
             .domains-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
             
             .domain-card-container {
-                height: 300px;
+                height: 220px;
+            }
+            
+            .card-front,
+            .card-back {
+                padding: 20px 15px;
+            }
+            
+            .card-front h3 {
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+            }
+            
+            .card-front p {
+                font-size: 0.85rem;
+            }
+            
+            .card-back p {
+                font-size: 0.85rem;
+                line-height: 1.5;
+            }
+            
+            .research {
+                padding: 40px 20px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 30px;
+                line-height: 1.6;
+            }
+            
+            .studies-list {
+                gap: 20px;
+            }
+            
+            .work {
+                padding: 40px 20px;
+            }
+            
+            .speaking-banner {
+                margin-top: 30px;
+                padding: 25px 20px;
+            }
+            
+            .speaking-banner h3 {
+                font-size: 1.4rem;
+                margin-bottom: 8px;
+            }
+            
+            .speaking-banner p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+            
+            .contact {
+                padding: 40px 20px;
+            }
+            
+            .contact h2 {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+            
+            .contact-links {
+                gap: 30px;
             }
             
             .study-item {
@@ -520,10 +626,19 @@
         @media (max-width: 600px) {
             .domains-grid {
                 grid-template-columns: 1fr;
+                gap: 12px;
             }
             
             .domain-card-container {
-                height: 260px;
+                height: 200px;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
             }
         }
     </style>
