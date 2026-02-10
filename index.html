@@ -723,6 +723,16 @@
             .nav-links {
                 display: none;
             }
+            
+            .free-resources-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .free-resources h2,
+            .free-resources-description {
+                text-align: center;
+            }
         }
         
         @media (max-width: 600px) {
@@ -743,6 +753,107 @@
                 font-size: 1.8rem;
             }
         }
+        
+        /* Free Resources Section */
+        .free-resources {
+            background: #000;
+            color: #fff;
+            padding: 35px 40px;
+        }
+        
+        .free-resources-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .free-resources h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #FFD700;
+            text-align: left;
+        }
+        
+        .free-resources-description {
+            font-size: 1rem;
+            color: #ddd;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            text-align: left;
+        }
+        
+        .subscribe-form {
+            width: 100%;
+        }
+        
+        .form-group {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px 140px 15px 20px;
+            border: 2px solid #333;
+            background: #fff;
+            color: #000;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #FFD700;
+        }
+        
+        .form-group button {
+            position: absolute;
+            right: 4px;
+            top: 4px;
+            bottom: 4px;
+            padding: 0 25px;
+            background: #FFD700;
+            color: #000;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        
+        .form-group button:hover {
+            background: #fff;
+        }
+        
+        .form-group button:disabled {
+            background: #666;
+            color: #999;
+            cursor: not-allowed;
+        }
+        
+        .form-message {
+            padding: 12px;
+            margin-top: 10px;
+            display: none;
+            font-size: 0.95rem;
+        }
+        
+        .form-message.success {
+            background: #4CAF50;
+            color: #fff;
+            display: block;
+        }
+        
+        .form-message.error {
+            background: #f44336;
+            color: #fff;
+            display: block;
+        }
+        
     </style>
 </head>
 <body>
@@ -920,20 +1031,6 @@
                     </div>
                 </div>
                 
-                <!-- Gemini -->
-                <div class="study-item">
-                    <div class="study-content">
-                        <h3>Gemini Authority Signals</h3>
-                        <p>Examining Google's Gemini AI platform to understand how authority signals influence source citation in health information queries.</p>
-                    </div>
-                    <div class="study-meta">
-                        <div class="badge coming">IN PROGRESS</div>
-                        <div class="study-links">
-                            <a href="#" class="study-link disabled">Coming Soon</a>
-                        </div>
-                    </div>
-                </div>
-                
                 <!-- Comparative -->
                 <div class="study-item">
                     <div class="study-content">
@@ -948,6 +1045,31 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Free Resources Section -->
+    <section class="free-resources" id="free-resources">
+        <div class="free-resources-container">
+            <div class="free-resources-content">
+                <h2>AI Research & Tools</h2>
+                <p class="free-resources-description">
+                    Join 50K+ getting my latest authority signals research, frameworks, and course updates.
+                </p>
+            </div>
+            
+            <form class="subscribe-form" id="subscribeForm">
+                <div class="form-group">
+                    <input 
+                        type="email" 
+                        id="emailInput" 
+                        placeholder="Enter your email" 
+                        required
+                    >
+                    <button type="submit" id="submitBtn">Subscribe</button>
+                </div>
+                <div id="formMessage" class="form-message"></div>
+            </form>
         </div>
     </section>
 
@@ -975,7 +1097,7 @@
                 <h3>Book Dr. Erin Jacques to Speak</h3>
                 <div class="speaking-tags">Keynotes • Workshops • Panels</div>
                 <p>Bring research-backed insights on AI, authority signals, and answer engine optimization to your next event. Dr. Erin delivers engaging talks that bridge academic rigor with practical application.</p>
-                <a href="mailto:erela@chatifyit.io?subject=Speaking Inquiry for Dr. Erin Jacques" class="cta-link">Inquire About Speaking →</a>
+                <a href="/cdn-cgi/l/email-protection#117463747d70517279706578776878653f787e2e6264737b7472652c426174707a787f7631587f606478636831777e633155633f315463787f315b707260647462" class="cta-link">Inquire About Speaking →</a>
             </div>
         </div>
     </section>
@@ -1006,11 +1128,57 @@
         <p>&copy; 2026 Dr. Erin Jacques. All rights reserved.</p>
     </footer>
     
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         function toggleCitation(id) {
             const citationBox = document.getElementById(id + '-citation');
             citationBox.classList.toggle('active');
         }
+        
+        
+        // Form submission for Free Resources
+        document.getElementById('subscribeForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const emailInput = document.getElementById('emailInput');
+            const submitBtn = document.getElementById('submitBtn');
+            const formMessage = document.getElementById('formMessage');
+            const email = emailInput.value;
+            
+            // Reset message
+            formMessage.className = 'form-message';
+            formMessage.textContent = '';
+            
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Subscribing...';
+            
+            try {
+                const response = await fetch('/api/subscribe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    formMessage.className = 'form-message success';
+                    formMessage.textContent = 'Success! Check your email to confirm your subscription.';
+                    emailInput.value = '';
+                } else {
+                    formMessage.className = 'form-message error';
+                    formMessage.textContent = data.error || 'Something went wrong. Please try again.';
+                }
+            } catch (error) {
+                formMessage.className = 'form-message error';
+                formMessage.textContent = 'Network error. Please try again.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Subscribe';
+            }
+        });
         
         function copyCitation(elementId, button) {
             const citationText = document.getElementById(elementId).textContent;
@@ -1027,9 +1195,8 @@
                     button.textContent = originalText;
                     button.classList.remove('copied');
                 }, 2000);
-            }).catch(function(err) {
-                console.error('Failed to copy text: ', err);
-                alert('Failed to copy citation. Please copy manually.');
+            }).catch(function(eror) {
+                console.error('Could not copy citation', error);
             });
         }
     </script>
