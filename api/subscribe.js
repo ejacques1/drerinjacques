@@ -43,8 +43,14 @@ export default async function handler(req, res) {
     if (!response.ok) {
       console.error('Systeme.io API error:', data);
       
-      // Handle specific error cases
-      if (response.status === 409 || data.message?.includes('already exists')) {
+      // Handle specific error cases - email already exists
+      if (
+        response.status === 409 || 
+        response.status === 422 ||
+        data.message?.includes('already exists') ||
+        data.message?.includes('already used') ||
+        data.detail?.includes('already used')
+      ) {
         // Contact already exists - still a success from user perspective
         return res.status(200).json({ 
           success: true, 
