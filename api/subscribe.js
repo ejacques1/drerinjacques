@@ -33,6 +33,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         email: email,
+        language: 'en',
         tags: ['Website-Subscriber']
       })
     });
