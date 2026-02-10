@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Erin Jacques</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+        
+        /* Navigation */
+        nav {
+            background: #fff;
+            padding: 25px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #000;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+        
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+        
+        .hero-top {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 50px;
+            align-items: start;
+            margin-bottom: 60px;
+        }
+        
+        .headshot {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #FFD700;
+        }
+        
+        .hero-content h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+        
+        .title-line {
+            font-size: 1.2rem;
+            color: #000;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        .title-line a {
+            color: #000;
+            text-decoration: none;
+            border-bottom: 2px solid #FFD700;
+            transition: all 0.3s;
+        }
+        
+        .title-line a:hover {
+            color: #FFD700;
+        }
+        
+        .hero-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .highlight {
+            font-weight: 600;
+            color: #000;
+        }
+        
+        /* Framework Section */
+        .framework-intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .framework-intro h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        
+        .trademark {
+            font-size: 1.5rem;
+        }
+        
+        .framework-intro p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .domains-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .domain-card-container {
+            perspective: 1000px;
+            height: 280px;
+        }
+        
+        .domain-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        
+        .domain-card-container:hover .domain-card {
+            transform: rotateY(180deg);
+        }
+        
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: #fff;
+            border: 3px solid #000;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .card-front {
+            z-index: 2;
+        }
+        
+        .card-back {
+            transform: rotateY(180deg);
+            border-color: #FFD700;
+            padding: 25px;
+        }
+        
+        .card-front h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .card-front p {
+            font-size: 0.95rem;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .card-back p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #333;
+            text-align: left;
+        }
+        
+        /* Research Section */
+        .research {
+            background: #f9f9f9;
+            padding: 80px 40px;
+        }
+        
+        .research-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 15px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 50px;
+            line-height: 1.7;
+        }
+        
+        .studies-list {
+            display: grid;
+            gap: 25px;
+        }
+        
+        .study-item {
+            background: #fff;
+            padding: 30px;
+            border-left: 4px solid #FFD700;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .study-content h3 {
+            font-size: 1.4rem;
+            color: #000;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .study-content p {
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        .study-meta {
+            text-align: right;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #FFD700;
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+        
+        .badge.coming {
+            background: #f0f0f0;
+            color: #666;
+        }
+        
+        .study-links {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        
+        .study-link {
+            padding: 10px 20px;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .study-link:hover {
+            background: #FFD700;
+            color: #000;
+        }
+        
+        .study-link.disabled {
+            background: #e0e0e0;
+            color: #999;
+            cursor: not-allowed;
+        }
+        
+        .study-link.disabled:hover {
+            background: #e0e0e0;
+            color: #999;
+        }
+        
+        /* Entrepreneurship Section */
+        .entrepreneurship {
+            padding: 80px 40px;
+            background: #fff;
+        }
+        
+        .entrepreneurship-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 40px;
+        }
+        
+        .speaking-banner {
+            margin-top: 50px;
+            padding: 40px;
+            border: 2px solid #FFD700;
+            background: #fffef5;
+            text-align: center;
+        }
+        
+        .speaking-banner h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #000;
+        }
+        
+        .speaking-banner p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 25px;
+        }
+        
+        .speaking-tags {
+            font-size: 0.95rem;
+            color: #999;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .column {
+            padding: 40px;
+            border: 2px solid #000;
+        }
+        
+        .column:hover {
+            border-color: #FFD700;
+        }
+        
+        .column h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #000;
+        }
+        
+        .column p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 25px;
+        }
+        
+        .cta-link {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #FFD700;
+            color: #000;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .cta-link:hover {
+            background: #000;
+            color: #FFD700;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: #000;
+            color: #fff;
+            padding: 60px 40px;
+        }
+        
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #FFD700;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            text-align: center;
+        }
+        
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .contact-item a:hover {
+            color: #FFD700;
+        }
+        
+        .contact-label {
+            display: block;
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #fff;
+            padding: 30px 40px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        footer p {
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-top {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .headshot {
+                margin: 0 auto;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .domains-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .domain-card-container {
+                height: 300px;
+            }
+            
+            .study-item {
+                grid-template-columns: 1fr;
+            }
+            
+            .study-meta {
+                text-align: left;
+            }
+            
+            .study-links {
+                justify-content: flex-start;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .domains-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .domain-card-container {
+                height: 260px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">DR. ERIN JACQUES</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#entrepreneurship">Work With Me</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="hero-top">
+            <img src="[YOUR-HEADSHOT-URL]" alt="Dr. Erin Jacques" class="headshot">
+            
+            <div class="hero-content">
+                <h1>Dr. Erin Jacques</h1>
+                <p class="title-line">Founder, <a href="[CHATIFYIT-URL]">ChatifyIT</a> • Professor of Informatics • AI Entrepreneur</p>
+                
+                <p>
+                    I hold advanced degrees from <span class="highlight">Columbia University</span> and the <span class="highlight">University of Pennsylvania</span>. My research focuses on analyzing authority signals across AI platforms.
+                </p>
+                
+                <p>
+                    Research and business are two sides of the same coin. I'm nosy, and that nosiness has led me to discover my greatest loves: entrepreneurship and research — both of which are now on steroids with AI. It's time you discover how AI can transform your life.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Framework Section -->
+        <div class="framework-intro">
+            <h2>The Authority Signals Framework<span class="trademark">™</span></h2>
+            <p>Understanding which sources AI systems prioritize requires asking four critical questions</p>
+        </div>
+        
+        <div class="domains-grid">
+            <!-- Institutional Affiliation -->
+            <div class="domain-card-container">
+                <div class="domain-card">
+                    <div class="card-front">
+                        <h3>Institutional Affiliation</h3>
+                        <p>"Who published it?"</p>
+                    </div>
+                    <div class="card-back">
+                        <p>Institutional Affiliation answers "Who published it?" by categorizing sources by organization type, highlighting that different organizational contexts (government agencies, medical institutions, academic institutions, commercial platforms, professional practices) carry varying levels of inherent institutional credibility in health information contexts.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Author Credentials -->
+            <div class="domain-card-container">
+                <div class="domain-card">
+                    <div class="card-front">
+                        <h3>Author Credentials</h3>
+                        <p>"Who wrote it?"</p>
+                    </div>
+                    <div class="card-back">
+                        <p>Author Credentials answers "Who wrote it?" by capturing individual-level expertise through professional degrees, certifications, and medical specialization. Variables range from no author attribution to visible medical credentials with specialty identification.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quality Assurance -->
+            <div class="domain-card-container">
+                <div class="domain-card">
+                    <div class="card-front">
+                        <h3>Quality Assurance</h3>
+                        <p>"How was it vetted?"</p>
+                    </div>
+                    <div class="card-back">
+                        <p>Quality Assurance answers "How was it vetted?" by documenting editorial processes and evidence standards through presence of medical review statements, content recency, and citation of supporting references.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Digital Authority -->
+            <div class="domain-card-container">
+                <div class="domain-card">
+                    <div class="card-front">
+                        <h3>Digital Authority</h3>
+                        <p>"How does AI find it?"</p>
+                    </div>
+                    <div class="card-back">
+                        <p>Digital Authority answers "How does AI find it?" by quantifying web-based credibility signals including Moz Page Authority, Domain Authority, spam scores, schema markup implementation, and content length.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section class="research" id="research">
+        <div class="research-container">
+            <h2 class="section-title">The Research</h2>
+            <p class="section-subtitle">
+                Systematically documenting how AI platforms evaluate and cite sources across the ecosystem. Each study captures baseline patterns before optimization becomes widespread.
+            </p>
+            
+            <div class="studies-list">
+                <!-- ChatGPT -->
+                <div class="study-item">
+                    <div class="study-content">
+                        <h3>ChatGPT Authority Signals</h3>
+                        <p>Analysis of 615 health sources cited by ChatGPT across 100 consumer health questions. Identified 12 authority signal variables revealing three distinct credibility strategies.</p>
+                    </div>
+                    <div class="study-meta">
+                        <div class="badge">LIVE</div>
+                        <div class="study-links">
+                            <a href="[GITHUB-URL]" class="study-link">Code</a>
+                            <a href="[ARXIV-URL]" class="study-link">Publication</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Perplexity -->
+                <div class="study-item">
+                    <div class="study-content">
+                        <h3>Perplexity Authority Signals</h3>
+                        <p>Systematic analysis of citation patterns in Perplexity AI. Examining how this platform evaluates health information sources compared to ChatGPT's methodology.</p>
+                    </div>
+                    <div class="study-meta">
+                        <div class="badge">FEB 6</div>
+                        <div class="study-links">
+                            <a href="#" class="study-link disabled">Coming Soon</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Claude -->
+                <div class="study-item">
+                    <div class="study-content">
+                        <h3>Claude Authority Signals</h3>
+                        <p>Comprehensive analysis of Anthropic's Claude citation methodology. Investigating authority signal patterns and source selection criteria.</p>
+                    </div>
+                    <div class="study-meta">
+                        <div class="badge">FEB 6</div>
+                        <div class="study-links">
+                            <a href="#" class="study-link disabled">Coming Soon</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gemini -->
+                <div class="study-item">
+                    <div class="study-content">
+                        <h3>Gemini Authority Signals</h3>
+                        <p>Examining Google's Gemini AI platform to understand how authority signals influence source citation in health information queries.</p>
+                    </div>
+                    <div class="study-meta">
+                        <div class="badge coming">IN PROGRESS</div>
+                        <div class="study-links">
+                            <a href="#" class="study-link disabled">Coming Soon</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Comparative -->
+                <div class="study-item">
+                    <div class="study-content">
+                        <h3>Comparative Analysis Across Platforms</h3>
+                        <p>Cross-platform analysis examining differences and similarities in authority signal patterns across ChatGPT, Claude, Perplexity, and Gemini.</p>
+                    </div>
+                    <div class="study-meta">
+                        <div class="badge coming">IN PROGRESS</div>
+                        <div class="study-links">
+                            <a href="#" class="study-link disabled">Coming Soon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Entrepreneurship Section -->
+    <section class="entrepreneurship" id="entrepreneurship">
+        <div class="entrepreneurship-container">
+            <h2 class="section-title">Work With Me</h2>
+            
+            <div class="two-column">
+                <div class="column">
+                    <h3>ChatifyIT</h3>
+                    <p>SaaS platform helping entrepreneurs create AI agents for lead collection and business automation. Built on research-backed strategies that turn expertise into scalable income streams.</p>
+                    <a href="[CHATIFYIT-URL]" class="cta-link">Explore ChatifyIT →</a>
+                </div>
+                
+                <div class="column">
+                    <h3>Answer Engine Optimization</h3>
+                    <p>Learn how to optimize for AI platforms through research-driven courses. Discover how to use the Authority Signals Framework™ to get your content cited by ChatGPT, Claude, Perplexity, and Gemini.</p>
+                    <a href="[COURSE-URL]" class="cta-link">Learn AEO →</a>
+                </div>
+            </div>
+            
+            <!-- Speaking Section -->
+            <div class="speaking-banner">
+                <h3>Book Dr. Erin to Speak</h3>
+                <div class="speaking-tags">Keynotes • Workshops • Panels</div>
+                <p>Bring research-backed insights on AI, authority signals, and answer engine optimization to your next event. Dr. Erin delivers engaging talks that bridge academic rigor with practical application.</p>
+                <a href="mailto:[YOUR-EMAIL]?subject=Speaking Inquiry" class="cta-link">Inquire About Speaking →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h2>Connect</h2>
+            <div class="contact-links">
+                <div class="contact-item">
+                    <span class="contact-label">Instagram</span>
+                    <a href="[INSTAGRAM-URL]">Follow</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Google Scholar</span>
+                    <a href="[GOOGLE-SCHOLAR-URL]">Publications</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">LinkedIn</span>
+                    <a href="[LINKEDIN-URL]">Connect</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Dr. Erin Jacques. All rights reserved.</p>
+    </footer>
+</body>
+</html>
