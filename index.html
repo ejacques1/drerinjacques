@@ -326,6 +326,97 @@
             color: #999;
         }
         
+        /* Citation Box */
+        .citation-toggle {
+            background: #FFD700;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .citation-toggle:hover {
+            background: #000;
+            color: #FFD700;
+        }
+        
+        .citation-box {
+            display: none;
+            margin-top: 20px;
+            padding: 25px;
+            background: #f9f9f9;
+            border: 2px solid #FFD700;
+            border-radius: 0;
+        }
+        
+        .citation-box.active {
+            display: block;
+        }
+        
+        .citation-format {
+            margin-bottom: 20px;
+        }
+        
+        .citation-format:last-child {
+            margin-bottom: 0;
+        }
+        
+        .citation-format-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .citation-format-label {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .copy-button {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 5px 15px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .copy-button:hover {
+            background: #FFD700;
+            color: #000;
+        }
+        
+        .copy-button.copied {
+            background: #4CAF50;
+            color: #fff;
+        }
+        
+        .citation-text {
+            background: #fff;
+            padding: 15px;
+            border: 1px solid #ddd;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #333;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .coming-soon-text {
+            font-size: 0.85rem;
+            color: #999;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
         /* Entrepreneurship Section */
         .entrepreneurship {
             padding: 60px 40px;
@@ -674,7 +765,7 @@
             
             <div class="hero-content">
                 <h1>Dr. Erin Jacques</h1>
-                <p class="title-line">Founder, <a href="[CHATIFYIT-URL]">ChatifyIT</a> • Professor of Informatics • AI Entrepreneur</p>
+                <p class="title-line">Founder, <a href="https://www.chatifyit.com/">ChatifyIT</a> • Professor of Informatics • AI Entrepreneur</p>
                 
                 <p>
                     I hold advanced degrees from <span class="highlight">Columbia University</span> and the <span class="highlight">University of Pennsylvania</span>. My research focuses on analyzing authority signals across AI platforms.
@@ -701,7 +792,7 @@
                         <p>"Who published it?"</p>
                     </div>
                     <div class="card-back">
-                        <p>Institutional Affiliation answers "Who published it?" by categorizing sources by organization type, highlighting that different organizational contexts (government agencies, medical institutions, academic institutions, commercial platforms, professional practices) carry varying levels of inherent institutional credibility in health information contexts.</p>
+                        <p>Categorizes sources by organization type (.edu, .gov, .com) to reveal how institutional credibility influences health citations.</p>
                     </div>
                 </div>
             </div>
@@ -765,8 +856,33 @@
                     <div class="study-meta">
                         <div class="badge">LIVE</div>
                         <div class="study-links">
-                            <a href="[GITHUB-URL]" class="study-link">Code</a>
-                            <a href="[ARXIV-URL]" class="study-link">Publication</a>
+                            <a href="https://github.com/ejacques1/Authority_Signals" class="study-link" target="_blank">Code</a>
+                            <a href="https://arxiv.org/abs/2601.17109" class="study-link" target="_blank">Publication</a>
+                            <button class="citation-toggle" onclick="toggleCitation('chatgpt')">Cite</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Citation Box -->
+                    <div id="chatgpt-citation" class="citation-box">
+                        <div class="citation-format">
+                            <div class="citation-format-header">
+                                <span class="citation-format-label">APA</span>
+                                <button class="copy-button" onclick="copyCitation('apa-chatgpt', this)">Copy</button>
+                            </div>
+                            <div class="citation-text" id="apa-chatgpt">Jacques, E., Datuowei, E., Jones II, V., Basch, C., Vanderpool, C., Udeozo, N., & Chapa, G. (2026). Authority Signals in AI Cited Health Sources: A Framework for Evaluating Source Credibility in ChatGPT Responses. arXiv preprint arXiv:2601.17109.</div>
+                        </div>
+                        
+                        <div class="citation-format">
+                            <div class="citation-format-header">
+                                <span class="citation-format-label">BibTeX</span>
+                                <button class="copy-button" onclick="copyCitation('bibtex-chatgpt', this)">Copy</button>
+                            </div>
+                            <div class="citation-text" id="bibtex-chatgpt">@article{jacques2026authority,
+  title={Authority Signals in AI Cited Health Sources: A Framework for Evaluating Source Credibility in ChatGPT Responses},
+  author={Jacques, Erin and Datuowei, Erela and Jones II, Vincent and Basch, Corey and Vanderpool, Charles and Udeozo, Nnamdi and Chapa, Guillermo},
+  journal={arXiv preprint arXiv:2601.17109},
+  year={2026}
+}</div>
                         </div>
                     </div>
                 </div>
@@ -776,11 +892,13 @@
                     <div class="study-content">
                         <h3>Perplexity Authority Signals</h3>
                         <p>Systematic analysis of citation patterns in Perplexity AI. Examining how this platform evaluates health information sources compared to ChatGPT's methodology.</p>
+                        <p class="coming-soon-text">Coming Feb 26th</p>
                     </div>
                     <div class="study-meta">
-                        <div class="badge">FEB 6</div>
+                        <div class="badge coming">COMING SOON</div>
                         <div class="study-links">
-                            <a href="#" class="study-link disabled">Coming Soon</a>
+                            <a href="#" class="study-link disabled">Code</a>
+                            <a href="#" class="study-link disabled">Publication</a>
                         </div>
                     </div>
                 </div>
@@ -790,11 +908,13 @@
                     <div class="study-content">
                         <h3>Claude Authority Signals</h3>
                         <p>Comprehensive analysis of Anthropic's Claude citation methodology. Investigating authority signal patterns and source selection criteria.</p>
+                        <p class="coming-soon-text">Coming Feb 17th</p>
                     </div>
                     <div class="study-meta">
-                        <div class="badge">FEB 6</div>
+                        <div class="badge coming">COMING SOON</div>
                         <div class="study-links">
-                            <a href="#" class="study-link disabled">Coming Soon</a>
+                            <a href="#" class="study-link disabled">Code</a>
+                            <a href="#" class="study-link disabled">Publication</a>
                         </div>
                     </div>
                 </div>
@@ -839,13 +959,13 @@
                 <div class="column">
                     <h3>ChatifyIT</h3>
                     <p>SaaS platform helping entrepreneurs create AI agents for lead collection and business automation. Built on research-backed strategies that turn expertise into scalable income streams.</p>
-                    <a href="[CHATIFYIT-URL]" class="cta-link">Explore ChatifyIT →</a>
+                    <a href="https://www.chatifyit.com/" class="cta-link" target="_blank">Explore ChatifyIT →</a>
                 </div>
                 
                 <div class="column">
                     <h3>Answer Engine Optimization</h3>
                     <p>Learn how to optimize for AI platforms through research-driven courses. Discover how to use the Authority Signals Framework™ to get your content cited by ChatGPT, Claude, Perplexity, and Gemini.</p>
-                    <a href="[COURSE-URL]" class="cta-link">Learn AEO →</a>
+                    <a href="https://www.erinjacques.com/chatgpt_ai_discovery" class="cta-link" target="_blank">Learn AEO →</a>
                 </div>
             </div>
             
@@ -854,7 +974,7 @@
                 <h3>Book Dr. Erin to Speak</h3>
                 <div class="speaking-tags">Keynotes • Workshops • Panels</div>
                 <p>Bring research-backed insights on AI, authority signals, and answer engine optimization to your next event. Dr. Erin delivers engaging talks that bridge academic rigor with practical application.</p>
-                <a href="mailto:[YOUR-EMAIL]?subject=Speaking Inquiry" class="cta-link">Inquire About Speaking →</a>
+                <a href="mailto:erela@chatifyit.io?subject=Speaking Inquiry for Dr. Erin Jacques" class="cta-link">Inquire About Speaking →</a>
             </div>
         </div>
     </section>
@@ -866,15 +986,15 @@
             <div class="contact-links">
                 <div class="contact-item">
                     <span class="contact-label">Instagram</span>
-                    <a href="[INSTAGRAM-URL]">Follow</a>
+                    <a href="https://www.instagram.com/dr.erinjacques/" target="_blank">Follow</a>
                 </div>
                 <div class="contact-item">
                     <span class="contact-label">Google Scholar</span>
-                    <a href="[GOOGLE-SCHOLAR-URL]">Publications</a>
+                    <a href="https://scholar.google.com/citations?user=3AYqKZMAAAAJ&hl=en&oi=ao" target="_blank">Publications</a>
                 </div>
                 <div class="contact-item">
                     <span class="contact-label">LinkedIn</span>
-                    <a href="[LINKEDIN-URL]">Connect</a>
+                    <a href="https://www.linkedin.com/in/drerinjacques" target="_blank">Connect</a>
                 </div>
             </div>
         </div>
@@ -884,5 +1004,33 @@
     <footer>
         <p>&copy; 2026 Dr. Erin Jacques. All rights reserved.</p>
     </footer>
+    
+    <script>
+        function toggleCitation(id) {
+            const citationBox = document.getElementById(id + '-citation');
+            citationBox.classList.toggle('active');
+        }
+        
+        function copyCitation(elementId, button) {
+            const citationText = document.getElementById(elementId).textContent;
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(citationText).then(function() {
+                // Change button text temporarily
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                
+                // Reset after 2 seconds
+                setTimeout(function() {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy text: ', err);
+                alert('Failed to copy citation. Please copy manually.');
+            });
+        }
+    </script>
 </body>
 </html>
