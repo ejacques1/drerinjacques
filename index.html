@@ -728,7 +728,7 @@
         @media (max-width: 900px) {
             .free-resources-container {
                 grid-template-columns: 1fr;
-                gap: 25px;
+                gap: 35px;
                 text-align: center;
             }
             
@@ -738,12 +738,32 @@
             }
             
             .free-resources {
-                padding: 30px 20px;
+                padding: 50px 30px;
             }
             
             .subscribe-form {
                 max-width: 500px;
                 margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* Tablet: Keep button inside input but with better spacing */
+            .form-group input {
+                padding: 17px 140px 17px 20px;
+                font-size: 1rem;
+            }
+            
+            .form-group button {
+                padding: 0 24px;
+                font-size: 0.95rem;
+                right: 5px;
+                top: 5px;
+                bottom: 5px;
+            }
+            
+            .free-resources h2 {
+                font-size: 2rem;
             }
         }
         
@@ -765,22 +785,51 @@
                 font-size: 1.8rem;
             }
             
+            /* Stack form elements on mobile */
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+            
             .form-group input {
-                padding: 15px 110px 15px 15px;
-                font-size: 0.95rem;
+                padding: 16px 18px;
+                font-size: 1rem;
+                width: 100%;
+                border-radius: 0;
             }
             
             .form-group button {
-                padding: 0 20px;
+                position: static;
+                width: 100%;
+                padding: 16px;
+                font-size: 1rem;
+                font-weight: 600;
+                border-radius: 0;
+            }
+            
+            .form-message {
+                padding: 14px;
                 font-size: 0.9rem;
+                margin-top: 8px;
             }
             
             .free-resources h2 {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
+                margin-bottom: 12px;
             }
             
             .free-resources-description {
-                font-size: 0.95rem;
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+            
+            .free-resources {
+                padding: 40px 20px;
+            }
+            
+            .free-resources-container {
+                gap: 30px;
             }
         }
         
@@ -788,7 +837,8 @@
         .free-resources {
             background: #000;
             color: #fff;
-            padding: 35px 40px;
+            padding: 60px 40px;
+            border-top: 1px solid #222;
         }
         
         .free-resources-container {
@@ -801,16 +851,17 @@
         }
         
         .free-resources h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
             color: #FFD700;
             text-align: left;
+            font-weight: 700;
         }
         
         .free-resources-description {
-            font-size: 1rem;
-            color: #ddd;
-            margin-bottom: 20px;
+            font-size: 1.05rem;
+            color: #ccc;
+            margin-bottom: 0;
             line-height: 1.6;
             text-align: left;
         }
@@ -826,12 +877,18 @@
         
         .form-group input {
             width: 100%;
-            padding: 15px 140px 15px 20px;
+            padding: 18px 150px 18px 22px;
             border: 2px solid #333;
             background: #fff;
             color: #000;
             font-size: 1rem;
             font-family: inherit;
+            border-radius: 0;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input::placeholder {
+            color: #999;
         }
         
         .form-group input:focus {
@@ -841,10 +898,10 @@
         
         .form-group button {
             position: absolute;
-            right: 4px;
-            top: 4px;
-            bottom: 4px;
-            padding: 0 25px;
+            right: 5px;
+            top: 5px;
+            bottom: 5px;
+            padding: 0 28px;
             background: #FFD700;
             color: #000;
             border: none;
@@ -853,10 +910,11 @@
             cursor: pointer;
             transition: all 0.3s;
             font-family: inherit;
+            border-radius: 0;
         }
         
         .form-group button:hover {
-            background: #fff;
+            background: #FFC700;
         }
         
         .form-group button:disabled {
@@ -866,10 +924,11 @@
         }
         
         .form-message {
-            padding: 12px;
-            margin-top: 10px;
+            padding: 14px 18px;
+            margin-top: 12px;
             display: none;
             font-size: 0.95rem;
+            border-radius: 0;
         }
         
         .form-message.success {
@@ -1195,7 +1254,7 @@
                 
                 if (response.ok) {
                     formMessage.className = 'form-message success';
-                    formMessage.textContent = 'Success! Check your email to confirm your subscription.';
+                    formMessage.textContent = 'Successfully subscribed! You\'ll start receiving updates soon.';
                     emailInput.value = '';
                 } else {
                     formMessage.className = 'form-message error';
