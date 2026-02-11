@@ -70,28 +70,31 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Contact created but ID missing' });
     }
 
-    // STEP 2: Add tag to the contact
-    const tagResponse = await fetch(`https://api.systeme.io/api/contacts/${contactId}/tags`, {
-      method: 'POST',
+    // STEP 2: Update contact to add tag using PATCH
+    const tagResponse = await fetch(`https://api.systeme.io/api/contacts/${contactId}`, {
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         'X-API-Key': apiKey
       },
       body: JSON.stringify({
-        tagId: '1864099'
+        tags: [1864099]
       })
     });
 
+    const tagData = await tagResponse.json();
+
     // Check if tag was added successfully
     if (!tagResponse.ok) {
-      const tagData = await tagResponse.json();
-      console.error('Failed to add tag:', tagData);
+      console.error('Failed to add tag (PATCH):', tagData);
       // Don't fail the whole request - contact was created
       return res.status(200).json({ 
         success: true, 
         message: 'Subscribed! (Tag pending)' 
       });
     }
+
+    console.log('Tag added successfully:', tagData);
 
     // Success!
     return res.status(200).json({ 
