@@ -74,7 +74,7 @@ export default async function handler(req, res) {
     const tagResponse = await fetch(`https://api.systeme.io/api/contacts/${contactId}`, {
       method: 'PATCH',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/merge-patch+json',
         'X-API-Key': apiKey
       },
       body: JSON.stringify({
