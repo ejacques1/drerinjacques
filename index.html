@@ -748,18 +748,14 @@
         }
         
         @media (max-width: 768px) {
-            /* Tablet: Keep button inside input but with better spacing */
+            /* Tablet: Optimize button sizing */
             .form-group input {
-                padding: 17px 140px 17px 20px;
-                font-size: 1rem;
+                padding: 15px 120px 15px 18px;
             }
             
             .form-group button {
-                padding: 0 24px;
+                padding: 0 20px;
                 font-size: 0.95rem;
-                right: 5px;
-                top: 5px;
-                bottom: 5px;
             }
             
             .free-resources h2 {
@@ -785,31 +781,23 @@
                 font-size: 1.8rem;
             }
             
-            /* Stack form elements on mobile */
-            .form-group {
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
-            }
-            
+            /* Keep button INSIDE input on mobile, just make it fit better */
             .form-group input {
-                padding: 16px 18px;
+                padding: 14px 110px 14px 16px;
                 font-size: 1rem;
-                width: 100%;
-                border-radius: 0;
             }
             
             .form-group button {
-                position: static;
-                width: 100%;
-                padding: 16px;
-                font-size: 1rem;
-                font-weight: 600;
-                border-radius: 0;
+                position: absolute;
+                right: 4px;
+                top: 4px;
+                bottom: 4px;
+                padding: 0 18px;
+                font-size: 0.9rem;
             }
             
             .form-message {
-                padding: 14px;
+                padding: 12px;
                 font-size: 0.9rem;
                 margin-top: 8px;
             }
@@ -877,7 +865,7 @@
         
         .form-group input {
             width: 100%;
-            padding: 18px 150px 18px 22px;
+            padding: 16px 130px 16px 20px;
             border: 2px solid #333;
             background: #fff;
             color: #000;
@@ -898,19 +886,20 @@
         
         .form-group button {
             position: absolute;
-            right: 5px;
-            top: 5px;
-            bottom: 5px;
-            padding: 0 28px;
+            right: 4px;
+            top: 4px;
+            bottom: 4px;
+            padding: 0 24px;
             background: #FFD700;
             color: #000;
             border: none;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             font-family: inherit;
             border-radius: 0;
+            white-space: nowrap;
         }
         
         .form-group button:hover {
