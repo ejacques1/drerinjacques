@@ -566,6 +566,117 @@
             font-size: 0.9rem;
         }
         
+        /* Free Resources / Subscribe Section */
+        .free-resources {
+            background: #000;
+            color: #fff;
+            padding: 60px 40px;
+            border-top: 1px solid #222;
+        }
+        
+        .free-resources-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .free-resources h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: #FFD700;
+            text-align: left;
+            font-weight: 700;
+        }
+        
+        .free-resources-description {
+            font-size: 1.05rem;
+            color: #ccc;
+            margin-bottom: 0;
+            line-height: 1.6;
+            text-align: left;
+        }
+        
+        .subscribe-form {
+            width: 100%;
+        }
+        
+        .form-group {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 16px 130px 16px 20px;
+            border: 2px solid #333;
+            background: #fff;
+            color: #000;
+            font-size: 1rem;
+            font-family: inherit;
+            border-radius: 0;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input::placeholder {
+            color: #999;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #FFD700;
+        }
+        
+        .form-group button {
+            position: absolute;
+            right: 4px;
+            top: 4px;
+            bottom: 4px;
+            padding: 0 24px;
+            background: #FFD700;
+            color: #000;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            border-radius: 0;
+            white-space: nowrap;
+        }
+        
+        .form-group button:hover {
+            background: #FFC700;
+        }
+        
+        .form-group button:disabled {
+            background: #666;
+            color: #999;
+            cursor: not-allowed;
+        }
+        
+        .form-message {
+            padding: 14px 18px;
+            margin-top: 12px;
+            display: none;
+            font-size: 0.95rem;
+            border-radius: 0;
+        }
+        
+        .form-message.success {
+            background: #4CAF50;
+            color: #fff;
+            display: block;
+        }
+        
+        .form-message.error {
+            background: #f44336;
+            color: #fff;
+            display: block;
+        }
+
         /* Responsive */
         @media (max-width: 968px) {
             .hero {
@@ -728,11 +839,14 @@
         @media (max-width: 900px) {
             .free-resources-container {
                 grid-template-columns: 1fr;
-                gap: 35px;
+                gap: 30px;
                 text-align: center;
             }
             
-            .free-resources h2,
+            .free-resources h2 {
+                text-align: center;
+            }
+            
             .free-resources-description {
                 text-align: center;
             }
@@ -781,10 +895,37 @@
                 font-size: 1.8rem;
             }
             
-            /* Keep button INSIDE input on mobile, just make it fit better */
-            .form-group input {
-                padding: 14px 110px 14px 16px;
+            /* Mobile subscribe form - match Allie K Miller's clean approach */
+            .free-resources {
+                padding: 40px 20px;
+            }
+            
+            .free-resources-container {
+                gap: 25px;
+            }
+            
+            .free-resources h2 {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+            }
+            
+            .free-resources-description {
                 font-size: 1rem;
+                line-height: 1.5;
+            }
+            
+            .subscribe-form {
+                max-width: 100%;
+            }
+            
+            .form-group {
+                position: relative;
+            }
+            
+            .form-group input {
+                padding: 16px 120px 16px 16px;
+                font-size: 1rem;
+                border: 2px solid #333;
             }
             
             .form-group button {
@@ -792,7 +933,7 @@
                 right: 4px;
                 top: 4px;
                 bottom: 4px;
-                padding: 0 18px;
+                padding: 0 16px;
                 font-size: 0.9rem;
             }
             
@@ -801,135 +942,6 @@
                 font-size: 0.9rem;
                 margin-top: 8px;
             }
-            
-            .free-resources h2 {
-                font-size: 1.8rem;
-                margin-bottom: 12px;
-            }
-            
-            .free-resources-description {
-                font-size: 1rem;
-                line-height: 1.5;
-            }
-            
-            .free-resources {
-                padding: 40px 20px;
-            }
-            
-            .free-resources-container {
-                gap: 30px;
-            }
-        }
-        
-        /* Free Resources Section */
-        .free-resources {
-            background: #000;
-            color: #fff;
-            padding: 60px 40px;
-            border-top: 1px solid #222;
-        }
-        
-        .free-resources-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        
-        .free-resources h2 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            color: #FFD700;
-            text-align: left;
-            font-weight: 700;
-        }
-        
-        .free-resources-description {
-            font-size: 1.05rem;
-            color: #ccc;
-            margin-bottom: 0;
-            line-height: 1.6;
-            text-align: left;
-        }
-        
-        .subscribe-form {
-            width: 100%;
-        }
-        
-        .form-group {
-            position: relative;
-            margin-bottom: 15px;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 16px 130px 16px 20px;
-            border: 2px solid #333;
-            background: #fff;
-            color: #000;
-            font-size: 1rem;
-            font-family: inherit;
-            border-radius: 0;
-            transition: border-color 0.3s;
-        }
-        
-        .form-group input::placeholder {
-            color: #999;
-        }
-        
-        .form-group input:focus {
-            outline: none;
-            border-color: #FFD700;
-        }
-        
-        .form-group button {
-            position: absolute;
-            right: 4px;
-            top: 4px;
-            bottom: 4px;
-            padding: 0 24px;
-            background: #FFD700;
-            color: #000;
-            border: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: inherit;
-            border-radius: 0;
-            white-space: nowrap;
-        }
-        
-        .form-group button:hover {
-            background: #FFC700;
-        }
-        
-        .form-group button:disabled {
-            background: #666;
-            color: #999;
-            cursor: not-allowed;
-        }
-        
-        .form-message {
-            padding: 14px 18px;
-            margin-top: 12px;
-            display: none;
-            font-size: 0.95rem;
-            border-radius: 0;
-        }
-        
-        .form-message.success {
-            background: #4CAF50;
-            color: #fff;
-            display: block;
-        }
-        
-        .form-message.error {
-            background: #f44336;
-            color: #fff;
-            display: block;
         }
         
     </style>
