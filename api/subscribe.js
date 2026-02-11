@@ -24,7 +24,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    // STEP 1: Create contact with tags
+    // STEP 1: Create contact with campaign subscription
     const createResponse = await fetch('https://api.systeme.io/api/contacts', {
       method: 'POST',
       headers: {
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         email: email,
         language: 'en',
-        tagIds: [1864099]
+        campaignIds: [1069815]
       })
     });
 
@@ -71,7 +71,7 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Contact created but ID missing' });
     }
 
-    console.log('Contact created successfully with tag:', createData);
+    console.log('Contact created successfully with campaign subscription:', createData);
 
     // Success!
     return res.status(200).json({ 
