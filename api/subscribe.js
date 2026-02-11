@@ -24,7 +24,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    // STEP 1: Create contact
+    // STEP 1: Create contact with tags
     const createResponse = await fetch('https://api.systeme.io/api/contacts', {
       method: 'POST',
       headers: {
@@ -33,7 +33,8 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         email: email,
-        language: 'en'
+        language: 'en',
+        tagIds: [1864099]
       })
     });
 
@@ -70,31 +71,7 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Contact created but ID missing' });
     }
 
-    // STEP 2: Update contact to add tag using PATCH
-    const tagResponse = await fetch(`https://api.systeme.io/api/contacts/${contactId}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/merge-patch+json',
-        'X-API-Key': apiKey
-      },
-      body: JSON.stringify({
-        tags: [1864099]
-      })
-    });
-
-    const tagData = await tagResponse.json();
-
-    // Check if tag was added successfully
-    if (!tagResponse.ok) {
-      console.error('Failed to add tag (PATCH):', tagData);
-      // Don't fail the whole request - contact was created
-      return res.status(200).json({ 
-        success: true, 
-        message: 'Subscribed! (Tag pending)' 
-      });
-    }
-
-    console.log('Tag added successfully:', tagData);
+    console.log('Contact created successfully with tag:', createData);
 
     // Success!
     return res.status(200).json({ 
