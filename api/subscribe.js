@@ -76,7 +76,7 @@ export default async function handler(req, res) {
     // Success!
     return res.status(200).json({ 
       success: true, 
-      message: 'Successfully subscribed!' 
+      message: 'Successfully subscribed! You\'ll start receiving updates soon.' 
     });
 
   } catch (error) {
