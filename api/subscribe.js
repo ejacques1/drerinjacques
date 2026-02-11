@@ -78,7 +78,7 @@ export default async function handler(req, res) {
         'X-API-Key': apiKey
       },
       body: JSON.stringify({
-        tags: ['Website-Subscriber']
+        tagId: '1864099'
       })
     });
 
