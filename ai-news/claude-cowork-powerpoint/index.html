@@ -136,7 +136,8 @@
 
         /* BYLINE */
         .byline { display: flex; align-items: center; gap: 14px; padding: 20px 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); margin-bottom: 40px; }
-        .byline-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--brand-blue), var(--brand-green)); display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 700; font-size: 16px; flex-shrink: 0; }
+        .byline-avatar { width: 48px; height: 48px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+        .byline-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .byline-info { display: flex; flex-direction: column; gap: 2px; }
         .byline-name { font-weight: 600; color: var(--brand-dark); font-size: 15px; }
         .byline-name a { color: inherit; text-decoration: none; }
@@ -190,7 +191,8 @@
 
         /* AUTHOR BIO */
         .author-bio { background: var(--brand-dark); border-radius: 12px; padding: 32px; display: flex; gap: 24px; align-items: flex-start; }
-        .author-bio-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--brand-blue), var(--brand-green)); display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 700; font-size: 24px; flex-shrink: 0; }
+        .author-bio-avatar { width: 72px; height: 72px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+        .author-bio-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .author-bio-content { flex: 1; }
         .author-bio-name { color: #FFF; font-family: var(--font-display); font-size: 20px; margin-bottom: 4px; }
         .author-bio-title { color: var(--brand-green); font-size: 13px; font-weight: 500; margin-bottom: 12px; }
@@ -281,7 +283,7 @@
             <nav class="header-nav">
                 <a href="https://drerinjacques.com">Home</a>
                 <a href="https://drerinjacques.com/ai-news">AI News</a>
-                <a href="https://drerinjacques.com/research">Research</a>
+                <a href="https://drerinjacques.com">Research</a>
                 <a href="https://chatifyit.com">ChatifyIT</a>
             </nav>
         </div>
@@ -295,7 +297,7 @@
         <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://drerinjacques.com/ai-news/claude-cowork-powerpoint&text=I%20Told%20Claude%20to%20Edit%20My%20PowerPoint.%20It%20Did%20It%20Without%20Me%20Uploading%20Anything." target="_blank" rel="noopener" title="Share on X">
             <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
-        <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href).then(()=>{this.classList.add('share-btn-copied');setTimeout(()=>this.classList.remove('share-btn-copied'),2000)})" title="Copy link">
+        <button class="share-btn" onclick="copyLink(this)" title="Copy link">
             <svg viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" fill="none" stroke="#CBD5E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
     </div>
@@ -308,7 +310,7 @@
         <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://drerinjacques.com/ai-news/claude-cowork-powerpoint&text=I%20Told%20Claude%20to%20Edit%20My%20PowerPoint.%20It%20Did%20It%20Without%20Me%20Uploading%20Anything." target="_blank" rel="noopener" title="Share on X">
             <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
-        <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href).then(()=>{this.classList.add('share-btn-copied');setTimeout(()=>this.classList.remove('share-btn-copied'),2000)})" title="Copy link">
+        <button class="share-btn" onclick="copyLink(this)" title="Copy link">
             <svg viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" fill="none" stroke="#CBD5E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
     </div>
@@ -323,7 +325,7 @@
         <p class="article-subtitle">Inside the Claude desktop app is a feature most people have never touched. It's called Cowork — and it changes how AI works with your files completely.</p>
 
         <div class="byline">
-            <div class="byline-avatar">EJ</div>
+            <div class="byline-avatar"><img src="/ai-news/claude-cowork-powerpoint/dr-erin-jacques_pic.jpg" alt="Dr. Erin Jacques"></div>
             <div class="byline-info">
                 <div class="byline-name">
                     <a href="https://drerinjacques.com" itemprop="author">Dr. Erin Jacques, Ed.D.</a>
@@ -445,7 +447,7 @@
             </div>
 
             <div class="author-bio">
-                <div class="author-bio-avatar">EJ</div>
+                <div class="author-bio-avatar"><img src="/ai-news/claude-cowork-powerpoint/dr-erin-jacques_pic.jpg" alt="Dr. Erin Jacques"></div>
                 <div class="author-bio-content">
                     <div class="author-bio-name">Dr. Erin Jacques</div>
                     <div class="author-bio-title">Ed.D., Columbia University · Professor of Informatics, CUNY · Founder, ChatifyIT</div>
@@ -480,13 +482,40 @@
                 <a href="https://drerinjacques.com">Dr. Erin Jacques</a>
                 <a href="https://drerinjacques.com/ai-news">AI News</a>
                 <a href="https://chatifyit.com">ChatifyIT</a>
-                <a href="https://drerinjacques.com/research">Research</a>
+                <a href="https://drerinjacques.com">Research</a>
             </div>
             <p class="footer-copy">© 2026 Dr. Erin Jacques. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+        function copyLink(btn) {
+            const url = window.location.href;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(() => {
+                    btn.classList.add('share-btn-copied');
+                    setTimeout(() => btn.classList.remove('share-btn-copied'), 2000);
+                }).catch(() => fallbackCopy(btn, url));
+            } else {
+                fallbackCopy(btn, url);
+            }
+        }
+        function fallbackCopy(btn, url) {
+            const ta = document.createElement('textarea');
+            ta.value = url;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            try {
+                document.execCommand('copy');
+                btn.classList.add('share-btn-copied');
+                setTimeout(() => btn.classList.remove('share-btn-copied'), 2000);
+            } catch(e) {}
+            document.body.removeChild(ta);
+        }
+
         document.getElementById('newsletterForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const emailInput = document.getElementById('newsletterEmail');
