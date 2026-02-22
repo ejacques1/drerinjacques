@@ -491,29 +491,28 @@
     <script>
         function copyLink(btn) {
             const url = window.location.href;
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(url).then(() => {
-                    btn.classList.add('share-btn-copied');
-                    setTimeout(() => btn.classList.remove('share-btn-copied'), 2000);
-                }).catch(() => fallbackCopy(btn, url));
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(url).then(() => showCopied(btn)).catch(() => legacyCopy(btn, url));
             } else {
-                fallbackCopy(btn, url);
+                legacyCopy(btn, url);
             }
         }
-        function fallbackCopy(btn, url) {
-            const ta = document.createElement('textarea');
-            ta.value = url;
-            ta.style.position = 'fixed';
-            ta.style.opacity = '0';
-            document.body.appendChild(ta);
-            ta.focus();
-            ta.select();
-            try {
-                document.execCommand('copy');
-                btn.classList.add('share-btn-copied');
-                setTimeout(() => btn.classList.remove('share-btn-copied'), 2000);
-            } catch(e) {}
-            document.body.removeChild(ta);
+        function legacyCopy(btn, url) {
+            const el = document.createElement('input');
+            el.value = url;
+            el.style.cssText = 'position:fixed;top:0;left:0;width:2em;height:2em;padding:0;border:none;outline:none;background:transparent;opacity:0.01;';
+            document.body.appendChild(el);
+            el.focus();
+            el.select();
+            el.setSelectionRange(0, 99999);
+            try { document.execCommand('copy'); showCopied(btn); } catch(e) {}
+            document.body.removeChild(el);
+        }
+        function showCopied(btn) {
+            btn.classList.add('share-btn-copied');
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<span style="font-size:11px;font-weight:600;color:#fff;letter-spacing:0.5px;">COPIED!</span>';
+            setTimeout(() => { btn.classList.remove('share-btn-copied'); btn.innerHTML = orig; }, 2000);
         }
 
         document.getElementById('newsletterForm').addEventListener('submit', async (e) => {
