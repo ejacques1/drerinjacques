@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>AI News & Research | Dr. Erin Jacques</title>
+    <meta name="description" content="AI news, research, and analysis from Dr. Erin Jacques. Expert coverage of AI citation patterns, trust signals, monetization strategies, and industry developments.">
+    <meta name="author" content="Dr. Erin Jacques">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI News & Research | Dr. Erin Jacques">
+    <meta property="og:description" content="Expert AI news coverage: how AI systems cite, recommend, and decide — and what it means for your business.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://drerinjacques.com/ai-news">
+    <meta property="og:image" content="https://drerinjacques.com/og-image.png">
+    <meta property="og:site_name" content="Dr. Erin Jacques AI News">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI News & Research | Dr. Erin Jacques">
+    <meta name="twitter:description" content="Expert AI news coverage: how AI systems cite, recommend, and decide.">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "AI News & Research",
+        "description": "AI news, research, and analysis from Dr. Erin Jacques covering AI citation patterns, trust signals, monetization strategies, and industry developments.",
+        "url": "https://drerinjacques.com/ai-news",
+        "author": {
+            "@type": "Person",
+            "name": "Dr. Erin Jacques",
+            "url": "https://drerinjacques.com",
+            "jobTitle": "Professor of Informatics",
+            "worksFor": {
+                "@type": "EducationalOrganization",
+                "name": "City University of New York"
+            },
+            "alumniOf": {
+                "@type": "EducationalOrganization",
+                "name": "Columbia University"
+            }
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Dr. Erin Jacques AI News",
+            "url": "https://drerinjacques.com/ai-news"
+        }
+    }
+    </script>
+
+    <!-- Fonts (same as article template) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --brand-green: #00D9A3;
+            --brand-green-light: #00D9A320;
+            --brand-green-glow: #00D9A340;
+            --brand-dark: #0A1628;
+            --brand-blue: #1A365D;
+            --brand-blue-light: #2A4A7F;
+            --text-primary: #1A1A2E;
+            --text-secondary: #4A5568;
+            --text-muted: #718096;
+            --bg-primary: #FAFBFD;
+            --bg-card: #FFFFFF;
+            --bg-capsule: #F0FDF9;
+            --border-light: #E2E8F0;
+            --border-capsule: #00D9A350;
+            --font-display: 'DM Serif Display', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --page-width: 1080px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============ HEADER (matches article) ============ */
+        .site-header { background: var(--brand-dark); border-bottom: 3px solid var(--brand-green); }
+        .header-inner { max-width: var(--page-width); margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+        .header-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        .header-brand-icon { width: 38px; height: 38px; background: var(--brand-green); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--brand-dark); font-size: 16px; font-family: var(--font-mono); }
+        .header-brand-text { display: flex; flex-direction: column; }
+        .header-brand-name { color: #FFF; font-family: var(--font-body); font-weight: 600; font-size: 15px; }
+        .header-brand-sub { color: var(--brand-green); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+        .header-nav { display: flex; gap: 24px; align-items: center; }
+        .header-nav a { color: #CBD5E0; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .header-nav a:hover { color: var(--brand-green); }
+
+        /* ============ PAGE HERO ============ */
+        .page-hero {
+            background: var(--brand-dark);
+            padding: 64px 24px 56px;
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--page-width);
+            margin: 0 auto;
+        }
+
+        .hero-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--brand-green);
+            margin-bottom: 16px;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 5vw, 52px);
+            color: #FFF;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #A0AEC0;
+            max-width: 640px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
+        }
+
+        .hero-credentials {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 13px;
+            color: #CBD5E0;
+        }
+
+        .hero-credentials-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .hero-credentials-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        /* ============ CATEGORY FILTERS ============ */
+        .filter-bar {
+            max-width: var(--page-width);
+            margin: 0 auto;
+            padding: 24px 24px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-right: 4px;
+        }
+
+        .filter-btn {
+            background: none;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--brand-green);
+            color: var(--brand-dark);
+        }
+
+        .filter-btn.active {
+            background: var(--brand-green-light);
+            border-color: var(--brand-green);
+            color: #059669;
+            font-weight: 600;
+        }
+
+        /* ============ FEATURED ARTICLE ============ */
+        .featured-section {
+            max-width: var(--page-width);
+            margin: 32px auto 0;
+            padding: 0 24px;
+        }
+
+        .featured-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .featured-card:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        }
+
+        .featured-image-wrap {
+            background: var(--brand-dark);
+            min-height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .featured-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-image-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            color: #4A5568;
+        }
+
+        .featured-image-placeholder svg {
+            width: 48px;
+            height: 48px;
+            opacity: 0.3;
+        }
+
+        .featured-content {
+            padding: 40px 40px 40px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--brand-green);
+            margin-bottom: 16px;
+        }
+
+        .featured-badge::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--brand-green);
+        }
+
+        .featured-title {
+            font-family: var(--font-display);
+            font-size: 30px;
+            line-height: 1.2;
+            color: var(--brand-dark);
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .featured-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .featured-title a:hover {
+            color: var(--brand-blue-light);
+        }
+
+        .featured-excerpt {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .featured-meta {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* ============ ARTICLE GRID ============ */
+        .articles-section {
+            max-width: var(--page-width);
+            margin: 40px auto 0;
+            padding: 0 24px 80px;
+        }
+
+        .articles-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        .articles-header h2 {
+            font-family: var(--font-display);
+            font-size: 24px;
+            color: var(--brand-dark);
+        }
+
+        .article-count {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
+        }
+
+        .article-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        .article-card:hover {
+            border-color: var(--brand-green);
+            box-shadow: 0 4px 20px rgba(0,217,163,0.08);
+            transform: translateY(-2px);
+        }
+
+        .card-image {
+            height: 180px;
+            background: var(--brand-dark);
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        .card-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #059669;
+            background: var(--brand-green-light);
+            padding: 3px 8px;
+            border-radius: 3px;
+            border: 1px solid var(--brand-green);
+            margin-bottom: 12px;
+        }
+
+        .card-category::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--brand-green);
+        }
+
+        .card-title {
+            font-family: var(--font-display);
+            font-size: 20px;
+            line-height: 1.25;
+            color: var(--brand-dark);
+            margin-bottom: 10px;
+        }
+
+        .card-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .card-title a:hover {
+            color: var(--brand-blue-light);
+        }
+
+        .card-excerpt {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-muted);
+            padding-top: 12px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .card-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-author-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .card-author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        /* ============ EMPTY STATE ============ */
+        .empty-state {
+            text-align: center;
+            padding: 80px 24px;
+            color: var(--text-muted);
+        }
+
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.3;
+        }
+
+        .empty-state h3 {
+            font-family: var(--font-display);
+            font-size: 22px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        /* ============ NEWSLETTER (matches article) ============ */
+        .newsletter-section {
+            max-width: var(--page-width);
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+
+        .newsletter-cta {
+            background: linear-gradient(135deg, #059669 0%, #00D9A3 100%);
+            border-radius: 12px;
+            padding: 48px 40px;
+            text-align: center;
+        }
+
+        .newsletter-cta h3 {
+            color: var(--brand-dark);
+            font-family: var(--font-display);
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .newsletter-cta p {
+            color: #065F46;
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+
+        .newsletter-form { max-width: 480px; margin: 0 auto; }
+        .newsletter-form .form-group { position: relative; margin-bottom: 12px; }
+        .newsletter-form .form-group input { width: 100%; padding: 16px 140px 16px 20px; border: none; background: #fff; color: #000; font-size: 1rem; font-family: inherit; border-radius: 8px; box-sizing: border-box; }
+        .newsletter-form .form-group input::placeholder { color: #999; }
+        .newsletter-form .form-group input:focus { outline: none; box-shadow: 0 0 0 3px rgba(0,0,0,0.2); }
+        .newsletter-form .form-group button { position: absolute; right: 4px; top: 4px; height: calc(100% - 8px); padding: 0 24px; background: var(--brand-dark); color: var(--brand-green); border: none; font-weight: 700; font-size: 14px; font-family: inherit; border-radius: 6px; cursor: pointer; transition: opacity 0.3s; }
+        .newsletter-form .form-group button:hover { opacity: 0.85; }
+        .newsletter-form .form-message { display: none; padding: 12px 16px; font-size: 14px; font-weight: 600; text-align: center; border-radius: 8px; }
+        .newsletter-form .form-message.success { display: block; background: #065F46; color: #fff; }
+        .newsletter-form .form-message.error { display: block; background: #ef4444; color: #fff; }
+
+        /* ============ FOOTER (matches article) ============ */
+        .site-footer { background: var(--brand-dark); padding: 40px 24px; text-align: center; }
+        .footer-inner { max-width: var(--page-width); margin: 0 auto; }
+        .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; }
+        .footer-links a { color: #718096; text-decoration: none; font-size: 13px; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--brand-green); }
+        .footer-copy { color: #4A5568; font-size: 12px; }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .page-hero { padding: 40px 18px 36px; }
+            .featured-card { grid-template-columns: 1fr; }
+            .featured-content { padding: 28px; }
+            .featured-image-wrap { min-height: 200px; }
+            .articles-grid { grid-template-columns: 1fr; }
+            .header-nav { display: none; }
+            .filter-bar { padding: 16px 18px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="https://drerinjacques.com" class="header-brand">
+                <div class="header-brand-icon">EJ</div>
+                <div class="header-brand-text">
+                    <span class="header-brand-name">Dr. Erin Jacques</span>
+                    <span class="header-brand-sub">AI News &amp; Research</span>
+                </div>
+            </a>
+            <nav class="header-nav">
+                <a href="https://drerinjacques.com">Home</a>
+                <a href="https://drerinjacques.com/ai-news">AI News</a>
+                <a href="https://drerinjacques.com/research">Research</a>
+                <a href="https://chatifyit.com">ChatifyIT</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="page-hero">
+        <div class="hero-inner">
+            <div class="hero-eyebrow">AI News &amp; Analysis</div>
+            <h1 class="hero-title">How AI Systems Work, Decide, and Recommend</h1>
+            <p class="hero-subtitle">Research-backed coverage of AI citation patterns, trust signals, monetization strategies, and industry shifts — from someone who studies the systems, not just uses them.</p>
+            <div class="hero-credentials">
+                <div class="hero-credentials-avatar"><img src="/ai-news/dr-erin-jacques_pic.jpg" alt="Dr. Erin Jacques"></div>
+                <span>Dr. Erin Jacques · Ed.D., Columbia University · Professor of Informatics, CUNY</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORY FILTERS -->
+    <div class="filter-bar">
+        <span class="filter-label">Filter:</span>
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="AEO">AEO</button>
+        <button class="filter-btn" data-category="Trust & Security">Trust &amp; Security</button>
+        <button class="filter-btn" data-category="AI Tools">AI Tools</button>
+        <button class="filter-btn" data-category="AI Monetization">AI Monetization</button>
+        <button class="filter-btn" data-category="AI Industry">AI Industry</button>
+    </div>
+
+    <!-- FEATURED ARTICLE (first/latest article) -->
+    <section class="featured-section" id="featuredSection">
+        <!-- Populated by JS -->
+    </section>
+
+    <!-- ARTICLES GRID -->
+    <section class="articles-section">
+        <div class="articles-header">
+            <h2>Latest Articles</h2>
+            <span class="article-count" id="articleCount"></span>
+        </div>
+        <div class="articles-grid" id="articlesGrid">
+            <!-- Populated by JS -->
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-section">
+        <div class="newsletter-cta">
+            <h3>Get AI News Weekly</h3>
+            <p>Join the community learning how to get discovered by AI systems.</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <div class="form-group">
+                    <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+                    <button type="submit" id="newsletterBtn">Subscribe</button>
+                </div>
+                <div id="newsletterMessage" class="form-message"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-links">
+                <a href="https://drerinjacques.com">Dr. Erin Jacques</a>
+                <a href="https://drerinjacques.com/ai-news">AI News</a>
+                <a href="https://chatifyit.com">ChatifyIT</a>
+                <a href="https://drerinjacques.com/research">Research</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Dr. Erin Jacques. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+    /*
+     * ARTICLES MANIFEST
+     * ==================
+     * Add new articles to the top of this array.
+     * Each time you publish, add an entry here.
+     * The homepage reads from this list to build the page.
+     *
+     * To add a new article, copy this block and fill in the values:
+     *
+     * {
+     *     slug: "your-article-slug",
+     *     title: "Your Article Headline",
+     *     subtitle: "One-sentence description",
+     *     category: "AI Tools",       // AEO | Trust & Security | AI Tools | AI Monetization | AI Industry
+     *     date: "February 22, 2026",
+     *     dateISO: "2026-02-22",
+     *     readTime: "5 min read",
+     *     excerpt: "2-3 sentence preview of the article content..."
+     * },
+     */
+
+    const articles = [
+        // ↓ ADD NEW ARTICLES HERE (newest first) ↓
+
+        {
+            slug: "claude-cowork-powerpoint",
+            title: "I Told Claude to Edit My PowerPoint. It Did It Without Me Uploading Anything.",
+            subtitle: "Inside the Claude desktop app is a feature most people have never touched.",
+            category: "AI Tools",
+            date: "February 22, 2026",
+            dateISO: "2026-02-22",
+            readTime: "4 min read",
+            excerpt: "Claude Cowork is a feature inside the Claude desktop app that gives Claude direct access to files on your computer. It reads, edits, and saves PowerPoints, Word docs, and PDFs — without uploading."
+        },
+
+    ];
+
+    // ============ RENDERING ============
+
+    const featuredSection = document.getElementById('featuredSection');
+    const articlesGrid = document.getElementById('articlesGrid');
+    const articleCount = document.getElementById('articleCount');
+    let activeCategory = 'all';
+
+    function getFilteredArticles() {
+        if (activeCategory === 'all') return articles;
+        return articles.filter(a => a.category === activeCategory);
+    }
+
+    function renderFeatured(article) {
+        if (!article) {
+            featuredSection.innerHTML = '';
+            return;
+        }
+        const hasImage = true; // assume featured.png exists
+        featuredSection.innerHTML = `
+            <div class="featured-card">
+                <div class="featured-image-wrap">
+                    <img src="/ai-news/${article.slug}/featured.png" alt="${article.title}" 
+                         onerror="this.parentElement.innerHTML='<div class=\\'featured-image-placeholder\\'><svg viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'#4A5568\\' stroke-width=\\'1.5\\'><path d=\\'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z\\'/></svg></div>'">
+                </div>
+                <div class="featured-content">
+                    <div class="featured-badge">${article.category}</div>
+                    <h2 class="featured-title">
+                        <a href="/ai-news/${article.slug}/">${article.title}</a>
+                    </h2>
+                    <p class="featured-excerpt">${article.excerpt}</p>
+                    <div class="featured-meta">Dr. Erin Jacques · ${article.date} · ${article.readTime}</div>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderArticleCard(article) {
+        return `
+            <article class="article-card" data-category="${article.category}">
+                <div class="card-image">
+                    <img src="/ai-news/${article.slug}/featured.png" alt="${article.title}"
+                         onerror="this.style.display='none'">
+                </div>
+                <div class="card-body">
+                    <div class="card-category">${article.category}</div>
+                    <h3 class="card-title">
+                        <a href="/ai-news/${article.slug}/">${article.title}</a>
+                    </h3>
+                    <p class="card-excerpt">${article.excerpt}</p>
+                    <div class="card-meta">
+                        <div class="card-author">
+                            <div class="card-author-avatar"><img src="/ai-news/dr-erin-jacques_pic.jpg" alt="Dr. Erin Jacques"></div>
+                            <span>Dr. Erin Jacques</span>
+                        </div>
+                        <span>${article.date}</span>
+                    </div>
+                </div>
+            </article>
+        `;
+    }
+
+    function render() {
+        const filtered = getFilteredArticles();
+
+        if (filtered.length === 0) {
+            featuredSection.innerHTML = '';
+            articlesGrid.innerHTML = `
+                <div class="empty-state" style="grid-column: 1 / -1;">
+                    <div class="empty-state-icon">📡</div>
+                    <h3>No articles yet${activeCategory !== 'all' ? ' in this category' : ''}</h3>
+                    <p>New AI news articles are published regularly. Check back soon.</p>
+                </div>
+            `;
+            articleCount.textContent = '0 articles';
+            return;
+        }
+
+        // First article is featured
+        renderFeatured(filtered[0]);
+
+        // Rest go in the grid
+        const remaining = filtered.slice(1);
+        articleCount.textContent = `${filtered.length} article${filtered.length !== 1 ? 's' : ''}`;
+
+        if (remaining.length === 0) {
+            articlesGrid.innerHTML = '';
+        } else {
+            articlesGrid.innerHTML = remaining.map(renderArticleCard).join('');
+        }
+    }
+
+    // ============ FILTERS ============
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeCategory = btn.dataset.category;
+            render();
+        });
+    });
+
+    // ============ NEWSLETTER ============
+
+    document.getElementById('newsletterForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const emailInput = document.getElementById('newsletterEmail');
+        const submitBtn = document.getElementById('newsletterBtn');
+        const formMessage = document.getElementById('newsletterMessage');
+        const email = emailInput.value;
+        formMessage.className = 'form-message';
+        formMessage.textContent = '';
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Subscribing...';
+        try {
+            const response = await fetch('/api/subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email })
+            });
+            const data = await response.json();
+            if (response.ok) {
+                formMessage.className = 'form-message success';
+                formMessage.textContent = "Successfully subscribed!";
+                emailInput.value = '';
+            } else {
+                formMessage.className = 'form-message error';
+                formMessage.textContent = data.error || 'Something went wrong.';
+            }
+        } catch (error) {
+            formMessage.className = 'form-message error';
+            formMessage.textContent = 'Network error. Please try again.';
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Subscribe';
+        }
+    });
+
+    // ============ INIT ============
+    render();
+    </script>
+
+</body>
+</html>
