@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "functions": {
+    "api/tos-check.js": {
+      "maxDuration": 120
+    }
+  },
+  "builds": [
+    {
+      "src": "api/tos-check.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/tos-check",
+      "dest": "/api/tos-check.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
