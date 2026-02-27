@@ -5,11 +5,12 @@
  *
  * Flow:
  * 1. Check cache (KV or in-memory) for recent result (URL mode only)
- * 2. If miss → direct fetch TOS page (no Apify)
+ * 2. If miss → scrape TOS via Apify Website Content Crawler
  * 3. Run AI analysis via Claude (Anthropic API)
  * 4. Cache result → return JSON
  *
  * Environment variables needed:
+ *   APIFY_API_TOKEN     — Apify API token
  *   ANTHROPIC_API_KEY   — Anthropic API key
  *   KV_REST_API_URL     — Vercel KV URL (optional, falls back to in-memory)
  *   KV_REST_API_TOKEN   — Vercel KV token (optional)
@@ -80,9 +81,9 @@ module.exports = async function handler(req, res) {
             });
         }
 
-        // 3. Direct fetch
-        console.log(`Fetching TOS for ${domain} from ${tosUrl}`);
-        const tosText = await directFetch(tosUrl);
+        // 3. Scrape via Apify
+        console.log(`Scraping TOS for ${domain} from ${tosUrl}`);
+        const tosText = await scrapeTOS(tosUrl);
         if (!tosText || tosText.length < 200) {
             return res.status(422).json({
                 error: 'Could not extract enough content from that page. Try pasting the TOS text directly.'
@@ -130,7 +131,6 @@ function extractDomain(url) {
 
 // ============ RESOLVE TOS URL ============
 function resolveTosUrl(url, domain) {
-    // Known TOS URL patterns for popular platforms
     const knownTosUrls = {
         'perplexity.ai': 'https://www.perplexity.ai/hub/legal/terms-of-service',
         'openai.com': 'https://openai.com/policies/terms-of-use',
@@ -154,107 +154,67 @@ function resolveTosUrl(url, domain) {
         'adobe.com': 'https://www.adobe.com/legal/terms.html',
     };
 
-    // If the domain is in our map, use the mapped URL
     if (knownTosUrls[domain]) {
         return knownTosUrls[domain];
     }
 
-    // If the URL itself looks like a direct TOS link (contains terms, tos, legal, policy),
-    // trust it and use it directly
+    // If the URL itself looks like a direct TOS link, trust it
     const lowerUrl = url.toLowerCase();
     if (lowerUrl.includes('/terms') || lowerUrl.includes('/tos') || lowerUrl.includes('/legal')
         || lowerUrl.includes('/policy') || lowerUrl.includes('/policies')) {
         return url.startsWith('http') ? url : 'https://' + url;
     }
 
-    // Unknown platform with just a homepage URL — we can't help
+    // Unknown platform with just a homepage URL
     return null;
 }
 
 
-// ============ DIRECT HTTP FETCH + HTML-TO-TEXT ============
-async function directFetch(tosUrl) {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 15000); // 15s timeout
+// ============ SCRAPING VIA APIFY ============
+async function scrapeTOS(tosUrl) {
+    const APIFY_TOKEN = process.env.APIFY_API_TOKEN;
+    if (!APIFY_TOKEN) throw new Error('APIFY_API_TOKEN not configured');
 
-    try {
-        const res = await fetch(tosUrl, {
-            signal: controller.signal,
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                'Accept-Language': 'en-US,en;q=0.9',
-            },
-            redirect: 'follow',
-        });
+    const actorId = 'apify~website-content-crawler';
+    const input = {
+        startUrls: [{ url: tosUrl }],
+        maxCrawlPages: 1,
+        crawlerType: 'playwright:firefox',
+        removeElementsCssSelector: 'nav, footer, header, .cookie-banner, .sidebar, [role="navigation"], [role="banner"]',
+        maxScrollHeightPixels: 10000,
+        htmlTransformer: 'readableText',
+        proxyConfiguration: { useApifyProxy: true },
+    };
 
-        clearTimeout(timeout);
+    console.log(`Starting Apify Website Content Crawler for: ${tosUrl}`);
 
-        if (!res.ok) {
-            throw new Error(`HTTP ${res.status}`);
+    const runRes = await fetch(
+        `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${APIFY_TOKEN}&timeout=120`,
+        {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(input),
         }
+    );
 
-        const html = await res.text();
-        const text = htmlToText(html);
-        return text.substring(0, 50000);
-    } catch (e) {
-        clearTimeout(timeout);
-        throw e;
-    }
-}
-
-
-// ============ HTML → PLAIN TEXT CONVERTER ============
-function htmlToText(html) {
-    if (!html) return '';
-
-    // Remove script and style blocks entirely
-    let text = html
-        .replace(/<script[\s\S]*?<\/script>/gi, '')
-        .replace(/<style[\s\S]*?<\/style>/gi, '')
-        .replace(/<noscript[\s\S]*?<\/noscript>/gi, '');
-
-    // Try to extract just the main content area if possible
-    const mainMatch = text.match(/<main[\s\S]*?<\/main>/i)
-        || text.match(/<article[\s\S]*?<\/article>/i)
-        || text.match(/<div[^>]*(?:class|id)="[^"]*(?:content|main|body|terms|tos|legal|policy)[^"]*"[\s\S]*?<\/div>/i);
-
-    if (mainMatch && mainMatch[0].length > 500) {
-        text = mainMatch[0];
+    if (!runRes.ok) {
+        const errText = await runRes.text();
+        console.error('Apify error response:', errText.substring(0, 500));
+        throw new Error(`Apify returned ${runRes.status}: ${errText.substring(0, 200)}`);
     }
 
-    // Convert common block elements to newlines
-    text = text
-        .replace(/<br\s*\/?>/gi, '\n')
-        .replace(/<\/(?:p|div|h[1-6]|li|tr|section|article)>/gi, '\n')
-        .replace(/<(?:p|div|h[1-6]|li|tr|section|article)[^>]*>/gi, '\n');
+    const items = await runRes.json();
+    console.log(`Apify returned ${items ? items.length : 0} items`);
 
-    // Remove all remaining HTML tags
-    text = text.replace(/<[^>]+>/g, ' ');
+    if (items && items.length > 0) {
+        const content = items[0].text || items[0].markdown || '';
+        console.log(`Extracted content length: ${content.length} chars`);
+        if (content.length > 200) {
+            return content.substring(0, 50000);
+        }
+    }
 
-    // Decode common HTML entities
-    text = text
-        .replace(/&nbsp;/gi, ' ')
-        .replace(/&amp;/gi, '&')
-        .replace(/&lt;/gi, '<')
-        .replace(/&gt;/gi, '>')
-        .replace(/&quot;/gi, '"')
-        .replace(/&#39;/gi, "'")
-        .replace(/&rsquo;/gi, "'")
-        .replace(/&lsquo;/gi, "'")
-        .replace(/&rdquo;/gi, '"')
-        .replace(/&ldquo;/gi, '"')
-        .replace(/&mdash;/gi, '\u2014')
-        .replace(/&ndash;/gi, '\u2013')
-        .replace(/&#\d+;/gi, ' ');
-
-    // Clean up whitespace
-    text = text
-        .replace(/[ \t]+/g, ' ')
-        .replace(/\n\s*\n/g, '\n\n')
-        .trim();
-
-    return text;
+    throw new Error('No content extracted from Apify');
 }
 
 
@@ -263,7 +223,6 @@ async function analyzeTOS(tosText, domain) {
     const key = process.env.ANTHROPIC_API_KEY;
     if (!key) throw new Error('ANTHROPIC_API_KEY not configured');
 
-    // Truncate to fit context window
     const truncated = tosText.substring(0, 30000);
 
     const systemPrompt = `You are a TOS Red Flag Analyzer for AI platforms. You read Terms of Service documents and produce a structured risk report that a non-lawyer can understand.
@@ -344,7 +303,6 @@ Rules:
     const data = await res.json();
     const text = data.content[0].text;
 
-    // Parse JSON from Claude's response
     const jsonMatch = text.match(/\{[\s\S]*\}/);
     if (!jsonMatch) throw new Error('Failed to parse AI response');
     return JSON.parse(jsonMatch[0]);
