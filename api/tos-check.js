@@ -132,7 +132,7 @@ function extractDomain(url) {
 function resolveTosUrl(url, domain) {
     // Known TOS URL patterns for popular platforms
     const knownTosUrls = {
-        'perplexity.ai': 'https://www.perplexity.ai/hub/terms-of-service',
+        'perplexity.ai': 'https://www.perplexity.ai/hub/legal/terms-of-service',
         'openai.com': 'https://openai.com/policies/terms-of-use',
         'chatgpt.com': 'https://openai.com/policies/terms-of-use',
         'claude.ai': 'https://www.anthropic.com/legal/consumer-terms',
@@ -149,7 +149,7 @@ function resolveTosUrl(url, domain) {
         'copy.ai': 'https://www.copy.ai/terms',
         'writesonic.com': 'https://writesonic.com/terms',
         'runway.ml': 'https://runwayml.com/terms-of-use/',
-        'elevenlabs.io': 'https://elevenlabs.io/terms-of-service',
+        'elevenlabs.io': 'https://elevenlabs.io/terms-of-use',
         'stability.ai': 'https://stability.ai/terms-of-use',
         'adobe.com': 'https://www.adobe.com/legal/terms.html',
     };
