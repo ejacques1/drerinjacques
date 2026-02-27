@@ -64,11 +64,16 @@ module.exports = async function handler(req, res) {
         const domain = extractDomain(url);
         if (!domain) return res.status(400).json({ error: 'Invalid URL' });
 
-        // 1. Check cache
-        const cached = await checkCache(domain);
-        if (cached) {
-            console.log(`Cache hit for ${domain}`);
-            return res.status(200).json({ ...cached, cached: true });
+        // 1. Check cache (skip if ?fresh=true)
+        const fresh = req.query && req.query.fresh === 'true';
+        if (!fresh) {
+            const cached = await checkCache(domain);
+            if (cached) {
+                console.log(`Cache hit for ${domain}`);
+                return res.status(200).json({ ...cached, cached: true });
+            }
+        } else {
+            console.log(`Fresh mode — skipping cache for ${domain}`);
         }
 
         // 2. Resolve the TOS URL
