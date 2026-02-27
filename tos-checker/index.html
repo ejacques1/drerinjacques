@@ -356,6 +356,33 @@
             background: var(--brand-green-light); color: #059669;
         }
 
+        /* ============ PASTE TOS TEXT OPTION ============ */
+        .paste-toggle {
+            margin-top: 14px; font-size: 14px;
+        }
+        .paste-toggle a {
+            color: var(--text-muted); text-decoration: none;
+            border-bottom: 1px dashed var(--text-muted);
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .paste-toggle a:hover {
+            color: var(--brand-green); border-color: var(--brand-green);
+        }
+        .paste-area { margin-top: 16px; }
+        .tos-textarea {
+            width: 100%; padding: 14px 18px;
+            border: 2px solid var(--border-light);
+            border-radius: 8px; font-size: 15px;
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            resize: vertical; line-height: 1.6;
+            transition: border-color 0.2s;
+        }
+        .tos-textarea:focus {
+            outline: none; border-color: var(--brand-green);
+        }
+        .tos-textarea::placeholder { color: var(--text-muted); }
+
         /* ============ LOADING STATE ============ */
         .loading-section {
             display: none;
@@ -630,6 +657,8 @@
             .comparison-table th, .comparison-table td { padding: 8px 10px; }
             .flag-header { flex-wrap: wrap; }
             .flag-risk-badge { margin-left: 24px; }
+            .paste-area .input-row { flex-direction: column; }
+            .paste-area .check-btn { width: 100%; }
         }
     </style>
 </head>
@@ -668,7 +697,7 @@
             <input type="url" id="tos-url" class="url-input" placeholder="https://perplexity.ai or paste a TOS URL directly" autocomplete="off">
             <button id="check-btn" class="check-btn" onclick="runCheck()">Check This Platform</button>
         </div>
-        <p class="input-hint"><strong>Tip:</strong> You can paste the main website URL — we'll find the TOS page automatically.</p>
+        <p class="input-hint"><strong>Tip:</strong> You can paste the main website URL — we'll find the TOS page automatically for popular platforms.</p>
         <div class="quick-links">
             <button class="quick-link" onclick="quickCheck('https://perplexity.ai')">Perplexity</button>
             <button class="quick-link" onclick="quickCheck('https://chatgpt.com')">ChatGPT</button>
@@ -678,6 +707,19 @@
             <button class="quick-link" onclick="quickCheck('https://github.com/features/copilot')">Copilot</button>
             <button class="quick-link" onclick="quickCheck('https://grok.x.ai')">Grok</button>
             <button class="quick-link" onclick="quickCheck('https://jasper.ai')">Jasper</button>
+        </div>
+
+        <!-- Paste TOS text option -->
+        <p class="paste-toggle" id="paste-toggle">
+            <a href="#" onclick="togglePasteArea(event)">Don't have a URL? Paste the TOS text directly.</a>
+        </p>
+        <div class="paste-area" id="paste-area" style="display:none;">
+            <label class="input-label" for="tos-text">Paste the Terms of Service text below</label>
+            <textarea id="tos-text" class="tos-textarea" rows="8" placeholder="Copy and paste the full Terms of Service text here..."></textarea>
+            <div class="input-row" style="margin-top:12px;">
+                <input type="text" id="tos-domain" class="url-input" placeholder="Platform name (optional, e.g. Perplexity)" style="flex:1;">
+                <button class="check-btn" onclick="runTextCheck()">Analyze This TOS</button>
+            </div>
         </div>
     </div>
 </section>
@@ -693,9 +735,12 @@
 
 <!-- ============ ERROR ============ -->
 <section class="error-section" id="error-section">
-    <div class="error-card">
-        <p class="error-title">Something went wrong</p>
-        <p class="error-msg" id="error-msg">We couldn't retrieve the Terms of Service for this platform. Try pasting the direct TOS URL instead.</p>
+    <div class="error-card" id="error-card">
+        <p class="error-title" id="error-title">Something went wrong</p>
+        <p class="error-msg" id="error-msg">We couldn't retrieve the Terms of Service for this platform.</p>
+        <p class="error-help" id="error-help" style="display:none; margin-top:12px; font-size:14px; color:var(--text-secondary);">
+            You can paste the direct TOS page URL above, or <a href="#" onclick="togglePasteArea(event); showState('idle'); document.getElementById('error-section').style.display='none'; return false;" style="color:var(--brand-green); font-weight:600;">paste the TOS text directly</a>.
+        </p>
         <button class="error-retry" onclick="resetTool()">Try Again</button>
     </div>
 </section>
@@ -772,13 +817,28 @@
 const API_URL = '/api/tos-check';
 let currentResults = null;
 
+// Toggle paste text area
+function togglePasteArea(e) {
+    if (e) e.preventDefault();
+    const pasteArea = document.getElementById('paste-area');
+    const toggle = document.getElementById('paste-toggle');
+    if (pasteArea.style.display === 'none') {
+        pasteArea.style.display = 'block';
+        toggle.querySelector('a').textContent = 'Hide paste area';
+        document.getElementById('tos-text').focus();
+    } else {
+        pasteArea.style.display = 'none';
+        toggle.querySelector('a').textContent = "Don't have a URL? Paste the TOS text directly.";
+    }
+}
+
 // Quick-check buttons
 function quickCheck(url) {
     document.getElementById('tos-url').value = url;
     runCheck();
 }
 
-// Main check flow
+// Main check flow (URL mode)
 async function runCheck() {
     const urlInput = document.getElementById('tos-url');
     const url = urlInput.value.trim();
@@ -798,7 +858,7 @@ async function runCheck() {
     const fullUrl = url.startsWith('http') ? url : 'https://' + url;
 
     showState('loading');
-    updateLoadingText('Locating Terms of Service...', 'This usually takes 15–30 seconds');
+    updateLoadingText('Locating Terms of Service...', 'This usually takes 10–20 seconds');
 
     try {
         const response = await fetch(API_URL, {
@@ -807,20 +867,84 @@ async function runCheck() {
             body: JSON.stringify({ url: fullUrl })
         });
 
+        const data = await response.json().catch(() => ({}));
+
         if (!response.ok) {
-            const errData = await response.json().catch(() => ({}));
-            throw new Error(errData.error || 'Failed to analyze TOS. Try pasting the direct TOS URL.');
+            // Handle "not in database" specifically
+            if (data.error === 'not_in_database') {
+                showNotInDatabase(data.domain || url);
+                return;
+            }
+            throw new Error(data.error || data.message || 'Failed to analyze TOS.');
         }
 
-        const data = await response.json();
         currentResults = data;
         renderResults(data);
         showState('results');
 
     } catch (err) {
-        document.getElementById('error-msg').textContent = err.message;
-        showState('error');
+        showGenericError(err.message);
     }
+}
+
+// Paste text check flow
+async function runTextCheck() {
+    const textInput = document.getElementById('tos-text');
+    const text = textInput.value.trim();
+    const domain = document.getElementById('tos-domain').value.trim() || '';
+
+    if (!text || text.length < 200) {
+        alert('Please paste the full Terms of Service text. The text seems too short (minimum ~200 characters).');
+        textInput.focus();
+        return;
+    }
+
+    showState('loading');
+    updateLoadingText('Analyzing pasted TOS text...', 'Running AI analysis across 9 risk categories');
+
+    try {
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text, domain })
+        });
+
+        const data = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+            throw new Error(data.error || data.message || 'Failed to analyze TOS.');
+        }
+
+        currentResults = data;
+        renderResults(data);
+        showState('results');
+
+    } catch (err) {
+        showGenericError(err.message);
+    }
+}
+
+// Show "not in database" error with helpful options
+function showNotInDatabase(domain) {
+    document.getElementById('error-title').textContent = 'Platform not in our database yet';
+    document.getElementById('error-msg').textContent =
+        `We don't have a TOS link mapped for "${domain}" yet.`;
+    document.getElementById('error-help').style.display = 'block';
+    document.getElementById('error-card').style.background = 'var(--risk-yellow-bg)';
+    document.getElementById('error-card').style.borderColor = 'var(--risk-yellow-border)';
+    document.getElementById('error-title').style.color = 'var(--risk-yellow)';
+    showState('error');
+}
+
+// Show generic error
+function showGenericError(message) {
+    document.getElementById('error-title').textContent = 'Something went wrong';
+    document.getElementById('error-msg').textContent = message;
+    document.getElementById('error-help').style.display = 'block';
+    document.getElementById('error-card').style.background = 'var(--risk-red-bg)';
+    document.getElementById('error-card').style.borderColor = 'var(--risk-red-border)';
+    document.getElementById('error-title').style.color = 'var(--risk-red)';
+    showState('error');
 }
 
 // Loading text updater
@@ -840,8 +964,8 @@ function showState(state) {
     if (state === 'loading') {
         // Cycle through loading messages
         const msgs = [
-            ['Locating Terms of Service...', 'This usually takes 15–30 seconds'],
-            ['Scraping the TOS page...', 'Extracting the legal language'],
+            ['Locating Terms of Service...', 'This usually takes 10–20 seconds'],
+            ['Extracting the legal language...', 'Reading through the fine print'],
             ['Running AI analysis...', 'Checking 9 risk categories'],
             ['Building your report...', 'Almost done']
         ];
@@ -864,6 +988,7 @@ function resetTool() {
     document.getElementById('bottom-cta').style.display = 'none';
     document.getElementById('check-btn').disabled = false;
     document.getElementById('tos-url').value = '';
+    document.getElementById('error-help').style.display = 'none';
     document.getElementById('tos-url').focus();
 }
 
