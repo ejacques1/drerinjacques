@@ -1,16 +1,15 @@
 /**
  * Vercel Serverless Function — TOS Checker API
  * POST /api/tos-check
- * Body: { url: "https://perplexity.ai" }
+ * Body: { url: "https://perplexity.ai" } OR { text: "raw TOS content...", domain: "example.com" }
  *
  * Flow:
- * 1. Check cache (KV or in-memory) for recent result
- * 2. If miss → scrape TOS via Apify actor
+ * 1. Check cache (KV or in-memory) for recent result (URL mode only)
+ * 2. If miss → direct fetch TOS page (no Apify)
  * 3. Run AI analysis via Claude (Anthropic API)
  * 4. Cache result → return JSON
  *
  * Environment variables needed:
- *   APIFY_API_TOKEN     — Apify API token
  *   ANTHROPIC_API_KEY   — Anthropic API key
  *   KV_REST_API_URL     — Vercel KV URL (optional, falls back to in-memory)
  *   KV_REST_API_TOKEN   — Vercel KV token (optional)
@@ -21,7 +20,13 @@ const CACHE_TTL_HOURS = 24;
 // ============ MAIN HANDLER ============
 module.exports = async function handler(req, res) {
     // CORS headers
-    res.setHeader('Access-Control-Allow-Origin', 'https://drerinjacques.com');
+    const origin = req.headers.origin || '';
+    const allowedOrigins = ['https://drerinjacques.com', 'https://www.drerinjacques.com'];
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    } else {
+        res.setHeader('Access-Control-Allow-Origin', 'https://drerinjacques.com');
+    }
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -29,31 +34,67 @@ module.exports = async function handler(req, res) {
     if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
     try {
-        const { url } = req.body;
-        if (!url) return res.status(400).json({ error: 'URL is required' });
+        const { url, text, domain: providedDomain } = req.body;
 
-        // Normalize the domain for cache key
+        // === MODE 1: Pasted TOS text — always fresh analysis, no cache ===
+        if (text && text.length > 200) {
+            const label = providedDomain || 'Unknown Platform';
+            console.log(`Pasted text mode: ${text.length} chars for "${label}"`);
+
+            const analysis = await analyzeTOS(text, label);
+
+            return res.status(200).json({
+                domain: label,
+                verdict: analysis.verdict,
+                flags: analysis.flags,
+                comparison: analysis.comparison || [],
+                checked_at: new Date().toISOString(),
+                cached: false
+            });
+        }
+
+        if (text && text.length <= 200) {
+            return res.status(400).json({ error: 'The pasted text is too short. Please paste the full Terms of Service.' });
+        }
+
+        // === MODE 2: URL-based lookup ===
+        if (!url) return res.status(400).json({ error: 'Please provide a URL or paste TOS text.' });
+
         const domain = extractDomain(url);
         if (!domain) return res.status(400).json({ error: 'Invalid URL' });
 
         // 1. Check cache
         const cached = await checkCache(domain);
         if (cached) {
+            console.log(`Cache hit for ${domain}`);
             return res.status(200).json({ ...cached, cached: true });
         }
 
-        // 2. Scrape TOS
-        const tosText = await scrapeTOS(url, domain);
-        if (!tosText || tosText.length < 200) {
-            return res.status(422).json({
-                error: 'Could not find or extract Terms of Service. Try pasting the direct TOS URL.'
+        // 2. Resolve the TOS URL
+        const tosUrl = resolveTosUrl(url, domain);
+        if (!tosUrl) {
+            return res.status(404).json({
+                error: 'not_in_database',
+                message: `We don't have a TOS link mapped for this platform yet. Please paste the direct TOS URL, or paste the TOS text directly.`,
+                domain
             });
         }
 
-        // 3. AI Analysis via Claude
+        // 3. Direct fetch
+        console.log(`Fetching TOS for ${domain} from ${tosUrl}`);
+        const tosText = await directFetch(tosUrl);
+        if (!tosText || tosText.length < 200) {
+            return res.status(422).json({
+                error: 'Could not extract enough content from that page. Try pasting the TOS text directly.'
+            });
+        }
+        console.log(`Got ${tosText.length} chars of TOS text for ${domain}`);
+
+        // 4. AI Analysis via Claude
+        console.log(`Running Claude analysis for ${domain}...`);
         const analysis = await analyzeTOS(tosText, domain);
 
-        // 4. Cache and return
+        // 5. Cache and return
         const result = {
             domain,
             verdict: analysis.verdict,
@@ -64,10 +105,11 @@ module.exports = async function handler(req, res) {
         };
 
         await saveCache(domain, result);
+        console.log(`Done! Result cached for ${domain}`);
         return res.status(200).json(result);
 
     } catch (err) {
-        console.error('TOS Check Error:', err);
+        console.error('TOS Check Error:', err.message, err.stack);
         return res.status(500).json({
             error: 'Something went wrong while analyzing the TOS. Please try again.'
         });
@@ -86,11 +128,8 @@ function extractDomain(url) {
 }
 
 
-// ============ SCRAPING VIA APIFY ============
-async function scrapeTOS(url, domain) {
-    const APIFY_TOKEN = process.env.APIFY_API_TOKEN;
-    if (!APIFY_TOKEN) throw new Error('APIFY_API_TOKEN not configured');
-
+// ============ RESOLVE TOS URL ============
+function resolveTosUrl(url, domain) {
     // Known TOS URL patterns for popular platforms
     const knownTosUrls = {
         'perplexity.ai': 'https://www.perplexity.ai/hub/terms-of-service',
@@ -115,48 +154,107 @@ async function scrapeTOS(url, domain) {
         'adobe.com': 'https://www.adobe.com/legal/terms.html',
     };
 
-    // Determine the URL to scrape
-    const tosUrl = knownTosUrls[domain] || url;
-
-    // Use Apify's Website Content Crawler — extracts clean text from pages
-    const actorId = 'apify~website-content-crawler';
-    const input = {
-        startUrls: [{ url: tosUrl }],
-        maxCrawlPages: 1,
-        crawlerType: 'playwright:firefox',
-        removeElementsCssSelector: 'nav, footer, header, .cookie-banner, .sidebar, [role="navigation"], [role="banner"]',
-        maxScrollHeightPixels: 10000,
-        htmlTransformer: 'readableText',
-        proxyConfiguration: { useApifyProxy: true },
-    };
-
-    // Run the actor synchronously (timeout 120s)
-    const runRes = await fetch(
-        `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${APIFY_TOKEN}&timeout=120`,
-        {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(input),
-        }
-    );
-
-    if (!runRes.ok) {
-        const errText = await runRes.text();
-        console.error('Apify error:', errText);
-        throw new Error('Scraping failed');
+    // If the domain is in our map, use the mapped URL
+    if (knownTosUrls[domain]) {
+        return knownTosUrls[domain];
     }
 
-    const items = await runRes.json();
-
-    // Website Content Crawler returns { url, text, markdown } — try text first, then markdown
-    if (items && items.length > 0) {
-        const content = items[0].text || items[0].markdown || '';
-        if (content.length > 200) {
-            return content.substring(0, 50000);
-        }
+    // If the URL itself looks like a direct TOS link (contains terms, tos, legal, policy),
+    // trust it and use it directly
+    const lowerUrl = url.toLowerCase();
+    if (lowerUrl.includes('/terms') || lowerUrl.includes('/tos') || lowerUrl.includes('/legal')
+        || lowerUrl.includes('/policy') || lowerUrl.includes('/policies')) {
+        return url.startsWith('http') ? url : 'https://' + url;
     }
 
-    throw new Error('No content extracted');
+    // Unknown platform with just a homepage URL — we can't help
+    return null;
+}
+
+
+// ============ DIRECT HTTP FETCH + HTML-TO-TEXT ============
+async function directFetch(tosUrl) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000); // 15s timeout
+
+    try {
+        const res = await fetch(tosUrl, {
+            signal: controller.signal,
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'Accept-Language': 'en-US,en;q=0.9',
+            },
+            redirect: 'follow',
+        });
+
+        clearTimeout(timeout);
+
+        if (!res.ok) {
+            throw new Error(`HTTP ${res.status}`);
+        }
+
+        const html = await res.text();
+        const text = htmlToText(html);
+        return text.substring(0, 50000);
+    } catch (e) {
+        clearTimeout(timeout);
+        throw e;
+    }
+}
+
+
+// ============ HTML → PLAIN TEXT CONVERTER ============
+function htmlToText(html) {
+    if (!html) return '';
+
+    // Remove script and style blocks entirely
+    let text = html
+        .replace(/<script[\s\S]*?<\/script>/gi, '')
+        .replace(/<style[\s\S]*?<\/style>/gi, '')
+        .replace(/<noscript[\s\S]*?<\/noscript>/gi, '');
+
+    // Try to extract just the main content area if possible
+    const mainMatch = text.match(/<main[\s\S]*?<\/main>/i)
+        || text.match(/<article[\s\S]*?<\/article>/i)
+        || text.match(/<div[^>]*(?:class|id)="[^"]*(?:content|main|body|terms|tos|legal|policy)[^"]*"[\s\S]*?<\/div>/i);
+
+    if (mainMatch && mainMatch[0].length > 500) {
+        text = mainMatch[0];
+    }
+
+    // Convert common block elements to newlines
+    text = text
+        .replace(/<br\s*\/?>/gi, '\n')
+        .replace(/<\/(?:p|div|h[1-6]|li|tr|section|article)>/gi, '\n')
+        .replace(/<(?:p|div|h[1-6]|li|tr|section|article)[^>]*>/gi, '\n');
+
+    // Remove all remaining HTML tags
+    text = text.replace(/<[^>]+>/g, ' ');
+
+    // Decode common HTML entities
+    text = text
+        .replace(/&nbsp;/gi, ' ')
+        .replace(/&amp;/gi, '&')
+        .replace(/&lt;/gi, '<')
+        .replace(/&gt;/gi, '>')
+        .replace(/&quot;/gi, '"')
+        .replace(/&#39;/gi, "'")
+        .replace(/&rsquo;/gi, "'")
+        .replace(/&lsquo;/gi, "'")
+        .replace(/&rdquo;/gi, '"')
+        .replace(/&ldquo;/gi, '"')
+        .replace(/&mdash;/gi, '\u2014')
+        .replace(/&ndash;/gi, '\u2013')
+        .replace(/&#\d+;/gi, ' ');
+
+    // Clean up whitespace
+    text = text
+        .replace(/[ \t]+/g, ' ')
+        .replace(/\n\s*\n/g, '\n\n')
+        .trim();
+
+    return text;
 }
 
 
@@ -254,11 +352,9 @@ Rules:
 
 
 // ============ CACHE LAYER ============
-// Uses Vercel KV if available, otherwise in-memory (resets on cold start)
 const memoryCache = {};
 
 async function checkCache(domain) {
-    // Try Vercel KV first
     if (process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN) {
         try {
             const res = await fetch(
@@ -278,7 +374,6 @@ async function checkCache(domain) {
         }
     }
 
-    // Fallback to memory
     const cached = memoryCache[domain];
     if (cached) {
         const age = (Date.now() - new Date(cached.checked_at).getTime()) / (1000 * 60 * 60);
@@ -289,7 +384,6 @@ async function checkCache(domain) {
 }
 
 async function saveCache(domain, data) {
-    // Try Vercel KV
     if (process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN) {
         try {
             await fetch(
@@ -311,6 +405,5 @@ async function saveCache(domain, data) {
         }
     }
 
-    // Always save to memory too
     memoryCache[domain] = data;
 }
