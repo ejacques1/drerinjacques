@@ -861,7 +861,7 @@ async function runCheck() {
     updateLoadingText('Locating Terms of Service...', 'This usually takes 15–30 seconds');
 
     try {
-        const response = await fetch(API_URL, {
+        const response = await fetch(API_URL + '?fresh=true', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ url: fullUrl })
