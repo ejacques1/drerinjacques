@@ -858,7 +858,7 @@ async function runCheck() {
     const fullUrl = url.startsWith('http') ? url : 'https://' + url;
 
     showState('loading');
-    updateLoadingText('Locating Terms of Service...', 'This usually takes 10–20 seconds');
+    updateLoadingText('Locating Terms of Service...', 'This usually takes 15–30 seconds');
 
     try {
         const response = await fetch(API_URL, {
@@ -964,7 +964,7 @@ function showState(state) {
     if (state === 'loading') {
         // Cycle through loading messages
         const msgs = [
-            ['Locating Terms of Service...', 'This usually takes 10–20 seconds'],
+            ['Locating Terms of Service...', 'This usually takes 15–30 seconds'],
             ['Extracting the legal language...', 'Reading through the fine print'],
             ['Running AI analysis...', 'Checking 9 risk categories'],
             ['Building your report...', 'Almost done']
