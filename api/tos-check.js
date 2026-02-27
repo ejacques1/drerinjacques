@@ -118,42 +118,27 @@ async function scrapeTOS(url, domain) {
     // Determine the URL to scrape
     const tosUrl = knownTosUrls[domain] || url;
 
-    // Use Apify's Web Scraper actor (Puppeteer-based)
-    // pageFunction MUST be a string — JSON.stringify drops JS functions
-    const actorId = 'apify~web-scraper';
+    // Use Apify's Website Content Crawler — extracts clean text from pages
+    const actorId = 'apify~website-content-crawler';
     const input = {
         startUrls: [{ url: tosUrl }],
-        pageFunction: `async function pageFunction(context) {
-            const { page, request } = context;
-            await page.waitForSelector('body', { timeout: 15000 });
-            const text = await page.evaluate(() => {
-                const remove = document.querySelectorAll('nav, footer, script, style, header, .cookie-banner, .sidebar');
-                remove.forEach(el => el.remove());
-                const selectors = [
-                    'main', 'article', '[role="main"]',
-                    '.terms', '.tos', '.legal', '.content',
-                    '.entry-content', '.post-content',
-                    '#content', '#main', '#terms'
-                ];
-                for (const sel of selectors) {
-                    const el = document.querySelector(sel);
-                    if (el && el.innerText.length > 500) return el.innerText;
-                }
-                return document.body.innerText;
-            });
-            return { url: request.url, text: text.substring(0, 50000) };
-        }`,
+        maxCrawlPages: 1,
+        crawlerType: 'playwright:firefox',
+        removeElementsCssSelector: 'nav, footer, header, .cookie-banner, .sidebar, [role="navigation"], [role="banner"]',
+        maxScrollHeightPixels: 10000,
+        htmlTransformer: 'readableText',
         proxyConfiguration: { useApifyProxy: true },
-        maxRequestsPerCrawl: 3,
-        maxConcurrency: 1,
     };
 
-    // Run the actor synchronously
-    const runRes = await fetch(`https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${APIFY_TOKEN}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(input),
-    });
+    // Run the actor synchronously (timeout 120s)
+    const runRes = await fetch(
+        `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${APIFY_TOKEN}&timeout=120`,
+        {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(input),
+        }
+    );
 
     if (!runRes.ok) {
         const errText = await runRes.text();
@@ -162,11 +147,16 @@ async function scrapeTOS(url, domain) {
     }
 
     const items = await runRes.json();
-    if (!items || !items.length || !items[0].text) {
-        throw new Error('No content extracted');
+
+    // Website Content Crawler returns { url, text, markdown } — try text first, then markdown
+    if (items && items.length > 0) {
+        const content = items[0].text || items[0].markdown || '';
+        if (content.length > 200) {
+            return content.substring(0, 50000);
+        }
     }
 
-    return items[0].text;
+    throw new Error('No content extracted');
 }
 
 
