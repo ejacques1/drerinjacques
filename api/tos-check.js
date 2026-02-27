@@ -119,22 +119,16 @@ async function scrapeTOS(url, domain) {
     const tosUrl = knownTosUrls[domain] || url;
 
     // Use Apify's Web Scraper actor (Puppeteer-based)
+    // pageFunction MUST be a string — JSON.stringify drops JS functions
     const actorId = 'apify~web-scraper';
     const input = {
         startUrls: [{ url: tosUrl }],
-        pageFunction: async function pageFunction(context) {
+        pageFunction: `async function pageFunction(context) {
             const { page, request } = context;
-
-            // Wait for content to load
             await page.waitForSelector('body', { timeout: 15000 });
-
-            // Extract main text content
             const text = await page.evaluate(() => {
-                // Remove nav, footer, scripts, styles
                 const remove = document.querySelectorAll('nav, footer, script, style, header, .cookie-banner, .sidebar');
                 remove.forEach(el => el.remove());
-
-                // Try to find the main content area
                 const selectors = [
                     'main', 'article', '[role="main"]',
                     '.terms', '.tos', '.legal', '.content',
@@ -147,9 +141,8 @@ async function scrapeTOS(url, domain) {
                 }
                 return document.body.innerText;
             });
-
             return { url: request.url, text: text.substring(0, 50000) };
-        },
+        }`,
         proxyConfiguration: { useApifyProxy: true },
         maxRequestsPerCrawl: 3,
         maxConcurrency: 1,
