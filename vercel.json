@@ -17,8 +17,8 @@
   ],
   "routes": [
     {
-      "src": "/api/tos-check",
-      "dest": "/api/tos-check.js"
+      "src": "/api/tos-check(.*)",
+      "dest": "/api/tos-check.js$1"
     },
     {
       "src": "/(.*)",

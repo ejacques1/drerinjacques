@@ -864,6 +864,7 @@ async function runCheck() {
         const response = await fetch(API_URL + '?fresh=true', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            cache: 'no-store',
             body: JSON.stringify({ url: fullUrl })
         });
 
@@ -903,9 +904,10 @@ async function runTextCheck() {
     updateLoadingText('Analyzing pasted TOS text...', 'Running AI analysis across 9 risk categories');
 
     try {
-        const response = await fetch(API_URL, {
+        const response = await fetch(API_URL + '?fresh=true', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            cache: 'no-store',
             body: JSON.stringify({ text, domain })
         });
 
