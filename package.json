@@ -1,0 +1,7 @@
+{
+  "name": "drerinjacques",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/generate-sitemap.js"
+  }
+}
