@@ -39,6 +39,7 @@ module.exports = async function handler(req, res) {
     if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
     try {
+        const startTime = Date.now();
         const { url, text, domain: providedDomain } = req.body;
 
         // === MODE 1: Pasted TOS text — always fresh analysis, no cache ===
@@ -90,9 +91,9 @@ module.exports = async function handler(req, res) {
             });
         }
 
-        // 3. Scrape via Apify
+        // 3. Scrape via Apify (with time budget)
         console.log(`Scraping TOS for ${domain} from ${tosUrl}`);
-        const tosText = await scrapeTOS(tosUrl);
+        const tosText = await scrapeTOS(tosUrl, startTime);
         if (!tosText || tosText.length < 200) {
             return res.status(422).json({
                 error: 'Could not extract enough content from that page. Try pasting the TOS text directly.'
@@ -180,16 +181,36 @@ function resolveTosUrl(url, domain) {
 
 
 // ============ SCRAPING VIA APIFY ============
-async function scrapeTOS(tosUrl) {
+async function scrapeTOS(tosUrl, startTime) {
     const APIFY_TOKEN = process.env.APIFY_API_TOKEN;
     if (!APIFY_TOKEN) throw new Error('APIFY_API_TOKEN not configured');
+
+    // Time budget: leave at least 70s for Claude analysis
+    const MAX_SCRAPE_MS = 45000;
+    const elapsed = Date.now() - startTime;
+    const scrapeDeadline = startTime + MAX_SCRAPE_MS;
 
     // Try fast cheerio first (static HTML), fall back to playwright if needed
     const crawlerTypes = ['cheerio', 'playwright:firefox'];
 
     for (const crawlerType of crawlerTypes) {
+        const remaining = Math.max(0, scrapeDeadline - Date.now());
+        if (remaining < 5000) {
+            console.warn(`Only ${remaining}ms left for scraping, skipping ${crawlerType}`);
+            break;
+        }
+
         const actorId = 'apify~website-content-crawler';
-        const timeout = crawlerType === 'cheerio' ? 30 : 45;
+        const timeout = Math.min(
+            crawlerType === 'cheerio' ? 15 : 25,
+            Math.floor(remaining / 1000) - 2
+        );
+
+        if (timeout < 5) {
+            console.warn(`Timeout too short (${timeout}s) for ${crawlerType}, skipping`);
+            break;
+        }
+
         const input = {
             startUrls: [{ url: tosUrl }],
             maxCrawlPages: 1,
@@ -200,7 +221,7 @@ async function scrapeTOS(tosUrl) {
             proxyConfiguration: { useApifyProxy: true },
         };
 
-        console.log(`Trying ${crawlerType} crawler for: ${tosUrl} (timeout: ${timeout}s)`);
+        console.log(`Trying ${crawlerType} crawler for: ${tosUrl} (timeout: ${timeout}s, ${Math.round(remaining/1000)}s remaining)`);
 
         try {
             const runRes = await fetch(
@@ -215,7 +236,7 @@ async function scrapeTOS(tosUrl) {
             if (!runRes.ok) {
                 const errText = await runRes.text();
                 console.error(`${crawlerType} error:`, errText.substring(0, 300));
-                continue; // Try next crawler type
+                continue;
             }
 
             const items = await runRes.json();
@@ -225,14 +246,14 @@ async function scrapeTOS(tosUrl) {
                 const content = items[0].text || items[0].markdown || '';
                 console.log(`Extracted content length: ${content.length} chars`);
                 if (content.length > 200) {
-                    return content.substring(0, 60000);
+                    return content.substring(0, 40000);
                 }
             }
 
             console.warn(`${crawlerType} returned insufficient content, trying next...`);
         } catch (err) {
             console.error(`${crawlerType} failed:`, err.message);
-            continue; // Try next crawler type
+            continue;
         }
     }
 
@@ -245,7 +266,7 @@ async function analyzeTOS(tosText, domain) {
     const key = process.env.ANTHROPIC_API_KEY;
     if (!key) throw new Error('ANTHROPIC_API_KEY not configured');
 
-    const truncated = tosText.substring(0, 45000);
+    const truncated = tosText.substring(0, 30000);
 
     const systemPrompt = `You are a TOS Red Flag Analyzer that PROTECTS entrepreneurs, content creators, and small business owners. You are NOT neutral. You are an advocate for the user. Your job is to find every clause that could hurt someone who uses this AI tool to run their business, create content, or build products.
 
