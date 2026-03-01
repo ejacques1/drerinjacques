@@ -198,7 +198,7 @@ async function scrapeTOS(tosUrl) {
     console.log(`Starting Apify Website Content Crawler for: ${tosUrl}`);
 
     const runRes = await fetch(
-        `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${APIFY_TOKEN}&timeout=120`,
+        `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${APIFY_TOKEN}&timeout=60`,
         {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -347,8 +347,8 @@ MANDATORY RULES:
             'anthropic-version': '2023-06-01'
         },
         body: JSON.stringify({
-            model: 'claude-sonnet-4-5-20250929',
-            max_tokens: 4000,
+            model: 'claude-sonnet-4-6',
+            max_tokens: 8096,
             system: systemPrompt,
             messages: [
                 { role: 'user', content: userPrompt }
