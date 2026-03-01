@@ -184,46 +184,59 @@ async function scrapeTOS(tosUrl) {
     const APIFY_TOKEN = process.env.APIFY_API_TOKEN;
     if (!APIFY_TOKEN) throw new Error('APIFY_API_TOKEN not configured');
 
-    const actorId = 'apify~website-content-crawler';
-    const input = {
-        startUrls: [{ url: tosUrl }],
-        maxCrawlPages: 1,
-        crawlerType: 'playwright:firefox',
-        removeElementsCssSelector: 'nav, footer, header, .cookie-banner, .sidebar, [role="navigation"], [role="banner"]',
-        maxScrollHeightPixels: 50000,
-        htmlTransformer: 'readableText',
-        proxyConfiguration: { useApifyProxy: true },
-    };
+    // Try fast cheerio first (static HTML), fall back to playwright if needed
+    const crawlerTypes = ['cheerio', 'playwright:firefox'];
 
-    console.log(`Starting Apify Website Content Crawler for: ${tosUrl}`);
+    for (const crawlerType of crawlerTypes) {
+        const actorId = 'apify~website-content-crawler';
+        const timeout = crawlerType === 'cheerio' ? 30 : 45;
+        const input = {
+            startUrls: [{ url: tosUrl }],
+            maxCrawlPages: 1,
+            crawlerType,
+            removeElementsCssSelector: 'nav, footer, header, .cookie-banner, .sidebar, [role="navigation"], [role="banner"]',
+            ...(crawlerType === 'playwright:firefox' ? { maxScrollHeightPixels: 50000 } : {}),
+            htmlTransformer: 'readableText',
+            proxyConfiguration: { useApifyProxy: true },
+        };
 
-    const runRes = await fetch(
-        `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${APIFY_TOKEN}&timeout=60`,
-        {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(input),
+        console.log(`Trying ${crawlerType} crawler for: ${tosUrl} (timeout: ${timeout}s)`);
+
+        try {
+            const runRes = await fetch(
+                `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${APIFY_TOKEN}&timeout=${timeout}`,
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(input),
+                }
+            );
+
+            if (!runRes.ok) {
+                const errText = await runRes.text();
+                console.error(`${crawlerType} error:`, errText.substring(0, 300));
+                continue; // Try next crawler type
+            }
+
+            const items = await runRes.json();
+            console.log(`${crawlerType} returned ${items ? items.length : 0} items`);
+
+            if (items && items.length > 0) {
+                const content = items[0].text || items[0].markdown || '';
+                console.log(`Extracted content length: ${content.length} chars`);
+                if (content.length > 200) {
+                    return content.substring(0, 60000);
+                }
+            }
+
+            console.warn(`${crawlerType} returned insufficient content, trying next...`);
+        } catch (err) {
+            console.error(`${crawlerType} failed:`, err.message);
+            continue; // Try next crawler type
         }
-    );
-
-    if (!runRes.ok) {
-        const errText = await runRes.text();
-        console.error('Apify error response:', errText.substring(0, 500));
-        throw new Error(`Apify returned ${runRes.status}: ${errText.substring(0, 200)}`);
     }
 
-    const items = await runRes.json();
-    console.log(`Apify returned ${items ? items.length : 0} items`);
-
-    if (items && items.length > 0) {
-        const content = items[0].text || items[0].markdown || '';
-        console.log(`Extracted content length: ${content.length} chars`);
-        if (content.length > 200) {
-            return content.substring(0, 60000);
-        }
-    }
-
-    throw new Error('No content extracted from Apify');
+    throw new Error('No content extracted from any crawler');
 }
 
 
