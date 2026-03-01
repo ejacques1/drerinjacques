@@ -16,7 +16,7 @@
  *   KV_REST_API_TOKEN   — Vercel KV token (optional)
  */
 
-const CACHE_TTL_HOURS = 24;
+const CACHE_TTL_HOURS = 168; // 7 days
 
 // ============ MAIN HANDLER ============
 module.exports = async function handler(req, res) {
