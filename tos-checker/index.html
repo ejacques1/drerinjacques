@@ -1071,7 +1071,7 @@ function buildComparisonTable(rows) {
     return html;
 }
 
-// Unlock gated content (Systeme.io integration)
+// Unlock gated content (via /api/subscribe → Systeme.io)
 async function unlockReport() {
     const email = document.getElementById('gate-email').value.trim();
     if (!email || !email.includes('@')) {
@@ -1079,19 +1079,33 @@ async function unlockReport() {
         return;
     }
 
-    // Send email to Systeme.io via their form endpoint
+    const btn = document.querySelector('.gate-submit');
+    btn.disabled = true;
+    btn.textContent = 'Subscribing...';
+
+    // Send email to Systeme.io via the working backend API
     try {
-        await fetch('https://systeme.io/embedded/EMAIL_FORM_ID/subscribe', {
+        const response = await fetch('/api/subscribe', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams({ email: email }),
-            mode: 'no-cors' // Systeme.io doesn't support CORS
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
         });
+
+        const data = await response.json();
+
+        if (!response.ok && !data.success) {
+            btn.textContent = data.error || 'Error — try again';
+            btn.disabled = false;
+            return;
+        }
     } catch (e) {
-        // no-cors will always "fail" — that's fine
+        console.error('Subscribe error:', e);
+        btn.textContent = 'Network error — try again';
+        btn.disabled = false;
+        return;
     }
 
-    // Instant JS unlock — no redirect
+    // Unlock the gated content
     document.getElementById('gated-section').classList.add('unlocked');
 
     // Store unlock in sessionStorage so it persists during the session
