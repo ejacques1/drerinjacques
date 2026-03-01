@@ -861,10 +861,9 @@ async function runCheck() {
     updateLoadingText('Locating Terms of Service...', 'This usually takes 15–30 seconds');
 
     try {
-        const response = await fetch(API_URL + '?fresh=true', {
+        const response = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            cache: 'no-store',
             body: JSON.stringify({ url: fullUrl })
         });
 
@@ -904,10 +903,9 @@ async function runTextCheck() {
     updateLoadingText('Analyzing pasted TOS text...', 'Running AI analysis across 9 risk categories');
 
     try {
-        const response = await fetch(API_URL + '?fresh=true', {
+        const response = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            cache: 'no-store',
             body: JSON.stringify({ text, domain })
         });
 
