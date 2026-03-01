@@ -1033,9 +1033,20 @@ function renderResults(data) {
         'Checked on ' + new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) +
         (data.cached ? ' (cached result)' : '');
 
-    // Reset gate state
+    // Gate state: if user already subscribed this session, auto-unlock
     const gatedSection = document.getElementById('gated-section');
-    gatedSection.classList.remove('unlocked');
+    try {
+        if (sessionStorage.getItem('tos_unlocked') === '1') {
+            gatedSection.classList.add('unlocked');
+        } else {
+            gatedSection.classList.remove('unlocked');
+            // Reset button state in case it was left disabled from a previous attempt
+            const btn = document.querySelector('.gate-submit');
+            if (btn) { btn.disabled = false; btn.textContent = 'Send Me the Full Report'; }
+        }
+    } catch(e) {
+        gatedSection.classList.remove('unlocked');
+    }
 }
 
 // Build a single flag card
