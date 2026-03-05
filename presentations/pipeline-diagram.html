@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Pipeline Diagram</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #ffffff;
+    color: #1a1a2e;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .container {
+    max-width: 1100px;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: #1a1a2e;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #8889a0;
+    margin-bottom: 44px;
+    text-align: center;
+  }
+
+  /* DATASET ORIGIN */
+  .dataset-origin {
+    background: linear-gradient(135deg, #4361ee, #3a0ca3);
+    border-radius: 16px;
+    padding: 24px 32px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(67, 97, 238, 0.3);
+  }
+
+  .dataset-origin h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .dataset-origin p {
+    font-size: 14px;
+    opacity: 0.85;
+  }
+
+  /* ARROW CONNECTOR */
+  .arrow-down {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 0;
+  }
+
+  .arrow-down .line {
+    width: 3px;
+    height: 28px;
+    background: #d0d0e0;
+  }
+
+  .arrow-down .head {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid #d0d0e0;
+  }
+
+  /* Y SPLIT */
+  .y-split {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: 40px;
+  }
+
+  .y-split::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 12px;
+    background: #d0d0e0;
+  }
+
+  .y-split::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 25%;
+    width: 50%;
+    height: 28px;
+    border-left: 3px solid #10a37f;
+    border-right: 3px solid #e07a2f;
+    border-top: 3px solid #d0d0e0;
+    border-radius: 14px 14px 0 0;
+  }
+
+  /* SIDE BY SIDE */
+  .side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* TOOL BLOCK */
+  .tool-block {
+    border-radius: 14px;
+    padding: 24px 28px;
+    position: relative;
+  }
+
+  .tool-block .tool-name {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .tool-block .tool-bullet {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.6;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .tool-block .tool-bullet::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #888;
+  }
+
+  .stat {
+    font-family: 'Space Mono', monospace;
+    font-size: 26px;
+    font-weight: 700;
+    margin: 4px 0 2px;
+    padding-left: 16px;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: #777;
+    padding-left: 16px;
+  }
+
+  /* ChatGPT card */
+  .tool-block.chatgpt {
+    background: #f0faf6;
+    border: 2px solid #10a37f;
+  }
+  .tool-block.chatgpt .tool-name { color: #10a37f; }
+  .tool-block.chatgpt .stat { color: #10a37f; }
+
+  /* Claude card */
+  .tool-block.claude-card {
+    background: #fef6ee;
+    border: 2px solid #e07a2f;
+  }
+  .tool-block.claude-card .tool-name { color: #e07a2f; }
+  .tool-block.claude-card .stat { color: #e07a2f; }
+
+  /* Supabase */
+  .tool-block.supabase {
+    background: #f0faf6;
+    border: 2px solid #3ecf8e;
+  }
+  .tool-block.supabase .tool-name { color: #3ecf8e; }
+
+  /* Claude API */
+  .tool-block.claude-api {
+    background: #fef6ee;
+    border: 2px solid #d4a574;
+  }
+  .tool-block.claude-api .tool-name { color: #c4856a; }
+
+  /* Apify */
+  .tool-block.apify {
+    background: #f0f7ff;
+    border: 2px solid #00b3a4;
+  }
+  .tool-block.apify .tool-name { color: #00897b; }
+
+  /* Moz */
+  .tool-block.moz {
+    background: #f0f4ff;
+    border: 2px solid #4b8df8;
+  }
+  .tool-block.moz .tool-name { color: #4b8df8; }
+
+  /* QC */
+  .tool-block.qc {
+    background: #f5f5fa;
+    border: 2px solid #8889a0;
+  }
+  .tool-block.qc .tool-name { color: #5a5b78; }
+
+  /* Human */
+  .tool-block.human {
+    background: #fdf2f8;
+    border: 2px solid #e44d90;
+  }
+  .tool-block.human .tool-name { color: #e44d90; }
+
+  /* Google Sheets */
+  .tool-block.gsheets {
+    background: linear-gradient(135deg, #34a853, #1e8e3e);
+    border: none;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(52, 168, 83, 0.25);
+  }
+  .tool-block.gsheets .tool-name { color: #fff; }
+  .tool-block.gsheets .tool-bullet { color: rgba(255,255,255,0.9); }
+  .tool-block.gsheets .tool-bullet::before { color: rgba(255,255,255,0.6); }
+
+  /* MERGE */
+  .merge-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .merge-lines {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    position: relative;
+    height: 24px;
+  }
+
+  .merge-lines::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 25%;
+    width: 50%;
+    height: 12px;
+    border-left: 3px solid #10a37f;
+    border-right: 3px solid #e07a2f;
+    border-bottom: 3px solid #8889a0;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .merge-lines::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 12px;
+    background: #8889a0;
+  }
+
+  .merge-arrow-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .merge-arrow {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid #8889a0;
+  }
+
+  .merge-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #7209b7;
+    margin-top: 10px;
+    margin-bottom: 14px;
+    background: #f3eeff;
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+  }
+
+  /* Phase labels */
+  .phase-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #7209b7;
+    margin-bottom: 10px;
+    margin-top: 8px;
+    font-weight: 700;
+  }
+
+  /* Parallel row */
+  .parallel-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .parallel-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #8889a0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5fa;
+    padding: 8px 12px;
+    border-radius: 8px;
+  }
+
+  /* Vercel note */
+  .vercel-note {
+    margin-top: 24px;
+    padding: 16px 24px;
+    background: #f3eeff;
+    border: 2px solid #7209b7;
+    border-radius: 12px;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .vercel-note strong {
+    color: #7209b7;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Automated Research Pipeline</h1>
+    <div class="subtitle">Authority Signals in AI-Cited Health Sources</div>
+
+    <!-- DATASET -->
+    <div class="dataset-origin">
+      <h2>HealthSearchQA Dataset</h2>
+      <p>3,173 real consumer health questions curated by Google Research</p>
+    </div>
+
+    <!-- Y SPLIT -->
+    <div class="y-split"></div>
+
+    <!-- STEP 1 & 2: SIDE BY SIDE -->
+    <div class="side-by-side">
+      <div class="tool-block chatgpt">
+        <div class="tool-name">ChatGPT Study</div>
+        <div class="tool-bullet">100 randomly selected questions</div>
+        <div class="tool-bullet">"Please provide sources with links"</div>
+        <div class="stat">615</div>
+        <div class="stat-label">source citations collected</div>
+      </div>
+      <div class="tool-block claude-card">
+        <div class="tool-name">Claude Study</div>
+        <div class="tool-bullet">3,075 questions from full dataset</div>
+        <div class="stat">10,038</div>
+        <div class="stat-label">source citations collected</div>
+      </div>
+    </div>
+
+    <!-- MERGE -->
+    <div class="merge-section">
+      <div class="merge-lines"></div>
+      <div class="merge-arrow-wrap">
+        <div class="merge-arrow"></div>
+        <div class="merge-label">Same pipeline from here ↓</div>
+      </div>
+    </div>
+
+    <!-- PHASE 1: QUESTION → RESPONSE → STORE URLs -->
+    <div class="phase-label">Phase 1 — Get source URLs from AI</div>
+
+    <!-- Step 1: Supabase stores questions -->
+    <div class="tool-block supabase">
+      <div class="tool-name">Supabase</div>
+      <div class="tool-bullet">Stores the health questions (database)</div>
+    </div>
+
+    <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+    <!-- Step 2: Claude API generates responses -->
+    <div class="tool-block claude-api">
+      <div class="tool-name">Claude API</div>
+      <div class="tool-bullet">Generates responses that include source URLs</div>
+    </div>
+
+    <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+    <!-- Step 3: Supabase stores URLs -->
+    <div class="tool-block supabase">
+      <div class="tool-name">Supabase</div>
+      <div class="tool-bullet">Stores the source URLs from Claude's responses</div>
+    </div>
+
+    <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+    <!-- PHASE 2: SCRAPE → ANALYZE → STORE RESULTS -->
+    <div class="phase-label">Phase 2 — Analyze the sources</div>
+
+    <!-- Step 4: Apify scrapes -->
+    <div class="tool-block apify">
+      <div class="tool-name">Apify API</div>
+      <div class="tool-bullet">Scrapes HTML source code from each cited URL</div>
+    </div>
+
+    <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+    <!-- Step 5: Claude API analyzes -->
+    <div class="tool-block claude-api">
+      <div class="tool-name">Claude API</div>
+      <div class="tool-bullet">Analyzes HTML source code against operational definitions</div>
+      <div class="tool-bullet">Codes each source for 11 authority signals</div>
+    </div>
+
+    <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+    <!-- Parallel: Moz + QC -->
+    <div class="parallel-row">
+      <div class="tool-block moz">
+        <div class="tool-name">Moz API</div>
+        <div class="tool-bullet">Page Authority, Domain Authority, Spam Score</div>
+      </div>
+      <div class="parallel-label">runs in<br>parallel</div>
+      <div class="tool-block qc">
+        <div class="tool-name">QC Validation</div>
+        <div class="tool-bullet">JavaScript extension verifies coding and flags discrepancies</div>
+      </div>
+    </div>
+
+    <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+    <!-- Human Verification -->
+    <div class="tool-block human">
+      <div class="tool-name">Human Verification</div>
+      <div class="tool-bullet">Coders review automated coding against operational definitions</div>
+      <div class="tool-bullet">Correct any errors or discrepancies</div>
+    </div>
+
+    <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+    <!-- Google Sheets -->
+    <div class="tool-block gsheets">
+      <div class="tool-name">Google Sheets</div>
+      <div class="tool-bullet">Coded authority signal data exported for statistical analysis</div>
+    </div>
+
+    <!-- Vercel note -->
+    <div class="vercel-note">
+      <strong>Vercel</strong> — the command center. A Node.js application hosted on Vercel orchestrates every step of this pipeline, connecting all tools via their APIs.
+    </div>
+
+  </div>
+</body>
+</html>
