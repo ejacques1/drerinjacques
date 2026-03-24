@@ -378,6 +378,7 @@
                 <a href="/#research">Research</a>
                 <a href="/#entrepreneurship">Work With Me</a>
                 <a href="/ai-news">AI News</a>
+                <a href="/one-prompt/" class="nav-active">Prompts</a>
                 <a href="/#contact">Contact</a>
             </nav>
             <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu">
@@ -391,6 +392,7 @@
         <a href="/#research" onclick="closeMobileNav()">Research</a>
         <a href="/#entrepreneurship" onclick="closeMobileNav()">Work With Me</a>
         <a href="/ai-news" onclick="closeMobileNav()">AI News</a>
+        <a href="/one-prompt/" class="nav-active" onclick="closeMobileNav()">Prompts</a>
         <a href="/#contact" onclick="closeMobileNav()">Contact</a>
     </div>
 
@@ -653,18 +655,17 @@
 
     </main>
 
-    <!-- Submit Your Task Section -->
+    <!-- Subscribe Section -->
     <section class="submit-section">
         <div class="submit-inner">
-            <h2>Got a task you're being overcharged for?</h2>
-            <p>Submit yours below. I regularly select new ones to feature on this page. Drop your email to stay in the loop for when yours goes live and to get my latest AI insights.</p>
+            <h2>Subscribe for More AI Insights</h2>
+            <p>I'm adding new categories and prompts regularly. Drop your email and I'll keep you in the loop.</p>
             <form class="submit-form" id="submitForm">
                 <input type="email" id="submitEmail" placeholder="Your email" required>
-                <textarea id="submitTask" placeholder="What's the task you're overpaying for?" rows="3"></textarea>
-                <button type="submit" class="submit-btn" id="submitBtn">Submit My Task</button>
+                <button type="submit" class="submit-btn" id="submitBtn">Keep Me Posted</button>
             </form>
             <div class="form-message" id="formMessage"></div>
-            <p class="submit-disclaimer">By submitting, you'll also receive my AI insights. Unsubscribe anytime.</p>
+            <p class="submit-disclaimer">No spam. Just new prompts and AI insights. Unsubscribe anytime.</p>
         </div>
     </section>
 
@@ -714,7 +715,7 @@
             formMessage.className = 'form-message';
             formMessage.textContent = '';
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Submitting...';
+            submitBtn.textContent = 'Subscribing...';
 
             try {
                 const response = await fetch('/api/subscribe', {
@@ -727,9 +728,8 @@
 
                 if (response.ok) {
                     formMessage.className = 'form-message success';
-                    formMessage.textContent = 'You\'re in! I\'ll let you know if your task gets featured.';
+                    formMessage.textContent = 'You\'re in! I\'ll keep you posted.';
                     emailInput.value = '';
-                    document.getElementById('submitTask').value = '';
                 } else {
                     formMessage.className = 'form-message error';
                     formMessage.textContent = data.error || 'Something went wrong. Please try again.';
@@ -739,7 +739,7 @@
                 formMessage.textContent = 'Network error. Please try again.';
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit My Task';
+                submitBtn.textContent = 'Keep Me Posted';
             }
         });
     </script>
