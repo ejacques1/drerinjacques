@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- REPLACE: Article-specific meta -->
+    <title>Can AI Build Your Entire Ad Campaign in 3 Minutes? | Dr. Erin Jacques AI News</title>
+    <meta name="description" content="Dr. Erin Jacques shows how she used Manus AI to audit her Meta ad account, research competitor ads, generate ad copy, and launch a full campaign in under five minutes.">
+    <meta name="author" content="Dr. Erin Jacques">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content="Can AI Build Your Entire Ad Campaign in 3 Minutes?">
+    <meta property="og:description" content="Dr. Erin Jacques shows how she used Manus AI to audit her Meta ad account, research competitor ads, generate ad copy, and launch a full campaign in under five minutes.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://drerinjacques.com/ai-news/manus-ai-meta-ads-campaign-builder">
+    <meta property="og:image" content="https://drerinjacques.com/ai-news/manus-ai-meta-ads-campaign-builder/og.png">
+    <meta property="og:site_name" content="Dr. Erin Jacques AI News">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Can AI Build Your Entire Ad Campaign in 3 Minutes?">
+    <meta name="twitter:description" content="Dr. Erin Jacques shows how she used Manus AI to audit her Meta ad account, research competitor ads, generate ad copy, and launch a full campaign in under five minutes.">
+    
+    <!-- Schema.org Article Markup (CRITICAL for LLM citation) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Can AI Build Your Entire Ad Campaign in 3 Minutes?",
+        "description": "Dr. Erin Jacques shows how she used Manus AI to audit her Meta ad account, research competitor ads, generate ad copy, and launch a full campaign in under five minutes.",
+        "datePublished": "2026-04-07",
+        "dateModified": "2026-04-07",
+        "author": {
+            "@type": "Person",
+            "name": "Dr. Erin Jacques",
+            "url": "https://drerinjacques.com",
+            "jobTitle": "Professor of Informatics",
+            "worksFor": {
+                "@type": "EducationalOrganization",
+                "name": "City University of New York",
+                "sameAs": "https://en.wikipedia.org/wiki/City_University_of_New_York"
+            },
+            "alumniOf": {
+                "@type": "EducationalOrganization",
+                "name": "Rensselaer Polytechnic Institute",
+                "sameAs": "https://en.wikipedia.org/wiki/Rensselaer_Polytechnic_Institute"
+            }
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Dr. Erin Jacques",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://drerinjacques.com/images/logo.png"
+            }
+        },
+        "image": "https://drerinjacques.com/ai-news/manus-ai-meta-ads-campaign-builder/og.png",
+        "articleSection": "AI Monetization",
+        "keywords": "Manus AI, Meta Ads Manager, AI ad campaign, Facebook ads automation, AI marketing tools, ad optimization, Dr. Erin Jacques",
+        "wordCount": 600
+    }
+    </script>
+    
+    <!-- Primary Keywords -->
+    <meta name="keywords" content="Manus AI, Meta Ads Manager, AI ad campaign, Facebook ads automation, AI marketing tools, ad optimization, Dr. Erin Jacques">
+    
+    <!-- Styles -->
+    <style>
+        :root {
+            --brand-color: #1d4ed8;
+            --brand-light: #f3f4f6;
+            --brand-dark: #111827;
+            --text-gray: #6b7280;
+            --border-color: #e5e7eb;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: var(--brand-dark);
+            background: #ffffff;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header/Navigation */
+        header {
+            background: var(--brand-dark);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 18px;
+            text-decoration: none;
+            color: white;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            transition: opacity 0.2s;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Article Header */
+        .article-header {
+            padding: 60px 0 40px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .article-meta-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .publish-date {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+        
+        .category-tag {
+            display: inline-block;
+            background: var(--brand-light);
+            color: var(--brand-color);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .read-time {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: var(--brand-color);
+        }
+        
+        .share-btn:hover {
+            background: var(--brand-light);
+            border-color: var(--brand-color);
+        }
+        
+        .share-btn-copied {
+            background: var(--brand-color);
+            color: white;
+            border-color: var(--brand-color);
+        }
+        
+        h1 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--brand-dark);
+        }
+        
+        .article-subtitle {
+            font-size: 20px;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        
+        .featured-image {
+            background: transparent;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        
+        /* Answer Capsule */
+        .answer-capsule {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-left: 4px solid var(--brand-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+        
+        .answer-capsule-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--brand-color);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        
+        .answer-capsule-text {
+            font-size: 16px;
+            color: var(--brand-dark);
+            line-height: 1.6;
+        }
+        
+        /* Article Body */
+        .article-body {
+            padding: 40px 0;
+        }
+        
+        .article-section {
+            margin-bottom: 50px;
+        }
+        
+        .article-section h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--brand-dark);
+        }
+        
+        .article-section p {
+            margin-bottom: 16px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--brand-dark);
+        }
+        
+        .article-section strong {
+            font-weight: 600;
+            color: var(--brand-dark);
+        }
+        
+        /* Stats Box */
+        .stat-box {
+            background: var(--brand-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--brand-color);
+            margin-bottom: 8px;
+        }
+        
+        .stat-description {
+            font-size: 16px;
+            color: var(--brand-dark);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .stat-source {
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+        
+        /* Expert Insight */
+        .expert-insight {
+            background: #fef3c7;
+            border-left: 4px solid var(--warning);
+            padding: 24px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .expert-insight-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--warning);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        
+        .expert-insight-text {
+            font-size: 16px;
+            color: var(--brand-dark);
+            line-height: 1.8;
+        }
+        
+        /* Bottom Line */
+        .bottom-line {
+            background: #d1fae5;
+            border-left: 4px solid var(--success);
+            padding: 24px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+        
+        .bottom-line-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--success);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        
+        .bottom-line-text {
+            font-size: 16px;
+            color: var(--brand-dark);
+            line-height: 1.8;
+        }
+        
+        /* Tags */
+        .article-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .article-tag {
+            display: inline-block;
+            background: var(--brand-light);
+            color: var(--brand-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .article-tag:hover {
+            background: var(--brand-color);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--brand-dark);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        footer h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        footer a {
+            color: #d1d5db;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+        
+        footer a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            margin-top: 30px;
+            padding-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #9ca3af;
+        }
+        
+        /* Copy to Clipboard */
+        .copy-box {
+            background: #f3f4f6;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copy-box code {
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            color: var(--brand-dark);
+        }
+        
+        .copy-button {
+            background: var(--brand-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        
+        .copy-button:hover {
+            opacity: 0.9;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+            
+            .article-subtitle {
+                font-size: 18px;
+            }
+            
+            .article-section h2 {
+                font-size: 24px;
+            }
+            
+            .copy-box {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .article-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="/" class="logo">🤖 AI News</a>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Article -->
+    <main>
+        <article>
+            <!-- Article Header -->
+            <div class="article-header">
+                <div class="container">
+                    <div class="article-meta">
+                        <div class="article-meta-left">
+                            <span class="publish-date">April 7, 2026</span>
+                            <span class="category-tag">AI Monetization</span>
+                            <span class="read-time">3 min read</span>
+                        </div>
+                        <div class="share-buttons">
+                            <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdrerinjacques.com%2Fai-news%2Fmanus-ai-meta-ads-campaign-builder&text=Can%20AI%20Build%20Your%20Entire%20Ad%20Campaign%20in%203%20Minutes%3F" class="share-btn" title="Share on Twitter" target="_blank">𝕏</a>
+                            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdrerinjacques.com%2Fai-news%2Fmanus-ai-meta-ads-campaign-builder" class="share-btn" title="Share on LinkedIn" target="_blank">in</a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdrerinjacques.com%2Fai-news%2Fmanus-ai-meta-ads-campaign-builder" class="share-btn" title="Share on Facebook" target="_blank">f</a>
+                            <button onclick="copyLink()" class="share-btn" title="Copy link to clipboard">🔗</button>
+                        </div>
+                    </div>
+                    
+                    <h1>Can AI Build Your Entire Ad Campaign in 3 Minutes?</h1>
+                    <p class="article-subtitle">I connected Manus AI to my Meta Ad account and let it do the work — here's what happened.</p>
+                </div>
+            </div>
+            
+            <!-- Featured Image -->
+            <div class="featured-image">
+                <div class="container">
+                    <img src="/ai-news/manus-ai-meta-ads-campaign-builder/featured.png" alt="Manus AI workflow showing 5 steps to build a Meta ad campaign" style="width:100%;border-radius:12px;margin-bottom:2rem;">
+                </div>
+            </div>
+            
+            <!-- Article Body -->
+            <div class="article-body">
+                <div class="container">
+                    <!-- Answer Capsule -->
+                    <div class="answer-capsule">
+                        <div class="answer-capsule-label">Quick Answer</div>
+                        <div class="answer-capsule-text">
+                            Yes. Using Manus AI's Meta Ad Manager connector, you can audit your existing ads, research competitor creatives in the Facebook Ad Library, generate ad copy based on proven structures, and launch a full campaign with budget allocation — all through natural language prompts. The entire process takes under five minutes.
+                        </div>
+                    </div>
+                    
+                    <!-- Section 1 -->
+                    <div class="article-section">
+                        <h2>How Does Manus AI Connect to Your Ad Account?</h2>
+                        <p>Something that used to take me hours now takes me a few minutes — and that's running ads. I connected Manus AI to my Meta Ad account and walked through the entire process from audit to launch using nothing but prompts.</p>
+                        <p>Here's the workflow. In Manus, you go to Settings, then Connectors, and add the Meta Ad Manager connector. That gives the AI direct access to your ad account — your campaigns, audiences, performance data, all of it.</p>
+                        <p>The first prompt I ran was simple: "Conduct a comprehensive review of my ad account to identify high-performing assets, areas for improvement, and actionable optimization strategies." Within minutes, Manus pulled my campaign data and told me what was working, what was wasting money, and what to do about it. No spreadsheet digging. No guessing.</p>
+                    </div>
+                    
+                    <!-- Stat Box -->
+                    <div class="stat-box">
+                        <div class="stat-number">3 min</div>
+                        <div class="stat-description">Time to build a complete Meta ad campaign using Manus AI — from account audit to campaign launch, all through natural language prompts.</div>
+                        <div class="stat-source">Dr. Erin Jacques, hands-on testing (April 2026)</div>
+                    </div>
+                    
+                    <!-- Section 2 -->
+                    <div class="article-section">
+                        <h2>How Do You Find Winning Ads to Model?</h2>
+                        <p>Next, I asked Manus to go into the Facebook Ads Library and find ads in my niche that have been running the longest. Why? Because if an ad has been running for months, it's making money. That's not a theory — that's math.</p>
+                        <p>Manus analyzed their structure, hooks, headlines, and creative formats so I could model what's already proven. Based on those winning ad structures, I asked it to write my ad copy following a specific framework: Callout, Problem, Solution, CTA. Short and punchy.</p>
+                    </div>
+                    
+                    <!-- Expert Insight -->
+                    <div class="expert-insight">
+                        <div class="expert-insight-label">Expert Insight</div>
+                        <div class="expert-insight-text">
+                            The shift here isn't just about speed — it's about access. Running Meta ads used to require either an expensive agency or weeks of self-teaching. AI tools like Manus collapse that learning curve into a conversation. You still need good creatives and a real offer, but the strategic heavy lifting? AI handles that now.
+                        </div>
+                    </div>
+                    
+                    <!-- Section 3 -->
+                    <div class="article-section">
+                        <h2>What Does the Launch Strategy Look Like?</h2>
+                        <p>I set up the campaign using Ad Set Budget Optimization at $25 per day per ad set, with four image-headline combinations running simultaneously. The strategy: check results in 24 hours. Kill anything with a click-through rate under 5 percent. Scale anything over 8 percent. One day of data tells you everything you need to know.</p>
+                        <p>Here are the exact prompts I used:</p>
+                        <p><strong>Audit:</strong> "Conduct a comprehensive review of my ad account to identify high-performing assets, areas for improvement, and actionable optimization strategies."</p>
+                        <p><strong>Research:</strong> "Go into the Facebook Ads Library and find ads in my niche that have been running the longest. Analyze their structure, hooks, headlines, and creative format so I can model what's proven to work."</p>
+                        <p><strong>Copy:</strong> "Based on the top-performing ad structures you found, write ad copy for my product. Follow the exact framework: Callout, Problem, Solution, CTA. Keep primary text under 125 characters."</p>
+                        <p><strong>Launch:</strong> "Create a Meta ad campaign using ABO at $25/day per ad set. Set up 4 ad variations so I can test which image and headline wins in 24 hours."</p>
+                    </div>
+                    
+                    <!-- Bottom Line -->
+                    <div class="bottom-line">
+                        <div class="bottom-line-label">Bottom Line</div>
+                        <div class="bottom-line-text">
+                            AI ad tools don't replace your creativity or your offer — but they eliminate the hours of manual setup, competitor research, and copy iteration that used to be the barrier. If you can describe what you sell, you can launch ads that compete.
+                        </div>
+                    </div>
+                    
+                    <!-- Tags -->
+                    <div class="article-tags">
+                        <a href="#" class="article-tag">AI Monetization</a><a href="#" class="article-tag">AI Tools</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div>
+                <h3>About</h3>
+                <a href="/">Home</a>
+                <a href="/about">About Dr. Erin Jacques</a>
+                <a href="/contact">Contact</a>
+            </div>
+            <div>
+                <h3>Resources</h3>
+                <a href="/courses">Courses</a>
+                <a href="/tools">AI Tools Directory</a>
+                <a href="/newsletter">Newsletter</a>
+            </div>
+            <div>
+                <h3>Legal</h3>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/disclosure">Affiliate Disclosure</a>
+            </div>
+            <div class="footer-bottom" style="grid-column: 1 / -1;">
+                <p>&copy; 2026 Dr. Erin Jacques. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        function copyLink() {
+            const url = 'https://drerinjacques.com/ai-news/manus-ai-meta-ads-campaign-builder';
+            navigator.clipboard.writeText(url).then(() => {
+                const btn = event.target;
+                btn.classList.add('share-btn-copied');
+                const orig = btn.innerHTML;
+                btn.innerHTML = '<span style="font-size:11px;font-weight:600;color:#fff;letter-spacing:0.5px;">COPIED!</span>';
+                setTimeout(() => { btn.classList.remove('share-btn-copied'); btn.innerHTML = orig; }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
