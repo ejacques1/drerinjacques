@@ -571,7 +571,6 @@
                 <a href="/#research">Research</a>
                 <a href="/#entrepreneurship">Work With Me</a>
                 <a href="/ai-news" class="nav-active">AI News</a>
-                <a href="/one-prompt/">Prompts</a>
                 <a href="/#contact">Contact</a>
             </nav>
             <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu">
@@ -586,7 +585,6 @@
         <a href="/#research" onclick="closeMobileNav()">Research</a>
         <a href="/#entrepreneurship" onclick="closeMobileNav()">Work With Me</a>
         <a href="/ai-news" class="nav-active" onclick="closeMobileNav()">AI News</a>
-        <a href="/one-prompt/" onclick="closeMobileNav()">Prompts</a>
         <a href="/#contact" onclick="closeMobileNav()">Contact</a>
     </div>
 
@@ -653,8 +651,6 @@
                 <a href="https://drerinjacques.com/ai-news">AI News</a>
                 <a href="https://chatifyit.com">ChatifyIT</a>
                 <a href="https://scholar.google.com/citations?user=3AYqKZMAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Research</a>
-                <a href="/privacy/">Privacy Policy</a>
-                <a href="/terms/">Terms of Service</a>
             </div>
             <p class="footer-copy">&copy; 2026 Dr. Erin Jacques. All rights reserved.</p>
         </div>
@@ -685,80 +681,14 @@
     const articles = [
         // ↓ ADD NEW ARTICLES HERE (newest first) ↓
         {
-            slug: "find-chatgpt-bing-search-query",
-            title: "Why Your Website Isn't Showing Up in ChatGPT",
-            subtitle: "ChatGPT rewrites your question before it searches Bing. Here's the DevTools trick to see the actual query — and rewrite your content to match.",
-            category: "AEO",
-            date: "April 21, 2026",
-            dateISO: "2026-04-21",
-            readTime: "6 min read",
-            excerpt: "ChatGPT doesn't search the web using your exact question. It rewrites your prompt into a short, keyword-based query and sends that to Bing. You can reveal the actual query in under 60 seconds by opening DevTools, filtering the Network tab by your conversation ID, and searching for \"search_model_query.\" That hidden phrase is what your website needs to match."
-        },
-
-        {
-            slug: "outsmart-ai-detectors-claude-custom-style",
-            title: "How to Outsmart AI Detectors (And Train Claude to Write Exactly Like You)",
-            subtitle: "Claude's Custom Styles feature lets you upload a writing sample and get content back in your voice — not generic AI slop.",
+            slug: "stop-hitting-claude-usage-limit",
+            title: "3 Ways to Stop Hitting Your Claude Usage Limit (Plus 7 More)",
+            subtitle: "Opus burns through your limit 5x faster than Sonnet. Here\u2019s how to stop wasting tokens on every message.",
             category: "AI Tools",
-            date: "April 10, 2026",
-            dateISO: "2026-04-10",
-            readTime: "4 min read",
-            excerpt: "If your content is getting flagged as AI, the problem isn't that you used AI — it's that you used default AI. Claude's Custom Styles feature trains the model on your actual writing so every response sounds like you. Setup takes under two minutes and replaces hours of editing."
-        },
-
-        {
-            slug: "why-speaking-to-ai-changes-how-your-brain-decides",
-            title: "Why Speaking to AI Instead of Typing Changes How Your Brain Makes Decisions",
-            subtitle: "The neuroscience behind voice-first AI interaction — and why it leads to faster, sharper thinking.",
-            category: "AI Tools",
-            date: "April 1, 2026",
-            dateISO: "2026-04-01",
-            readTime: "7 min read",
-            excerpt: "Speaking to AI instead of typing activates externalized cognition, shifting the prefrontal cortex from rumination to evaluation. Research shows the anterior cingulate cortex runs a cost-benefit analysis on every task, and when AI eliminates the hardest starting point, dopamine drives motivation and momentum."
-        },
-
-        {
-            slug: "something-most-americans-dont-understand",
-            title: "The Career Model America Relies On Doesn't Exist in Most of the World — And AI Is About to Kill It Here Too",
-            subtitle: "AI is collapsing the traditional employee model. What's left are three lanes — and most people aren't ready for any of them.",
-            category: "AI Industry",
-            date: "March 19, 2026",
-            dateISO: "2026-03-19",
-            readTime: "5 min read",
-            excerpt: "AI is eliminating the traditional employee model and leaving three career lanes: visionary founder, intrapreneur, or direct-to-market seller. Most of the world already operates this way. The shift is happening now."
-        },
-
-        {
-            slug: "agentic-blabbering-ai-browser-security",
-            title: "What Is Agentic Blabbering and Why Did It Break AI Browser Security in 4 Minutes?",
-            subtitle: "Researchers used an AI browser's own reasoning to train a phishing scam that fooled it in under four minutes.",
-            category: "Trust & Security",
-            date: "March 13, 2026",
-            dateISO: "2026-03-13",
-            readTime: "3 min read",
-            excerpt: "Agentic blabbering is what happens when an AI browser 'thinks out loud' while browsing for you. Researchers at Guard.io fed that reasoning into a GAN loop and built a phishing trap that fooled Perplexity's Comet browser in under four minutes."
-        },
-
-        {
-            slug: "automate-workflow-claude-skills-md-files",
-            title: "How to Automate Your Workflow in Claude Using Skills MD Files",
-            subtitle: "The one prompt that turns any repetitive task into a fully automated Claude workflow — no coding required.",
-            category: "AI Tools",
-            date: "March 12, 2026",
-            dateISO: "2026-03-12",
-            readTime: "3 min read",
-            excerpt: "Claude's Skills MD files let you automate any repetitive workflow by teaching Claude your exact process once. Since Anthropic launched Agent Skills in October 2025, over 30 AI tools now support the open standard."
-        },
-
-        {
-            slug: "ai-can-now-identify-anonymous-users",
-            title: "AI Can Now Identify Anonymous Users — And It Costs Less Than a Coffee",
-            subtitle: "New research shows LLMs can match anonymous posts to real identities with 90% precision — using nothing but writing style.",
-            category: "Trust & Security",
-            date: "March 11, 2026",
-            dateISO: "2026-03-11",
-            readTime: "3 min read",
-            excerpt: "Your writing style is a unique fingerprint. Researchers from ETH Zurich and Anthropic built an AI pipeline that correctly identified 226 of 338 anonymous users — 67% accuracy — with 90% precision when confident, at a cost of just $1–$4 per person."
+            date: "April 23, 2026",
+            dateISO: "2026-04-23",
+            readTime: "2 min read",
+            excerpt: "Claude re-reads your entire conversation every time you send a new message. By message 30, you\u2019re paying for 29 old messages each turn. Here are 10 ways to cut your usage and stop hitting the wall."
         },
 
         {
@@ -804,17 +734,6 @@
             dateISO: "2026-03-01",
             readTime: "4 min read",
             excerpt: "OpenRouter offers 24+ free AI models from Google, Meta, DeepSeek, and Nvidia through one API key — no credit card needed."
-        },
-
-        {
-            slug: "move-lovable-app-to-claude-code",
-            title: "How to Move Your Lovable App to Claude Code in 3 Steps",
-            subtitle: "You built it on Lovable. Now take full control — without losing anything.",
-            category: "AI Tools",
-            date: "March 26, 2026",
-            dateISO: "2026-03-26",
-            readTime: "5 min read",
-            excerpt: "Moving a Lovable app to Claude Code takes three steps: push your Lovable project to GitHub, connect that repo to Claude Code on claude.ai, and link the same repo to Vercel for hosting. Your Supabase backend stays untouched."
         },
 
         {
