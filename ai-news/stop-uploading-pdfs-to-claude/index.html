@@ -131,33 +131,35 @@
         .mobile-nav a:hover { color: #FFD700; }
         .mobile-nav a.nav-active { color: #FFD700; }
 
-        .article-container { max-width: var(--content-width); margin: 0 auto; padding: 48px 24px 80px; }
+        .article-container { max-width: var(--content-width); margin: 0 auto; padding: 0 24px 80px; }
+        .article-header { padding-top: 32px; }
 
         .article-category {
             display: inline-flex; align-items: center; gap: 6px;
             background: var(--brand-green-light); color: #059669;
             font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-            padding: 5px 12px; border-radius: 4px; border: 1px solid var(--brand-green); margin-bottom: 20px;
+            padding: 5px 12px; border-radius: 4px; border: 1px solid var(--brand-green); margin-bottom: 16px;
         }
         .article-category::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--brand-green); }
 
-        .article-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 44px); line-height: 1.15; color: var(--brand-dark); margin-bottom: 20px; letter-spacing: -0.01em; }
-        .article-subtitle { font-size: 19px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 28px; font-weight: 400; }
+        .article-title { font-family: var(--font-display); font-size: clamp(28px, 5vw, 42px); line-height: 1.12; color: var(--brand-dark); margin-bottom: 12px; letter-spacing: -0.02em; }
+        .article-subtitle { font-size: 18px; color: var(--text-secondary); line-height: 1.45; margin-bottom: 0; font-weight: 400; }
 
-        .byline { display: flex; align-items: center; gap: 14px; padding: 20px 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); margin-bottom: 40px; }
-        .byline-avatar { width: 48px; height: 48px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+        /* Featured image — full bleed on mobile */
+        .featured-image { width: 100%; display: block; margin: 24px 0 0; border-radius: 8px; overflow: hidden; background: transparent; }
+        .featured-image img, .featured-image svg { width: 100%; height: auto; display: block; max-width: 100%; }
+
+        /* Compact byline — single line like real outlets */
+        .byline { display: flex; align-items: center; gap: 10px; padding: 16px 0; border-bottom: 1px solid var(--border-light); margin-bottom: 32px; }
+        .byline-avatar { width: 28px; height: 28px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
         .byline-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-        .byline-info { display: flex; flex-direction: column; gap: 2px; }
-        .byline-name { font-weight: 600; color: var(--brand-dark); font-size: 15px; }
+        .byline-meta { display: flex; align-items: center; gap: 0; font-size: 14px; color: var(--text-muted); flex-wrap: wrap; }
+        .byline-name { font-weight: 600; color: var(--text-primary); font-size: 14px; }
         .byline-name a { color: inherit; text-decoration: none; }
         .byline-name a:hover { color: var(--brand-green); }
-        .byline-credentials { font-size: 13px; color: var(--text-muted); }
-        .byline-date { margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
-        .byline-date-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
-        .byline-date-value { font-size: 14px; color: var(--text-secondary); font-weight: 500; }
-
-        .featured-image { width: 100%; display: block; margin-bottom: 40px; border-radius: 12px; overflow: hidden; background: transparent; }
-        .featured-image img, .featured-image svg { width: 100%; height: auto; display: block; max-width: 100%; }
+        .byline-sep { margin: 0 8px; color: var(--border-light); }
+        .byline-date-value { font-size: 14px; color: var(--text-muted); font-weight: 400; }
+        .byline-readtime { font-size: 14px; color: var(--text-muted); font-weight: 400; }
 
         .answer-capsule { background: var(--bg-capsule); border: 1px solid var(--border-capsule); border-left: 4px solid var(--brand-green); border-radius: 0 8px 8px 0; padding: 24px 28px; margin: 32px 0; font-size: 16px; line-height: 1.7; }
         .answer-capsule-label { display: inline-block; font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brand-green); margin-bottom: 10px; }
@@ -245,10 +247,10 @@
         .source-list li a { color: var(--brand-blue-light); text-decoration: underline; text-decoration-color: var(--brand-green); text-underline-offset: 2px; }
 
         @media (max-width: 768px) {
-            .article-container { padding: 32px 18px 60px; }
-            .featured-image { width: 100%; margin-left: 0; }
-            .byline { flex-wrap: wrap; }
-            .byline-date { margin-left: 62px; align-items: flex-start; }
+            .article-container { padding: 0 18px 60px; }
+            .article-header { padding-top: 24px; }
+            .featured-image { width: calc(100% + 36px); margin-left: -18px; border-radius: 0; margin-top: 20px; }
+            .byline { margin-bottom: 24px; }
             .author-bio { flex-direction: column; align-items: center; text-align: center; }
             .author-bio-links { justify-content: center; }
             .stat-callout { flex-direction: column; text-align: center; }
@@ -319,28 +321,27 @@
 
     <article class="article-container" itemscope itemtype="https://schema.org/Article">
 
-        <div class="article-category">AI Tools</div>
+        <div class="article-header">
+            <div class="article-category">AI Tools</div>
 
-        <h1 class="article-title" itemprop="headline">Stop Uploading PDFs to Claude — You're Burning Through Your Limit</h1>
+            <h1 class="article-title" itemprop="headline">Stop Uploading PDFs to Claude — You're Burning Through Your Limit</h1>
 
-        <p class="article-subtitle">One page of a PDF can cost 3,000 tokens. One screenshot, 4,000. Convert them first and you'll use a fraction of your limit.</p>
-
-        <div class="byline">
-            <div class="byline-avatar"><img src="/ai-news/stop-uploading-pdfs-to-claude/dr-erin-jacques_pic.jpg" alt="Dr. Erin Jacques"></div>
-            <div class="byline-info">
-                <div class="byline-name">
-                    <a href="https://drerinjacques.com" itemprop="author">Dr. Erin Jacques, Ed.D.</a>
-                </div>
-                <div class="byline-credentials">Professor of Informatics, CUNY · Founder, ChatifyIT</div>
-            </div>
-            <div class="byline-date">
-                <span class="byline-date-label">Published</span>
-                <time class="byline-date-value" itemprop="datePublished" datetime="2026-04-27">April 27, 2026</time>
-            </div>
+            <p class="article-subtitle">One page of a PDF can cost 3,000 tokens. One screenshot, 4,000. Convert them first and you'll use a fraction of your limit.</p>
         </div>
 
         <div class="featured-image">
-            <img src="/ai-news/stop-uploading-pdfs-to-claude/featured.png" alt="Stop uploading PDFs to Claude — convert to text first to save tokens" style="width:100%;border-radius:12px;margin-bottom:2rem;">
+            <img src="/ai-news/stop-uploading-pdfs-to-claude/featured.png" alt="Stop uploading PDFs to Claude — convert to text first to save tokens">
+        </div>
+
+        <div class="byline">
+            <div class="byline-avatar"><img src="/ai-news/stop-uploading-pdfs-to-claude/dr-erin-jacques_pic.jpg" alt="Dr. Erin Jacques"></div>
+            <div class="byline-meta">
+                <span class="byline-name"><a href="https://drerinjacques.com" itemprop="author">Dr. Erin Jacques</a></span>
+                <span class="byline-sep">·</span>
+                <time class="byline-date-value" itemprop="datePublished" datetime="2026-04-27">April 27, 2026</time>
+                <span class="byline-sep">·</span>
+                <span class="byline-readtime">2 min read</span>
+            </div>
         </div>
 
         <div class="article-body" itemprop="articleBody">
