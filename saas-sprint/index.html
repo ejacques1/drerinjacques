@@ -349,6 +349,150 @@
             background-repeat: no-repeat;
         }
 
+        /* ============ WHAT YOU'RE REALLY BUILDING ============ */
+        .reality { background: #fff; position: relative; }
+        .reality p { font-size: 1.1rem; line-height: 1.75; color: var(--text-soft); margin-bottom: 18px; }
+        .reality p.lead { font-size: 1.2rem; color: var(--text); font-weight: 500; }
+        .reality strong.flag { color: var(--text); display: inline-block; padding: 1px 6px; background: rgba(255,217,61,0.25); border-radius: 4px; }
+        .origin-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 40px 0;
+        }
+        .origin-card {
+            background: var(--cream);
+            border-left: 3px solid var(--teal);
+            padding: 22px 24px;
+            border-radius: 0 12px 12px 0;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .origin-card:hover { transform: translateY(-2px); border-color: var(--yellow); }
+        .origin-brand {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+        .origin-story {
+            font-size: 0.95rem;
+            color: var(--text-soft);
+            line-height: 1.45;
+        }
+        .version-list {
+            list-style: none;
+            margin: 32px 0;
+            padding: 0;
+        }
+        .version-list li {
+            padding: 14px 0 14px 36px;
+            position: relative;
+            color: var(--text);
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(11,26,46,0.06);
+        }
+        .version-list li:last-child { border-bottom: none; }
+        .version-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 20px;
+            width: 12px;
+            height: 12px;
+            background: var(--yellow);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(255,217,61,0.2);
+        }
+        .reality-callout {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+            color: var(--yellow);
+            padding: 36px 40px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+            font-weight: 800;
+            letter-spacing: -0.4px;
+            margin: 40px 0 24px;
+            line-height: 1.4;
+            position: relative;
+            overflow: hidden;
+        }
+        .reality-callout::before {
+            content: "";
+            position: absolute; inset: 0;
+            background: radial-gradient(circle at 100% 0%, rgba(13,180,219,0.15), transparent 60%);
+        }
+        .reality-callout span { position: relative; z-index: 1; }
+        .reality-not-list {
+            list-style: none;
+            text-align: center;
+            margin: 24px 0;
+        }
+        .reality-not-list li {
+            display: inline-block;
+            margin: 0 14px;
+            font-size: 1.05rem;
+            color: var(--text-faint);
+            font-style: italic;
+            position: relative;
+            padding-left: 18px;
+        }
+        .reality-not-list li::before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #ff8585;
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        /* ============ WHY 14-DAY SPRINT ============ */
+        .sprint-reasoning { background: #fff; }
+        .sprint-reasoning p {
+            font-size: 1.15rem;
+            line-height: 1.75;
+            color: var(--text-soft);
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        .sprint-reasoning .opener {
+            font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -0.5px;
+            margin-bottom: 28px;
+            line-height: 1.2;
+        }
+        .sprint-closer {
+            text-align: center;
+            margin-top: 48px;
+            padding: 44px 32px;
+            background: var(--cream);
+            border-radius: 18px;
+            border: 1px solid rgba(11,26,46,0.05);
+        }
+        .sprint-closer .strike {
+            font-size: 1.1rem;
+            color: var(--text-faint);
+            text-decoration: line-through;
+            text-decoration-color: rgba(255,107,107,0.55);
+            text-decoration-thickness: 2px;
+            margin-bottom: 22px;
+        }
+        .sprint-closer .accent-line {
+            font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -0.6px;
+            line-height: 1.3;
+        }
+        .sprint-closer .accent-line .hl {
+            background: linear-gradient(180deg, transparent 65%, rgba(255,217,61,0.55) 65%);
+            padding: 0 4px;
+        }
+
         /* ============ NEW OPPORTUNITY ============ */
         .opportunity { background: #fff; }
         .opportunity .center-block { text-align: center; }
@@ -1237,6 +1381,11 @@
             .scarcity-stripe { padding: 22px 20px; }
             .scarcity-stripe::before, .scarcity-stripe::after { width: 30px; }
             .scarcity-stripe-text { font-size: 1rem; }
+            /* New sections: stack on mobile */
+            .origin-grid { grid-template-columns: 1fr; gap: 12px; }
+            .reality-not-list li { display: block; margin: 8px 0; }
+            .reality-callout { padding: 28px 22px; }
+            .sprint-closer { padding: 32px 22px; margin-top: 36px; }
         }
     </style>
 </head>
@@ -1280,7 +1429,7 @@
                 <h1 class="hero-title">Launch Your Own SaaS Platform In <span class="accent">14 Days.</span></h1>
                 <p class="hero-sub">Without hiring developers, learning to code for years, or spending $50,000 on an agency. Just 6 private 1:1 sessions and a process that actually gets you launched.</p>
                 <div class="hero-cta-row">
-                    <a href="#apply" class="cta-primary">Reserve Your Spot — $2,600
+                    <a href="#apply" class="cta-primary">Apply For A Spot
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
                     <a href="#how-it-works" class="cta-secondary">See How It Works</a>
@@ -1338,6 +1487,58 @@
                 <li>You've tried building with AI but got stuck before launching</li>
                 <li>You want ownership and control instead of dependency on freelancers and agencies</li>
             </ul>
+        </div>
+    </section>
+
+    <!-- ============ WHAT YOU'RE REALLY BUILDING ============ -->
+    <section class="reality">
+        <div class="container center">
+            <span class="section-eyebrow">What You're Really Building</span>
+            <h2 class="section-title">Launch Version 1. <span style="color: var(--teal);">Not Version Final.</span></h2>
+            <p class="lead" style="text-align: center;">Most people come into this program thinking they need to build the finished version of their software company.</p>
+            <p style="text-align: center; font-size: 1.4rem; font-weight: 800; color: var(--text); margin: 16px 0 24px;">They don't.</p>
+        </div>
+        <div class="container">
+            <p>In fact, that's one of the biggest reasons aspiring founders never launch. They spend months planning every feature, every integration, every future possibility — and never get their first customer.</p>
+            <p><strong class="flag">Successful software companies don't start as empires. They start as focused solutions.</strong></p>
+
+            <div class="origin-grid">
+                <div class="origin-card">
+                    <div class="origin-brand">Amazon</div>
+                    <div class="origin-story">Started by selling books.</div>
+                </div>
+                <div class="origin-card">
+                    <div class="origin-brand">Facebook</div>
+                    <div class="origin-story">Started with college students.</div>
+                </div>
+                <div class="origin-card">
+                    <div class="origin-brand">Airbnb</div>
+                    <div class="origin-story">Started with a single apartment.</div>
+                </div>
+            </div>
+
+            <p>The goal of this sprint isn't to build the final version of your company. <strong style="color: var(--text);">The goal is to launch Version 1.</strong></p>
+
+            <ul class="version-list">
+                <li>The version that gets customers.</li>
+                <li>The version that proves demand.</li>
+                <li>The version that generates revenue.</li>
+                <li>The version that gives you a real foundation to build on.</li>
+            </ul>
+
+            <p>During our first session, we'll define the highest-impact version of your idea that can be built and launched in 14 days. Then we'll build it together.</p>
+
+            <p style="text-align: center; font-weight: 600; color: var(--text); margin-top: 32px;">By the end of the sprint, you'll have something most aspiring founders never achieve:</p>
+
+            <div class="reality-callout"><span>A live software business that exists in the real world.</span></div>
+
+            <ul class="reality-not-list">
+                <li>Not a prototype.</li>
+                <li>Not a mockup.</li>
+                <li>Not a half-finished side project.</li>
+            </ul>
+
+            <p style="text-align: center; margin-top: 24px;">A real platform you own, control, and can continue improving long after the sprint is over.</p>
         </div>
     </section>
 
@@ -1713,6 +1914,22 @@
         </div>
     </section>
 
+    <!-- ============ WHY 14-DAY SPRINT ============ -->
+    <section class="sprint-reasoning">
+        <div class="container center">
+            <span class="section-eyebrow">Why 14 Days?</span>
+            <div class="opener">Constraints Create Momentum.</div>
+            <p>Most software projects fail because they expand endlessly. More features. More complexity. More planning. More waiting.</p>
+            <p style="font-size: 1.2rem; color: var(--text); font-weight: 600;">The 14-day sprint forces us to focus on what actually matters: <strong style="color: var(--teal);">launching.</strong></p>
+            <p>Together we'll identify the smallest version of your idea capable of delivering real value to real users. Once that foundation exists, you can continue expanding, improving, and growing the platform using the exact AI-assisted development process you'll learn throughout the program.</p>
+
+            <div class="sprint-closer">
+                <p class="strike">You are not buying a finished software empire.</p>
+                <p class="accent-line">You are building <span class="hl">the first version</span> of a real software company.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- ============ GUARANTEE ============ -->
     <section class="guarantee">
         <div class="container">
@@ -1721,7 +1938,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
                     The Guarantee
                 </div>
-                <p class="guarantee-text">If by the end of 14 days you don't have a launched, working SaaS platform, I'll continue working with you 1:1 at no additional cost <strong>until you do.</strong></p>
+                <p class="guarantee-text">If by the end of 14 days you don't have a launched, working SaaS platform built to the scope we define together in Session 1, I'll continue working with you 1:1 at no additional cost <strong>until you do.</strong></p>
             </div>
         </div>
     </section>
@@ -1733,7 +1950,7 @@
             <h2>Ready To Become A SaaS Founder?</h2>
             <p class="urgency"><span class="dot"></span>Only 3 Spots Available This Month</p>
             <div>
-                <a href="#apply" class="cta-primary" id="reserve-btn">Reserve Your Spot — $2,600
+                <a href="#apply" class="cta-primary" id="reserve-btn">Apply For A Spot
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </a>
             </div>
@@ -1782,7 +1999,7 @@
     <!-- ============ STICKY CTA BAR ============ -->
     <div class="sticky-cta" id="stickyCta">
         <div class="left">SaaS Launch Sprint · <span class="accent">3 spots left</span></div>
-        <a href="#apply" class="cta-primary">Reserve Your Spot — $2,600</a>
+        <a href="#apply" class="cta-primary">Apply For A Spot</a>
     </div>
 
     <script>
