@@ -984,20 +984,21 @@
             align-items: center;
             margin-top: 48px;
         }
-        .about-photo-wrap { position: relative; }
+        .about-photo-wrap { position: relative; display: flex; justify-content: center; }
         .about-photo-bg {
             position: absolute;
-            inset: 16px -12px -12px 16px;
-            background: linear-gradient(135deg, var(--yellow) 0%, var(--teal) 100%);
-            border-radius: 18px;
-            opacity: 0.9;
+            inset: 8% 8% 8% 8%;
+            background: radial-gradient(circle, rgba(255,217,61,0.35), rgba(13,180,219,0.25) 60%, transparent 75%);
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.7;
         }
         .about-photo {
             position: relative;
             width: 100%;
-            max-width: 400px;
-            border-radius: 16px;
+            max-width: 440px;
             display: block;
+            filter: drop-shadow(0 24px 50px rgba(11,26,46,0.18));
         }
         .about-text h3 {
             font-size: clamp(1.5rem, 2.4vw, 1.85rem);
@@ -1720,11 +1721,11 @@
             <div class="about-grid">
                 <div class="about-photo-wrap">
                     <div class="about-photo-bg"></div>
-                    <img src="dr-erin-jacques_pic.jpg" alt="Dr. Erin Jacques" class="about-photo">
+                    <img src="two-ivy-league.jpg" alt="Dr. Erin Jacques in doctoral regalia — Columbia University and University of Pennsylvania" class="about-photo">
                 </div>
                 <div class="about-text">
                     <h3>Professor. Founder. AI Strategist.</h3>
-                    <p>Dr. Erin Jacques is a professor of informatics, founder, and AI strategist with <strong>300K+ followers across socials</strong>.</p>
+                    <p><strong>Doctorate from Columbia University. Graduate work at the University of Pennsylvania.</strong> Professor of informatics, founder, and AI strategist with <strong>300K+ followers across socials</strong>.</p>
                     <p>She built and launched <strong>ChatifyIT</strong> — a SaaS platform for AI agent and chatbot creation — using the exact Founder-Led Development process she now teaches.</p>
                     <p>She's not a developer who learned to teach. She's a <strong>founder who built her own SaaS</strong> the way she'll show you how to build yours.</p>
                     <div class="signature-line">— Your Coach For The Next 14 Days</div>
