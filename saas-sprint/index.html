@@ -1,4 +1,16 @@
 <!DOCTYPE html>
+<!--
+  ============================================================
+  SaaS Launch Sprint — $2,600 high-ticket coaching landing page
+  ============================================================
+  Payments: Stripe Payment Link (metadata.product=saas-launch-sprint)
+  Webhook:  Handled by chatifyit.com /api/stripe-webhook.js
+            -> handleSprintPurchase() in github.com/ejacques1/AI-Assistant-Template
+            -> Tags buyer in Systeme.io with "saas-launch-sprint-buyer"
+            -> Systeme.io automation sends welcome email
+  Post-pay: Stripe redirects to /saas-sprint/welcome on this site
+  ============================================================
+-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
