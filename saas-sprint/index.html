@@ -117,11 +117,14 @@
             border-radius: 100px;
         }
         .hero-title {
-            font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+            font-size: clamp(1.85rem, 4.5vw, 3.6rem);
             font-weight: 800; color: #fff;
             line-height: 1.08;
-            letter-spacing: -1.2px;
+            letter-spacing: -1px;
             margin-bottom: 24px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
         .hero-title .accent { color: var(--yellow); }
         .hero-sub {
@@ -1209,7 +1212,7 @@
             .mechanism .contrast { grid-template-columns: 1fr; }
             section { padding: 72px 20px; }
             .hero { padding: 48px 20px 56px; }
-            .hero-title { font-size: clamp(1.85rem, 7vw, 2.4rem); letter-spacing: -0.6px; }
+            .hero-title { font-size: clamp(1.7rem, 7vw, 2.2rem); letter-spacing: -0.5px; }
             .final-cta { padding: 72px 20px; }
             .header-inner { padding: 16px 20px; }
             .session-card { grid-template-columns: 1fr; gap: 18px; padding: 24px; }
