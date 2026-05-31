@@ -42,14 +42,17 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
         body {
             font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: var(--text);
             background: #fff;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            width: 100%;
         }
+        img { max-width: 100%; }
 
         /* ============ SITEWIDE HEADER ============ */
         .site-header { background: var(--navy); position: relative; z-index: 100; }
@@ -1204,21 +1207,30 @@
             .hamburger { display: flex; }
             .options-grid { grid-template-columns: 1fr; }
             .mechanism .contrast { grid-template-columns: 1fr; }
-            section { padding: 72px 24px; }
-            .hero { padding: 56px 24px 72px; }
-            .final-cta { padding: 80px 24px; }
-            .header-inner { padding: 16px 24px; }
-            .session-card { grid-template-columns: 1fr; gap: 18px; padding: 26px; }
-            .stack-card { flex-direction: column; align-items: flex-start; }
+            section { padding: 72px 20px; }
+            .hero { padding: 48px 20px 56px; }
+            .hero-title { font-size: clamp(1.85rem, 7vw, 2.4rem); letter-spacing: -0.6px; }
+            .final-cta { padding: 72px 20px; }
+            .header-inner { padding: 16px 20px; }
+            .session-card { grid-template-columns: 1fr; gap: 18px; padding: 24px; }
+            .stack-card { flex-direction: column; align-items: flex-start; padding: 22px; }
             .stack-value { align-self: flex-end; }
             .transform-row { grid-template-columns: 1fr; gap: 10px; padding: 22px; }
             .transform-arrow { display: none; }
-            .sticky-cta { padding: 10px 14px; gap: 12px; }
+            .sticky-cta { padding: 10px 14px; gap: 10px; }
             .sticky-cta .left { font-size: 0.82rem; }
-            .sticky-cta .cta-primary { padding: 10px 16px; font-size: 0.85rem; }
-            .value-hero { padding: 44px 24px; }
-            .guarantee-card { padding: 40px 28px; }
-            .chatifyit-block { padding: 32px 24px; }
+            .sticky-cta .cta-primary { padding: 10px 14px; font-size: 0.82rem; }
+            .value-hero { padding: 40px 20px; border-radius: 16px; }
+            .guarantee-card { padding: 36px 22px; }
+            .chatifyit-block { padding: 28px 20px; }
+            /* Tech stack: smaller logos + tighter gap on mobile */
+            .stack-strip { padding: 44px 20px 56px; }
+            .stack-row { gap: 28px; }
+            .stack-logo svg { width: 30px; height: 30px; }
+            /* Scarcity stripe: shrink decorative side stripes */
+            .scarcity-stripe { padding: 22px 20px; }
+            .scarcity-stripe::before, .scarcity-stripe::after { width: 30px; }
+            .scarcity-stripe-text { font-size: 1rem; }
         }
     </style>
 </head>
