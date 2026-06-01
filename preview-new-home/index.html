@@ -632,17 +632,74 @@
             color: var(--text);
             font-weight: 600;
         }
+        /* SIGNATURE KEYNOTE FEATURED CARD */
+        .keynote-card {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+            color: #fff;
+            border-radius: 20px;
+            padding: 44px 48px;
+            margin: 40px 0 44px;
+            position: relative;
+            overflow: hidden;
+        }
+        .keynote-card::before {
+            content: ""; position: absolute; inset: 0;
+            background:
+                radial-gradient(circle at 100% 0%, rgba(255,217,61,0.22), transparent 55%),
+                radial-gradient(circle at 0% 100%, rgba(13,180,219,0.20), transparent 55%);
+        }
+        .keynote-card > * { position: relative; z-index: 1; }
+        .keynote-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--yellow); color: var(--navy);
+            padding: 7px 14px;
+            border-radius: 100px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem; font-weight: 800;
+            letter-spacing: 0.2em; text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+        .keynote-tag svg { width: 13px; height: 13px; }
+        .keynote-card h3 {
+            font-size: clamp(1.75rem, 3vw, 2.4rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.6px;
+            color: #fff;
+            margin-bottom: 22px;
+        }
+        .keynote-card h3 .accent { color: var(--yellow); }
+        .keynote-card p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 14px;
+            max-width: 760px;
+        }
+        .keynote-card p:last-of-type { margin-bottom: 0; }
+
+        /* OTHER TALKS SUB-HEADING + LIST */
+        .other-talks-heading {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--teal-dark);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            margin-top: 8px;
+        }
         .topics-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-            margin: 36px 0 40px;
+            gap: 12px;
+            margin: 0 0 40px;
         }
         .topic-pill {
             background: #fff;
             border: 1px solid rgba(11,26,46,0.08);
             border-left: 4px solid var(--teal);
-            padding: 18px 22px;
+            padding: 16px 20px;
             border-radius: 0 12px 12px 0;
             display: flex; align-items: center; gap: 12px;
             transition: border-color 0.2s, transform 0.2s;
@@ -651,7 +708,7 @@
         .topic-pill strong {
             color: var(--text);
             font-weight: 600;
-            font-size: 0.98rem;
+            font-size: 0.95rem;
             letter-spacing: -0.2px;
         }
 
@@ -1090,12 +1147,28 @@
                 <p>I speak to leadership teams, conferences, universities, podcasts, and organizations about the real-world impact of AI on work, entrepreneurship, and economic opportunity.</p>
                 <p class="lead">My goal isn't to predict the future. It's to help people prepare for it.</p>
             </div>
+
+            <!-- SIGNATURE KEYNOTE -->
+            <div class="keynote-card">
+                <span class="keynote-tag">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+                    Signature Keynote
+                </span>
+                <h3>Build Your Place In The <span class="accent">New Economy.</span></h3>
+                <p>AI is changing work, careers, entrepreneurship, and opportunity faster than most people realize.</p>
+                <p>This keynote helps audiences understand <strong style="color:#fff;">what's changing, what opportunities are emerging,</strong> and how to position themselves to thrive in an AI-driven world.</p>
+                <p>From workforce trends to entrepreneurship to AI-powered business creation, audiences leave with a practical framework for navigating the future with confidence.</p>
+            </div>
+
+            <!-- OTHER TALKS -->
+            <div class="other-talks-heading">Other Talks &amp; Formats</div>
             <div class="topics-grid">
-                <div class="topic-pill"><strong>AI Fluency &amp; The Future Of Work</strong></div>
                 <div class="topic-pill"><strong>Founder-Led Development — Building Software Without Developers</strong></div>
                 <div class="topic-pill"><strong>How AI Is Reshaping Hiring &amp; Skills</strong></div>
                 <div class="topic-pill"><strong>From Idea To Launched Platform In 14 Days</strong></div>
+                <div class="topic-pill"><strong>Custom talks tailored to your audience</strong></div>
             </div>
+
             <a href="mailto:info@erinjacques.com?subject=Speaking%20Inquiry" class="cta-primary">
                 Book Erin To Speak
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
