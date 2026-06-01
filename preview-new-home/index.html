@@ -703,40 +703,10 @@
             letter-spacing: -0.2px;
         }
 
-        /* ============ MORE SUCCESS STORIES (widget) ============ */
-        .stories-widget-area {
-            border-radius: 20px;
-            background: #fff;
-            padding: 64px 40px;
+        /* ============ MORE SUCCESS STORIES (Senja embed) ============ */
+        .senja-wall {
             margin-top: 40px;
-            text-align: center;
-            border: 2px dashed rgba(255,107,107,0.4);
-            color: var(--text-faint);
-        }
-        .stories-widget-area h3 {
-            color: var(--text);
-            font-size: 1.25rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-        .stories-widget-area .placeholder-tag {
-            display: inline-block;
-            background: rgba(255,107,107,0.12);
-            color: #ff6b6b;
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 18px;
-        }
-        .stories-widget-area p {
-            max-width: 520px;
-            margin: 0 auto;
-            line-height: 1.6;
-            font-size: 0.95rem;
+            min-height: 200px;
         }
 
         /* ============ CONTACT ============ */
@@ -1078,10 +1048,10 @@
                 <span class="sec-eyebrow">More From The Community</span>
                 <h2 class="sec-title">More From <span class="accent">The Community.</span></h2>
             </div>
-            <div class="stories-widget-area">
-                <span class="placeholder-tag">Senja Widget Slot</span>
-                <h3>Paste your Senja embed code here</h3>
-                <p>Recommended: Senja's "Wall of Love" or scrollable carousel widget — the same Senja you collected these testimonials in. Paste the embed snippet inside this container and the whole testimonial wall renders here.</p>
+            <!-- Senja Wall of Love embed (shadow DOM keeps its styles isolated from page) -->
+            <div class="senja-wall">
+                <script src="https://widget.senja.io/widget/7b98730e-c5f3-4579-99d1-b9e1ceff3467/platform.js" type="text/javascript" async></script>
+                <div class="senja-embed" data-id="7b98730e-c5f3-4579-99d1-b9e1ceff3467" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
             </div>
         </div>
     </section>
