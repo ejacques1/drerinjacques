@@ -268,6 +268,57 @@
         .center .section-eyebrow, .center .section-title, .center .section-lead { text-align: center; }
         .center .section-eyebrow { display: block; }
 
+        /* ============ VIDEO TESTIMONIALS ============ */
+        .video-testimonials {
+            background: linear-gradient(180deg, var(--navy-2) 0%, var(--navy) 100%);
+            color: #fff;
+            padding: 110px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .video-testimonials::before {
+            content: ""; position: absolute; inset: 0;
+            background:
+                radial-gradient(circle at 12% 18%, rgba(255,217,61,0.10), transparent 50%),
+                radial-gradient(circle at 88% 82%, rgba(13,180,219,0.12), transparent 55%);
+            pointer-events: none;
+        }
+        .video-testimonials > * { position: relative; z-index: 1; }
+        .vt-head {
+            text-align: center;
+            max-width: 880px;
+            margin: 0 auto 56px;
+        }
+        .vt-eyebrow {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px; font-weight: 700;
+            letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--cream);
+            margin-bottom: 16px;
+            opacity: 0.85;
+        }
+        .vt-title {
+            font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.18;
+            letter-spacing: -0.6px;
+        }
+        .vt-title .accent {
+            background: linear-gradient(180deg, transparent 65%, rgba(255,217,61,0.55) 65%);
+            padding: 0 6px;
+        }
+        .vt-widget {
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 240px;
+        }
+        @media (max-width: 720px) {
+            .video-testimonials { padding: 72px 20px; }
+            .vt-head { margin-bottom: 36px; }
+        }
+
         /* ============ REFRAME ============ */
         .reframe { background: #fff; }
         .reframe p {
@@ -1456,6 +1507,21 @@
                     <span class="accent">Your Coach</span>
                     Dr. Erin Jacques
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ VIDEO TESTIMONIALS ============ -->
+    <section class="video-testimonials">
+        <div class="vt-head">
+            <span class="vt-eyebrow">Proof</span>
+            <h2 class="vt-title">What People Are Saying About <span class="accent">Working With Dr. Erin.</span></h2>
+        </div>
+        <div class="vt-widget" id="senjaVideoWidget">
+            <!-- SENJA VIDEO WIDGET EMBED — paste the snippet from Erin here -->
+            <div style="text-align: center; padding: 60px 24px; background: rgba(255,255,255,0.05); border: 2px dashed rgba(255,255,255,0.2); border-radius: 14px;">
+                <div style="display: inline-block; background: var(--yellow); color: var(--navy); padding: 4px 12px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 800; margin-bottom: 14px;">Senja Video Widget Slot</div>
+                <p style="font-size: 0.98rem; color: rgba(255,255,255,0.7); max-width: 480px; margin: 0 auto; line-height: 1.6;">Erin's Senja video testimonial widget renders here once the embed code is pasted into this container.</p>
             </div>
         </div>
     </section>
