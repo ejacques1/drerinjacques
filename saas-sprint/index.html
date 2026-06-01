@@ -268,6 +268,43 @@
         .center .section-eyebrow, .center .section-title, .center .section-lead { text-align: center; }
         .center .section-eyebrow { display: block; }
 
+        /* ============ COMMUNITY WALL (written testimonials) ============ */
+        .community-wall {
+            background: var(--cream);
+            padding: 100px 40px;
+            position: relative;
+        }
+        .cw-head {
+            text-align: center;
+            max-width: 880px;
+            margin: 0 auto 48px;
+        }
+        .cw-eyebrow {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px; font-weight: 700;
+            letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--teal-dark);
+            margin-bottom: 14px;
+        }
+        .cw-title {
+            font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+            font-weight: 800;
+            color: var(--text);
+            line-height: 1.18;
+            letter-spacing: -0.6px;
+        }
+        .cw-title .accent { color: var(--teal-dark); }
+        .cw-widget {
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 240px;
+        }
+        @media (max-width: 720px) {
+            .community-wall { padding: 64px 20px; }
+            .cw-head { margin-bottom: 32px; }
+        }
+
         /* ============ VIDEO TESTIMONIALS ============ */
         .video-testimonials {
             background: linear-gradient(180deg, var(--navy-2) 0%, var(--navy) 100%);
@@ -2064,6 +2101,19 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </a>
             </div>
+        </div>
+    </section>
+
+    <!-- ============ COMMUNITY WALL (written testimonials) ============ -->
+    <section class="community-wall">
+        <div class="cw-head">
+            <span class="cw-eyebrow">More From The Community</span>
+            <h2 class="cw-title">More Founders Singing <span class="accent">The Same Song.</span></h2>
+        </div>
+        <div class="cw-widget">
+            <!-- Senja written testimonials Wall of Love (shadow DOM keeps Senja styles isolated) -->
+            <script src="https://widget.senja.io/widget/7b98730e-c5f3-4579-99d1-b9e1ceff3467/platform.js" type="text/javascript" async></script>
+            <div class="senja-embed" data-id="7b98730e-c5f3-4579-99d1-b9e1ceff3467" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
         </div>
     </section>
 
