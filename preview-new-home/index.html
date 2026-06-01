@@ -299,10 +299,12 @@
         .proof-card {
             background: #fff;
             border-radius: 14px;
-            padding: 32px 28px;
+            padding: 32px 28px 26px;
             border: 1px solid rgba(11,26,46,0.06);
             box-shadow: 0 6px 18px rgba(11,26,46,0.05);
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
         .proof-quote-mark {
             position: absolute;
@@ -316,42 +318,56 @@
         }
         .proof-card blockquote {
             font-size: 1.02rem;
-            line-height: 1.65;
+            line-height: 1.6;
             color: var(--text);
-            margin: 30px 0 22px;
+            margin: 32px 0 20px;
             font-style: italic;
+            flex-grow: 1;
         }
+        .proof-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 18px;
+        }
+        .proof-stars svg { width: 16px; height: 16px; fill: var(--yellow); }
         .proof-card .who {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.78rem;
-            color: var(--text-faint);
-            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 14px;
             border-top: 1px solid var(--gray-200);
-            padding-top: 14px;
+            padding-top: 16px;
         }
-        .proof-card .who strong {
+        .proof-avatar {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: var(--cream);
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.92rem;
+            letter-spacing: -0.5px;
+            flex-shrink: 0;
+            font-family: 'DM Sans', sans-serif;
+            border: 2px solid var(--yellow);
+        }
+        .proof-card .who-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-faint);
+            letter-spacing: 0.04em;
+            line-height: 1.4;
+        }
+        .proof-card .who-text strong {
             color: var(--text);
             display: block;
             font-family: 'DM Sans', sans-serif;
             font-style: normal;
             font-size: 0.92rem;
             font-weight: 700;
-            margin-bottom: 2px;
+            margin-bottom: 1px;
             letter-spacing: 0;
-        }
-        .proof-placeholder-flag {
-            display: inline-block;
-            background: rgba(255,107,107,0.12);
-            color: #ff6b6b;
-            border: 1px dashed rgba(255,107,107,0.5);
-            padding: 3px 9px;
-            border-radius: 6px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            font-style: normal;
         }
 
         /* ============ WORK WITH ME ============ */
@@ -881,37 +897,60 @@
                 <h2 class="sec-title" style="max-width: 800px; margin: 0 auto;">Helping Founders, Professionals &amp; Organizations <span class="accent">Navigate The AI Economy.</span></h2>
             </div>
             <div class="proof-grid">
+                <!-- Berdine Roque — positioning/authority (lead) -->
                 <div class="proof-card">
                     <span class="proof-quote-mark">"</span>
                     <blockquote>
-                        <span class="proof-placeholder-flag">Placeholder · Founder/Client Quote</span>
-                        Insert strongest founder or Sprint client transformation quote here. The one where the result speaks for itself.
+                        Clarifying my positioning statement and differentiator cut through years of noise. My message tightened. My decisions sped up. This process gave me real clarity and authority.
                     </blockquote>
                     <div class="who">
-                        <strong>Name, Title</strong>
-                        Company / Context
+                        <div class="proof-avatar" aria-label="Berdine Roque">BR</div>
+                        <div class="who-text">
+                            <strong>Berdine Roque</strong>
+                            The Roque Co.
+                        </div>
                     </div>
                 </div>
+                <!-- Susan Watkins — AI transformation -->
                 <div class="proof-card">
                     <span class="proof-quote-mark">"</span>
+                    <div class="proof-stars" aria-label="5 out of 5 stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
                     <blockquote>
-                        <span class="proof-placeholder-flag">Placeholder · Speaking/Consulting Quote</span>
-                        Insert strongest speaking, consulting, or research-related quote here. From an organizer, leader, or peer.
+                        Dr. Erin's work has truly transformed the way I run my business. I feel much more confident integrating AI into my workflow, and I'm already seeing real results. This is a game-changer.
                     </blockquote>
                     <div class="who">
-                        <strong>Name, Title</strong>
-                        Company / Context
+                        <div class="proof-avatar" aria-label="Susan Watkins">SW</div>
+                        <div class="who-text">
+                            <strong>Susan Watkins</strong>
+                            Business Owner
+                        </div>
                     </div>
                 </div>
+                <!-- James Moore — emotion/clarity -->
                 <div class="proof-card">
                     <span class="proof-quote-mark">"</span>
+                    <div class="proof-stars" aria-label="5 out of 5 stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
                     <blockquote>
-                        <span class="proof-placeholder-flag">Placeholder · ChatifyIT / AI Quote</span>
-                        Insert strongest ChatifyIT user or AI-related testimonial here. The one that shows what they built.
+                        Wow!! I mean, WOW!!!! This is so on point. I was truly looking into doing exactly what this feedback explained — now it's about putting it into actionable steps.
                     </blockquote>
                     <div class="who">
-                        <strong>Name, Title</strong>
-                        Company / Context
+                        <div class="proof-avatar" aria-label="James Moore">JM</div>
+                        <div class="who-text">
+                            <strong>James Moore</strong>
+                            BIFS Online
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1095,14 +1134,14 @@
             <div class="sec-head">
                 <div class="sec-num">05</div>
                 <div>
-                    <span class="sec-eyebrow">More Success Stories</span>
-                    <h2 class="sec-title">What People Are <span class="accent">Saying.</span></h2>
+                    <span class="sec-eyebrow">More From The Community</span>
+                    <h2 class="sec-title">More From <span class="accent">The Community.</span></h2>
                 </div>
             </div>
             <div class="stories-widget-area">
-                <span class="placeholder-tag">Widget Placeholder</span>
-                <h3>Testimonial widget / wall goes here</h3>
-                <p>Recommended: Senja embed, a custom scrollable carousel, or a tagged wall organized by category — Speaking · Founder/Sprint · ChatifyIT · Students · Research/Academic. Scrollable so people who need proof can keep going.</p>
+                <span class="placeholder-tag">Senja Widget Slot</span>
+                <h3>Paste your Senja embed code here</h3>
+                <p>Recommended: Senja's "Wall of Love" or scrollable carousel widget — the same Senja you collected these testimonials in. Paste the embed snippet inside this container and the whole testimonial wall renders here.</p>
             </div>
         </div>
     </section>
