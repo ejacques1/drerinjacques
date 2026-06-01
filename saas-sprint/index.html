@@ -1518,11 +1518,9 @@
             <h2 class="vt-title">What People Are Saying About <span class="accent">Working With Dr. Erin.</span></h2>
         </div>
         <div class="vt-widget" id="senjaVideoWidget">
-            <!-- SENJA VIDEO WIDGET EMBED — paste the snippet from Erin here -->
-            <div style="text-align: center; padding: 60px 24px; background: rgba(255,255,255,0.05); border: 2px dashed rgba(255,255,255,0.2); border-radius: 14px;">
-                <div style="display: inline-block; background: var(--yellow); color: var(--navy); padding: 4px 12px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 800; margin-bottom: 14px;">Senja Video Widget Slot</div>
-                <p style="font-size: 0.98rem; color: rgba(255,255,255,0.7); max-width: 480px; margin: 0 auto; line-height: 1.6;">Erin's Senja video testimonial widget renders here once the embed code is pasted into this container.</p>
-            </div>
+            <!-- Senja video testimonials widget (shadow DOM mode — styles stay isolated from page CSS) -->
+            <script src="https://widget.senja.io/widget/aefb05ed-5b42-43ba-a2bb-f6a17deb6df1/platform.js" type="text/javascript" async></script>
+            <div class="senja-embed" data-id="aefb05ed-5b42-43ba-a2bb-f6a17deb6df1" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
         </div>
     </section>
 
