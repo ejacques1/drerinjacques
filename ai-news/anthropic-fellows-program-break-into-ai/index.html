@@ -677,6 +677,28 @@
                 legacyCopy(btn, url);
             }
         }
+        // New share row — pill-style copy button + native share fallback
+        function copyShareLink(btn) {
+            const url = window.location.href;
+            const original = btn.innerHTML;
+            const done = () => {
+                btn.classList.add('copied');
+                btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Copied!';
+                setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = original; }, 1800);
+            };
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(url).then(done).catch(done);
+            } else {
+                done();
+            }
+        }
+        function nativeShareArticle() {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(() => {});
+            } else if (navigator.clipboard) {
+                navigator.clipboard.writeText(window.location.href);
+            }
+        }
         function legacyCopy(btn, url) {
             const el = document.createElement('input');
             el.value = url;
