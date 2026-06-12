@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Build an AI Lead-Gen Machine in a Weekend with Claude Fable 5 | Dr. Erin Jacques AI News</title>
+    <meta name="description" content="Build an AI lead-gen system in a weekend with Claude Fable 5: scan aerial imagery, render an 'after' photo of each home, and auto-mail postcards with booking QR codes.">
+    <meta name="author" content="Dr. Erin Jacques">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content="Build an AI Lead-Gen Machine in a Weekend with Claude Fable 5">
+    <meta property="og:description" content="Build an AI lead-gen system in a weekend with Claude Fable 5: scan aerial imagery, render an 'after' photo of each home, and auto-mail postcards with booking QR codes.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://drerinjacques.com/ai-news/ai-lead-gen-machine-claude-fable-5">
+    <meta property="og:image" content="https://drerinjacques.com/ai-news/ai-lead-gen-machine-claude-fable-5/og.png">
+    <meta property="og:site_name" content="Dr. Erin Jacques AI News">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Build an AI Lead-Gen Machine in a Weekend with Claude Fable 5">
+    <meta name="twitter:description" content="Build an AI lead-gen system in a weekend with Claude Fable 5: scan aerial imagery, render an 'after' photo of each home, and auto-mail postcards with booking QR codes.">
+
+    <!-- Schema.org Article Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Build an AI Lead-Gen Machine in a Weekend with Claude Fable 5",
+        "description": "Build an AI lead-gen system in a weekend with Claude Fable 5: scan aerial imagery, render an 'after' photo of each home, and auto-mail postcards with booking QR codes.",
+        "datePublished": "2026-06-11",
+        "dateModified": "2026-06-11",
+        "author": {
+            "@type": "Person",
+            "name": "Dr. Erin Jacques",
+            "url": "https://drerinjacques.com",
+            "jobTitle": "Professor of Informatics",
+            "worksFor": {
+                "@type": "EducationalOrganization",
+                "name": "City University of New York",
+                "sameAs": "https://en.wikipedia.org/wiki/City_University_of_New_York"
+            },
+            "alumniOf": {
+                "@type": "EducationalOrganization",
+                "name": "Columbia University",
+                "sameAs": "https://en.wikipedia.org/wiki/Columbia_University"
+            },
+            "sameAs": [
+                "https://www.linkedin.com/in/drerinjacques/",
+                "https://www.instagram.com/dr.erinjacques/",
+                "https://www.tiktok.com/@dr.erinjacques",
+                "https://x.com/dr_erinjacques",
+                "https://www.youtube.com/@Dr.ErinJacques"
+            ]
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Dr. Erin Jacques AI News",
+            "url": "https://drerinjacques.com/ai-news",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://drerinjacques.com/assets/logo.png"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://drerinjacques.com/ai-news/ai-lead-gen-machine-claude-fable-5"
+        },
+        "articleSection": "AI Monetization",
+        "keywords": "AI lead generation, Claude Fable 5, Claude Code app, home service marketing, AI direct mail, Lob postcard API, Supabase, Vercel",
+        "wordCount": "1010",
+        "isAccessibleForFree": true
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is Claude Fable 5?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Claude Fable 5 is Anthropic's most powerful publicly available model, released June 9, 2026. It is state-of-the-art on software-engineering benchmarks, and its lead grows on longer, more complex tasks — which is what makes building a full app from a single prompt realistic."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can a non-technical person build an AI lead-generation app?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. By describing the system in plain English to Claude Code, Claude Fable 5 scaffolds the app, database, and integrations for you. You review and approve leads in a dashboard before any postcard is mailed."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why use county GIS imagery instead of Google Maps?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Google's terms of service don't allow reprinting their map images on marketing mailers. Free county GIS orthophotos are designed for public use, so start there."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --brand-green: #00D9A3;
+            --brand-green-light: #00D9A320;
+            --brand-green-glow: #00D9A340;
+            --brand-dark: #0A1628;
+            --brand-blue: #1A365D;
+            --brand-blue-light: #2A4A7F;
+            --text-primary: #1A1A2E;
+            --text-secondary: #4A5568;
+            --text-muted: #718096;
+            --bg-primary: #FAFBFD;
+            --bg-card: #FFFFFF;
+            --bg-capsule: #F0FDF9;
+            --border-light: #E2E8F0;
+            --border-capsule: #00D9A350;
+            --font-display: 'DM Serif Display', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --content-width: 720px;
+            --page-width: 1080px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body { font-family: var(--font-body); background: var(--bg-primary); color: var(--text-primary); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
+
+        .site-header { background: #0A1628; position: relative; z-index: 100; }
+        .header-inner { max-width: var(--page-width); margin: 0 auto; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; }
+        .header-brand { text-decoration: none; font-size: 1.15rem; font-weight: 700; color: #fff; letter-spacing: -0.3px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        .header-nav { display: flex; gap: 32px; align-items: center; }
+        .header-nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .header-nav a:hover { color: #fff; }
+        .header-nav a.nav-active { color: #FFD700; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 1001; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.8); border-radius: 2px; transition: all 0.3s ease; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #0A1628; z-index: 1000; flex-direction: column; align-items: center; justify-content: center; gap: 28px; }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 1.3rem; font-weight: 600; transition: color 0.2s; }
+        .mobile-nav a:hover { color: #FFD700; }
+        .mobile-nav a.nav-active { color: #FFD700; }
+
+        .article-container { max-width: var(--content-width); margin: 0 auto; padding: 48px 24px 80px; }
+
+        .article-category { display: inline-flex; align-items: center; gap: 6px; background: var(--brand-green-light); color: #059669; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 4px; border: 1px solid var(--brand-green); margin-bottom: 20px; }
+        .article-category::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--brand-green); }
+
+        .article-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 44px); line-height: 1.15; color: var(--brand-dark); margin-bottom: 20px; letter-spacing: -0.01em; }
+        .article-subtitle { font-size: 19px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 28px; font-weight: 400; }
+
+        .byline { display: flex; align-items: center; gap: 14px; padding: 20px 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); margin-bottom: 40px; }
+        .byline-avatar { width: 48px; height: 48px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+        .byline-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+        .byline-info { display: flex; flex-direction: column; gap: 2px; }
+        .byline-name { font-weight: 600; color: var(--brand-dark); font-size: 15px; }
+        .byline-name a { color: inherit; text-decoration: none; }
+        .byline-name a:hover { color: var(--brand-green); }
+        .byline-credentials { font-size: 13px; color: var(--text-muted); }
+        .byline-date { margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+        .byline-date-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+        .byline-date-value { font-size: 14px; color: var(--text-secondary); font-weight: 500; }
+
+        .featured-image { width: 100%; display: block; margin-bottom: 40px; border-radius: 12px; overflow: hidden; background: transparent; }
+        .featured-image img, .featured-image svg { width: 100%; height: auto; display: block; max-width: 100%; }
+
+        .answer-capsule { background: var(--bg-capsule); border: 1px solid var(--border-capsule); border-left: 4px solid var(--brand-green); border-radius: 0 8px 8px 0; padding: 24px 28px; margin: 32px 0; font-size: 16px; line-height: 1.7; }
+        .answer-capsule-label { display: inline-block; font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brand-green); margin-bottom: 10px; }
+        .answer-capsule p { color: var(--text-primary); margin: 0; }
+
+        .article-body h2 { font-family: var(--font-display); font-size: 28px; color: var(--brand-blue); margin: 48px 0 16px; line-height: 1.25; }
+        .article-body h3 { font-family: var(--font-body); font-size: 20px; font-weight: 700; color: var(--brand-dark); margin: 36px 0 12px; line-height: 1.3; }
+        .article-body p { margin-bottom: 18px; color: var(--text-primary); }
+        .article-body a { color: var(--brand-blue-light); text-decoration: underline; text-decoration-color: var(--brand-green); text-underline-offset: 3px; transition: color 0.2s; }
+        .article-body a:hover { color: var(--brand-green); }
+        .article-body ul, .article-body ol { margin: 0 0 18px 24px; }
+        .article-body li { margin-bottom: 10px; }
+        .article-body blockquote { border-left: 3px solid var(--brand-green); padding: 12px 20px; margin: 24px 0; background: #F7FAFC; border-radius: 0 6px 6px 0; font-style: italic; color: var(--text-secondary); }
+
+        .stat-callout { display: flex; align-items: center; gap: 20px; background: var(--brand-dark); color: #FFF; padding: 24px 28px; border-radius: 10px; margin: 32px 0; }
+        .stat-number { font-family: var(--font-mono); font-size: 36px; font-weight: 700; color: var(--brand-green); flex-shrink: 0; }
+        .stat-description { font-size: 15px; line-height: 1.5; color: #CBD5E0; }
+        .stat-source { font-size: 12px; color: #718096; margin-top: 4px; }
+
+        .expert-insight { background: #FFF; border: 1px solid var(--border-light); border-radius: 10px; padding: 24px 28px; margin: 32px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .expert-insight-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-blue); }
+        .expert-insight-header::before { content: '💡'; }
+        .expert-insight p { margin: 0; font-size: 15px; color: var(--text-secondary); line-height: 1.65; }
+
+        /* ============ CAVEAT CALLOUT ============ */
+        .caveat-box { display: flex; gap: 14px; background: #FFF8E1; border: 1px solid #F2D88A; border-left: 4px solid #E0A106; border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 32px 0; }
+        .caveat-box .caveat-icon { font-size: 22px; line-height: 1.3; flex-shrink: 0; }
+        .caveat-box p { margin: 0; font-size: 15px; color: #6B5300; line-height: 1.6; }
+        .caveat-box strong { color: #5A4500; }
+
+        /* ============ COPY-PASTE PROMPT BOX ============ */
+        .prompt-box { background: var(--brand-dark); border-radius: 10px; padding: 20px 22px; margin: 22px 0; }
+        .prompt-box-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .prompt-box-label { font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-green); }
+        .prompt-copy-btn { background: var(--brand-green); color: var(--brand-dark); border: none; font-family: var(--font-body); font-weight: 700; font-size: 12px; letter-spacing: 0.03em; padding: 7px 16px; border-radius: 6px; cursor: pointer; transition: opacity 0.2s; flex-shrink: 0; }
+        .prompt-copy-btn:hover { opacity: 0.85; }
+        .article-body .prompt-text { font-family: var(--font-mono); font-size: 15px; line-height: 1.75; color: #F2F6FB !important; white-space: pre-wrap; margin: 0; }
+
+        .article-footer { margin-top: 56px; padding-top: 32px; border-top: 2px solid var(--border-light); }
+        .article-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+        .article-tag { background: #EDF2F7; color: var(--text-secondary); font-size: 13px; font-weight: 500; padding: 4px 12px; border-radius: 4px; text-decoration: none; transition: all 0.2s; }
+        .article-tag:hover { background: var(--brand-green-light); color: #059669; }
+
+        .author-bio { background: var(--brand-dark); border-radius: 12px; padding: 32px; display: flex; gap: 24px; align-items: flex-start; }
+        .author-bio-avatar { width: 72px; height: 72px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+        .author-bio-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+        .author-bio-content { flex: 1; }
+        .author-bio-name { color: #FFF; font-family: var(--font-display); font-size: 20px; margin-bottom: 4px; }
+        .author-bio-title { color: var(--brand-green); font-size: 13px; font-weight: 500; margin-bottom: 12px; }
+        .author-bio-text { color: #A0AEC0; font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
+        .author-bio-links { display: flex; gap: 12px; }
+        .author-bio-link { color: var(--brand-green); font-size: 13px; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+        .author-bio-link:hover { opacity: 0.8; }
+
+        .newsletter-cta { background: linear-gradient(135deg, #059669 0%, #00D9A3 100%); border-radius: 12px; padding: 36px 32px; margin-top: 32px; text-align: center; }
+        .newsletter-cta h3 { color: var(--brand-dark); font-family: var(--font-display); font-size: 22px; margin-bottom: 8px; }
+        .newsletter-cta p { color: #065F46; font-size: 15px; margin-bottom: 20px; }
+        .newsletter-form { max-width: 480px; margin: 0 auto; }
+        .newsletter-form .form-group { position: relative; margin-bottom: 12px; }
+        .newsletter-form .form-group input { width: 100%; padding: 16px 140px 16px 20px; border: none; background: #fff; color: #000; font-size: 1rem; font-family: inherit; border-radius: 8px; box-sizing: border-box; transition: box-shadow 0.3s; }
+        .newsletter-form .form-group input::placeholder { color: #999; }
+        .newsletter-form .form-group input:focus { outline: none; box-shadow: 0 0 0 3px rgba(0,0,0,0.2); }
+        .newsletter-form .form-group button { position: absolute; right: 4px; top: 4px; height: calc(100% - 8px); padding: 0 24px; background: var(--brand-dark); color: var(--brand-green); border: none; font-weight: 700; font-size: 14px; font-family: inherit; border-radius: 6px; cursor: pointer; transition: opacity 0.3s; }
+        .newsletter-form .form-group button:hover { opacity: 0.85; }
+        .newsletter-form .form-group button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .newsletter-form .form-message { display: none; padding: 12px 16px; font-size: 14px; font-weight: 600; text-align: center; border-radius: 8px; }
+        .newsletter-form .form-message.success { display: block; background: #065F46; color: #fff; }
+        .newsletter-form .form-message.error { display: block; background: #ef4444; color: #fff; }
+
+        .site-footer { background: var(--brand-dark); padding: 40px 24px; text-align: center; margin-top: 0; }
+        .footer-inner { max-width: var(--page-width); margin: 0 auto; }
+        .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; }
+        .footer-links a { color: #718096; text-decoration: none; font-size: 13px; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--brand-green); }
+        .footer-copy { color: #4A5568; font-size: 12px; }
+
+        .share-bar { position: fixed; left: max(16px, calc((100vw - var(--page-width)) / 2 - 72px)); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; z-index: 100; }
+        .share-btn { width: 44px; height: 44px; border-radius: 50%; background: var(--brand-dark); border: 1px solid #2D3748; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+        .share-btn:hover { background: var(--brand-blue); border-color: var(--brand-blue-light); transform: scale(1.08); }
+        .share-btn svg { width: 18px; height: 18px; fill: #CBD5E0; }
+        .share-btn:hover svg { fill: #FFF; }
+        .share-btn-copied { background: #059669 !important; border-color: #059669 !important; }
+        .share-bar-mobile { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--brand-dark); border-top: 1px solid #2D3748; padding: 10px 24px; z-index: 100; justify-content: center; gap: 16px; }
+        .share-bar-mobile .share-btn { width: 40px; height: 40px; }
+
+        .follow-block { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 28px 0; margin-top: 32px; margin-bottom: 32px; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
+        .follow-label { font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+        .follow-icons { display: flex; gap: 12px; }
+        .follow-icon { width: 38px; height: 38px; border-radius: 50%; background: #EDF2F7; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.2s; }
+        .follow-icon:hover { background: var(--brand-dark); }
+        .follow-icon svg { width: 16px; height: 16px; fill: var(--text-secondary); }
+        .follow-icon:hover svg { fill: #FFF; }
+
+        @media (max-width: 768px) {
+            .article-container { padding: 32px 18px 60px; }
+            .featured-image { width: 100%; margin-left: 0; }
+            .byline { flex-wrap: wrap; }
+            .byline-date { margin-left: 62px; align-items: flex-start; }
+            .author-bio { flex-direction: column; align-items: center; text-align: center; }
+            .author-bio-links { justify-content: center; }
+            .stat-callout { flex-direction: column; text-align: center; }
+            .header-nav { display: none; }
+            .hamburger { display: flex; }
+            .share-bar { display: none; }
+            .share-bar-mobile { display: flex; }
+            .article-container { padding-bottom: 100px; }
+            .prompt-box-top { flex-direction: column; align-items: flex-start; }
+        }
+
+        @media print {
+            .site-header, .site-footer, .newsletter-cta { display: none; }
+            .article-container { padding: 0; max-width: 100%; }
+            body { font-size: 12pt; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============ SITE HEADER ============ -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="/" class="header-brand">DR. ERIN JACQUES</a>
+            <nav class="header-nav">
+                <a href="/#about">About</a>
+                <a href="/#research">Research</a>
+                <a href="/#entrepreneurship">Work With Me</a>
+                <a href="/ai-news" class="nav-active">AI News</a>
+                <a href="/#contact">Contact</a>
+            </nav>
+            <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="/#about" onclick="closeMobileNav()">About</a>
+        <a href="/#research" onclick="closeMobileNav()">Research</a>
+        <a href="/#entrepreneurship" onclick="closeMobileNav()">Work With Me</a>
+        <a href="/ai-news" class="nav-active" onclick="closeMobileNav()">AI News</a>
+        <a href="/#contact" onclick="closeMobileNav()">Contact</a>
+    </div>
+
+    <!-- ============ SOCIAL SHARE BAR (Desktop) ============ -->
+    <div class="share-bar" aria-label="Share this article">
+        <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://drerinjacques.com/ai-news/ai-lead-gen-machine-claude-fable-5" target="_blank" rel="noopener" title="Share on LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://drerinjacques.com/ai-news/ai-lead-gen-machine-claude-fable-5&text=Build%20an%20AI%20Lead-Gen%20Machine%20in%20a%20Weekend%20with%20Claude%20Fable%205" target="_blank" rel="noopener" title="Share on X">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <button class="share-btn" onclick="copyLink(this)" title="Copy link">
+            <svg viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" fill="none" stroke="#CBD5E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+    </div>
+
+    <!-- Mobile share bar -->
+    <div class="share-bar-mobile" aria-label="Share this article">
+        <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://drerinjacques.com/ai-news/ai-lead-gen-machine-claude-fable-5" target="_blank" rel="noopener" title="Share on LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://drerinjacques.com/ai-news/ai-lead-gen-machine-claude-fable-5&text=Build%20an%20AI%20Lead-Gen%20Machine%20in%20a%20Weekend%20with%20Claude%20Fable%205" target="_blank" rel="noopener" title="Share on X">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <button class="share-btn" onclick="copyLink(this)" title="Copy link">
+            <svg viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" fill="none" stroke="#CBD5E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+    </div>
+
+    <!-- ============ ARTICLE ============ -->
+    <article class="article-container" itemscope itemtype="https://schema.org/Article">
+
+        <div class="article-category">AI Monetization</div>
+
+        <h1 class="article-title" itemprop="headline">Build an AI Lead-Gen Machine in a Weekend with Claude Fable 5</h1>
+
+        <p class="article-subtitle">A contractor mails every fenceless home in a zip code a postcard showing their <em>own</em> yard with a brand-new fence — and a QR code to book the job. Here's the exact stack and the exact prompt.</p>
+
+        <div class="byline">
+            <div class="byline-avatar"><img src="/ai-news/ai-lead-gen-machine-claude-fable-5/dr-erin-jacques_pic.jpg" alt="Dr. Erin Jacques"></div>
+            <div class="byline-info">
+                <div class="byline-name">
+                    <a href="https://drerinjacques.com" itemprop="author">Dr. Erin Jacques, Ed.D.</a>
+                </div>
+                <div class="byline-credentials">Professor of Informatics, CUNY · Founder, ChatifyIT</div>
+            </div>
+            <div class="byline-date">
+                <span class="byline-date-label">Published</span>
+                <time class="byline-date-value" itemprop="datePublished" datetime="2026-06-11">June 11, 2026</time>
+            </div>
+        </div>
+
+        <div class="featured-image">
+            <img src="/ai-news/ai-lead-gen-machine-claude-fable-5/featured.png" alt="AI lead-generation flow built with Claude Fable 5: aerial scan of a home, an AI-rendered 'after' image with a new fence, then a printed postcard with a booking QR code" style="width:100%;border-radius:12px;">
+        </div>
+
+        <!-- ============ ARTICLE BODY ============ -->
+        <div class="article-body" itemprop="articleBody">
+
+            <div class="answer-capsule">
+                <span class="answer-capsule-label">Key Takeaway</span>
+                <p>With Claude Fable 5 — Anthropic's most powerful public model, released June 9, 2026 — you can build a complete lead-generation app in a weekend. It scans aerial imagery to find homes that need your service, renders a photorealistic "after" image of each property, and mails a personalized postcard with a booking QR code, all from a single prompt in Claude Code.</p>
+            </div>
+
+            <p>Let me show you what's now possible. Imagine a contractor who could mail every fenceless home in a zip code a postcard showing their own backyard — with a brand-new fence already on it — and a QR code to book the job. A year ago, that was a six-figure software project. This week, it's a weekend.</p>
+            <p>I saw a version of this build making the rounds on X, and it stopped my scroll. So I broke it down into the exact stack and the exact prompts you'd paste in. Here's how it works.</p>
+
+            <h2>What can Claude Fable 5 actually build?</h2>
+            <p>Anthropic released <strong>Claude Fable 5</strong> on June 9, 2026 — its most capable model available to the public. It's state-of-the-art on nearly every software-engineering benchmark, and here's the part that matters for us: the longer and more complex the task, the bigger its lead over older models. Building a full app — database, AI vision, image generation, and a mailing integration, all wired together — is exactly the kind of long, multi-step job where Fable 5 shines.</p>
+            <p>That's what makes this realistic for a non-coder. You describe the system in plain English inside Claude Code, and Fable 5 writes the app, sets up the database, and connects the services for you.</p>
+
+            <div class="stat-callout">
+                <span class="stat-number">$10 / $50</span>
+                <div>
+                    <div class="stat-description">What Claude Fable 5 costs per million input / output tokens — double Opus 4.8, but it's the most capable public model for the kind of long, complex build this project requires.</div>
+                    <div class="stat-source">Source: Anthropic</div>
+                </div>
+            </div>
+
+            <h2>What's in the stack — and what does each piece do?</h2>
+            <p>Six tools do all the work. In plain English:</p>
+            <ul>
+                <li><strong>GitHub</strong> — holds your code.</li>
+                <li><strong>Vercel</strong> — runs the app and the weekly automation.</li>
+                <li><strong>Supabase</strong> — your database (stores addresses, images, and lead status).</li>
+                <li><strong>Claude API</strong> — looks at aerial photos and spots the homes that need your service.</li>
+                <li><strong>An image-generation API</strong> — creates the "after" picture of their property.</li>
+                <li><strong>Lob</strong> — prints and mails the postcards automatically.</li>
+            </ul>
+            <p>You don't have to understand how each one works under the hood. Fable 5 does the wiring — you just bring the accounts.</p>
+
+            <h2>What exactly do you paste into Claude Code?</h2>
+            <p>Two prompts. Use the first if you want the fence-business example as-is. Use the second for any home-service business — just fill in the brackets. Open Claude Code, paste, and let Fable 5 build.</p>
+
+            <div class="prompt-box">
+                <div class="prompt-box-top">
+                    <span class="prompt-box-label">Prompt A — The fence-business example</span>
+                    <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+                </div>
+                <p class="prompt-text">Build a lead-generation web app with Next.js on Vercel, Supabase, and GitHub. I enter a zip code, and the app: (1) pulls residential addresses from that county's public parcel/assessor data, (2) fetches an aerial image for each address from county GIS orthophotos, (3) uses Claude's vision API to flag homes with a yard but no fence, (4) for each qualified home, uses an image-generation API to render that yard with a new fence, (5) generates a unique QR code per address linking to a landing page showing their rendered image and a booking button, and (6) sends a postcard with the render and QR code via the Lob API. Include an admin dashboard where I review flagged homes and approve/reject before mailing. Store everything in Supabase with a status pipeline (found → qualified → rendered → approved → mailed).</p>
+            </div>
+
+            <div class="prompt-box">
+                <div class="prompt-box-top">
+                    <span class="prompt-box-label">Prompt B — For ANY home-service business</span>
+                    <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+                </div>
+                <p class="prompt-text">I run a [TYPE OF HOME SERVICE BUSINESS — e.g., landscaping, roofing, pool installation, exterior lighting]. Build me a lead-generation web app (Next.js on Vercel, Supabase, GitHub) where I enter a zip code and the app: (1) pulls residential addresses from public parcel data, (2) fetches an aerial image of each property, (3) uses AI vision to find homes that show [THE VISUAL SIGN THEY NEED MY SERVICE — e.g., a patchy lawn, aging roof, dark unlit yard], (4) renders an "after" image of that property with [MY SERVICE RESULT — e.g., fresh landscaping, new roof, night lighting], (5) creates a unique QR code per home linking to a page with their before/after images and a booking button, and (6) mails a postcard via the Lob API. Include an approval dashboard so I review leads before anything is mailed.</p>
+            </div>
+
+            <div class="caveat-box">
+                <span class="caveat-icon">⚠️</span>
+                <p><strong>One important caveat:</strong> Start with free county GIS imagery, not Google Maps. Google's terms don't allow reprinting their map images on marketing mailers — county orthophotos are public and built for this.</p>
+            </div>
+
+            <div class="expert-insight">
+                <div class="expert-insight-header">Dr. Erin's Analysis</div>
+                <p>The hard part of this was never the code — it's the orchestration: pulling parcel data, scoring images with vision, generating a render, and triggering a print job, all in sequence with a human approval step in the middle. That glue used to require a developer. Fable 5 writes it. Don't try to boil the ocean: start with one zip code and one service, watch the approval dashboard fill up, and only scale once the postcards are actually booking jobs.</p>
+            </div>
+
+            <h2>Try it this weekend</h2>
+            <p>Pick one zip code. Pick one service. Paste the prompt into Claude Code and see what Fable 5 builds. The barrier here isn't technical skill anymore — it's deciding to start.</p>
+            <p>When you've got something running, hit reply and tell me what you built. I read every response, and the best ones might end up in a future issue.</p>
+
+            <div class="answer-capsule">
+                <span class="answer-capsule-label">Bottom Line</span>
+                <p>The tools to run a personalized, AI-powered direct-mail funnel now cost less than a nice dinner — and Claude Fable 5 writes the code for you. Find the home, render the "after," mail the postcard. One zip code, one service, one weekend.</p>
+            </div>
+
+        </div>
+        <!-- END ARTICLE BODY -->
+
+        <!-- ============ ARTICLE FOOTER ============ -->
+        <footer class="article-footer">
+
+            <div class="article-tags">
+                <a href="/ai-news" class="article-tag">AI Monetization</a>
+                <a href="/ai-news" class="article-tag">AI Tools</a>
+            </div>
+
+            <div class="follow-block">
+                <span class="follow-label">Follow Dr. Jacques</span>
+                <div class="follow-icons">
+                    <a href="https://www.linkedin.com/in/drerinjacques/" class="follow-icon" target="_blank" rel="noopener" title="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/dr.erinjacques/" class="follow-icon" target="_blank" rel="noopener" title="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@dr.erinjacques" class="follow-icon" target="_blank" rel="noopener" title="TikTok">
+                        <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                    </a>
+                    <a href="https://x.com/dr_erinjacques" class="follow-icon" target="_blank" rel="noopener" title="X">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@Dr.ErinJacques" class="follow-icon" target="_blank" rel="noopener" title="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="author-bio">
+                <div class="author-bio-avatar"><img src="/ai-news/ai-lead-gen-machine-claude-fable-5/dr-erin-jacques_pic.jpg" alt="Dr. Erin Jacques"></div>
+                <div class="author-bio-content">
+                    <div class="author-bio-name">Dr. Erin Jacques</div>
+                    <div class="author-bio-title">Ed.D., Columbia University · Professor of Informatics, CUNY · Founder, ChatifyIT</div>
+                    <p class="author-bio-text">
+                        Dr. Erin Jacques builds, researches, and teaches at the intersection of AI and business.
+                        She studies how AI systems work, decide, and recommend — and helps individuals and
+                        organizations use that knowledge to get discovered and monetize.
+                    </p>
+                    <div class="author-bio-links">
+                        <a href="https://drerinjacques.com" class="author-bio-link">Website →</a>
+                        <a href="https://chatifyit.com" class="author-bio-link">ChatifyIT →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="newsletter-cta">
+                <h3>Get AI News Weekly</h3>
+                <p>Join the community learning how to get discovered by AI systems.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <div class="form-group">
+                        <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+                        <button type="submit" id="newsletterBtn">Subscribe</button>
+                    </div>
+                    <div id="newsletterMessage" class="form-message"></div>
+                </form>
+            </div>
+
+        </footer>
+
+    </article>
+
+    <!-- ============ SITE FOOTER ============ -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-links">
+                <a href="https://drerinjacques.com">Dr. Erin Jacques</a>
+                <a href="https://drerinjacques.com/ai-news">AI News</a>
+                <a href="https://chatifyit.com">ChatifyIT</a>
+                <a href="https://scholar.google.com/citations?user=3AYqKZMAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Research</a>
+            </div>
+            <p class="footer-copy">© 2026 Dr. Erin Jacques. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Copy Prompt + Copy Link + Newsletter Form Handlers -->
+    <script>
+        function copyPrompt(btn) {
+            const box = btn.closest('.prompt-box');
+            const text = box.querySelector('.prompt-text').innerText;
+            const done = () => {
+                const orig = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(() => { btn.textContent = orig; }, 1800);
+            };
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(done).catch(() => legacyCopyText(text, done));
+            } else {
+                legacyCopyText(text, done);
+            }
+        }
+        function legacyCopyText(text, cb) {
+            const el = document.createElement('textarea');
+            el.value = text;
+            el.style.cssText = 'position:fixed;top:0;left:0;opacity:0.01;';
+            document.body.appendChild(el);
+            el.focus(); el.select();
+            try { document.execCommand('copy'); if (cb) cb(); } catch(e) {}
+            document.body.removeChild(el);
+        }
+
+        function copyLink(btn) {
+            const url = window.location.href;
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(url).then(() => showCopied(btn)).catch(() => legacyCopy(btn, url));
+            } else {
+                legacyCopy(btn, url);
+            }
+        }
+        function legacyCopy(btn, url) {
+            const el = document.createElement('input');
+            el.value = url;
+            el.style.cssText = 'position:fixed;top:0;left:0;width:2em;height:2em;padding:0;border:none;outline:none;background:transparent;opacity:0.01;';
+            document.body.appendChild(el);
+            el.focus(); el.select(); el.setSelectionRange(0, 99999);
+            try { document.execCommand('copy'); showCopied(btn); } catch(e) {}
+            document.body.removeChild(el);
+        }
+        function showCopied(btn) {
+            btn.classList.add('share-btn-copied');
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<span style="font-size:11px;font-weight:600;color:#fff;letter-spacing:0.5px;">COPIED!</span>';
+            setTimeout(() => { btn.classList.remove('share-btn-copied'); btn.innerHTML = orig; }, 2000);
+        }
+
+        document.getElementById('newsletterForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const emailInput = document.getElementById('newsletterEmail');
+            const submitBtn = document.getElementById('newsletterBtn');
+            const formMessage = document.getElementById('newsletterMessage');
+            const email = emailInput.value;
+            formMessage.className = 'form-message';
+            formMessage.textContent = '';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Subscribing...';
+            try {
+                const response = await fetch('/api/subscribe', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    formMessage.className = 'form-message success';
+                    formMessage.textContent = "Successfully subscribed! You'll start receiving updates soon.";
+                    emailInput.value = '';
+                } else {
+                    formMessage.className = 'form-message error';
+                    formMessage.textContent = data.error || 'Something went wrong. Please try again.';
+                }
+            } catch (error) {
+                formMessage.className = 'form-message error';
+                formMessage.textContent = 'Network error. Please try again.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Subscribe';
+            }
+        });
+    </script>
+
+    <script>
+        function toggleMobileNav() {
+            document.getElementById('mobileNav').classList.toggle('open');
+            document.querySelector('.hamburger').classList.toggle('active');
+            document.body.style.overflow = document.getElementById('mobileNav').classList.contains('open') ? 'hidden' : '';
+        }
+        function closeMobileNav() {
+            document.getElementById('mobileNav').classList.remove('open');
+            document.querySelector('.hamburger').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    </script>
+
+</body>
+</html>
