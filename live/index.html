@@ -11,6 +11,7 @@
     --gold:#F4B02E; --ink:#1c2733; --muted:#5f6b7a;
     --bg:#F6F5F1; --card:#ffffff; --line:#e7e3d9;
     --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
   }
   *{box-sizing:border-box;}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;}
@@ -21,19 +22,25 @@
   h1{margin:.35em 0 .1em;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:900;letter-spacing:-.02em;}
   .top p{margin:.2em 0 0;color:#bcccdf;font-size:1.02rem;}
   .wrap{max-width:720px;margin:0 auto;padding:24px 20px 80px;}
-  .prep{background:rgba(244,176,43,.14);border:1px solid var(--gold);border-radius:12px;padding:14px 18px;margin:22px 0;font-weight:600;}
+  .prep{background:rgba(244,176,43,.14);border:1px solid var(--gold);border-radius:12px;padding:14px 18px;margin:22px 0 14px;font-weight:600;}
+  .approve{background:var(--navy);color:#fff;border-radius:12px;padding:14px 18px;margin:14px 0 22px;font-weight:600;border-left:5px solid var(--gold);}
+  .approve b{color:var(--gold);}
   .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:16px 0;}
   .step h2{margin:0 0 4px;font-size:1.25rem;display:flex;align-items:baseline;gap:12px;}
   .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;background:var(--navy);color:var(--gold);
      border-radius:50%;font-size:.95rem;font-weight:900;flex:none;}
-  .os{display:block;margin:10px 0 0;padding-left:2px;}
+  .os{display:block;margin:10px 0 0;}
   .os b{display:inline-block;background:#eef2f8;color:var(--navy);border-radius:6px;padding:1px 8px;font-size:.82rem;margin-right:8px;}
   .same{color:var(--muted);font-size:.92rem;font-style:italic;margin-top:6px;}
+  .urlbox{display:inline-flex;align-items:center;gap:10px;background:#eef2f8;border:1px solid var(--line);border-radius:10px;
+          padding:7px 8px 7px 14px;margin-top:10px;}
+  .urlbox .js-copy{font-family:var(--mono);color:var(--navy);font-weight:700;font-size:.98rem;}
   .prompt{margin-top:12px;background:#0f2748;border-radius:12px;padding:14px 16px;position:relative;}
   .prompt .lbl{color:var(--gold);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
-  .prompt .ptext{color:#eaf1fb;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.98rem;line-height:1.45;padding-right:70px;}
-  .copy{position:absolute;top:12px;right:12px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;
-        padding:7px 12px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .prompt .js-copy{color:#eaf1fb;font-family:var(--mono);font-size:.98rem;line-height:1.45;display:block;padding-right:76px;}
+  .copy{background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:7px 12px;font-weight:800;font-size:.82rem;
+        cursor:pointer;font-family:var(--sans);}
+  .prompt .copy{position:absolute;top:12px;right:12px;}
   .copy:active{transform:translateY(1px);}
   .done{background:var(--navy);color:#fff;border-radius:16px;padding:20px 22px;margin-top:20px;}
   .done b{color:var(--gold);}
@@ -49,22 +56,25 @@
 
   <div class="wrap">
     <div class="prep">Come with: your <b>Claude Code subscription</b>. That's it, we'll do the rest together.</div>
+    <div class="approve">⚡ <b>Important:</b> Claude will ask permission a lot. Just click <b>Approve / Yes</b> to everything it asks. Don't overthink it.</div>
 
     <div class="step">
       <h2><span class="n">1</span> Install VS Code</h2>
-      <div class="os"><b>🍎 Mac</b> Go to code.visualstudio.com, download <b>Universal</b>, open it, drag Visual Studio Code into your <b>Applications</b> folder, then open it. If you see "are you sure you want to open it," click <b>Open</b>.</div>
+      <div class="urlbox"><span class="js-copy">code.visualstudio.com</span><button class="copy" onclick="copyText(this)">Copy</button></div>
+      <div class="os"><b>🍎 Mac</b> Download <b>Universal</b>, open it, drag Visual Studio Code into your <b>Applications</b> folder, then open it. If you see "are you sure you want to open it," click <b>Open</b>.</div>
       <div class="os"><b>🪟 Windows</b> Download the <b>64-bit User Installer</b>, run it, and open VS Code. If you see "Windows protected your PC," click <b>More info → Run anyway</b>.</div>
     </div>
 
     <div class="step">
       <h2><span class="n">2</span> Install the Claude Code extension</h2>
-      <p>Click the <b>Extensions</b> icon on the left sidebar, search <b>Claude Code</b>, and install the one by <b>Anthropic</b> (blue check). Then sign in with your Claude account.</p>
+      <p>Click the <b>Extensions</b> icon on the left sidebar, search <b>Claude Code</b>, install the one by <b>Anthropic</b> (blue check), then sign in with your Claude account.</p>
       <div class="same">Same on Mac and Windows.</div>
     </div>
 
     <div class="step">
       <h2><span class="n">3</span> Create a free Vercel account</h2>
-      <p>Go to <b>vercel.com</b>, sign up with <b>email or Google</b> (not GitHub). Nothing to download.</p>
+      <div class="urlbox"><span class="js-copy">vercel.com</span><button class="copy" onclick="copyText(this)">Copy</button></div>
+      <p style="margin-top:12px;">Sign up with <b>email or Google</b> (not GitHub). Nothing to download.</p>
       <div class="same">Same on Mac and Windows.</div>
     </div>
 
@@ -84,17 +94,17 @@
       <p>Paste this into Claude and swap in your idea:</p>
       <div class="prompt">
         <div class="lbl">Prompt 1 — Build</div>
-        <div class="ptext">Build me a simple [your idea] as an index.html web app.</div>
+        <span class="js-copy">Build me a simple [your idea] as an index.html web app.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
     </div>
 
     <div class="step">
       <h2><span class="n">7</span> Put it live</h2>
-      <p>Paste this into Claude. Approve each step as it installs what it needs, then log into Vercel in the browser when it asks. You'll get a live URL.</p>
+      <p>Paste this into Claude. Then just keep approving everything it asks, and log into Vercel in the browser when it opens.</p>
       <div class="prompt">
         <div class="lbl">Prompt 2 — Deploy</div>
-        <div class="ptext">Deploy this to Vercel.</div>
+        <span class="js-copy">Deploy this to Vercel. If I don't have Node or the Vercel CLI installed, install whatever is needed first. Make all reasonable choices yourself, don't stop to ask me what to do, and when you're finished, give me the live URL.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
     </div>
@@ -106,8 +116,9 @@
 
 <script>
   function copyText(btn){
-    var t = btn.parentElement.querySelector('.ptext').innerText;
-    navigator.clipboard.writeText(t).then(function(){
+    var el = btn.parentElement.querySelector('.js-copy');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
       var o = btn.textContent; btn.textContent = 'Copied!';
       setTimeout(function(){ btn.textContent = o; }, 1500);
     });
