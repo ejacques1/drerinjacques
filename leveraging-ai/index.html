@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leveraging AI — Build Your AI-Powered Subscription Platform in 30 Days | Dr. Erin Jacques</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="canonical" href="https://drerinjacques.com/leveraging-ai/">
+    <meta name="description" content="Join Leveraging AI with Dr. Erin Jacques and turn your expertise into recurring monthly subscribers. Build, launch, and grow your AI-powered subscription platform in 30 days, step by step.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Build Your AI-Powered Subscription Platform in 30 Days — Leveraging AI">
+    <meta property="og:description" content="Turn your expertise into recurring monthly subscribers. Build, launch, and grow your platform in 30 days, step by step, with direct access to Dr. Erin Jacques.">
+    <meta property="og:url" content="https://drerinjacques.com/leveraging-ai/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://drerinjacques.com/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Build Your AI-Powered Subscription Platform in 30 Days — Leveraging AI">
+    <meta name="twitter:description" content="Turn your expertise into recurring monthly subscribers. Build, launch, and grow your platform in 30 days, step by step.">
+    <meta name="twitter:image" content="https://drerinjacques.com/og-image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy: #0B1A2E; --navy-2: #1a3658;
+            --yellow: #FFD93D; --yellow-dark: #E8C12B;
+            --teal: #0DB4DB; --teal-dark: #0A8FAF;
+            --green: #00B9A3;
+            --cream: #FAF6EC; --blush: #F4D5C7;
+            --text: #0B1A2E; --text-soft: #4A5568; --text-faint: #718096;
+            --gray-100: #F1F5F9; --gray-200: #E2E8F0;
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============ HEADER ============ */
+        .site-header { background: #fff; border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .header-inner { max-width: 1200px; margin: 0 auto; padding: 18px 40px; display: flex; align-items: center; justify-content: space-between; }
+        .header-brand { text-decoration: none; font-size: 1.1rem; font-weight: 800; color: var(--navy); letter-spacing: -0.3px; }
+        .header-nav { display: flex; gap: 28px; align-items: center; }
+        .header-nav a { color: var(--text-soft); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
+        .header-nav a:hover { color: var(--navy); }
+        .header-nav a.cta { background: var(--navy); color: #fff; padding: 9px 16px; border-radius: 8px; font-weight: 700; }
+        .header-nav a.cta:hover { background: var(--navy-2); color: #fff; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 1001; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.3s ease; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--cream); z-index: 1000; flex-direction: column; align-items: center; justify-content: center; gap: 28px; }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a { color: var(--text); text-decoration: none; font-size: 1.3rem; font-weight: 700; }
+
+        /* ============ SECTION DEFAULTS ============ */
+        section { padding: 96px 40px; position: relative; }
+        .container { max-width: 1080px; margin: 0 auto; }
+        .container-narrow { max-width: 860px; margin: 0 auto; }
+        section.bg-white { background: #fff; }
+        section.bg-cream { background: var(--cream); }
+        section.bg-cream-white { background: linear-gradient(180deg, var(--cream) 0%, #fff 100%); }
+        section.bg-white-cream { background: linear-gradient(180deg, #fff 0%, var(--cream) 100%); }
+
+        .sec-head { margin-bottom: 44px; }
+        .sec-eyebrow { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 12px; }
+        .sec-title { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800; color: var(--text); line-height: 1.15; letter-spacing: -0.7px; margin: 0; }
+        .sec-title .accent { color: var(--teal-dark); }
+        .sec-title .hl { color: var(--navy); background: linear-gradient(180deg, transparent 65%, rgba(255,217,61,0.55) 65%); padding: 0 4px; }
+        .sec-head p { margin: 16px 0 0; color: var(--text-soft); font-size: 1.08rem; max-width: 62ch; }
+
+        /* ============ BUTTONS ============ */
+        .cta-secondary { display: inline-flex; align-items: center; gap: 8px; background: var(--yellow); color: var(--navy); font-size: 1rem; font-weight: 700; padding: 16px 26px; border-radius: 10px; text-decoration: none; transition: all 0.2s; box-shadow: 0 6px 18px rgba(255,217,61,0.4); }
+        .cta-secondary:hover { background: var(--yellow-dark); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(255,217,61,0.55); }
+        .cta-secondary svg { transition: transform 0.2s; }
+        .cta-secondary:hover svg { transform: translateX(3px); }
+
+        /* ============ HERO ============ */
+        .lp-hero { background: linear-gradient(180deg, #fff 0%, var(--cream) 100%); padding: 96px 40px 88px; text-align: center; overflow: hidden; }
+        .lp-hero-glow { position: absolute; top: -12%; left: 50%; transform: translateX(-50%); width: 840px; max-width: 120%; height: 540px; background: radial-gradient(ellipse at center, rgba(255,217,61,0.30) 0%, rgba(13,180,219,0.18) 45%, transparent 70%); filter: blur(60px); z-index: 0; opacity: 0.9; }
+        .lp-hero .container { position: relative; z-index: 1; }
+        .lp-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal-dark); padding: 8px 14px; background: rgba(13,180,219,0.08); border: 1px solid rgba(13,180,219,0.25); border-radius: 100px; margin-bottom: 24px; }
+        .lp-hero h1 { font-size: clamp(2.4rem, 5.6vw, 4.2rem); font-weight: 800; line-height: 1.05; letter-spacing: -1.5px; color: var(--navy); margin: 0 auto 26px; max-width: 17ch; }
+        .lp-hero h1 .accent { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .lp-hero .sub { font-size: clamp(1.1rem, 1.7vw, 1.32rem); color: var(--text-soft); line-height: 1.6; max-width: 48ch; margin: 0 auto 34px; }
+        .lp-hero .sub strong { color: var(--text); font-weight: 700; }
+        .lp-cta-row { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .lp-reassure { color: var(--text-faint); font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; letter-spacing: 0.02em; }
+        .lp-proof-titles { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--teal-dark); font-weight: 600; letter-spacing: 0.04em; margin-top: 44px; padding-top: 26px; border-top: 1px solid var(--gray-200); display: inline-block; }
+        .lp-proof-titles b { color: var(--navy); }
+
+        /* ============ STAKES ============ */
+        .stakes-card { background: #fff; border-radius: 18px; border: 1px solid rgba(11,26,46,0.08); box-shadow: 0 6px 18px rgba(11,26,46,0.04); padding: 14px 40px; }
+        .stakes-list { list-style: none; margin: 0; padding: 0; }
+        .stakes-list li { display: flex; gap: 18px; align-items: center; padding: 24px 0; border-bottom: 1px solid var(--gray-200); font-size: 1.12rem; color: var(--text); font-weight: 500; }
+        .stakes-list li:last-child { border-bottom: none; }
+        .stakes-list .x { flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,133,133,0.16); color: #e05c5c; font-weight: 800; font-size: 0.9rem; }
+
+        /* ============ VALUE ============ */
+        .val-intro { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 800; letter-spacing: -0.4px; color: var(--navy); max-width: 28ch; line-height: 1.25; margin: 0 0 34px; }
+        .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .vcard { background: #fff; border-radius: 16px; border: 1px solid rgba(11,26,46,0.08); box-shadow: 0 6px 18px rgba(11,26,46,0.04); padding: 28px 30px; display: flex; gap: 16px; align-items: center; transition: border-color 0.2s, transform 0.2s; }
+        .vcard:hover { border-color: var(--teal); transform: translateY(-3px); }
+        .chk { flex: 0 0 auto; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--yellow); color: var(--navy); font-weight: 800; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(255,217,61,0.5); }
+        .vcard p { margin: 0; font-size: 1.08rem; font-weight: 600; color: var(--text); line-height: 1.4; }
+
+        /* ============ WHY ME — credentials + proof cards ============ */
+        .cred { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
+        .cred .pill { background: #fff; border: 1px solid rgba(11,26,46,0.08); box-shadow: 0 4px 12px rgba(11,26,46,0.04); border-radius: 12px; padding: 15px 22px; font-size: 1.02rem; color: var(--text); font-weight: 600; }
+        .cred .pill b { color: var(--teal-dark); font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; letter-spacing: 0.04em; margin-right: 4px; }
+        .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .proof-card { background: #fff; border-radius: 14px; padding: 34px 28px 26px; border: 1px solid rgba(11,26,46,0.06); box-shadow: 0 6px 18px rgba(11,26,46,0.05); position: relative; display: flex; flex-direction: column; }
+        .proof-quote-mark { position: absolute; top: 22px; left: 28px; font-size: 3rem; line-height: 1; color: var(--yellow); font-family: Georgia, serif; opacity: 0.5; }
+        .proof-card blockquote { font-size: 1.02rem; line-height: 1.6; color: var(--text); margin: 32px 0 20px; font-style: italic; flex-grow: 1; }
+        .proof-card .who { display: flex; align-items: center; gap: 14px; border-top: 1px solid var(--gray-200); padding-top: 16px; }
+        .proof-avatar { width: 60px; height: 60px; border-radius: 50%; flex-shrink: 0; border: 2px solid var(--yellow); object-fit: cover; }
+        .proof-card .who-text { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-faint); letter-spacing: 0.04em; line-height: 1.4; }
+        .proof-card .who-text strong { color: var(--text); display: block; font-family: 'DM Sans', sans-serif; font-style: normal; font-size: 0.92rem; font-weight: 700; margin-bottom: 1px; letter-spacing: 0; }
+
+        /* ============ PLAN — the Blueprint ============ */
+        .phases { display: flex; flex-direction: column; gap: 18px; }
+        .phase { background: #fff; border-radius: 18px; border: 1px solid rgba(11,26,46,0.08); box-shadow: 0 6px 18px rgba(11,26,46,0.04); padding: 32px 34px; display: grid; grid-template-columns: 150px 1fr; gap: 30px; align-items: center; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+        .phase:hover { transform: translateY(-3px); box-shadow: 0 20px 44px rgba(11,26,46,0.09); border-color: var(--teal); }
+        .phase .lbl { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal-dark); font-weight: 700; }
+        .phase .lbl b { display: block; font-family: 'DM Sans', sans-serif; font-size: 1.7rem; letter-spacing: -0.5px; color: var(--navy); text-transform: none; margin-top: 8px; font-weight: 800; }
+        .phase .desc { margin: 0; color: var(--text-soft); font-size: 1.02rem; line-height: 1.6; }
+        .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+        .chip { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); background: var(--cream); border: 1px solid var(--gray-200); padding: 6px 12px; border-radius: 6px; }
+        .chip.y { background: var(--yellow); border-color: var(--yellow-dark); }
+
+        /* ============ CLOSE ============ */
+        .close-card { max-width: 900px; margin: 0 auto; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%); color: #fff; border-radius: 22px; padding: 60px 50px; text-align: center; position: relative; overflow: hidden; }
+        .close-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 100% 0%, rgba(255,217,61,0.2), transparent 55%), radial-gradient(circle at 0% 100%, rgba(13,180,219,0.2), transparent 55%); }
+        .close-card > * { position: relative; z-index: 1; }
+        .close-card h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); font-weight: 800; letter-spacing: -0.6px; line-height: 1.14; margin: 0 auto 18px; max-width: 21ch; }
+        .close-card h2 em { font-style: normal; color: var(--yellow); }
+        .close-card p { color: rgba(255,255,255,0.85); font-size: 1.12rem; max-width: 44ch; margin: 0 auto 32px; }
+
+        /* ============ FOOTER ============ */
+        .footer { background: var(--navy); color: rgba(255,255,255,0.65); text-align: center; padding: 36px 40px; font-size: 0.88rem; }
+        .footer .tagline { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--yellow); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px; font-weight: 700; }
+        .footer a { color: var(--yellow); text-decoration: none; }
+
+        @media (max-width: 860px) {
+            .header-nav { display: none; }
+            .hamburger { display: flex; }
+            section { padding: 64px 22px; }
+            .header-inner { padding: 16px 22px; }
+            .grid2, .proof-grid { grid-template-columns: 1fr; }
+            .phase { grid-template-columns: 1fr; gap: 16px; }
+            .stakes-card { padding: 6px 26px; }
+            .close-card { padding: 44px 26px; }
+        }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="/" class="header-brand">DR. ERIN JACQUES</a>
+            <nav class="header-nav">
+                <a href="/#about">About</a>
+                <a href="/#work">Work With Me</a>
+                <a href="/ai-news/">AI News</a>
+                <a href="/#speaking">Speaking</a>
+                <a href="https://www.skool.com/leveragingai/about" class="cta" target="_blank" rel="noopener">Join Leveraging AI</a>
+            </nav>
+            <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-nav" id="mobileNav">
+        <a href="/#about" onclick="closeMobileNav()">About</a>
+        <a href="/#work" onclick="closeMobileNav()">Work With Me</a>
+        <a href="/ai-news/" onclick="closeMobileNav()">AI News</a>
+        <a href="/#speaking" onclick="closeMobileNav()">Speaking</a>
+        <a href="https://www.skool.com/leveragingai/about" target="_blank" rel="noopener" onclick="closeMobileNav()">Join Leveraging AI</a>
+    </div>
+
+    <!-- ============ HERO ============ -->
+    <header class="lp-hero">
+        <div class="lp-hero-glow"></div>
+        <div class="container">
+            <span class="lp-eyebrow">The Community · Leveraging AI</span>
+            <h1>Build Your AI-Powered Subscription Platform in <span class="accent">30 Days</span></h1>
+            <p class="sub">Turn your expertise into recurring monthly subscribers. <strong>I'll help you build, launch, and grow your platform, step by step.</strong></p>
+            <div class="lp-cta-row">
+                <a class="cta-secondary" href="https://www.skool.com/leveragingai/about" target="_blank" rel="noopener">Join Leveraging AI
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+                <span class="lp-reassure">No code. No developers. Direct access to me every day.</span>
+            </div>
+            <div class="lp-proof-titles"><b>Columbia</b> · <b>UPenn</b> · Founder of <b>ChatifyIT</b> &amp; <b>Early Scholars</b> · <b>350,000+</b> learning from my content</div>
+        </div>
+    </header>
+
+    <!-- ============ STAKES ============ -->
+    <section class="bg-white">
+        <div class="container-narrow">
+            <div class="sec-head">
+                <span class="sec-eyebrow">The Cost Of Waiting</span>
+                <h2 class="sec-title">Every month you wait, <span class="hl">it costs you.</span></h2>
+            </div>
+            <div class="stakes-card">
+                <ul class="stakes-list">
+                    <li><span class="x">✕</span>Your expertise sits unused.</li>
+                    <li><span class="x">✕</span>Someone else builds the platform your audience would have paid you for.</li>
+                    <li><span class="x">✕</span>You are still trading time for money instead of building recurring revenue.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ VALUE ============ -->
+    <section class="bg-white-cream">
+        <div class="container">
+            <p class="val-intro">Your expertise is the hard part, and you already have it.</p>
+            <div class="sec-head">
+                <span class="sec-eyebrow">What You Get</span>
+                <h2 class="sec-title">Here is what you actually <span class="hl">walk away with.</span></h2>
+            </div>
+            <div class="grid2">
+                <div class="vcard"><span class="chk">✓</span><p>A platform people subscribe to.</p></div>
+                <div class="vcard"><span class="chk">✓</span><p>Monthly recurring revenue.</p></div>
+                <div class="vcard"><span class="chk">✓</span><p>A scalable business built around your expertise.</p></div>
+                <div class="vcard"><span class="chk">✓</span><p>AI skills that apply far beyond this one platform.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ WHY ME ============ -->
+    <section class="bg-white">
+        <div class="container">
+            <div class="sec-head">
+                <span class="sec-eyebrow">Why Me</span>
+                <h2 class="sec-title">I don't just teach this. <span class="accent">I build it.</span></h2>
+            </div>
+            <div class="cred">
+                <div class="pill"><b>FOUNDER</b> of ChatifyIT &amp; Early Scholars</div>
+                <div class="pill"><b>PROFESSOR</b> &amp; AI Strategist</div>
+                <div class="pill"><b>350,000+</b> people learning from my content</div>
+            </div>
+            <div class="proof-grid">
+                <div class="proof-card">
+                    <span class="proof-quote-mark">"</span>
+                    <blockquote>Clarifying my positioning statement and differentiator cut through years of noise. My message tightened. My decisions sped up. This process gave me real clarity and authority.</blockquote>
+                    <div class="who">
+                        <img src="/home-assets/berdine.jpg" alt="Berdine Roque" class="proof-avatar" width="180" height="180" loading="lazy">
+                        <div class="who-text"><strong>Berdine Roque</strong>The Roque Co.</div>
+                    </div>
+                </div>
+                <div class="proof-card">
+                    <span class="proof-quote-mark">"</span>
+                    <blockquote>Dr. Erin's work has truly transformed the way I run my business. I feel much more confident integrating AI into my workflow, and I'm already seeing real results. This is a game-changer.</blockquote>
+                    <div class="who">
+                        <img src="/home-assets/susan.jpg" alt="Susan Watkins" class="proof-avatar" width="180" height="180" loading="lazy">
+                        <div class="who-text"><strong>Susan Watkins</strong>Business Owner</div>
+                    </div>
+                </div>
+                <div class="proof-card">
+                    <span class="proof-quote-mark">"</span>
+                    <blockquote>The biggest aha moment for me didn't come from talking about myself — it came from studying the competition. Seeing other programs side by side gave me real clarity on my niche.</blockquote>
+                    <div class="who">
+                        <img src="/home-assets/frederick.jpg" alt="Dr. Frederick Scott Jr." class="proof-avatar" width="180" height="180" loading="lazy">
+                        <div class="who-text"><strong>Dr. Frederick Scott, Jr.</strong>Pastor &amp; Coach</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ THE PLAN ============ -->
+    <section class="bg-cream">
+        <div class="container">
+            <div class="sec-head">
+                <span class="sec-eyebrow">The Plan</span>
+                <h2 class="sec-title">The AI Platform <span class="hl">Blueprint™</span></h2>
+                <p>Not videos to binge. A proven path, one piece at a time, until your platform is live and taking subscribers.</p>
+            </div>
+            <div class="phases">
+                <div class="phase">
+                    <div class="lbl">Phase 01<b>Set Up</b></div>
+                    <div>
+                        <div class="chips"><span class="chip y">VS Code</span><span class="chip y">Claude Code</span><span class="chip y">GitHub</span></div>
+                        <p class="desc">Build your development environment and get every tool connected, so you are ready to build from day one.</p>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="lbl">Phase 02<b>Build</b></div>
+                    <div>
+                        <p class="desc">Turn your expertise into an AI-powered subscription platform, built with you piece by piece. Your real business, not theory.</p>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="lbl">Phase 03<b>Launch</b></div>
+                    <div>
+                        <div class="chips"><span class="chip y">Supabase</span><span class="chip y">Vercel</span><span class="chip y">Stripe</span><span class="chip y">Systeme.io</span></div>
+                        <p class="desc">Deploy your platform, accept payments, and put it in front of the people who will pay to join.</p>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="lbl">Phase 04<b>Grow</b></div>
+                    <div>
+                        <div class="chips"><span class="chip">Subscribers</span><span class="chip">Retention</span><span class="chip">Marketing</span><span class="chip">Recurring revenue</span></div>
+                        <p class="desc">Refine, improve, and grow so you keep attracting subscribers and expanding your recurring revenue over time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CLOSE ============ -->
+    <section class="bg-cream" style="padding-top: 20px;">
+        <div class="close-card">
+            <h2>Build your AI-powered subscription platform in <em>30 days</em>, step by step.</h2>
+            <p>Not videos to binge. A real business you own, with direct access to me every day.</p>
+            <a class="cta-secondary" href="https://www.skool.com/leveragingai/about" target="_blank" rel="noopener">Join Leveraging AI
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="tagline">Build Your Place In The New Economy</div>
+        <p>© Dr. Erin Jacques · <a href="https://www.skool.com/leveragingai/about">Leveraging AI</a> · <a href="https://www.chatifyit.com">ChatifyIT</a> · <a href="/ai-news/">AI News</a></p>
+    </footer>
+
+    <script>
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobileNav');
+            const hamburger = document.querySelector('.hamburger');
+            nav.classList.toggle('open');
+            hamburger.classList.toggle('active');
+        }
+        function closeMobileNav() {
+            document.getElementById('mobileNav').classList.remove('open');
+            document.querySelector('.hamburger').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
