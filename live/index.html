@@ -31,6 +31,7 @@
      border-radius:50%;font-size:.95rem;font-weight:900;flex:none;}
   .os{display:block;margin:10px 0 0;}
   .os b{display:inline-block;background:#eef2f8;color:var(--navy);border-radius:6px;padding:1px 8px;font-size:.82rem;margin-right:8px;}
+  .fallback{color:var(--muted);font-size:.9rem;margin-top:6px;}
   .same{color:var(--muted);font-size:.92rem;font-style:italic;margin-top:6px;}
   .urlbox{display:inline-flex;align-items:center;gap:10px;background:#eef2f8;border:1px solid var(--line);border-radius:10px;
           padding:7px 8px 7px 14px;margin-top:10px;}
@@ -44,6 +45,15 @@
   .copy:active{transform:translateY(1px);}
   .done{background:var(--navy);color:#fff;border-radius:16px;padding:20px 22px;margin-top:20px;}
   .done b{color:var(--gold);}
+  .faq{margin-top:38px;}
+  .faq h2{font-size:1.5rem;color:var(--navy);margin:0 0 12px;}
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:10px 0;overflow:hidden;}
+  summary{cursor:pointer;padding:14px 18px;font-weight:700;color:var(--navy);list-style:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"+";float:right;color:var(--gold);font-weight:900;font-size:1.2rem;line-height:1;}
+  details[open] summary::after{content:"\2013";}
+  details .a{padding:0 18px 16px;color:var(--ink);}
+  details .a code{background:#eef2f8;border-radius:5px;padding:1px 6px;font-family:var(--mono);font-size:.92em;}
   footer{max-width:720px;margin:0 auto;padding:0 20px 60px;color:var(--muted);font-size:.9rem;}
 </style>
 </head>
@@ -62,6 +72,7 @@
       <h2><span class="n">1</span> Install VS Code</h2>
       <div class="urlbox"><span class="js-copy">code.visualstudio.com</span><button class="copy" onclick="copyText(this)">Copy</button></div>
       <div class="os"><b>🍎 Mac</b> Download <b>Universal</b>, open it, drag Visual Studio Code into your <b>Applications</b> folder, then open it. If you see "are you sure you want to open it," click <b>Open</b>.</div>
+      <div class="fallback">If Universal won't open, pick <b>Apple Silicon</b> (M1/M2/M3) or <b>Intel</b> instead, check under Apple menu → About This Mac → Chip.</div>
       <div class="os"><b>🪟 Windows</b> Download the <b>64-bit User Installer</b>, run it, and open VS Code. If you see "Windows protected your PC," click <b>More info → Run anyway</b>.</div>
     </div>
 
@@ -110,6 +121,37 @@
     </div>
 
     <div class="done">🎉 <b>Open your live URL.</b> That's a real app on the internet, built by asking. Want to do this yourself, step by step? That's exactly what we do inside the Leveraging AI community.</div>
+
+    <div class="faq">
+      <h2>Troubleshoot &amp; FAQ</h2>
+
+      <details><summary>VS Code won't install or open (Mac)</summary>
+        <div class="a">Skip Universal and download the one that matches your Mac: <b>Apple Silicon</b> (M1/M2/M3) or <b>Intel</b>. Not sure which? Apple menu → <b>About This Mac</b> → look at "Chip."</div></details>
+
+      <details><summary>I don't see Claude anywhere</summary>
+        <div class="a">Click the <b>Claude icon in the left sidebar</b>, or open the Command Palette (<code>Cmd+Shift+P</code> / <code>Ctrl+Shift+P</code>) and type "Claude Code." You do not need a file open.</div></details>
+
+      <details><summary>It says a command is "not recognized" or "not found"</summary>
+        <div class="a">Close the terminal and open a fresh one (<b>Terminal → New Terminal</b>), then try again. It just needs a restart to see what was installed.</div></details>
+
+      <details><summary>Claude keeps asking me to approve things</summary>
+        <div class="a">That's normal and safe. Just say <b>Yes / Approve</b> to everything it asks so it can keep working.</div></details>
+
+      <details><summary>An install looks frozen or is taking forever</summary>
+        <div class="a">That's normal, especially on Mac. Let it run and don't touch it. Big installs (like Node) can take a few minutes.</div></details>
+
+      <details><summary>A browser window opened asking me to log in</summary>
+        <div class="a">That's Vercel. Log in (or sign up, it's free) to your Vercel account, then come back to VS Code. Claude will keep going.</div></details>
+
+      <details><summary>I got a security warning opening the app</summary>
+        <div class="a"><b>Mac:</b> "are you sure you want to open it?" → click <b>Open</b>. <b>Windows:</b> "Windows protected your PC" → click <b>More info → Run anyway</b>.</div></details>
+
+      <details><summary>It finished but I don't see my URL</summary>
+        <div class="a">Ask Claude: <b>"Did it deploy? Give me the live URL."</b> It will hand you the link.</div></details>
+
+      <details><summary>Do I have to pay for anything?</summary>
+        <div class="a">Just your <b>Claude Code subscription</b>. VS Code, a Vercel account (free tier), and everything Claude installs are all free.</div></details>
+    </div>
   </div>
 
   <footer>Dr. Erin Jacques · Leveraging AI</footer>
