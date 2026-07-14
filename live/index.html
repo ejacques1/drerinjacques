@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Live Build Session — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547;
+    --gold:#F4B02E; --ink:#1c2733; --muted:#5f6b7a;
+    --bg:#F6F5F1; --card:#ffffff; --line:#e7e3d9;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .top{background:var(--navy);color:#fff;padding:26px 20px;}
+  .top .in{max-width:720px;margin:0 auto;}
+  .brand{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.9rem;}
+  .brand b{color:var(--gold);}
+  h1{margin:.35em 0 .1em;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:900;letter-spacing:-.02em;}
+  .top p{margin:.2em 0 0;color:#bcccdf;font-size:1.02rem;}
+  .wrap{max-width:720px;margin:0 auto;padding:24px 20px 80px;}
+  .prep{background:rgba(244,176,43,.14);border:1px solid var(--gold);border-radius:12px;padding:14px 18px;margin:22px 0;font-weight:600;}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:16px 0;}
+  .step h2{margin:0 0 4px;font-size:1.25rem;display:flex;align-items:baseline;gap:12px;}
+  .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;background:var(--navy);color:var(--gold);
+     border-radius:50%;font-size:.95rem;font-weight:900;flex:none;}
+  .os{display:block;margin:10px 0 0;padding-left:2px;}
+  .os b{display:inline-block;background:#eef2f8;color:var(--navy);border-radius:6px;padding:1px 8px;font-size:.82rem;margin-right:8px;}
+  .same{color:var(--muted);font-size:.92rem;font-style:italic;margin-top:6px;}
+  .prompt{margin-top:12px;background:#0f2748;border-radius:12px;padding:14px 16px;position:relative;}
+  .prompt .lbl{color:var(--gold);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
+  .prompt .ptext{color:#eaf1fb;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.98rem;line-height:1.45;padding-right:70px;}
+  .copy{position:absolute;top:12px;right:12px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;
+        padding:7px 12px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .done{background:var(--navy);color:#fff;border-radius:16px;padding:20px 22px;margin-top:20px;}
+  .done b{color:var(--gold);}
+  footer{max-width:720px;margin:0 auto;padding:0 20px 60px;color:var(--muted);font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="top"><div class="in">
+    <div class="brand">Leveraging <b>AI</b></div>
+    <h1>Live Build Session</h1>
+    <p>Follow along. By the end you'll have a real app live on the internet.</p>
+  </div></div>
+
+  <div class="wrap">
+    <div class="prep">Come with: your <b>Claude Code subscription</b>. That's it, we'll do the rest together.</div>
+
+    <div class="step">
+      <h2><span class="n">1</span> Install VS Code</h2>
+      <div class="os"><b>🍎 Mac</b> Go to code.visualstudio.com, download <b>Universal</b>, open it, drag Visual Studio Code into your <b>Applications</b> folder, then open it. If you see "are you sure you want to open it," click <b>Open</b>.</div>
+      <div class="os"><b>🪟 Windows</b> Download the <b>64-bit User Installer</b>, run it, and open VS Code. If you see "Windows protected your PC," click <b>More info → Run anyway</b>.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">2</span> Install the Claude Code extension</h2>
+      <p>Click the <b>Extensions</b> icon on the left sidebar, search <b>Claude Code</b>, and install the one by <b>Anthropic</b> (blue check). Then sign in with your Claude account.</p>
+      <div class="same">Same on Mac and Windows.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">3</span> Create a free Vercel account</h2>
+      <p>Go to <b>vercel.com</b>, sign up with <b>email or Google</b> (not GitHub). Nothing to download.</p>
+      <div class="same">Same on Mac and Windows.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">4</span> Open a fresh folder</h2>
+      <p><b>File → Open Folder</b>, make a new empty folder on your Desktop (like <b>my-app</b>), and open it.</p>
+      <div class="same">Same on Mac and Windows.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">5</span> Open Claude Code</h2>
+      <p>Click the <b>Claude icon in the left sidebar</b> (you don't need a file open), or open the Command Palette (<b>Cmd+Shift+P</b> on Mac / <b>Ctrl+Shift+P</b> on Windows) and type "Claude Code."</p>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">6</span> Build it</h2>
+      <p>Paste this into Claude and swap in your idea:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt 1 — Build</div>
+        <div class="ptext">Build me a simple [your idea] as an index.html web app.</div>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">7</span> Put it live</h2>
+      <p>Paste this into Claude. Approve each step as it installs what it needs, then log into Vercel in the browser when it asks. You'll get a live URL.</p>
+      <div class="prompt">
+        <div class="lbl">Prompt 2 — Deploy</div>
+        <div class="ptext">Deploy this to Vercel.</div>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+    </div>
+
+    <div class="done">🎉 <b>Open your live URL.</b> That's a real app on the internet, built by asking. Want to do this yourself, step by step? That's exactly what we do inside the Leveraging AI community.</div>
+  </div>
+
+  <footer>Dr. Erin Jacques · Leveraging AI</footer>
+
+<script>
+  function copyText(btn){
+    var t = btn.parentElement.querySelector('.ptext').innerText;
+    navigator.clipboard.writeText(t).then(function(){
+      var o = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = o; }, 1500);
+    });
+  }
+</script>
+</body>
+</html>
