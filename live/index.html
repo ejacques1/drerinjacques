@@ -33,6 +33,8 @@
   .os b{display:inline-block;background:#eef2f8;color:var(--navy);border-radius:6px;padding:1px 8px;font-size:.82rem;margin-right:8px;}
   .fallback{color:var(--muted);font-size:.9rem;margin-top:6px;}
   .same{color:var(--muted);font-size:.92rem;font-style:italic;margin-top:6px;}
+  .tip{background:rgba(244,176,43,.16);border-left:4px solid var(--gold);border-radius:8px;padding:11px 14px;margin-top:12px;font-size:.96rem;}
+  .tip b{color:var(--navy);}
   .urlbox{display:inline-flex;align-items:center;gap:10px;background:#eef2f8;border:1px solid var(--line);border-radius:10px;
           padding:7px 8px 7px 14px;margin-top:10px;}
   .urlbox .js-copy{font-family:var(--mono);color:var(--navy);font-weight:700;font-size:.98rem;}
@@ -79,6 +81,7 @@
     <div class="step">
       <h2><span class="n">2</span> Install the Claude Code extension</h2>
       <p>Click the <b>Extensions</b> icon on the left sidebar, search <b>Claude Code</b>, install the one by <b>Anthropic</b> (blue check), then sign in with your Claude account.</p>
+      <div class="tip">👉 If the extension page shows an <b>Enable</b> or <b>Enable (Workspace)</b> button, <b>click it.</b> A disabled extension won't show its icon, this is the #1 reason the Claude sunburst doesn't appear.</div>
       <div class="same">Same on Mac and Windows.</div>
     </div>
 
@@ -128,8 +131,8 @@
       <details><summary>VS Code won't install or open (Mac)</summary>
         <div class="a">Skip Universal and download the one that matches your Mac: <b>Apple Silicon</b> (M1/M2/M3) or <b>Intel</b>. Not sure which? Apple menu → <b>About This Mac</b> → look at "Chip."</div></details>
 
-      <details><summary>I don't see Claude anywhere</summary>
-        <div class="a">Click the <b>Claude icon in the left sidebar</b>, or open the Command Palette (<code>Cmd+Shift+P</code> / <code>Ctrl+Shift+P</code>) and type "Claude Code." You do not need a file open.</div></details>
+      <details><summary>I don't see the Claude sunburst / icon</summary>
+        <div class="a">Open the <b>Extensions</b> panel (four squares) and click <b>Claude Code</b>. If it shows an <b>Enable</b> or <b>Enable (Workspace)</b> button, <b>click it</b>, a disabled extension won't show its icon. Then the sunburst appears in the left sidebar on its own (you don't need a file open). If asked to trust the folder or reload, say yes.</div></details>
 
       <details><summary>It says a command is "not recognized" or "not found"</summary>
         <div class="a">Just tell Claude: <b>"Restart the terminal and try again."</b> This usually happens right after Claude installs something new, and a quick restart fixes it. Claude handles it, you don't need to type anything yourself.</div></details>
