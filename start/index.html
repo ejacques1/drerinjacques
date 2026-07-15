@@ -10,6 +10,7 @@
     --navy:#0A2547; --navy2:#0E2E57;
     --gold:#F4B02E; --cream:#F6F5F1;
     --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
   }
   *{box-sizing:border-box;}
   body{margin:0;background:var(--navy);color:#fff;font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
@@ -25,6 +26,8 @@
   .lead{font-size:clamp(1.15rem,2.6vw,1.5rem);color:#dbe6f3;font-weight:600;margin:0 0 20px;}
   p{font-size:clamp(1.02rem,2.2vw,1.2rem);color:#cdd9e8;margin:0 0 16px;max-width:70ch;}
   p b, li b{color:#fff;}
+  .note{font-size:1rem;color:#9fb3cc;}
+  .note b{color:var(--gold);}
   ul{list-style:none;padding:0;margin:0 0 8px;}
   li{font-size:clamp(1.05rem,2.3vw,1.28rem);color:#e6eef8;padding:12px 0 12px 34px;position:relative;border-bottom:1px solid rgba(255,255,255,.08);}
   li:last-child{border-bottom:none;}
@@ -35,6 +38,14 @@
   .btn.ghost{background:transparent;color:var(--gold);border:2px solid var(--gold);}
   .big{font-size:clamp(1.8rem,5vw,3rem);font-weight:900;letter-spacing:-.02em;line-height:1.1;margin:0 0 8px;}
   .close-line{font-size:clamp(1.15rem,2.6vw,1.45rem);color:#fff;font-weight:700;margin:22px 0 8px;}
+  .urlbig{display:inline-block;background:var(--navy2);border:2px solid var(--gold);border-radius:14px;padding:16px 26px;
+          font-family:var(--mono);font-size:clamp(1.15rem,3.2vw,1.7rem);font-weight:800;color:var(--gold);margin:8px 0 4px;}
+  .domino{background:var(--navy2);border-left:6px solid var(--gold);border-radius:14px;padding:28px 26px;}
+  .domino p{font-size:clamp(1.2rem,2.9vw,1.6rem);color:#fff;font-weight:700;margin:0;max-width:60ch;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:6px 0 18px;}
+  .card{background:var(--navy2);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:20px;}
+  .card h3{margin:0 0 6px;font-size:1.2rem;color:var(--gold);font-weight:900;}
+  .card p{font-size:1rem;margin:0;color:#bcccdf;}
   .invite{background:var(--navy2);border:1px solid rgba(244,176,43,.45);border-radius:18px;padding:38px 30px;text-align:center;}
   .invite .big{margin-bottom:12px;}
   .invite p{margin:0 auto 6px;}
@@ -56,45 +67,82 @@
     <section class="hero">
       <h1>Today, you build the <span>foundation of your app</span>. Live.</h1>
       <p class="lead">A real landing page, live on the internet, in one sitting. No code. No experience. Just you, your expertise, and the next hour.</p>
-      <p>The people winning right now are not the best coders. They are the experts. The coaches, teachers, and consultants who turned what they know into something people pay for. That is you.</p>
+      <p class="note">This is exactly what we do inside the <b>Leveraging AI</b> community, where a group of experts are building their platforms together. You're invited at the end.</p>
     </section>
 
     <section>
-      <div class="kicker">What we're doing today</div>
-      <h2>Two tools. That's it.</h2>
-      <ul>
-        <li><b>VS Code</b><span class="sub">The workspace where we build.</span></li>
-        <li><b>Claude Code</b><span class="sub">The AI that does the building. You talk, it builds.</span></li>
-      </ul>
-      <p>You might see it install a couple of behind-the-scenes tools (names like <b>Node</b> and the <b>CLI</b>). You do not need to know what they are. Claude installs them for you. Your only job today is to follow along and say <b>yes</b> when it asks.</p>
+      <div class="kicker">Do this first</div>
+      <h2>Start your download now.</h2>
+      <p>It takes a few minutes. While it downloads, let me tell you what this is actually about.</p>
+      <div class="urlbig">code.visualstudio.com</div>
     </section>
 
     <section>
-      <div class="kicker">So what you walk away with</div>
-      <h2>The foundation of your app, live on the internet.</h2>
-      <p>A real landing page, on a real URL, built around your expertise. Not a mockup. The first real piece of your application, and you built it yourself, today.</p>
-      <p>An hour ago this felt out of reach. By the end of this call you will have built it with your own hands. And that is the part that changes everything: <b>you will know you can.</b></p>
+      <div class="kicker">Who I am</div>
+      <h2>I'm a professor. And I love my job.</h2>
+      <p>I'm not here to tell you to quit anything.</p>
+      <p>But I kept looking at my own skill set thinking, <b>this has real value out in the market. Why am I not taking it there?</b></p>
+      <p>Here's where I got stuck. To build something real, I needed a developer, a budget, and about a year. So it just sat there. I had expertise that was worth money, and it was earning nothing.</p>
+      <p class="close-line">Then I realized I didn't need any of that. I could build it myself, by talking to AI.</p>
+      <p>The epiphany wasn't "I can code." It was <b>I don't have to.</b></p>
     </section>
 
     <section>
-      <div class="kicker">Step 4</div>
+      <div class="kicker">And I didn't do it once</div>
+      <h2>I've built this three times.</h2>
+      <div class="cards">
+        <div class="card"><h3>Early Scholars</h3><p>Where it started.</p></div>
+        <div class="card"><h3>Chatify</h3><p>A $29/month subscription platform.</p></div>
+        <div class="card"><h3>CHES</h3><p>A test preparation platform.</p></div>
+      </div>
+      <p>I am not a developer. I built these by talking to AI. And then I started helping other people build theirs.</p>
+      <p><b>So when I tell you this works, I'm not theorizing.</b> I've built it, and I've watched other people build it.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Before we go further</div>
+      <h2>It is not your fault you haven't done this yet.</h2>
+      <p>Until recently, you literally couldn't. It required a developer, a budget, and a year. The tool did not exist.</p>
+      <p class="close-line">You weren't behind. You were early.</p>
+      <p>And here's the part that stings: you've watched people who know less than you out-earn you. Not because they knew more. <b>Because they packaged it and you didn't.</b></p>
+    </section>
+
+    <section>
+      <div class="kicker">The one thing</div>
+      <div class="domino">
+        <p>The expertise you already have can be a subscription platform that pays you every month. And you can build it yourself, right now, without code.</p>
+      </div>
+      <p style="margin-top:20px;">If that's true, everything else is just details.</p>
+    </section>
+
+    <section>
+      <div class="kicker">The proof</div>
+      <h2>This is actively happening right now.</h2>
+      <p>Real apps. Real monthly revenue. <b>Verified through their payment processor,</b> because sellers have to show their books.</p>
+      <p>You suspected this was hype. It isn't. There's an entire market of people buying and selling these.</p>
+      <p class="close-line">This isn't just income. These are assets. People buy them the way people buy real estate.</p>
+      <p><b>Nobody on that screen is smarter than you. They just built.</b></p>
+      <a class="btn ghost" href="https://trustmrr.com" target="_blank">Open TrustMRR →</a>
+    </section>
+
+    <section>
+      <div class="kicker">Your download should be done</div>
       <div class="big">Now let's start building.</div>
       <p>Open the build guide and follow along with me, step by step.</p>
       <a class="btn" href="https://drerinjacques.com/live">Open the Build Guide →</a>
     </section>
 
     <section>
-      <div class="kicker">Where this becomes a business</div>
-      <h2>That first app is just step one.</h2>
-      <p>Here is where it goes from here, together:</p>
+      <div class="kicker">So here's what we just did</div>
+      <h2>You built the foundation.</h2>
+      <p>You installed the tools, you talked to AI, and you put a real page on the internet with your own URL. An hour ago that felt out of reach.</p>
+      <p class="close-line">Now here's what we need to do next.</p>
       <ul>
-        <li><b>Logins</b><span class="sub">So your people have real accounts.</span></li>
+        <li><b>Logins</b><span class="sub">So your people have real accounts. That's what makes it a platform instead of a page.</span></li>
         <li><b>A database</b><span class="sub">So your platform remembers your users and their progress.</span></li>
         <li><b>Payments</b><span class="sub">So you can charge a subscription and actually get paid.</span></li>
       </ul>
-      <p>That is where the income comes from. Regular experts are doing this right now, charging monthly, building real recurring income.</p>
-      <p class="close-line">Today is your proof that you can build. What comes next is where it becomes a business.</p>
-      <p>That is exactly what we build together, step by step, inside the community.</p>
+      <p>That is where the income comes from. And that is exactly what we build together, step by step, inside the community.</p>
     </section>
 
     <section>
