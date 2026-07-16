@@ -40,6 +40,7 @@
   .card{background:var(--navy2);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:20px;}
   .card h3{margin:0 0 6px;font-size:1.2rem;color:var(--gold);font-weight:900;}
   .card p{font-size:1rem;margin:0;color:#bcccdf;}
+  .cmd{display:inline-block;background:#0b1f3d;border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:12px 16px;font-family:var(--mono);color:#eaf1fb;font-size:clamp(.9rem,2vw,1.05rem);margin:8px 0 2px;}
   .pull{background:var(--navy2);border-left:6px solid var(--gold);border-radius:14px;padding:24px 26px;}
   .pull p{font-size:clamp(1.15rem,2.7vw,1.5rem);color:#fff;font-weight:700;margin:0;max-width:62ch;}
   footer{padding:30px 0 60px;color:#8ea3bd;font-size:.9rem;}
@@ -80,13 +81,14 @@
     <section>
       <div class="kicker">Step 2</div>
       <h2>Capture the designs you love.</h2>
-      <p>Once you find platforms whose format you like, capture the design so Claude can build from it. The tool for this is <b>Skill UI</b>.</p>
+      <p>Once you find platforms whose format you like, capture the design so Claude can build from it. The tool for this is <b>SkillUI</b>. It's free, no API key, and it's a simple command you run.</p>
       <ul>
-        <li><b>Point Skill UI at a site you like</b><span class="sub">It gives you back a markdown file of that site's structure.</span></li>
-        <li><b>Markdown is just plain text</b><span class="sub">A simple version of a page's content and layout. Nothing technical. It's what Claude reads best.</span></li>
-        <li><b>Feed the markdown + screenshots into Claude</b><span class="sub">You're not describing your design from scratch. You're showing it.</span></li>
+        <li><b>Point it at a site with one command</b><span class="sub">It pulls that site's colors, fonts, spacing, and layout into design files, plus screenshots.</span></li>
+        <li><b>Those files are plain markdown</b><span class="sub">A simple version of the design. Nothing technical. It's the format Claude reads and builds from best.</span></li>
+        <li><b>Open the folder with Claude</b><span class="sub">Claude reads them automatically and builds in that style. You're not describing your design from scratch. You're showing it.</span></li>
       </ul>
-      <a class="btn ghost" href="#" target="_blank">Open Skill UI →</a>
+      <div class="cmd">skillui --url yoursite.com --mode ultra</div>
+      <a class="btn ghost" href="https://skillui.vercel.app" target="_blank">Open SkillUI →</a>
     </section>
 
     <section>
