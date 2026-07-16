@@ -38,6 +38,12 @@
   .plat .why{margin:0 0 10px;}
   .plat .yours{background:rgba(244,176,43,.13);border-left:4px solid var(--gold);border-radius:8px;padding:12px 14px;margin:0;
                font-size:clamp(1rem,2.1vw,1.12rem);color:#fff;}
+  .term{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(244,176,43,.5);border-radius:20px;
+        padding:4px 14px;margin:0 0 12px;font-size:.85rem;font-weight:800;color:var(--gold);letter-spacing:.04em;}
+  .term span{color:#bcccdf;font-weight:600;}
+  .prompt{background:#0b1f3d;border:1px solid rgba(244,176,43,.4);border-radius:12px;padding:16px 18px;margin:12px 0 0;}
+  .prompt .lbl{color:var(--gold);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
+  .prompt .ptext{color:#eaf1fb;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:clamp(.92rem,1.9vw,1.02rem);line-height:1.5;display:block;}
   .warn{background:var(--navy2);border:2px solid var(--gold);border-radius:16px;padding:28px 26px;}
   .warn .big{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;color:var(--gold);margin:0 0 10px;letter-spacing:-.02em;}
   .warn p{margin:0 0 10px;}
@@ -54,15 +60,21 @@
       <h1>What great platforms do, <span>and why it works</span>.</h1>
       <p class="lead">Steal the mechanism, not the look.</p>
       <p>You're building a subscription. A subscription only works if people <b>come back</b>. Nobody pays for month two if they never returned after month one. Building it is one job. Getting people to come back is the actual business.</p>
+      <p>These four are called <b>retention mechanics</b>. Each one has a real engineering name, and I'll give you those too, because underneath, all four are the same thing: <b>reading and writing your users' progress to a database.</b> That's why none of them are possible until Video 4.</p>
     </section>
 
     <section>
       <div class="kicker">Platform 1</div>
       <div class="plat">
         <h3>Netflix</h3>
+        <div class="term">Persisted progress state <span>· "resume"</span></div>
         <p class="does">Pick up where you left off.</p>
         <p class="why"><b>Why it works:</b> it removes the decision. You never open Netflix and face a blank screen wondering where to start. It already knows, and it hands it back to you.</p>
         <p class="yours"><b>On your platform:</b> they log in and see "Welcome back, here's lesson three." No deciding. No friction. Coming back is easy.</p>
+        <div class="prompt">
+          <div class="lbl">Copy this · swap in your expertise</div>
+          <span class="ptext">I'm building a [platform type] for [your expertise/audience]. I want to add a persistent progress state, the Netflix "continue watching" pattern, so people pick up right where they left off. Based on what I'm building, suggest 2 or 3 ways this could work for my users, tell me what I'd need to store to make it happen, and recommend which one you'd pick and why. Don't build it yet.</span>
+        </div>
       </div>
     </section>
 
@@ -70,9 +82,14 @@
       <div class="kicker">Platform 2</div>
       <div class="plat">
         <h3>Spotify</h3>
+        <div class="term">Aggregation query <span>· a "rollup" of their activity</span></div>
         <p class="does">Show them their progress.</p>
         <p class="why"><b>Why it works:</b> Wrapped reflects your own progress back to you. It makes you feel seen and tells you a story about who you are. People post it everywhere.</p>
         <p class="yours"><b>On your platform:</b> "You've finished four lessons this month. You're 60% through." People stay when they can <b>see</b> they're getting somewhere. When progress is invisible, people quit.</p>
+        <div class="prompt">
+          <div class="lbl">Copy this · swap in your expertise</div>
+          <span class="ptext">I'm building a [platform type] for [your expertise/audience]. I want to add progress visualization, the Spotify recap pattern, so people can see how far they've come. Based on what I'm building, suggest 2 or 3 ways this could work for my users, tell me what I'd need to store and total up to make it happen, and recommend which one you'd pick and why. Don't build it yet.</span>
+        </div>
       </div>
     </section>
 
@@ -80,9 +97,14 @@
       <div class="kicker">Platform 3</div>
       <div class="plat">
         <h3>Duolingo</h3>
+        <div class="term">Counter with a reset rule <span>· a "derived field"</span></div>
         <p class="does">Streaks.</p>
         <p class="why"><b>Why it works:</b> it's not that people want a streak. It's that people won't break one they already have. That's loss aversion. Losing something hurts more than gaining it felt good.</p>
         <p class="yours"><b>On your platform:</b> "You've been here three days in a row." Now they have something to protect.</p>
+        <div class="prompt">
+          <div class="lbl">Copy this · swap in your expertise</div>
+          <span class="ptext">I'm building a [platform type] for [your expertise/audience]. I want to add a streak counter, the Duolingo pattern, so people keep showing up. Based on what I'm building, suggest 2 or 3 ways this could work for my users, tell me what should count as "showing up" and what should break the streak, and recommend which one you'd pick and why. Don't build it yet.</span>
+        </div>
       </div>
     </section>
 
@@ -90,9 +112,14 @@
       <div class="kicker">Platform 4</div>
       <div class="plat">
         <h3>Brilliant</h3>
+        <div class="term">Interactive component <span>· input + scoring logic</span></div>
         <p class="does">Make them do something.</p>
         <p class="why"><b>Why it works:</b> doing feels like progress. Watching feels like consuming. People quit things they consume, but they stay with things they're getting better at.</p>
         <p class="yours"><b>On your platform:</b> this one matters most for you. Experts default to teaching by talking, so the temptation is a video library. But a quiz or a practice rep will keep people longer than your best lecture.</p>
+        <div class="prompt">
+          <div class="lbl">Copy this · swap in your expertise</div>
+          <span class="ptext">I'm building a [platform type] for [your expertise/audience]. I want to add an interactive component, the Brilliant pattern, where people do something instead of just watching. Based on what I'm building, suggest 2 or 3 ways this could work for my users, tell me what I'd need to capture and score to make it happen, and recommend which one you'd pick and why. Don't build it yet.</span>
+        </div>
       </div>
     </section>
 
