@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Week 2 · Video 2 — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --navy2:#0E2E57;
+    --gold:#F4B02E;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--navy);color:#fff;font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.85rem;color:#bcccdf;}
+  .brand b{color:var(--gold);}
+  .kicker{color:var(--gold);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;margin-bottom:14px;}
+  section{padding:52px 0;border-top:1px solid rgba(255,255,255,.12);}
+  section.hero{border-top:none;padding:44px 0 56px;}
+  h1{font-size:clamp(2.1rem,5.4vw,3.4rem);font-weight:900;letter-spacing:-.025em;line-height:1.06;margin:0 0 18px;}
+  h1 span{color:var(--gold);}
+  h2{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:900;letter-spacing:-.02em;margin:0 0 20px;}
+  .lead{font-size:clamp(1.15rem,2.6vw,1.5rem);color:#dbe6f3;font-weight:600;margin:0 0 8px;}
+  p{font-size:clamp(1.02rem,2.2vw,1.2rem);color:#cdd9e8;margin:0 0 16px;max-width:70ch;}
+  p b, li b{color:#fff;}
+  ul{list-style:none;padding:0;margin:0 0 8px;}
+  li{font-size:clamp(1.05rem,2.3vw,1.28rem);color:#e6eef8;padding:12px 0 12px 34px;position:relative;border-bottom:1px solid rgba(255,255,255,.08);}
+  li:last-child{border-bottom:none;}
+  li::before{content:"";position:absolute;left:2px;top:20px;width:12px;height:12px;background:var(--gold);border-radius:50%;}
+  li .sub{display:block;color:#aebfd4;font-size:.92em;font-weight:400;margin-top:2px;}
+  .pull{background:var(--navy2);border-left:6px solid var(--gold);border-radius:14px;padding:24px 26px;}
+  .pull p{font-size:clamp(1.15rem,2.7vw,1.5rem);color:#fff;font-weight:700;margin:0;max-width:62ch;}
+  .plat{background:var(--navy2);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:24px 26px;margin:14px 0;}
+  .plat h3{margin:0 0 4px;font-size:clamp(1.3rem,3vw,1.7rem);color:var(--gold);font-weight:900;}
+  .plat .does{font-size:clamp(1.05rem,2.3vw,1.25rem);color:#fff;font-weight:700;margin:0 0 12px;}
+  .plat .why{margin:0 0 10px;}
+  .plat .yours{background:rgba(244,176,43,.13);border-left:4px solid var(--gold);border-radius:8px;padding:12px 14px;margin:0;
+               font-size:clamp(1rem,2.1vw,1.12rem);color:#fff;}
+  .warn{background:var(--navy2);border:2px solid var(--gold);border-radius:16px;padding:28px 26px;}
+  .warn .big{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;color:var(--gold);margin:0 0 10px;letter-spacing:-.02em;}
+  .warn p{margin:0 0 10px;}
+  .warn p:last-child{margin:0;}
+  footer{padding:30px 0 60px;color:#8ea3bd;font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">Leveraging <b>AI</b> · Week 2 · Video 2</div>
+
+    <section class="hero">
+      <div class="kicker">Week 2 — Build</div>
+      <h1>What great platforms do, <span>and why it works</span>.</h1>
+      <p class="lead">Steal the mechanism, not the look.</p>
+      <p>You're building a subscription. A subscription only works if people <b>come back</b>. Nobody pays for month two if they never returned after month one. Building it is one job. Getting people to come back is the actual business.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Platform 1</div>
+      <div class="plat">
+        <h3>Netflix</h3>
+        <p class="does">Pick up where you left off.</p>
+        <p class="why"><b>Why it works:</b> it removes the decision. You never open Netflix and face a blank screen wondering where to start. It already knows, and it hands it back to you.</p>
+        <p class="yours"><b>On your platform:</b> they log in and see "Welcome back, here's lesson three." No deciding. No friction. Coming back is easy.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="kicker">Platform 2</div>
+      <div class="plat">
+        <h3>Spotify</h3>
+        <p class="does">Show them their progress.</p>
+        <p class="why"><b>Why it works:</b> Wrapped reflects your own progress back to you. It makes you feel seen and tells you a story about who you are. People post it everywhere.</p>
+        <p class="yours"><b>On your platform:</b> "You've finished four lessons this month. You're 60% through." People stay when they can <b>see</b> they're getting somewhere. When progress is invisible, people quit.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="kicker">Platform 3</div>
+      <div class="plat">
+        <h3>Duolingo</h3>
+        <p class="does">Streaks.</p>
+        <p class="why"><b>Why it works:</b> it's not that people want a streak. It's that people won't break one they already have. That's loss aversion. Losing something hurts more than gaining it felt good.</p>
+        <p class="yours"><b>On your platform:</b> "You've been here three days in a row." Now they have something to protect.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="kicker">Platform 4</div>
+      <div class="plat">
+        <h3>Brilliant</h3>
+        <p class="does">Make them do something.</p>
+        <p class="why"><b>Why it works:</b> doing feels like progress. Watching feels like consuming. People quit things they consume, but they stay with things they're getting better at.</p>
+        <p class="yours"><b>On your platform:</b> this one matters most for you. Experts default to teaching by talking, so the temptation is a video library. But a quiz or a practice rep will keep people longer than your best lecture.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="kicker">Read this twice</div>
+      <div class="warn">
+        <div class="big">This is a menu, not a checklist.</div>
+        <p>That was four things. <b>You are not building four things.</b> Pick two, maybe three, for your first version.</p>
+        <p>Build all of it and you'll spend three months building and launch nothing. Better to launch with one great retention piece than spend a season perfecting four.</p>
+        <p>You can always add more later. <b>You can't get back the months you spent not launching.</b></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="kicker">Your job before the next video</div>
+      <h2>Pick two or three. Know why.</h2>
+      <p>Ask one question: <b>what makes my people come back?</b> Then match the mechanism to your actual problem, not to whatever sounds coolest.</p>
+      <ul>
+        <li><b>Your thing is long</b><span class="sub">Pick "continue where you left off." Your problem is people losing their place.</span></li>
+        <li><b>Your thing is a habit</b><span class="sub">Pick streaks. Your problem is consistency.</span></li>
+        <li><b>Your thing is a skill</b><span class="sub">Pick active learning. Your problem is people watching instead of practicing.</span></li>
+        <li><b>Your people need momentum</b><span class="sub">Pick the progress recap. Your problem is progress feeling invisible.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="kicker">By the end of this video</div>
+      <h2>Here's where you should be.</h2>
+      <ul>
+        <li>You know what you're building (from Video 1).</li>
+        <li>You know the two or three things that will make people come back and keep paying.</li>
+        <li>You know <b>why</b> each one works, so you can apply it to your expertise.</li>
+      </ul>
+      <p style="margin-top:16px;">Next video: we stop planning and start building. You'll feed all of this into Claude and watch it build your platform, live.</p>
+    </section>
+
+    <footer>Dr. Erin Jacques · Leveraging AI</footer>
+  </div>
+</body>
+</html>
