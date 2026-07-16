@@ -85,17 +85,20 @@
     <section>
       <div class="kicker">Step 2</div>
       <h2>Capture the designs you love.</h2>
-      <p>Once you find platforms whose format you like, capture the design so Claude can build from it. The tool for this is <b>SkillUI</b>. It's free, no API key, and it's a simple command you run.</p>
-      <ul>
-        <li><b>Point it at a site with one command</b><span class="sub">It pulls that site's colors, fonts, spacing, and layout into design files, plus screenshots.</span></li>
-        <li><b>Those files are plain markdown</b><span class="sub">A simple version of the design. Nothing technical. It's the format Claude reads and builds from best.</span></li>
-        <li><b>Open the folder with Claude</b><span class="sub">Claude reads them automatically and builds in that style. You're not describing your design from scratch. You're showing it.</span></li>
-      </ul>
-      <p style="margin-top:22px;">The easiest way, no terminal: paste this into Claude and let it do the whole thing.</p>
+      <p>Capture the designs so Claude can build from them. The tool is <b>SkillUI</b>, free, no API key. It turns any site into <b>markdown design files</b> Claude can read. The trick: capture a <b>few</b> sites, then pull the best parts of each. You're not cloning anyone, you're assembling your own look.</p>
+
+      <p style="margin-top:20px;"><b>Move 1 — Capture 2 or 3 sites you like.</b> Paste into Claude:</p>
       <div class="prompt">
         <div class="lbl">Paste into Claude</div>
-        <span class="ptext">Install SkillUI and run it on [paste a website you want to model]. Then use the design it captures to build my landing page in that style with my content. Make all reasonable choices yourself and don't ask me questions.</span>
+        <span class="ptext">Install the SkillUI CLI (npm package skillui, from github.com/amaancoderx/npxskillui) and run it on these sites, keeping each one's design files separate: [site one], [site two], [site three].</span>
       </div>
+
+      <p style="margin-top:20px;"><b>Move 2 — Compose. Tell Claude what to pull from where.</b> Paste into Claude:</p>
+      <div class="prompt">
+        <div class="lbl">Paste into Claude</div>
+        <span class="ptext">Using those SkillUI design files, build my landing page. Take the overall layout from [site one], the colors and fonts from [site two], and the pricing section style from [site three]. Use my content. Make reasonable choices and don't ask me questions.</span>
+      </div>
+
       <a class="btn ghost" href="https://skillui.vercel.app" target="_blank">Open SkillUI →</a>
     </section>
 
