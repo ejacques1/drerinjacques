@@ -41,6 +41,9 @@
   .card h3{margin:0 0 6px;font-size:1.2rem;color:var(--gold);font-weight:900;}
   .card p{font-size:1rem;margin:0;color:#bcccdf;}
   .cmd{display:inline-block;background:#0b1f3d;border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:12px 16px;font-family:var(--mono);color:#eaf1fb;font-size:clamp(.9rem,2vw,1.05rem);margin:8px 0 2px;}
+  .prompt{background:#0b1f3d;border:1px solid rgba(244,176,43,.4);border-radius:12px;padding:16px 18px;margin:14px 0 2px;position:relative;}
+  .prompt .lbl{color:var(--gold);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
+  .prompt .ptext{color:#eaf1fb;font-family:var(--mono);font-size:clamp(.95rem,2vw,1.08rem);line-height:1.5;display:block;}
   .pull{background:var(--navy2);border-left:6px solid var(--gold);border-radius:14px;padding:24px 26px;}
   .pull p{font-size:clamp(1.15rem,2.7vw,1.5rem);color:#fff;font-weight:700;margin:0;max-width:62ch;}
   footer{padding:30px 0 60px;color:#8ea3bd;font-size:.9rem;}
@@ -55,6 +58,7 @@
       <div class="kicker">Week 2 — Build</div>
       <h1>Reverse-engineer, and <span>decide what to build</span>.</h1>
       <p class="lead">Find proven ideas. Capture the designs you love. Lock in exactly what you're building.</p>
+      <p>By the end of this, you'll know how to build the kind of site people charge <b style="color:#fff;">$10,000</b> for. Not basic, AI-looking landing pages. Premium, clean, and built around your expertise.</p>
     </section>
 
     <section>
@@ -87,7 +91,11 @@
         <li><b>Those files are plain markdown</b><span class="sub">A simple version of the design. Nothing technical. It's the format Claude reads and builds from best.</span></li>
         <li><b>Open the folder with Claude</b><span class="sub">Claude reads them automatically and builds in that style. You're not describing your design from scratch. You're showing it.</span></li>
       </ul>
-      <div class="cmd">skillui --url yoursite.com --mode ultra</div>
+      <p style="margin-top:22px;">The easiest way, no terminal: paste this into Claude and let it do the whole thing.</p>
+      <div class="prompt">
+        <div class="lbl">Paste into Claude</div>
+        <span class="ptext">Install SkillUI and run it on [paste a website you want to model]. Then use the design it captures to build my landing page in that style with my content. Make all reasonable choices yourself and don't ask me questions.</span>
+      </div>
       <a class="btn ghost" href="https://skillui.vercel.app" target="_blank">Open SkillUI →</a>
     </section>
 
