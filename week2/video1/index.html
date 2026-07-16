@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Week 2 · Video 1 — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --navy2:#0E2E57;
+    --gold:#F4B02E;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--navy);color:#fff;font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.85rem;color:#bcccdf;}
+  .brand b{color:var(--gold);}
+  .kicker{color:var(--gold);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;margin-bottom:14px;}
+  section{padding:52px 0;border-top:1px solid rgba(255,255,255,.12);}
+  section.hero{border-top:none;padding:44px 0 56px;}
+  h1{font-size:clamp(2.1rem,5.4vw,3.4rem);font-weight:900;letter-spacing:-.025em;line-height:1.06;margin:0 0 18px;}
+  h1 span{color:var(--gold);}
+  h2{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:900;letter-spacing:-.02em;margin:0 0 20px;}
+  .lead{font-size:clamp(1.15rem,2.6vw,1.5rem);color:#dbe6f3;font-weight:600;margin:0 0 8px;}
+  p{font-size:clamp(1.02rem,2.2vw,1.2rem);color:#cdd9e8;margin:0 0 16px;max-width:70ch;}
+  p b, li b{color:#fff;}
+  ul{list-style:none;padding:0;margin:0 0 8px;}
+  li{font-size:clamp(1.05rem,2.3vw,1.28rem);color:#e6eef8;padding:12px 0 12px 34px;position:relative;border-bottom:1px solid rgba(255,255,255,.08);}
+  li:last-child{border-bottom:none;}
+  li::before{content:"";position:absolute;left:2px;top:20px;width:12px;height:12px;background:var(--gold);border-radius:50%;}
+  li .sub{display:block;color:#aebfd4;font-size:.92em;font-weight:400;margin-top:2px;}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy);text-decoration:none;font-weight:900;
+       font-size:clamp(1.05rem,2.4vw,1.3rem);padding:15px 28px;border-radius:12px;margin:12px 10px 0 0;letter-spacing:-.01em;}
+  .btn.ghost{background:transparent;color:var(--gold);border:2px solid var(--gold);}
+  .refline{color:#9fb3cc;font-size:1rem;margin-top:16px;}
+  .refline b{color:#fff;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:6px 0 8px;}
+  .card{background:var(--navy2);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:20px;}
+  .card h3{margin:0 0 6px;font-size:1.2rem;color:var(--gold);font-weight:900;}
+  .card p{font-size:1rem;margin:0;color:#bcccdf;}
+  .pull{background:var(--navy2);border-left:6px solid var(--gold);border-radius:14px;padding:24px 26px;}
+  .pull p{font-size:clamp(1.15rem,2.7vw,1.5rem);color:#fff;font-weight:700;margin:0;max-width:62ch;}
+  footer{padding:30px 0 60px;color:#8ea3bd;font-size:.9rem;}
+  footer a{color:#fff;font-weight:800;text-decoration:none;border-bottom:2px solid var(--gold);}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">Leveraging <b>AI</b> · Week 2 · Video 1</div>
+
+    <section class="hero">
+      <div class="kicker">Week 2 — Build</div>
+      <h1>Reverse-engineer, and <span>decide what to build</span>.</h1>
+      <p class="lead">Find proven ideas. Capture the designs you love. Lock in exactly what you're building.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Today</div>
+      <h2>We're doing three things.</h2>
+      <ul>
+        <li><b>Find proven ideas and your competitors</b><span class="sub">Look at what's already selling and making money.</span></li>
+        <li><b>Capture the designs you like</b><span class="sub">So Claude can build from them.</span></li>
+        <li><b>Decide exactly what you're building</b><span class="sub">Your platform type and your angle.</span></li>
+      </ul>
+      <p style="color:#9fb3cc;font-size:1rem;">Not sure of your idea yet? Do the validation step in Resources first, then come back.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Step 1</div>
+      <h2>Find proven ideas + your competitors.</h2>
+      <p>Don't guess. Look at what's already selling. There are marketplaces where founders list their products with <b>real revenue attached</b>, because to buy or sell a business, the seller has to show their numbers.</p>
+      <div class="pull"><p>That makes them a window into what's actually making money, not just what sounds good.</p></div>
+      <p style="margin-top:20px;"><b>How to use them:</b> filter by revenue, study what sells and why, then reverse-engineer it and make it better. You're not copying. You're proving people already pay for this.</p>
+      <a class="btn" href="https://trustmrr.com" target="_blank">Open TrustMRR →</a>
+      <div class="refline">Also worth exploring (in your Resources): <b>Acquire</b> · <b>Flippa</b> · <b>IndieHackers</b></div>
+    </section>
+
+    <section>
+      <div class="kicker">Step 2</div>
+      <h2>Capture the designs you love.</h2>
+      <p>Once you find platforms whose format you like, capture the design so Claude can build from it. The tool for this is <b>Skill UI</b>.</p>
+      <ul>
+        <li><b>Point Skill UI at a site you like</b><span class="sub">It gives you back a markdown file of that site's structure.</span></li>
+        <li><b>Markdown is just plain text</b><span class="sub">A simple version of a page's content and layout. Nothing technical. It's what Claude reads best.</span></li>
+        <li><b>Feed the markdown + screenshots into Claude</b><span class="sub">You're not describing your design from scratch. You're showing it.</span></li>
+      </ul>
+      <a class="btn ghost" href="#" target="_blank">Open Skill UI →</a>
+    </section>
+
+    <section>
+      <div class="kicker">Step 3</div>
+      <h2>Pick your platform type.</h2>
+      <p>It does not have to be a video course. Pick what fits how your people actually learn or get results.</p>
+      <div class="cards">
+        <div class="card"><h3>Course</h3><p>Teach it step by step.</p></div>
+        <div class="card"><h3>Quiz</h3><p>Test and score them.</p></div>
+        <div class="card"><h3>Practice</h3><p>Reps and repetition.</p></div>
+        <div class="card"><h3>Tool</h3><p>Like a document analyzer.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="kicker">Step 4</div>
+      <h2>Nail your unique proposition.</h2>
+      <p>This is your angle. Why you, and why this. It ties back to the positioning you nailed in validation.</p>
+      <div class="pull"><p>What do you do, for whom, that nobody else in your space does quite the same way?</p></div>
+      <p style="margin-top:20px;">Lock that in. It shapes everything you build next.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Quick note</div>
+      <h2>What about API keys?</h2>
+      <ul>
+        <li><b>Content or pre-made quizzes</b><span class="sub">No API key needed at all.</span></li>
+        <li><b>A live AI feature</b><span class="sub">Something that responds in real time. That needs a key, and a small cost per use.</span></li>
+      </ul>
+      <p>Most of you won't need one to start.</p>
+    </section>
+
+    <section>
+      <div class="kicker">By the end of this video</div>
+      <h2>Here's where you should be.</h2>
+      <ul>
+        <li>You know your competitors.</li>
+        <li>You've captured the designs you're modeling.</li>
+        <li>You've picked your platform type.</li>
+        <li>You know your angle.</li>
+      </ul>
+      <p style="margin-top:16px;">Next video: what great platforms do to keep people coming back, so you can borrow the best of it.</p>
+    </section>
+
+    <footer>Dr. Erin Jacques · Leveraging AI</footer>
+  </div>
+</body>
+</html>
