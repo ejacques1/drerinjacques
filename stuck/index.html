@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Stuck? Start Here — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547;
+    --gold:#F4B02E; --ink:#1c2733; --muted:#5f6b7a;
+    --bg:#F6F5F1; --card:#ffffff; --line:#e7e3d9;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .top{background:var(--navy);color:#fff;padding:26px 20px;}
+  .top .in{max-width:760px;margin:0 auto;}
+  .brand{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.9rem;}
+  .brand b{color:var(--gold);}
+  h1{margin:.35em 0 .1em;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:900;letter-spacing:-.02em;}
+  .top p{margin:.2em 0 0;color:#bcccdf;font-size:1.02rem;}
+  .wrap{max-width:760px;margin:0 auto;padding:24px 20px 80px;}
+  h2{font-size:1.5rem;color:var(--navy);margin:0 0 12px;}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:16px 0;}
+  .step h3{margin:0 0 6px;font-size:1.2rem;display:flex;align-items:baseline;gap:12px;color:var(--navy);}
+  .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;background:var(--navy);color:var(--gold);
+     border-radius:50%;font-size:.95rem;font-weight:900;flex:none;}
+  .hero-note{background:rgba(244,176,43,.16);border:1px solid var(--gold);border-radius:12px;padding:14px 18px;margin:22px 0;font-weight:600;}
+  .prompt{margin-top:12px;background:#0f2748;border-radius:12px;padding:14px 16px;position:relative;}
+  .prompt .lbl{color:var(--gold);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
+  .prompt .js-copy{color:#eaf1fb;font-family:var(--mono);font-size:.95rem;line-height:1.5;display:block;padding-right:76px;}
+  .copy{background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:7px 12px;font-weight:800;font-size:.82rem;
+        cursor:pointer;font-family:var(--sans);}
+  .prompt .copy{position:absolute;top:12px;right:12px;}
+  .copy:active{transform:translateY(1px);}
+  .faq{margin-top:38px;}
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:10px 0;overflow:hidden;}
+  summary{cursor:pointer;padding:14px 18px;font-weight:700;color:var(--navy);list-style:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"+";float:right;color:var(--gold);font-weight:900;font-size:1.2rem;line-height:1;}
+  details[open] summary::after{content:"\2013";}
+  details .a{padding:0 18px 16px;color:var(--ink);}
+  details .a code{background:#eef2f8;border-radius:5px;padding:1px 6px;font-family:var(--mono);font-size:.92em;}
+  .tip{background:rgba(244,176,43,.16);border-left:4px solid var(--gold);border-radius:8px;padding:11px 14px;margin-top:12px;font-size:.96rem;}
+  .tip b{color:var(--navy);}
+  footer{max-width:760px;margin:0 auto;padding:0 20px 60px;color:var(--muted);font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="top"><div class="in">
+    <div class="brand">Leveraging <b>AI</b></div>
+    <h1>Stuck? Start here.</h1>
+    <p>Run one prompt. It tells you exactly where you are and what to do next.</p>
+  </div></div>
+
+  <div class="wrap">
+    <div class="hero-note">Before you ask for help: run <b>Step 1</b> below and send me the result. That way I know exactly where you are and can give you the fix straight away.</div>
+
+    <div class="step">
+      <h3><span class="n">1</span> Run this first</h3>
+      <p>Paste this into Claude Code in VS Code, with your project folder open. It only <b>looks</b>, it changes nothing.</p>
+      <div class="prompt">
+        <div class="lbl">Copy → paste into Claude</div>
+        <span class="js-copy">Context: I'm building a subscription learning platform. My stack is a GitHub repo, VS Code with Claude Code, Vercel for deployment, and Supabase for database and auth connected to Claude via MCP. Check where I am against that setup.
+
+Look at this project and tell me exactly where I am. Check each of these and show me the evidence for each, don't guess: (1) is this a real git repo connected to GitHub, (2) can I actually push to it, (3) is there a page built, (4) how many Vercel projects exist, which is this folder linked to, and are any of them duplicates of the same repo, (5) is Supabase set up locally (.env.local, client installed, MCP configured) and what project ref, (6) are those same Supabase keys also set on Vercel, (7) is there a login built, and has it actually been pushed and deployed, (8) is all my local code pushed to GitHub.
+
+Don't change or delete anything. End with: what stage am I at, and what's the single next thing I should do.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="tip">👉 Claude will ask permission a lot. Just click <b>Approve / Yes</b> to everything. It's only reading, not changing.</div>
+    </div>
+
+    <div class="step">
+      <h3><span class="n">2</span> Send me the result</h3>
+      <p>Copy what Claude says back and post it in the community (or send it to me). That report tells me your exact stage, so I can point you straight at the fix instead of guessing.</p>
+    </div>
+
+    <div class="step">
+      <h3><span class="n">3</span> Run the fix I point you to</h3>
+      <p>I'll tell you which prompt below to run. They're all here, so you don't have to wait on me to type anything.</p>
+    </div>
+
+    <div class="faq">
+      <h2>The fix prompts</h2>
+
+      <details><summary>GitHub authentication (so Claude can save your work)</summary>
+        <div class="a">
+          <div class="prompt">
+            <div class="lbl">Copy → paste into Claude</div>
+            <span class="js-copy">Set up GitHub authentication so you can save and push my work for me. Install whatever is needed, walk me through logging in, make all reasonable choices yourself, and don't stop to ask me questions. Tell me when I'm authenticated.</span>
+            <button class="copy" onclick="copyText(this)">Copy</button>
+          </div>
+        </div></details>
+
+      <details><summary>My work isn't showing up on my live site</summary>
+        <div class="a">
+          <p>This is the most common one. Your code is on your computer but was never pushed, so your live site has never seen it.</p>
+          <div class="prompt">
+            <div class="lbl">Copy → paste into Claude</div>
+            <span class="js-copy">Is all my local work actually pushed to GitHub and deployed? Tell me what branch I'm on, whether there are uncommitted changes sitting here, and whether my latest work has been pushed and deployed to my live site. Show me the evidence. If anything is unpushed, commit and push it, then confirm the deploy.</span>
+            <button class="copy" onclick="copyText(this)">Copy</button>
+          </div>
+        </div></details>
+
+      <details><summary>Deploy to Vercel</summary>
+        <div class="a">
+          <div class="prompt">
+            <div class="lbl">Copy → paste into Claude</div>
+            <span class="js-copy">Deploy this to Vercel. If I don't have Node or the Vercel CLI installed, install whatever is needed first. Make all reasonable choices yourself, don't stop to ask me what to do, and when you're finished, give me the live URL.</span>
+            <button class="copy" onclick="copyText(this)">Copy</button>
+          </div>
+        </div></details>
+
+      <details><summary>I have duplicate projects on Vercel / I don't know which one is real</summary>
+        <div class="a">
+          <p>Happens when the same repo gets imported into Vercel more than once. They're the same site with different URLs.</p>
+          <div class="prompt">
+            <div class="lbl">Copy → paste into Claude</div>
+            <span class="js-copy">I have several projects on Vercel and I don't know which one is real. Don't delete or change anything yet. Use the Vercel CLI, not the MCP integration. Tell me which Vercel account I'm logged into, list all my projects, and for each one tell me which GitHub repo it's connected to, whether it has a working live URL, what framework Vercel detected, and whether it has Supabase environment variables. Then tell me which is my real project and which are duplicates, and explain how you decided.</span>
+            <button class="copy" onclick="copyText(this)">Copy</button>
+          </div>
+          <div class="tip">👉 To delete a duplicate: open it in Vercel → <b>Settings</b> → scroll to the very bottom → <b>Delete Project</b>. Safe. It never touches your code or your GitHub repo.</div>
+        </div></details>
+
+      <details><summary>My site works on my computer but the login/database is broken live</summary>
+        <div class="a">
+          <p>Your Supabase keys live in <code>.env.local</code>, which is (correctly) never uploaded. So Vercel doesn't have them.</p>
+          <div class="prompt">
+            <div class="lbl">Copy → paste into Claude</div>
+            <span class="js-copy">Do I have Supabase set up? Check whether this project has Supabase keys in a local .env file, whether the Supabase client is installed, and whether any code references Supabase. Then check whether those same keys are set on my Vercel project. Tell me: have I set Supabase up and just never added the keys to Vercel, or have I never set it up at all? Don't change anything.</span>
+            <button class="copy" onclick="copyText(this)">Copy</button>
+          </div>
+          <div class="tip">👉 If the keys are only local, add them in Vercel → your project → <b>Settings</b> → <b>Environment Variables</b>. Open <code>.env.local</code>, and for each line the part <b>before</b> the <code>=</code> is the Key, the part <b>after</b> is the Value. Check Production, Preview, and Development. Then redeploy, env vars only apply to new deployments.</div>
+        </div></details>
+
+      <details><summary>Connect Supabase (the database)</summary>
+        <div class="a">
+          <div class="prompt">
+            <div class="lbl">Copy → paste into Claude</div>
+            <span class="js-copy">Connect this project to Supabase so my app has a real database. Walk me through creating the project and getting my keys, set up the connection, install whatever is needed, and make all reasonable choices yourself. Don't ask me questions you can answer on your own. Tell me when it's connected.</span>
+            <button class="copy" onclick="copyText(this)">Copy</button>
+          </div>
+          <div class="tip">⚠️ In Vercel's Supabase Marketplace, do <b>not</b> click "Create a Supabase project as a Vercel Storage resource" if you already have a Supabase project. That makes a brand-new <b>empty</b> database and your app will connect to nothing. Choose <b>Connect Account</b> and pick your existing project.</div>
+        </div></details>
+
+      <details><summary>Add a login</summary>
+        <div class="a">
+          <div class="prompt">
+            <div class="lbl">Copy → paste into Claude</div>
+            <span class="js-copy">Add a login to my app using Supabase. I want to be able to sign up, log in, and log out, and I want the account to show up in my database. Build the whole thing, make all reasonable choices yourself, and don't ask me questions. When you're done, commit and push so it goes live.</span>
+            <button class="copy" onclick="copyText(this)">Copy</button>
+          </div>
+        </div></details>
+
+      <details><summary>My login redirects to localhost instead of my real site</summary>
+        <div class="a">
+          <p>Two things control this, and Claude can only fix one of them.</p>
+          <div class="prompt">
+            <div class="lbl">Copy → paste into Claude</div>
+            <span class="js-copy">After someone signs up or confirms their email, they get redirected to localhost instead of my live site. Fix the redirect in my code to point at my live URL, then tell me exactly what I need to change in my Supabase dashboard settings to allow it. Then commit and push so it goes live.</span>
+            <button class="copy" onclick="copyText(this)">Copy</button>
+          </div>
+          <div class="tip">👉 You must also update Supabase: <b>Authentication → URL Configuration</b>. Set <b>Site URL</b> to your live URL, and add your live URL to the <b>Redirect URLs</b> allow-list (keep <code>http://localhost:3000/**</code> so local work still runs). Supabase silently ignores any redirect that isn't on that list.</div>
+        </div></details>
+
+      <details><summary>Claude says a command is "not recognized" or "not found"</summary>
+        <div class="a">Just tell Claude: <b>"Restart the terminal and try again."</b> This usually happens right after it installs something new. Claude handles it, you don't need to type anything yourself.</div></details>
+
+      <details><summary>Claude keeps asking me to approve things</summary>
+        <div class="a">That's normal and safe. Say <b>Yes / Approve</b> to everything so it can keep working. If it offers "don't ask again for this command," take it.</div></details>
+
+      <details><summary>My deploy failed but nothing looks wrong</summary>
+        <div class="a">
+          <p>Sometimes it's Vercel, not you. Check <b>vercel-status.com</b> for an active incident before troubleshooting your own code.</p>
+          <div class="prompt">
+            <div class="lbl">Copy → paste into Claude</div>
+            <span class="js-copy">My deploy failed. Show me the build log and tell me the exact error and what caused it. Check whether this is my code, my config, or a Vercel platform incident. Don't fix anything yet, just tell me what's wrong.</span>
+            <button class="copy" onclick="copyText(this)">Copy</button>
+          </div>
+        </div></details>
+    </div>
+
+    <div class="tip" style="margin-top:30px;font-size:1rem;">
+      <b>The one rule that prevents most of this:</b> a change on your computer is not a change on your site. If you built it and can't see it live, you almost certainly haven't pushed it.
+    </div>
+  </div>
+
+  <footer>Dr. Erin Jacques · Leveraging AI</footer>
+
+<script>
+  function copyText(btn){
+    var el = btn.parentElement.querySelector('.js-copy');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = o; }, 1500);
+    });
+  }
+</script>
+</body>
+</html>
