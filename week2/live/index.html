@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Week 2 Live — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --navy2:#0E2E57;
+    --gold:#F4B02E;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--navy);color:#fff;font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.85rem;color:#bcccdf;}
+  .brand b{color:var(--gold);}
+  .kicker{color:var(--gold);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;margin-bottom:14px;}
+  section{padding:46px 0;border-top:1px solid rgba(255,255,255,.12);}
+  section.hero{border-top:none;padding:42px 0 50px;}
+  h1{font-size:clamp(2.1rem,5.4vw,3.4rem);font-weight:900;letter-spacing:-.025em;line-height:1.06;margin:0 0 16px;}
+  h1 span{color:var(--gold);}
+  h2{font-size:clamp(1.5rem,3.8vw,2.3rem);font-weight:900;letter-spacing:-.02em;margin:0 0 16px;}
+  h3{font-size:1.15rem;color:var(--gold);font-weight:900;margin:0 0 4px;}
+  .lead{font-size:clamp(1.15rem,2.6vw,1.5rem);color:#dbe6f3;font-weight:600;margin:0 0 8px;}
+  p{font-size:clamp(1.02rem,2.2vw,1.18rem);color:#cdd9e8;margin:0 0 14px;max-width:70ch;}
+  p b, li b{color:#fff;}
+  ul{list-style:none;padding:0;margin:0 0 8px;}
+  li{font-size:clamp(1.04rem,2.3vw,1.22rem);color:#e6eef8;padding:11px 0 11px 32px;position:relative;border-bottom:1px solid rgba(255,255,255,.08);}
+  li:last-child{border-bottom:none;}
+  li::before{content:"";position:absolute;left:2px;top:19px;width:11px;height:11px;background:var(--gold);border-radius:50%;}
+  li .sub{display:block;color:#aebfd4;font-size:.9em;font-weight:400;margin-top:2px;}
+  .comp{background:var(--navy2);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px 20px;margin:12px 0;}
+  .comp .row{padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+  .comp .row:last-child{border-bottom:none;}
+  .comp .name{color:var(--gold);font-weight:900;font-size:1.1rem;}
+  .comp .prob{color:#cdd9e8;font-size:1.02rem;}
+  .angle{background:rgba(244,176,43,.14);border-left:5px solid var(--gold);border-radius:10px;padding:14px 16px;margin-top:14px;font-size:1.05rem;color:#fff;font-weight:600;}
+  .pull{background:var(--navy2);border-left:6px solid var(--gold);border-radius:14px;padding:22px 24px;}
+  .pull p{font-size:clamp(1.15rem,2.7vw,1.5rem);color:#fff;font-weight:700;margin:0;max-width:62ch;}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy);text-decoration:none;font-weight:900;font-size:1.1rem;
+       padding:14px 26px;border-radius:12px;margin-top:6px;}
+  .supp{font-family:var(--mono);color:var(--gold);font-size:1.05rem;font-weight:700;margin-top:10px;}
+  details{background:var(--navy2);border:1px solid rgba(255,255,255,.12);border-radius:12px;margin:10px 0;overflow:hidden;}
+  summary{cursor:pointer;padding:15px 18px;font-weight:800;font-size:1.08rem;color:#fff;list-style:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"+";float:right;color:var(--gold);font-weight:900;font-size:1.3rem;line-height:1;}
+  details[open] summary::after{content:"\2013";}
+  details .a{padding:0 18px 16px;color:#cdd9e8;font-size:1.05rem;}
+  footer{padding:30px 0 60px;color:#8ea3bd;font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">Leveraging <b>AI</b> · Week 2 · Live Call</div>
+
+    <section class="hero">
+      <div class="kicker">This week</div>
+      <h1>Week 2 is <span>live</span> today.</h1>
+      <p class="lead">The Build videos are up. Here's what's coming, and how to get the most out of it.</p>
+    </section>
+
+    <section>
+      <div class="kicker">For anyone just joining</div>
+      <h2>Before you build anything, validate.</h2>
+      <p>The biggest mistake people make is building the thing in their head before checking if anyone wants it.</p>
+      <ul>
+        <li><b>Validate in 48 hours.</b> From Noah Kagan's <i>Million Dollar Weekend</i>: try to get <b>3 people to pay or commit</b> before you build.</li>
+        <li>He gives real examples of proving demand first, so you're not guessing.</li>
+        <li>If you haven't validated yet, do the <b>5-Step Validation</b> in Resources first. It's a lunchtime activity, don't camp there.</li>
+      </ul>
+      <p>And you're not doing this alone. I'm in the community with you, and there's live support when you need it.</p>
+      <a class="btn" href="https://www.erinjacques.com/live_support" target="_blank">Book live support →</a>
+      <div class="supp">erinjacques.com/live_support</div>
+    </section>
+
+    <section>
+      <div class="kicker">Quick recap</div>
+      <h2>Week 1 is where you'll need the most help.</h2>
+      <p>Week 1 was the setup: your accounts, your workspace, your first live page, your database, and your login. If anything's going to trip you up, it's usually here.</p>
+      <ul>
+        <li><b>Go to the videos first.</b> Most answers are already in there.</li>
+        <li><b>Then the community.</b> Half the time I'll answer you fast, often with a quick video reply, and you're unstuck.</li>
+        <li><b>Live support is there too</b>, but save it for the serious stuff. Don't book just to book.</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="kicker">The big idea for Week 2</div>
+      <h2>Build from information, not from your head.</h2>
+      <p>Most people start with a solution they dreamed up and go build it. You're going to start with a <b>problem someone will pay to solve</b>, then build.</p>
+      <div class="pull"><p>Don't build "a platform." Solve one problem, better than anyone, for one specific person.</p></div>
+      <p style="margin-top:18px;">Sometimes the hard part is naming that problem. So let me show you how I think about it, using my own product.</p>
+    </section>
+
+    <section>
+      <div class="kicker">My example first</div>
+      <h2>Chatify: who am I really up against?</h2>
+      <p>I'm in the link-in-bio world. But look, each player there solves a <b>different</b> problem:</p>
+      <div class="comp">
+        <div class="row"><span class="name">Linktree</span> <span class="prob">— "I can only put one link in my bio, but I have a lot to share."</span></div>
+        <div class="row"><span class="name">Stan Store</span> <span class="prob">— "I want to sell my digital products straight from my bio, no website."</span></div>
+        <div class="row"><span class="name">Chatify (me)</span> <span class="prob">— "People visit my link and leave, and I never capture who they are."</span></div>
+      </div>
+      <div class="angle">My angle: Linktree gives you a link. Stan lets you sell. <b>I capture the person</b>, so your traffic turns into leads you can actually follow up with. That's the one problem I solve.</div>
+    </section>
+
+    <section>
+      <div class="kicker">One you already know</div>
+      <h2>Even Netflix has competitors.</h2>
+      <p>They're all "streaming," but not one of them solves the exact same problem:</p>
+      <div class="comp">
+        <div class="row"><span class="name">Netflix</span> <span class="prob">— "I want to watch what I want, when I want, huge library and originals."</span></div>
+        <div class="row"><span class="name">Hulu</span> <span class="prob">— "I want to keep up with shows airing on TV right now."</span></div>
+        <div class="row"><span class="name">Disney+</span> <span class="prob">— "I want family-safe content and all the franchises in one place."</span></div>
+        <div class="row"><span class="name">Max</span> <span class="prob">— "I want the premium, prestige shows and big movies."</span></div>
+      </div>
+      <div class="angle">Each one picked a specific problem for a specific person. That's your job too. Find your set, then be sharper than all of them for <b>one</b> person.</div>
+    </section>
+
+    <section>
+      <div class="kicker">Now you</div>
+      <h2>Find your own set.</h2>
+      <p>Who are the main players you're watching? What problem does each of them solve? And what's the one you'll solve better? You're not inventing from thin air, you're finding proven demand and getting sharper.</p>
+      <p style="color:#9fb3cc;font-size:1rem;">The videos show you exactly where to look: the marketplaces (TrustMRR and others) where you can see which problems are actually making money.</p>
+    </section>
+
+    <section>
+      <div class="kicker">New tool this week</div>
+      <h2>SkillUI.</h2>
+      <p>Think of it like a GitHub tool you add in as a skill. Once it's in, you <b>point it at any website you love</b>, and it makes a <b>markdown file</b>, a plain-text version of that site's design.</p>
+      <ul>
+        <li>Markdown is just the format AI reads best</li>
+        <li>It uses <b>way fewer tokens than screenshots</b>, so it's cheaper and cleaner for Claude to build from</li>
+        <li>You end up building your look from the best parts of a few sites, not copying any one</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="kicker">What's in the Week 2 videos</div>
+      <h2>Here's what's waiting for you.</h2>
+      <ul>
+        <li><b>Decide what you're building</b><span class="sub">Competitors, SkillUI, platform type, your angle, then write a spec and build it.</span></li>
+        <li><b>What great platforms do to keep people coming back</b><span class="sub">The moves the best platforms use, so you can borrow them.</span></li>
+        <li><b>Brand it and make it legit</b><span class="sub">Logo, favicon, and your legal pages, terms, privacy, cookies.</span></li>
+      </ul>
+      <p>By the end of this week, you'll have a real platform on your screen, branded and legal.</p>
+    </section>
+
+    <section>
+      <div class="kicker">FAQ</div>
+      <h2>Just getting started? Read these.</h2>
+
+      <details><summary>Do I need to know how to code?</summary>
+        <div class="a">No. Claude is your coding partner. If you can describe what you want in plain words, you can build it.</div></details>
+
+      <details><summary>I'm not techy. Is that a problem?</summary>
+        <div class="a">No. It's not hard, it's new. That's a different thing. Follow one step at a time and it works.</div></details>
+
+      <details><summary>What do I actually have to pay for?</summary>
+        <div class="a">Your Claude subscription. Most of the other tools are free to start.</div></details>
+
+      <details><summary>I don't have my idea yet. What do I do?</summary>
+        <div class="a">Start with the 5-Step Validation in Resources. Don't build until you know the one problem you're solving.</div></details>
+
+      <details><summary>How long until I have something live?</summary>
+        <div class="a">Week 1 gets your first page live on the internet. Most people launch a real platform in about 30 days.</div></details>
+
+      <details><summary>Do I need an audience or an email list already?</summary>
+        <div class="a">No. You start from wherever you are and build your list as you go.</div></details>
+
+      <details><summary>Mac or Windows, does it matter?</summary>
+        <div class="a">Either works. The steps are nearly identical, and Claude handles the differences for you.</div></details>
+
+      <details><summary>What if I get stuck?</summary>
+        <div class="a">Go to the videos first, most answers are there. Then the community, I'll often answer fast with a quick video. Live support is there for the serious stuff, at erinjacques.com/live_support.</div></details>
+    </section>
+
+    <footer>Dr. Erin Jacques · Leveraging AI · Live support: erinjacques.com/live_support</footer>
+  </div>
+</body>
+</html>
