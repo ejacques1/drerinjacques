@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Curriculum Map — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --navy2:#0E2E57;
+    --gold:#F4B02E; --ink:#1c2733; --muted:#5f6b7a;
+    --bg:#F6F5F1; --card:#ffffff; --line:#e7e3d9;
+    --green:#1f7a4d;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .top{background:var(--navy);color:#fff;padding:26px 20px;}
+  .top .in{max-width:840px;margin:0 auto;}
+  .brand{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.85rem;color:#bcccdf;}
+  .brand b{color:var(--gold);}
+  h1{margin:.3em 0 .1em;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:900;letter-spacing:-.02em;}
+  .top p{margin:.2em 0 0;color:#bcccdf;font-size:1rem;}
+  .wrap{max-width:840px;margin:0 auto;padding:26px 20px 80px;}
+  .blueprint{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:6px 0 30px;}
+  .bp{background:var(--navy);color:#fff;border-radius:12px;padding:14px 16px;text-align:center;}
+  .bp .n{color:var(--gold);font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;}
+  .bp .t{font-size:1.15rem;font-weight:900;margin-top:2px;}
+  .bp.dim{background:#dfdcd3;color:#6b7480;}
+  .bp.dim .n{color:#96a2b1;}
+  .week{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 20px;margin:18px 0;}
+  .week > h2{margin:0 0 2px;font-size:clamp(1.4rem,3.4vw,1.9rem);color:var(--navy);font-weight:900;letter-spacing:-.02em;}
+  .week > .goal{color:var(--muted);font-size:1rem;margin:0 0 6px;}
+  .outcome{background:rgba(244,176,43,.16);border-left:4px solid var(--gold);border-radius:8px;padding:10px 14px;margin:14px 0 18px;font-size:.97rem;}
+  .outcome b{color:var(--navy);}
+  .opener{background:var(--navy2);color:#fff;border-radius:12px;padding:16px 18px;margin:14px 0 18px;}
+  .opener .lbl{color:var(--gold);font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;}
+  .opener ul{margin:6px 0 0;padding-left:18px;}
+  .opener li{color:#dbe6f3;font-size:.97rem;margin:4px 0;}
+  .opener li b{color:#fff;}
+  .vid{border-top:1px solid var(--line);padding:14px 0 4px;}
+  .vid:first-of-type{border-top:none;}
+  .vid h3{margin:0 0 6px;font-size:1.08rem;color:var(--navy);display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .num{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;background:var(--navy);color:var(--gold);
+       border-radius:50%;font-size:.82rem;font-weight:900;flex:none;}
+  .done{background:var(--green);color:#fff;border-radius:20px;padding:2px 9px;font-size:.66rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;}
+  .todo{background:#e6e2d7;color:#6b7480;border-radius:20px;padding:2px 9px;font-size:.66rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;}
+  ul.pts{list-style:none;padding:0;margin:0;}
+  ul.pts li{position:relative;padding:5px 0 5px 20px;font-size:.97rem;color:#3b4654;}
+  ul.pts li::before{content:"";position:absolute;left:2px;top:13px;width:7px;height:7px;background:var(--gold);border-radius:50%;}
+  ul.pts li b{color:var(--ink);}
+  .why{background:#f0f3f7;border-radius:8px;padding:10px 13px;margin-top:12px;font-size:.9rem;color:#4a5666;}
+  .why b{color:var(--navy);}
+  .gap{background:#fff4f4;border:1px solid #e9b8b8;border-radius:8px;padding:10px 13px;margin-top:12px;font-size:.9rem;color:#7a3b3b;}
+  .gap b{color:#a32b2b;}
+  footer{max-width:840px;margin:0 auto;padding:10px 20px 60px;color:var(--muted);font-size:.85rem;}
+</style>
+</head>
+<body>
+  <div class="top"><div class="in">
+    <div class="brand">Leveraging <b>AI</b> · Curriculum Map</div>
+    <h1>Weeks 1 to 3, end to end.</h1>
+    <p>Everything that has to be covered, and why it lives where it lives.</p>
+  </div></div>
+
+  <div class="wrap">
+
+    <div class="blueprint">
+      <div class="bp"><div class="n">Week 1</div><div class="t">Set Up</div></div>
+      <div class="bp"><div class="n">Week 2</div><div class="t">Build</div></div>
+      <div class="bp"><div class="n">Week 3</div><div class="t">Launch</div></div>
+      <div class="bp dim"><div class="n">Week 4</div><div class="t">Grow</div></div>
+    </div>
+
+    <!-- WEEK 1 -->
+    <div class="week">
+      <h2>Week 1 — Set Up</h2>
+      <p class="goal">Get their environment built so they can start from day one.</p>
+      <div class="outcome"><b>By the end:</b> a live landing page on the internet, a database connected to Claude, and a working login. They know they can build software.</div>
+
+      <div class="opener">
+        <div class="lbl">Week opener — say this up front</div>
+        <ul>
+          <li><b>Pick your path:</b> know what you're building? Start Set Up. Not sure? Do the 5-Step Validation in Resources (a lunchtime activity, don't camp there).</li>
+          <li><b>It's not hard, it's new.</b> Unfamiliar is normal. Follow one step at a time.</li>
+          <li><b>Approve everything.</b> Claude will ask permission constantly. Say yes.</li>
+        </ul>
+      </div>
+
+      <div class="vid">
+        <h3><span class="num">1</span> Accounts + repo <span class="done">Recorded</span></h3>
+        <ul class="pts">
+          <li>Create the GitHub account</li>
+          <li>Create the repository</li>
+          <li>Add the README</li>
+        </ul>
+      </div>
+
+      <div class="vid">
+        <h3><span class="num">2</span> Your workspace <span class="done">Recorded</span></h3>
+        <ul class="pts">
+          <li>Install VS Code · install GitHub Desktop · sign into GitHub</li>
+          <li>Clone your project onto your computer</li>
+          <li>Open the project in VS Code</li>
+          <li>Install the Claude Code extension (Anthropic) · sign in</li>
+          <li>Say hello to Claude and watch it come alive</li>
+        </ul>
+        <div class="why"><b>Milestone:</b> "your own AI assistant running on your computer." You only do this once.</div>
+      </div>
+
+      <div class="vid">
+        <h3><span class="num">3</span> Build + deploy <span class="done">Recorded</span></h3>
+        <ul class="pts">
+          <li><b>GitHub authentication</b> (the <code>gh</code> login, ~2 min) so Claude can save and push your work</li>
+          <li>Ask Claude to build your landing page</li>
+          <li>Set Claude up to <b>commit directly to main</b></li>
+          <li>Let Claude commit and push your changes</li>
+          <li>Deploy your site on Vercel → live URL</li>
+          <li>Make any other change just by asking</li>
+        </ul>
+        <div class="why"><b>Say it here and keep saying it:</b> a change on your computer is not a change on your site. If you can't see it live, you haven't pushed it.</div>
+        <div class="gap"><b>Add this:</b> "import your repo <u>once</u>." If a deploy fails, fix that project, don't re-import. Re-importing creates a duplicate Vercel project and every push then deploys to all of them.</div>
+      </div>
+
+      <div class="vid">
+        <h3><span class="num">4</span> Supabase — the brain <span class="done">Recorded</span></h3>
+        <ul class="pts">
+          <li>Connect Supabase <b>straight to Claude</b> (MCP) → ask for a table, it builds it live. <b>No SQL, ever.</b></li>
+          <li>A table is a smart spreadsheet your app uses</li>
+          <li>Users table (who signed up) · progress table (what they finished)</li>
+          <li>Runs on PostgreSQL — real, professional database tech for their resume</li>
+        </ul>
+        <div class="gap"><b>Missing step, this breaks everyone:</b> their Supabase keys live in <code>.env.local</code>, which is gitignored, so <u>Vercel never gets them</u>. Site builds fine, database unreachable. Either add the keys to Vercel here, or teach the Marketplace <b>Connect Account</b> path (never "Create New Project," that makes an empty database).</div>
+      </div>
+
+      <div class="vid">
+        <h3><span class="num">5</span> The login <span class="done">Recorded</span></h3>
+        <ul class="pts">
+          <li>"The moment your website becomes a web app"</li>
+          <li>Built with <b>one single prompt</b></li>
+          <li>Sign up, log in, log out yourself</li>
+          <li>Watch your test account appear in your database</li>
+        </ul>
+        <div class="why"><b>Not launching to the world yet.</b> Just proving your app can recognize people.</div>
+      </div>
+    </div>
+
+    <!-- WEEK 2 -->
+    <div class="week">
+      <h2>Week 2 — Build</h2>
+      <p class="goal">Decide what you're building, then build the product behind the login.</p>
+      <div class="outcome"><b>By the end:</b> they can answer the only question that matters, "what have you built?" A real platform they can pull up on screen and show people.</div>
+
+      <div class="opener">
+        <div class="lbl">Week opener — say this in Video 1, before anything else</div>
+        <ul>
+          <li><b>Buy your domain this week.</b> You won't connect it until Week 3, but get it now. It's cheap and DNS takes time.</li>
+          <li><b>Start your Stripe account and your business/EIN now.</b> You don't use Stripe until Week 3, but these take days to clear. Start them today so they're processing in the background.</li>
+          <li>If your state's LLC is slow, a DBA can get you running in a day or two. <b>This is what I did, not legal advice.</b> (Point to the entity-types resource.)</li>
+          <li><b>Already validated?</b> Good. If not, go do the 5-Step Validation in Resources first, then come back.</li>
+          <li><b>Here's the week:</b> decide what you're building → learn what makes people come back → build it and put it live.</li>
+        </ul>
+      </div>
+
+      <div class="vid">
+        <h3><span class="num">1</span> Reverse-engineer &amp; decide what to build <span class="done">Recorded</span></h3>
+        <ul class="pts">
+          <li>Find proven ideas + your competitors on the marketplaces (TrustMRR live; Acquire, Flippa, IndieHackers in Resources)</li>
+          <li>Filter by revenue, study what sells and why, reverse-engineer it better</li>
+          <li>Capture designs with <b>SkillUI</b>: capture 2-3 sites, then compose (layout from one, colors from another)</li>
+          <li>Pick your platform type: course · quiz · practice · tool</li>
+          <li>Nail your unique proposition</li>
+          <li>API keys: content/pre-made = none needed. Live AI feature = key + cost per use</li>
+        </ul>
+        <div class="why"><b>Deck:</b> /week2/video1 · This video builds the <b>face</b> (landing page).</div>
+      </div>
+
+      <div class="vid">
+        <h3><span class="num">2</span> What great platforms do (and why) <span class="done">Recorded</span></h3>
+        <ul class="pts">
+          <li><b>Netflix</b> → persisted progress state ("resume"). Removes the decision.</li>
+          <li><b>Spotify</b> → aggregation query (progress recap). Invisible progress makes people quit.</li>
+          <li><b>Duolingo</b> → counter with a reset rule (streaks). Loss aversion.</li>
+          <li><b>Brilliant</b> → interactive component + scoring. Doing beats watching.</li>
+          <li>A copy-paste prompt per mechanic, swap in your expertise</li>
+          <li><b>It's a menu, not a checklist.</b> Pick 2, maybe 3. Not 4.</li>
+        </ul>
+        <div class="why"><b>Deck:</b> /week2/video2 · Underneath, all four are just reading and writing user progress to a database.</div>
+      </div>
+
+      <div class="vid">
+        <h3><span class="num">3</span> Build your platform <span class="todo">To record</span></h3>
+        <ul class="pts">
+          <li>Build the <b>core pages behind the login</b> (dashboard + a content page)</li>
+          <li>Add your <b>real content</b>, and have Claude build the tables for it</li>
+          <li>Add the <b>ONE retention element</b> you picked in Video 2</li>
+          <li>Iterate the look by talking to it (design by conversation)</li>
+          <li>Commit, push, see it live</li>
+          <li>Close: have Claude make your <b>logo, favicon, and OG image</b> → commit + push, they go live automatically</li>
+        </ul>
+        <div class="why"><b>Why this isn't a repeat of Video 1:</b> Video 1 built the FACE (landing page). This builds the PRODUCT (what's behind the login). No need to reintroduce SkillUI, they already have the files.</div>
+      </div>
+    </div>
+
+    <!-- WEEK 3 -->
+    <div class="week">
+      <h2>Week 3 — Launch</h2>
+      <p class="goal">The connection week. Turn the platform into a real business that can take money.</p>
+      <div class="outcome"><b>By the end:</b> live on their own domain, able to accept a real paying customer, and in front of actual people.</div>
+
+      <div class="opener">
+        <div class="lbl">Week opener</div>
+        <ul>
+          <li>You built it. Now we connect everything and put it in front of people.</li>
+          <li><b>Nobody wakes up on Monday and joins a platform they've never heard of.</b> You have to intentionally put your expertise in front of people, and there's a process for that.</li>
+          <li>This is where you stop consuming AI content and start owning an AI-powered business.</li>
+        </ul>
+      </div>
+
+      <div class="vid">
+        <h3>Connect your domain</h3>
+        <ul class="pts">
+          <li>Vercel → Settings → Domains → add the domain you bought in Week 2 → update DNS</li>
+        </ul>
+      </div>
+
+      <div class="vid">
+        <h3>Update Supabase URLs <span class="gap" style="display:inline;padding:1px 7px;font-size:.66rem;">Do it with the domain</span></h3>
+        <ul class="pts">
+          <li>Supabase → Authentication → <b>URL Configuration</b></li>
+          <li>Set <b>Site URL</b> to your real domain</li>
+          <li>Add your domain to the <b>Redirect URLs</b> allow-list (keep localhost so local work still runs)</li>
+        </ul>
+        <div class="why"><b>Why here and not earlier:</b> during Weeks 1-2, localhost is the <u>correct</u> setting. It only breaks once real people confirm emails on a live site. Connecting your domain is the exact moment this must change, so teach them together or everyone hits it.</div>
+      </div>
+
+      <div class="vid">
+        <h3>Stripe + pricing</h3>
+        <ul class="pts">
+          <li>Connect the Stripe account you started in Week 2</li>
+          <li>Pricing: monthly vs annual. <b>Lead with monthly for an MVP</b>, grow from there</li>
+          <li>Wire subscriptions into the login you already built</li>
+        </ul>
+        <div class="why"><b>Why pricing lives here:</b> pricing and payments are one conversation. Splitting them makes no sense.</div>
+      </div>
+
+      <div class="vid">
+        <h3>Make it legit — legal pages</h3>
+        <ul class="pts">
+          <li>Terms &amp; conditions · privacy policy · cookies notice</li>
+          <li>Refund policy + disclaimer (needed once you sell)</li>
+          <li>Study a similar platform's terms to spot what you're missing</li>
+        </ul>
+        <div class="why"><b>Why here and not in Build:</b> you can't legally take money without them, and Stripe expects them. It's a payment prerequisite, not a build task.</div>
+      </div>
+
+      <div class="vid">
+        <h3>Opt-ins + email marketing</h3>
+        <ul class="pts">
+          <li>Funnel + email platform (Systeme.io)</li>
+          <li>Lead magnet → opt-in → tag → automated follow-up sequence</li>
+          <li><b>Export all your emails and add everyone.</b> Don't sift, don't overthink who sees it</li>
+          <li>Link-in-bio agents / chatbots as lead magnets (Chatify example)</li>
+        </ul>
+      </div>
+
+      <div class="vid">
+        <h3>Test a real signup, end to end</h3>
+        <ul class="pts">
+          <li>Sign up on the live domain as a real user</li>
+          <li>Confirm the email lands and redirects to your site, not localhost</li>
+          <li>Confirm the account appears in your database</li>
+          <li>Run a real test payment through Stripe</li>
+        </ul>
+        <div class="why"><b>A green build proves nothing.</b> The only proof is a real person completing the full flow on the real domain.</div>
+      </div>
+    </div>
+
+    <div class="why" style="margin-top:24px;font-size:.95rem;">
+      <b>Week 4 — Grow:</b> refine, improve, and grow. Keep attracting customers and expanding over time. Most students launch in 30 days or less, but building the platform is only the beginning.
+    </div>
+
+  </div>
+
+  <footer>Dr. Erin Jacques · Leveraging AI · Unlisted (noindex) · Working document</footer>
+</body>
+</html>
