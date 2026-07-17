@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Week 2 Opener — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --navy2:#0E2E57;
+    --gold:#F4B02E;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--navy);color:#fff;font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.85rem;color:#bcccdf;}
+  .brand b{color:var(--gold);}
+  .kicker{color:var(--gold);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;margin-bottom:14px;}
+  section{padding:48px 0;border-top:1px solid rgba(255,255,255,.12);}
+  section.hero{border-top:none;padding:44px 0 52px;}
+  h1{font-size:clamp(2.1rem,5.4vw,3.4rem);font-weight:900;letter-spacing:-.025em;line-height:1.06;margin:0 0 18px;}
+  h1 span{color:var(--gold);}
+  h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;letter-spacing:-.02em;margin:0 0 16px;}
+  .lead{font-size:clamp(1.15rem,2.6vw,1.5rem);color:#dbe6f3;font-weight:600;margin:0 0 8px;}
+  p{font-size:clamp(1.02rem,2.2vw,1.2rem);color:#cdd9e8;margin:0 0 14px;max-width:70ch;}
+  p b, li b{color:#fff;}
+  ul{list-style:none;padding:0;margin:0 0 8px;}
+  li{font-size:clamp(1.05rem,2.3vw,1.24rem);color:#e6eef8;padding:11px 0 11px 32px;position:relative;border-bottom:1px solid rgba(255,255,255,.08);}
+  li:last-child{border-bottom:none;}
+  li::before{content:"";position:absolute;left:2px;top:19px;width:11px;height:11px;background:var(--gold);border-radius:50%;}
+  li .sub{display:block;color:#aebfd4;font-size:.9em;font-weight:400;margin-top:2px;}
+  .warn{background:var(--navy2);border-left:5px solid var(--gold);border-radius:10px;padding:14px 16px;margin:14px 0 0;font-size:1rem;color:#dbe6f3;}
+  .warn b{color:var(--gold);}
+  .mine{color:#9fb3cc;font-size:.95rem;font-style:italic;margin-top:10px;}
+  .path{background:var(--navy2);border:1px solid rgba(244,176,43,.4);border-radius:14px;padding:22px 24px;}
+  .path .step{font-size:clamp(1.15rem,2.7vw,1.45rem);color:#fff;font-weight:800;margin:0;}
+  .path .arrow{color:var(--gold);font-weight:900;margin:0 8px;}
+  footer{padding:30px 0 60px;color:#8ea3bd;font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">Leveraging <b>AI</b> · Week 2 · Opener</div>
+
+    <section class="hero">
+      <div class="kicker">Week 2 — Build</div>
+      <h1>Start these <span>today</span>. They run in the background all week.</h1>
+      <p class="lead">Three things to kick off now, because they take a few days to clear. Do them first, then we build.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Do this today #1</div>
+      <h2>Buy your domain.</h2>
+      <p>Get it now so it's ready to connect next week. You won't hook it up yet, but owning it early means no waiting later.</p>
+      <ul>
+        <li><b>Where:</b> a real domain registrar. I use <b>GoDaddy</b>, and there are others (Namecheap, Cloudflare, Google/Squarespace Domains).</li>
+      </ul>
+      <div class="warn">⚠️ <b>Heads up:</b> a newly registered domain is locked for about <b>60 days</b> before it can move to another provider. That's normal. The thing to avoid is buying your domain inside an all-in-one website builder that makes it hard to point it wherever you want. Buy it from a dedicated registrar so you fully own it and can connect it to anything.</div>
+    </section>
+
+    <section>
+      <div class="kicker">Do this today #2</div>
+      <h2>Start Stripe, your business, and your EIN.</h2>
+      <p>You won't use Stripe until Week 3, but the setup takes days, so start it now and let it process while you build.</p>
+      <ul>
+        <li><b>Get your EIN.</b> You need it to open a merchant account on Stripe.</li>
+        <li><b>Start your Stripe account</b> and begin the merchant setup.</li>
+        <li><b>Start your business entity</b> so everything is in your business's name.</li>
+      </ul>
+      <p class="mine">These are the payment rails. Week 3 is where you connect them. Starting today means they're ready when you get there.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Do this today #3</div>
+      <h2>If your LLC is slow, use a DBA.</h2>
+      <p>Some states take weeks to form an LLC. A <b>DBA</b> can get you running in a day or two, and it's enough to move forward.</p>
+      <ul>
+        <li><b>A DBA lets you get an EIN.</b></li>
+        <li><b>A DBA lets you open a merchant account on Stripe.</b></li>
+      </ul>
+      <p class="mine">This is what I did, it's not legal advice. I used LegalZoom, again, just what I did, not an endorsement. See the entity-types resource for your options.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Before you build</div>
+      <h2>Already validated?</h2>
+      <p>If yes, you're ready. If you're still not sure what you're building, go do the <b>5-Step Validation</b> in Resources first, then come back. Don't skip it.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Here's the week</div>
+      <div class="path">
+        <p class="step">Decide what you're building <span class="arrow">→</span> learn what makes people come back <span class="arrow">→</span> build it and put it live.</p>
+      </div>
+      <p style="margin-top:18px;">By the end of this week you'll have a real platform on your screen. Let's start.</p>
+    </section>
+
+    <footer>Dr. Erin Jacques · Leveraging AI</footer>
+  </div>
+</body>
+</html>
