@@ -181,6 +181,41 @@ Don't change or delete anything. End with: what stage am I at, and what's the si
             <button class="copy" onclick="copyText(this)">Copy</button>
           </div>
         </div></details>
+
+      <h2 style="margin-top:34px;">🪟 Windows only</h2>
+
+      <details><summary>After installing, it says "claude is not recognized"</summary>
+        <div class="a">
+          <p>The install worked, Windows just can't find the command yet. In the same terminal, paste this and press Enter (nothing visible happens, that's normal), then type <code>claude</code> again:</p>
+          <div class="prompt">
+            <div class="lbl">Paste into the terminal (PowerShell)</div>
+            <span class="js-copy">$env:Path = "$env:USERPROFILE\.local\bin;" + $env:Path</span>
+            <button class="copy" onclick="copyText(this)">Copy</button>
+          </div>
+          <div class="tip">👉 To fix it permanently so this never happens again, paste this once, then open a fresh terminal:</div>
+          <div class="prompt">
+            <div class="lbl">Paste into the terminal (one time)</div>
+            <span class="js-copy">[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path","User") + ";$env:USERPROFILE\.local\bin", "User")</span>
+            <button class="copy" onclick="copyText(this)">Copy</button>
+          </div>
+        </div></details>
+
+      <details><summary>The install command from the video won't work ("bash is not recognized")</summary>
+        <div class="a">
+          <p>That command is the Mac version. On Windows (PowerShell), use this one instead, in the same terminal:</p>
+          <div class="prompt">
+            <div class="lbl">Paste into the terminal (PowerShell)</div>
+            <span class="js-copy">irm https://claude.ai/install.ps1 | iex</span>
+            <button class="copy" onclick="copyText(this)">Copy</button>
+          </div>
+          <div class="tip">👉 If it's blocked by an "execution policy" error, run this first, then re-run the install:<br><code>Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass</code></div>
+        </div></details>
+
+      <details><summary>The Claude chat panel can't see Supabase, but the terminal says Connected</summary>
+        <div class="a">The chat panel and the terminal are separate. If the terminal's <code>/mcp</code> shows <b>supabase connected</b> but the chat can't see it, <b>close VS Code completely and reopen it</b> (or Ctrl+Shift+P → "Developer: Reload Window"). Then start a fresh chat and try again.</div></details>
+
+      <details><summary>The Supabase login popup won't open, or shows "connection error" (Windows)</summary>
+        <div class="a">When you run <code>/mcp → Authenticate</code>, <b>Ctrl+click</b> the link in the terminal to open it. After you approve in the browser, if it shows a "connection error" page, that's normal, copy the full URL from the browser's <b>address bar</b> and paste it back at the <code>URL &gt;</code> prompt in the terminal, then Enter. If it says "unrecognized client ID," press Esc and run <code>/mcp</code> Authenticate again, logged into the Supabase account that owns your project.</div></details>
     </div>
 
     <div class="tip" style="margin-top:30px;font-size:1rem;">
