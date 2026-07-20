@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Brand It & Make It Legit — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --navy2:#0E2E57;
+    --gold:#F4B02E;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--navy);color:#fff;font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.85rem;color:#bcccdf;}
+  .brand b{color:var(--gold);}
+  .kicker{color:var(--gold);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;margin-bottom:14px;}
+  section{padding:50px 0;border-top:1px solid rgba(255,255,255,.12);}
+  section.hero{border-top:none;padding:44px 0 52px;}
+  h1{font-size:clamp(2.1rem,5.4vw,3.4rem);font-weight:900;letter-spacing:-.025em;line-height:1.06;margin:0 0 16px;}
+  h1 span{color:var(--gold);}
+  h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;letter-spacing:-.02em;margin:0 0 18px;}
+  .lead{font-size:clamp(1.15rem,2.6vw,1.5rem);color:#dbe6f3;font-weight:600;margin:0 0 8px;}
+  p{font-size:clamp(1.02rem,2.2vw,1.2rem);color:#cdd9e8;margin:0 0 14px;max-width:70ch;}
+  p b, li b{color:#fff;}
+  ul{list-style:none;padding:0;margin:0 0 8px;}
+  li{font-size:clamp(1.05rem,2.3vw,1.28rem);color:#e6eef8;padding:12px 0 12px 34px;position:relative;border-bottom:1px solid rgba(255,255,255,.08);}
+  li:last-child{border-bottom:none;}
+  li::before{content:"";position:absolute;left:2px;top:20px;width:12px;height:12px;background:var(--gold);border-radius:50%;}
+  li .sub{display:block;color:#aebfd4;font-size:.9em;font-weight:400;margin-top:2px;}
+  .card{background:var(--navy2);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:22px 24px;margin:14px 0;}
+  .card h3{margin:0 0 4px;font-size:clamp(1.3rem,3vw,1.6rem);color:var(--gold);font-weight:900;}
+  .card .what{font-size:clamp(1.05rem,2.3vw,1.22rem);color:#fff;font-weight:700;margin:0 0 10px;}
+  .card .row{margin:0 0 8px;}
+  .card .row b{color:var(--gold);}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:6px 0 8px;}
+  .stp{background:var(--navy2);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px 20px;}
+  .stp .num{color:var(--gold);font-weight:900;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;}
+  .stp .t{color:#fff;font-weight:700;font-size:1.1rem;margin-top:4px;}
+  .prompt{background:#0b1f3d;border:1px solid rgba(244,176,43,.4);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative;}
+  .prompt .lbl{color:var(--gold);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+  .prompt .js-copy{color:#eaf1fb;font-family:var(--mono);font-size:clamp(.92rem,1.9vw,1.02rem);line-height:1.5;display:block;padding-right:76px;}
+  .copy{position:absolute;top:14px;right:14px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:7px 12px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .note{background:rgba(244,176,43,.14);border-left:5px solid var(--gold);border-radius:10px;padding:14px 16px;margin:14px 0;font-size:1.02rem;color:#fff;}
+  footer{padding:30px 0 60px;color:#8ea3bd;font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">Leveraging <b>AI</b> · Week 2 · Video 3</div>
+
+    <section class="hero">
+      <div class="kicker">Week 2 — Build</div>
+      <h1>Brand it &amp; <span>make it legit</span>.</h1>
+      <p class="lead">Make your platform look and feel like a real company.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Here's the plan</div>
+      <ul>
+        <li>Make your logo</li>
+        <li>Add your favicon</li>
+        <li>Add your social preview image</li>
+        <li>Write your legal pages</li>
+        <li>Add them to your signup</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="kicker">Brand it</div>
+      <h2>Make it look like a real company.</h2>
+      <p><b>Your logo.</b> You don't need a designer. You ask Claude, and it makes you look established instead of generic.</p>
+
+      <div class="card">
+        <h3>Favicon</h3>
+        <p class="what">The tiny icon in your browser tab.</p>
+        <p class="row"><b>Where you've seen it:</b> the little icon next to each site's name up in your tabs.</p>
+        <p class="row"><b>Examples:</b> Google's colored G · YouTube's play button · Amazon's smile.</p>
+        <p class="row"><b>Why it matters:</b> yours stands out in a sea of tabs. No favicon = a plain gray globe = looks unfinished.</p>
+      </div>
+
+      <div class="card">
+        <h3>Social preview image (OG image)</h3>
+        <p class="what">The picture that pops up when you paste your link.</p>
+        <p class="row"><b>Where you've seen it:</b> drop a link in a text or on Instagram and a picture with a headline appears instead of a plain link.</p>
+        <p class="row"><b>Why it matters:</b> a rich preview gets far more clicks and looks trustworthy. A bare link looks broken or like spam.</p>
+      </div>
+
+      <p>Claude makes all three at once.</p>
+      <div class="prompt">
+        <div class="lbl">Paste into Claude</div>
+        <span class="js-copy">Create a clean, simple logo for my platform, plus a matching favicon and an Open Graph social preview image. Use my brand and what you know about me. Add them to my site, then commit and push so they go live.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+    </section>
+
+    <section>
+      <div class="kicker">Make it legit</div>
+      <h2>Here's exactly what we'll do.</h2>
+      <div class="steps">
+        <div class="stp"><div class="num">Step 1</div><div class="t">Create your legal pages</div></div>
+        <div class="stp"><div class="num">Step 2</div><div class="t">Compare to a real platform</div></div>
+        <div class="stp"><div class="num">Step 3</div><div class="t">Make people agree at signup</div></div>
+      </div>
+      <p><b>Why this matters:</b> you're about to take payments and collect people's info. These pages protect you, and payment processors like Stripe expect them. This is what separates a real business from a hobby.</p>
+
+      <p style="margin-top:22px;"><b>Step 1 — Create them.</b></p>
+      <div class="prompt">
+        <div class="lbl">Paste into Claude</div>
+        <span class="js-copy">Create the legal pages my platform needs: a terms and conditions page, a privacy policy, a cookies notice, and a refund policy. Base them on a standard subscription web app, link them in my footer, then commit and push.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="note">⚠️ Not legal advice. This is a strong starting point. If you're in something high-risk or regulated, have a professional review it.</div>
+
+      <p style="margin-top:22px;"><b>Step 2 — Compare.</b> Find a platform like yours, open their terms, and have Claude check yours against it.</p>
+      <div class="prompt">
+        <div class="lbl">Paste into Claude</div>
+        <span class="js-copy">Here is a similar platform's terms page: [paste the link or the text]. Compare it to mine and tell me what I'm missing, then update my pages.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+
+      <p style="margin-top:22px;"><b>Step 3 — Add it to signup.</b> The part people forget: it's not enough to have the pages, people have to agree to them.</p>
+      <div class="prompt">
+        <div class="lbl">Paste into Claude</div>
+        <span class="js-copy">Add a checkbox to my sign-up form that says "I agree to the Terms and Conditions and Privacy Policy," with links to those pages. Don't let anyone sign up unless it's checked. Commit and push.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+    </section>
+
+    <section>
+      <div class="kicker">By the end of this video</div>
+      <h2>Here's where you should be.</h2>
+      <ul>
+        <li>Your platform is <b>branded</b> — logo, favicon, social image</li>
+        <li>Your <b>legal pages</b> are written and complete</li>
+        <li>People <b>agree to them</b> when they sign up</li>
+        <li>It's live, and it looks and feels like a real company</li>
+      </ul>
+      <p style="margin-top:16px;">Next week is Launch: connect your domain, set up payments so you can charge, and get your platform in front of people. That's where it becomes a business.</p>
+    </section>
+
+    <footer>Dr. Erin Jacques · Leveraging AI</footer>
+  </div>
+
+<script>
+  function copyText(btn){
+    var el=btn.parentElement.querySelector('.js-copy');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o=btn.textContent; btn.textContent='Copied!';
+      setTimeout(function(){btn.textContent=o;},1500);
+    });
+  }
+</script>
+</body>
+</html>
