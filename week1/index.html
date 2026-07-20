@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Week 1 Map — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --navy2:#0E2E57;
+    --gold:#F4B02E; --ink:#1c2733; --muted:#5f6b7a;
+    --bg:#F6F5F1; --card:#ffffff; --line:#e7e3d9; --goldbg:#fdf5e2;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .top{background:var(--navy);color:#fff;padding:26px 20px;}
+  .top .in{max-width:960px;margin:0 auto;}
+  .brand{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.9rem;}
+  .brand b{color:var(--gold);}
+  h1{margin:.35em 0 .1em;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:900;letter-spacing:-.02em;}
+  .top p{margin:.2em 0 0;color:#bcccdf;font-size:1.02rem;}
+  .wrap{max-width:960px;margin:0 auto;padding:24px 20px 80px;}
+
+  /* flow diagram */
+  .flow{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 30px;}
+  .fbox{flex:1 1 165px;background:var(--card);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:12px;padding:12px 14px;text-decoration:none;color:inherit;}
+  .fbox:hover{border-color:var(--gold);}
+  .fbox .v{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);}
+  .fbox .t{font-weight:800;color:var(--navy);font-size:1rem;margin:2px 0 6px;line-height:1.2;}
+  .fbox .c{font-size:.82rem;color:var(--muted);}
+
+  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:16px 0;}
+  .step h2{margin:0 0 4px;font-size:1.3rem;color:var(--navy);display:flex;align-items:baseline;gap:12px;}
+  .n{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:34px;background:var(--navy);color:var(--gold);
+     border-radius:50%;font-size:.9rem;font-weight:900;flex:none;}
+  ul{margin:6px 0 0;padding-left:22px;}
+  li{margin:5px 0;}
+  .done{background:var(--goldbg);border-left:4px solid var(--gold);border-radius:8px;padding:10px 14px;margin-top:14px;font-weight:700;color:#7a5600;}
+  .tip{background:rgba(244,176,43,.16);border-left:4px solid var(--gold);border-radius:8px;padding:10px 14px;margin-top:10px;font-size:.95rem;}
+  .tip b{color:var(--navy);}
+  .tip code{background:#eef2f8;border-radius:5px;padding:1px 6px;font-family:var(--mono);font-size:.9em;}
+  .prompt{margin-top:12px;background:#0f2748;border-radius:12px;padding:14px 16px;position:relative;}
+  .prompt .lbl{color:var(--gold);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+  .prompt .js-copy{color:#eaf1fb;font-family:var(--mono);font-size:.95rem;line-height:1.5;display:block;padding-right:76px;}
+  .copy{position:absolute;top:12px;right:12px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:7px 12px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .byhand{color:var(--muted);font-style:italic;font-size:.95rem;margin-top:6px;}
+  footer{max-width:960px;margin:0 auto;padding:0 20px 60px;color:var(--muted);font-size:.9rem;}
+  footer a{color:var(--navy);font-weight:800;text-decoration:none;border-bottom:2px solid var(--gold);}
+</style>
+</head>
+<body>
+  <div class="top"><div class="in">
+    <div class="brand">Leveraging <b>AI</b></div>
+    <h1>Week 1 — Setup Map</h1>
+    <p>The hardest week, mapped. Every video, its steps, its prompts, and how you know it's done.</p>
+  </div></div>
+
+  <div class="wrap">
+
+    <div class="flow">
+      <a class="fbox" href="#v1"><div class="v">Video 1</div><div class="t">Accounts + Repo</div><div class="c">✓ Repo + README on GitHub</div></a>
+      <a class="fbox" href="#v2"><div class="v">Video 2</div><div class="t">Workspace</div><div class="c">✓ Claude opens in VS Code</div></a>
+      <a class="fbox" href="#v3"><div class="v">Video 3</div><div class="t">Build + Deploy</div><div class="c">✓ Landing page live on Vercel</div></a>
+      <a class="fbox" href="#v4"><div class="v">Video 4</div><div class="t">Database</div><div class="c">✓ Supabase connected</div></a>
+      <a class="fbox" href="#v5"><div class="v">Video 5</div><div class="t">Login</div><div class="c">✓ Test account in Supabase</div></a>
+    </div>
+
+    <div class="step" id="v1">
+      <h2><span class="n">1</span> Accounts + Repo</h2>
+      <ul>
+        <li>Create your GitHub account</li>
+        <li>Create the repository</li>
+        <li>Add the README</li>
+      </ul>
+      <div class="byhand">Done by hand on github.com, no prompts.</div>
+      <div class="done">✓ Done when: the repo exists on GitHub with a README.</div>
+    </div>
+
+    <div class="step" id="v2">
+      <h2><span class="n">2</span> Set Up Your Workspace</h2>
+      <ul>
+        <li>Install VS Code</li>
+        <li>Install GitHub Desktop, sign into GitHub</li>
+        <li>Clone the project to your computer</li>
+        <li>Open the project in VS Code</li>
+        <li>Install the Claude Code extension and sign in</li>
+      </ul>
+      <div class="byhand">Done by hand, no prompts.</div>
+      <div class="tip">👉 <b>Windows:</b> quit VS Code with <b>File → Exit</b> (there's no "Code" menu).</div>
+      <div class="done">✓ Done when: the Claude sunburst opens in VS Code and responds.</div>
+    </div>
+
+    <div class="step" id="v3">
+      <h2><span class="n">3</span> Build + Deploy</h2>
+      <ul>
+        <li>GitHub authentication (the <code>gh</code> login)</li>
+        <li>Build your landing page</li>
+        <li>Set Claude to commit directly to main</li>
+        <li>Commit + push</li>
+        <li>Deploy to Vercel</li>
+      </ul>
+
+      <div class="prompt">
+        <div class="lbl">GitHub authentication</div>
+        <span class="js-copy">Set up GitHub authentication so you can save and push my work for me. Install whatever is needed, walk me through logging in, make all reasonable choices yourself, and don't stop to ask me questions. Tell me when I'm authenticated.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="prompt">
+        <div class="lbl">Build the landing page</div>
+        <span class="js-copy">Build me a simple landing page as an index.html web app for a [your expertise]. Fill everything in based on what you know about me, and don't ask me any questions, just build it.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="prompt">
+        <div class="lbl">Deploy to Vercel</div>
+        <span class="js-copy">Deploy this to Vercel. If I don't have Node or the Vercel CLI installed, install whatever is needed first. Make all reasonable choices yourself, don't stop to ask me what to do, and when you're finished, give me the live URL.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="tip">👉 Import your repo into Vercel <b>once</b>. Re-importing on a failed deploy creates duplicate projects.</div>
+      <div class="done">✓ Done when: your landing page is live on a Vercel URL.</div>
+    </div>
+
+    <div class="step" id="v4">
+      <h2><span class="n">4</span> Give Your App a Database (Supabase)</h2>
+      <ul>
+        <li>Create a Supabase project → copy your Project Reference ID</li>
+        <li>Have Claude create the <code>.mcp.json</code> (prompt below)</li>
+        <li>In the terminal: install the Claude CLI → run <code>claude</code> → sign in → trust folder</li>
+        <li>Run <code>/mcp</code> → Authenticate → Connected</li>
+        <li>Vercel → Integrations → Marketplace → Supabase → Install → Link existing account → connect project</li>
+        <li>Vercel → Environment Variables → confirm the Supabase keys</li>
+      </ul>
+
+      <div class="prompt">
+        <div class="lbl">Create the .mcp.json (swap in your Reference ID)</div>
+        <span class="js-copy">Create a file named .mcp.json in this project that connects to the Supabase MCP server at https://mcp.supabase.com/mcp, scoped to my project reference YOUR_REFERENCE_ID, with read/write access.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="prompt">
+        <div class="lbl">Install the Claude CLI — Mac (terminal)</div>
+        <span class="js-copy">curl -fsSL https://claude.ai/install.sh | bash</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="prompt">
+        <div class="lbl">Install the Claude CLI — Windows PowerShell (terminal)</div>
+        <span class="js-copy">irm https://claude.ai/install.ps1 | iex</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="tip">👉 <b>Two separate connections here:</b> the <b>MCP</b> (Claude ↔ Supabase, for building tables) and the <b>keys in Vercel</b> (your live site ↔ Supabase). Both need to be done.</div>
+      <div class="tip">👉 <b>Windows:</b> if the terminal says <code>claude is not recognized</code> after installing, it's a PATH issue, see <b>drerinjacques.com/stuck</b> (Windows section).</div>
+      <div class="done">✓ Done when: Claude can list/create tables AND the Supabase keys show in Vercel.</div>
+    </div>
+
+    <div class="step" id="v5">
+      <h2><span class="n">5</span> Build Your Login</h2>
+      <ul>
+        <li>One prompt builds sign up / log in / log out</li>
+        <li>Fill in <code>SUPABASE_URL</code> + the <b>anon/public</b> key in index.html (never the service_role key)</li>
+        <li>Sign up, log in, and log out yourself</li>
+      </ul>
+
+      <div class="prompt">
+        <div class="lbl">Build the login</div>
+        <span class="js-copy">Add basic authentication to my learning platform using Supabase Auth. I want a simple sign-up and login form with email and password, plus a logout button. Use the Supabase connection we already set up. When someone is logged out, show the login/sign-up form. When they're logged in, hide it and show a logout button with a welcome message.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="tip">👉 The login won't work until <code>SUPABASE_URL</code> + the anon key are in the page. Get them from <b>Supabase → Settings → API</b>. The anon key is public, so it's safe in the page.</div>
+      <div class="tip">👉 Test it locally first, then commit + push to make it live.</div>
+      <div class="done">✓ Done when: your test account appears in Supabase → Authentication → Users.</div>
+    </div>
+
+  </div>
+
+  <footer><a href="https://drerinjacques.com/hub">← Hub</a> · Stuck? <a href="https://drerinjacques.com/stuck">drerinjacques.com/stuck</a> · Dr. Erin Jacques</footer>
+
+<script>
+  function copyText(btn){
+    var el = btn.parentElement.querySelector('.js-copy');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = o; }, 1500);
+    });
+  }
+</script>
+</body>
+</html>
