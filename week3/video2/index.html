@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Take Payments (Stripe) — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --navy2:#0E2E57;
+    --gold:#F4B02E;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--navy);color:#fff;font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.85rem;color:#bcccdf;}
+  .brand b{color:var(--gold);}
+  .kicker{color:var(--gold);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;margin-bottom:12px;}
+  section{padding:46px 0;border-top:1px solid rgba(255,255,255,.12);}
+  section.hero{border-top:none;padding:44px 0 48px;}
+  h1{font-size:clamp(2.1rem,5.4vw,3.4rem);font-weight:900;letter-spacing:-.025em;line-height:1.06;margin:0 0 16px;}
+  h1 span{color:var(--gold);}
+  h2{font-size:clamp(1.5rem,3.8vw,2.2rem);font-weight:900;letter-spacing:-.02em;margin:0 0 8px;}
+  h2 .st{color:var(--gold);}
+  .lead{font-size:clamp(1.15rem,2.6vw,1.5rem);color:#dbe6f3;font-weight:600;margin:0 0 8px;}
+  p{font-size:clamp(1.02rem,2.2vw,1.18rem);color:#cdd9e8;margin:0 0 14px;max-width:72ch;}
+  p b, li b{color:#fff;}
+  ul{list-style:none;padding:0;margin:0 0 8px;}
+  li{font-size:clamp(1.04rem,2.3vw,1.24rem);color:#e6eef8;padding:11px 0 11px 32px;position:relative;border-bottom:1px solid rgba(255,255,255,.08);}
+  li:last-child{border-bottom:none;}
+  li::before{content:"";position:absolute;left:2px;top:19px;width:11px;height:11px;background:var(--gold);border-radius:50%;}
+  li .sub{display:block;color:#aebfd4;font-size:.9em;font-weight:400;margin-top:2px;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:8px 0;}
+  .card{background:var(--navy2);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px 20px;}
+  .card h3{margin:0 0 4px;font-size:1.15rem;color:var(--gold);font-weight:900;}
+  .card p{font-size:1rem;margin:0;color:#cdd9e8;}
+  .prompt{background:#0b1f3d;border:1px solid rgba(244,176,43,.4);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative;}
+  .prompt .lbl{color:var(--gold);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+  .prompt .js-copy{color:#eaf1fb;font-family:var(--mono);font-size:clamp(.9rem,1.9vw,1.0rem);line-height:1.55;display:block;padding-right:76px;white-space:pre-wrap;}
+  .copy{position:absolute;top:14px;right:14px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:7px 12px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .cmd{background:#0b1f3d;border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:12px 16px;position:relative;margin:12px 0;}
+  .cmd .js-copy{color:#eaf1fb;font-family:var(--mono);font-size:clamp(.9rem,1.9vw,1.02rem);display:block;padding-right:70px;white-space:pre-wrap;}
+  .note{background:rgba(244,176,43,.14);border-left:5px solid var(--gold);border-radius:10px;padding:14px 16px;margin:14px 0;font-size:1.02rem;color:#fff;}
+  .warn{background:#3a1414;border-left:5px solid #e0533a;border-radius:10px;padding:14px 16px;margin:14px 0;font-size:1.02rem;color:#ffe6e0;}
+  .warn b{color:#ff9a86;}
+  .mono{font-family:var(--mono);background:rgba(255,255,255,.08);border-radius:5px;padding:1px 7px;font-size:.9em;}
+  .stepnum{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:38px;background:var(--gold);color:var(--navy);border-radius:50%;font-weight:900;font-size:1.1rem;margin-right:6px;flex:none;}
+  .stephead{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+  footer{padding:30px 0 60px;color:#8ea3bd;font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">Leveraging <b>AI</b> · Week 3 · Video 2</div>
+
+    <section class="hero">
+      <div class="kicker">Week 3 — Launch</div>
+      <h1>Take <span>payments</span>.</h1>
+      <p class="lead">Your platform has logins and a database, but right now it can't take a single dollar. By the end of this, someone can subscribe on your live site and get access automatically. Not a fake demo, a real signup.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Here's the plan</div>
+      <ul>
+        <li>Connect Stripe</li>
+        <li>Create your product, price &amp; coupon, by chat</li>
+        <li>Build the checkout &amp; lock the paid content</li>
+        <li>Add your keys &amp; register the webhook</li>
+        <li>Test a real $0 signup, end to end</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="kicker">The mental model</div>
+      <h2>Four jobs, four different things do them.</h2>
+      <p>This is where people get lost. Understand these four before you touch anything:</p>
+      <div class="cards">
+        <div class="card"><h3>The MCP</h3><p>Creates your Stripe stuff by chat: product, price, coupon.</p></div>
+        <div class="card"><h3>Claude's code</h3><p>Builds the Subscribe button and locks the paid content.</p></div>
+        <div class="card"><h3>Keys in Vercel</h3><p>Let your live site talk to Stripe.</p></div>
+        <div class="card"><h3>Webhook + secret</h3><p>How Stripe tells your site "they paid", and how your site trusts it.</p></div>
+      </div>
+      <p style="margin-top:16px;"><b>What's a webhook?</b> Web + hook. It's an automatic message from Stripe to your site the second someone pays. Stripe calls your website and says "this person just subscribed," and your site unlocks their access. The <b>signing secret</b> is the password on that call, so a scammer can't fake a payment and get in free.</p>
+      <div class="note">Some steps are manual, creating keys, activating your account. That's not the tool being weak, that's the guardrail. You never want a robot that can mint its own keys to your money. <b>Claude builds it; you hold the keys.</b></div>
+    </section>
+
+    <section>
+      <div class="kicker">Before you start</div>
+      <h2>Two things must already be true.</h2>
+      <ul>
+        <li><b>Your Stripe account is activated</b><span class="sub">Business info + bank added. One-time, and only you can do it, it's the law.</span></li>
+        <li><b>Your Supabase MCP is connected</b><span class="sub">From Week 1. In Claude Code, type /mcp and confirm supabase shows connected.</span></li>
+      </ul>
+      <div class="note">If your database says <span class="mono">"Restoration in progress"</span>, your free Supabase went to sleep from inactivity (it pauses after ~7 days). Wait for it to finish, and if you're taking real payments, upgrade to Pro so it never sleeps again.</div>
+    </section>
+
+    <section>
+      <div class="kicker">Step 1</div>
+      <div class="stephead"><span class="stepnum">1</span><h2 style="margin:0;">Connect the Stripe MCP</h2></div>
+      <p>Same move as the Supabase MCP in Week 1. In the <b>terminal</b> (the <span class="mono">%</span> prompt, not inside Claude), run:</p>
+      <div class="cmd">
+        <span class="js-copy">claude mcp add --scope project --transport http stripe https://mcp.stripe.com/</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>Then launch Claude with <span class="mono">claude</span>, type <span class="mono">/mcp</span> → select <b>stripe</b> → <b>Authenticate</b> → the browser opens.</p>
+      <div class="warn">⚠️ On the consent screen: make sure it names <b>your live account</b>, and set permissions to <b>Write</b>, not Read. Pick Read and Claude can't build anything, and you'll redo it. Then click <b>Authorize.</b></div>
+      <p>Back in Claude, type <span class="mono">/mcp</span> again, it should show <b>2 connected</b> (supabase + stripe).</p>
+      <div class="warn"><b>If you see "Unrecognized client_id":</b> the login got stuck. Reset it clean, then re-authenticate:
+        <div class="cmd" style="margin-top:10px;">
+          <span class="js-copy">claude mcp remove stripe -s project
+claude mcp add --scope project --transport http stripe https://mcp.stripe.com/</span>
+          <button class="copy" onclick="copyText(this)">Copy</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="kicker">Step 2 · the magic moment</div>
+      <div class="stephead"><span class="stepnum">2</span><h2 style="margin:0;">Create your product, price &amp; coupon, by chat</h2></div>
+      <p>First, decide your offer. Rule of thumb: <b>lead with monthly.</b> Only offer yearly if you're truly committed to running this a full year, then discount it.</p>
+      <div class="prompt">
+        <div class="lbl">Paste into Claude · create the product + price</div>
+        <span class="js-copy">Using the Stripe MCP, create a recurring subscription product for my platform priced at $28 per month. Look at my repo and content to choose a fitting product name and short description yourself, don't ask me. Create it on my live Stripe account, then give me back the price ID (starts with price_). Create only the product and price for now.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>It reads your site, names your product, sets the price, and gives you the <b>price ID</b>. Copy it, that's the anchor for everything next.</p>
+      <div class="prompt">
+        <div class="lbl">Paste into Claude · create the test coupon</div>
+        <span class="js-copy">Using the Stripe MCP, create a coupon that is 100% off, and a promotion code called TESTFREE attached to it. Confirm it's active on my live account.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>That 100%-off code is how you'll test a real subscription for zero dollars later.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Step 3</div>
+      <div class="stephead"><span class="stepnum">3</span><h2 style="margin:0;">Claude builds the Subscribe button + gating</h2></div>
+      <p>Now Claude writes the actual code, the Subscribe button, the checkout, the webhook that listens for payments, and the lock on your paid content. Swap in your real price ID.</p>
+      <div class="prompt">
+        <div class="lbl">Paste into Claude · the build prompt</div>
+        <span class="js-copy">Add Stripe subscriptions to my app. Payments happen on the platform, a logged-in user subscribes and their access is gated by payment. Before writing code, use the Stripe MCP implementation planner and check current Stripe docs so the API is up to date. Then build:
+1. When a logged-in user clicks Subscribe, create a Stripe Checkout Session in subscription mode for price price_XXXX, and pass their Supabase user id in the session metadata and as client_reference_id.
+2. A webhook endpoint for checkout.session.completed and customer.subscription.created/updated/deleted. Verify the Stripe signature on every webhook and reject anything invalid. Make it idempotent.
+3. When a subscription is active, mark that user subscribed in Supabase (a status column) using the service role key, server-side only. When canceled/unpaid, mark them unsubscribed.
+4. Gate the paid content so only subscribed users see it.
+5. Read all keys from environment variables, never hardcode them, never put secret keys in client-side code.
+6. Create a .env.local listing every env variable with blank values for me to fill, and tell me which key to create in Stripe and which to get from Supabase.
+Make all reasonable choices yourself and don't ask me questions you can answer from my repo.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="note">Tip: describe the <b>behavior</b> to Claude ("Checkout Session," "webhook"), not your own labels. It built everything and left you a checklist of keys to fill, that's the next job.</div>
+    </section>
+
+    <section>
+      <div class="kicker">Step 4 · the manual part</div>
+      <div class="stephead"><span class="stepnum">4</span><h2 style="margin:0;">Fill the keys</h2></div>
+      <p>Here's a little manual work, and here's why: these are live secret keys. Stripe will never let a tool create or hand these out, that's on purpose. So you grab them and place them yourself.</p>
+      <ul>
+        <li><b>Stripe secret key</b><span class="sub">Stripe dashboard → the key panel → reveal the Secret key (sk_live_…) → copy.</span></li>
+        <li><b>Supabase service_role key</b><span class="sub">Supabase → Settings → API → copy the service_role / secret key.</span></li>
+      </ul>
+      <div class="warn"><b>Secret keys are server-side only. Never in your page.</b> Same rule as the anon key: only the anon key ever goes in the browser.</div>
+      <p><b>Put them in TWO places:</b></p>
+      <ul>
+        <li>Fill <span class="mono">.env.local</span>: <span class="mono">STRIPE_SECRET_KEY</span>, <span class="mono">SUPABASE_SERVICE_ROLE_KEY</span>, <span class="mono">STRIPE_PRICE_ID</span> (your price_…), <span class="mono">NEXT_PUBLIC_SITE_URL</span> (your domain, with https://, no trailing slash). Leave <span class="mono">STRIPE_WEBHOOK_SECRET</span> blank for now.</li>
+        <li>Mirror the same into <b>Vercel → Settings → Environment Variables</b> (Production + Preview).</li>
+      </ul>
+      <p>Same values, two homes: <span class="mono">.env.local</span> runs it on your computer, Vercel runs it on your live site.</p>
+      <div class="note"><b>Optional shortcut:</b> instead of grabbing the secret key by hand, install the <b>Vercel → Stripe Marketplace integration</b>, which auto-provisions the Stripe keys into Vercel for you. Choose <b>"Connect existing account."</b> It still doesn't remove the webhook step below.</div>
+    </section>
+
+    <section>
+      <div class="kicker">Step 5</div>
+      <div class="stephead"><span class="stepnum">5</span><h2 style="margin:0;">Deploy, push it live</h2></div>
+      <p>Everything Claude built is only on your computer. Your site deploys <b>from GitHub</b>, so we push it and Vercel puts it live. Remember: <b>a change on your computer is not a change on your site.</b></p>
+      <div class="prompt">
+        <div class="lbl">Paste into Claude</div>
+        <span class="js-copy">Commit and push all the changes to GitHub so Vercel deploys to production. When it's live, tell me the live site URL and the exact full URL of the Stripe webhook endpoint you built.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>Check Vercel → Deployments → newest is <b>Ready</b> (green). Copy that webhook URL, Stripe needs it next.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Step 6 · you do this by hand</div>
+      <div class="stephead"><span class="stepnum">6</span><h2 style="margin:0;">Register the webhook in Stripe</h2></div>
+      <p>Now you tell Stripe where to send the "they paid" message. This part is manual, and it should be, you're pointing Stripe straight at your site.</p>
+      <ul>
+        <li>Make sure Stripe is in <b>LIVE mode</b> (top toggle)</li>
+        <li>Top <b>Search</b> → type <span class="mono">webhooks</span> → under Workbench, click <b>Create a webhook</b> (or Webhooks → + Add destination)</li>
+        <li>Event destination scope → <b>Your account</b></li>
+        <li>API version → leave default. Then select these <b>four events</b>:</li>
+      </ul>
+      <div class="cmd"><span class="js-copy">checkout.session.completed
+customer.subscription.created
+customer.subscription.updated
+customer.subscription.deleted</span><button class="copy" onclick="copyText(this)">Copy</button></div>
+      <ul>
+        <li>Continue → destination type <b>Webhook endpoint</b> → Continue</li>
+        <li><b>Endpoint URL</b> → paste your webhook URL from Step 5 → name it → <b>Create destination</b></li>
+        <li>Open the endpoint → <b>Click to reveal</b> the signing secret → copy the <span class="mono">whsec_…</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="kicker">Step 7 · don't skip the redeploy</div>
+      <div class="stephead"><span class="stepnum">7</span><h2 style="margin:0;">Add the secret + REDEPLOY</h2></div>
+      <p>Last key. The webhook secret goes in, and then you <b>have to redeploy</b>. This is the number one thing people miss.</p>
+      <ul>
+        <li>Add <span class="mono">whsec_…</span> to <span class="mono">.env.local</span> <b>and</b> Vercel (<span class="mono">STRIPE_WEBHOOK_SECRET</span>, Production + Preview)</li>
+        <li>Vercel → Deployments → newest → <b>⋯ → Redeploy</b> → wait for green</li>
+      </ul>
+      <div class="warn">⚠️ Environment changes don't take effect until you <b>REDEPLOY</b>. Skip this and it looks broken when it isn't.</div>
+    </section>
+
+    <section>
+      <div class="kicker">Step 8 · the payoff</div>
+      <div class="stephead"><span class="stepnum">8</span><h2 style="margin:0;">The $0 test + 3-point proof</h2></div>
+      <p>Moment of truth. A real subscription, for zero dollars, on the live site.</p>
+      <ul>
+        <li>Live site → log in → <b>Subscribe</b> → at checkout, <b>Add promotion code</b> → <span class="mono">TESTFREE</span> → total <b>$0.00</b> → complete</li>
+      </ul>
+      <p>It should drop you right back onto the site with your paid content unlocked. But don't trust the screen, <b>prove it three ways:</b></p>
+      <ul>
+        <li>✅ Your site, the paid content is unlocked</li>
+        <li>✅ Stripe → Webhooks → your endpoint, a green <b>200</b> on checkout.session.completed</li>
+        <li>✅ Supabase → that user's row, <b>subscribed = true</b></li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="kicker">Close</div>
+      <h2>That's real payments, live.</h2>
+      <p>Notice how we proved it, not a green checkmark, not "it deployed." A real person completing the real flow. <b>A green build proves nothing. That is the proof.</b></p>
+      <p>Next video: we build the funnel so people actually show up to subscribe.</p>
+    </section>
+
+    <footer>Dr. Erin Jacques · Leveraging AI</footer>
+  </div>
+
+<script>
+  function copyText(btn){
+    var el=btn.parentElement.querySelector('.js-copy');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o=btn.textContent; btn.textContent='Copied!';
+      setTimeout(function(){btn.textContent=o;},1500);
+    });
+  }
+</script>
+</body>
+</html>
