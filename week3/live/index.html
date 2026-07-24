@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Friday Live — Week 3 Kickoff — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --navy2:#0E2E57;
+    --gold:#F4B02E;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--navy);color:#fff;font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.85rem;color:#bcccdf;}
+  .brand b{color:var(--gold);}
+  .kicker{color:var(--gold);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;margin-bottom:14px;}
+  .step{color:var(--gold);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.74rem;}
+  section{padding:48px 0;border-top:1px solid rgba(255,255,255,.12);}
+  section.hero{border-top:none;padding:44px 0 50px;}
+  h1{font-size:clamp(2.1rem,5.4vw,3.4rem);font-weight:900;letter-spacing:-.025em;line-height:1.06;margin:0 0 16px;}
+  h1 span{color:var(--gold);}
+  h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;letter-spacing:-.02em;margin:6px 0 18px;}
+  .lead{font-size:clamp(1.15rem,2.6vw,1.5rem);color:#dbe6f3;font-weight:600;margin:0 0 8px;}
+  p{font-size:clamp(1.02rem,2.2vw,1.2rem);color:#cdd9e8;margin:0 0 14px;max-width:70ch;}
+  p b, li b{color:#fff;}
+  ul{list-style:none;padding:0;margin:0 0 8px;}
+  li{font-size:clamp(1.05rem,2.3vw,1.28rem);color:#e6eef8;padding:12px 0 12px 34px;position:relative;border-bottom:1px solid rgba(255,255,255,.08);}
+  li:last-child{border-bottom:none;}
+  li::before{content:"";position:absolute;left:2px;top:20px;width:12px;height:12px;background:var(--gold);border-radius:50%;}
+  li .sub{display:block;color:#aebfd4;font-size:.9em;font-weight:400;margin-top:2px;}
+  .card{background:var(--navy2);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px 22px;margin:12px 0;}
+  .card .who{color:var(--gold);font-weight:900;font-size:1.15rem;}
+  .card .what{color:#e6eef8;font-size:1.08rem;margin-top:4px;}
+  .quote{background:rgba(244,176,43,.14);border-left:5px solid var(--gold);border-radius:10px;padding:16px 18px;margin:16px 0;font-size:clamp(1.05rem,2.3vw,1.25rem);color:#fff;font-weight:600;}
+  .end{background:rgba(244,176,43,.12);border-left:4px solid var(--gold);border-radius:8px;padding:9px 13px;margin-top:6px;font-size:1rem;color:#fff;}
+  .end b{color:var(--gold);}
+  footer{padding:30px 0 60px;color:#8ea3bd;font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">Leveraging <b>AI</b> · Friday Live · Week 3 Kickoff</div>
+
+    <!-- 1 -->
+    <section class="hero">
+      <div class="step">1 · Welcome</div>
+      <h1>Welcome — <span>you're in the right place</span>.</h1>
+      <p class="lead">This is where you actually build and launch, not just watch AI content.</p>
+    </section>
+
+    <!-- 2 -->
+    <section>
+      <div class="step">2 · Wins of the week</div>
+      <h2>Let's celebrate you. 🎉</h2>
+      <div class="card"><div class="who">LaTrece Jones</div><div class="what">All her foundations set up — and already has email signup, login, and authentication working.</div></div>
+      <div class="card"><div class="who">Coach Amani</div><div class="what">Landing page is live: "Second Serve Online Tennis," for people easing back into the game.</div></div>
+      <div class="card"><div class="who">Kimberly Benjamin</div><div class="what">GitHub, Vercel, Supabase, and Claude all set up. On to the next video.</div></div>
+      <div class="card"><div class="who">Shawn Every</div><div class="what">Kept pushing her Week 1 setup — on a Sunday. That's staying in the game.</div></div>
+      <div class="quote">Notice how many of these wins are the same thing: getting the foundation set up. That's exactly what carried you here. Now let's talk about where we're going.</div>
+    </section>
+
+    <!-- 3 -->
+    <section>
+      <div class="step">3 · How this community works</div>
+      <h2>Your support, in one place.</h2>
+      <ul>
+        <li>Short lunchtime videos — 10 minutes or less, one task each</li>
+        <li><b>Bugs/Q&amp;A</b> — post it, answered same day, often with a quick video</li>
+        <li><b>Wins</b> — big or small, post them here</li>
+        <li>Live support link — use it sparingly, watch the video and try first</li>
+      </ul>
+    </section>
+
+    <!-- 4 -->
+    <section>
+      <div class="step">4 · Where you are so far</div>
+      <h2>Look how far you've come.</h2>
+      <p class="lead" style="margin-bottom:2px;">Week 1 — Set Up (5 short videos)</p>
+      <ul>
+        <li>Accounts + repo<span class="sub">Your GitHub account, repository, and README.</span></li>
+        <li>Your workspace<span class="sub">VS Code, GitHub Desktop, clone your project, add Claude Code.</span></li>
+        <li>Build + deploy<span class="sub">Claude builds your landing page and pushes it live to a real URL.</span></li>
+        <li>Database<span class="sub">Create Supabase and connect it to Claude.</span></li>
+        <li>Login<span class="sub">Build sign-up / log-in / log-out and test a real account.</span></li>
+      </ul>
+      <div class="end"><b>By the end of Week 1:</b> a live landing page, a database connected to Claude, and a working login. Proof you can build software.</div>
+      <p class="lead" style="margin:24px 0 2px;">Week 2 — Build (3 videos)</p>
+      <p>You decided what to build from real information, then branded it and made it legit.</p>
+      <div class="end"><b>By the end of Week 2:</b> a real, branded platform built for one specific person.</div>
+    </section>
+
+    <!-- 5 -->
+    <section>
+      <div class="step">5 · This week — Week 3 Launch (posting today)</div>
+      <h2>Turn it into a real business.</h2>
+      <p>You've been building it. This week we connect everything, take payments, and put your platform in front of people. 4 videos:</p>
+      <ul>
+        <li>Connect your domain<span class="sub">Your platform lives at your own web address, not a Vercel link.</span></li>
+        <li>Take payments (Stripe)<span class="sub">Set your pricing and wire subscriptions in — only paying members get access.</span></li>
+        <li>Opt-ins &amp; email<span class="sub">Lead magnet → opt-in → automated follow-up. Capture leads and follow up automatically.</span></li>
+        <li>Test it end to end<span class="sub">A real signup and a real test payment on your live site. That's launch.</span></li>
+      </ul>
+      <div class="end"><b>By the end of Week 3:</b> live on your own domain, able to take a real paying customer, and in front of actual people.</div>
+      <div class="quote">This is where you stop consuming AI content and start owning an AI-powered business.</div>
+    </section>
+
+    <!-- 6 -->
+    <section>
+      <div class="step">6 · Why this matters</div>
+      <h2>You're learning to build agents.</h2>
+      <p>Connecting Claude to a real tool so it can take real actions is the foundation of an agent. An agent is three things: a <b>brain</b> (Claude), <b>tools</b> it can use (the MCP you set up), and <b>a loop</b> that runs those tools on its own toward a goal.</p>
+      <p>You already built the hard part. The only thing that turns this into an agent is the loop — and this week's Stripe MCP is that same pattern again.</p>
+    </section>
+
+    <!-- 7 -->
+    <section>
+      <div class="step">7 · Q&amp;A</div>
+      <h2>What's on your mind?</h2>
+      <p>Bring your questions — GitHub, Claude Code, Supabase, Vercel, Stripe, anything. Let's get you unstuck.</p>
+    </section>
+
+    <!-- 8 -->
+    <section>
+      <div class="step">8 · Close</div>
+      <h2>Ride the momentum.</h2>
+      <ul>
+        <li>Act on ideas immediately — move while it's hot</li>
+        <li>You can be launched by the end of Week 3 if you follow the path</li>
+        <li>Lives every Friday</li>
+      </ul>
+    </section>
+
+    <footer>Dr. Erin Jacques · Leveraging AI · Friday Live</footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Week 3 — Launch — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --navy2:#0E2E57;
+    --gold:#F4B02E;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--navy);color:#fff;font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.85rem;color:#bcccdf;}
+  .brand b{color:var(--gold);}
+  .kicker{color:var(--gold);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;margin-bottom:14px;}
+  section{padding:50px 0;border-top:1px solid rgba(255,255,255,.12);}
+  section.hero{border-top:none;padding:44px 0 52px;}
+  h1{font-size:clamp(2.1rem,5.4vw,3.4rem);font-weight:900;letter-spacing:-.025em;line-height:1.06;margin:0 0 16px;}
+  h1 span{color:var(--gold);}
+  h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;letter-spacing:-.02em;margin:0 0 18px;}
+  .lead{font-size:clamp(1.15rem,2.6vw,1.5rem);color:#dbe6f3;font-weight:600;margin:0 0 8px;}
+  p{font-size:clamp(1.02rem,2.2vw,1.2rem);color:#cdd9e8;margin:0 0 14px;max-width:70ch;}
+  p b, li b{color:#fff;}
+  ul{list-style:none;padding:0;margin:0 0 8px;}
+  li{font-size:clamp(1.05rem,2.3vw,1.28rem);color:#e6eef8;padding:12px 0 12px 34px;position:relative;border-bottom:1px solid rgba(255,255,255,.08);}
+  li:last-child{border-bottom:none;}
+  li::before{content:"";position:absolute;left:2px;top:20px;width:12px;height:12px;background:var(--gold);border-radius:50%;}
+  li .sub{display:block;color:#aebfd4;font-size:.9em;font-weight:400;margin-top:2px;}
+  .card{background:var(--navy2);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:22px 24px;margin:14px 0;}
+  .card .vid{color:var(--gold);font-weight:900;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;}
+  .card h3{margin:2px 0 10px;font-size:clamp(1.3rem,3vw,1.7rem);color:#fff;font-weight:900;}
+  .card .what{font-size:clamp(1.05rem,2.3vw,1.22rem);color:#e6eef8;margin:0 0 12px;}
+  .card .end{background:rgba(244,176,43,.14);border-left:4px solid var(--gold);border-radius:8px;padding:10px 14px;margin:4px 0 0;font-size:1.02rem;color:#fff;}
+  .card .end b{color:var(--gold);}
+  .note{background:rgba(244,176,43,.14);border-left:5px solid var(--gold);border-radius:10px;padding:14px 16px;margin:14px 0;font-size:1.02rem;color:#fff;}
+  .note b{color:var(--gold);}
+  footer{padding:30px 0 60px;color:#8ea3bd;font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">Leveraging <b>AI</b> · Week 3 · Launch</div>
+
+    <section class="hero">
+      <div class="kicker">Week 3 — Launch · Posting today</div>
+      <h1>Turn it into a <span>real business</span>.</h1>
+      <p class="lead">Week 3 goes up today. This is where we connect everything, take payments, and put your platform in front of people.</p>
+      <p>Nobody wakes up on Monday and joins a platform they've never heard of. This is the week you stop consuming AI content and start owning an AI-powered business.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Here's the plan</div>
+      <p class="lead">4 videos this week.</p>
+      <ul>
+        <li>Connect your domain</li>
+        <li>Take payments (Stripe)</li>
+        <li>Set up your opt-ins &amp; email</li>
+        <li>Test the whole thing, end to end</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="kicker">The 4 videos</div>
+      <h2>What each one does.</h2>
+
+      <div class="card">
+        <div class="vid">Video 1</div>
+        <h3>Connect your domain</h3>
+        <p class="what">Point the domain you bought in Week 2 to your live platform, and update your Supabase URLs at the same time so logins and confirmation emails work on the real site instead of localhost.</p>
+        <div class="end"><b>By the end:</b> your platform lives at your own web address, not a Vercel link.</div>
+      </div>
+
+      <div class="card">
+        <div class="vid">Video 2</div>
+        <h3>Take payments (Stripe)</h3>
+        <p class="what">Connect Stripe and set your pricing (monthly vs annual, lead with monthly for your MVP), then wire subscriptions into the login you already built. The Stripe MCP lets Claude set up your product, price, and coupon by conversation.</p>
+        <div class="end"><b>By the end:</b> you can charge money, and only paying members get in.</div>
+      </div>
+
+      <div class="card">
+        <div class="vid">Video 3</div>
+        <h3>Opt-ins &amp; email marketing</h3>
+        <p class="what">Set up your funnel and email platform, then build the flow: lead magnet → opt-in → tag → automated follow-up. Bring your whole existing email list in.</p>
+        <div class="end"><b>By the end:</b> you can capture leads and follow up with them automatically.</div>
+      </div>
+
+      <div class="card">
+        <div class="vid">Video 4</div>
+        <h3>Test a real signup, end to end</h3>
+        <p class="what">Sign up on your live domain as a real user. Confirm the email lands and redirects to your real site, the account shows in your database, and a real test payment runs through Stripe.</p>
+        <div class="end"><b>By the end:</b> you've proven a real person can go landing → signup → payment → access. That's launch.</div>
+      </div>
+
+      <div class="note">⚠️ A green build proves nothing. The only proof is a real person completing the full flow on the real domain.</div>
+    </section>
+
+    <section>
+      <div class="kicker">By the end of this week</div>
+      <h2>Here's where you'll be.</h2>
+      <ul>
+        <li>Live on <b>your own domain</b></li>
+        <li>Able to accept a <b>real paying customer</b></li>
+        <li><b>In front of actual people</b>, with a way to capture and follow up with leads</li>
+      </ul>
+      <p style="margin-top:16px;">This is where it becomes a business.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Why this matters beyond the build</div>
+      <h2>You're actually learning to build agents.</h2>
+      <p>Everything you've done, connecting Claude to a real tool so it can take real actions, is the foundation of an agent.</p>
+      <p>An agent is really three things: a <b>brain</b> (Claude), <b>tools</b> it can use (that's the MCP you set up), and <b>a loop</b> that keeps it running those tools on its own toward a goal.</p>
+      <p>You already built the hard part. You connected a brain to real tools. The only thing that turns this into an agent is the loop, and this week's Stripe MCP is that same pattern a second time. Once you see it repeat, it stops feeling like magic and starts feeling like a skill you own.</p>
+    </section>
+
+    <footer>Dr. Erin Jacques · Leveraging AI</footer>
+  </div>
+</body>
+</html>
