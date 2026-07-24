@@ -238,6 +238,8 @@
             border-radius: 16px;
             overflow: hidden;
             transition: box-shadow 0.3s;
+            position: relative;
+            cursor: pointer;
         }
 
         .featured-card:hover {
@@ -320,6 +322,14 @@
             color: var(--brand-blue-light);
         }
 
+        /* Make the whole featured card a click target */
+        .featured-title a::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
         .featured-excerpt {
             font-size: 15px;
             color: var(--text-secondary);
@@ -372,6 +382,8 @@
             border-radius: 12px;
             overflow: hidden;
             transition: all 0.2s;
+            position: relative;
+            cursor: pointer;
         }
 
         .article-card:hover {
@@ -437,6 +449,14 @@
 
         .card-title a:hover {
             color: var(--brand-blue-light);
+        }
+
+        /* Make the whole article card a click target */
+        .card-title a::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
         }
 
         .card-excerpt {
@@ -680,6 +700,17 @@
 
     const articles = [
         // ↓ ADD NEW ARTICLES HERE (newest first) ↓
+        {
+            slug: "build-ai-outreach-agent-two-prompts",
+            title: "Two Prompts. One AI Outreach Agent.",
+            subtitle: "You don't need to code. You need two prompts \u2014 one to build, one to deploy \u2014 and in minutes you have a live app that researches any company and writes the cold email for you.",
+            category: "AI Monetization",
+            date: "July 23, 2026",
+            dateISO: "2026-07-23",
+            readTime: "3 min read",
+            excerpt: "The beauty of this build is that it only takes two prompts. The first builds an AI outreach app that researches any company and writes a personalized cold email. The second deploys it live to Vercel \u2014 no coding required."
+        },
+
         {
             slug: "malicious-claude-skills-steal-api-keys",
             title: "Malicious Claude Skills Can Steal API Keys and Credentials",
