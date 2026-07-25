@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Connect Your Domain (DNS) — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --navy2:#0E2E57;
+    --gold:#F4B02E; --ink:#1c2733; --muted:#5f6b7a;
+    --bg:#F6F5F1; --card:#ffffff; --line:#e7e3d9; --goldbg:#fdf5e2;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .top{background:var(--navy);color:#fff;padding:26px 20px;}
+  .top .in{max-width:960px;margin:0 auto;}
+  .brand{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.9rem;}
+  .brand b{color:var(--gold);}
+  h1{margin:.35em 0 .1em;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:900;letter-spacing:-.02em;}
+  .top p{margin:.2em 0 0;color:#bcccdf;font-size:1.02rem;}
+  .wrap{max-width:960px;margin:0 auto;padding:24px 20px 80px;}
+
+  .rule{background:var(--navy2);color:#eaf1fb;border-radius:14px;padding:18px 20px;margin:6px 0 26px;border-left:5px solid var(--gold);}
+  .rule .k{color:var(--gold);font-weight:900;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;margin-bottom:6px;}
+  .rule b{color:#fff;}
+
+  .explain{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:16px 0;}
+  .explain h2{margin:0 0 8px;font-size:1.3rem;color:var(--navy);}
+  .explain p{margin:8px 0;}
+  .explain .pb{color:var(--navy);font-weight:800;}
+  table.rec{width:100%;border-collapse:collapse;margin:12px 0 2px;font-size:.95rem;}
+  table.rec th,table.rec td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
+  table.rec th{color:var(--navy);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;}
+  table.rec code{background:#eef2f8;border-radius:5px;padding:1px 6px;font-family:var(--mono);font-size:.9em;}
+
+  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:16px 0;}
+  .step h2{margin:0 0 4px;font-size:1.3rem;color:var(--navy);display:flex;align-items:baseline;gap:12px;}
+  .n{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:34px;background:var(--navy);color:var(--gold);
+     border-radius:50%;font-size:.9rem;font-weight:900;flex:none;}
+  ul,ol{margin:6px 0 0;padding-left:22px;}
+  li{margin:6px 0;}
+  code{background:#eef2f8;border-radius:5px;padding:1px 6px;font-family:var(--mono);font-size:.9em;}
+  .done{background:var(--goldbg);border-left:4px solid var(--gold);border-radius:8px;padding:10px 14px;margin-top:14px;font-weight:700;color:#7a5600;}
+  .tip{background:rgba(244,176,43,.16);border-left:4px solid var(--gold);border-radius:8px;padding:10px 14px;margin-top:10px;font-size:.95rem;}
+  .tip b{color:var(--navy);}
+  .warn{background:#fdecec;border-left:4px solid #d9534f;border-radius:8px;padding:10px 14px;margin-top:10px;font-size:.95rem;}
+  .warn b{color:#a3312c;}
+  .prompt{margin-top:12px;background:#0f2748;border-radius:12px;padding:14px 16px;position:relative;}
+  .prompt .lbl{color:var(--gold);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+  .prompt .js-copy{color:#eaf1fb;font-family:var(--mono);font-size:.95rem;line-height:1.5;display:block;padding-right:76px;}
+  .copy{position:absolute;top:12px;right:12px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:7px 12px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-top:10px;}
+  .links a{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--navy);font-weight:700;font-size:.95rem;}
+  .links a:hover{border-color:var(--gold);}
+  .links a span{display:block;color:var(--muted);font-weight:400;font-size:.85rem;margin-top:2px;}
+  footer{max-width:960px;margin:0 auto;padding:0 20px 60px;color:var(--muted);font-size:.9rem;}
+  footer a{color:var(--navy);font-weight:800;text-decoration:none;border-bottom:2px solid var(--gold);}
+</style>
+</head>
+<body>
+  <div class="top"><div class="in">
+    <div class="brand">Leveraging <b>AI</b></div>
+    <h1>Connect Your Domain</h1>
+    <p>Point the domain you bought in Week 2 at your live site. It's the one step that looks a little different for everyone — here's the map.</p>
+  </div></div>
+
+  <div class="wrap">
+
+    <div class="rule">
+      <div class="k">🥇 The one golden rule</div>
+      <b>Vercel tells you the exact values to enter. Your only job is to copy them into your domain company's DNS settings.</b><br>
+      Don't copy the example values on this page — they change, and yours can be different. Always use the exact records shown in <b>your</b> Vercel dashboard. This page shows you <b>where</b> to put them.
+    </div>
+
+    <div class="explain">
+      <h2>First — what is this even doing?</h2>
+      <p>Every website lives on a computer, and that computer has an address — its <span class="pb">IP address</span> (IP = <b>Internet Protocol</b>). It's just a string of numbers like <code>216.150.1.1</code>. That's the <i>real</i> location of your site. But nobody wants to type numbers, so <span class="pb">DNS</span> is the internet's phone book: someone types your name, DNS finds the number.</p>
+      <p>Connecting a domain means adding <b>two entries</b> to that phone book:</p>
+      <table class="rec">
+        <tr><th>Record</th><th>For</th><th>What it does</th></tr>
+        <tr><td><b>A record</b><br><code>A = Address</code></td><td>your root domain<br><code>yourdomain.com</code></td><td>Points straight to a <b>number</b> (Vercel's IP). It's the actual address.</td></tr>
+        <tr><td><b>CNAME</b><br><code>Canonical Name</code></td><td>the <code>www</code> version<br>(and any subdomain: <code>shop.</code>, <code>app.</code>)</td><td>A <b>nickname</b> — points to another <b>name</b>, not a number. "<code>www</code> is just another name for your site."</td></tr>
+      </table>
+      <p style="margin-top:12px"><b>The line that sticks:</b> <i>A record points to a number. CNAME points to a name.</i> Your root domain gets the real address; <code>www</code> and other subdomains are just nicknames pointing to it. <span style="color:var(--muted)">(It's also a DNS rule: a root domain isn't allowed to be a CNAME — that's why root = A, www = CNAME.)</span></p>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">1</span> Get your values from Vercel</h2>
+      <ol>
+        <li><b>Vercel → your project → Settings → Domains → Add Domain.</b></li>
+        <li>Type your domain (e.g. <code>yourdomain.com</code>) → accept the prompt to also add <code>www.yourdomain.com</code>.</li>
+        <li>Vercel now shows the records to add — roughly:
+          <ul>
+            <li><b>A record</b> → Host <code>@</code> → Value: an IP like <code>216.150.1.1</code> <span style="color:var(--muted)">(older projects show <code>76.76.21.21</code> — use whatever <b>yours</b> says)</span></li>
+            <li><b>CNAME</b> → Host <code>www</code> → Value: something like <code>cname.vercel-dns.com</code> or a project-specific <code>xxxx.vercel-dns-017.com</code></li>
+          </ul>
+        </li>
+      </ol>
+      <div class="tip">📸 <b>Screenshot this Vercel screen</b> — it's your reference sheet for Step 2. Vercel keeps showing these records (with a live status) even after you're done, so you can always come back.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">2</span> Add the records at your domain company</h2>
+      <p style="margin:2px 0 0;color:var(--muted)">GoDaddy shown here — the idea is identical everywhere, only the buttons move.</p>
+      <ol>
+        <li>Log in → <b>Domains → your domain → DNS / Manage DNS.</b></li>
+        <li><b>Delete the conflicting defaults first</b> (see warning below).</li>
+        <li>Add the <b>A record</b>: Type <code>A</code> · Host <code>@</code> · Value = <b>the IP from Vercel</b> · TTL default.</li>
+        <li>Add the <b>CNAME</b>: Type <code>CNAME</code> · Host <code>www</code> · Value = <b>the CNAME from Vercel</b> · TTL default.</li>
+        <li><b>Save.</b></li>
+      </ol>
+      <div class="warn">⚠️ <b>GoDaddy gotcha (the #1 "I did everything and it still doesn't work"):</b> GoDaddy auto-creates a <b>"Parked" A record</b> on <code>@</code> (and sometimes a <code>www</code> CNAME). These <b>block</b> your new ones. Delete GoDaddy's existing <code>@</code> A record and any conflicting <code>www</code> CNAME <b>before</b> adding Vercel's.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">3</span> Confirm it worked</h2>
+      <ol>
+        <li>Back in <b>Vercel → Settings → Domains</b>, click <b>Refresh</b> → status should read <b>"Valid Configuration."</b></li>
+        <li>Visit <code>yourdomain.com</code> → your site loads. 🎉</li>
+        <li><b>Not instant?</b> Normal. DNS takes a few minutes up to 24–48 hours to spread (usually much faster). Track it at <b>whatsmydns.net</b> — enter your domain, pick "A," watch it go green worldwide.</li>
+      </ol>
+      <div class="done">✓ Done when: your site loads on your real domain, on Valid Configuration.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">🤖</span> Stuck? Let Claude check your screenshot</h2>
+      <p>Not sure your records are right? Screenshot <b>your domain company's DNS records</b> and <b>the records Vercel is asking for</b>, then paste both into Claude with this:</p>
+      <div class="prompt">
+        <div class="lbl">Paste with your two screenshots</div>
+        <span class="js-copy">Here are two screenshots: the DNS records my domain company currently has, and the records Vercel says to add. Compare them and tell me exactly what to change — which record to add, edit, or delete — so my domain connects to Vercel. Point out any leftover "parked" records I should remove.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">🌐</span> Not on GoDaddy?</h2>
+      <p>Same two records, different buttons. Find your company's <b>DNS / Manage DNS</b> screen, delete conflicting defaults, add the A (<code>@</code>) + CNAME (<code>www</code>) Vercel gave you.</p>
+      <div class="links">
+        <a href="https://vercel.com/docs/projects/domains/add-a-domain" target="_blank">Vercel — Add a domain <span>Official docs + DNS details</span></a>
+        <a href="https://www.whatsmydns.net" target="_blank">whatsmydns.net <span>Check if your DNS has propagated</span></a>
+        <a href="https://www.kamolroy.com/blog/vercel-custom-domain-godaddy" target="_blank">GoDaddy + Vercel walkthrough <span>Real-world, incl. the parked-record fix</span></a>
+      </div>
+      <div class="tip">👉 <b>Namecheap / Squarespace (where Google Domains moved) / Cloudflare:</b> search their help for "add an A record and CNAME." On <b>Cloudflare</b>, set the record to <b>"DNS only" (grey cloud)</b>, not proxied.</div>
+      <div class="tip">👉 <b>Bought your domain <i>through</i> Vercel in Week 2?</b> Then DNS is automatic — you can skip all of this.</div>
+    </div>
+
+    <div class="tip" style="margin-top:22px">📌 <b>You'll use this same DNS screen again later.</b> Custom email (you@yourdomain.com via Google) adds <b>MX records</b>; email sending in Video 3 (Systeme.io) adds <b>TXT / DKIM records</b> so you don't land in spam. Different records, same skill: go to your DNS panel, add what they give you.</div>
+
+  </div>
+
+  <footer><a href="https://drerinjacques.com/hub">← Hub</a> · Stuck? <a href="https://drerinjacques.com/stuck">drerinjacques.com/stuck</a> · Dr. Erin Jacques</footer>
+
+<script>
+  function copyText(btn){
+    var el = btn.parentElement.querySelector('.js-copy');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = o; }, 1500);
+    });
+  }
+</script>
+</body>
+</html>
