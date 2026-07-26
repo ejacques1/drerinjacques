@@ -159,20 +159,18 @@ Make all reasonable choices yourself and don't ask me questions you can answer f
 
     <section>
       <div class="kicker">Step 4 · the manual part</div>
-      <div class="stephead"><span class="stepnum">4</span><h2 style="margin:0;">Fill the keys</h2></div>
-      <p>Here's a little manual work, and here's why: these are live secret keys. Stripe will never let a tool create or hand these out, that's on purpose. So you grab them and place them yourself.</p>
+      <div class="stephead"><span class="stepnum">4</span><h2 style="margin:0;">Fill the keys, in Vercel</h2></div>
+      <p>Claude made a <span class="mono">.env.local</span> file with the keys left blank. <b>Don't fill that file</b>, it's only for running the app on your own computer, and we're going straight to live. Use it as your <b>checklist</b>, then add each key in <b>Vercel → Settings → Environment Variables</b>, that's what your live site actually reads.</p>
+      <p>Why it's manual: these are live secret keys, and Stripe and Supabase will never let a tool hand them out. That's the guardrail. So you grab each one from its source and paste it into Vercel.</p>
       <ul>
-        <li><b>Stripe secret key</b><span class="sub">Stripe dashboard → the key panel → reveal the Secret key (sk_live_…) → copy.</span></li>
-        <li><b>Supabase service_role key</b><span class="sub">Supabase → Settings → API → copy the service_role / secret key.</span></li>
+        <li><b>STRIPE_SECRET_KEY</b><span class="sub">Stripe → Developers → API keys → reveal or create the Secret key (sk_live_…). It shows once, copy it immediately.</span></li>
+        <li><b>SUPABASE_SERVICE_ROLE_KEY</b><span class="sub">Supabase → Settings → API → the service_role / secret key.</span></li>
+        <li><b>STRIPE_PRICE_ID</b><span class="sub">Your price_… from Step 2. Claude may already know it, it created it.</span></li>
+        <li><b>STRIPE_WEBHOOK_SECRET</b><span class="sub">Leave it, that's the next step, after you register the webhook.</span></li>
       </ul>
-      <div class="warn"><b>Secret keys are server-side only. Never in your page.</b> Same rule as the anon key: only the anon key ever goes in the browser.</div>
-      <p><b>Put them in TWO places:</b></p>
-      <ul>
-        <li>Fill <span class="mono">.env.local</span>: <span class="mono">STRIPE_SECRET_KEY</span>, <span class="mono">SUPABASE_SERVICE_ROLE_KEY</span>, <span class="mono">STRIPE_PRICE_ID</span> (your price_…), <span class="mono">NEXT_PUBLIC_SITE_URL</span> (your domain, with https://, no trailing slash). Leave <span class="mono">STRIPE_WEBHOOK_SECRET</span> blank for now.</li>
-        <li>Mirror the same into <b>Vercel → Settings → Environment Variables</b> (Production + Preview).</li>
-      </ul>
-      <p>Same values, two homes: <span class="mono">.env.local</span> runs it on your computer, Vercel runs it on your live site.</p>
-      <div class="note"><b>Optional shortcut:</b> instead of grabbing the secret key by hand, install the <b>Vercel → Stripe Marketplace integration</b>, which auto-provisions the Stripe keys into Vercel for you. Choose <b>"Connect existing account."</b> It still doesn't remove the webhook step below.</div>
+      <div class="note"><b>Did the Supabase marketplace integration in Week 1?</b> Then your Supabase keys (<span class="mono">SUPABASE_URL</span>, <span class="mono">SUPABASE_PUBLISHABLE_KEY</span>, <span class="mono">SUPABASE_SERVICE_ROLE_KEY</span>) are <b>already in Vercel</b>, added automatically. Confirm the names match what your code expects, and if they're there, you only need to add the Stripe keys. <i>(A "Sensitive" key showing no dots isn't empty, Vercel just hides those completely.)</i></div>
+      <div class="warn"><b>Two boxes, two different things.</b> In Vercel, the <b>Name</b> must be exactly the variable name, letters, digits and underscores only, no spaces (e.g. <span class="mono">STRIPE_SECRET_KEY</span>). The <b>Value</b> is the actual key (<span class="mono">sk_live_…</span>). Put the key in the Name box and you'll get an "invalid characters" error.</div>
+      <div class="note"><b>Keys live at their source, not in Vercel.</b> Once you save a secret in Vercel it's hidden, you can't read it back. So always copy from Stripe or Supabase, where you can re-view or regenerate, never rely on Vercel to hand a key back.</div>
     </section>
 
     <section>
