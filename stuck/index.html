@@ -167,7 +167,7 @@ Don't change or delete anything. End with: what stage am I at, and what's the si
         </div></details>
 
       <details><summary>Claude says a command is "not recognized" or "not found"</summary>
-        <div class="a">Just tell Claude: <b>"Restart the terminal and try again."</b> This usually happens right after it installs something new. Claude handles it, you don't need to type anything yourself.</div></details>
+        <div class="a">This almost always means the tool <b>did</b> install, but it landed in a folder your terminal doesn't check yet (its <b>PATH</b>), so the terminal can't find it. It's a find-it problem, not a broken install. Restarting sometimes helps, but for a fix that sticks, use your platform's section below: <b>🍎 Mac only</b> or <b>🪟 Windows only</b>.</div></details>
 
       <details><summary>Claude keeps asking me to approve things</summary>
         <div class="a">That's normal and safe. Say <b>Yes / Approve</b> to everything so it can keep working. If it offers "don't ask again for this command," take it.</div></details>
@@ -178,6 +178,25 @@ Don't change or delete anything. End with: what stage am I at, and what's the si
           <div class="prompt">
             <div class="lbl">Copy → paste into Claude</div>
             <span class="js-copy">My deploy failed. Show me the build log and tell me the exact error and what caused it. Check whether this is my code, my config, or a Vercel platform incident. Don't fix anything yet, just tell me what's wrong.</span>
+            <button class="copy" onclick="copyText(this)">Copy</button>
+          </div>
+        </div></details>
+
+      <h2 style="margin-top:34px;">🍎 Mac only</h2>
+
+      <details><summary>After installing, it says "zsh: command not found: claude"</summary>
+        <div class="a">
+          <p>The install worked. The Mac terminal (zsh) only searches certain folders for commands, and the one the installer used (<code>~/.local/bin</code>) isn't on that list yet, so it can't find <code>claude</code>. Reinstalling won't help, it goes back to the same folder. This is the real fix.</p>
+          <div class="tip">👉 Permanent fix, paste this once, then open a fresh terminal (or run <code>source ~/.zshrc</code>). After this, <code>claude</code> works in every terminal for good:</div>
+          <div class="prompt">
+            <div class="lbl">Paste into the terminal (one time)</div>
+            <span class="js-copy">echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc</span>
+            <button class="copy" onclick="copyText(this)">Copy</button>
+          </div>
+          <div class="tip">👉 Just need it working in the window you're in right now? This lasts only for that one terminal:</div>
+          <div class="prompt">
+            <div class="lbl">Paste into the terminal (this window only)</div>
+            <span class="js-copy">export PATH="$HOME/.local/bin:$PATH"</span>
             <button class="copy" onclick="copyText(this)">Copy</button>
           </div>
         </div></details>

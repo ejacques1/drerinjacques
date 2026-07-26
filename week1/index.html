@@ -144,12 +144,18 @@
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
       <div class="prompt">
+        <div class="lbl">Then make Claude findable — Mac (run once, right after installing)</div>
+        <span class="js-copy">echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="prompt">
         <div class="lbl">Install the Claude CLI — Windows PowerShell (terminal)</div>
         <span class="js-copy">irm https://claude.ai/install.ps1 | iex</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
       <div class="tip">👉 <b>Two separate connections here:</b> the <b>MCP</b> (Claude ↔ Supabase, for building tables) and the <b>keys in Vercel</b> (your live site ↔ Supabase). Both need to be done.</div>
-      <div class="tip">👉 <b>Windows:</b> if the terminal says <code>claude is not recognized</code> after installing, it's a PATH issue, see <b>drerinjacques.com/stuck</b> (Windows section).</div>
+      <div class="tip">👉 <b>The Mac line above matters:</b> without it, every new terminal says <code>command not found: claude</code> even though the install worked. Running it once fixes it for good. (Prefer to explain it? See <b>drerinjacques.com/pieces</b>.)</div>
+      <div class="tip">👉 If the terminal still can't find <code>claude</code> (<code>command not found</code> on Mac, or <code>claude is not recognized</code> on Windows), it's a PATH issue, see <b>drerinjacques.com/stuck</b> (Mac or Windows section).</div>
       <div class="done">✓ Done when: Claude can list/create tables AND the Supabase keys show in Vercel.</div>
     </div>
 

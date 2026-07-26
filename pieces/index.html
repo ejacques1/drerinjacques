@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>How the Pieces Fit — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --navy2:#0E2E57;
+    --gold:#F4B02E;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--navy);color:#fff;font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.85rem;color:#bcccdf;}
+  .brand b{color:var(--gold);}
+  .kicker{color:var(--gold);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;margin-bottom:14px;}
+  section{padding:46px 0;border-top:1px solid rgba(255,255,255,.12);}
+  section.hero{border-top:none;padding:44px 0 46px;}
+  h1{font-size:clamp(2rem,5.2vw,3.2rem);font-weight:900;letter-spacing:-.025em;line-height:1.07;margin:0 0 14px;}
+  h1 span{color:var(--gold);}
+  h2{font-size:clamp(1.5rem,3.8vw,2.2rem);font-weight:900;letter-spacing:-.02em;margin:0 0 8px;}
+  .lead{font-size:clamp(1.12rem,2.5vw,1.45rem);color:#dbe6f3;font-weight:600;margin:0 0 6px;}
+  p{font-size:clamp(1rem,2.1vw,1.16rem);color:#cdd9e8;margin:0 0 12px;max-width:72ch;}
+  p b{color:#fff;}
+  code{font-family:var(--mono);background:#0b1f3d;border:1px solid rgba(244,176,43,.35);border-radius:6px;padding:1px 7px;color:#ffe6b0;font-size:.9em;}
+  .group{margin:8px 0 4px;color:var(--gold);font-weight:800;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;}
+  .tool{display:grid;grid-template-columns:210px 1fr;gap:16px;background:var(--navy2);border:1px solid rgba(255,255,255,.13);border-radius:13px;padding:15px 18px;margin:9px 0;}
+  .tool .n{color:var(--gold);font-weight:900;font-size:1.08rem;}
+  .tool .n small{display:block;color:#9fb3cc;font-weight:600;font-size:.78rem;letter-spacing:.02em;margin-top:2px;text-transform:none;}
+  .tool .j{color:#e6eef8;font-size:1.04rem;align-self:center;}
+  @media(max-width:620px){ .tool{grid-template-columns:1fr;gap:4px;} }
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px;}
+  @media(max-width:640px){ .split{grid-template-columns:1fr;} }
+  .conn{background:var(--navy2);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px 20px;}
+  .conn h3{margin:0 0 6px;color:var(--gold);font-size:1.15rem;font-weight:900;}
+  .conn p{margin:0;font-size:1rem;}
+  .note{background:rgba(244,176,43,.14);border-left:5px solid var(--gold);border-radius:10px;padding:14px 16px;margin:16px 0;font-size:1.04rem;color:#fff;}
+  .note b{color:var(--gold);}
+  .flow{font-family:var(--mono);color:#ffe6b0;font-size:clamp(.95rem,2.2vw,1.1rem);background:#0b1f3d;border:1px solid rgba(244,176,43,.3);border-radius:10px;padding:14px 16px;margin-top:10px;overflow-x:auto;}
+  footer{padding:28px 0 60px;color:#8ea3bd;font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">Leveraging <b>AI</b> · Setup</div>
+
+    <section class="hero">
+      <div class="kicker">How it all fits together</div>
+      <h1>Every tool in your setup, <span>and the one job it does</span>.</h1>
+      <p class="lead">You're not learning ten hard things. You're learning a few simple tools that each do one job. Here's the whole map.</p>
+    </section>
+
+    <section>
+      <div class="kicker">First, two words that trip everyone up</div>
+      <h2>Terminal vs. CLI.</h2>
+      <p>The <b>terminal</b> is just the window where you type commands. A <b>CLI</b> is a tool you operate by <i>typing</i> instead of clicking. <code>git</code>, <code>gh</code>, and <code>claude</code> are each a separate CLI, three different tools that all run inside the same terminal window.</p>
+      <div class="note"><b>That's why "not recognized" happens:</b> installing a CLI means putting that tool on your computer so the terminal knows its command. If it says <code>claude is not recognized</code> (Windows) or <code>command not found: claude</code> (Mac), the terminal just can't see that tool yet. It's a find-it problem, not a broken-computer problem. The one-time fix for each is on <b>drerinjacques.com/stuck</b>.</div>
+    </section>
+
+    <section>
+      <div class="kicker">Who does what</div>
+      <h2>One line per tool.</h2>
+
+      <div class="group">Your workspace</div>
+      <div class="tool"><div class="n">VS Code</div><div class="j">The workspace where your project lives and gets edited on your computer.</div></div>
+      <div class="tool"><div class="n">Claude Code extension<small>Claude in the chat panel</small></div><div class="j">Claude living inside VS Code, the sunburst chat panel you click.</div></div>
+      <div class="tool"><div class="n">Claude CLI<small>Claude in the terminal</small></div><div class="j">The same Claude, run in the terminal. Needed for steps like <code>/mcp</code> that only work there.</div></div>
+
+      <div class="group" style="margin-top:22px;">Saving &amp; shipping</div>
+      <div class="tool"><div class="n">git<small>a CLI</small></div><div class="j">The engine that saves versions of your code and pushes them. Mac has it built in; Windows installs it (Git for Windows).</div></div>
+      <div class="tool"><div class="n">gh<small>GitHub's CLI</small></div><div class="j">Logs your computer into your GitHub account so your pushes are allowed.</div></div>
+      <div class="tool"><div class="n">GitHub Desktop</div><div class="j">The friendly app that clones your repo down to your computer and syncs changes.</div></div>
+      <div class="tool"><div class="n">GitHub</div><div class="j">The cloud copy and full history of your project, the source of truth online.</div></div>
+      <div class="tool"><div class="n">Vercel</div><div class="j">Hosting. Deploying on Vercel is what puts your site live on the internet.</div></div>
+
+      <div class="group" style="margin-top:22px;">Your database</div>
+      <div class="tool"><div class="n">Supabase project</div><div class="j">Your actual database, logins, and users, created in Supabase.</div></div>
+      <div class="tool"><div class="n">.mcp.json<small>a config file</small></div><div class="j">A small file that tells Claude <i>which</i> Supabase project to connect to. Must exist before <code>/mcp</code> works.</div></div>
+      <div class="tool"><div class="n">Supabase MCP</div><div class="j">Claude's hands <i>inside</i> your database, build tables, run the database. Connected via <code>/mcp</code> in the terminal.</div></div>
+      <div class="tool"><div class="n">Supabase keys<small>URL + anon key</small></div><div class="j">Your <i>site's</i> connection to Supabase, so login works in the browser. Live in your page and in Vercel.</div></div>
+    </section>
+
+    <section>
+      <div class="kicker">The one people always mix up</div>
+      <h2>There are TWO Supabase connections.</h2>
+      <div class="split">
+        <div class="conn"><h3>1. The MCP</h3><p>Claude ↔ Supabase. Lets <b>Claude</b> build your tables and database. Set up in the terminal with <code>/mcp</code>.</p></div>
+        <div class="conn"><h3>2. The keys</h3><p>Site ↔ Supabase. The URL + anon key in your page and Vercel. This is what makes <b>login work</b> for real people.</p></div>
+      </div>
+      <div class="note"><b>Both are needed.</b> One being done does not mean the other is. If Claude can build tables but login doesn't work, the keys aren't in place. If login works but Claude can't see your database, the MCP isn't connected.</div>
+    </section>
+
+    <section>
+      <div class="kicker">Why order matters here</div>
+      <h2>Why <code>.mcp.json</code> comes before <code>/mcp</code>.</h2>
+      <p><code>/mcp</code> basically says "connect to Supabase." But it needs to know <b>which</b> project. That answer lives in <code>.mcp.json</code> (your project's reference ID).</p>
+      <p>Think of <code>/mcp</code> as "call Supabase," and <code>.mcp.json</code> as the <b>phone number</b> it dials. No file, nothing to connect to, and "supabase" won't even appear in the list to authorize.</p>
+      <div class="flow">Create Supabase project  →  Claude writes .mcp.json  →  /mcp authorizes it  →  Connected</div>
+    </section>
+
+    <footer>Dr. Erin Jacques · Leveraging AI</footer>
+  </div>
+</body>
+</html>
