@@ -41,6 +41,15 @@
   .note{background:rgba(244,176,43,.14);border-left:5px solid var(--gold);border-radius:10px;padding:14px 16px;margin:16px 0;font-size:1.04rem;color:#fff;}
   .note b{color:var(--gold);}
   .flow{font-family:var(--mono);color:#ffe6b0;font-size:clamp(.95rem,2.2vw,1.1rem);background:#0b1f3d;border:1px solid rgba(244,176,43,.3);border-radius:10px;padding:14px 16px;margin-top:10px;overflow-x:auto;}
+  .decode{margin-top:12px;}
+  .decode > div{display:grid;grid-template-columns:300px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+  .decode > div:last-child{border-bottom:none;}
+  .decode span{align-self:center;color:#cdd9e8;font-size:1.02rem;}
+  @media(max-width:640px){ .decode > div{grid-template-columns:1fr;gap:3px;} }
+  .cmp-wrap{overflow-x:auto;margin-top:10px;}
+  .cmp{width:100%;border-collapse:collapse;font-size:1rem;min-width:520px;}
+  .cmp th,.cmp td{text-align:left;padding:11px 13px;border-bottom:1px solid rgba(255,255,255,.12);vertical-align:top;color:#e6eef8;}
+  .cmp th{color:var(--gold);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;}
   footer{padding:28px 0 60px;color:#8ea3bd;font-size:.9rem;}
 </style>
 </head>
@@ -59,6 +68,39 @@
       <h2>Terminal vs. CLI.</h2>
       <p>The <b>terminal</b> is just the window where you type commands. A <b>CLI</b> is a tool you operate by <i>typing</i> instead of clicking. <code>git</code>, <code>gh</code>, and <code>claude</code> are each a separate CLI, three different tools that all run inside the same terminal window.</p>
       <div class="note"><b>That's why "not recognized" happens:</b> installing a CLI means putting that tool on your computer so the terminal knows its command. If it says <code>claude is not recognized</code> (Windows) or <code>command not found: claude</code> (Mac), the terminal just can't see that tool yet. It's a find-it problem, not a broken-computer problem. The one-time fix for each is on <b>drerinjacques.com/stuck</b>.</div>
+    </section>
+
+    <section>
+      <div class="kicker">Reading the screen</div>
+      <h2>How to spot a CLI command.</h2>
+      <p>"CLI" is a <b>category</b>, not a word that shows up in the command. A CLI command is just an instruction you type into the terminal to make a program do something. Here's how to recognize one at a glance.</p>
+
+      <div class="group">The tells</div>
+      <div class="tool"><div class="n">1 · Starts with a tool name</div><div class="j">The first word is the program you're bossing around: <code>claude</code>, <code>git</code>, <code>npm</code>, <code>curl</code>, <code>ls</code>, <code>cd</code>. A line that begins with a lowercase tool name like that is almost always a CLI command.</div></div>
+      <div class="tool"><div class="n">2 · It has flags</div><div class="j">Little options starting with <code>--</code> or <code>-</code>, like <code>--scope</code>, <code>--transport</code>, <code>-s</code>. Plain English never has those. A dead giveaway.</div></div>
+      <div class="tool"><div class="n">3 · It's terse</div><div class="j">No "please," no filler, just keywords, values, and paths. It reads like an instruction, not a sentence.</div></div>
+      <div class="tool"><div class="n">4 · It's typed at the prompt</div><div class="j">You type it at the terminal's <code>%</code> prompt, not into Claude's chat.</div></div>
+
+      <div class="group" style="margin-top:22px;">One command, decoded</div>
+      <div class="flow">claude mcp add --scope project --transport http stripe https://mcp.stripe.com/</div>
+      <div class="decode">
+        <div><code>claude</code><span>the <b>program</b> you're commanding</span></div>
+        <div><code>mcp add</code><span>the <b>action</b> (add an MCP)</span></div>
+        <div><code>--scope project</code><span>a <b>flag</b> + its value (an option)</span></div>
+        <div><code>--transport http</code><span>another <b>flag</b> + value</span></div>
+        <div><code>stripe</code><span>an <b>argument</b> (the name for this server)</span></div>
+        <div><code>https://mcp.stripe.com/</code><span>an <b>argument</b> (the URL)</span></div>
+      </div>
+
+      <div class="group" style="margin-top:22px;">The three things you type, and where each goes</div>
+      <div class="cmp-wrap"><table class="cmp">
+        <tr><th>Type</th><th>Looks like</th><th>Goes where</th></tr>
+        <tr><td><b>CLI command</b></td><td><code>claude mcp add --scope …</code> (tool name + flags)</td><td>the terminal (<code>%</code>)</td></tr>
+        <tr><td><b>A prompt to Claude</b></td><td>"Using the Stripe MCP, create a coupon…" (full English sentences)</td><td>inside Claude (<code>&gt;</code>)</td></tr>
+        <tr><td><b>Code</b></td><td><code>const x = ...;</code> (symbols, brackets, semicolons)</td><td>inside a file</td></tr>
+      </table></div>
+
+      <div class="note"><b>Quickest gut-check:</b> starts with a lowercase tool name and has <code>--flags</code>? → it's a <b>CLI command</b>, goes in the terminal. Reads like a sentence? → that's a <b>prompt for Claude</b>.</div>
     </section>
 
     <section>
