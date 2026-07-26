@@ -137,6 +137,24 @@
     </section>
 
     <section>
+      <div class="kicker">Two files that keep your secrets safe</div>
+      <h2>.env and .gitignore.</h2>
+      <p>These two show up constantly and work as a pair. One holds your secrets; the other makes sure those secrets never leave your computer.</p>
+
+      <div class="tool"><div class="n">.env.local<small>your secrets</small></div><div class="j">A plain text file that holds your private settings and keys, like your Supabase URL and keys. One <code>KEY=value</code> per line. It lives on your computer and is meant to stay private, so your keys aren't sitting inside your actual code where they could leak.</div></div>
+      <div class="flow">SUPABASE_URL=https://yourproject.supabase.co
+SUPABASE_ANON_KEY=eyJhbGciOi...</div>
+
+      <div class="tool" style="margin-top:16px;"><div class="n">.gitignore<small>the bouncer</small></div><div class="j">A list of files Git should <b>ignore</b>, never save, never upload to GitHub. It keeps two kinds of things out of your repo: your secrets (<code>.env.local</code>) and bulky auto-generated folders (<code>node_modules</code>, the downloaded code libraries).</div></div>
+      <div class="flow">.env.local
+node_modules</div>
+
+      <div class="note"><b>How they work together:</b> <code>.env.local</code> holds your keys, and <code>.gitignore</code> is the bouncer that keeps that file from ever being uploaded to GitHub. That's exactly why your Supabase keys are safe on your computer but <b>Vercel doesn't automatically have them</b>, they were (correctly) kept off GitHub, so you add them to Vercel separately.</div>
+
+      <div class="note"><b>When Claude asks you to approve creating or editing these, say yes.</b> It's normal and it's protecting you, <code>.gitignore</code> is what stops your keys from leaking, and <code>.env.local</code> is where they live.</div>
+    </section>
+
+    <section>
       <div class="kicker">Why order matters here</div>
       <h2>Why <code>.mcp.json</code> comes before <code>/mcp</code>.</h2>
       <p><code>/mcp</code> basically says "connect to Supabase." But it needs to know <b>which</b> project. That answer lives in <code>.mcp.json</code> (your project's reference ID).</p>
