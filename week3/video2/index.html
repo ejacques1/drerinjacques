@@ -211,7 +211,7 @@ customer.subscription.deleted</span><button class="copy" onclick="copyText(this)
       <div class="stephead"><span class="stepnum">7</span><h2 style="margin:0;">Add the secret + REDEPLOY</h2></div>
       <p>Last key. The webhook secret goes in, and then you <b>have to redeploy</b>. This is the number one thing people miss.</p>
       <ul>
-        <li>Add <span class="mono">whsec_…</span> to <span class="mono">.env.local</span> <b>and</b> Vercel (<span class="mono">STRIPE_WEBHOOK_SECRET</span>, Production + Preview)</li>
+        <li>Add <span class="mono">whsec_…</span> in <b>Vercel</b> as <span class="mono">STRIPE_WEBHOOK_SECRET</span> — that's the one that matters for your live site. (<span class="mono">.env.local</span> is optional, only if you also run locally.)</li>
         <li>Vercel → Deployments → newest → <b>⋯ → Redeploy</b> → wait for green</li>
       </ul>
       <div class="warn">⚠️ Environment changes don't take effect until you <b>REDEPLOY</b>. Skip this and it looks broken when it isn't.</div>
