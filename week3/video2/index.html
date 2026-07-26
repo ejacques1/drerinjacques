@@ -129,10 +129,12 @@ claude mcp add --scope project --transport http stripe https://mcp.stripe.com/</
       <p>It reads your site, names your product, sets the price, and gives you the <b>price ID</b>. Copy it, that's the anchor for everything next.</p>
       <div class="prompt">
         <div class="lbl">Paste into Claude · create the test coupon</div>
-        <span class="js-copy">Using the Stripe MCP, create a coupon that is 100% off, and a promotion code called TESTFREE attached to it. Confirm it's active on my live account.</span>
+        <span class="js-copy">Using the Stripe MCP, create one coupon that is 100% off, then create one promotion code called TESTFREE attached to it with a redemption limit of 100 so it can be reused for testing. Confirm it's active.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
-      <p>That 100%-off code is how you'll test a real subscription for zero dollars later.</p>
+      <p>That 100%-off code is how you'll test a real subscription for zero dollars later. One coupon can have many codes, and a code can be reused, so you never need a pile of coupons.</p>
+      <div class="warn">⚠️ <b>A 100%-off code on a live site is a free-access backdoor.</b> If everyone uses <span class="mono">TESTFREE</span>, anyone who knows it can subscribe free on your live site. So: <b>name yours something only you'd know</b> (not TESTFREE), set a low redemption limit or an expiry, and <b>delete or deactivate the coupon once you've finished testing.</b></div>
+      <div class="note"><b>Heads-up, the MCP works LIVE:</b> the Stripe MCP always acts on your <b>live</b> account, no matter what the dashboard's Test-mode toggle says (that toggle only changes what <i>you</i> see). So your product, price, and coupon are created live, exactly what this course wants: live keys, tested safely with a $0 coupon.</div>
     </section>
 
     <section>
@@ -142,7 +144,7 @@ claude mcp add --scope project --transport http stripe https://mcp.stripe.com/</
       <div class="prompt">
         <div class="lbl">Paste into Claude · the build prompt</div>
         <span class="js-copy">Add Stripe subscriptions to my app. Payments happen on the platform, a logged-in user subscribes and their access is gated by payment. Before writing code, use the Stripe MCP implementation planner and check current Stripe docs so the API is up to date. Then build:
-1. When a logged-in user clicks Subscribe, create a Stripe Checkout Session in subscription mode for price price_XXXX, and pass their Supabase user id in the session metadata and as client_reference_id.
+1. When a logged-in user clicks Subscribe, create a Stripe Checkout Session in subscription mode for price price_XXXX, and pass their Supabase user id in the session metadata and as client_reference_id. Enable allow_promotion_codes on the Checkout Session so the promo code field appears at checkout.
 2. A webhook endpoint for checkout.session.completed and customer.subscription.created/updated/deleted. Verify the Stripe signature on every webhook and reject anything invalid. Make it idempotent.
 3. When a subscription is active, mark that user subscribed in Supabase (a status column) using the service role key, server-side only. When canceled/unpaid, mark them unsubscribed.
 4. Gate the paid content so only subscribed users see it.
@@ -152,6 +154,7 @@ Make all reasonable choices yourself and don't ask me questions you can answer f
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
       <div class="note">Tip: describe the <b>behavior</b> to Claude ("Checkout Session," "webhook"), not your own labels. It built everything and left you a checklist of keys to fill, that's the next job.</div>
+      <div class="warn">⚠️ <b>Don't lose <span class="mono">allow_promotion_codes</span>.</b> Without it, the checkout page shows no promo-code box, so your <span class="mono">TESTFREE</span> code can't be entered and the $0 test can't run. It's in the build prompt above on purpose, keep it there.</div>
     </section>
 
     <section>
