@@ -153,6 +153,15 @@
   .exlbl{font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:.76rem;color:var(--navy);margin-bottom:9px;}
   .exlbl.ai{color:var(--teal-dark);}
   .extiles{display:flex;flex-wrap:wrap;gap:8px;}
+  .airow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+  .airow:last-of-type{margin-bottom:0;}
+  .airow .arrow,.airow .plus{color:var(--faint);font-weight:800;}
+  .ctag{color:#fff;font-weight:700;font-size:.82rem;border-radius:14px;padding:5px 12px;}
+  .ctag.brain{background:var(--navy);}
+  .ctag.door{background:var(--teal-dark);}
+  .exkey{font-size:.88rem;color:var(--soft);margin-top:12px;line-height:1.5;}
+  .exkey .kd{color:var(--teal-dark);font-weight:800;}
+  .exkey .kb{color:var(--navy);font-weight:800;}
   footer{padding:34px 0 60px;color:var(--faint);font-size:.9rem;}
   .st{font-family:var(--sans);}
 </style>
@@ -296,10 +305,19 @@
         </div>
         <div class="exrow">
           <div class="exlbl ai">AI components — what makes it feel smart</div>
-          <div class="extiles">
-            <span class="tile ai">An AI tutor that explains your mistakes</span>
+          <div class="airow">
             <span class="tile ai">A chat you roleplay with to practice</span>
+            <span class="arrow">→</span>
+            <span class="ctag door">Chat interface</span>
+            <span class="plus">+</span>
+            <span class="ctag brain">Agent</span>
           </div>
+          <div class="airow">
+            <span class="tile ai">An AI tutor that explains your mistakes</span>
+            <span class="arrow">→</span>
+            <span class="ctag brain">Agent</span>
+          </div>
+          <div class="exkey">Every AI feature = a <b class="kd">front door</b> (how you talk to it: chat or voice) + a <b class="kb">brain</b> (what does the thinking: an agent or an automation).</div>
         </div>
       </div>
       <p style="margin-top:16px;">Same anatomy as yours: a learning platform with AI components inside. <b>You're building the same kind of thing, for your expertise.</b></p>
