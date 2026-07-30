@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>VS Code + Claude Code — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --navy2:#0E2E57;
+    --gold:#F4B02E;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--navy);color:#fff;font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.85rem;color:#bcccdf;}
+  .brand b{color:var(--gold);}
+  .kicker{color:var(--gold);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;margin-bottom:14px;}
+  section{padding:48px 0;border-top:1px solid rgba(255,255,255,.12);}
+  section.hero{border-top:none;padding:44px 0 50px;}
+  h1{font-size:clamp(2rem,5.2vw,3.2rem);font-weight:900;letter-spacing:-.025em;line-height:1.07;margin:0 0 16px;}
+  h1 span{color:var(--gold);}
+  h2{font-size:clamp(1.5rem,3.9vw,2.3rem);font-weight:900;letter-spacing:-.02em;margin:0 0 16px;}
+  .lead{font-size:clamp(1.15rem,2.6vw,1.5rem);color:#dbe6f3;font-weight:600;margin:0 0 8px;}
+  p{font-size:clamp(1.04rem,2.2vw,1.22rem);color:#cdd9e8;margin:0 0 15px;max-width:72ch;}
+  p b{color:#fff;}
+  code{font-family:var(--mono);background:#0b1f3d;border:1px solid rgba(244,176,43,.35);border-radius:6px;padding:1px 7px;color:#ffe6b0;font-size:.9em;}
+  .card{background:var(--navy2);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:22px 24px;margin:14px 0;}
+  .card h3{margin:0 0 6px;font-size:clamp(1.3rem,3vw,1.65rem);color:var(--gold);font-weight:900;}
+  .card p{margin:0;}
+  .num{counter-reset:item;list-style:none;padding:0;margin:8px 0 0;}
+  .num > li{counter-increment:item;position:relative;padding:16px 0 16px 62px;border-bottom:1px solid rgba(255,255,255,.09);font-size:clamp(1.04rem,2.2vw,1.22rem);color:#e6eef8;}
+  .num > li:last-child{border-bottom:none;}
+  .num > li::before{content:counter(item);position:absolute;left:0;top:16px;width:40px;height:40px;background:var(--gold);color:var(--navy);
+        border-radius:50%;font-weight:900;font-size:1.15rem;display:flex;align-items:center;justify-content:center;}
+  .num > li b{color:#fff;}
+  .pill{color:#aebfd4;font-size:.95em;}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+  .chips span{background:var(--navy2);border:1px solid rgba(244,176,43,.4);border-radius:999px;padding:10px 18px;font-weight:700;color:#fff;font-size:clamp(1rem,2.1vw,1.15rem);}
+  .ex{list-style:none;padding:0;margin:10px 0 0;}
+  .ex li{position:relative;padding:12px 0 12px 30px;border-bottom:1px solid rgba(255,255,255,.09);font-size:clamp(1.08rem,2.3vw,1.32rem);color:#e6eef8;font-weight:600;}
+  .ex li:last-child{border-bottom:none;}
+  .ex li::before{content:"";position:absolute;left:2px;top:20px;width:11px;height:11px;background:var(--gold);border-radius:50%;}
+  .note a{color:var(--gold);font-weight:800;text-decoration:none;border-bottom:2px solid var(--gold);}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:900;font-size:clamp(1.05rem,2.3vw,1.25rem);text-decoration:none;padding:14px 28px;border-radius:12px;margin-top:10px;}
+  .note{background:rgba(244,176,43,.14);border-left:5px solid var(--gold);border-radius:10px;padding:16px 18px;margin:16px 0;font-size:clamp(1.05rem,2.3vw,1.25rem);color:#fff;font-weight:600;}
+  footer{padding:30px 0 60px;color:#8ea3bd;font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">Leveraging <b>AI</b> · VS Code + Claude Code</div>
+
+    <section class="hero">
+      <div class="kicker">What's actually happening</div>
+      <h1>VS Code + Claude Code: <span>the leap from talking to building</span>.</h1>
+      <p class="lead">Before the "why," let's get clear on what we're doing. Once this clicks, everything else makes sense.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Leveraging AI · Why we're here</div>
+      <h2>This is bigger than learning where to click.</h2>
+      <p>Before we dive in, here's what we're really doing in this community. I'm not just teaching you how to click buttons. I'm teaching you what's under the hood, why these connections happen, and how the pieces fit together.</p>
+      <p>Because the more you understand that, the more it positions you to be self-sufficient, in this space and any other. Learning where to click is easy. Understanding what's happening underneath is what sets you up to build anything. That's what we do here, and that's what today is about.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Part 0 — What's actually happening here</div>
+      <p>Up to now, most people use AI one way: open a browser tab, type into ChatGPT or Claude, get back text. That's talking <b>to</b> an assistant through a window. It can advise you, write things, answer questions. But it can't reach into your project and build it. It has no hands.</p>
+      <p>What we're about to do is different. Two pieces:</p>
+
+      <div class="card">
+        <h3>VS Code is your workshop</h3>
+        <p>It's a free program you install on your own computer, and it's where your project actually lives, your files, your web app, everything you're building. Less like an app, more like a studio: the real workspace where the building happens.</p>
+      </div>
+      <div class="card">
+        <h3>Claude Code is Claude, working inside that workshop</h3>
+        <p>Instead of chatting through a browser window, Claude is now standing in your studio with you. It can see your whole project, open your files, write the code, make the changes, and build the thing, right there, for real.</p>
+      </div>
+
+      <p>So "connecting VS Code and Claude Code" is really one simple idea: you're taking the smart assistant out of the browser and putting it inside your workshop, where it finally has hands. That's the leap, you go from talking <b>about</b> building to actually building.</p>
+      <div class="note">And once your assistant is in the workshop, you get all the professional tools that come with it. That's what the rest of this is about.</div>
+    </section>
+
+    <section>
+      <div class="kicker">Part 1 — Why VS Code beats the browser</div>
+      <h2>The same tools developers actually use.</h2>
+      <p>The umbrella idea: VS Code gives you a local environment with the same professional tools developers actually use. It's not a sandbox. It's a workshop.</p>
+      <p style="margin-bottom:4px;"><b>Here's what those tools actually are:</b></p>
+      <ol class="num">
+        <li><b>Secret management.</b> Your <code>.env</code> file stores API keys safely on your own machine instead of exposing them in a browser tab.</li>
+        <li><b>Version control with Git.</b> You can track every change, roll back mistakes, and collaborate.</li>
+        <li><b>Local testing.</b> You run and debug before anything goes live.</li>
+        <li><b>Dependencies you control.</b> The code libraries your project needs, tracked in one file (<code>package.json</code>) so your project runs the same way everywhere.</li>
+      </ol>
+      <div class="note">This is exactly what we go deep on in the community, not just the clicks, but the why underneath them. Once you get the why, you can build anything. <a href="https://skool.com/leveragingai/about">Join the Leveraging AI community →</a></div>
+    </section>
+
+    <section>
+      <div class="kicker">Part 2 — What you can actually build</div>
+      <h2>A platform for your expertise, with AI inside.</h2>
+      <p>You're not building the next ChatGPT. You're building a platform for your expertise, and dropping in one AI agent that does a specific job for your people.</p>
+      <ul class="ex">
+        <li>A learning platform, a Duolingo for your topic</li>
+        <li>A directory people subscribe to</li>
+        <li>A support chatbot trained on your own content</li>
+        <li>An AI coach or tutor inside your platform</li>
+        <li>A lead-capture agent that qualifies visitors and books the call</li>
+        <li>An auto-poster that writes and posts for you</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="kicker">Come build with us</div>
+      <h2>This is just the foundation.</h2>
+      <p>In the Leveraging AI community, we take you from understanding what's under the hood all the way to a live, subscription platform built around your expertise, step by step, with support the whole way.</p>
+      <a class="btn" href="https://skool.com/leveragingai/about">Join Leveraging AI →</a>
+    </section>
+
+    <footer>Dr. Erin Jacques · Leveraging AI</footer>
+  </div>
+</body>
+</html>
