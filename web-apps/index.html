@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>The Category: AI-Powered Web Apps People Subscribe To — Dr. Erin Jacques</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1A2E; --navy2:#1a3658;
+    --yellow:#FFD93D; --yellow-dark:#E8C12B;
+    --teal:#0DB4DB; --teal-dark:#0A8FAF;
+    --cream:#FAF6EC; --text:#0B1A2E; --soft:#4A5568; --faint:#718096;
+    --line:#E2E8F0;
+    --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+  section{padding:54px 0;}
+  section.cream{background:var(--cream);}
+  .full{width:100%;}
+  .cream-band{background:var(--cream);}
+  .brand{padding:24px 0 0;font-weight:800;letter-spacing:.02em;font-size:1rem;color:var(--navy);}
+  .brand b{color:var(--teal-dark);}
+  .kicker{color:var(--teal-dark);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem;margin-bottom:12px;}
+  h1{font-size:clamp(2.1rem,5.6vw,3.5rem);font-weight:800;letter-spacing:-.02em;line-height:1.08;margin:0 0 18px;color:var(--navy);}
+  .hl{background:linear-gradient(180deg,transparent 58%,rgba(255,217,61,.75) 58%);padding:0 3px;}
+  h2{font-size:clamp(1.5rem,4vw,2.3rem);font-weight:800;letter-spacing:-.015em;margin:0 0 16px;color:var(--navy);}
+  .lead{font-size:clamp(1.15rem,2.6vw,1.5rem);color:var(--navy);font-weight:700;margin:0 0 10px;}
+  p{font-size:clamp(1.02rem,2.1vw,1.18rem);color:var(--soft);margin:0 0 14px;max-width:70ch;}
+  p b{color:var(--navy);}
+  .quote{font-size:clamp(1.3rem,3.2vw,1.85rem);font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.25;
+         border-left:5px solid var(--yellow);padding:4px 0 4px 22px;margin:24px 0;}
+  .quote span{color:var(--teal-dark);}
+  .note{background:#fff;border:1px solid var(--line);border-left:5px solid var(--yellow);border-radius:12px;padding:16px 18px;margin:18px 0;font-size:clamp(1.02rem,2.2vw,1.2rem);color:var(--navy);font-weight:600;box-shadow:0 6px 20px rgba(11,26,46,.05);}
+  .note b{color:var(--teal-dark);}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:12px;}
+  @media(max-width:640px){ .cols{grid-template-columns:1fr;} }
+  .col{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px;box-shadow:0 10px 30px rgba(11,26,46,.06);}
+  .col h3{margin:0 0 4px;color:var(--navy);font-size:1.3rem;font-weight:800;}
+  .col .cap{color:var(--faint);font-size:.98rem;margin:0 0 14px;}
+  .col ul{list-style:none;padding:0;margin:0;}
+  .col li{padding:10px 0;border-bottom:1px solid var(--line);color:var(--navy);font-size:1.06rem;font-weight:600;}
+  .col li:last-child{border-bottom:none;}
+  .col li span{display:block;color:var(--faint);font-size:.86em;font-weight:400;margin-top:1px;}
+  .ex{list-style:none;padding:0;margin:12px 0 0;}
+  .ex li{position:relative;padding:11px 0 11px 30px;border-bottom:1px solid var(--line);font-size:clamp(1.02rem,2.1vw,1.2rem);color:var(--soft);}
+  .ex li:last-child{border-bottom:none;}
+  .ex li b{color:var(--navy);}
+  .ex li::before{content:"";position:absolute;left:2px;top:19px;width:10px;height:10px;background:var(--yellow);border-radius:50%;}
+  .num{counter-reset:item;list-style:none;padding:0;margin:10px 0 0;}
+  .num > li{counter-increment:item;position:relative;padding:14px 0 14px 56px;border-bottom:1px solid var(--line);font-size:clamp(1.02rem,2.1vw,1.18rem);color:var(--soft);}
+  .num > li:last-child{border-bottom:none;}
+  .num > li::before{content:counter(item);position:absolute;left:0;top:11px;width:36px;height:36px;background:var(--navy);color:#fff;
+        border-radius:50%;font-weight:800;font-size:1.05rem;display:flex;align-items:center;justify-content:center;}
+  .btn{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:800;font-size:clamp(1.05rem,2.3vw,1.2rem);text-decoration:none;padding:14px 30px;border-radius:12px;margin-top:12px;box-shadow:0 8px 22px rgba(255,217,61,.4);}
+  /* visuals */
+  .viz{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;margin:16px 0;box-shadow:0 12px 34px rgba(11,26,46,.07);}
+  .viz .tag{display:inline-block;background:var(--navy);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-radius:20px;padding:5px 14px;margin-bottom:12px;}
+  .viz svg{width:100%;height:auto;display:block;}
+  .viz .cap{color:var(--soft);font-size:1.02rem;margin:14px 0 0;font-weight:600;text-align:center;}
+  .viz .cap b{color:var(--navy);}
+  .appframe{border:2px solid var(--navy);border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 14px 40px rgba(11,26,46,.1);max-width:660px;margin:6px auto 0;}
+  .appbar{background:#F1F5F9;padding:11px 14px;display:flex;align-items:center;gap:7px;border-bottom:1px solid var(--line);}
+  .appbar .dot{width:11px;height:11px;border-radius:50%;background:#CBD5E0;}
+  .appbar .url{margin-left:12px;color:var(--faint);font-size:.82rem;font-family:var(--mono);}
+  .appbody{padding:20px 22px;}
+  .apptitle{text-align:center;font-weight:800;color:var(--navy);font-size:clamp(1.2rem,3vw,1.5rem);margin-bottom:18px;}
+  .zone{margin-bottom:16px;}
+  .zone:last-child{margin-bottom:0;}
+  .zonelabel{font-weight:800;color:var(--navy);font-size:.9rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:9px;}
+  .zonelabel em{font-style:normal;text-transform:none;letter-spacing:0;color:var(--faint);font-weight:600;font-size:.82rem;margin-left:8px;}
+  .zonelabel.ai{color:var(--teal-dark);}
+  .tiles{display:flex;flex-wrap:wrap;gap:8px;}
+  .tile{border-radius:10px;padding:9px 14px;font-weight:700;font-size:.96rem;}
+  .tile.core{background:#fff;border:1.5px solid var(--line);color:var(--navy);}
+  .tile.ai{background:rgba(255,217,61,.92);border:1.5px solid var(--yellow-dark);color:var(--navy);}
+  .paybar{background:var(--navy);color:#fff;text-align:center;font-weight:800;padding:15px;font-size:clamp(1rem,2.4vw,1.12rem);}
+  .store{border:2px solid var(--navy);border-radius:14px;overflow:hidden;max-width:640px;margin:6px auto 0;background:#fff;box-shadow:0 14px 40px rgba(11,26,46,.1);}
+  .awning{background:repeating-linear-gradient(90deg,var(--yellow) 0 30px,#FFF3BF 30px 60px);border-bottom:3px solid var(--navy);padding:13px;text-align:center;}
+  .awning span{font-weight:800;color:var(--navy);letter-spacing:.03em;font-size:clamp(1.05rem,2.6vw,1.3rem);}
+  .aisles{display:grid;grid-template-columns:1fr 1fr;}
+  @media(max-width:600px){ .aisles{grid-template-columns:1fr;} }
+  .aisle{padding:16px 18px;}
+  .aisle+.aisle{border-left:1px solid var(--line);}
+  @media(max-width:600px){ .aisle+.aisle{border-left:none;border-top:1px solid var(--line);} }
+  .aislelabel{font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:.8rem;color:var(--navy);margin-bottom:10px;}
+  .aislelabel em{display:block;font-style:normal;text-transform:none;letter-spacing:0;color:var(--faint);font-weight:600;font-size:.78rem;margin-top:2px;}
+  .aislelabel.ai{color:var(--teal-dark);}
+  .shelf{display:flex;flex-direction:column;gap:7px;}
+  .shelf .tile{text-align:center;}
+  .door{background:var(--navy);padding:16px;display:flex;align-items:center;justify-content:center;gap:14px;}
+  .door .doorbtn{background:var(--yellow);color:var(--navy);font-weight:800;padding:12px 26px;border-radius:26px;font-size:clamp(1rem,2.4vw,1.12rem);}
+  .door .lk{width:26px;height:26px;flex:none;}
+  .storeb{max-width:660px;margin:6px auto 0;filter:drop-shadow(0 14px 34px rgba(11,26,46,.12));}
+  .roof{background:var(--navy);height:56px;clip-path:polygon(9% 0,91% 0,100% 100%,0 100%);display:flex;align-items:center;justify-content:center;}
+  .roof span{color:#fff;font-weight:800;font-size:clamp(1.05rem,2.6vw,1.3rem);letter-spacing:.05em;}
+  .sbody{border:2px solid var(--navy);border-top:none;background:#fff;display:flex;border-radius:0 0 12px 12px;overflow:hidden;}
+  @media(max-width:560px){ .sbody{flex-direction:column;} }
+  .swindow{flex:1;padding:16px 18px;display:flex;gap:18px;}
+  .swindow .col2{flex:1;}
+  .sdoor{width:196px;flex:none;background:var(--navy);margin:16px;border-radius:74px 74px 10px 10px;padding:18px 14px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;}
+  @media(max-width:560px){ .sdoor{width:auto;border-radius:16px;} }
+  .sdoor .icons{display:flex;gap:10px;align-items:center;margin-bottom:4px;}
+  .sdoor .price{color:var(--yellow);font-weight:800;font-size:1.5rem;line-height:1;}
+  .sdoor .pricesub{color:#bcccdf;font-size:.8rem;font-weight:600;}
+  .sdoor .doorbtn2{background:var(--yellow);color:var(--navy);font-weight:800;padding:10px 22px;border-radius:22px;font-size:1rem;margin-top:8px;}
+  .v1wrap{max-width:760px;margin:6px auto 0;filter:drop-shadow(0 14px 34px rgba(11,26,46,.12));}
+  .v1body{border:2px solid var(--navy);border-top:none;border-radius:0 0 12px 12px;background:#fff;display:flex;overflow:hidden;align-items:stretch;}
+  @media(max-width:560px){ .v1body{flex-direction:column;} }
+  .v1win{flex:1;padding:15px 16px;}
+  .v1door{width:262px;flex:none;align-self:center;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;padding:24px 16px;border-radius:96px 96px 26px 26px;color:#fff;text-align:center;}
+  @media(max-width:560px){ .v1door{width:auto;border-radius:16px;} }
+  .v1door .dttl{font-size:.72rem;font-weight:700;color:#cbd5e0;text-transform:uppercase;letter-spacing:.06em;}
+  .v1door .dtrow{display:flex;gap:6px;width:100%;}
+  .v1door .dt{flex:1;background:rgba(255,255,255,.09);border-radius:9px;padding:10px 3px;}
+  .v1door .dt .dn{font-size:.66rem;font-weight:700;color:#cbd5e0;}
+  .v1door .dt .dp{font-size:1.05rem;font-weight:800;color:var(--yellow);}
+  .v1door .dt.pop{background:var(--yellow);}
+  .v1door .dt.pop .dn{color:var(--navy);}
+  .v1door .dt.pop .dp{color:var(--navy);}
+  .v1door .db{display:inline-flex;align-items:center;gap:7px;background:var(--yellow);color:var(--navy);font-weight:800;padding:9px 18px;border-radius:18px;font-size:.88rem;white-space:nowrap;}
+  .v1door .db svg{width:15px;height:15px;flex:none;}
+  .fac{max-width:760px;margin:6px auto 0;filter:drop-shadow(0 14px 34px rgba(11,26,46,.12));}
+  .facbody{border:2px solid var(--navy);border-top:none;border-radius:0 0 12px 12px;background:#fff;padding:20px 22px 0;}
+  .flbl{text-align:center;font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:.78rem;color:var(--navy);margin:0 0 12px;}
+  .flbl.ai{color:var(--teal-dark);margin-top:24px;}
+  .flbl em{font-style:normal;text-transform:none;letter-spacing:0;color:var(--faint);font-weight:600;}
+  .coreband{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+  .aiwrap{display:flex;align-items:flex-end;justify-content:center;gap:16px;margin-top:6px;}
+  .aicol{display:flex;flex-direction:column;gap:8px;flex:1;max-width:180px;}
+  .fdoor{align-self:flex-end;border-radius:98px 98px 0 0;}
+  @media(max-width:600px){ .aiwrap{flex-direction:column;align-items:stretch;} .aicol{max-width:none;} .fdoor{align-self:stretch;border-radius:16px;} }
+  footer{padding:34px 0 60px;color:var(--faint);font-size:.9rem;}
+  .st{font-family:var(--sans);}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">Dr. Erin Jacques · <b>The Category</b></div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker">The category</div>
+      <h1>AI-powered web apps <span class="hl">people subscribe to</span>.</h1>
+      <p class="lead">Everyone else is teaching AI tools. Tools are things you use.</p>
+      <p>I teach AI-powered web apps people subscribe to. Apps are things you own and sell. That's the category.</p>
+    </div>
+  </section>
+
+  <section class="cream">
+    <div class="wrap">
+      <div class="kicker">The core idea</div>
+      <h2>The web app is the product. The AI is a component.</h2>
+      <p>The web app is the software. Agents and automations are components inside it.</p>
+      <p>Same relationship as a car and its engine. The car is the product. The engine is a component. Nobody buys an engine.</p>
+      <p>This is why most people building with AI never make money. They build the engine and have nothing to put it in.</p>
+      <div class="quote">An agent with no way to charge for it is a hobby. <span>The web app is what turns it into a business.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker">The picture — two ways to show it</div>
+      <h2>Same idea, two visuals.</h2>
+      <p>Use whichever lands with your audience.</p>
+
+      <!-- VISUAL: STOREFRONT (facade, door at base) -->
+      <div class="viz">
+        <span class="tag">The storefront</span>
+        <div class="fac">
+          <div class="roof"><span>YOUR WEB APP</span></div>
+          <div class="facbody">
+            <div class="flbl">Core components <em>— what makes it sellable</em></div>
+            <div class="coreband">
+              <span class="tile core">Authentication</span>
+              <span class="tile core">Database</span>
+              <span class="tile core">Billing</span>
+              <span class="tile core">File uploads</span>
+              <span class="tile core">Notifications</span>
+              <span class="tile core">Dashboard</span>
+              <span class="tile core">Admin panel</span>
+              <span class="tile core">API access</span>
+            </div>
+            <div class="flbl ai">AI components <em>— what people pay for</em></div>
+            <div class="aiwrap">
+              <div class="aicol">
+                <span class="tile ai">Agents</span>
+                <span class="tile ai">Automations</span>
+              </div>
+              <div class="v1door fdoor">
+                <div class="dttl">Choose your plan</div>
+                <div class="dtrow">
+                  <div class="dt"><div class="dn">Starter</div><div class="dp">$9</div></div>
+                  <div class="dt pop"><div class="dn">Pro</div><div class="dp">$29</div></div>
+                  <div class="dt"><div class="dn">Premium</div><div class="dp">$79</div></div>
+                </div>
+                <div class="db"><svg width="15" height="15" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2" fill="#0B1A2E"/><path d="M7 10V7a5 5 0 0 1 10 0v3" stroke="#0B1A2E" stroke-width="2.6" fill="none"/></svg>Subscribe to enter</div>
+              </div>
+              <div class="aicol">
+                <span class="tile ai">Chat interface</span>
+                <span class="tile ai">Voice interface</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="cap">Your components on the facade, and a door at the base. <b>Pick your tier, walk in, that's the business.</b></p>
+      </div>
+
+      <!-- VISUAL: THE WEB APP AS A CAR -->
+      <div class="viz">
+        <span class="tag">The web app as a car</span>
+        <svg viewBox="0 0 680 350" role="img" aria-label="A car labeled your web app; the engine is AI components and the other parts are labeled as core components">
+          <ellipse cx="345" cy="292" rx="245" ry="15" fill="#0B1A2E" opacity="0.06"/>
+          <rect x="255" y="120" width="195" height="60" rx="20" fill="#EAF7FB" stroke="#0B1A2E" stroke-width="3"/>
+          <line x1="352" y1="122" x2="352" y2="178" stroke="#0B1A2E" stroke-width="2.5"/>
+          <rect x="130" y="172" width="420" height="80" rx="26" fill="#fff" stroke="#0B1A2E" stroke-width="3"/>
+          <circle cx="235" cy="256" r="34" fill="#0B1A2E"/><circle cx="235" cy="256" r="15" fill="#fff"/>
+          <circle cx="455" cy="256" r="34" fill="#0B1A2E"/><circle cx="455" cy="256" r="15" fill="#fff"/>
+          <rect x="145" y="188" width="120" height="50" rx="11" fill="#0DB4DB" opacity="0.16"/>
+          <rect x="145" y="188" width="120" height="50" rx="11" fill="none" stroke="#0A8FAF" stroke-width="2.5"/>
+          <text x="205" y="209" text-anchor="middle" class="st" font-size="13" font-weight="800" fill="#0A8FAF">AI COMPONENTS</text>
+          <text x="205" y="227" text-anchor="middle" class="st" font-size="10.5" font-weight="600" fill="#0A8FAF">the engine</text>
+          <text x="408" y="220" text-anchor="middle" class="st" font-size="18" font-weight="800" fill="#0B1A2E">YOUR WEB APP</text>
+          <rect x="452" y="70" width="188" height="44" rx="22" fill="#FFD93D" stroke="#0B1A2E" stroke-width="2.5"/>
+          <text x="546" y="98" text-anchor="middle" class="st" font-size="15" font-weight="800" fill="#0B1A2E">Subscribe · $29/mo</text>
+          <circle cx="352" cy="150" r="4" fill="#0B1A2E"/>
+          <line x1="352" y1="148" x2="352" y2="78" stroke="#94A3B8" stroke-width="1.5"/>
+          <rect x="300" y="50" width="104" height="26" rx="13" fill="#fff" stroke="#0B1A2E" stroke-width="1.5"/>
+          <text x="352" y="67" text-anchor="middle" class="st" font-size="12" font-weight="700" fill="#0B1A2E">Dashboard</text>
+          <circle cx="362" cy="230" r="4" fill="#0B1A2E"/>
+          <line x1="362" y1="232" x2="362" y2="304" stroke="#94A3B8" stroke-width="1.5"/>
+          <rect x="300" y="306" width="126" height="26" rx="13" fill="#fff" stroke="#0B1A2E" stroke-width="1.5"/>
+          <text x="363" y="323" text-anchor="middle" class="st" font-size="12" font-weight="700" fill="#0B1A2E">Authentication</text>
+          <circle cx="300" cy="232" r="4" fill="#0B1A2E"/>
+          <line x1="300" y1="234" x2="205" y2="304" stroke="#94A3B8" stroke-width="1.5"/>
+          <rect x="150" y="306" width="98" height="26" rx="13" fill="#fff" stroke="#0B1A2E" stroke-width="1.5"/>
+          <text x="199" y="323" text-anchor="middle" class="st" font-size="12" font-weight="700" fill="#0B1A2E">Database</text>
+          <circle cx="470" cy="222" r="4" fill="#0B1A2E"/>
+          <line x1="470" y1="224" x2="505" y2="304" stroke="#94A3B8" stroke-width="1.5"/>
+          <rect x="460" y="306" width="86" height="26" rx="13" fill="#fff" stroke="#0B1A2E" stroke-width="1.5"/>
+          <text x="503" y="323" text-anchor="middle" class="st" font-size="12" font-weight="700" fill="#0B1A2E">Billing</text>
+        </svg>
+        <p class="cap">A web app is like a car: many parts, one product. The engine is your AI. <b>The rest, database, billing, login, is what makes it sellable.</b></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cream">
+    <div class="wrap">
+      <div class="kicker">The two kinds of components</div>
+      <h2>What's in the app.</h2>
+      <div class="cols">
+        <div class="col">
+          <h3>Core components</h3>
+          <p class="cap">What every app needs, AI or not. These are what make it sellable.</p>
+          <ul>
+            <li>Authentication<span>the login</span></li>
+            <li>Database<span>where everything is stored</span></li>
+            <li>Billing<span>your Stripe connection</span></li>
+            <li>File uploads</li>
+            <li>Notifications<span>email and Slack</span></li>
+            <li>Dashboard</li>
+            <li>Admin panel<span>your view of what users are doing</span></li>
+            <li>API access</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3>AI components</h3>
+          <p class="cap">What makes it intelligent. These are what people pay for.</p>
+          <ul>
+            <li>Agents<span>decide their own steps to get a job done</span></li>
+            <li>Automations<span>run a fixed path you designed</span></li>
+            <li>Chat interface<span>conversational front end</span></li>
+            <li>Voice interface<span>a phone number that answers, takes intake, books appointments</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker">Where the money is</div>
+      <h2>They're not paying for software.</h2>
+      <p>Your customer isn't paying for software. They're paying for work to get done.</p>
+      <p>Anything a human used to have to do, an agent can do now. Which means the agent goes behind the paywall. The app collects and charges. The agent delivers.</p>
+      <ul class="ex">
+        <li><b>Resume service:</b> an agent that reads the upload and writes the evaluation</li>
+        <li><b>Coaching offer:</b> an agent that turns intake answers into a client action plan</li>
+        <li><b>Directory:</b> an agent that interviews the visitor and matches them to the right listing</li>
+        <li><b>Learning platform:</b> an agent that reviews student work and gives feedback</li>
+        <li><b>Contract review:</b> an agent that reads the document and flags the risks</li>
+        <li><b>Website audit:</b> an agent that crawls the site and lists what to fix</li>
+      </ul>
+      <div class="quote">The work becomes the agent. <span>The app is how you get paid for it.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker">The question to ask</div>
+      <h2>Not "what are you building."</h2>
+      <p>That gets you nowhere. Ask instead:</p>
+      <div class="note"><b>Which components does your app have, and which is it missing?</b> Someone with an agent and no billing doesn't have a business. The component list becomes a checklist.</div>
+      <p>And to find your agent:</p>
+      <div class="note"><b>What do you currently do for clients that you're tired of doing yourself?</b> That's your agent. A better question than asking you to imagine one from nothing.</div>
+    </div>
+  </section>
+
+  <section class="cream">
+    <div class="wrap">
+      <div class="kicker">Come build with us</div>
+      <h2>Own the category.</h2>
+      <p>This is what we build in the Leveraging AI community: not AI tools you use, but AI-powered web apps people subscribe to, built around your expertise, step by step.</p>
+      <a class="btn" href="https://skool.com/leveragingai/about">Join Leveraging AI →</a>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <footer>Dr. Erin Jacques · Leveraging AI</footer>
+  </div>
+</body>
+</html>
