@@ -136,6 +136,13 @@
   .aicol{display:flex;flex-direction:column;gap:8px;flex:1;max-width:180px;}
   .fdoor{align-self:flex-end;border-radius:98px 98px 0 0;}
   @media(max-width:600px){ .aiwrap{flex-direction:column;align-items:stretch;} .aicol{max-width:none;} .fdoor{align-self:stretch;border-radius:16px;} }
+  .types{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;}
+  @media(max-width:640px){ .types{grid-template-columns:1fr;} }
+  .type{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:18px 20px;}
+  .type .tc{font-weight:800;color:var(--navy);font-size:1.18rem;}
+  .type .te{color:var(--teal-dark);font-weight:700;font-size:.92rem;margin:1px 0 9px;}
+  .type .ta{color:var(--soft);font-size:1.02rem;margin:0;}
+  .type .ta b{color:var(--navy);}
   footer{padding:34px 0 60px;color:var(--faint);font-size:.9rem;}
   .st{font-family:var(--sans);}
 </style>
@@ -167,9 +174,6 @@
 
   <section>
     <div class="wrap">
-      <div class="kicker">The picture — two ways to show it</div>
-      <h2>Same idea, two visuals.</h2>
-      <p>Use whichever lands with your audience.</p>
 
       <!-- VISUAL: STOREFRONT (facade, door at base) -->
       <div class="viz">
@@ -249,6 +253,23 @@
         </svg>
         <p class="cap">A web app is like a car: many parts, one product. The engine is your AI. <b>The rest, database, billing, login, is what makes it sellable.</b></p>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker">The range</div>
+      <h2>Every kind of web app can hold AI.</h2>
+      <p>"Web app" is a huge umbrella. Whatever kind you build, AI components live inside it. A few you already know:</p>
+      <div class="types">
+        <div class="type"><div class="tc">Learning platform</div><div class="te">like Duolingo</div><p class="ta">An AI tutor that checks your answers and adapts your lessons.</p></div>
+        <div class="type"><div class="tc">Directory</div><div class="te">like Yelp</div><p class="ta">An AI that asks what you need and matches you to the right listing.</p></div>
+        <div class="type"><div class="tc">Marketplace</div><div class="te">like Airbnb</div><p class="ta">An AI that answers buyer questions and matches them to the right option.</p></div>
+        <div class="type"><div class="tc">Membership &amp; community</div><div class="te">like Skool</div><p class="ta">A chatbot trained on your content that answers members any time.</p></div>
+        <div class="type"><div class="tc">Booking tool</div><div class="te">like Calendly</div><p class="ta">An AI that qualifies the lead and books the call for you.</p></div>
+        <div class="type"><div class="tc">Streaming &amp; content</div><div class="te">like Netflix</div><p class="ta">AI recommendations that pick what you see next.</p></div>
+      </div>
+      <p style="margin-top:20px;">Different category, same truth: it's a web app people subscribe to, with AI components inside.</p>
     </div>
   </section>
 
