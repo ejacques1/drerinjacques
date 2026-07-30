@@ -143,6 +143,16 @@
   .type .te{color:var(--teal-dark);font-weight:700;font-size:.92rem;margin:1px 0 9px;}
   .type .ta{color:var(--soft);font-size:1.02rem;margin:0;}
   .type .ta b{color:var(--navy);}
+  .exhint{text-align:center;color:var(--faint);font-weight:700;font-size:.95rem;margin:26px 0 10px;}
+  .exapp{max-width:660px;margin:0 auto;background:#fff;border:2px solid var(--navy);border-radius:18px;padding:22px 24px;box-shadow:0 12px 34px rgba(11,26,46,.08);}
+  .exhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:16px;}
+  .exname{font-size:1.6rem;font-weight:800;color:var(--navy);}
+  .excat{color:var(--teal-dark);font-weight:700;font-size:1rem;}
+  .exrow{margin-bottom:16px;}
+  .exrow:last-child{margin-bottom:0;}
+  .exlbl{font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:.76rem;color:var(--navy);margin-bottom:9px;}
+  .exlbl.ai{color:var(--teal-dark);}
+  .extiles{display:flex;flex-wrap:wrap;gap:8px;}
   footer{padding:34px 0 60px;color:var(--faint);font-size:.9rem;}
   .st{font-family:var(--sans);}
 </style>
@@ -270,6 +280,29 @@
         <div class="type"><div class="tc">Streaming &amp; content</div><div class="te">like Netflix</div><p class="ta">AI recommendations that pick what you see next.</p></div>
       </div>
       <p style="margin-top:20px;">Different category, same truth: it's a web app people subscribe to, with AI components inside.</p>
+
+      <div class="exhint">Take one you already know:</div>
+      <div class="exapp">
+        <div class="exhead"><span class="exname">Duolingo</span><span class="excat">a learning platform</span></div>
+        <div class="exrow">
+          <div class="exlbl">Core components it has</div>
+          <div class="extiles">
+            <span class="tile core">Login</span>
+            <span class="tile core">Progress database</span>
+            <span class="tile core">Subscription billing</span>
+            <span class="tile core">Streak reminders</span>
+            <span class="tile core">Stats dashboard</span>
+          </div>
+        </div>
+        <div class="exrow">
+          <div class="exlbl ai">AI components — what makes it feel smart</div>
+          <div class="extiles">
+            <span class="tile ai">An AI tutor that explains your mistakes</span>
+            <span class="tile ai">A chat you roleplay with to practice</span>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:16px;">Same anatomy as yours: a learning platform with AI components inside. <b>You're building the same kind of thing, for your expertise.</b></p>
     </div>
   </section>
 
