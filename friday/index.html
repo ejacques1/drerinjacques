@@ -89,8 +89,42 @@
   .bucket h3{margin:0 0 6px;color:var(--navy);font-size:1.25rem;font-weight:800;}
   .bucket .qs{color:var(--faint);font-size:.95rem;font-weight:600;margin:0 0 10px;}
   .bucket .ans{color:var(--navy);font-size:1.08rem;font-weight:600;margin:0;}
+  .bucket .find{color:var(--teal-dark);font-size:.95rem;font-weight:700;margin:12px 0 0;}
   .note{background:var(--cream);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:1.05rem;color:var(--navy);font-weight:600;}
   .btn{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:800;font-size:1.2rem;text-decoration:none;padding:14px 30px;border-radius:12px;margin-top:12px;box-shadow:0 8px 22px rgba(255,217,61,.4);}
+  .tile.buzz{background:#fff;border:1.5px solid var(--line);color:var(--navy);}
+  /* smartphone composition */
+  .tladd{color:var(--teal-dark);font-weight:800;font-size:1.1rem;text-align:center;}
+  .comprow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px;}
+  .comprow:last-child{margin-bottom:0;}
+  .comprow .tiles{flex:1;min-width:220px;}
+  .compres{border:2px solid var(--navy);border-radius:14px;padding:14px 18px;font-weight:800;color:var(--navy);white-space:nowrap;}
+  .compres.app{background:var(--navy);color:#fff;}
+  /* storefront facade */
+  .roof{background:var(--navy);height:56px;clip-path:polygon(9% 0,91% 0,100% 100%,0 100%);display:flex;align-items:center;justify-content:center;}
+  .roof span{color:#fff;font-weight:800;font-size:clamp(1.05rem,2.6vw,1.3rem);letter-spacing:.05em;}
+  .fac{max-width:760px;margin:6px auto 0;filter:drop-shadow(0 14px 34px rgba(11,26,46,.12));}
+  .facbody{border:2px solid var(--navy);border-top:none;border-radius:0 0 12px 12px;background:#fff;padding:20px 22px 0;}
+  .flbl{text-align:center;font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:.78rem;color:var(--navy);margin:0 0 12px;}
+  .flbl.ai{color:var(--teal-dark);margin-top:24px;}
+  .flbl em{font-style:normal;text-transform:none;letter-spacing:0;color:var(--faint);font-weight:600;}
+  .coreband{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+  .aiwrap{display:flex;align-items:flex-end;justify-content:center;gap:16px;margin-top:6px;}
+  .aicol{display:flex;flex-direction:column;gap:8px;flex:1;max-width:180px;}
+  .fdoor{align-self:flex-end;border-radius:98px 98px 0 0;}
+  @media(max-width:600px){ .aiwrap{flex-direction:column;align-items:stretch;} .aicol{max-width:none;} .fdoor{align-self:stretch;border-radius:16px;} }
+  .v1door{width:262px;flex:none;align-self:flex-end;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;padding:24px 16px;border-radius:96px 96px 0 0;color:#fff;text-align:center;}
+  @media(max-width:560px){ .v1door{width:auto;border-radius:16px;} }
+  .v1door .dttl{font-size:.72rem;font-weight:700;color:#cbd5e0;text-transform:uppercase;letter-spacing:.06em;}
+  .v1door .dtrow{display:flex;gap:6px;width:100%;}
+  .v1door .dt{flex:1;background:rgba(255,255,255,.09);border-radius:9px;padding:10px 3px;}
+  .v1door .dt .dn{font-size:.66rem;font-weight:700;color:#cbd5e0;}
+  .v1door .dt .dp{font-size:1.05rem;font-weight:800;color:var(--yellow);}
+  .v1door .dt.pop{background:var(--yellow);}
+  .v1door .dt.pop .dn{color:var(--navy);}
+  .v1door .dt.pop .dp{color:var(--navy);}
+  .v1door .db{display:inline-flex;align-items:center;gap:7px;background:var(--yellow);color:var(--navy);font-weight:800;padding:9px 18px;border-radius:18px;font-size:.88rem;white-space:nowrap;}
+  .v1door .db svg{width:15px;height:15px;flex:none;}
   footer{padding:34px 0 60px;color:var(--faint);font-size:.9rem;}
 </style>
 </head>
@@ -131,6 +165,27 @@
 
   <section class="cream">
     <div class="wrap">
+      <h2>Think of a smartphone.</h2>
+      <p>Nobody buys a phone because it has a camera. Or GPS. Or Face ID. Those are capabilities. Put them together, and they make a smartphone.</p>
+      <p>Your app is the same. It isn't "an agent." It isn't "voice." It isn't "automation." Those are the pieces. Put them together, and they make the app.</p>
+      <div class="punch">The tools are the pieces. <span>The app is the product.</span></div>
+      <div class="viz"><div class="comp">
+        <div class="comprow">
+          <div class="tiles"><span class="tile buzz">Camera</span><span class="tile buzz">GPS</span><span class="tile buzz">Bluetooth</span><span class="tile buzz">Face ID</span></div>
+          <span class="tladd">&rarr;</span>
+          <div class="compres">&#128241; One smartphone</div>
+        </div>
+        <div class="comprow">
+          <div class="tiles"><span class="tile ai">Agent</span><span class="tile ai">Voice</span><span class="tile ai">Automation</span><span class="tile ai">Chat</span></div>
+          <span class="tladd">&rarr;</span>
+          <div class="compres app">&#128187; One AI-powered web app</div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
       <h2>Two you already subscribe to.</h2>
       <p>Both are AI-powered web apps people subscribe to. Different kinds, same anatomy, core components plus AI components.</p>
 
@@ -159,6 +214,51 @@
       </div>
 
       <div class="punch">Different apps. <span>Same two layers.</span></div>
+    </div>
+  </section>
+
+  <section class="cream">
+    <div class="wrap">
+      <h2>Think of a store.</h2>
+      <p>You don't pay for the shelves, the register, or the lights. You pay for the complete experience, the store that gets you what you came for.</p>
+      <p>Your app is the same. People don't subscribe because you have an AI agent. They subscribe because the product helps them get something done. AI just makes it more valuable.</p>
+      <div class="punch">People pay for the product. <span>The door is where they subscribe.</span></div>
+      <div class="fac">
+        <div class="roof"><span>YOUR WEB APP</span></div>
+        <div class="facbody">
+          <div class="flbl">Core components</div>
+          <div class="coreband">
+            <span class="tile core">Authentication</span>
+            <span class="tile core">Database</span>
+            <span class="tile core">Billing</span>
+            <span class="tile core">File uploads</span>
+            <span class="tile core">Notifications</span>
+            <span class="tile core">Dashboard</span>
+            <span class="tile core">Admin panel</span>
+            <span class="tile core">API access</span>
+          </div>
+          <div class="flbl ai">AI components <em>&mdash; your front doors and brains</em></div>
+          <div class="aiwrap">
+            <div class="aicol">
+              <span class="tile ai">Agents</span>
+              <span class="tile ai">Automations</span>
+            </div>
+            <div class="v1door">
+              <div class="dttl">Choose your plan</div>
+              <div class="dtrow">
+                <div class="dt"><div class="dn">Starter</div><div class="dp">$9</div></div>
+                <div class="dt pop"><div class="dn">Pro</div><div class="dp">$29</div></div>
+                <div class="dt"><div class="dn">Premium</div><div class="dp">$79</div></div>
+              </div>
+              <span class="db"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Subscribe to enter</span>
+            </div>
+            <div class="aicol">
+              <span class="tile ai">Chat interface</span>
+              <span class="tile ai">Voice interface</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -206,26 +306,24 @@
   <section class="cream">
     <div class="wrap">
       <h2>Your questions this week.</h2>
-      <p>Grouped into three, so one answer covers a whole cluster.</p>
+      <p>One question, one clear answer. I'll point you to where each one lives in the classroom.</p>
 
       <div class="bucket">
-        <h3>1. "I'm on a PC and hitting walls the video doesn't show."</h3>
-        <div class="qs">Git isn't installed · "bash not recognized" · winget · "claude not recognized" · 2FA · GitHub Desktop on the C drive</div>
-        <p class="ans">The videos demo on a Mac. On Windows there are two or three different steps, install Git, use the Windows install command, set up 2FA. If you're a PC user hitting a wall, it's almost always one of those. You're not behind, and the install-commands doc in the classroom has exactly what to swap.</p>
-      </div>
-
-      <div class="note">👉 The "claude is not recognized" one, in plain terms: when Claude installs a command-line tool, it drops it in a set folder. If the terminal says "not recognized," it's not broken, the terminal just doesn't know where to look yet. One command tells it where. Then it works, and that's what lets you run <b>/mcp</b> to connect the Supabase database.</div>
-
-      <div class="bucket">
-        <h3>2. "It says it worked, but I can't see it, or it looks broken."</h3>
-        <div class="qs">404 · "how do I see my page?" · email rate limit · "it didn't type in the terminal like the video" · push failed</div>
-        <p class="ans">Most "it's broken" moments aren't. A change on your computer isn't live until you commit and push. And some things, like Supabase's email limit, or Claude finishing a step for you, are expected, not errors. When in doubt: did I push it, and is this actually a failure or just how it works?</p>
+        <h3>"I'm on a PC and a step from the video isn't working."</h3>
+        <p class="ans">The videos are recorded on a Mac, so a few Windows steps are different, mostly installing Git and using the Windows install command. It's not you, and it's a quick swap.</p>
+        <p class="find">&rarr; I'll show you where the Windows commands are in the classroom.</p>
       </div>
 
       <div class="bucket">
-        <h3>3. "Do I need this? / How do I add that?"</h3>
-        <div class="qs">GitHub Copilot · uploading videos · what to buy</div>
-        <p class="ans">You don't need extra paid tools, your stack is set (no Copilot, we use Claude Code). And when you want to add something like videos, use the simple path: host them on YouTube as Unlisted and embed them. Don't overcomplicate it.</p>
+        <h3>"It says 'claude is not recognized.'"</h3>
+        <p class="ans">It's not broken. When Claude installs the tool, it saves it in a folder your terminal doesn't check yet, so we just have to tell the terminal where to look. One command does it. Then it works, and that's what lets you run <b>/mcp</b> to connect Supabase.</p>
+        <p class="find">&rarr; I'll show you the exact command in the classroom.</p>
+      </div>
+
+      <div class="bucket">
+        <h3>"I built it, but I can't see it live."</h3>
+        <p class="ans">A change on your computer isn't live until you push it. Just tell Claude to commit and push, and it goes live. If a page 404s, that's almost always the reason.</p>
+        <p class="find">&rarr; I'll show you where that step is in the classroom.</p>
       </div>
     </div>
   </section>
