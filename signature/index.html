@@ -35,6 +35,13 @@
   .punch{font-size:clamp(1.35rem,3.2vw,1.9rem);font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.2;border-left:5px solid var(--yellow);padding:6px 0 6px 22px;margin:22px 0;}
   .punch span{color:var(--teal-dark);}
   .bridge{font-style:italic;color:var(--teal-dark);font-weight:600;font-size:clamp(1.18rem,2.6vw,1.45rem);margin:30px 0 0;line-height:1.4;}
+  .def{background:var(--navy);color:#fff;border-radius:18px;padding:26px 28px;margin:8px 0 0;font-size:clamp(1.25rem,3vw,1.7rem);font-weight:700;line-height:1.35;}
+  .def b{color:var(--yellow);}
+  .comprow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px;}
+  .comprow:last-child{margin-bottom:0;}
+  .comprow .tiles{flex:1;min-width:220px;}
+  .compres{border:2px solid var(--navy);border-radius:14px;padding:14px 18px;font-weight:800;color:var(--navy);white-space:nowrap;}
+  .compres.app{background:var(--navy);color:#fff;}
   /* tiles */
   .tile{border-radius:10px;padding:9px 14px;font-weight:700;font-size:.96rem;}
   .tile.core{background:#fff;border:1.5px solid var(--line);color:var(--navy);}
@@ -119,17 +126,17 @@
   <section class="hero">
     <div class="wrap">
       <h1>Everything you've been learning about AI is <span class="hl">missing one piece</span>.</h1>
-      <p class="lead">It's not another tool to learn.</p>
-      <p>It's the one thing every tool belongs inside: an AI-powered web app.</p>
+      <p class="lead">By the end of today, you'll understand what an AI-powered web app actually is.</p>
+      <p>And why almost every exciting AI tool you're seeing is really just a piece of one.</p>
     </div>
   </section>
 
   <section class="cream">
     <div class="wrap">
       <h2>Today, two things.</h2>
-      <p>First, a framework that completely changed how I think about AI.</p>
-      <p>Then, we build one piece of it together. Today, <span class="swap">an AI Agent</span>, another week it might be Voice, or Automation. It's just one component.</p>
-      <div class="bridge">"But before we build anything, let me show you why this all feels so overwhelming."</div>
+      <p>First, I'll give you a clear definition of what an AI-powered web app actually is.</p>
+      <p>Then, we build one piece of it together. Today, <span class="swap">an AI Agent</span>, another week it might be Voice, or Automation. It's just one piece.</p>
+      <div class="bridge">"But first, the thing almost nobody can actually answer."</div>
     </div>
   </section>
 
@@ -142,22 +149,65 @@
       <div class="viz"><div class="tiles">
         <span class="tile buzz">Agent</span><span class="tile buzz">Voice</span><span class="tile buzz">Automation</span><span class="tile buzz">API</span><span class="tile buzz">Claude Code</span><span class="tile buzz">Chat</span><span class="tile buzz">Document search</span><span class="tile buzz">MCP</span><span class="tile buzz">Workflow</span>
       </div></div>
-      <div class="bridge">"So let me ask you something about all these tools."</div>
+      <div class="bridge">"Here's a better question."</div>
     </div>
   </section>
 
   <section class="cream">
     <div class="wrap">
-      <h2>What do they all have in common?</h2>
-      <div class="punch">They're all <span>components</span>. Not products.</div>
-      <p>Everything you've been learning is part of something larger.</p>
-      <div class="viz">
-        <div class="step" style="text-align:center;margin-bottom:10px;">Components</div>
-        <div class="tiles" style="justify-content:center;">
-          <span class="tile buzz">Agent</span><span class="tile buzz">Voice</span><span class="tile buzz">Automation</span><span class="tile buzz">API</span><span class="tile buzz">Claude Code</span><span class="tile buzz">Chat</span><span class="tile buzz">Document search</span><span class="tile buzz">MCP</span><span class="tile buzz">Workflow</span>
+      <h2>First, what actually is one?</h2>
+      <p>You've heard "AI agent." You've heard "automation." You've heard "chatbot."</p>
+      <p>But if you asked ten people to define an AI-powered web app, you'd get ten different answers.</p>
+      <div class="punch">So let's define it.</div>
+      <div class="bridge">"Here's the definition I use."</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>The definition.</h2>
+      <div class="def">An AI-powered web app is a software product that combines the <b>core components</b> people already expect with the <b>AI components</b> that help them get something done.</div>
+      <p style="margin-top:18px;"><b>Core components</b> are the business features you've always expected: login, billing, a database, a dashboard, notifications.</p>
+      <p><b>AI components</b> are the new part: an agent, voice, chat, automation, document search.</p>
+      <div class="punch">Put them together, <span>and that's an AI-powered web app.</span></div>
+      <div class="viz"><div class="stack">
+        <div class="layer intel">
+          <div class="layerlbl">AI components — the intelligence</div>
+          <div class="tiles">
+            <span class="tile ai">Agents</span><span class="tile ai">Voice</span><span class="tile ai">Chat</span><span class="tile ai">Automation</span><span class="tile ai">Document search</span><span class="tile ai">Image generation</span><span class="tile ai">Computer use</span>
+          </div>
         </div>
-      </div>
-      <div class="bridge">"Components of what, though? Here's the part most people miss."</div>
+        <div class="layer biz">
+          <div class="layerlbl">Core components — the foundation</div>
+          <div class="tiles">
+            <span class="tile core">Login</span><span class="tile core">Database</span><span class="tile core">Billing</span><span class="tile core">Dashboard</span><span class="tile core">Notifications</span><span class="tile core">Admin panel</span><span class="tile core">API access</span>
+          </div>
+        </div>
+      </div></div>
+      <div class="bridge">"You already own something that works exactly like this."</div>
+    </div>
+  </section>
+
+  <section class="cream">
+    <div class="wrap">
+      <h2>Think of a smartphone.</h2>
+      <p>Nobody buys a phone because it has a camera. Or GPS. Or Bluetooth. Or Face ID.</p>
+      <p>Those are capabilities. Together, they make a smartphone.</p>
+      <p>An AI-powered web app is the same. It isn't "an AI agent." It isn't "voice." It isn't "automation." Those are the pieces. Together, they make the app.</p>
+      <div class="punch">The tools are the pieces. <span>The app is the product.</span></div>
+      <div class="viz"><div class="comp">
+        <div class="comprow">
+          <div class="tiles"><span class="tile buzz">Camera</span><span class="tile buzz">GPS</span><span class="tile buzz">Bluetooth</span><span class="tile buzz">Face ID</span></div>
+          <span class="tladd">→</span>
+          <div class="compres">📱 One smartphone</div>
+        </div>
+        <div class="comprow">
+          <div class="tiles"><span class="tile ai">Agent</span><span class="tile ai">Voice</span><span class="tile ai">Automation</span><span class="tile ai">Chat</span></div>
+          <span class="tladd">→</span>
+          <div class="compres app">💻 One AI-powered web app</div>
+        </div>
+      </div></div>
+      <div class="bridge">"And the business half? It's not even new."</div>
     </div>
   </section>
 
@@ -172,38 +222,14 @@
         <div class="tladd">+ AI →</div>
         <div class="tlbox ai">AI-powered web apps</div>
       </div></div>
-      <div class="bridge">"So what does an AI-powered web app actually look like inside?"</div>
+      <div class="bridge">"Let's look at apps you already use."</div>
     </div>
   </section>
 
   <section class="cream">
     <div class="wrap">
-      <h2>Every AI-powered web app has two layers.</h2>
-      <p>The <b>business layer</b> has existed for years, login, database, billing, dashboard, notifications, admin, API connections. It's the foundation.</p>
-      <p>Then AI adds a second layer: the <b>intelligence layer</b>, agents, voice, chat, automation, and whatever comes next.</p>
-      <div class="punch">The business layer runs the business. <span>The intelligence layer creates the magic.</span></div>
-      <div class="viz"><div class="stack">
-        <div class="layer intel">
-          <div class="layerlbl">Intelligence layer — the magic</div>
-          <div class="tiles">
-            <span class="tile ai">Agents</span><span class="tile ai">Voice</span><span class="tile ai">Chat</span><span class="tile ai">Automation</span><span class="tile ai">Document search</span><span class="tile ai">Image generation</span><span class="tile ai">Computer use</span>
-          </div>
-        </div>
-        <div class="layer biz">
-          <div class="layerlbl">Business layer — the foundation</div>
-          <div class="tiles">
-            <span class="tile core">Login</span><span class="tile core">Database</span><span class="tile core">Billing</span><span class="tile core">Dashboard</span><span class="tile core">Notifications</span><span class="tile core">Admin panel</span><span class="tile core">API connections</span>
-          </div>
-        </div>
-      </div></div>
-      <div class="bridge">"You already use this every day. Watch."</div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
       <h2>Apps you already know.</h2>
-      <p>Same two layers, split into apps you use all the time: the business foundation, and the AI on top.</p>
+      <p>The same definition, split into apps you use all the time: the core components, and the AI components on top.</p>
 
       <div class="exapp">
         <div class="exhead"><span class="exname">Duolingo</span><span class="excat">a learning platform</span></div>
@@ -293,7 +319,7 @@
         </div>
       </div>
 
-      <div class="bridge">"Now let me make it even simpler. Think of a store."</div>
+      <div class="bridge">"So why do people pay for these? Think of a store."</div>
     </div>
   </section>
 
@@ -393,13 +419,13 @@
     <div class="wrap">
       <h2>Remember this.</h2>
       <ul class="msgs">
-        <li>Everything you've been learning about AI is a component.</li>
-        <li>The foundation hasn't changed. The capabilities have.</li>
+        <li>An AI-powered web app = core components (the business you expect) + AI components (the AI that helps).</li>
+        <li>The tools you keep hearing about, agent, voice, automation, aren't products. They're pieces.</li>
         <li>Web apps aren't new. AI transformed what's possible inside them.</li>
-        <li>The business layer runs the business. The intelligence layer creates the magic.</li>
+        <li>The core components run the business. The AI components create the magic.</li>
         <li>People don't subscribe to AI. They subscribe to products that solve problems.</li>
         <li>Stop asking "What AI tool should I learn?" Start asking "What product am I building?"</li>
-        <li>Every new AI breakthrough is another component that makes your web app more valuable.</li>
+        <li>Every new AI breakthrough is another piece that can live inside an AI-powered web app.</li>
       </ul>
     </div>
   </section>
