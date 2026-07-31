@@ -81,7 +81,7 @@
       <div class="cards">
         <div class="card">
           <h3>Two different domain jobs</h3>
-          <p>Vercel made your <b>site</b> load at your domain. This makes your <b>emails</b> send from your domain. Same domain, different DNS records (SPF + DKIM). That's called <b>email authentication</b>.</p>
+          <p>Vercel made your <b>site</b> load at your domain. This makes your <b>emails</b> send from your domain. Same domain, a <b>different</b> set of DNS records. That's called <b>email authentication</b>.</p>
         </div>
         <div class="card">
           <h3>The API key + the webhook</h3>
@@ -96,11 +96,11 @@
       <ul>
         <li>In Systeme.io: <span class="path">Settings → Custom domains (or Emails)</span></li>
         <li>Add the domain you bought in Video 1</li>
-        <li>Systeme gives you <b>DNS records</b> (an SPF record and a DKIM record)</li>
+        <li>Systeme gives you <b>a few DNS records</b> (mostly CNAMEs, plus a DMARC record), add exactly what it shows you</li>
         <li>Add those records at your <b>domain provider</b> (where you bought the domain), then come back and verify</li>
       </ul>
       <div class="warn"><b>Say this out loud:</b> this is NOT the same as connecting your domain to Vercel. Vercel made your <b>site</b> live. This is a <b>different</b> set of records that lets Systeme.io send <b>email</b> from your domain. Same domain, different job.</div>
-      <div class="note">👉 Terminology to teach them: it's called <b>email authentication</b>, done with <b>SPF</b> (which servers can send for you) and <b>DKIM</b> (a signature that proves the email is really from you).</div>
+      <div class="note">👉 Terminology to teach them: this is <b>email authentication</b>. The records prove your mail is really from you, mainly <b>DKIM</b> (the <span class="mono">_domainkey</span> signature records) and <b>DMARC</b> (protects your domain from being spoofed). Systeme.io gives them as CNAME and TXT records, just copy exactly what it shows.</div>
       <div class="done">✓ Done when: Systeme.io shows your domain <b>authenticated / verified</b>.</div>
     </section>
 
