@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Connect Your Email Engine (Systeme.io) — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --navy2:#0E2E57;
+    --gold:#F4B02E;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--navy);color:#fff;font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.85rem;color:#bcccdf;}
+  .brand b{color:var(--gold);}
+  .kicker{color:var(--gold);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;margin-bottom:12px;}
+  section{padding:46px 0;border-top:1px solid rgba(255,255,255,.12);}
+  section.hero{border-top:none;padding:44px 0 48px;}
+  h1{font-size:clamp(2.1rem,5.4vw,3.4rem);font-weight:900;letter-spacing:-.025em;line-height:1.06;margin:0 0 16px;}
+  h1 span{color:var(--gold);}
+  h2{font-size:clamp(1.5rem,3.8vw,2.2rem);font-weight:900;letter-spacing:-.02em;margin:0 0 8px;}
+  h2 .st{color:var(--gold);}
+  .lead{font-size:clamp(1.15rem,2.6vw,1.5rem);color:#dbe6f3;font-weight:600;margin:0 0 8px;}
+  p{font-size:clamp(1.02rem,2.2vw,1.18rem);color:#cdd9e8;margin:0 0 14px;max-width:72ch;}
+  p b, li b{color:#fff;}
+  ul{list-style:none;padding:0;margin:0 0 8px;}
+  li{font-size:clamp(1.04rem,2.3vw,1.24rem);color:#e6eef8;padding:11px 0 11px 32px;position:relative;border-bottom:1px solid rgba(255,255,255,.08);}
+  li:last-child{border-bottom:none;}
+  li::before{content:"";position:absolute;left:2px;top:19px;width:11px;height:11px;background:var(--gold);border-radius:50%;}
+  li .sub{display:block;color:#aebfd4;font-size:.9em;font-weight:400;margin-top:2px;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:8px 0;}
+  .card{background:var(--navy2);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px 20px;}
+  .card h3{margin:0 0 4px;font-size:1.15rem;color:var(--gold);font-weight:900;}
+  .card p{font-size:1rem;margin:0;color:#cdd9e8;}
+  .prompt{background:#0b1f3d;border:1px solid rgba(244,176,43,.4);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative;}
+  .prompt .lbl{color:var(--gold);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+  .prompt .js-copy{color:#eaf1fb;font-family:var(--mono);font-size:clamp(.9rem,1.9vw,1.0rem);line-height:1.55;display:block;padding-right:76px;white-space:pre-wrap;}
+  .copy{position:absolute;top:14px;right:14px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:7px 12px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .note{background:rgba(244,176,43,.14);border-left:5px solid var(--gold);border-radius:10px;padding:14px 16px;margin:14px 0;font-size:1.02rem;color:#fff;}
+  .warn{background:#3a1414;border-left:5px solid #e0533a;border-radius:10px;padding:14px 16px;margin:14px 0;font-size:1.02rem;color:#ffe6e0;}
+  .warn b{color:#ff9a86;}
+  .mono{font-family:var(--mono);background:rgba(255,255,255,.08);border-radius:5px;padding:1px 7px;font-size:.9em;}
+  .path{font-family:var(--mono);color:#ffe6b0;font-size:.95em;}
+  .stepnum{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:38px;background:var(--gold);color:var(--navy);border-radius:50%;font-weight:900;font-size:1.1rem;margin-right:6px;flex:none;}
+  .stephead{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+  .done{background:rgba(46,160,110,.16);border-left:5px solid #3ec98a;border-radius:10px;padding:12px 15px;margin:12px 0 0;color:#d6ffe9;font-size:1rem;}
+  .done b{color:#8affc8;}
+  footer{padding:30px 0 60px;color:#8ea3bd;font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">Leveraging <b>AI</b> · Week 3 · Video 3</div>
+
+    <section class="hero">
+      <div class="kicker">Week 3 — Launch</div>
+      <h1>Your welcome email, <span>on autopilot</span>.</h1>
+      <p class="lead">The moment someone pays for your platform, they get a welcome email from your own professional domain, automatically. By the end of this, that whole thing runs itself. No manual sending, ever.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Here's the plan</div>
+      <ul>
+        <li>Authenticate your domain for email</li>
+        <li>Set your professional sending address</li>
+        <li>Create your Systeme.io API key</li>
+        <li>Connect Stripe so every paying customer gets tagged, by chat</li>
+        <li>Build the welcome-email automation</li>
+        <li>Test a real $0 signup, end to end</li>
+      </ul>
+      <p style="margin-top:12px;">Campaigns and growth strategies come next week. This week, we get the engine running.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Two things to understand first</div>
+      <div class="cards">
+        <div class="card">
+          <h3>Two different domain jobs</h3>
+          <p>Vercel made your <b>site</b> load at your domain. This makes your <b>emails</b> send from your domain. Same domain, different DNS records (SPF + DKIM). That's called <b>email authentication</b>.</p>
+        </div>
+        <div class="card">
+          <h3>The API key + the webhook</h3>
+          <p>The <b>API key</b> is the login that lets your app add people to Systeme.io. The <b>webhook</b> is the trigger that fires when someone pays. Together: pay → tag → welcome email.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">1</span><h2>Authenticate your domain for <span class="st">email</span></h2></div>
+      <p>This lets Systeme.io send email from <span class="mono">you@yourdomain.com</span> instead of a generic address.</p>
+      <ul>
+        <li>In Systeme.io: <span class="path">Settings → Custom domains (or Emails)</span></li>
+        <li>Add the domain you bought in Video 1</li>
+        <li>Systeme gives you <b>DNS records</b> (an SPF record and a DKIM record)</li>
+        <li>Add those records at your <b>domain provider</b> (where you bought the domain), then come back and verify</li>
+      </ul>
+      <div class="warn"><b>Say this out loud:</b> this is NOT the same as connecting your domain to Vercel. Vercel made your <b>site</b> live. This is a <b>different</b> set of records that lets Systeme.io send <b>email</b> from your domain. Same domain, different job.</div>
+      <div class="note">👉 Terminology to teach them: it's called <b>email authentication</b>, done with <b>SPF</b> (which servers can send for you) and <b>DKIM</b> (a signature that proves the email is really from you).</div>
+      <div class="done">✓ Done when: Systeme.io shows your domain <b>authenticated / verified</b>.</div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">2</span><h2>Set your professional <span class="st">sending address</span></h2></div>
+      <ul>
+        <li>In Systeme.io: <span class="path">Settings → Emails</span> → set your "from" address, e.g. <span class="mono">hello@yourdomain.com</span></li>
+        <li>Now every email comes from <b>you</b>, not a random address, which is what keeps you out of spam and looks legit</li>
+      </ul>
+      <div class="note">👉 This sends <b>from</b> your domain. If you want to <b>receive</b> replies at that address, you'd add a mailbox like Google Workspace later. Not needed today.</div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">3</span><h2>Create your Systeme.io <span class="st">API key</span></h2></div>
+      <ul>
+        <li>In Systeme.io: <span class="path">Settings → Public API Keys</span> → create a key</li>
+        <li>Copy it and keep it handy, you'll paste it into Vercel in the next step</li>
+      </ul>
+      <div class="note">👉 This is the "API" piece. It's the key that lets your platform add and tag contacts in Systeme.io.</div>
+      <div class="done">✓ Done when: you have your API key copied.</div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">4</span><h2>Connect Stripe so every payment <span class="st">tags them</span></h2></div>
+      <p>You don't build this by hand. Paste this into Claude and let it build the connection:</p>
+      <div class="prompt">
+        <div class="lbl">Paste into Claude</div>
+        <span class="js-copy">When someone purchases a subscription on my platform through Stripe, add their email to Systeme.io as a contact and tag them "Member" (or whatever tag I choose), so I can trigger a welcome-email automation off that tag. Stripe is already set up and its keys are already in Vercel, reuse the existing Stripe setup. Build it end to end, verify the Stripe webhook so it's secure, use an environment variable for the Systeme.io API key, and don't ask me questions, make reasonable choices yourself. When you're done, tell me: the exact name of the Systeme.io environment variable to add in Vercel, and exactly where to point the Stripe webhook in my Stripe dashboard.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>Then finish the two manual pieces Claude hands you:</p>
+      <ul>
+        <li>Add your API key in <span class="path">Vercel → Settings → Environment Variables</span> as <span class="mono">SYSTEME_API_KEY</span></li>
+        <li>In Stripe, add the webhook endpoint Claude gives you (<span class="path">Developers → Webhooks → Add endpoint</span>), then copy its signing secret into Vercel</li>
+      </ul>
+      <div class="warn"><b>Redeploy after adding the key.</b> Environment variables only take effect on a new deployment. Add the key, then redeploy in Vercel, or it won't work.</div>
+      <div class="done">✓ Done when: Claude confirms it's built, and <span class="mono">SYSTEME_API_KEY</span> + the webhook secret are in Vercel.</div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">5</span><h2>Build the <span class="st">welcome</span> automation</h2></div>
+      <p>Now the tag needs to actually <b>do</b> something. Set up the automation in Systeme.io:</p>
+      <ul>
+        <li>In Systeme.io: <span class="path">Automations → Rules → Create</span></li>
+        <li><b>Trigger:</b> "Tag added" → your tag (e.g. <span class="mono">Member</span>)</li>
+        <li><b>Action:</b> "Send email" → your welcome email</li>
+        <li>Write a short, warm "Welcome to the community" email, what they get, and their first step</li>
+      </ul>
+      <div class="note">👉 The tag is the bridge. Stripe tags them, and the tag triggers this email. That's the whole loop.</div>
+      <div class="done">✓ Done when: adding the tag to a test contact sends you the welcome email.</div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">6</span><h2>Test it, <span class="st">end to end</span></h2></div>
+      <ul>
+        <li>Go to your live site and run a <b>$0 test signup</b> (use the 100%-off coupon you made in Video 2)</li>
+        <li>Confirm in Systeme.io: <span class="path">Contacts</span> → the person is there, with your tag</li>
+        <li>Confirm the <b>welcome email lands</b> in the inbox, from your domain</li>
+      </ul>
+      <div class="warn"><b>A green build proves nothing.</b> The only proof is a real signup that ends with the welcome email in the inbox. Do that before you call it done.</div>
+    </section>
+
+    <section>
+      <div class="kicker">By the end of this video</div>
+      <h2>The engine is running.</h2>
+      <ul>
+        <li>Your domain is <b>authenticated for email</b></li>
+        <li>Every paying customer is <b>tagged automatically</b></li>
+        <li>They get a <b>welcome email</b> from your professional domain, hands-off</li>
+      </ul>
+      <p style="margin-top:16px;">Next week: campaigns, sequences, and the growth strategies to actually fill this engine and keep people coming back.</p>
+    </section>
+
+    <footer>Dr. Erin Jacques · Leveraging AI</footer>
+  </div>
+
+<script>
+  function copyText(btn){
+    var el=btn.parentElement.querySelector('.js-copy');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o=btn.textContent; btn.textContent='Copied!';
+      setTimeout(function(){btn.textContent=o;},1500);
+    });
+  }
+</script>
+</body>
+</html>
