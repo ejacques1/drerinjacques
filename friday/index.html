@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Friday Live — Dr. Erin Jacques</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1A2E; --navy2:#1a3658; --yellow:#FFD93D; --yellow-dark:#E8C12B;
+    --teal:#0DB4DB; --teal-dark:#0A8FAF; --cream:#FAF6EC; --text:#0B1A2E;
+    --soft:#4A5568; --faint:#718096; --line:#E2E8F0;
+    --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:52px 0;border-top:1px solid var(--line);}
+  section.hero{border-top:none;padding:48px 0 40px;}
+  section.cream{background:var(--cream);border-top:none;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.02em;font-size:1rem;color:var(--navy);}
+  .brand b{color:var(--teal-dark);}
+  .step{color:var(--teal-dark);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;margin-bottom:12px;}
+  h1{font-size:clamp(2.1rem,5.6vw,3.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.07;margin:0 0 16px;color:var(--navy);}
+  .hl{background:linear-gradient(180deg,transparent 58%,rgba(255,217,61,.75) 58%);padding:0 3px;}
+  h2{font-size:clamp(1.6rem,4.2vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin:0 0 14px;color:var(--navy);}
+  .lead{font-size:clamp(1.18rem,2.6vw,1.5rem);color:var(--navy);font-weight:700;margin:0 0 10px;}
+  p{font-size:clamp(1.06rem,2.2vw,1.24rem);color:var(--soft);margin:0 0 14px;max-width:74ch;}
+  p b{color:var(--navy);}
+  .agenda{list-style:none;padding:0;margin:14px 0 0;}
+  .agenda li{position:relative;padding:11px 0 11px 40px;font-size:clamp(1.1rem,2.3vw,1.32rem);color:var(--navy);font-weight:700;border-bottom:1px solid var(--line);}
+  .agenda li:last-child{border-bottom:none;}
+  .agenda li b{counter-increment:ag;}
+  .agenda{counter-reset:ag;}
+  .agenda li::before{counter-increment:ag;content:counter(ag);position:absolute;left:0;top:12px;width:26px;height:26px;background:var(--yellow);color:var(--navy);border-radius:50%;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .punch{font-size:clamp(1.3rem,3.1vw,1.8rem);font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.22;border-left:5px solid var(--yellow);padding:6px 0 6px 22px;margin:22px 0;}
+  .punch span{color:var(--teal-dark);}
+  .tile{border-radius:10px;padding:9px 14px;font-weight:700;font-size:.96rem;}
+  .tile.core{background:#fff;border:1.5px solid var(--line);color:var(--navy);}
+  .tile.ai{background:rgba(255,217,61,.92);border:1.5px solid var(--yellow-dark);color:var(--navy);}
+  .tiles{display:flex;flex-wrap:wrap;gap:8px;}
+  .viz{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;margin:8px 0 0;box-shadow:0 10px 30px rgba(11,26,46,.06);}
+  /* two-layer stack */
+  .stack{max-width:660px;margin:0 auto;}
+  .layer{border:2px solid var(--navy);border-radius:14px;padding:16px 18px;}
+  .layer.intel{background:rgba(255,217,61,.14);border-color:var(--yellow-dark);margin-bottom:10px;}
+  .layer.biz{background:#F1F5F9;}
+  .layerlbl{font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:.82rem;margin-bottom:10px;}
+  .layer.intel .layerlbl{color:var(--teal-dark);}
+  .layer.biz .layerlbl{color:var(--navy);}
+  /* worked examples */
+  .exapp{background:#fff;border:2px solid var(--navy);border-radius:18px;padding:20px 22px;box-shadow:0 12px 34px rgba(11,26,46,.08);margin-bottom:16px;}
+  .exhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px;}
+  .exname{font-size:1.5rem;font-weight:800;color:var(--navy);}
+  .excat{color:var(--teal-dark);font-weight:700;font-size:.98rem;}
+  .exrow{margin-bottom:13px;}
+  .exrow:last-child{margin-bottom:0;}
+  .exlbl{font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:.74rem;color:var(--navy);margin-bottom:8px;}
+  .exlbl.ai{color:var(--teal-dark);}
+  /* pricing rules */
+  .prules{list-style:none;padding:0;margin:14px 0 0;}
+  .prules li{position:relative;padding:12px 0 12px 34px;border-bottom:1px solid var(--line);font-size:clamp(1.05rem,2.2vw,1.26rem);color:var(--soft);}
+  .prules li:last-child{border-bottom:none;}
+  .prules li b{color:var(--navy);}
+  .prules li::before{content:"";position:absolute;left:4px;top:20px;width:11px;height:11px;background:var(--yellow);border-radius:50%;}
+  /* 3-tier pricing visual */
+  .tiers{display:flex;gap:12px;align-items:flex-end;margin-top:8px;}
+  @media(max-width:560px){ .tiers{flex-direction:column;align-items:stretch;} }
+  .tier{flex:1;border:2px solid var(--navy);border-radius:16px;background:#fff;padding:18px 12px 16px;text-align:center;}
+  .tier.pop{border-color:var(--yellow-dark);box-shadow:0 0 0 4px rgba(255,217,61,.4);}
+  .tier .pill{display:inline-block;background:var(--yellow);color:var(--navy);font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;border-radius:12px;padding:3px 10px;margin-bottom:8px;}
+  .tier .tn{font-weight:800;color:var(--navy);}
+  .tier .tp{font-weight:800;color:var(--navy);font-size:1.7rem;line-height:1.1;}
+  .tier .tp small{font-size:.7rem;color:var(--faint);font-weight:600;}
+  .tier .tb{display:block;background:var(--yellow);color:var(--navy);font-weight:800;padding:9px;border-radius:16px;font-size:.85rem;margin-top:12px;}
+  /* example links */
+  .linkcards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:14px;}
+  @media(max-width:640px){ .linkcards{grid-template-columns:1fr;} }
+  .linkcard{display:block;text-decoration:none;background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:border-color .12s;}
+  .linkcard:hover{border-color:var(--yellow-dark);}
+  .linkcard .ln{font-weight:800;color:var(--navy);font-size:1.15rem;}
+  .linkcard .lu{color:var(--teal-dark);font-weight:700;font-size:.85rem;margin:2px 0 6px;word-break:break-all;}
+  .linkcard .ld{color:var(--soft);font-size:.95rem;}
+  /* Q buckets */
+  .bucket{background:#fff;border:1px solid var(--line);border-left:5px solid var(--yellow);border-radius:14px;padding:18px 20px;margin:14px 0;box-shadow:0 8px 24px rgba(11,26,46,.05);}
+  .bucket h3{margin:0 0 6px;color:var(--navy);font-size:1.25rem;font-weight:800;}
+  .bucket .qs{color:var(--faint);font-size:.95rem;font-weight:600;margin:0 0 10px;}
+  .bucket .ans{color:var(--navy);font-size:1.08rem;font-weight:600;margin:0;}
+  .note{background:var(--cream);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:1.05rem;color:var(--navy);font-weight:600;}
+  .btn{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:800;font-size:1.2rem;text-decoration:none;padding:14px 30px;border-radius:12px;margin-top:12px;box-shadow:0 8px 22px rgba(255,217,61,.4);}
+  footer{padding:34px 0 60px;color:var(--faint);font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="wrap"><div class="brand">Dr. Erin Jacques · <b>Friday Live</b></div></div>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Welcome in. <span class="hl">Here's today.</span></h1>
+      <p class="lead">If you're new, you're in the right place, this is where we build.</p>
+      <ul class="agenda">
+        <li>What a web app actually is (and why everything we talk about fits inside one)</li>
+        <li>Two you already know: Duolingo vs Netflix</li>
+        <li>Pricing that converts, the UX of a great pricing page</li>
+        <li>Your questions from this week</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>First, let's center on one idea.</h2>
+      <p>Over our time together, I'm going to talk about a lot of things, agents, voice, chat, automation, APIs. It can feel like a pile of separate tools.</p>
+      <div class="punch">They're not separate tools. <span>They're all components inside a web app.</span></div>
+      <p>Every app has two parts: the <b>core components</b> you already expect (login, billing, a database), and the <b>AI components</b> that make it smart (agents, voice, chat, automation). Put them together, and that's a web app people can subscribe to.</p>
+      <div class="viz"><div class="stack">
+        <div class="layer intel">
+          <div class="layerlbl">AI components — the intelligence</div>
+          <div class="tiles">
+            <span class="tile ai">Agents</span><span class="tile ai">Voice</span><span class="tile ai">Chat</span><span class="tile ai">Automation</span><span class="tile ai">Document search</span>
+          </div>
+        </div>
+        <div class="layer biz">
+          <div class="layerlbl">Core components — the foundation</div>
+          <div class="tiles">
+            <span class="tile core">Login</span><span class="tile core">Database</span><span class="tile core">Billing</span><span class="tile core">Dashboard</span><span class="tile core">Notifications</span>
+          </div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <section class="cream">
+    <div class="wrap">
+      <h2>Two you already know.</h2>
+      <p>Different kinds of apps, same anatomy, core components plus AI components.</p>
+
+      <div class="exapp">
+        <div class="exhead"><span class="exname">Duolingo</span><span class="excat">a learning platform</span></div>
+        <div class="exrow">
+          <div class="exlbl">Core components</div>
+          <div class="tiles"><span class="tile core">Login</span><span class="tile core">Progress database</span><span class="tile core">Subscription billing</span><span class="tile core">Streak reminders</span><span class="tile core">Stats dashboard</span></div>
+        </div>
+        <div class="exrow">
+          <div class="exlbl ai">AI components</div>
+          <div class="tiles"><span class="tile ai">An AI tutor that explains your mistakes</span><span class="tile ai">A chat you roleplay with to practice</span></div>
+        </div>
+      </div>
+
+      <div class="exapp">
+        <div class="exhead"><span class="exname">Netflix</span><span class="excat">a streaming platform</span></div>
+        <div class="exrow">
+          <div class="exlbl">Core components</div>
+          <div class="tiles"><span class="tile core">Login</span><span class="tile core">Content database</span><span class="tile core">Subscription billing</span><span class="tile core">Profiles</span><span class="tile core">Watch history</span></div>
+        </div>
+        <div class="exrow">
+          <div class="exlbl ai">AI components</div>
+          <div class="tiles"><span class="tile ai">Recommendations ("because you watched…")</span><span class="tile ai">Personalized thumbnails</span><span class="tile ai">Smart search</span></div>
+        </div>
+      </div>
+
+      <div class="punch">Different apps. <span>Same two layers.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Pricing that converts.</h2>
+      <p>Once you can take payments, <b>how</b> you show the price matters as much as the price itself. Good pricing UX:</p>
+      <ul class="prules">
+        <li><b>Three tiers, and highlight the middle one.</b> Start low, go high, and mark the one you want them to pick as "Most Popular." People anchor to the middle.</li>
+        <li><b>One clear, bold price per tier.</b> Never make them hunt for it.</li>
+        <li><b>Lead with monthly.</b> Add an annual option (with a discount) once you have traction.</li>
+        <li><b>Short benefit list, not a feature dump.</b> Three or four lines per tier.</li>
+        <li><b>One consistent button</b> on every tier (Subscribe / Start).</li>
+        <li><b>Reduce the risk.</b> A free trial or money-back removes the "will this work for me?" fear.</li>
+        <li><b>Max three tiers.</b> Too many choices freeze people.</li>
+      </ul>
+
+      <div class="viz"><div class="tiers">
+        <div class="tier"><div class="tn">Starter</div><div class="tp">$9<small>/mo</small></div><span class="tb">Start</span></div>
+        <div class="tier pop"><span class="pill">Most popular</span><div class="tn">Pro</div><div class="tp">$29<small>/mo</small></div><span class="tb">Start</span></div>
+        <div class="tier"><div class="tn">Premium</div><div class="tp">$79<small>/mo</small></div><span class="tb">Start</span></div>
+      </div></div>
+
+      <p style="margin-top:26px;"><b>See it in the wild</b> (click to open and we'll look together):</p>
+      <div class="linkcards">
+        <a class="linkcard" href="https://zoom.us/pricing" target="_blank">
+          <div class="ln">Zoom</div>
+          <div class="lu">zoom.us/pricing</div>
+          <div class="ld">Classic tiers, the middle plan is visually pushed forward.</div>
+        </a>
+        <a class="linkcard" href="https://www.notion.so/pricing" target="_blank">
+          <div class="ln">Notion</div>
+          <div class="lu">notion.so/pricing</div>
+          <div class="ld">Clean tiers with a "most popular" highlight and one CTA each.</div>
+        </a>
+        <a class="linkcard" href="https://calendly.com/pricing" target="_blank">
+          <div class="ln">Calendly</div>
+          <div class="lu">calendly.com/pricing</div>
+          <div class="ld">Free → paid ladder, clear prices, monthly/annual toggle.</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cream">
+    <div class="wrap">
+      <h2>Your questions this week.</h2>
+      <p>Grouped into three, so one answer covers a whole cluster.</p>
+
+      <div class="bucket">
+        <h3>1. "I'm on a PC and hitting walls the video doesn't show."</h3>
+        <div class="qs">Git isn't installed · "bash not recognized" · winget · "claude not recognized" · 2FA · GitHub Desktop on the C drive</div>
+        <p class="ans">The videos demo on a Mac. On Windows there are two or three different steps, install Git, use the Windows install command, set up 2FA. If you're a PC user hitting a wall, it's almost always one of those. You're not behind, and the install-commands doc in the classroom has exactly what to swap.</p>
+      </div>
+
+      <div class="note">👉 The "claude is not recognized" one, in plain terms: when Claude installs a command-line tool, it drops it in a set folder. If the terminal says "not recognized," it's not broken, the terminal just doesn't know where to look yet. One command tells it where. Then it works, and that's what lets you run <b>/mcp</b> to connect the Supabase database.</div>
+
+      <div class="bucket">
+        <h3>2. "It says it worked, but I can't see it, or it looks broken."</h3>
+        <div class="qs">404 · "how do I see my page?" · email rate limit · "it didn't type in the terminal like the video" · push failed</div>
+        <p class="ans">Most "it's broken" moments aren't. A change on your computer isn't live until you commit and push. And some things, like Supabase's email limit, or Claude finishing a step for you, are expected, not errors. When in doubt: did I push it, and is this actually a failure or just how it works?</p>
+      </div>
+
+      <div class="bucket">
+        <h3>3. "Do I need this? / How do I add that?"</h3>
+        <div class="qs">GitHub Copilot · uploading videos · what to buy</div>
+        <p class="ans">You don't need extra paid tools, your stack is set (no Copilot, we use Claude Code). And when you want to add something like videos, use the simple path: host them on YouTube as Unlisted and embed them. Don't overcomplicate it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Keep building.</h2>
+      <p>This is what we do, week by week: build your platform, add a component, make it more valuable. Bring your questions, post your wins, and don't get stuck alone.</p>
+      <a class="btn" href="https://skool.com/leveragingai/about">Join / open the community →</a>
+    </div>
+  </section>
+
+  <div class="wrap"><footer>Dr. Erin Jacques · Leveraging AI · Friday Live</footer></div>
+</body>
+</html>
