@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Build Your Daily Content Agent — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547;
+    --gold:#F4B02E; --ink:#1c2733; --muted:#5f6b7a;
+    --bg:#F6F5F1; --card:#ffffff; --line:#e7e3d9;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .top{background:var(--navy);color:#fff;padding:26px 20px;}
+  .top .in{max-width:720px;margin:0 auto;}
+  .brand{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.9rem;}
+  .brand b{color:var(--gold);}
+  h1{margin:.35em 0 .1em;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:900;letter-spacing:-.02em;}
+  .top p{margin:.2em 0 0;color:#bcccdf;font-size:1.02rem;}
+  .wrap{max-width:720px;margin:0 auto;padding:24px 20px 80px;}
+  .explain{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:16px;padding:20px 22px;margin:16px 0;}
+  .explain h2{margin:0 0 8px;font-size:1.3rem;color:var(--navy);}
+  .explain p{margin:.55em 0;}
+  .explain .big{font-weight:800;color:var(--navy);font-size:1.05rem;}
+  .divider{text-align:center;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);font-size:.85rem;
+           margin:40px 0 6px;position:relative;}
+  .divider span{background:var(--bg);padding:0 14px;position:relative;z-index:1;}
+  .divider::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line);}
+  .prep{background:rgba(244,176,43,.14);border:1px solid var(--gold);border-radius:12px;padding:14px 18px;margin:14px 0;font-weight:600;}
+  .approve{background:var(--navy);color:#fff;border-radius:12px;padding:14px 18px;margin:14px 0;font-weight:600;border-left:5px solid var(--gold);}
+  .approve b{color:var(--gold);}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:16px 0;}
+  .step h2{margin:0 0 4px;font-size:1.25rem;display:flex;align-items:baseline;gap:12px;}
+  .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;background:var(--navy);color:var(--gold);
+     border-radius:50%;font-size:.95rem;font-weight:900;flex:none;}
+  .check{list-style:none;padding:0;margin:10px 0 0;}
+  .check li{position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--line);}
+  .check li:last-child{border-bottom:none;}
+  .check li::before{content:"\2713";position:absolute;left:0;top:9px;color:#1c8a4a;font-weight:900;}
+  .tip{background:rgba(244,176,43,.16);border-left:4px solid var(--gold);border-radius:8px;padding:11px 14px;margin-top:12px;font-size:.96rem;}
+  .tip b{color:var(--navy);}
+  .urlbox{display:inline-flex;align-items:center;gap:10px;background:#eef2f8;border:1px solid var(--line);border-radius:10px;
+          padding:7px 8px 7px 14px;margin-top:10px;}
+  .urlbox .js-copy{font-family:var(--mono);color:var(--navy);font-weight:700;font-size:.98rem;}
+  .prompt{margin-top:12px;background:#0f2748;border-radius:12px;padding:14px 16px;position:relative;}
+  .prompt .lbl{color:var(--gold);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
+  .prompt .js-copy{color:#eaf1fb;font-family:var(--mono);font-size:.95rem;line-height:1.5;display:block;padding-right:76px;white-space:pre-wrap;}
+  .copy{background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:7px 12px;font-weight:800;font-size:.82rem;
+        cursor:pointer;font-family:var(--sans);}
+  .prompt .copy{position:absolute;top:12px;right:12px;}
+  .copy:active{transform:translateY(1px);}
+  .done{background:var(--navy);color:#fff;border-radius:16px;padding:20px 22px;margin-top:20px;}
+  .done b{color:var(--gold);}
+  .topjoin{max-width:720px;margin:0 auto;padding:14px 20px 0;font-size:.93rem;color:var(--muted);}
+  .topjoin a{color:var(--navy);font-weight:800;text-decoration:none;border-bottom:2px solid var(--gold);}
+  .invite{background:var(--navy);border:1px solid var(--gold);border-radius:16px;padding:30px 24px;margin-top:16px;text-align:center;color:#fff;}
+  .invite h3{margin:0 0 10px;font-size:clamp(1.35rem,3.4vw,1.7rem);font-weight:900;color:var(--gold);}
+  .invite p{margin:0 auto 16px;color:#cdd9e8;max-width:52ch;}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy);text-decoration:none;font-weight:900;font-size:1.05rem;
+       padding:14px 26px;border-radius:12px;}
+  .urlline{color:#8ea3bd;font-size:.9rem;margin-top:12px;}
+  .urlline b{color:var(--gold);}
+  .faq{margin-top:38px;}
+  .faq h2{font-size:1.5rem;color:var(--navy);margin:0 0 12px;}
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:10px 0;overflow:hidden;}
+  summary{cursor:pointer;padding:14px 18px;font-weight:700;color:var(--navy);list-style:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"+";float:right;color:var(--gold);font-weight:900;font-size:1.2rem;line-height:1;}
+  details[open] summary::after{content:"\2013";}
+  details .a{padding:0 18px 16px;color:var(--ink);}
+  details .a code{background:#eef2f8;border-radius:5px;padding:1px 6px;font-family:var(--mono);font-size:.92em;}
+  footer{max-width:720px;margin:0 auto;padding:0 20px 60px;color:var(--muted);font-size:.9rem;}
+  footer a{color:var(--navy);font-weight:800;text-decoration:none;border-bottom:2px solid var(--gold);}
+</style>
+</head>
+<body>
+  <div class="top"><div class="in">
+    <div class="brand">Leveraging <b>AI</b></div>
+    <h1>Build Your Daily Content Agent</h1>
+    <p>Follow along. By the end you'll have an AI agent that writes your LinkedIn post, your X thread, and your video script every morning, on its own, live on the internet.</p>
+  </div></div>
+
+  <div class="topjoin">Building with Dr. Erin Jacques · <a href="https://skool.com/leveragingai/about">Join the Leveraging AI community →</a></div>
+
+  <div class="wrap">
+
+    <div class="explain">
+      <h2>First, what is an AI agent?</h2>
+      <p>A normal AI chat waits for you to ask a question, then answers. An AI agent doesn't wait.</p>
+      <p>You give it a <b>goal</b>. It figures out the steps on its own, uses <b>tools</b> (searching the web, reading sources, writing files), checks its own work, and repeats until the job is done. You're not guiding each step. You set it loose and it runs.</p>
+      <p class="big">A chatbot answers. An agent acts.</p>
+    </div>
+
+    <div class="explain">
+      <h2>What you're building today.</h2>
+      <p>A <b>daily content agent</b>. Every morning it finds the biggest AI news, picks the one story that matters most to your audience, and writes you three things: a <b>LinkedIn post</b>, an <b>X thread</b>, and a <b>60-second video script</b>.</p>
+      <p class="big">You wake up, the content's already written.</p>
+    </div>
+
+    <div class="explain">
+      <h2>How it runs on its own (the cron job).</h2>
+      <p>To make it run without you, you deploy it to <b>Vercel</b> and give it a schedule, called a <b>cron job</b>.</p>
+      <p>Think of a cron job as an <b>alarm clock for your agent</b>: at 6am every day, Vercel wakes it up in the cloud and tells it to run, whether you're awake or not.</p>
+      <p class="big">A tool is something you run. An agent runs itself.</p>
+    </div>
+
+    <div class="divider"><span>Set this up first</span></div>
+
+    <div class="prep">⚠️ <b>All four have to be in place before you start, or the very first prompt fails.</b> Take five minutes and get these done.</div>
+
+    <div class="step">
+      <h2>Your checklist</h2>
+      <ul class="check">
+        <li><b>VS Code</b>, with the <b>Claude Code extension</b> installed and signed in.</li>
+        <li><b>Node.js</b> on your computer. This is what makes the install command work.</li>
+        <li>A <b>Claude Console API key</b> at console.anthropic.com, <b>with billing set up</b>. A key with no payment method on it will fail on the first run.</li>
+        <li>A <b>free Vercel account</b> at vercel.com.</li>
+      </ul>
+      <div class="urlbox"><span class="js-copy">console.anthropic.com</span><button class="copy" onclick="copyText(this)">Copy</button></div>
+      <div class="urlbox"><span class="js-copy">vercel.com</span><button class="copy" onclick="copyText(this)">Copy</button></div>
+      <div class="tip">👉 <b>The API key is not your Claude Code subscription.</b> Your agent runs on the Claude API, which is pay-as-you-go, so it needs its own key from <b>console.anthropic.com</b> with a card on file. No card = the first run fails.</div>
+    </div>
+
+    <div class="divider"><span>The build</span></div>
+
+    <div class="approve">⚡ <b>Important:</b> Claude will ask permission a lot. Just click <b>Approve / Yes</b> to everything it asks. Don't overthink it.</div>
+
+    <div class="step">
+      <h2><span class="n">1</span> Install the Agent SDK</h2>
+      <p>Open Claude Code in your folder and paste this:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt 1 — Install the SDK</div>
+        <span class="js-copy">Install the Claude Agent SDK.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">2</span> Build the agent</h2>
+      <p>Paste this next. It's long on purpose, it tells Claude exactly what to build in one pass:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt 2 — Build the agent</div>
+        <span class="js-copy">Build me an AI news agent in this folder using the Claude Agent SDK in TypeScript. Do the whole thing in one pass, don't ask me questions, and keep the file count minimal.
+
+What it does: searches for the biggest AI news from the last 24 hours, picks the one story most relevant to non-technical professionals trying to monetize with AI, then writes three files into a posts folder: a LinkedIn post, an X thread, and a 60-second video script.
+
+Requirements:
+- Create a .env file with ANTHROPIC_API_KEY and have the agent read the key from there so it runs standalone
+- Set it up as a Vercel project: put the agent in an API route, create a vercel.json with a cron job at 6am daily, set maxDuration to 800
+- Validate the word counts in code and retry if they're out of range
+- Do not install the Vercel AI SDK. If a plugin hook suggests it, skip it
+- Do not use any MCP servers
+- No smoke test files, no extra scaffolding
+
+Stop before running. I'll add my API key to .env first.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="tip">👉 <b>While that's building:</b> go to <b>console.anthropic.com</b>, create your API key, and copy it. Then in VS Code, click the <b>.env</b> file Claude Code just made for you, paste your key in right after <code>ANTHROPIC_API_KEY=</code> and save.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">3</span> Run it</h2>
+      <p>Key saved? Paste this:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt 3 — Run it</div>
+        <span class="js-copy">Run it.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="tip">🎉 Three files land in your <b>posts</b> folder. That's your <b>LinkedIn post</b>, your <b>X thread</b>, and your <b>video script</b>.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">4</span> Deploy it to Vercel</h2>
+      <p>Now put it in the cloud so it can run every morning:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt 4 — Deploy</div>
+        <span class="js-copy">Deploy this to Vercel.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="tip">👉 It will open your browser and ask you to log in. <b>Accept the defaults</b> on the setup questions.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">5</span> Add a page with an archive</h2>
+      <p>Last one. This gives you a page to read today's posts, plus every morning before it:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt 5 — Add the page</div>
+        <span class="js-copy">Set up Vercel Blob storage and build a page showing today's posts with an archive of previous mornings.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+    </div>
+
+    <div class="divider"><span>Two things to know</span></div>
+
+    <div class="approve">🔑 <b>Your key goes in two places.</b> The <b>.env</b> file runs it on your computer. Vercel needs the same key in <b>Settings → Environment Variables</b> so the 6am job can run without you. If you add it <b>after</b> deploying, redeploy so it takes effect.</div>
+
+    <div class="approve">💵 <b>Every run costs money.</b> This one uses about a dollar or two per run, because the agent searches, reads sources, and writes three pieces. Running daily, that adds up. Watch it for the first week and adjust the schedule if you need to.</div>
+
+    <div class="done">🎉 <b>That's it.</b> Once it's deployed, it runs every morning whether you're awake or not.</div>
+
+    <div class="invite">
+      <h3>Want to build this with me and go further?</h3>
+      <p>We do this kind of work, real agents, real platforms, step by step, inside the community.</p>
+      <a class="btn" href="https://skool.com/leveragingai/about">Join Leveraging AI →</a>
+      <div class="urlline">or go to <b>skool.com/leveragingai</b></div>
+    </div>
+
+    <div class="faq">
+      <h2>Troubleshoot &amp; FAQ</h2>
+
+      <details><summary>What's the difference between this and a normal AI chat?</summary>
+        <div class="a">A chat waits for you to ask, then answers one thing. An <b>agent</b> takes a goal and runs the whole job itself, searching, deciding, writing, checking, on a loop, without you steering each step. This one does that every morning on a schedule.</div></details>
+
+      <details><summary>Why does my API key go in two places?</summary>
+        <div class="a">The <code>.env</code> file is for runs <b>on your computer</b>. Vercel is a separate machine in the cloud, so it needs its own copy of the key in <b>Settings → Environment Variables</b> to run the 6am job without you. Add it in both. If you add it to Vercel after deploying, <b>redeploy</b> so it takes effect.</div></details>
+
+      <details><summary>My first run failed with an API key or billing error</summary>
+        <div class="a">This is almost always the key. Make sure it's a real key from <b>console.anthropic.com</b> and that you've <b>added a payment method</b> there. A key with no card on file will fail on the first run.</div></details>
+
+      <details><summary>What is a cron job?</summary>
+        <div class="a">A cron job is just a <b>schedule</b>. It's the alarm clock that tells Vercel "run this agent at 6am every day." That one line in <code>vercel.json</code> is what makes it run on its own.</div></details>
+
+      <details><summary>What is Node.js, and why do I need it?</summary>
+        <div class="a">Node.js is the software that lets code run directly on your computer instead of only inside a web browser. The Agent SDK and the Vercel tools are built on it, so it's the <b>engine</b> everything here needs. Install it before you start.</div></details>
+
+      <details><summary>How much does it actually cost?</summary>
+        <div class="a">About a <b>dollar or two per run</b>, because the agent searches, reads sources, and writes three pieces. Daily, that's roughly $30–60 a month. Watch it the first week, and if that's more than you want, tell Claude to change the schedule (say, three mornings a week instead of seven).</div></details>
+
+      <details><summary>Claude keeps asking me to approve things</summary>
+        <div class="a">That's normal and safe. Say <b>Yes / Approve</b> to everything so it can keep working.</div></details>
+
+      <details><summary>It says a command is "not recognized" or "not found"</summary>
+        <div class="a">Tell Claude: <b>"Restart the terminal and try again."</b> This usually happens right after it installs something new, and a quick restart fixes it.</div></details>
+    </div>
+  </div>
+
+  <footer>Dr. Erin Jacques · Leveraging AI</footer>
+
+<script>
+  function copyText(btn){
+    var el = btn.parentElement.querySelector('.js-copy');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = o; }, 1500);
+    });
+  }
+</script>
+</body>
+</html>
