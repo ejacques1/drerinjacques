@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Understanding MCP — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547;
+    --gold:#F4B02E; --ink:#1c2733; --muted:#5f6b7a;
+    --bg:#F6F5F1; --card:#ffffff; --line:#e7e3d9;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .top{background:var(--navy);color:#fff;padding:26px 20px;}
+  .top .in{max-width:760px;margin:0 auto;}
+  .brand{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.9rem;}
+  .brand b{color:var(--gold);}
+  h1{margin:.35em 0 .1em;font-size:clamp(1.9rem,5vw,2.7rem);font-weight:900;letter-spacing:-.02em;}
+  .top p{margin:.2em 0 0;color:#bcccdf;font-size:1.05rem;}
+  .wrap{max-width:760px;margin:0 auto;padding:24px 20px 80px;}
+  .explain{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:16px;padding:20px 24px;margin:16px 0;}
+  .explain h2{margin:0 0 8px;font-size:1.35rem;color:var(--navy);}
+  .explain p{margin:.6em 0;}
+  .explain .big{font-weight:800;color:var(--navy);font-size:1.08rem;}
+  .divider{text-align:center;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);font-size:.85rem;margin:44px 0 6px;position:relative;}
+  .divider span{background:var(--bg);padding:0 14px;position:relative;z-index:1;}
+  .divider::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line);}
+  .code{font-family:var(--mono);background:#0f2748;color:#eaf1fb;border-radius:10px;padding:12px 15px;font-size:.92rem;display:block;margin:10px 0;overflow-x:auto;white-space:pre-wrap;word-break:break-word;}
+  .code .g{color:var(--gold);font-weight:700;}
+  .code .t{color:#7fd0ff;font-weight:700;}
+  .lbl3{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 2px;}
+  .lbl3 span{flex:1;min-width:150px;background:#eef2f8;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:.9rem;}
+  .lbl3 b{color:var(--navy);display:block;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:3px;}
+  .vs{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0;}
+  .vs .col{flex:1;min-width:220px;border-radius:14px;padding:16px 18px;}
+  .vs .a{background:#eef2f8;border:1px solid var(--line);}
+  .vs .b{background:rgba(244,176,43,.14);border:1px solid var(--gold);}
+  .vs h4{margin:0 0 6px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+  .vs .col p{margin:0;font-weight:700;color:var(--navy);font-size:1.02rem;}
+  .flow{counter-reset:f;margin:14px 0 2px;}
+  .flow .s{position:relative;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px 14px 52px;margin:8px 0;}
+  .flow .s::before{counter-increment:f;content:counter(f);position:absolute;left:12px;top:50%;transform:translateY(-50%);width:28px;height:28px;background:var(--navy);color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.9rem;}
+  .flow .s b{color:var(--navy);}
+  .prep{background:rgba(244,176,43,.14);border:1px solid var(--gold);border-radius:12px;padding:14px 18px;margin:14px 0;font-weight:600;}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:16px 0;}
+  .step h2{margin:0 0 4px;font-size:1.25rem;display:flex;align-items:baseline;gap:12px;}
+  .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;background:var(--navy);color:var(--gold);border-radius:50%;font-size:.95rem;font-weight:900;flex:none;}
+  .tip{background:rgba(244,176,43,.16);border-left:4px solid var(--gold);border-radius:8px;padding:11px 14px;margin-top:12px;font-size:.96rem;}
+  .tip b{color:var(--navy);}
+  .cmd{display:inline-block;background:#0f2748;color:#eaf1fb;font-family:var(--mono);border-radius:7px;padding:2px 9px;font-weight:700;}
+  .done{background:var(--navy);color:#fff;border-radius:16px;padding:20px 24px;margin-top:20px;}
+  .done b{color:var(--gold);}
+  .topjoin{max-width:760px;margin:0 auto;padding:14px 20px 0;font-size:.93rem;color:var(--muted);}
+  .topjoin a{color:var(--navy);font-weight:800;text-decoration:none;border-bottom:2px solid var(--gold);}
+  .invite{background:var(--navy);border:1px solid var(--gold);border-radius:16px;padding:30px 24px;margin-top:16px;text-align:center;color:#fff;}
+  .invite h3{margin:0 0 10px;font-size:clamp(1.35rem,3.4vw,1.7rem);font-weight:900;color:var(--gold);}
+  .invite p{margin:0 auto 16px;color:#cdd9e8;max-width:54ch;}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy);text-decoration:none;font-weight:900;font-size:1.05rem;padding:14px 26px;border-radius:12px;}
+  .urlline{color:#8ea3bd;font-size:.9rem;margin-top:12px;}
+  .urlline b{color:var(--gold);}
+  footer{max-width:760px;margin:0 auto;padding:0 20px 60px;color:var(--muted);font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="top"><div class="in">
+    <div class="brand">Leveraging <b>AI</b></div>
+    <h1>Understanding MCP</h1>
+    <p>What Model Context Protocol actually is, why it exists, and how to connect one, in plain English.</p>
+  </div></div>
+
+  <div class="topjoin">With Dr. Erin Jacques · <a href="https://skool.com/leveragingai/about">Join the Leveraging AI community →</a></div>
+
+  <div class="wrap">
+
+    <div class="explain">
+      <h2>Start with an analogy.</h2>
+      <p>Imagine hiring the smartest employee you've ever met. But every time they need to use Gmail, Slack, your CRM, or your database, you have to hand them a completely different instruction manual. And every time you add a new tool, you have to teach them all over again.</p>
+      <p>That sounds ridiculous, but that's essentially how we've been building AI applications.</p>
+      <p class="big">MCP is the fix for that. It's why powerful AI integrations are suddenly more accessible than ever.</p>
+    </div>
+
+    <div class="divider"><span>First, what's an API?</span></div>
+
+    <div class="explain">
+      <h2>An API is one piece of software asking another to do something.</h2>
+      <p>For decades, APIs have been the backbone of modern software. Check the weather, book a flight, log in with Google, an API is working behind the scenes. One app sends a request, another processes it and sends back an answer. Fast, predictable, reliable.</p>
+      <p>But for that to work, the first app has to already know three things:</p>
+      <div class="lbl3">
+        <span><b>Endpoint</b>Where to send the request</span>
+        <span><b>Parameters</b>What information to include</span>
+        <span><b>Response</b>What answer to expect back</span>
+      </div>
+    </div>
+
+    <div class="explain">
+      <h2>The weather-app example.</h2>
+      <p>Say you're building a weather app. The <b>endpoint</b> is like a department inside the weather company, it tells the server which thing you want:</p>
+      <code class="code">api.weathercompany.com/<span class="g">current</span></code>
+      <p>But that's not enough, it needs to know <i>which city</i>. That extra info is a <b>parameter</b>:</p>
+      <code class="code">api.weathercompany.com/<span class="g">current</span>?<span class="t">city=Miami</span></code>
+      <p>And the server sends back a <b>response</b> (usually as JSON, a structured way to organize data):</p>
+      <code class="code">{ "city": "Miami", "temp": "86", "sky": "sunny" }</code>
+      <p class="big">The catch: the software already knew all the rules before it ever sent the request.</p>
+    </div>
+
+    <div class="divider"><span>So why isn't that enough for AI?</span></div>
+
+    <div class="explain">
+      <h2>Because traditional software follows instructions. AI reasons.</h2>
+      <p>Your weather app already knows the endpoint, the parameters, and the response, because a developer programmed all of it ahead of time. An AI model doesn't have that advantage.</p>
+      <p>Ask it "what's the weather in Miami today?" and it understands your question, but it doesn't automatically know which endpoint has today's weather, which parameters that endpoint expects, or what the response will look like. All it starts with is your <b>intent</b>.</p>
+      <div class="vs">
+        <div class="col a"><h4>Traditional software</h4><p>Given the exact steps to follow.</p></div>
+        <div class="col b"><h4>AI</h4><p>Starts with a goal, and has to figure out which tool to use and how.</p></div>
+      </div>
+      <p class="big">That gap is exactly why MCP was created.</p>
+    </div>
+
+    <div class="divider"><span>What MCP actually is</span></div>
+
+    <div class="explain">
+      <h2>A middleman that lets the app describe itself.</h2>
+      <p>An <b>MCP server</b> sits between an AI model and an application. Its job is to <b>advertise what the application can do</b>, in a standardized format the AI understands.</p>
+      <p class="big">Think of it as a table of contents for the application.</p>
+      <p>Instead of forcing the AI to guess what's available, the MCP server tells it: here are the capabilities I offer, here's what each one does, here's the information I need from you, and here's what I'll return. It does that using structured descriptions called <b>JSON schemas</b>.</p>
+      <p>So instead of a developer manually teaching the AI how to use every endpoint, the application does the job of describing itself.</p>
+    </div>
+
+    <div class="explain">
+      <h2>How it flows, start to finish.</h2>
+      <div class="flow">
+        <div class="s">You ask a large language model (Claude, ChatGPT, Gemini) to do something.</div>
+        <div class="s">The AI reads the <b>capabilities</b> the MCP server advertises.</div>
+        <div class="s">It picks the one that best matches your request.</div>
+        <div class="s">The MCP server uses the application's <b>existing APIs</b> to actually do the task.</div>
+        <div class="s">The result comes back, and the AI turns it into a plain-language answer for you.</div>
+      </div>
+      <p class="big">The APIs didn't change. The app didn't change. What changed is the AI no longer has to be manually taught, the application advertises what it can do.</p>
+    </div>
+
+    <div class="divider"><span>Does this replace APIs?</span></div>
+
+    <div class="explain">
+      <h2>No. MCP works <em>with</em> APIs, it sits on top of them.</h2>
+      <p>Most of the time, your existing APIs are still doing the real work behind the scenes: retrieving data, updating databases, sending emails, creating tickets. What changed is <b>who knows how to use them</b>.</p>
+      <p>Before MCP, developers had to manually teach the AI how to talk to every API. With MCP, the application advertises its own capabilities and the AI discovers and uses them on its own.</p>
+      <p class="big">It's not MCP versus APIs. It's MCP working with APIs. APIs stay the foundation; MCP just makes them easy for AI to understand and use.</p>
+    </div>
+
+    <div class="divider"><span>Why it matters</span></div>
+
+    <div class="explain">
+      <h2>Every major shift lowers the barrier to building.</h2>
+      <p>Creating a website once meant writing HTML by hand. Then website builders opened it to millions more people. Then no-code tools. Now it's happening with AI.</p>
+      <p>MCP doesn't eliminate developers, it dramatically reduces the custom work needed to connect AI to the tools you use every day. That means powerful AI workflows aren't just for big companies with engineering teams, but for solopreneurs, creators, small businesses, anyone with an idea.</p>
+      <p class="big">The question is shifting from "can I build this?" to "what do I want to build?"</p>
+    </div>
+
+    <div class="divider"><span>How to connect an MCP</span></div>
+
+    <div class="prep">Here's the practical part, connecting an MCP in Claude Code. We'll use <b>Supabase</b> (a database) as the example, but the flow is the same for any MCP.</div>
+
+    <div class="step">
+      <h2><span class="n">1</span> Point Claude at the MCP</h2>
+      <p>An MCP starts with a small config file in your project, <b>.mcp.json</b>. It simply tells Claude <i>where</i> the MCP server lives (its address) and which project it's for. Claude Code can create this file for you, just ask it to set up the Supabase MCP for your project.</p>
+      <div class="tip">👉 This file is the "address." It doesn't connect you yet, it just tells Claude where to knock.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">2</span> Open Claude Code and run /mcp</h2>
+      <p>In your <b>terminal</b>, open Claude Code and type <span class="cmd">/mcp</span>. This is the command that actually connects, it reads your .mcp.json and starts the handshake.</p>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">3</span> Authorize it</h2>
+      <p>Pick the server (Supabase) and approve it. Most MCPs use a secure sign-in (OAuth), so a browser window opens and you click <b>authorize</b>. That one-time approval is what gives Claude permission to use it.</p>
+      <div class="tip">👉 Do this in the terminal Claude Code, not the side panel, the connection lives in the session where you ran <span class="cmd">/mcp</span>.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">4</span> Just ask</h2>
+      <p>That's it. Claude can now see the capabilities the MCP advertises and use them on its own. You don't hand it endpoints or parameters, you describe what you want:</p>
+      <div class="tip">🗣️ <b>"Create a table for my clients and their progress"</b> — and Claude does it, right in your Supabase database, through the MCP.</div>
+    </div>
+
+    <div class="done">🎉 <b>That's the whole idea.</b> You didn't teach Claude how the database works. The MCP advertised what it could do, and Claude figured out the rest. That's the shift.</div>
+
+    <div class="invite">
+      <h3>Ready to build with this, not just understand it?</h3>
+      <p>My goal isn't to teach you one AI tool after another. It's to help you build an AI-powered web app people actually use and subscribe to, and along the way you'll naturally learn the technologies that make it possible: Claude Code, MCPs, databases, authentication, payments, and whatever comes next.</p>
+      <p><b>The tools will change. The destination won't.</b></p>
+      <a class="btn" href="https://skool.com/leveragingai/about">Join Leveraging AI →</a>
+      <div class="urlline">or go to <b>skool.com/leveragingai</b></div>
+    </div>
+
+  </div>
+
+  <footer>Dr. Erin Jacques · Leveraging AI</footer>
+</body>
+</html>
