@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Week 4 Live — Dr. Erin Jacques</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1A2E; --navy2:#1a3658; --yellow:#FFD93D; --yellow-dark:#E8C12B;
+    --teal:#0DB4DB; --teal-dark:#0A8FAF; --cream:#FAF6EC; --text:#0B1A2E;
+    --soft:#4A5568; --faint:#718096; --line:#E2E8F0;
+    --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:52px 0;border-top:1px solid var(--line);}
+  section.hero{border-top:none;padding:40px 0 40px;}
+  section.cream{background:var(--cream);border-top:none;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.02em;font-size:1rem;color:var(--navy);}
+  .brand b{color:var(--teal-dark);}
+  .step{color:var(--teal-dark);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;margin-bottom:12px;}
+  h1{font-size:clamp(2.1rem,5.6vw,3.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.07;margin:0 0 16px;color:var(--navy);}
+  .hl{background:linear-gradient(180deg,transparent 58%,rgba(255,217,61,.75) 58%);padding:0 3px;}
+  h2{font-size:clamp(1.6rem,4.2vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin:0 0 14px;color:var(--navy);}
+  .lead{font-size:clamp(1.18rem,2.6vw,1.5rem);color:var(--navy);font-weight:700;margin:0 0 10px;}
+  p{font-size:clamp(1.06rem,2.2vw,1.24rem);color:var(--soft);margin:0 0 14px;max-width:74ch;}
+  p b{color:var(--navy);}
+  .agenda{list-style:none;padding:0;margin:14px 0 0;counter-reset:ag;}
+  .agenda li{position:relative;padding:11px 0 11px 40px;font-size:clamp(1.1rem,2.3vw,1.32rem);color:var(--navy);font-weight:700;border-bottom:1px solid var(--line);}
+  .agenda li:last-child{border-bottom:none;}
+  .agenda li::before{counter-increment:ag;content:counter(ag);position:absolute;left:0;top:12px;width:26px;height:26px;background:var(--yellow);color:var(--navy);border-radius:50%;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .punch{font-size:clamp(1.3rem,3.1vw,1.8rem);font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.22;border-left:5px solid var(--yellow);padding:6px 0 6px 22px;margin:22px 0;}
+  .punch span{color:var(--teal-dark);}
+  .prules{list-style:none;padding:0;margin:14px 0 0;}
+  .prules li{position:relative;padding:12px 0 12px 34px;border-bottom:1px solid var(--line);font-size:clamp(1.05rem,2.2vw,1.26rem);color:var(--soft);}
+  .prules li:last-child{border-bottom:none;}
+  .prules li b{color:var(--navy);}
+  .prules li::before{content:"";position:absolute;left:4px;top:20px;width:11px;height:11px;background:var(--yellow);border-radius:50%;}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px;}
+  @media(max-width:640px){ .two{grid-template-columns:1fr;} }
+  .half{background:#fff;border:2px solid var(--navy);border-radius:16px;padding:18px 20px;}
+  .half h3{margin:0 0 6px;color:var(--navy);font-size:1.2rem;font-weight:800;}
+  .half.err{border-color:var(--yellow-dark);background:rgba(255,217,61,.1);}
+  .half p{font-size:1.02rem;margin:0;}
+  .defn{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 18px;margin:10px 0;}
+  .defn h4{margin:0 0 4px;color:var(--navy);font-size:1.14rem;font-weight:800;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .defn p{margin:0;font-size:1.02rem;color:var(--soft);}
+  .defn .ex{color:var(--teal-dark);font-weight:700;font-size:.96rem;margin-top:7px;}
+  .badge{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;border-radius:20px;padding:3px 10px;}
+  .badge.pv{background:var(--yellow);color:var(--navy);}
+  .badge.ba{background:rgba(13,180,219,.16);color:var(--teal-dark);}
+  .badge.po{background:#EDF2F7;color:var(--faint);}
+  .promptbox{background:var(--navy);border-radius:16px;padding:18px 20px;position:relative;margin:16px 0;}
+  .promptbox .pl2{color:var(--yellow);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
+  .promptbox code{color:#eaf1fb;font-family:var(--mono);font-size:.98rem;line-height:1.55;display:block;white-space:pre-wrap;padding-right:70px;}
+  .copy{position:absolute;top:16px;right:16px;background:var(--yellow);color:var(--navy);border:none;border-radius:8px;padding:7px 13px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .note{background:var(--cream);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:1.05rem;color:var(--navy);font-weight:600;}
+  .btn{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:800;font-size:1.2rem;text-decoration:none;padding:14px 30px;border-radius:12px;margin-top:12px;box-shadow:0 8px 22px rgba(255,217,61,.4);}
+  footer{padding:34px 0 60px;color:var(--faint);font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="wrap"><div class="brand">Dr. Erin Jacques · <b>Week 4 Live</b></div></div>
+
+  <section class="hero"><div class="wrap">
+    <div class="step">Week 4 Live · August 7</div>
+    <h1>Make your app feel <span class="hl">alive</span>.</h1>
+    <p class="lead">This week's focus: always tell the user what's happening.</p>
+    <p>Last week we talked pricing. This week it's the thing that quietly makes or breaks trust in any app, and it matters even more for the AI apps you're building: letting people know the app is working, and telling them clearly when something goes wrong.</p>
+    <ul class="agenda">
+      <li>Quick recap: pricing that converts</li>
+      <li>This week: loading states &amp; error messages</li>
+      <li>The words to know (streaming and friends)</li>
+      <li>The prompt to audit your own app</li>
+      <li>Your questions</li>
+    </ul>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <div class="step">Recap</div>
+    <h2>Pricing that converts.</h2>
+    <p>Quick refresher from last week, how you show the price matters as much as the price itself:</p>
+    <ul class="prules">
+      <li><b>Three tiers, highlight the middle one</b> as "Most Popular." People anchor to the middle.</li>
+      <li><b>One clear, bold price</b> per tier. Never make them hunt for it.</li>
+      <li><b>Lead with monthly</b>, add annual (with a discount) once you have traction.</li>
+      <li><b>Short benefit list</b>, three or four lines, not a feature dump.</li>
+      <li><b>One consistent button</b> on every tier, and reduce the risk with a trial.</li>
+    </ul>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">This week</div>
+    <h2>Always tell the user what's happening.</h2>
+    <p>This is the #1 usability rule from the Nielsen Group: <b>visibility of system status</b>. The app should always keep people informed about what's going on, with clear feedback, quickly.</p>
+    <div class="punch">A frozen screen doesn't say "loading." <span>It says "broken."</span></div>
+    <p>It splits into two jobs, and both matter double for AI apps, because AI takes a few seconds to respond:</p>
+    <div class="two">
+      <div class="half">
+        <h3>Loading states</h3>
+        <p>Show that the app is working while it thinks, so no one stares at a blank screen wondering if it froze.</p>
+      </div>
+      <div class="half err">
+        <h3>Error messages</h3>
+        <p>When something breaks, say what happened in plain language and what to do next, never a scary code or a dead end.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <div class="step">The words to know</div>
+    <h2>Say them out loud so they stop being scary.</h2>
+    <p><span class="badge pv">Pivotal</span> = build this in. <span class="badge ba">Basics</span> = the simple staples. <span class="badge po">Polish</span> = nice later, skip for now.</p>
+
+    <div class="defn">
+      <h4>Streaming <span class="badge pv">Pivotal</span></h4>
+      <p>The response appears word-by-word as it's generated, instead of making them wait for the whole thing.</p>
+      <div class="ex">You've seen it: Claude and ChatGPT "typing" the answer out live.</div>
+    </div>
+    <div class="defn">
+      <h4>Typing / "thinking" indicator <span class="badge pv">Pivotal</span></h4>
+      <p>The little dots or "thinking…" shown while the AI or an agent is working, so it doesn't feel frozen.</p>
+      <div class="ex">You've seen it: the three bouncing dots in any chat app.</div>
+    </div>
+    <div class="defn">
+      <h4>Graceful fallback / retry <span class="badge pv">Pivotal</span></h4>
+      <p>When something fails, show a plain message and a way to try again, instead of crashing or going blank.</p>
+      <div class="ex">You've seen it: "That took too long, tap to try again." AI calls fail more (rate limits, timeouts), so this is a must.</div>
+    </div>
+    <div class="defn">
+      <h4>Inline validation <span class="badge pv">Pivotal</span></h4>
+      <p>The error shows right at the field as they type, not after they submit.</p>
+      <div class="ex">You've seen it: typing an email with no "@" and getting "Please enter a valid email" under the box instantly. Matters for your login and sign-up forms.</div>
+    </div>
+    <div class="defn">
+      <h4>Spinner <span class="badge ba">Basics</span></h4>
+      <p>The little spinning icon that means "working on it."</p>
+      <div class="ex">You've seen it: the circle that spins while a page loads.</div>
+    </div>
+    <div class="defn">
+      <h4>Progress bar <span class="badge ba">Basics</span></h4>
+      <p>Shows how far along a task is, best when you know roughly how long it'll take.</p>
+      <div class="ex">You've seen it: an upload or download filling up from 0 to 100%.</div>
+    </div>
+    <div class="defn">
+      <h4>Skeleton screen <span class="badge po">Polish</span></h4>
+      <p>Gray placeholder shapes of the content while it loads. Feels faster than a spinner.</p>
+      <div class="ex">You've seen it: the gray boxes on Facebook or YouTube before posts appear.</div>
+    </div>
+    <div class="defn">
+      <h4>Optimistic UI <span class="badge po">Polish</span></h4>
+      <p>Show the result instantly (assume it worked), and quietly undo it if it fails. Feels instant.</p>
+      <div class="ex">You've seen it: the Instagram heart turning red the moment you tap, before the server confirms.</div>
+    </div>
+    <div class="defn">
+      <h4>Toast <span class="badge po">Polish</span></h4>
+      <p>A small message that pops up briefly to confirm an action or an error, then disappears.</p>
+      <div class="ex">You've seen it: a "Saved!" or "Copied to clipboard" bar sliding up for a couple seconds.</div>
+    </div>
+
+    <div class="note">👉 The four <b>Pivotal</b> ones (streaming, thinking indicator, graceful fallback, inline validation) are what actually make an AI chat, voice, or agent app feel trustworthy. Nail those first, the rest is polish.</div>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">Put it to work</div>
+    <h2>The prompt: let AI audit your own app.</h2>
+    <p>Drop this into Claude Code and it looks at what <b>you're</b> building, then adds the right feedback for it, streaming, a thinking indicator, and clear errors, wherever a user could be left staring at a frozen screen.</p>
+    <div class="promptbox">
+      <div class="pl2">Copy this into Claude Code</div>
+      <code>Look at what I'm building and tell me where a user could be left staring at a frozen or blank screen. Then add proper feedback: stream the AI's responses so they appear as they're generated, show a "thinking" indicator while an agent is working, and give clear, plain-language error messages that say what happened and what to do next. Never let the user wonder if it's broken.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+    <p>That's the move, the AI checks your specific build (chat, voice, or agent) and recommends exactly where it needs feedback.</p>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <h2>Bring your questions.</h2>
+    <p>Post your wins, show what you're building, and let's make it feel alive together. This is what we do, week by week, inside the community.</p>
+    <a class="btn" href="https://skool.com/leveragingai/about">Join us →</a>
+  </div></section>
+
+  <footer><div class="wrap">Dr. Erin Jacques · Week 4 Live · August 7</div></footer>
+
+<script>
+  function copyPrompt(btn){
+    var el = btn.parentElement.querySelector('code');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = o; }, 1500);
+    });
+  }
+</script>
+</body>
+</html>
