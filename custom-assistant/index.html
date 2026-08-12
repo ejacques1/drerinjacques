@@ -88,19 +88,14 @@
         <li>A free <b>Stripe account</b> at <a href="https://stripe.com" target="_blank" rel="noopener">stripe.com</a> (you'll make the product as you go).</li>
       </ul>
       <div class="tip">👉 You don't need a terminal for any of this. The extension runs Claude Code for you.</div>
-      <p style="margin-top:14px;"><b>Then install the assistant skill.</b> Open the Claude Code panel and paste this in the chat box:</p>
+      <p style="margin-top:14px;"><b>Then install the assistant skill.</b> Open the Claude Code panel and paste this in:</p>
       <div class="prompt">
-        <div class="lbl">Command 1 — Add the marketplace</div>
-        <span class="js-copy">/plugin marketplace add ejacques1/leveraging-ai-skills</span>
+        <div class="lbl">Prompt — Install the skill</div>
+        <span class="js-copy">Download https://raw.githubusercontent.com/ejacques1/leveraging-ai-skills/main/plugins/leveraging-ai/skills/build-assistant/SKILL.md and save it to ~/.claude/skills/build-assistant/SKILL.md — create the folders if needed. Then restart so it loads.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
-      <p style="margin-top:10px;">Press enter, wait for it to finish, then paste this one:</p>
-      <div class="prompt">
-        <div class="lbl">Command 2 — Install the skill</div>
-        <span class="js-copy">/plugin install leveraging-ai@leveraging-ai-skills</span>
-        <button class="copy" onclick="copyText(this)">Copy</button>
-      </div>
-      <div class="tip">👉 These go in the <b>Claude chat box</b>, one at a time, not in a terminal. Slash commands only work there.</div>
+      <p style="margin-top:10px;">Approve it when it asks. That's the skill installed.</p>
+      <div class="tip">👉 This is the skill that does the work, it asks you the questions, builds the app, and opens your <span class="cmd">.env</span> file for you. Close and reopen Claude Code after it installs so it loads.</div>
     </div>
 
     <div class="divider"><span>Part 1 — Get it running on your machine</span><small>Payoff: your GPT answers, outside ChatGPT</small></div>
