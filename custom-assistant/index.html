@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Custom GPT → Your Own Paid AI App — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --gold:#F4B02E; --ink:#1c2733; --muted:#5f6b7a;
+    --bg:#F6F5F1; --card:#ffffff; --line:#e7e3d9;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .top{background:var(--navy);color:#fff;padding:26px 20px;}
+  .top .in{max-width:740px;margin:0 auto;}
+  .brand{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.9rem;}
+  .brand b{color:var(--gold);}
+  h1{margin:.35em 0 .1em;font-size:clamp(1.7rem,4.6vw,2.5rem);font-weight:900;letter-spacing:-.02em;}
+  .top p{margin:.2em 0 0;color:#bcccdf;font-size:1.02rem;}
+  .wrap{max-width:740px;margin:0 auto;padding:24px 20px 80px;}
+  .explain{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:16px;padding:18px 22px;margin:16px 0;}
+  .explain p{margin:.5em 0;}
+  .explain .big{font-weight:800;color:var(--navy);}
+  .divider{text-align:center;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);font-size:.9rem;margin:40px 0 6px;position:relative;}
+  .divider span{background:var(--bg);padding:0 14px;position:relative;z-index:1;}
+  .divider::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line);}
+  .divider small{display:block;color:var(--muted);font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:none;margin-top:4px;}
+  .prep{background:rgba(244,176,43,.14);border:1px solid var(--gold);border-radius:12px;padding:14px 18px;margin:14px 0;font-weight:600;}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:16px 0;}
+  .step h2{margin:0 0 4px;font-size:1.22rem;display:flex;align-items:baseline;gap:12px;}
+  .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;background:var(--navy);color:var(--gold);border-radius:50%;font-size:.95rem;font-weight:900;flex:none;}
+  .step p{margin:8px 0 0;}
+  .tip{background:rgba(244,176,43,.16);border-left:4px solid var(--gold);border-radius:8px;padding:11px 14px;margin-top:12px;font-size:.96rem;}
+  .tip b{color:var(--navy);}
+  .warn{background:#fdecea;border-left:4px solid #d0021b;border-radius:8px;padding:11px 14px;margin-top:12px;font-size:.96rem;}
+  .warn b{color:#a11;}
+  .check{list-style:none;padding:0;margin:8px 0 0;}
+  .check li{position:relative;padding:8px 0 8px 30px;border-bottom:1px solid var(--line);}
+  .check li:last-child{border-bottom:none;}
+  .check li::before{content:"\2713";position:absolute;left:0;top:8px;color:#1c8a4a;font-weight:900;}
+  .prompt{margin-top:12px;background:#0f2748;border-radius:12px;padding:14px 16px;position:relative;}
+  .prompt .lbl{color:var(--gold);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
+  .prompt .js-copy{color:#eaf1fb;font-family:var(--mono);font-size:.96rem;line-height:1.5;display:block;padding-right:76px;white-space:pre-wrap;}
+  .copy{position:absolute;top:12px;right:12px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:7px 12px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .cmd{display:inline-block;background:#0f2748;color:#eaf1fb;font-family:var(--mono);border-radius:6px;padding:1px 8px;font-weight:700;font-size:.92em;}
+  .done{background:var(--navy);color:#fff;border-radius:16px;padding:20px 22px;margin-top:20px;}
+  .done b{color:var(--gold);}
+  .topjoin{max-width:740px;margin:0 auto;padding:14px 20px 0;font-size:.93rem;color:var(--muted);}
+  .topjoin a{color:var(--navy);font-weight:800;text-decoration:none;border-bottom:2px solid var(--gold);}
+  .invite{background:var(--navy);border:1px solid var(--gold);border-radius:16px;padding:30px 24px;margin-top:16px;text-align:center;color:#fff;}
+  .invite h3{margin:0 0 10px;font-size:clamp(1.35rem,3.4vw,1.7rem);font-weight:900;color:var(--gold);}
+  .invite p{margin:0 auto 16px;color:#cdd9e8;max-width:54ch;}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy);text-decoration:none;font-weight:900;font-size:1.05rem;padding:14px 26px;border-radius:12px;}
+  .urlline{color:#8ea3bd;font-size:.9rem;margin-top:12px;}
+  .urlline b{color:var(--gold);}
+  footer{max-width:740px;margin:0 auto;padding:0 20px 60px;color:var(--muted);font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="top"><div class="in">
+    <div class="brand">Leveraging <b>AI</b></div>
+    <h1>Custom GPT → Your Own Paid AI App</h1>
+    <p>Take your custom GPT out of ChatGPT and rebuild it as your own app, with users, subscriptions, and a paywall. No coding.</p>
+  </div></div>
+
+  <div class="topjoin">With Dr. Erin Jacques · <a href="https://skool.com/leveragingai/about">Join the Leveraging AI community →</a></div>
+
+  <div class="wrap">
+
+    <div class="explain">
+      <p>A custom GPT lives inside ChatGPT, you don't own the users, the billing, or the experience.</p>
+      <p class="big">Here you rebuild everything that makes it work as your own standalone app you own and can charge for.</p>
+      <p>Four parts: get it out of ChatGPT → put it online → add logins → add payments.</p>
+    </div>
+
+    <div class="divider"><span>Set this up first</span></div>
+    <div class="step">
+      <h2>Your checklist</h2>
+      <ul class="check">
+        <li><b>Anthropic API key</b> at console.anthropic.com (with billing). <b>This is separate from ChatGPT Plus</b>, different key, different bill.</li>
+        <li><b>Claude Code</b> installed, plus your <b>custom-ai-assistant skill</b>.</li>
+        <li>A <b>Supabase account</b> (you'll make the project as you go).</li>
+        <li>A <b>Stripe account</b> (you'll make the product as you go).</li>
+      </ul>
+    </div>
+
+    <div class="divider"><span>Part 1 — Get it running on your machine</span><small>Payoff: your GPT answers, outside ChatGPT</small></div>
+
+    <div class="step">
+      <h2><span class="n">1</span> Grab your GPT's brain</h2>
+      <p>Open your GPT → <b>Configure</b> tab. Select all of the <b>Instructions</b>, copy them, and paste into a file called <span class="cmd">assistant-instructions.md</span>. Drop any knowledge files into a <span class="cmd">knowledge</span> folder.</p>
+      <div class="tip">👉 Everything that makes your GPT special is trapped in that Instructions box. Now it's a file you own.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">2</span> Build it</h2>
+      <p>Open that folder in VS Code, open Claude Code, and paste:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Build the assistant</div>
+        <span class="js-copy">build me a custom AI assistant</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>It asks what it's about, how it should behave, the look, standalone or inside your web app, and paywall or not. Answer live, then it builds.</p>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">3</span> Add your API key</h2>
+      <p>Go to console.anthropic.com → API Keys → create one → copy it → paste it into the <span class="cmd">.env</span> file after <span class="cmd">ANTHROPIC_API_KEY=</span> and save.</p>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">4</span> Run it</h2>
+      <p>Start the server and open <span class="cmd">localhost:3000</span>. Send one message. It answers, that's your GPT running on your machine, not inside ChatGPT.</p>
+    </div>
+
+    <div class="divider"><span>Part 2 — Put it live</span><small>Payoff: a link you can text someone</small></div>
+
+    <div class="step">
+      <h2><span class="n">5</span> Push to GitHub</h2>
+      <p>Tell Claude to commit and push to a new GitHub repo.</p>
+      <div class="tip">👉 Your key does <b>not</b> go to GitHub, it's protected by the <span class="cmd">.gitignore</span>. Confirm the <span class="cmd">.env</span> line is in there.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">6</span> Deploy on Vercel</h2>
+      <p>Go to vercel.com/new, <b>sign in with GitHub</b>, and import the repo.</p>
+      <div class="tip">👉 Sign in <b>with GitHub</b> so the accounts match. Otherwise the deploy can silently fail.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">7</span> Add your key, then deploy</h2>
+      <p>Expand <b>Environment Variables</b> and add your <span class="cmd">ANTHROPIC_API_KEY</span> <b>before</b> you deploy. Then Deploy, and open the live URL on your phone.</p>
+      <div class="warn">⚠️ Add the key <b>now, not after</b>. Skip it and your first deploy is broken.</div>
+    </div>
+
+    <div class="divider"><span>Part 3 — Add logins</span><small>Payoff: a login screen and users in your dashboard</small></div>
+
+    <div class="step">
+      <h2><span class="n">8</span> New Supabase project</h2>
+      <p>supabase.com → New project (name it, set a DB password, pick a region). Then copy your <b>publishable key</b> and <b>secret key</b> (Settings → API Keys) and your <b>Project URL</b> (Settings → Data API).</p>
+      <div class="tip">👉 Ignore the "Legacy" tab, those keys are being retired. Use publishable + secret.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">9</span> Turn off email confirmation</h2>
+      <p>Authentication → Providers → turn <b>OFF</b> "Confirm email." Under URL Configuration, add <span class="cmd">localhost:3000</span> and your Vercel URL.</p>
+      <div class="tip">👉 Turn this off or every test signup makes you go check an inbox on camera (and you'll hit email limits).</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">10</span> Add login and gate it</h2>
+      <p>Paste this into Claude:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Add login</div>
+        <span class="js-copy">Add Supabase login so people can create accounts and log in, and gate the assistant so only logged-in users can use it.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>Run any SQL it gives you in the Supabase <b>SQL Editor</b>.</p>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">11</span> Add the keys to Vercel and test</h2>
+      <p>Add the 3 Supabase values to Vercel's Environment Variables and redeploy. Then sign up on the live site and watch yourself appear in Supabase.</p>
+      <div class="warn">⚠️ The <b>secret key never gets <span class="cmd">NEXT_PUBLIC_</span> in front of it</b>. That prefix ships it to the browser for anyone to steal.</div>
+    </div>
+
+    <div class="divider"><span>Part 4 — Add payments</span><small>Payoff: someone subscribes and gets in</small></div>
+
+    <div class="step">
+      <h2><span class="n">12</span> Create the product</h2>
+      <p>Stripe → Product catalog → create a product with a monthly price → copy the <b>price ID</b>. Then Coupons → make a 100%-off coupon and a promotion code for testing.</p>
+      <div class="tip">👉 Copy the one that starts with <span class="cmd">price_</span>, not <span class="cmd">prod_</span>. Everyone grabs the wrong one.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">13</span> Add payments</h2>
+      <p>Copy your Stripe <b>publishable</b> and <b>secret</b> keys (don't show the secret on camera). Then paste this into Claude:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Add payments</div>
+        <span class="js-copy">Add a Stripe subscription: a subscribe button, a webhook handler, and gate the assistant so only paying subscribers get in.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>Then push and deploy.</p>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">14</span> Connect the webhook</h2>
+      <p>Stripe → Developers → Webhooks → add an endpoint at your live URL's <span class="cmd">/api/stripe-webhook</span>, and select these events:</p>
+      <ul class="check">
+        <li><span class="cmd">checkout.session.completed</span></li>
+        <li><span class="cmd">customer.subscription.updated</span></li>
+        <li><span class="cmd">customer.subscription.deleted</span></li>
+      </ul>
+      <p>Copy the signing secret (<span class="cmd">whsec_...</span>) into Vercel as <span class="cmd">STRIPE_WEBHOOK_SECRET</span>, then redeploy.</p>
+      <div class="warn">⚠️ Without the <b>deleted</b> event, people who cancel keep access forever.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">15</span> Test the whole thing</h2>
+      <p>Sign out. Create a new account. Subscribe using your 100%-off promo code. Get in.</p>
+    </div>
+
+    <div class="done">🎉 <b>You just built a product.</b> Your instructions, your knowledge, your domain, your users, your money, not a GPT you rent from OpenAI.</div>
+
+    <div class="invite">
+      <h3>Want the parts that turn it into a business?</h3>
+      <p>Custom domain and business email, usage limits so no one runs up your bill, pricing, and how to find clients who pay four figures for this, that's what we build together inside the community.</p>
+      <a class="btn" href="https://skool.com/leveragingai/about">Join Leveraging AI →</a>
+      <div class="urlline">or go to <b>skool.com/leveragingai</b></div>
+    </div>
+
+  </div>
+
+  <footer>Dr. Erin Jacques · Leveraging AI</footer>
+
+<script>
+  function copyText(btn){
+    var el = btn.parentElement.querySelector('.js-copy');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = o; }, 1500);
+    });
+  }
+</script>
+</body>
+</html>
