@@ -81,11 +81,19 @@
     <div class="step">
       <h2>Your checklist</h2>
       <ul class="check">
+        <li><b>VS Code</b> installed (code.visualstudio.com).</li>
+        <li><b>Claude Code</b> installed. Mac: <span class="cmd">curl -fsSL https://claude.ai/install.sh | bash</span> &nbsp;·&nbsp; Windows: <span class="cmd">irm https://claude.ai/install.ps1 | iex</span></li>
         <li><b>Anthropic API key</b> at console.anthropic.com (with billing). <b>This is separate from ChatGPT Plus</b>, different key, different bill.</li>
-        <li><b>Claude Code</b> installed, plus your <b>custom-ai-assistant skill</b>.</li>
         <li>A <b>Supabase account</b> (you'll make the project as you go).</li>
         <li>A <b>Stripe account</b> (you'll make the product as you go).</li>
       </ul>
+      <p style="margin-top:14px;"><b>Then install the assistant skill</b>, in Claude Code, run these two commands:</p>
+      <div class="prompt">
+        <div class="lbl">Install the skill</div>
+        <span class="js-copy">/plugin marketplace add ejacques1/leveraging-ai-skills
+/plugin install leveraging-ai@leveraging-ai-skills</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
     </div>
 
     <div class="divider"><span>Part 1 — Get it running on your machine</span><small>Payoff: your GPT answers, outside ChatGPT</small></div>
@@ -189,7 +197,7 @@
 
     <div class="step">
       <h2><span class="n">14</span> Connect the webhook</h2>
-      <p>Stripe → Developers → Webhooks → add an endpoint at your live URL's <span class="cmd">/api/stripe-webhook</span>, and select these events:</p>
+      <p>Stripe → Developers → Webhooks → add an endpoint at <b>the webhook URL Claude gave you</b> (your live URL plus the path it created), and select these events:</p>
       <ul class="check">
         <li><span class="cmd">checkout.session.completed</span></li>
         <li><span class="cmd">customer.subscription.updated</span></li>
