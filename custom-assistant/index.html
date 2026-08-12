@@ -81,61 +81,87 @@
     <div class="step">
       <h2>Your checklist</h2>
       <ul class="check">
-        <li><b>VS Code</b> installed (code.visualstudio.com).</li>
-        <li><b>Claude Code</b> installed. Mac: <span class="cmd">curl -fsSL https://claude.ai/install.sh | bash</span> &nbsp;·&nbsp; Windows: <span class="cmd">irm https://claude.ai/install.ps1 | iex</span></li>
-        <li><b>Anthropic API key</b> at console.anthropic.com (with billing). <b>This is separate from ChatGPT Plus</b>, different key, different bill.</li>
-        <li>A <b>Supabase account</b> (you'll make the project as you go).</li>
-        <li>A <b>Stripe account</b> (you'll make the product as you go).</li>
+        <li><b>VS Code</b> installed, free at <a href="https://code.visualstudio.com" target="_blank" rel="noopener">code.visualstudio.com</a>.</li>
+        <li>The <b>Claude Code extension</b>. In VS Code, click <b>Extensions</b> in the left sidebar, search <span class="cmd">Claude Code</span>, install the one by <b>Anthropic</b>, then sign in.</li>
+        <li>An <b>Anthropic API key</b> at <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a> (with billing). <b>This is separate from ChatGPT Plus and separate from your Claude subscription</b>, different key, different bill.</li>
+        <li>A free <b>Supabase account</b> at <a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a> (you'll make the project as you go).</li>
+        <li>A free <b>Stripe account</b> at <a href="https://stripe.com" target="_blank" rel="noopener">stripe.com</a> (you'll make the product as you go).</li>
       </ul>
-      <p style="margin-top:14px;"><b>Then install the assistant skill</b>, in Claude Code, run these two commands:</p>
+      <div class="tip">👉 You don't need a terminal for any of this. The extension runs Claude Code for you.</div>
+      <p style="margin-top:14px;"><b>Then install the assistant skill.</b> Open the Claude Code panel and paste this in the chat box:</p>
       <div class="prompt">
-        <div class="lbl">Install the skill</div>
-        <span class="js-copy">/plugin marketplace add ejacques1/leveraging-ai-skills
-/plugin install leveraging-ai@leveraging-ai-skills</span>
+        <div class="lbl">Command 1 — Add the marketplace</div>
+        <span class="js-copy">/plugin marketplace add ejacques1/leveraging-ai-skills</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
+      <p style="margin-top:10px;">Press enter, wait for it to finish, then paste this one:</p>
+      <div class="prompt">
+        <div class="lbl">Command 2 — Install the skill</div>
+        <span class="js-copy">/plugin install leveraging-ai@leveraging-ai-skills</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="tip">👉 These go in the <b>Claude chat box</b>, one at a time, not in a terminal. Slash commands only work there.</div>
     </div>
 
     <div class="divider"><span>Part 1 — Get it running on your machine</span><small>Payoff: your GPT answers, outside ChatGPT</small></div>
 
     <div class="step">
-      <h2><span class="n">1</span> Grab your GPT's brain</h2>
-      <p>Open your GPT → <b>Configure</b> tab. Select all of the <b>Instructions</b>, copy them, and paste into a file called <span class="cmd">assistant-instructions.md</span>. Drop any knowledge files into a <span class="cmd">knowledge</span> folder.</p>
-      <div class="tip">👉 Everything that makes your GPT special is trapped in that Instructions box. Now it's a file you own.</div>
+      <h2><span class="n">1</span> Copy your GPT's brain</h2>
+      <p>Open your GPT → <b>Configure</b> tab. Click inside the <b>Instructions</b> box, select all, and copy. Keep it on your clipboard, you'll paste it in step 2.</p>
+      <div class="tip">👉 Everything that makes your GPT special is trapped in that Instructions box. In a minute it's going to be a file you own.</div>
     </div>
 
     <div class="step">
       <h2><span class="n">2</span> Build it</h2>
-      <p>Open that folder in VS Code, open Claude Code, and paste:</p>
+      <p>Make a new empty folder, open it in VS Code (<b>File → Open Folder</b>), open Claude Code, and paste:</p>
       <div class="prompt">
         <div class="lbl">Prompt — Build the assistant</div>
         <span class="js-copy">build me a custom AI assistant</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
-      <p>It asks what it's about, how it should behave, the look, standalone or inside your web app, and paywall or not. Answer live, then it builds.</p>
+      <p>It asks what your assistant is about, how it should behave, the look, standalone or inside your web app, and paywall or not.</p>
+      <p><b>When it asks how it should behave, paste in your GPT's instructions.</b> Claude writes them into a file called <span class="cmd">assistant-instructions.md</span> for you, along with a <span class="cmd">knowledge</span> folder. Drop your GPT's knowledge files in there.</p>
+      <div class="tip">👉 <b>That file is your assistant.</b> Everything in it gets sent as instructions on every message, exactly like the Instructions box in your GPT. Open it any time, rewrite it, save, and send a message, you'll see the difference immediately. That's what owning it means.</div>
+      <div class="tip">👉 Click <b>Approve / Yes</b> to everything it asks. It's working inside your empty folder, there's nothing there to damage.</div>
     </div>
 
     <div class="step">
       <h2><span class="n">3</span> Add your API key</h2>
-      <p>Go to console.anthropic.com → API Keys → create one → copy it → paste it into the <span class="cmd">.env</span> file after <span class="cmd">ANTHROPIC_API_KEY=</span> and save.</p>
+      <p>Go to <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a> → <b>API Keys</b> → <b>Create Key</b> → copy it.</p>
+      <p>Claude creates a file called <span class="cmd">.env</span> and opens it for you. Paste your key right after <span class="cmd">ANTHROPIC_API_KEY=</span> and save with <span class="cmd">Cmd+S</span>.</p>
+      <div class="tip">👉 No spaces, no quotes around it. Just the key.</div>
     </div>
 
     <div class="step">
       <h2><span class="n">4</span> Run it</h2>
-      <p>Start the server and open <span class="cmd">localhost:3000</span>. Send one message. It answers, that's your GPT running on your machine, not inside ChatGPT.</p>
+      <p>Ask Claude to start it:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Start the app</div>
+        <span class="js-copy">Start the app and give me the link to open it.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>Open the link it gives you (usually <span class="cmd">localhost:3000</span>) and send one message.</p>
+      <p><b>It answers.</b> That's your GPT, running on your machine, not inside ChatGPT.</p>
+      <div class="tip">👉 If you added your key while the app was already running, tell Claude to restart it. It only reads the key on startup.</div>
     </div>
 
     <div class="divider"><span>Part 2 — Put it live</span><small>Payoff: a link you can text someone</small></div>
 
     <div class="step">
       <h2><span class="n">5</span> Push to GitHub</h2>
-      <p>Tell Claude to commit and push to a new GitHub repo.</p>
-      <div class="tip">👉 Your key does <b>not</b> go to GitHub, it's protected by the <span class="cmd">.gitignore</span>. Confirm the <span class="cmd">.env</span> line is in there.</div>
+      <p>Paste this into Claude:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Push to GitHub</div>
+        <span class="js-copy">Push this to a new private GitHub repo. Confirm my .env file is excluded before you push.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="tip">👉 Your key does <b>not</b> go to GitHub, it's protected by the <span class="cmd">.gitignore</span>. That's why the prompt asks Claude to confirm it before pushing.</div>
     </div>
 
     <div class="step">
       <h2><span class="n">6</span> Deploy on Vercel</h2>
-      <p>Go to vercel.com/new, <b>sign in with GitHub</b>, and import the repo.</p>
+      <p>Go to <a href="https://vercel.com/new" target="_blank" rel="noopener">vercel.com/new</a>, <b>sign in with GitHub</b>, and import the repo.</p>
+      <div class="tip">👉 Private repo? Vercel may ask for repository access first. Click <b>Configure GitHub App</b>, grant it, then come back. That's normal.</div>
       <div class="tip">👉 Sign in <b>with GitHub</b> so the accounts match. Otherwise the deploy can silently fail.</div>
     </div>
 
@@ -149,7 +175,8 @@
 
     <div class="step">
       <h2><span class="n">8</span> New Supabase project</h2>
-      <p>supabase.com → New project (name it, set a DB password, pick a region). Then copy your <b>publishable key</b> and <b>secret key</b> (Settings → API Keys) and your <b>Project URL</b> (Settings → Data API).</p>
+      <p><a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a> → <b>New project</b> (name it, set a database password, pick a region). It takes a couple of minutes to set up.</p>
+      <p>Then copy your <b>publishable key</b> and <b>secret key</b> (Settings → API Keys) and your <b>Project URL</b> (Settings → Data API).</p>
       <div class="tip">👉 Ignore the "Legacy" tab, those keys are being retired. Use publishable + secret.</div>
     </div>
 
@@ -172,8 +199,14 @@
 
     <div class="step">
       <h2><span class="n">11</span> Add the keys to Vercel and test</h2>
-      <p>Add the 3 Supabase values to Vercel's Environment Variables and redeploy. Then sign up on the live site and watch yourself appear in Supabase.</p>
-      <div class="warn">⚠️ The <b>secret key never gets <span class="cmd">NEXT_PUBLIC_</span> in front of it</b>. That prefix ships it to the browser for anyone to steal.</div>
+      <p>In Vercel → your project → <b>Settings → Environment Variables</b>, add your three Supabase values, then redeploy. Claude will tell you the exact names it used, usually:</p>
+      <ul class="check">
+        <li><span class="cmd">NEXT_PUBLIC_SUPABASE_URL</span> — your Project URL</li>
+        <li><span class="cmd">NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY</span> — your publishable key</li>
+        <li><span class="cmd">SUPABASE_SECRET_KEY</span> — your secret key</li>
+      </ul>
+      <p>Then sign up on the live site and watch yourself appear in Supabase under <b>Authentication → Users</b>.</p>
+      <div class="warn">⚠️ The <b>secret key never gets <span class="cmd">NEXT_PUBLIC_</span> in front of it</b>. That prefix ships it to the browser for anyone to steal. The first two are meant to be public, the third is not.</div>
     </div>
 
     <div class="divider"><span>Part 4 — Add payments</span><small>Payoff: someone subscribes and gets in</small></div>
@@ -213,6 +246,20 @@
     </div>
 
     <div class="done">🎉 <b>You just built a product.</b> Your instructions, your knowledge, your domain, your users, your money, not a GPT you rent from OpenAI.</div>
+
+    <div class="divider"><span>If you get stuck</span></div>
+
+    <div class="step">
+      <h2>Common snags</h2>
+      <p><b>"Do I need to know how to code?"</b><br>No. You're not writing any. You're pasting prompts and clicking Approve.</p>
+      <p><b>"Isn't my Claude subscription enough?"</b><br>For Claude Code, yes. The app itself needs a separate API key from console.anthropic.com. Different key, different bill.</p>
+      <p><b>"Nothing happened when I typed the slash command."</b><br>Make sure you're typing it in the Claude Code chat box, not a terminal. And run them one at a time.</p>
+      <p><b>"It's asking me to approve something and I don't know what it is."</b><br>Approve it. It's working inside your empty folder, there's nothing there to damage.</p>
+      <p><b>"My key isn't working."</b><br>Check there's no space after the <span class="cmd">=</span> and no quotes around the key. Then tell Claude to restart the app, it only reads the key on startup.</p>
+      <p><b>"My first Vercel deploy is broken."</b><br>You probably deployed before adding the API key. Add it under Settings → Environment Variables, then redeploy.</p>
+      <p><b>"I paid with my test code but I'm still locked out."</b><br>That's the webhook. Check the endpoint URL matches the one Claude gave you, and that all three events are selected.</p>
+      <p><b>"Can I change my assistant later?"</b><br>Yes, that's the whole point. Open <span class="cmd">assistant-instructions.md</span>, rewrite it, save. Add files to <span class="cmd">knowledge</span> any time. Push to GitHub and it's live in about a minute.</p>
+    </div>
 
     <div class="invite">
       <h3>Want the parts that turn it into a business?</h3>
