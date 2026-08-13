@@ -147,9 +147,10 @@
       <p>Paste this into Claude:</p>
       <div class="prompt">
         <div class="lbl">Prompt — Push to GitHub</div>
-        <span class="js-copy">Push this to a new private GitHub repo. Confirm my .env file is excluded before you push.</span>
+        <span class="js-copy">Push this to a new private GitHub repo. Confirm my .env file is excluded before you push. If I'm not signed in to GitHub yet, walk me through connecting it.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
+      <div class="tip">👉 No GitHub account yet? Make one free at <a href="https://github.com" target="_blank" rel="noopener">github.com</a>. <b>You don't need to download anything</b> — no desktop app. Claude will open a browser window to connect it, you click authorize, and it keeps going.</div>
       <div class="tip">👉 Your key does <b>not</b> go to GitHub, it's protected by the <span class="cmd">.gitignore</span>. That's why the prompt asks Claude to confirm it before pushing.</div>
     </div>
 
