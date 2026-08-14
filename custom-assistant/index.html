@@ -177,9 +177,11 @@
     </div>
 
     <div class="step">
-      <h2><span class="n">9</span> Turn off email confirmation</h2>
-      <p>Authentication → Providers → turn <b>OFF</b> "Confirm email." Under URL Configuration, add <span class="cmd">localhost:3000</span> and your Vercel URL.</p>
-      <div class="tip">👉 Turn this off or every test signup makes you go check an inbox on camera (and you'll hit email limits).</div>
+      <h2><span class="n">9</span> Set your login URLs</h2>
+      <p>Authentication → <b>URL Configuration</b> → add <span class="cmd">http://localhost:3000</span> and your Vercel URL.</p>
+      <div class="warn">⚠️ Skip this and login works on your computer but breaks on the live site. Supabase only sends people back to addresses you've listed here.</div>
+      <p style="margin-top:14px;"><b>Leave "Confirm email" on</b> (Authentication → Providers). It means every new signup has to click a link in their inbox before they can use your app, which keeps fake and mistyped addresses out of your list.</p>
+      <div class="tip">👉 So when you test, you'll go find that confirmation email each time. Expect a wait, and know that Supabase's built-in email sender is rate-limited, so several signups in a row may stop arriving. That's the free sender, not your app. Connecting your own email service fixes it.</div>
     </div>
 
     <div class="step">
