@@ -206,7 +206,14 @@
       </ul>
       <div class="tip">👉🏽 Ignore the "Legacy" tab, those keys are being retired. Use publishable + secret.</div>
       <p style="margin-top:14px;">Claude will add all three to your <span class="cmd">.env</span> for you — paste them in when it asks.</p>
-      <p>Then in Vercel → your project → <b>Settings → Environment Variables</b>, add the same three values and redeploy. Claude will tell you the exact names it used, usually:</p>
+      <p><b>Now push the login code up.</b> Everything Claude just wrote is still only on your computer:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Push the login</div>
+        <span class="js-copy">Push these changes to GitHub so my live site gets the login.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="warn">⚠️ <b>Don't skip this.</b> Hitting "Redeploy" in Vercel just re-runs your last push — it can't see files sitting on your computer. Skip it and you'll add your keys, redeploy, reload your live site, and find no login screen, with nothing obviously broken.</div>
+      <p style="margin-top:14px;">Then in Vercel → your project → <b>Settings → Environment Variables</b>, add the same three values and redeploy. Claude will tell you the exact names it used, usually:</p>
       <ul class="check">
         <li><span class="cmd">NEXT_PUBLIC_SUPABASE_URL</span> — your Project URL</li>
         <li><span class="cmd">NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY</span> — your publishable key</li>
@@ -234,7 +241,12 @@
       </div>
       <p><b>This is where you get SQL.</b> Claude can't reach your Supabase account, so it hands you the SQL for the table that records who's paid. Take it to Supabase → <b>SQL Editor</b> → paste → <b>Run</b>.</p>
       <div class="warn">⚠️ <b>Look for "row level security" in that SQL before you run it.</b> That's what stops one customer reading everyone else's records — or adding a row saying they're subscribed and walking straight through your paywall. If it's missing, ask: <i>"Add row level security policies so each user can only read and write their own row."</i></div>
-      <p>Then push and deploy.</p>
+      <p><b>Then push it up</b> — same as before, the payment code is only on your computer until you do:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Push the payments</div>
+        <span class="js-copy">Push these changes to GitHub so my live site gets the payments.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
     </div>
 
     <div class="step">
@@ -274,7 +286,7 @@
         <span class="js-copy">When someone completes a Stripe payment, tag them in Systeme.io as "paid." Add this to my existing Stripe webhook handler — don't create a second one. On checkout.session.completed, verify the Stripe signature, take the customer's email, and use the Systeme.io API to find or create the contact and add the "paid" tag. Read the key from a SYSTEME_API_KEY env variable. Check the current Systeme.io API docs first so the endpoints are right, and handle the case where the contact already exists.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
-      <p>Then add <span class="cmd">SYSTEME_API_KEY</span> to Vercel's Environment Variables and redeploy.</p>
+      <p>Then tell Claude <i>"push these changes to GitHub"</i>, add <span class="cmd">SYSTEME_API_KEY</span> to Vercel's Environment Variables, and redeploy.</p>
       <div class="warn">⚠️ <b>Don't let it build a second webhook.</b> You already have one from step 14 listening for <span class="cmd">checkout.session.completed</span>. Two handlers on the same event is how you end up with the tag firing but access not granted — that's why the prompt says to extend the existing one.</div>
       <div class="tip">👉🏽 Test it with your 100%-off promo code, then check Contacts in Systeme.io. You should see yourself with the <span class="cmd">paid</span> tag and the welcome email on its way.</div>
     </div>
@@ -289,6 +301,7 @@
       <p><b>"It's asking me to approve something and I don't know what it is."</b><br>Approve it. It's working inside your empty folder, there's nothing there to damage.</p>
       <p><b>"My key isn't working."</b><br>Check there's no space after the <span class="cmd">=</span> and no quotes around the key. Then tell Claude to restart the app, it only reads the key on startup.</p>
       <p><b>"My first Vercel deploy is broken."</b><br>You probably deployed before adding the API key. Add it under Settings → Environment Variables, then redeploy.</p>
+      <p><b>"I added login (or payments) but my live site doesn't have it."</b><br>You didn't push. Vercel's "Redeploy" button re-runs your last push — it can't see files on your computer. Tell Claude <i>"push these changes to GitHub"</i>, wait a minute, then reload.</p>
       <p><b>"I paid with my test code but I'm still locked out."</b><br>That's the webhook. Check the endpoint URL matches the one Claude gave you, and that all three events are selected.</p>
       <p><b>"Can I change my assistant later?"</b><br>Yes, that's the whole point. Open <span class="cmd">assistant-instructions.md</span>, rewrite it, save. Add files to <span class="cmd">knowledge</span> any time. Push to GitHub and it's live in about a minute.</p>
     </div>
