@@ -172,8 +172,8 @@
     <div class="step">
       <h2><span class="n">8</span> New Supabase project</h2>
       <p><a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a> → <b>New project</b> (name it, set a database password, pick a region). It takes a couple of minutes to set up.</p>
-      <p>Then copy your <b>publishable key</b> and <b>secret key</b> (Settings → API Keys) and your <b>Project URL</b> (Settings → Data API).</p>
-      <div class="tip">👉 Ignore the "Legacy" tab, those keys are being retired. Use publishable + secret.</div>
+      <p>That's all you need here for now. You'll come back for your keys in step 11, once Claude has written the code that uses them.</p>
+      <div class="tip">👉 Supabase handles sign-up, login, and password resets for you, so you're not building any of that yourself. The free plan is plenty to start.</div>
     </div>
 
     <div class="step">
@@ -190,12 +190,16 @@
         <span class="js-copy">Add Supabase login so people can create accounts and log in, and gate the assistant so only logged-in users can use it.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
-      <p>Run any SQL it gives you in the Supabase <b>SQL Editor</b>.</p>
+      <p>Claude can't get into your Supabase account, so it hands you SQL to run yourself. Take it to Supabase → <b>SQL Editor</b> → paste → <b>Run</b>.</p>
+      <div class="warn">⚠️ <b>Before you run it, look for "row level security."</b> That's what makes each person only able to see their own record. Without it, anyone could read your whole customer list, or add a row saying they're subscribed and walk straight through your paywall. If it isn't in the SQL, ask for it: <i>"Add row level security policies so each user can only read and write their own row."</i></div>
     </div>
 
     <div class="step">
-      <h2><span class="n">11</span> Add the keys to Vercel and test</h2>
-      <p>In Vercel → your project → <b>Settings → Environment Variables</b>, add your three Supabase values, then redeploy. Claude will tell you the exact names it used, usually:</p>
+      <h2><span class="n">11</span> Now grab your keys, then test</h2>
+      <p><b>Back to Supabase.</b> Copy your <b>publishable key</b> and <b>secret key</b> (Settings → API Keys) and your <b>Project URL</b> (Settings → Data API).</p>
+      <div class="tip">👉 Ignore the "Legacy" tab, those keys are being retired. Use publishable + secret.</div>
+      <p style="margin-top:14px;">Claude will add these to your <span class="cmd">.env</span> for you — paste them in when it asks.</p>
+      <p>Then in Vercel → your project → <b>Settings → Environment Variables</b>, add the same three values and redeploy. Claude will tell you the exact names it used, usually:</p>
       <ul class="check">
         <li><span class="cmd">NEXT_PUBLIC_SUPABASE_URL</span> — your Project URL</li>
         <li><span class="cmd">NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY</span> — your publishable key</li>
