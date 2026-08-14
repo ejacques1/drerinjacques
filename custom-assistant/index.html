@@ -243,6 +243,28 @@
 
     <div class="done">🎉 <b>You just built a product.</b> Your instructions, your knowledge, your domain, your users, your money, not a GPT you rent from OpenAI.</div>
 
+    <div class="divider"><span>Optional — email your buyers</span><small>Payoff: paying customers land on your list automatically</small></div>
+
+    <div class="step">
+      <h2><span class="n">16</span> Tag buyers in Systeme.io</h2>
+      <p>Right now someone pays and you never talk to them again. This connects Stripe to your email list, so paying gets them tagged and your welcome sequence fires on its own.</p>
+      <p><b>First, three things in Systeme.io</b> (Claude can't log into your account, so these are yours):</p>
+      <ul class="check">
+        <li><b>Settings → Public API Keys</b> → create one and copy it</li>
+        <li><b>Contacts → Tags</b> → create a tag called <span class="cmd">paid</span></li>
+        <li><b>Automations</b> → new automation, trigger = <b>Tag added</b> (<span class="cmd">paid</span>), action = send your welcome email</li>
+      </ul>
+      <p style="margin-top:14px;">Then paste this into Claude:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Tag buyers in Systeme.io</div>
+        <span class="js-copy">When someone completes a Stripe payment, tag them in Systeme.io as "paid." Add this to my existing Stripe webhook handler — don't create a second one. On checkout.session.completed, verify the Stripe signature, take the customer's email, and use the Systeme.io API to find or create the contact and add the "paid" tag. Read the key from a SYSTEME_API_KEY env variable. Check the current Systeme.io API docs first so the endpoints are right, and handle the case where the contact already exists.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>Then add <span class="cmd">SYSTEME_API_KEY</span> to Vercel's Environment Variables and redeploy.</p>
+      <div class="warn">⚠️ <b>Don't let it build a second webhook.</b> You already have one from step 14 listening for <span class="cmd">checkout.session.completed</span>. Two handlers on the same event is how you end up with the tag firing but access not granted — that's why the prompt says to extend the existing one.</div>
+      <div class="tip">👉 Test it with your 100%-off promo code, then check Contacts in Systeme.io. You should see yourself with the <span class="cmd">paid</span> tag and the welcome email on its way.</div>
+    </div>
+
     <div class="divider"><span>If you get stuck</span></div>
 
     <div class="step">
