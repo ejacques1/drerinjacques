@@ -189,7 +189,7 @@
       <p>Paste this into Claude:</p>
       <div class="prompt">
         <div class="lbl">Prompt — Add login</div>
-        <span class="js-copy">Add Supabase login so people can create accounts and log in, and gate the assistant so only logged-in users can use it. I've already created my Supabase project, so don't tell me to make one — just ask me for my Project URL and publishable key when you need them.</span>
+        <span class="js-copy">Add Supabase login so people can create accounts and log in, and gate the assistant so only logged-in users can use it. I've already created my Supabase project, so don't tell me to make one. Ask me once for all three values — Project URL, publishable key, and secret key — and put them in my .env now, even if the secret key isn't used until I add payments later.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
       <p>Claude can't get into your Supabase account, so it hands you SQL to run yourself. Take it to Supabase → <b>SQL Editor</b> → paste → <b>Run</b>.</p>
@@ -198,9 +198,14 @@
 
     <div class="step">
       <h2><span class="n">11</span> Now grab your keys, then test</h2>
-      <p><b>Back to Supabase.</b> Copy your <b>publishable key</b> and <b>secret key</b> (Settings → API Keys) and your <b>Project URL</b> (Settings → Data API).</p>
+      <p><b>Back to Supabase.</b> Grab all three at once so you're not making this trip twice:</p>
+      <ul class="check">
+        <li><b>Project URL</b> — Settings → Data API</li>
+        <li><b>Publishable key</b> — Settings → API Keys</li>
+        <li><b>Secret key</b> — same page. You won't use it until Part 4, but grab it now.</li>
+      </ul>
       <div class="tip">👉 Ignore the "Legacy" tab, those keys are being retired. Use publishable + secret.</div>
-      <p style="margin-top:14px;">Claude will add these to your <span class="cmd">.env</span> for you — paste them in when it asks.</p>
+      <p style="margin-top:14px;">Claude will add all three to your <span class="cmd">.env</span> for you — paste them in when it asks.</p>
       <p>Then in Vercel → your project → <b>Settings → Environment Variables</b>, add the same three values and redeploy. Claude will tell you the exact names it used, usually:</p>
       <ul class="check">
         <li><span class="cmd">NEXT_PUBLIC_SUPABASE_URL</span> — your Project URL</li>
