@@ -87,7 +87,7 @@
         <li>A free <b>Supabase account</b> at <a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a> (you'll make the project as you go).</li>
         <li>A free <b>Stripe account</b> at <a href="https://stripe.com" target="_blank" rel="noopener">stripe.com</a> (you'll make the product as you go).</li>
       </ul>
-      <div class="tip">👉🏿 You don't need a terminal for any of this. The extension runs Claude Code for you.</div>
+      <div class="tip">👉🏽 You don't need a terminal for any of this. The extension runs Claude Code for you.</div>
       <p style="margin-top:14px;"><b>Then install the assistant skill.</b> Open the Claude Code panel and paste this in:</p>
       <div class="prompt">
         <div class="lbl">Prompt — Install the skill</div>
@@ -95,7 +95,7 @@
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
       <p style="margin-top:10px;">Approve it when it asks. It loads right away, that's the skill installed.</p>
-      <div class="tip">👉🏿 This is the skill that does the work, it asks you the questions, builds the app, and opens your <span class="cmd">.env</span> file for you so you never have to go hunting for a hidden file.</div>
+      <div class="tip">👉🏽 This is the skill that does the work, it asks you the questions, builds the app, and opens your <span class="cmd">.env</span> file for you so you never have to go hunting for a hidden file.</div>
     </div>
 
     <div class="divider"><span>Part 1 — Get it running on your machine</span><small>Payoff: your GPT answers, outside ChatGPT</small></div>
@@ -103,7 +103,7 @@
     <div class="step">
       <h2><span class="n">1</span> Copy your GPT's brain</h2>
       <p>Open your GPT → <b>Configure</b> tab. Click inside the <b>Instructions</b> box, select all, and copy. Keep it on your clipboard, you'll paste it in step 2.</p>
-      <div class="tip">👉🏿 Everything that makes your GPT special is trapped in that Instructions box. In a minute it's going to be a file you own.</div>
+      <div class="tip">👉🏽 Everything that makes your GPT special is trapped in that Instructions box. In a minute it's going to be a file you own.</div>
     </div>
 
     <div class="step">
@@ -116,15 +116,15 @@
       </div>
       <p>It asks what your assistant is about, how it should behave, the look, standalone or inside your web app, and paywall or not.</p>
       <p><b>When it asks how it should behave, paste in your GPT's instructions.</b> Claude writes them into a file called <span class="cmd">assistant-instructions.md</span> for you, along with a <span class="cmd">knowledge</span> folder. Drop your GPT's knowledge files in there.</p>
-      <div class="tip">👉🏿 <b>That file is your assistant.</b> Everything in it gets sent as instructions on every message, exactly like the Instructions box in your GPT. Open it any time, rewrite it, save, and send a message, you'll see the difference immediately. That's what owning it means.</div>
-      <div class="tip">👉🏿 Click <b>Approve / Yes</b> to everything it asks. It's working inside your empty folder, there's nothing there to damage.</div>
+      <div class="tip">👉🏽 <b>That file is your assistant.</b> Everything in it gets sent as instructions on every message, exactly like the Instructions box in your GPT. Open it any time, rewrite it, save, and send a message, you'll see the difference immediately. That's what owning it means.</div>
+      <div class="tip">👉🏽 Click <b>Approve / Yes</b> to everything it asks. It's working inside your empty folder, there's nothing there to damage.</div>
     </div>
 
     <div class="step">
       <h2><span class="n">3</span> Add your API key</h2>
       <p>Go to <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a> → <b>API Keys</b> → <b>Create Key</b> → copy it.</p>
       <p>Claude creates a file called <span class="cmd">.env</span> and opens it for you. Paste your key right after <span class="cmd">ANTHROPIC_API_KEY=</span> and save with <span class="cmd">Cmd+S</span>.</p>
-      <div class="tip">👉🏿 No spaces, no quotes around it. Just the key.</div>
+      <div class="tip">👉🏽 No spaces, no quotes around it. Just the key.</div>
     </div>
 
     <div class="step">
@@ -137,7 +137,7 @@
       </div>
       <p>Open the link it gives you (usually <span class="cmd">localhost:3000</span>) and send one message.</p>
       <p><b>It answers.</b> That's your GPT, running on your machine, not inside ChatGPT.</p>
-      <div class="tip">👉🏿 If you added your key while the app was already running, tell Claude to restart it. It only reads the key on startup.</div>
+      <div class="tip">👉🏽 If you added your key while the app was already running, tell Claude to restart it. It only reads the key on startup.</div>
     </div>
 
     <div class="divider"><span>Part 2 — Put it live</span><small>Payoff: a link you can text someone</small></div>
@@ -150,15 +150,15 @@
         <span class="js-copy">Push this to a new private GitHub repo. Confirm my .env file is excluded before you push. If I'm not signed in to GitHub yet, walk me through connecting it.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
-      <div class="tip">👉🏿 No GitHub account yet? Make one free at <a href="https://github.com" target="_blank" rel="noopener">github.com</a>. <b>You don't need to download anything</b> — no desktop app. Claude will open a browser window to connect it, you click authorize, and it keeps going.</div>
-      <div class="tip">👉🏿 Your key does <b>not</b> go to GitHub, it's protected by the <span class="cmd">.gitignore</span>. That's why the prompt asks Claude to confirm it before pushing.</div>
+      <div class="tip">👉🏽 No GitHub account yet? Make one free at <a href="https://github.com" target="_blank" rel="noopener">github.com</a>. <b>You don't need to download anything</b> — no desktop app. Claude will open a browser window to connect it, you click authorize, and it keeps going.</div>
+      <div class="tip">👉🏽 Your key does <b>not</b> go to GitHub, it's protected by the <span class="cmd">.gitignore</span>. That's why the prompt asks Claude to confirm it before pushing.</div>
     </div>
 
     <div class="step">
       <h2><span class="n">6</span> Deploy on Vercel</h2>
       <p>Go to <a href="https://vercel.com/new" target="_blank" rel="noopener">vercel.com/new</a>, <b>sign in with GitHub</b>, and import the repo.</p>
-      <div class="tip">👉🏿 Private repo? Vercel may ask for repository access first. Click <b>Configure GitHub App</b>, grant it, then come back. That's normal.</div>
-      <div class="tip">👉🏿 Sign in <b>with GitHub</b> so the accounts match. Otherwise the deploy can silently fail.</div>
+      <div class="tip">👉🏽 Private repo? Vercel may ask for repository access first. Click <b>Configure GitHub App</b>, grant it, then come back. That's normal.</div>
+      <div class="tip">👉🏽 Sign in <b>with GitHub</b> so the accounts match. Otherwise the deploy can silently fail.</div>
     </div>
 
     <div class="step">
@@ -173,7 +173,7 @@
       <h2><span class="n">8</span> New Supabase project</h2>
       <p><a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a> → <b>New project</b> (name it, set a database password, pick a region). It takes a couple of minutes to set up.</p>
       <p>That's all you need here for now. You'll come back for your keys in step 11, once Claude has written the code that uses them.</p>
-      <div class="tip">👉🏿 Supabase handles sign-up, login, and password resets for you, so you're not building any of that yourself. The free plan is plenty to start.</div>
+      <div class="tip">👉🏽 Supabase handles sign-up, login, and password resets for you, so you're not building any of that yourself. The free plan is plenty to start.</div>
     </div>
 
     <div class="step">
@@ -181,7 +181,7 @@
       <p>Authentication → <b>URL Configuration</b> → add <span class="cmd">http://localhost:3000</span> and your Vercel URL.</p>
       <div class="warn">⚠️ Skip this and login works on your computer but breaks on the live site. Supabase only sends people back to addresses you've listed here.</div>
       <p style="margin-top:14px;"><b>Nothing else to change here.</b> Supabase already requires people to confirm their email — it's on by default. That means every new signup clicks a link in their inbox before they can use your app, which keeps fake and mistyped addresses off your list. You can see it under Authentication → Providers → Email if you want to look, but leave it alone.</p>
-      <div class="tip">👉🏿 So when you test, you'll go find that confirmation email each time. Expect a wait, and know that Supabase's built-in email sender is rate-limited, so several signups in a row may stop arriving. That's the free sender, not your app. Connecting your own email service fixes it.</div>
+      <div class="tip">👉🏽 So when you test, you'll go find that confirmation email each time. Expect a wait, and know that Supabase's built-in email sender is rate-limited, so several signups in a row may stop arriving. That's the free sender, not your app. Connecting your own email service fixes it.</div>
     </div>
 
     <div class="step">
@@ -193,7 +193,7 @@
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
       <p>Claude writes the login screen, the sign-out button, and the gate on your chat. Then it opens your <span class="cmd">.env</span> so you can paste your keys in.</p>
-      <div class="tip">👉🏿 Paste your three Supabase values in when it opens the file, and save.</div>
+      <div class="tip">👉🏽 Paste your three Supabase values in when it opens the file, and save.</div>
     </div>
 
     <div class="step">
@@ -204,7 +204,7 @@
         <li><b>Publishable key</b> — Settings → API Keys</li>
         <li><b>Secret key</b> — same page. You won't use it until Part 4, but grab it now.</li>
       </ul>
-      <div class="tip">👉🏿 Ignore the "Legacy" tab, those keys are being retired. Use publishable + secret.</div>
+      <div class="tip">👉🏽 Ignore the "Legacy" tab, those keys are being retired. Use publishable + secret.</div>
       <p style="margin-top:14px;">Claude will add all three to your <span class="cmd">.env</span> for you — paste them in when it asks.</p>
       <p>Then in Vercel → your project → <b>Settings → Environment Variables</b>, add the same three values and redeploy. Claude will tell you the exact names it used, usually:</p>
       <ul class="check">
@@ -221,7 +221,7 @@
     <div class="step">
       <h2><span class="n">12</span> Create the product</h2>
       <p>Stripe → Product catalog → create a product with a monthly price → copy the <b>price ID</b>. Then Coupons → make a 100%-off coupon and a promotion code for testing.</p>
-      <div class="tip">👉🏿 Copy the one that starts with <span class="cmd">price_</span>, not <span class="cmd">prod_</span>. Everyone grabs the wrong one.</div>
+      <div class="tip">👉🏽 Copy the one that starts with <span class="cmd">price_</span>, not <span class="cmd">prod_</span>. Everyone grabs the wrong one.</div>
     </div>
 
     <div class="step">
@@ -276,7 +276,7 @@
       </div>
       <p>Then add <span class="cmd">SYSTEME_API_KEY</span> to Vercel's Environment Variables and redeploy.</p>
       <div class="warn">⚠️ <b>Don't let it build a second webhook.</b> You already have one from step 14 listening for <span class="cmd">checkout.session.completed</span>. Two handlers on the same event is how you end up with the tag firing but access not granted — that's why the prompt says to extend the existing one.</div>
-      <div class="tip">👉🏿 Test it with your 100%-off promo code, then check Contacts in Systeme.io. You should see yourself with the <span class="cmd">paid</span> tag and the welcome email on its way.</div>
+      <div class="tip">👉🏽 Test it with your 100%-off promo code, then check Contacts in Systeme.io. You should see yourself with the <span class="cmd">paid</span> tag and the welcome email on its way.</div>
     </div>
 
     <div class="divider"><span>If you get stuck</span></div>
