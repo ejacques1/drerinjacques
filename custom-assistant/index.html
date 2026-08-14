@@ -192,8 +192,8 @@
         <span class="js-copy">Add Supabase login so people can create accounts and log in, and gate the assistant so only logged-in users can use it. I've already created my Supabase project, so don't tell me to make one. Ask me once for all three values — Project URL, publishable key, and secret key — and put them in my .env now, even if the secret key isn't used until I add payments later.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
-      <p>Claude can't get into your Supabase account, so it hands you SQL to run yourself. Take it to Supabase → <b>SQL Editor</b> → paste → <b>Run</b>.</p>
-      <div class="warn">⚠️ <b>Before you run it, look for "row level security."</b> That's what makes each person only able to see their own record. Without it, anyone could read your whole customer list, or add a row saying they're subscribed and walk straight through your paywall. If it isn't in the SQL, ask for it: <i>"Add row level security policies so each user can only read and write their own row."</i></div>
+      <p>Claude writes the login screen, the sign-out button, and the gate on your chat. Then it opens your <span class="cmd">.env</span> so you can paste your keys in.</p>
+      <div class="tip">👉 <b>No SQL here, and that's correct.</b> Supabase already has a users table built in, so sign-up and login just work. You'll get SQL in Part 4, when we add a table to record who's paid.</div>
     </div>
 
     <div class="step">
@@ -229,9 +229,11 @@
       <p>Copy your Stripe <b>publishable</b> and <b>secret</b> keys (don't show the secret on camera). Then paste this into Claude:</p>
       <div class="prompt">
         <div class="lbl">Prompt — Add payments</div>
-        <span class="js-copy">Add a Stripe subscription: a subscribe button, a webhook handler, and gate the assistant so only paying subscribers get in.</span>
+        <span class="js-copy">Add a Stripe subscription: a subscribe button, a webhook handler, and gate the assistant so only paying subscribers get in. Include row level security on any table you create, so each person can only read and write their own row.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
+      <p><b>This is where you get SQL.</b> Claude can't reach your Supabase account, so it hands you the SQL for the table that records who's paid. Take it to Supabase → <b>SQL Editor</b> → paste → <b>Run</b>.</p>
+      <div class="warn">⚠️ <b>Look for "row level security" in that SQL before you run it.</b> That's what stops one customer reading everyone else's records — or adding a row saying they're subscribed and walking straight through your paywall. If it's missing, ask: <i>"Add row level security policies so each user can only read and write their own row."</i></div>
       <p>Then push and deploy.</p>
     </div>
 
