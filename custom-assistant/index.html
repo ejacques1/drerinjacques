@@ -206,20 +206,20 @@
       </ul>
       <div class="tip">👉🏽 Ignore the "Legacy" tab, those keys are being retired. Use publishable + secret.</div>
       <p style="margin-top:14px;">Claude will add all three to your <span class="cmd">.env</span> for you — paste them in when it asks.</p>
-      <p><b>Now push the login code up.</b> Everything Claude just wrote is still only on your computer:</p>
-      <div class="prompt">
-        <div class="lbl">Prompt — Push the login</div>
-        <span class="js-copy">Push these changes to GitHub so my live site gets the login.</span>
-        <button class="copy" onclick="copyText(this)">Copy</button>
-      </div>
-      <div class="warn">⚠️ <b>Don't skip this.</b> Hitting "Redeploy" in Vercel just re-runs your last push — it can't see files sitting on your computer. Skip it and you'll add your keys, redeploy, reload your live site, and find no login screen, with nothing obviously broken.</div>
-      <p style="margin-top:14px;">Then in Vercel → your project → <b>Settings → Environment Variables</b>, add the same three values and redeploy. Claude will tell you the exact names it used, usually:</p>
+      <p><b>Next, put the same three into Vercel</b> → your project → <b>Settings → Environment Variables</b>. Claude will tell you the exact names it used, usually:</p>
       <ul class="check">
         <li><span class="cmd">NEXT_PUBLIC_SUPABASE_URL</span> — your Project URL</li>
         <li><span class="cmd">NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY</span> — your publishable key</li>
         <li><span class="cmd">SUPABASE_SECRET_KEY</span> — your secret key</li>
       </ul>
-      <p>Then sign up on the live site and watch yourself appear in Supabase under <b>Authentication → Users</b>.</p>
+      <p style="margin-top:14px;"><b>Now push the login code up.</b> Everything Claude wrote is still only on your computer:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Push the login</div>
+        <span class="js-copy">Push these changes to GitHub so my live site gets the login.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="warn">⚠️ <b>Keys into Vercel first, then push</b> — same rule as step 7. Pushing first deploys the login code before the keys exist, so the live site breaks until you redeploy again. And don't reach for Vercel's "Redeploy" button instead of pushing: it just re-runs your last push, it can't see files on your computer.</div>
+      <p style="margin-top:14px;">Give it a minute to deploy, then sign up on the live site and watch yourself appear in Supabase under <b>Authentication → Users</b>.</p>
       <div class="warn">⚠️ The <b>secret key never gets <span class="cmd">NEXT_PUBLIC_</span> in front of it</b>. That prefix ships it to the browser for anyone to steal. The first two are meant to be public, the third is not.</div>
     </div>
 
@@ -241,12 +241,14 @@
       </div>
       <p><b>This is where you get SQL.</b> Claude can't reach your Supabase account, so it hands you the SQL for the table that records who's paid. Take it to Supabase → <b>SQL Editor</b> → paste → <b>Run</b>.</p>
       <div class="warn">⚠️ <b>Look for "row level security" in that SQL before you run it.</b> That's what stops one customer reading everyone else's records — or adding a row saying they're subscribed and walking straight through your paywall. If it's missing, ask: <i>"Add row level security policies so each user can only read and write their own row."</i></div>
-      <p><b>Then push it up</b> — same as before, the payment code is only on your computer until you do:</p>
+      <p style="margin-top:14px;"><b>Add your Stripe keys to Vercel</b> → Settings → Environment Variables — the publishable key, the secret key, and your price ID. Claude will tell you the names it used.</p>
+      <p><b>Then push it up</b> — keys first, then push, same rule as before:</p>
       <div class="prompt">
         <div class="lbl">Prompt — Push the payments</div>
         <span class="js-copy">Push these changes to GitHub so my live site gets the payments.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
+      <div class="tip">👉🏽 The webhook signing secret comes in step 14 — you can't get it until this is deployed and has a URL to point at.</div>
     </div>
 
     <div class="step">
