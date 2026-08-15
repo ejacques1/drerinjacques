@@ -271,13 +271,16 @@
 
     <div class="step">
       <h2><span class="n">14</span> Connect the webhook</h2>
-      <p>Stripe → Developers → Webhooks → add an endpoint at <b>the webhook URL Claude gave you</b> (your live URL plus the path it created), and select these events:</p>
+      <p>In Stripe, go to <b>Settings</b> and type <span class="cmd">webhook</span> in the search bar → <b>Create a webhook</b>. Leave the scope on <b>Your account</b> and the API version as-is.</p>
+      <p>Paste in <b>the webhook URL Claude gave you</b>, then use the search box under Events to find and tick these four:</p>
       <ul class="check">
         <li><span class="cmd">checkout.session.completed</span></li>
+        <li><span class="cmd">customer.subscription.created</span></li>
         <li><span class="cmd">customer.subscription.updated</span></li>
         <li><span class="cmd">customer.subscription.deleted</span></li>
       </ul>
-      <p>Copy the signing secret (<span class="cmd">whsec_...</span>) into Vercel as <span class="cmd">STRIPE_WEBHOOK_SECRET</span>, then redeploy.</p>
+      <div class="tip">👉🏽 Search for them one at a time rather than using the suggested groups — those add far more than you need. <b>Selected events should say 4</b> before you finish.</div>
+      <p>Then copy the signing secret (<span class="cmd">whsec_...</span>) into your <span class="cmd">.env</span> — that's the last empty slot — and into Vercel as <span class="cmd">STRIPE_WEBHOOK_SECRET</span>. Then redeploy.</p>
       <div class="warn">⚠️ Without the <b>deleted</b> event, people who cancel keep access forever.</div>
     </div>
 
