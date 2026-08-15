@@ -227,13 +227,28 @@
 
     <div class="step">
       <h2><span class="n">12</span> Create the product</h2>
-      <p>Stripe → Product catalog → create a product with a monthly price → copy the <b>price ID</b>. Then Coupons → make a 100%-off coupon and a promotion code for testing.</p>
-      <div class="tip">👉🏽 Copy the one that starts with <span class="cmd">price_</span>, not <span class="cmd">prod_</span>. Everyone grabs the wrong one.</div>
+      <p>Stripe → <b>Product catalog</b> → create a product with a monthly price. Name it whatever your assistant is — customers see this at checkout.</p>
+      <p>Then <b>Coupons</b> → make a 100%-off coupon and a promotion code, so you can test the whole thing without charging yourself.</p>
+      <div class="tip">👉🏽 When you copy the price, take the one that starts with <span class="cmd">price_</span>, not <span class="cmd">prod_</span>. Everyone grabs the wrong one.</div>
+      <p style="margin-top:14px;"><b>Now get somewhere to put your keys.</b> Paste this into Claude:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Prepare your .env for Stripe</div>
+        <span class="js-copy">Add the Stripe environment variables to my .env with empty values and open the file for me — publishable key, secret key, and price ID — using whatever names the code will expect. I'll paste the values in as I grab them from Stripe.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>Your <span class="cmd">.env</span> opens with the three labels waiting. Now go collect them:</p>
+      <ul class="check">
+        <li><b>Price ID</b> — on your product page, starts with <span class="cmd">price_</span></li>
+        <li><b>Publishable key</b> — Developers → API keys, starts with <span class="cmd">pk_</span></li>
+        <li><b>Secret key</b> — same page, starts with <span class="cmd">sk_</span></li>
+      </ul>
+      <p>Paste each one into the file as you get it, then save.</p>
+      <div class="warn">⚠️ Don't reveal your <b>secret key</b> on camera or share it anywhere. Anyone who has it can charge cards and issue refunds on your account.</div>
     </div>
 
     <div class="step">
       <h2><span class="n">13</span> Add payments</h2>
-      <p>Copy your Stripe <b>publishable</b> and <b>secret</b> keys (don't show the secret on camera). Then paste this into Claude:</p>
+      <p>Your keys are already in <span class="cmd">.env</span> from the last step, so Claude has everything it needs. Paste this in:</p>
       <div class="prompt">
         <div class="lbl">Prompt — Add payments</div>
         <span class="js-copy">Add a Stripe subscription: a subscribe button, a webhook handler, and gate the assistant so only paying subscribers get in. Include row level security on any table you create, so each person can only read and write their own row.</span>
