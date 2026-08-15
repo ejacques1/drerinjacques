@@ -252,11 +252,10 @@
       <p>Your keys are already in <span class="cmd">.env</span> from the last step, so Claude has everything it needs. Paste this in:</p>
       <div class="prompt">
         <div class="lbl">Prompt — Add payments</div>
-        <span class="js-copy">Add a Stripe subscription: a subscribe button, a webhook handler, and gate the assistant so only paying subscribers get in. Turn on row level security for every table you create. Anything that records who has paid must be read-only for users — only the webhook writes to it — so nobody can mark themselves as subscribed and skip paying. On the checkout session, turn on promotion codes and set payment_method_collection to if_required, so anyone using a 100%-off code isn't asked for a card.</span>
+        <span class="js-copy">Add a Stripe subscription: a subscribe button, a webhook handler, and gate the assistant so only paying subscribers get in. Turn on row level security for every table you create. Anything that records who has paid must be read-only for users — only the webhook writes to it — so nobody can mark themselves as subscribed and skip paying. On the checkout session, turn on promotion codes and set payment_method_collection to if_required, so anyone using a 100%-off code isn't asked for a card. Save the SQL I need to run in Supabase to a file called supabase/schema.sql, and tell me when it's there.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
-      <p><b>This is where you get SQL.</b> Claude can't reach your Supabase account, so it hands you the SQL for the table that records who's paid. Take it to Supabase → <b>SQL Editor</b> → paste → <b>Run</b>.</p>
-      <div class="warn">⚠️ <b>Look for "row level security" in that SQL before you run it.</b> That's what stops one customer reading everyone else's records — or adding a row saying they're subscribed and walking straight through your paywall. If it's missing, ask: <i>"Add row level security policies so each user can only read and write their own row."</i></div>
+      <div class="tip">👉🏽 In your VS Code sidebar you'll now see a <span class="cmd">supabase</span> folder with <span class="cmd">schema.sql</span> inside it. Open it, select all, copy. Then Supabase → <b>SQL Editor</b> → paste → <b>Run</b>. It creates the table that tracks who's paid, with the security rules already set.</div>
       <p style="margin-top:14px;"><b>Add your Stripe keys to Vercel</b> → Settings → Environment Variables — the publishable key, the secret key, and your price ID. Claude will tell you the names it used.</p>
       <p><b>Then push it up</b> — keys first, then push, same rule as before:</p>
       <div class="prompt">
