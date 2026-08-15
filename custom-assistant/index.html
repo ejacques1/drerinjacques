@@ -261,10 +261,12 @@
       <p style="margin-top:14px;"><b>Now push it up.</b> Your keys are already in Vercel from step 12, so this deploy will work first time:</p>
       <div class="prompt">
         <div class="lbl">Prompt — Push the payments</div>
-        <span class="js-copy">Push these changes to GitHub so my live site gets the payments.</span>
+        <span class="js-copy">Push these changes to GitHub so my live site gets the payments. Then give me the full webhook URL to paste into Stripe — my live site address plus the path you created. My live site address is: PASTE-YOUR-URL-HERE</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
-      <div class="tip">👉🏽 The webhook signing secret comes in step 14 — you can't get it until this is deployed and has a URL to point at.</div>
+      <div class="tip">👉🏽 Replace <span class="cmd">PASTE-YOUR-URL-HERE</span> with your live site address before you send it. Get it from Vercel → your project → the big link at the top.</div>
+      <div class="warn">⚠️ <b>Vercel shows you more than one address. Use the short one</b> — something like <span class="cmd">your-project.vercel.app</span>, with no random characters in it. The long ones point at one single deploy, so a webhook aimed at those works today and quietly stops working after your next push.</div>
+      <p>Claude hands you back the complete webhook address. That's what you'll paste into Stripe in step 14.</p>
     </div>
 
     <div class="step">
