@@ -252,7 +252,7 @@
       <p>Your keys are already in <span class="cmd">.env</span> from the last step, so Claude has everything it needs. Paste this in:</p>
       <div class="prompt">
         <div class="lbl">Prompt — Add payments</div>
-        <span class="js-copy">Add a Stripe subscription: a subscribe button, a webhook handler, and gate the assistant so only paying subscribers get in. Include row level security on any table you create, so each person can only read and write their own row. On the checkout session, turn on promotion codes and set payment_method_collection to if_required, so anyone using a 100%-off code isn't asked for a card.</span>
+        <span class="js-copy">Add a Stripe subscription: a subscribe button, a webhook handler, and gate the assistant so only paying subscribers get in. Turn on row level security for every table you create. Anything that records who has paid must be read-only for users — only the webhook writes to it — so nobody can mark themselves as subscribed and skip paying. On the checkout session, turn on promotion codes and set payment_method_collection to if_required, so anyone using a 100%-off code isn't asked for a card.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
       <p><b>This is where you get SQL.</b> Claude can't reach your Supabase account, so it hands you the SQL for the table that records who's paid. Take it to Supabase → <b>SQL Editor</b> → paste → <b>Run</b>.</p>
