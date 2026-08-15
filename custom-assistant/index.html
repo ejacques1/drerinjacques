@@ -244,7 +244,9 @@
       </ul>
       <div class="tip">👉🏽 Take the one starting <span class="cmd">price_</span>, not <span class="cmd">prod_</span>. Everyone grabs the wrong one.</div>
       <div class="warn">⚠️ <b>Keep your secret key private.</b> Don't paste it into a chat, email it, or put it in a screenshot. Anyone who has it can charge cards, issue refunds, and see your payout details.</div>
-      <p style="margin-top:14px;">Save the file. Then back in Stripe → <b>Coupons</b> → make a 100%-off coupon and a promotion code, so you can test the whole thing without charging yourself.</p>
+      <p style="margin-top:14px;">Save the file. <b>Now put those same three into Vercel while you have them</b> → your project → <b>Settings → Environment Variables</b>. Copy the name and the value straight across from your <span class="cmd">.env</span> so they match exactly.</p>
+      <div class="tip">👉🏽 Same as Part 3 — <span class="cmd">.env</span> is your computer, Vercel is your live site, and neither can see the other. Every key goes in both. Leave the webhook one out for now; it's coming in step 14.</div>
+      <p style="margin-top:14px;">Last thing here: back in Stripe → <b>Coupons</b> → make a 100%-off coupon and a promotion code, so you can test the whole thing without charging yourself.</p>
     </div>
 
     <div class="step">
@@ -256,8 +258,7 @@
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
       <div class="tip">👉🏽 In your VS Code sidebar you'll now see a <span class="cmd">supabase</span> folder with <span class="cmd">schema.sql</span> inside it. Open it, select all, copy. Then Supabase → <b>SQL Editor</b> → paste → <b>Run</b>. It creates the table that tracks who's paid, with the security rules already set.</div>
-      <p style="margin-top:14px;"><b>Add your Stripe keys to Vercel</b> → Settings → Environment Variables — the publishable key, the secret key, and your price ID. Claude will tell you the names it used.</p>
-      <p><b>Then push it up</b> — keys first, then push, same rule as before:</p>
+      <p style="margin-top:14px;"><b>Now push it up.</b> Your keys are already in Vercel from step 12, so this deploy will work first time:</p>
       <div class="prompt">
         <div class="lbl">Prompt — Push the payments</div>
         <span class="js-copy">Push these changes to GitHub so my live site gets the payments.</span>
