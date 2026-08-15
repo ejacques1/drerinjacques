@@ -228,22 +228,21 @@
     <div class="step">
       <h2><span class="n">12</span> Create the product</h2>
       <p>Stripe → <b>Product catalog</b> → create a product with a monthly price. Name it whatever your assistant is — customers see this at checkout.</p>
-      <p>Then <b>Coupons</b> → make a 100%-off coupon and a promotion code, so you can test the whole thing without charging yourself.</p>
-      <div class="tip">👉🏽 When you copy the price, take the one that starts with <span class="cmd">price_</span>, not <span class="cmd">prod_</span>. Everyone grabs the wrong one.</div>
-      <p style="margin-top:14px;"><b>Now get somewhere to put your keys.</b> Paste this into Claude:</p>
+      <p style="margin-top:14px;"><b>Before you copy anything, give it somewhere to go.</b> Paste this into Claude:</p>
       <div class="prompt">
         <div class="lbl">Prompt — Prepare your .env for Stripe</div>
         <span class="js-copy">Add the Stripe environment variables to my .env with empty values and open the file for me — publishable key, secret key, and price ID — using whatever names the code will expect. I'll paste the values in as I grab them from Stripe.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
-      <p>Your <span class="cmd">.env</span> opens with the three labels waiting. Now go collect them:</p>
+      <p>Your <span class="cmd">.env</span> opens with the three labels waiting. Now collect them one at a time, pasting each into the file as you go:</p>
       <ul class="check">
-        <li><b>Price ID</b> — on your product page, starts with <span class="cmd">price_</span></li>
+        <li><b>Price ID</b> — on the product you just made, starts with <span class="cmd">price_</span></li>
         <li><b>Publishable key</b> — Developers → API keys, starts with <span class="cmd">pk_</span></li>
         <li><b>Secret key</b> — same page, starts with <span class="cmd">sk_</span></li>
       </ul>
-      <p>Paste each one into the file as you get it, then save.</p>
+      <div class="tip">👉🏽 Take the one starting <span class="cmd">price_</span>, not <span class="cmd">prod_</span>. Everyone grabs the wrong one.</div>
       <div class="warn">⚠️ Don't reveal your <b>secret key</b> on camera or share it anywhere. Anyone who has it can charge cards and issue refunds on your account.</div>
+      <p style="margin-top:14px;">Save the file. Then back in Stripe → <b>Coupons</b> → make a 100%-off coupon and a promotion code, so you can test the whole thing without charging yourself.</p>
     </div>
 
     <div class="step">
