@@ -228,10 +228,11 @@
     <div class="step">
       <h2><span class="n">12</span> Create the product</h2>
       <p>Stripe → <b>Product catalog</b> → create a product with a monthly price. Name it whatever your assistant is — customers see this at checkout.</p>
-      <p style="margin-top:14px;"><b>Before you copy anything, give it somewhere to go.</b> Paste this into Claude:</p>
+      <p style="margin-top:14px;"><b>Before you copy anything, give it somewhere to go.</b></p>
+      <div class="warn">⚠️ <b>Close your <span class="cmd">.env</span> tab first if it's still open</b> from Part 3. Claude is about to write to that file, and if your editor has an older copy open, saving fails with <i>"the content of the file is newer"</i> — which looks alarming and isn't. Close it, then run the prompt.</div>
       <div class="prompt">
         <div class="lbl">Prompt — Prepare your .env for Stripe</div>
-        <span class="js-copy">Add the Stripe environment variables to my .env with empty values and open the file for me — publishable key, secret key, and price ID — using whatever names the code will expect. I'll paste the values in as I grab them from Stripe.</span>
+        <span class="js-copy">Add the Stripe environment variables to my .env with empty values and open the file for me — publishable key, secret key, and price ID — using whatever names the code will expect. Before you edit it, check whether I have the file open, since editing it behind me will break my save. I'll paste the values in as I grab them from Stripe.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
       <p>Your <span class="cmd">.env</span> opens with the three labels waiting. Now collect them one at a time, pasting each into the file as you go:</p>
@@ -318,6 +319,7 @@
       <p><b>"My key isn't working."</b><br>Check there's no space after the <span class="cmd">=</span> and no quotes around the key. Then tell Claude to restart the app, it only reads the key on startup.</p>
       <p><b>"My first Vercel deploy is broken."</b><br>You probably deployed before adding the API key. Add it under Settings → Environment Variables, then redeploy.</p>
       <p><b>"I added login (or payments) but my live site doesn't have it."</b><br>You didn't push. Vercel's "Redeploy" button re-runs your last push — it can't see files on your computer. Tell Claude <i>"push these changes to GitHub"</i>, wait a minute, then reload.</p>
+      <p><b>"It says <i>'the content of the file is newer'</i> and won't let me save my .env."</b><br>Nothing is lost or exposed. You had the file open while Claude wrote to it, so your editor is holding an older copy. Click <b>Overwrite</b> — that keeps what you typed. If Claude's new lines disappear, ask it to add them again. To avoid it entirely, close <span class="cmd">.env</span> before asking Claude to change it.</p>
       <p><b>"I paid with my test code but I'm still locked out."</b><br>That's the webhook. Check the endpoint URL matches the one Claude gave you, and that all three events are selected.</p>
       <p><b>"Can I change my assistant later?"</b><br>Yes, that's the whole point. Open <span class="cmd">assistant-instructions.md</span>, rewrite it, save. Add files to <span class="cmd">knowledge</span> any time. Push to GitHub and it's live in about a minute.</p>
     </div>
