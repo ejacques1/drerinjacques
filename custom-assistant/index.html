@@ -232,14 +232,15 @@
       <div class="warn">⚠️ <b>Close your <span class="cmd">.env</span> tab first if it's still open</b> from Part 3. Claude is about to write to that file, and if your editor has an older copy open, saving fails with <i>"the content of the file is newer"</i> — which looks alarming and isn't. Close it, then run the prompt.</div>
       <div class="prompt">
         <div class="lbl">Prompt — Prepare your .env for Stripe</div>
-        <span class="js-copy">Add the Stripe environment variables to my .env with empty values and open the file for me — publishable key, secret key, and price ID — using whatever names the code will expect. Before you edit it, check whether I have the file open, since editing it behind me will break my save. I'll paste the values in as I grab them from Stripe.</span>
+        <span class="js-copy">Add all the Stripe environment variables to my .env with empty values and open the file for me — publishable key, secret key, price ID, and webhook signing secret — using whatever names the code will expect. Include the webhook one even though I won't have that value until later, so the file is complete. Before you edit it, check whether I have the file open, since editing it behind me will break my save. I'll paste the values in as I get them.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
-      <p>Your <span class="cmd">.env</span> opens with the three labels waiting. Now collect them one at a time, pasting each into the file as you go:</p>
+      <p>Your <span class="cmd">.env</span> opens with all four labels waiting. Collect the first three now, pasting each into the file as you go:</p>
       <ul class="check">
         <li><b>Price ID</b> — on the product you just made, starts with <span class="cmd">price_</span></li>
         <li><b>Publishable key</b> — Developers → API keys, starts with <span class="cmd">pk_</span></li>
         <li><b>Secret key</b> — same page, starts with <span class="cmd">sk_</span></li>
+        <li><b>Webhook signing secret</b> — leave this one empty. It doesn't exist until step 14, because Stripe won't give you one until your site is deployed and has a URL to point at.</li>
       </ul>
       <div class="tip">👉🏽 Take the one starting <span class="cmd">price_</span>, not <span class="cmd">prod_</span>. Everyone grabs the wrong one.</div>
       <div class="warn">⚠️ Don't reveal your <b>secret key</b> on camera or share it anywhere. Anyone who has it can charge cards and issue refunds on your account.</div>
