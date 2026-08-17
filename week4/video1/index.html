@@ -131,13 +131,13 @@
         <span class="js-copy">When someone purchases a subscription on my platform through Stripe, add their email to Systeme.io as a contact and tag them "Member" (or whatever tag I choose), so I can trigger a welcome-email automation off that tag. Stripe is already set up and its keys are already in Vercel, reuse the existing Stripe setup. Build it end to end, verify the Stripe webhook so it's secure, use an environment variable for the Systeme.io API key, and don't ask me questions, make reasonable choices yourself. When you're done, tell me: the exact name of the Systeme.io environment variable to add in Vercel, and exactly where to point the Stripe webhook in my Stripe dashboard.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
-      <p>Then finish the two manual pieces Claude hands you:</p>
+      <p>Then finish the one manual piece Claude hands you:</p>
       <ul>
         <li>Add your API key in <span class="path">Vercel → Settings → Environment Variables</span> as <span class="mono">SYSTEME_API_KEY</span></li>
-        <li>In Stripe, add the webhook endpoint Claude gives you (<span class="path">Developers → Webhooks → Add endpoint</span>), then copy its signing secret into Vercel</li>
       </ul>
+      <div class="note">👉 Your Stripe webhook was already set up in Week 3, the tagging just gets added to it. There's nothing new to do in Stripe.</div>
       <div class="warn"><b>Redeploy after adding the key.</b> Environment variables only take effect on a new deployment. Add the key, then redeploy in Vercel, or it won't work.</div>
-      <div class="done">✓ Done when: Claude confirms it's built, and <span class="mono">SYSTEME_API_KEY</span> + the webhook secret are in Vercel.</div>
+      <div class="done">✓ Done when: Claude confirms it's built, and <span class="mono">SYSTEME_API_KEY</span> is in Vercel.</div>
     </section>
 
     <section>
