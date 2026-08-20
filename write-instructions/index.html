@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Write Your Assistant's Instructions — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --gold:#F4B02E; --ink:#1c2733; --muted:#5f6b7a;
+    --bg:#F6F5F1; --card:#ffffff; --line:#e7e3d9;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .top{background:var(--navy);color:#fff;padding:26px 20px;}
+  .top .in{max-width:740px;margin:0 auto;}
+  .brand{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.9rem;}
+  .brand b{color:var(--gold);}
+  h1{margin:.35em 0 .1em;font-size:clamp(1.7rem,4.6vw,2.5rem);font-weight:900;letter-spacing:-.02em;}
+  .top p{margin:.2em 0 0;color:#bcccdf;font-size:1.02rem;}
+  .wrap{max-width:740px;margin:0 auto;padding:24px 20px 80px;}
+  .explain{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:16px;padding:18px 22px;margin:16px 0;}
+  .explain p{margin:.5em 0;}
+  .explain .big{font-weight:800;color:var(--navy);}
+  .divider{text-align:center;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);font-size:.9rem;margin:40px 0 6px;position:relative;}
+  .divider span{background:var(--bg);padding:0 14px;position:relative;z-index:1;}
+  .divider::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line);}
+  .divider small{display:block;color:var(--muted);font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:none;margin-top:4px;}
+  .prep{background:rgba(244,176,43,.14);border:1px solid var(--gold);border-radius:12px;padding:14px 18px;margin:14px 0;font-weight:600;}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:16px 0;}
+  .step h2{margin:0 0 4px;font-size:1.22rem;}
+  .step p{margin:8px 0 0;}
+  .tag{display:inline-block;background:var(--navy);color:var(--gold);border-radius:999px;font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;margin-bottom:8px;}
+  .tip{background:rgba(244,176,43,.16);border-left:4px solid var(--gold);border-radius:8px;padding:11px 14px;margin-top:12px;font-size:.96rem;}
+  .tip b{color:var(--navy);}
+  .check{list-style:none;padding:0;margin:8px 0 0;}
+  .check li{position:relative;padding:8px 0 8px 30px;border-bottom:1px solid var(--line);}
+  .check li:last-child{border-bottom:none;}
+  .check li::before{content:"\2713";position:absolute;left:0;top:8px;color:#1c8a4a;font-weight:900;}
+  .num{list-style:none;padding:0;margin:8px 0 0;counter-reset:s;}
+  .num li{position:relative;padding:8px 0 8px 38px;border-bottom:1px solid var(--line);counter-increment:s;}
+  .num li:last-child{border-bottom:none;}
+  .num li::before{content:counter(s);position:absolute;left:0;top:7px;width:26px;height:26px;background:var(--navy);color:var(--gold);border-radius:50%;font-weight:900;font-size:.85rem;display:flex;align-items:center;justify-content:center;}
+  .prompt{margin-top:12px;background:#0f2748;border-radius:12px;padding:14px 16px;position:relative;}
+  .prompt .lbl{color:var(--gold);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
+  .prompt .js-copy{color:#eaf1fb;font-family:var(--mono);font-size:.94rem;line-height:1.55;display:block;padding-right:76px;white-space:pre-wrap;}
+  .copy{position:absolute;top:12px;right:12px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:7px 12px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .cmd{display:inline-block;background:#0f2748;color:#eaf1fb;font-family:var(--mono);border-radius:6px;padding:1px 8px;font-weight:700;font-size:.92em;}
+  .done{background:var(--navy);color:#fff;border-radius:16px;padding:20px 22px;margin-top:20px;}
+  .done b{color:var(--gold);}
+  .topjoin{max-width:740px;margin:0 auto;padding:14px 20px 0;font-size:.93rem;color:var(--muted);}
+  .topjoin a{color:var(--navy);font-weight:800;text-decoration:none;border-bottom:2px solid var(--gold);}
+  .invite{background:var(--navy);border:1px solid var(--gold);border-radius:16px;padding:30px 24px;margin-top:16px;text-align:center;color:#fff;}
+  .invite h3{margin:0 0 10px;font-size:clamp(1.35rem,3.4vw,1.7rem);font-weight:900;color:var(--gold);}
+  .invite p{margin:0 auto 16px;color:#cdd9e8;max-width:54ch;}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy);text-decoration:none;font-weight:900;font-size:1.05rem;padding:14px 26px;border-radius:12px;}
+  .urlline{color:#8ea3bd;font-size:.9rem;margin-top:12px;}
+  .urlline b{color:var(--gold);}
+  footer{max-width:740px;margin:0 auto;padding:0 20px 60px;color:var(--muted);font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="top"><div class="in">
+    <div class="brand">Leveraging <b>AI</b></div>
+    <h1>Write Your Assistant's Instructions</h1>
+    <p>One prompt. It interviews you, then hands you a finished instructions file to paste into your build.</p>
+  </div></div>
+
+  <div class="topjoin">With Dr. Erin Jacques · <a href="https://skool.com/leveragingai/about">Join the Leveraging AI community →</a></div>
+
+  <div class="wrap">
+
+    <div class="prep">👉🏽 Companion to the Custom GPT video — do this first, before you build. It gives you the file the build asks for.</div>
+
+    <div class="explain">
+      <p>Your assistant is only as good as its instructions. This is the file that decides how it behaves, what it says, and what it refuses to do.</p>
+      <p class="big">Paste the prompt below into ChatGPT or Claude. It'll ask you a few questions, then hand you a finished instructions file.</p>
+      <p>Copy that into your build when it asks what your assistant should be about.</p>
+    </div>
+
+    <div class="divider"><span>Start here</span><small>You don't have a GPT yet</small></div>
+
+    <div class="step">
+      <span class="tag">Prompt 1 · Build from scratch</span>
+      <h2>Write my instructions for me</h2>
+      <p>Paste this into ChatGPT or Claude. It asks six questions, one at a time, then writes the whole file.</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Build my instructions</div>
+        <span class="js-copy">I'm building my own AI assistant as a web app, and I need you to write its instructions file for me.
+
+Interview me first. Ask me ONE question at a time and wait for my answer before asking the next one — never send me a list of questions at once. Keep each question short and in plain English. If my answer is vague, ask one follow-up to sharpen it, then move on.
+
+Ask me these, in this order:
+
+1. What is your assistant for? What does it help someone do?
+2. Who is the person using it? Be specific — their job, and how much they already know.
+3. What should they walk away with? A document, a decision, an answer, a plan?
+4. How should it talk to them? Warm, direct, funny, formal? Give me an example of how you'd want it to open a conversation.
+5. What should it never do? Anything you'd be embarrassed by, or that would be wrong for your audience.
+6. Is there anything it should always ask for before it can help?
+
+When you have my answers, write the complete instructions file. Use this structure:
+
+- Who the assistant is, in one line
+- Who it's talking to, and what to assume about them
+- How it behaves — tone, length, format
+- What it does step by step in a typical conversation
+- Hard rules — the things it must never do
+
+Rules for the file itself:
+- Write it TO the assistant, as instructions. Not about it.
+- Be specific. "Be helpful" tells it nothing. "Answer in under 100 words unless asked to go deeper" tells it exactly what to do.
+- If you're telling it to ask questions, say to ask ONE at a time.
+- No jargon I'd have to look up.
+- Aim for one to two pages. Long enough to be clear, short enough that I'll actually edit it.
+
+Give me the finished file as plain markdown I can copy straight out. Nothing else around it.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+    </div>
+
+    <div class="divider"><span>Already have a Custom GPT?</span><small>Use this one instead</small></div>
+
+    <div class="step">
+      <span class="tag">Prompt 2 · Improve what you have</span>
+      <h2>Make my instructions stronger</h2>
+      <p>It takes what you've already written, tells you what's weak, and rewrites it.</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Improve my instructions</div>
+        <span class="js-copy">I already have instructions for a custom GPT, and I want you to improve them.
+
+Here they are:
+
+[PASTE YOUR INSTRUCTIONS HERE]
+
+First, tell me what's weak about them. Be honest and specific — point at actual lines. Look for:
+- Vague direction that doesn't change what it does ("be helpful", "be professional")
+- Missing rules about what it should never do
+- Nothing about tone or how long answers should be
+- Places where it'll ask several questions at once instead of one
+- Anything that assumes the reader knows a term they might not
+
+Then ask me up to three questions about what's missing — one at a time, waiting for my answer each time.
+
+Then rewrite the whole thing and give it back as plain markdown I can copy. Keep everything that was working. Tell me in one line what you changed and why.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="tip">👉🏽 Both prompts work in <b>ChatGPT or Claude</b>, so you can do this before you install anything.</div>
+    </div>
+
+    <div class="divider"><span>What to do with it</span></div>
+
+    <div class="step">
+      <h2>Three steps</h2>
+      <ol class="num">
+        <li>Copy the file it gives you.</li>
+        <li>Paste it in when the build asks what your assistant should be about.</li>
+        <li>Later, open <span class="cmd">assistant-instructions.md</span> and change anything you want.</li>
+      </ol>
+      <div class="done" style="margin-top:16px;">That file <b>is</b> your assistant. Edit it, save, send a message — you'll see the difference immediately. That's what owning it means.</div>
+    </div>
+
+    <div class="divider"><span>What separates good instructions from bad</span></div>
+
+    <div class="step">
+      <h2>Four things</h2>
+      <p><b>Be specific about length.</b> "Be concise" does nothing. "Answer in under 150 words unless I ask for more" works.</p>
+      <p><b>Say what it should never do.</b> Most people only write what they want. The rules about what it must refuse are what keep it on-brand when someone pushes.</p>
+      <p><b>One question per message.</b> If your assistant interviews people, say this explicitly. Otherwise it sends a wall of questions and people close the tab.</p>
+      <p><b>Give it an example.</b> One sample exchange — a question and the answer you'd want — teaches it more than a paragraph of description.</p>
+    </div>
+
+    <div class="invite">
+      <h3>Ready to turn it into a product?</h3>
+      <p>Once your instructions are written, the Custom GPT guide walks you through building it into your own paid app — logins, payments, the works. We do it together inside the community.</p>
+      <a class="btn" href="https://skool.com/leveragingai/about">Join Leveraging AI →</a>
+      <div class="urlline">or go to <b>skool.com/leveragingai</b></div>
+    </div>
+
+  </div>
+
+  <footer>Dr. Erin Jacques · Leveraging AI</footer>
+
+<script>
+  function copyText(btn){
+    var el = btn.parentElement.querySelector('.js-copy');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = o; }, 1500);
+    });
+  }
+</script>
+</body>
+</html>
