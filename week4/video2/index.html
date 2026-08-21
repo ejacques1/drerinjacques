@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Grow Your List Safely — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --navy2:#0E2E57;
+    --gold:#F4B02E;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--navy);color:#fff;font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.85rem;color:#bcccdf;}
+  .brand b{color:var(--gold);}
+  .kicker{color:var(--gold);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;margin-bottom:12px;}
+  section{padding:46px 0;border-top:1px solid rgba(255,255,255,.12);}
+  section.hero{border-top:none;padding:44px 0 48px;}
+  h1{font-size:clamp(2.1rem,5.4vw,3.4rem);font-weight:900;letter-spacing:-.025em;line-height:1.06;margin:0 0 16px;}
+  h1 span{color:var(--gold);}
+  h2{font-size:clamp(1.5rem,3.8vw,2.2rem);font-weight:900;letter-spacing:-.02em;margin:0 0 8px;}
+  h2 .st{color:var(--gold);}
+  .lead{font-size:clamp(1.15rem,2.6vw,1.5rem);color:#dbe6f3;font-weight:600;margin:0 0 8px;}
+  p{font-size:clamp(1.02rem,2.2vw,1.18rem);color:#cdd9e8;margin:0 0 14px;max-width:72ch;}
+  p b, li b{color:#fff;}
+  ul{list-style:none;padding:0;margin:0 0 8px;}
+  li{font-size:clamp(1.04rem,2.3vw,1.24rem);color:#e6eef8;padding:11px 0 11px 32px;position:relative;border-bottom:1px solid rgba(255,255,255,.08);}
+  li:last-child{border-bottom:none;}
+  li::before{content:"";position:absolute;left:2px;top:19px;width:11px;height:11px;background:var(--gold);border-radius:50%;}
+  li .sub{display:block;color:#aebfd4;font-size:.9em;font-weight:400;margin-top:2px;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:8px 0;}
+  .card{background:var(--navy2);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px 20px;}
+  .card h3{margin:0 0 4px;font-size:1.15rem;color:var(--gold);font-weight:900;}
+  .card p{font-size:1rem;margin:0;color:#cdd9e8;}
+  .prompt{background:#0b1f3d;border:1px solid rgba(244,176,43,.4);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative;}
+  .prompt .lbl{color:var(--gold);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+  .prompt .js-copy{color:#eaf1fb;font-family:var(--mono);font-size:clamp(.9rem,1.9vw,1.0rem);line-height:1.55;display:block;padding-right:76px;white-space:pre-wrap;}
+  .copy{position:absolute;top:14px;right:14px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:7px 12px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .note{background:rgba(244,176,43,.14);border-left:5px solid var(--gold);border-radius:10px;padding:14px 16px;margin:14px 0;font-size:1.02rem;color:#fff;}
+  .warn{background:#3a1414;border-left:5px solid #e0533a;border-radius:10px;padding:14px 16px;margin:14px 0;font-size:1.02rem;color:#ffe6e0;}
+  .warn b{color:#ff9a86;}
+  .mono{font-family:var(--mono);background:rgba(255,255,255,.08);border-radius:5px;padding:1px 7px;font-size:.9em;}
+  .path{font-family:var(--mono);color:#ffe6b0;font-size:.95em;}
+  .stepnum{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:38px;background:var(--gold);color:var(--navy);border-radius:50%;font-weight:900;font-size:1.1rem;margin-right:6px;flex:none;}
+  .stephead{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+  .done{background:rgba(46,160,110,.16);border-left:5px solid #3ec98a;border-radius:10px;padding:12px 15px;margin:12px 0 0;color:#d6ffe9;font-size:1rem;}
+  .done b{color:#8affc8;}
+  .ramp{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0;}
+  .ramp .r{background:var(--navy2);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:14px 16px;}
+  .ramp .r .when{color:var(--gold);font-weight:800;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;}
+  .ramp .r .num{font-size:1.5rem;font-weight:900;color:#fff;margin-top:2px;}
+  footer{padding:30px 0 60px;color:#8ea3bd;font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">Leveraging <b>AI</b> · Week 4 · Video 2</div>
+
+    <section class="hero">
+      <div class="kicker">Week 4 — Grow</div>
+      <h1>Fill your list, <span>the safe way</span>.</h1>
+      <p class="lead">Your engine runs. Now you fill it. This is how you grow your email list, from people who already know you and from brand-new leads, without getting your domain flagged.</p>
+    </section>
+
+    <section>
+      <div class="kicker">The big idea</div>
+      <h2>Three buckets, and they <span class="st">never mix</span>.</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>1. Said yes</h3>
+          <p>People who paid or opted in through your lead magnet. Go straight into Systeme.io.</p>
+        </div>
+        <div class="card">
+          <h3>2. People who know you</h3>
+          <p>Your own exported contacts. Allowed in Systeme.io, with a warm first email and a slow ramp.</p>
+        </div>
+        <div class="card">
+          <h3>3. Cold strangers</h3>
+          <p>Scraped business emails, people who don't know you. Stay in your personal inbox, one at a time, until they reply yes. Never in Systeme.io.</p>
+        </div>
+      </div>
+      <div class="note"><b>The rule in one line:</b> Systeme.io only ever holds people who said yes or genuinely know you. Everyone else waits in your personal inbox until they raise their hand.</div>
+    </section>
+
+    <section>
+      <div class="kicker">How to do it — your own contacts</div>
+
+      <div class="stephead"><span class="stepnum">1</span><h2>Export <span class="st">them</span></h2></div>
+      <ul>
+        <li><b>Google Contacts:</b> <span class="path">contacts.google.com</span> → select your contacts → Export → <b>Google CSV</b></li>
+        <li><b>iPhone:</b> <span class="path">icloud.com/contacts</span> → select all → Export vCard (then import that into Google Contacts and export as CSV if you need a spreadsheet)</li>
+      </ul>
+
+      <div class="stephead" style="margin-top:28px;"><span class="stepnum">2</span><h2>Import and <span class="st">tag by date</span></h2></div>
+      <ul>
+        <li>In Systeme.io: <span class="path">Contacts → Import</span>, upload your CSV</li>
+        <li>Tag them in small batches by day, first 20 tagged <span class="mono">Aug 21</span>, next 20 <span class="mono">Aug 22</span>, and so on</li>
+      </ul>
+      <div class="note">👉 The date tags are your release schedule. Each day you email only that day's group, which keeps your volume small and safe.</div>
+
+      <div class="stephead" style="margin-top:28px;"><span class="stepnum">3</span><h2>Send the warm <span class="st">first email</span></h2></div>
+      <p>Send this to one batch a day. Keep it personal and plain, like a note from you, not a designed marketing template.</p>
+      <div class="prompt">
+        <div class="lbl">The warm first email</div>
+        <span class="js-copy">Subject: quick note from me
+
+Hi [First name],
+
+It's [Your name]. We crossed paths somewhere along the way, and I've been building something I'm genuinely excited about: [one line on what it is].
+
+I'd love to keep you in the loop as it grows, just the real behind-the-scenes of what I'm building and learning. You'd hear from me about three times a week, no spam, and you can leave anytime.
+
+I also put together a free [your lead magnet] for [who you help]. Grab it here → [lead magnet link]
+
+If you'd rather not get these, no hard feelings at all, just click here and you're out: [unsubscribe link].
+
+Good to reconnect,
+[Your name]</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+
+      <div class="stephead" style="margin-top:28px;"><span class="stepnum">4</span><h2>Check <span class="st">before you continue</span></h2></div>
+      <ul>
+        <li><b>Good signs:</b> people opening, clicking, replying</li>
+        <li><b>Bad signs:</b> spam complaints and bounces</li>
+        <li>Only send the next day's batch if the last one looked healthy. If it didn't, stop at 20 instead of burning your whole list</li>
+      </ul>
+      <div class="done">✓ Done when: your first batch is out, and the numbers look clean enough to keep going.</div>
+    </section>
+
+    <section>
+      <div class="kicker">The free thing — your lead magnet</div>
+      <h2>Give them something <span class="st">free</span>, and they fully opt in.</h2>
+      <p>Every email links to a free resource. When someone clicks and enters their email to grab it, they've just <b>actively opted in</b>, the strongest consent there is. They don't get added twice, they simply move from "a contact I imported" to "a fully opted-in subscriber." Tag them <span class="mono">opted-in</span> when they do it. Now even your imported contacts have raised their hand.</p>
+
+      <div class="note"><b>The formula that fits everyone:</b> give away the first quick win of your paid product, as one simple resource. Whatever your app helps people do, the freebie is a small, done-for-you slice of that. Formats that work for any niche: a <b>checklist, template, cheat sheet,</b> or <b>short guide</b>.</div>
+
+      <p><b>Examples, so people see how to adapt it:</b></p>
+      <ul>
+        <li>Learning platform → "The [Topic] Starter Kit: the 5 things to learn first"</li>
+        <li>Fitness → "7-Day High-Protein Meal Plan"</li>
+        <li>Real estate agent → "First-Time Homebuyer Checklist"</li>
+        <li>Bookkeeper → "Year-End Tax-Prep Checklist"</li>
+        <li>Notary / loan signing → "Loan Signing Day Checklist"</li>
+        <li>Consultant → "The 10-Point Website Audit"</li>
+        <li>Parenting → "Toddler Bedtime Routine Cheat Sheet"</li>
+      </ul>
+      <div class="note">👉 <b>The catch-all:</b> a free "resource vault", like "The [Niche] Toolkit: the templates, tools, and links I use to [get the result]", works for almost anybody and is easy to keep adding to. And if you're truly stuck: a one-page checklist of the first steps your product walks people through is a lead magnet for any niche.</div>
+
+      <p style="margin-top:22px;"><b>Not sure what your free thing should be?</b> Let real audience data decide. Paste this into Perplexity (or Claude / ChatGPT with web search turned on):</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Find my lead magnet</div>
+        <span class="js-copy">I'm building [describe your product or app] for [who you help]. I want to create a free resource (a lead magnet) that gets people to join my email list, and it has to solve a real, specific problem my audience actually has.
+
+Search widely, Reddit, forums, online communities, product and book reviews, YouTube comments, and general search results, anywhere [who you help] talk about this. Find:
+1. The 5 biggest pain points, frustrations, and recurring questions they have, in their own words. Quote real phrases where you can.
+2. The one quick win they most want but struggle to get on their own.
+
+Then give me 5 concrete lead-magnet ideas based on what you found, each as an actual title I could use (a checklist, template, cheat sheet, or short guide), with one line on why it would work.
+
+Finally, pick the single strongest one to lead with and tell me why. Keep it specific to [niche], no generic advice.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="done"><b>The loop:</b> run this prompt → build the free resource it picks → link it in every email → clicking it fully opts people in.</div>
+    </section>
+
+    <section>
+      <div class="kicker">The rules</div>
+      <h2>Aggressive marketing, <span class="st">done the smart way</span>.</h2>
+
+      <div class="note"><b>The legal footer is handled for you.</b> Systeme.io adds the unsubscribe link automatically, and you set your mailing address once in settings (use a PO box if you'd rather not use your home). After that, your emails are compliant, no need to think about it again.</div>
+
+      <p style="margin-top:20px;"><b>The four rules that are on you</b>, the ones Systeme.io can't do for you:</p>
+      <ul>
+        <li><b>Only email people who said yes or genuinely know you.</b> That's the three buckets.</li>
+        <li><b>Warm up a new domain slowly.</b> A new domain has no reputation yet, so ease in (schedule below).</li>
+        <li><b>Keep spam complaints near zero.</b> This hurts you far more than unsubscribes. Warm tone plus an easy opt-out keeps them down.</li>
+        <li><b>Clean out bounces.</b> Dead and mistyped emails drag your reputation down, so watch them and remove them.</li>
+      </ul>
+
+      <p style="margin-top:22px;"><b>The warm-up ramp, concrete numbers:</b></p>
+      <div class="ramp">
+        <div class="r"><div class="when">Days 1–3</div><div class="num">20/day</div></div>
+        <div class="r"><div class="when">Days 4–7</div><div class="num">50/day</div></div>
+        <div class="r"><div class="when">Week 2</div><div class="num">100/day</div></div>
+        <div class="r"><div class="when">Week 3</div><div class="num">200–300/day</div></div>
+        <div class="r"><div class="when">Week 4+</div><div class="num">500+/day</div></div>
+      </div>
+      <p>Only move up a level if the last batch looked healthy, good opens, almost no spam complaints, few bounces. If it didn't, hold there or drop back down before you climb again.</p>
+
+      <div class="warn"><b>What happens if you ignore this:</b><br>
+      • Gmail and Outlook start sending your emails to spam, <b>for everyone</b>, including your paying customers and the fans who actually want to hear from you.<br>
+      • Systeme.io can throttle, flag, suspend, or ban your account for high complaints or bounces.<br>
+      • Your domain's reputation gets damaged, and that is slow and painful to repair.<br>
+      In plain terms: one reckless blast can quietly break email for your whole business.</div>
+
+      <div class="note"><b>The balance:</b> be aggressive with your marketing, that's how you grow. Just be aggressive the <b>smart</b> way. A slow ramp now earns you the reputation to email thousands later. A burned domain reaches no one. Protect the asset first, then scale hard.</div>
+
+      <p style="margin-top:22px;"><b>The laws, just so you know the names:</b></p>
+      <ul>
+        <li><b>CAN-SPAM (US)</b> — <i>Controlling the Assault of Non-Solicited Pornography And Marketing Act.</i> The main US law. Be honest and let people leave, and Systeme.io covers the rest.</li>
+        <li><b>GDPR (Europe)</b> — <i>General Data Protection Regulation.</i> <b>CASL (Canada)</b> — <i>Canada's Anti-Spam Legislation.</i> Stricter, they generally want a clear opt-in before you email. These only matter if you do a lot of business with people in Europe or Canada. For most of you, your list is mostly US-based, so it's not a big worry, and anyone finding you from those regions would have opted in through your site anyway.</li>
+      </ul>
+      <div class="note">👉 Coming later: prospecting tools you can connect to Claude to find B2B emails and prospects. That's for cold outreach from your separate inbox, not for loading into Systeme.io.</div>
+    </section>
+
+    <section>
+      <div class="kicker">By the end of this video</div>
+      <h2>Your list is <span class="st">growing, and clean</span>.</h2>
+      <ul>
+        <li>Your warm contacts are in, tagged, and emailed in safe daily batches</li>
+        <li>Every email offers a free resource that <b>fully opts people in</b> when they click</li>
+        <li>Your domain stays trusted, so your emails keep landing in inboxes</li>
+      </ul>
+      <p style="margin-top:16px;">Next: broadcasts and a nurture sequence, so you can email this list on a schedule and turn free leads into paying customers.</p>
+    </section>
+
+    <footer>Dr. Erin Jacques · Leveraging AI</footer>
+  </div>
+
+<script>
+  function copyText(btn){
+    var el=btn.parentElement.querySelector('.js-copy');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o=btn.textContent; btn.textContent='Copied!';
+      setTimeout(function(){btn.textContent=o;},1500);
+    });
+  }
+</script>
+</body>
+</html>
