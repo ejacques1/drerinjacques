@@ -293,10 +293,31 @@
 
     <div class="done">🎉 <b>You just built a product.</b> Your instructions, your knowledge, your domain, your users, your money, not a GPT you rent from OpenAI.</div>
 
+    <div class="divider"><span>Optional — add more assistants</span><small>Payoff: one login, one payment, as many assistants as you want</small></div>
+
+    <div class="step">
+      <h2><span class="n">16</span> Turn it into a set of tools</h2>
+      <p>Right now you have one assistant. If you've built several custom GPTs, you don't need a separate app for each one — you can put them all behind the same login and the same subscription, with a dashboard where people pick the one they want.</p>
+      <p><b>Only do this once everything above is working.</b> Get one assistant running end to end first, then add the rest. Then paste this in:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Add a dashboard</div>
+        <span class="js-copy">Add a dashboard after login that lists my assistants as cards. Move my instructions into an assistants folder with one markdown file per assistant, and have the dashboard read that folder, so adding a new file adds a new assistant automatically, with no code changes. Keep the same login and paywall covering all of them.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>Your single <span class="cmd">assistant-instructions.md</span> becomes a folder:</p>
+      <ul class="check">
+        <li><span class="cmd">assistants/prd-builder.md</span></li>
+        <li><span class="cmd">assistants/competitor-scout.md</span></li>
+        <li><span class="cmd">assistants/email-writer.md</span></li>
+      </ul>
+      <p>After that, adding a new assistant is one thing: write a new markdown file, drop it in that folder, push. It shows up on the dashboard on its own.</p>
+      <div class="tip">👉🏽 Nothing changes in Supabase, Stripe, or Vercel. Same login, same payment, same keys — your assistants are just files in your project.</div>
+    </div>
+
     <div class="divider"><span>Optional — email your buyers</span><small>Payoff: paying customers land on your list automatically</small></div>
 
     <div class="step">
-      <h2><span class="n">16</span> Tag buyers in Systeme.io</h2>
+      <h2><span class="n">17</span> Tag buyers in Systeme.io</h2>
       <p>Right now someone pays and you never talk to them again. This connects Stripe to your email list, so paying gets them tagged and your welcome sequence fires on its own.</p>
       <p>Don't have an email platform yet? I use <a href="https://systeme.io/?sa=sa01702408010a2c50ae4ddb5fc0b72a3a97b1dcb6" target="_blank" rel="noopener"><b>Systeme.io</b></a> — the free plan covers everything below.</p>
       <p><b>First, three things in Systeme.io</b> (Claude can't log into your account, so these are yours):</p>
