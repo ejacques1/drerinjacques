@@ -310,7 +310,13 @@
         <li><span class="cmd">assistants/competitor-scout.md</span></li>
         <li><span class="cmd">assistants/email-writer.md</span></li>
       </ul>
-      <p>After that, adding a new assistant is one thing: write a new markdown file, drop it in that folder, push. It shows up on the dashboard on its own.</p>
+      <p style="margin-top:14px;"><b>Adding another assistant after that is one line.</b> Paste this into Claude, with your own name and instructions:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Add another assistant</div>
+        <span class="js-copy">Add a new assistant called [name]. Here are its instructions: [paste them]</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>Claude writes the file into your <span class="cmd">assistants</span> folder. Push it up and it appears on the dashboard on its own. You only do the dashboard step once — everything after that is this one line.</p>
       <div class="tip">👉🏽 Nothing changes in Supabase, Stripe, or Vercel. Same login, same payment, same keys — your assistants are just files in your project.</div>
     </div>
 
