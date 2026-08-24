@@ -301,19 +301,20 @@
       <p><b>Only do this once everything above is working.</b> Get one assistant running end to end first, then add the rest. Then paste this in:</p>
       <div class="prompt">
         <div class="lbl">Prompt — Add a dashboard</div>
-        <span class="js-copy">Add a dashboard after login that lists my assistants as cards. Move my instructions into an assistants folder with one markdown file per assistant, and have the dashboard read that folder, so adding a new file adds a new assistant automatically, with no code changes. Keep the same login and paywall covering all of them.</span>
+        <span class="js-copy">Add a dashboard after login that lists my assistants as cards. Move my instructions into an assistants folder with one markdown file per assistant, and have the dashboard read that folder, so adding a new file adds a new assistant automatically, with no code changes. Keep the same login and paywall covering all of them. Give each assistant its own knowledge folder named to match its file — assistants/email-writer.md reads knowledge/email-writer/ — and move my existing knowledge into the folder for my first assistant. Update the file tracing config in next.config.ts so the new folders still ship when I deploy.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
-      <p>Your single <span class="cmd">assistant-instructions.md</span> becomes a folder:</p>
+      <p>Your single <span class="cmd">assistant-instructions.md</span> becomes a folder, and each assistant gets its own knowledge to match:</p>
       <ul class="check">
-        <li><span class="cmd">assistants/prd-builder.md</span></li>
-        <li><span class="cmd">assistants/competitor-scout.md</span></li>
-        <li><span class="cmd">assistants/email-writer.md</span></li>
+        <li><span class="cmd">assistants/prd-builder.md</span> → <span class="cmd">knowledge/prd-builder/</span></li>
+        <li><span class="cmd">assistants/competitor-scout.md</span> → <span class="cmd">knowledge/competitor-scout/</span></li>
+        <li><span class="cmd">assistants/email-writer.md</span> → <span class="cmd">knowledge/email-writer/</span></li>
       </ul>
+      <p>The names match on purpose. That's how each assistant knows which knowledge is its own — there's no list to keep updated. Open Competitor Scout and it reads only the Competitor Scout folder.</p>
       <p style="margin-top:14px;"><b>Adding another assistant after that is one line.</b> Paste this into Claude, with your own name and instructions:</p>
       <div class="prompt">
         <div class="lbl">Prompt — Add another assistant</div>
-        <span class="js-copy">Add a new assistant called [name]. Here are its instructions: [paste them]</span>
+        <span class="js-copy">Add a new assistant called [name]. Here are its instructions: [paste them]. Create its knowledge folder too, even if I don't have anything to put in it yet.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
       <p>Claude writes the file into your <span class="cmd">assistants</span> folder. Push it up and it appears on the dashboard on its own. You only do the dashboard step once — everything after that is this one line.</p>
