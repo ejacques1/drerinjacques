@@ -380,7 +380,7 @@
         <li><strong>API &amp; Integrations</strong>.</li>
         <li>Copy your <strong>Personal API token</strong>.</li>
       </ol>
-      <p>Free plan is $5/month of credit. At about 2¢ a lead, that's roughly 250 businesses before you pay anything.</p>
+      <p>Free plan is $5/month of credit. The scraper runs about $1.50 per 1,000 places, so that's roughly <b>3,000 businesses a month</b> before you pay anything.</p>
       <span class="mins">≈ 90 seconds</span>
     </div>
   </div>
@@ -445,12 +445,18 @@
       <span class="where">Claude Code</span>
       <div class="prompt">
         <span class="lbl">Paste this</span>
-        <p>Add a tool called <code>find_businesses</code> that takes a business type and a town. It calls the Apify actor <code>code-node-tools/google-maps-businesses-without-websites</code> using <code>APIFY_TOKEN</code>, and returns the businesses with no website — name, phone, email, address, hours, rating, and reviews.</p>
+        <p>Add a tool called <code>find_businesses</code> that takes a business type and a town. It calls the Apify actor <code>compass/crawler-google-places</code> using <code>APIFY_TOKEN</code>, with the actor's <code>website</code> input set to exclude places that already have one.</p>
+        <p>Return name, phone, address, hours, rating and reviews for each business.</p>
         <p>Use the Tool Runner: <code>betaZodTool</code> from <code>@anthropic-ai/sdk/helpers/beta/zod</code>, run through <code>client.beta.messages.toolRunner()</code>.</p>
       </div>
       <div class="beat">
         <strong>The beat</strong>
         Ask it for dentists in your town. Real businesses come back with real phone numbers. First moment it does something you couldn't do in a chat box.
+      </div>
+      <div class="trap">
+        <strong>Why this actor</strong>
+        <p style="margin:0">Apify's store has purpose-named "businesses without websites" actors. Check their ratings before you trust one — the obvious-sounding pick has <b>1.88 stars and 753 users</b>. <code>compass/crawler-google-places</code> has <b>575,000 users, 4.70 stars</b>, a 97% success rate, and the same $1.50 per 1,000 places — with the no-website filter built into its input.</p>
+        <p style="margin:8px 0 0">Phone comes standard. Email needs compass's paid contacts add-on — skip it. For a business with no website, the phone is the better channel anyway.</p>
       </div>
       <span class="mins">≈ 4 min</span>
     </div>
@@ -647,7 +653,7 @@
 
   <div class="tail">
     <p><b>Two things to say plainly, in both videos.</b> The business data comes from public Google listings — against Google's terms, though not illegal. And the draft sites will get some details wrong, which is fine: "here's a draft, tell me what I missed" opens a conversation that a cold pitch never does.</p>
-    <p><b>On costs.</b> Apify runs about 2¢ a lead and the free tier covers roughly 250 a month. The API key is the only thing you actually pay for, and a full run lands somewhere near 50¢. Say the real numbers — people assume this is expensive and it isn't.</p>
+    <p><b>On costs.</b> Apify is about $1.50 per 1,000 places scraped, and the free $5/month covers roughly 3,000. The API key is the only thing you actually pay for, and a full run lands somewhere near 50¢. Say the real numbers on camera — people assume this is expensive and it isn't.</p>
     <p><b>Not yet verified.</b> Every command, click, price and API on this page was checked against its source. What the builder actually produces from these prompts has not been tested end to end.</p>
   </div>
 
