@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Ways To Build It | Dew of Heaven Children's Garden</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta name="description" content="Two ways to build your learning platform. Both end with the same thing — what changes is who does the work.">
+    <meta name="robots" content="noindex">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy: #0B1A2E;
+            --navy-2: #142849;
+            --yellow: #FFD93D;
+            --yellow-dark: #E8C12B;
+            --teal: #0DB4DB;
+            --teal-dark: #0A8FAF;
+            --green: #00B9A3;
+            --cream: #FAF6EC;
+            --text: #0B1A2E;
+            --text-soft: #4A5568;
+            --text-faint: #718096;
+            --line: #E2E8F0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6; color: var(--text); background: #fff;
+            -webkit-font-smoothing: antialiased; overflow-x: hidden;
+        }
+
+        .site-header { background: var(--navy); position: relative; z-index: 100; }
+        .header-inner { max-width: 1200px; margin: 0 auto; padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; }
+        .header-brand { text-decoration: none; font-size: 1.15rem; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
+        .header-nav { display: flex; gap: 32px; align-items: center; }
+        .header-nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .header-nav a:hover { color: #fff; }
+        @media (max-width: 720px) { .header-nav { display: none; } .header-inner { padding: 16px 20px; } }
+
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 55%, #1a3a6f 100%);
+            color: #fff; text-align: center; padding: 82px 40px 74px;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ""; position: absolute; inset: 0;
+            background:
+                radial-gradient(circle at 18% 22%, rgba(255,217,61,0.20), transparent 50%),
+                radial-gradient(circle at 82% 78%, rgba(13,180,219,0.18), transparent 55%);
+        }
+        .hero-inner { max-width: 780px; margin: 0 auto; position: relative; z-index: 1; }
+        .badge {
+            display: inline-block;
+            background: rgba(255,217,61,0.12); border: 1px solid rgba(255,217,61,0.35);
+            color: var(--yellow); padding: 10px 18px; border-radius: 100px;
+            font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: 700;
+            letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 26px;
+        }
+        .hero h1 {
+            font-size: clamp(2.2rem, 5.4vw, 3.8rem); font-weight: 800;
+            line-height: 1.06; letter-spacing: -1.4px; margin-bottom: 20px;
+        }
+        .hero h1 .accent { color: var(--yellow); }
+        .hero-sub { font-size: clamp(1.05rem, 1.5vw, 1.25rem); color: rgba(255,255,255,0.82); line-height: 1.55; max-width: 620px; margin: 0 auto; }
+
+        section { padding: 74px 40px; }
+        .container { max-width: 940px; margin: 0 auto; }
+        .section-eyebrow {
+            display: block; font-family: 'JetBrains Mono', monospace;
+            font-size: 11.5px; font-weight: 700; letter-spacing: 0.2em;
+            text-transform: uppercase; color: var(--teal); margin-bottom: 14px;
+        }
+        .section-title { font-size: clamp(1.7rem, 3.2vw, 2.3rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.6px; margin-bottom: 18px; }
+        .center { text-align: center; }
+
+        .premise {
+            background: var(--cream); border-left: 4px solid var(--yellow);
+            border-radius: 0 14px 14px 0; padding: 26px 30px; margin: 0 auto 46px;
+            max-width: 720px; font-size: 1.08rem; color: var(--text);
+        }
+        .premise b { font-weight: 800; }
+
+        .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.98rem; min-width: 620px; background: #fff; }
+        th, td { text-align: left; padding: 16px 18px; vertical-align: top; border-bottom: 1px solid var(--line); }
+        thead th { background: var(--navy); color: #fff; font-size: 1.35rem; font-weight: 800; letter-spacing: -0.4px; padding: 22px 18px; border-bottom: none; }
+        thead th span { display: block; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 5px; }
+        thead th.pick { background: #10294a; }
+        thead th.pick span { color: var(--yellow); }
+        tbody th { font-weight: 700; color: var(--text); font-size: 0.97rem; width: 30%; background: #FCFDFE; }
+        tbody th small { display: block; font-weight: 400; color: var(--text-faint); font-size: 0.85rem; margin-top: 3px; line-height: 1.45; }
+        td { color: var(--text-soft); }
+        td.pick { background: rgba(255,217,61,0.07); color: var(--text); font-weight: 600; }
+        tfoot td { padding: 24px 18px 28px; border-bottom: none; }
+        tfoot td.pick { background: rgba(255,217,61,0.07); }
+
+        .buy {
+            display: block; text-align: center; text-decoration: none;
+            font-size: 0.98rem; font-weight: 800; padding: 16px 18px;
+            border-radius: 100px; border: 2px solid transparent;
+            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+        }
+        .buy:hover { transform: translateY(-2px); }
+        .buy:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+        .buy-quiet { border-color: var(--line); color: var(--text-soft); background: #fff; }
+        .buy-quiet:hover { border-color: var(--navy); color: var(--navy); }
+        .buy-loud { background: var(--yellow); color: var(--navy); }
+        .buy-loud:hover { background: var(--yellow-dark); }
+
+        .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 44px; }
+        @media (max-width: 760px) { .pair { grid-template-columns: 1fr; } }
+        .note { background: var(--cream); border-radius: 14px; padding: 24px 26px; }
+        .note h3 { font-size: 1.08rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.3px; }
+        .note p { font-size: 0.96rem; color: var(--text-soft); }
+
+        .running { background: var(--navy); color: #fff; }
+        .running .section-title { color: #fff; }
+        .running p { color: rgba(255,255,255,0.78); font-size: 1rem; max-width: 640px; }
+        .running p + p { margin-top: 12px; }
+        .running b { color: var(--yellow); font-weight: 800; }
+
+        .footer { background: var(--navy); color: rgba(255,255,255,0.55); text-align: center; padding: 32px 40px; font-size: 0.88rem; border-top: 1px solid rgba(255,255,255,0.08); }
+        .footer a { color: var(--yellow); text-decoration: none; }
+
+        @media (max-width: 720px) { section { padding: 56px 20px; } .hero { padding: 64px 20px 56px; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="/" class="header-brand">DR. ERIN JACQUES</a>
+            <nav class="header-nav">
+                <a href="/">Home</a>
+                <a href="mailto:info@erinjacques.com">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="badge">Dew of Heaven Children's Garden</span>
+            <h1>Two ways to <span class="accent">build it</span>.</h1>
+            <p class="hero-sub">
+                Both options end with the same platform. What changes is who does the work.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="premise center">
+                You provide the curriculum and source material either way.
+                The difference is <b>who turns it into the platform.</b>
+            </div>
+
+            <div class="tablewrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>$2,600 <span>Sprint</span></th>
+                            <th class="pick">$5,000 <span>Done for you</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Topics, and the skills each one teaches
+                                <small>e.g. “Knows the order of a plant’s life cycle” — around four per topic</small></th>
+                            <td>You define them</td>
+                            <td class="pick">I propose them, you approve</td>
+                        </tr>
+                        <tr>
+                            <th>The lesson content
+                                <small>the before and after check, the activities, the at-home projects</small></th>
+                            <td>You write all of it</td>
+                            <td class="pick">I build all of it from your material</td>
+                        </tr>
+                        <tr>
+                            <th>Pairing each skill with a Texas standard</th>
+                            <td>You look them up</td>
+                            <td class="pick">I do it</td>
+                        </tr>
+                        <tr>
+                            <th>Building the software</th>
+                            <td>We build it together, live on screen</td>
+                            <td class="pick">I build it</td>
+                        </tr>
+                        <tr>
+                            <th>Typing the content in
+                                <small>every question, every activity</small></th>
+                            <td>You, after training</td>
+                            <td class="pick">I load and test everything</td>
+                        </tr>
+                        <tr>
+                            <th>Accounts and setup
+                                <small>database, hosting, domain</small></th>
+                            <td>Set up together, in your accounts</td>
+                            <td class="pick">I set up, then hand over</td>
+                        </tr>
+                        <tr>
+                            <th>Your time</th>
+                            <td>6 sessions (8 hours), plus the writing above</td>
+                            <td class="pick">Two calls, about 2 hours</td>
+                        </tr>
+                        <tr>
+                            <th>After launch</th>
+                            <td>Training, then you run and change it yourselves</td>
+                            <td class="pick">60 days of iterations — I make changes as you use it</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <a class="buy buy-quiet" href="https://buy.stripe.com/dRmfZjaYOc1edq81bFbfO03">
+                                    Choose the Sprint &mdash; $2,600
+                                </a>
+                            </td>
+                            <td class="pick">
+                                <a class="buy buy-loud" href="https://buy.stripe.com/fZu28taYOfdqfyg2fJbfO04">
+                                    Choose Done For You &mdash; $5,000
+                                </a>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="pair">
+                <div class="note">
+                    <h3>What you provide either way</h3>
+                    <p>
+                        Your curriculum, source material, worksheets and videos — whatever frames
+                        what should be taught. I build the platform around your material; I don't
+                        invent your curriculum.
+                    </p>
+                </div>
+                <div class="note">
+                    <h3>Either way, it's yours</h3>
+                    <p>
+                        Everything lives in Dew of Heaven's own accounts — the database, the
+                        hosting, the domain. The platform and all its data belong to you, not to me.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="running">
+        <div class="container">
+            <span class="section-eyebrow">Ongoing</span>
+            <h2 class="section-title">What it costs to run</h2>
+            <p>
+                Once everything is built out and adjusted to what you want, there is one ongoing
+                cost: <b>Supabase</b>, the secure database behind the admin panel. It stores family
+                accounts, student progress and your session history.
+            </p>
+            <p>
+                <b>$25 a month — roughly $300 a year.</b> There is a free tier, but it puts a project
+                to sleep after a week without visitors, which would mean families finding a dead
+                site between sessions. The paid tier keeps it always on.
+            </p>
+            <p>
+                Hosting may add about $20 a month depending on which plan applies. I'll confirm
+                before anything is set up.
+            </p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; Dr. Erin Jacques &middot; <a href="/">drerinjacques.com</a></p>
+    </footer>
+</body>
+</html>
