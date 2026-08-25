@@ -450,15 +450,17 @@
   "searchStringsArray": ["dentist"],
   "locationQuery": "White Plains, NY",
   "website": "withoutWebsite",
-  "maxCrawledPlacesPerSearch": 50,
-  "maxReviews": 5
+  "maxCrawledPlacesPerSearch": 10,
+  "maxReviews": 10,
+  "reviewsSort": "highestRanking"
 }</code></pre>
         <p>Return name, phone, address, hours, rating, category and the review text for each business.</p>
+        <p><b>The agent's goal is a target, not one call:</b> keep going until it has 10 businesses with no website. If a search comes back short, widen it — a neighbouring town, a related category, a larger scrape — and try again. Stop at 10, or after 5 attempts.</p>
         <p>Use the Tool Runner: <code>betaZodTool</code> from <code>@anthropic-ai/sdk/helpers/beta/zod</code>, run through <code>client.beta.messages.toolRunner()</code>.</p>
       </div>
       <div class="beat">
         <strong>The beat</strong>
-        Ask it for dentists in your town. Real businesses come back with real phone numbers. First moment it does something you couldn't do in a chat box.
+        Ask it for dentists in your town. Real businesses come back with real phone numbers. First moment it does something you couldn't do in a chat box. Say the thesis here: <em>you gave it a target, not instructions — a single search with a cap of 10 would be an automation; deciding to widen the search until it hits 10 is what makes it an agent.</em>
       </div>
       <div class="trap">
         <strong>Why this actor</strong>
@@ -481,6 +483,10 @@
         <p>Then add a custom tool <code>read_page</code> that fetches a URL and returns its text.</p>
         <p>Update the system prompt so the agent researches each business it finds before doing anything else.</p>
       </div>
+      <div class="beat">
+        <strong>Tested — this is what carries the build</strong>
+        Given a business with four facts and "reviews: none", the agent found her specialty, her Columbia training, her languages, her full treatment list, and 19 Healthgrades reviews at 4.6 stars. Apify finds <em>who</em>; the search finds <em>what to say</em>. Without step 4 you'd be generating templates.
+      </div>
       <p>Slow down here. <code>read_page</code> is about twelve lines, and it's the whole idea: you <em>describe</em> a tool, and the agent decides when to use it. Nobody wrote logic saying "search now." Read the description out loud — that's the lesson your intro promised.</p>
       <span class="mins">≈ 5 min</span>
     </div>
@@ -494,11 +500,13 @@
       <div class="prompt">
         <span class="lbl">Paste this</span>
         <p>Add a tool <code>save_site</code> that writes an HTML file to <code>/output</code>.</p>
-        <p>Update the system prompt: after researching each business, the agent writes a complete single-file website for them using their real name, services, hours, phone and address, with their actual Google reviews as testimonials. Use placeholder imagery, never their photos. Then save it.</p>
+        <p>Update the system prompt: after researching each business, the agent writes a complete single-file website using their real name, services, phone and address, with only <b>4-star-and-up</b> reviews as testimonials. Use placeholder imagery, never their photos. Omit hours rather than inventing them. If nothing verifiable exists for a section, leave the section out. Then save it.</p>
+        <p>Also write <code>output/index.html</code> — a leads sheet listing every business with its phone number, category, and a link to the site you built them.</p>
+        <p>Set <code>stream: true</code> on the tool runner.</p>
       </div>
       <div class="beat">
         <strong>The climax</strong>
-        Run it on a real town. It grinds through business after business and finished websites start landing in the folder. Open one. This is the shot the whole video exists for — and the callback to the cold open.
+        Run it on a real town. Open <code>output/index.html</code> — every business, every phone number, every site you built them, on one page. Then open one of the sites. This is the shot the whole video exists for, and the callback to the cold open.
       </div>
       <span class="mins">≈ 5 min</span>
     </div>
@@ -636,6 +644,36 @@
     </div>
   </div>
 
+  <h2><span class="tag">From the test run</span></h2>
+  <p class="sub">Built and run end to end on 25 Aug 2026. These are measured, not estimated.</p>
+
+  <div class="step">
+    <div class="num">✓</div>
+    <div>
+      <h3>What actually happened</h3>
+      <div class="trap">
+        <strong>Three minutes per business</strong>
+        <p style="margin:0">One business took <b>3 min 5 sec</b> — searching, reading profiles, writing the site. Ten is half an hour. <b>Cap the on-camera run at 3</b>, or start a run of ten, cut away, and come back to the finished folder. Don't sit through it.</p>
+      </div>
+      <div class="trap">
+        <strong>stream: true or it crashes</strong>
+        <p style="margin:0"><code>max_tokens: 32000</code> without streaming throws <em>"Streaming is required for operations that may take longer than 10 minutes."</em> Hard stop, no output. This one would have happened on camera.</p>
+      </div>
+      <div class="trap">
+        <strong>Hours never exist</strong>
+        <p style="margin:0">Zero of ten businesses had opening hours in the data. Tell the agent to omit the section, or it fills the gap with something.</p>
+      </div>
+      <div class="beat">
+        <strong>Say this on camera</strong>
+        The agent caught two errors in the data it was handed. The address was White Plains Hospital, not her office — it found the real one, used it, and put a draft banner on the site asking the owner to confirm. And the listing said "no reviews" when Healthgrades had 19. It flagged both rather than publishing them. <em>That is the difference between an agent and a script, and it's your intro's thesis landing live.</em>
+      </div>
+      <div class="beat">
+        <strong>Real cost</strong>
+        Apify: about 7¢ for ten businesses. API: roughly $1–2 for ten sites. Under $2 for ten finished websites.
+      </div>
+    </div>
+  </div>
+
   <h2><span class="tag">Same build, OpenAI</span></h2>
   <p class="sub">If you reshoot this with Codex later, only these four rows change. Apify, GitHub, Vercel and Blob are identical.</p>
 
@@ -662,7 +700,7 @@
   <div class="tail">
     <p><b>Two things to say plainly, in both videos.</b> The business data comes from public Google listings — against Google's terms, though not illegal. And the draft sites will get some details wrong, which is fine: "here's a draft, tell me what I missed" opens a conversation that a cold pitch never does.</p>
     <p><b>On costs.</b> A 50-business run is roughly 38¢ of Apify plus maybe 50¢ of API — under a dollar for eleven finished websites. The free Apify credit covers about a thousand places a month. Say the real numbers on camera; people assume this is expensive and it isn't.</p>
-    <p><b>Not yet verified.</b> Every command, click, price and API on this page was checked against its source. What the builder actually produces from these prompts has not been tested end to end.</p>
+    <p><b>Verified 25 Aug 2026.</b> The Apify actor, its input, the review filter, the tool runner and a full site build were all run end to end. The one thing still untested is what Claude Code produces from these prompts when you paste them yourself.</p>
   </div>
 
 </div>
