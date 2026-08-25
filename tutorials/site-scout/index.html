@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Site Scout Call Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap">
+
+<style>
+  :root {
+    --paper:      #F5F4EF;
+    --card:       #FFFDF8;
+    --ink:        #14171A;
+    --ink-soft:   #5C5F5A;
+    --rule:       #D8D5CB;
+    --rule-soft:  #E6E3DA;
+    --amber:      #9C5F09;
+    --amber-bg:   #F6EBD8;
+    --teal:       #1F5E63;
+    --teal-bg:    #E2EDEC;
+    --code-bg:    #1B1E22;
+    --code-fg:    #E9E6DD;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #15161A;
+      --card:       #1C1E23;
+      --ink:        #EDEBE4;
+      --ink-soft:   #9A9C96;
+      --rule:       #33363C;
+      --rule-soft:  #26292E;
+      --amber:      #E0A040;
+      --amber-bg:   #2C2317;
+      --teal:       #6FB6BC;
+      --teal-bg:    #17272A;
+      --code-bg:    #0E1013;
+      --code-fg:    #E9E6DD;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper:      #15161A;
+    --card:       #1C1E23;
+    --ink:        #EDEBE4;
+    --ink-soft:   #9A9C96;
+    --rule:       #33363C;
+    --rule-soft:  #26292E;
+    --amber:      #E0A040;
+    --amber-bg:   #2C2317;
+    --teal:       #6FB6BC;
+    --teal-bg:    #17272A;
+    --code-bg:    #0E1013;
+    --code-fg:    #E9E6DD;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0 24px 100px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .sheet { max-width: 820px; margin: 0 auto; }
+
+  /* ── Masthead ─────────────────────────────── */
+  .masthead {
+    border-bottom: 2px solid var(--ink);
+    padding: 56px 0 18px;
+    margin-bottom: 8px;
+  }
+  .slate {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-weight: 700;
+    font-size: clamp(40px, 8vw, 66px);
+    line-height: 0.94;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    text-wrap: balance;
+    margin: 0 0 14px;
+  }
+  .logline {
+    font-size: 19px;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 0 0 4px;
+  }
+  .runtime {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding-top: 14px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Section heads ────────────────────────── */
+  h2 {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 56px 0 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+  }
+  h2 em {
+    font-family: "Source Serif 4", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink-soft);
+  }
+
+  /* ── Requirements strip ───────────────────── */
+  .kit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 22px;
+  }
+  .kit div {
+    background: var(--card);
+    padding: 16px 18px;
+  }
+  .kit dt {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 5px;
+  }
+  .kit dd {
+    margin: 0;
+    font-size: 17px;
+    font-variant-numeric: tabular-nums;
+  }
+  .kit .free { color: var(--teal); font-weight: 600; }
+  .kit .paid { color: var(--amber); font-weight: 600; }
+
+  /* ── Steps ────────────────────────────────── */
+  .step {
+    display: grid;
+    grid-template-columns: 54px 1fr;
+    gap: 0 20px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .num {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 1;
+    color: var(--amber);
+    font-variant-numeric: tabular-nums;
+    padding-top: 2px;
+  }
+  .step h3 {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin: 0 0 10px;
+  }
+  .step p { margin: 0 0 12px; }
+  .step p:last-child { margin-bottom: 0; }
+
+  .where {
+    display: inline-block;
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border: 1px solid currentColor;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+  .where.browser { color: var(--amber); }
+
+  ol.clicks, ul.plain {
+    margin: 0 0 14px;
+    padding-left: 22px;
+  }
+  ol.clicks li, ul.plain li { margin-bottom: 7px; }
+
+  code {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.86em;
+    background: var(--rule-soft);
+    padding: 1px 5px;
+    border-radius: 2px;
+  }
+
+  pre {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 14px;
+    line-height: 1.55;
+    padding: 15px 17px;
+    margin: 0 0 14px;
+    overflow-x: auto;
+    border-left: 3px solid var(--amber);
+  }
+  pre code { background: none; padding: 0; font-size: inherit; }
+
+  .prompt {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--teal);
+    padding: 16px 18px;
+    margin: 0 0 14px;
+    font-size: 16px;
+  }
+  .prompt .lbl {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    display: block;
+    margin-bottom: 9px;
+  }
+  .prompt p { margin: 0 0 9px; }
+  .prompt ol { margin: 0 0 9px; padding-left: 20px; }
+  .prompt li { margin-bottom: 4px; }
+
+  .beat {
+    background: var(--amber-bg);
+    border-left: 3px solid var(--amber);
+    padding: 13px 16px;
+    margin: 0 0 14px;
+    font-size: 16px;
+  }
+  .beat strong {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: var(--amber);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .trap {
+    background: var(--teal-bg);
+    border-left: 3px solid var(--teal);
+    padding: 13px 16px;
+    margin: 0 0 14px;
+    font-size: 16px;
+  }
+  .trap strong {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: var(--teal);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .mins {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+    margin-top: 12px;
+    display: block;
+  }
+
+  /* ── Episode markers ──────────────────────── */
+  .episode {
+    margin: 64px 0 0;
+    padding: 22px 0 20px;
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+  .ep-label {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 0 0 8px;
+  }
+  .ep-title {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 5vw, 40px);
+    line-height: 1.02;
+    text-transform: uppercase;
+    text-wrap: balance;
+    margin: 0 0 10px;
+    border: 0;
+    padding: 0;
+    display: block;
+    letter-spacing: 0;
+    color: var(--ink);
+  }
+  .ep-note {
+    margin: 0;
+    color: var(--ink-soft);
+    max-width: 62ch;
+    font-size: 17px;
+  }
+
+  .seam {
+    margin: 32px 0 0;
+    padding: 20px 22px;
+    background: var(--card);
+    border: 1px dashed var(--rule);
+    text-align: center;
+  }
+  .seam-cut {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 0 0 8px;
+  }
+  .seam p:last-child {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 16px;
+    max-width: 58ch;
+    margin-inline: auto;
+  }
+
+  .tail {
+    margin-top: 44px;
+    padding-top: 22px;
+    border-top: 2px solid var(--ink);
+    font-size: 16px;
+    color: var(--ink-soft);
+  }
+  .tail p { max-width: 62ch; }
+
+  a { color: var(--amber); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+  @media (max-width: 560px) {
+    .step { grid-template-columns: 38px 1fr; gap: 0 14px; }
+    .num { font-size: 26px; }
+    .step h3 { font-size: 22px; }
+    body { font-size: 16px; }
+  }
+</style>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <p class="slate">Build Sheet · Agent Tutorial</p>
+    <h1>Site Scout</h1>
+    <p class="logline">An agent that finds local businesses with no website, researches each one, and builds them a draft site — so a web designer can call and say "I already made you something."</p>
+    <p class="runtime">Two videos &nbsp;·&nbsp; 5 steps, then 7 &nbsp;·&nbsp; ≈ 10 min each after the cut</p>
+  </header>
+
+  <h2>What you need <em>one paid account, one free</em></h2>
+  <dl class="kit">
+    <div><dt>OpenAI key</dt><dd class="paid">Pay per use</dd></div>
+    <div><dt>Apify</dt><dd class="free">Free · $5/mo</dd></div>
+    <div><dt>GitHub</dt><dd class="free">Free</dd></div>
+    <div><dt>Vercel</dt><dd class="free">Free</dd></div>
+  </dl>
+
+  <h2>Before you roll <em>off camera — do all of this first</em></h2>
+
+  <div class="step">
+    <div class="num">A</div>
+    <div>
+      <h3>Install Codex</h3>
+      <span class="where">Terminal</span>
+      <pre><code>npm install -g @openai/codex
+codex auth</code></pre>
+      <p><code>codex auth</code> opens your browser to sign in. Then install the <strong>Codex</strong> extension from the VS Code marketplace — it uses the same login.</p>
+      <div class="trap">
+        <strong>Trap</strong>
+        It's <code>@openai/codex</code>, not <code>codex</code>. The unscoped package is an unrelated project from 2012 and people install it by mistake constantly. Worth saying on camera.
+      </div>
+      <p>Needs Node.js first, from <a href="https://nodejs.org">nodejs.org</a>.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">B</div>
+    <div>
+      <h3>Get your Apify token</h3>
+      <span class="where browser">Browser</span>
+      <ol class="clicks">
+        <li>Go to <a href="https://apify.com">apify.com</a> → <strong>Sign up</strong>. No credit card.</li>
+        <li>You land in Apify Console.</li>
+        <li>Click <strong>Settings</strong> in the left sidebar.</li>
+        <li>Click <strong>API &amp; Integrations</strong>.</li>
+        <li>Click the copy icon next to your <strong>Personal API token</strong>.</li>
+      </ol>
+      <p>Free plan includes $5/month of credit and no card is required. At roughly 2¢ per lead, that's about 250 businesses a month before you pay anything.</p>
+      <span class="mins">≈ 90 seconds</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">C</div>
+    <div>
+      <h3>Get your OpenAI key</h3>
+      <span class="where browser">Browser</span>
+      <p>platform.openai.com → <strong>API Keys</strong> → <strong>Create new secret key</strong>. Copy it now — it's never shown again.</p>
+      <div class="trap">
+        <strong>Never on camera</strong>
+        Both keys are passwords. Cut away while pasting, or blur it. Anyone who pauses the video can use your key on your bill.
+      </div>
+    </div>
+  </div>
+
+  <div class="episode">
+    <p class="ep-label">Video One</p>
+    <h2 class="ep-title">Build an AI Agent That Builds Websites</h2>
+    <p class="ep-note">Five steps. Runs on your laptop. Ends with a tool you can start selling with — no deploying, no accounts, no paywall.</p>
+  </div>
+
+  <div class="step">
+    <div class="num">1</div>
+    <div>
+      <h3>Open an empty folder</h3>
+      <span class="where">VS Code</span>
+      <ol class="clicks">
+        <li><strong>File → Open Folder</strong>, make a new one called <code>site-scout</code>.</li>
+        <li>Open the <strong>Codex</strong> panel from the sidebar.</li>
+        <li>Set the mode dropdown to <strong>Agent</strong>.</li>
+      </ol>
+      <p>Agent mode is what lets it create files and run commands. Chat mode is read-only and won't build anything.</p>
+      <span class="mins">≈ 2 min</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">2</div>
+    <div>
+      <h3>Build the shell</h3>
+      <span class="where">Codex</span>
+      <div class="prompt">
+        <span class="lbl">Paste this</span>
+        <p>Set up a Next.js app with TypeScript called site-scout. Install the OpenAI Agents SDK (<code>@openai/agents</code>) and zod. Create an agent in <code>lib/agent.ts</code> with no tools yet — just instructions saying it helps web designers find local businesses that don't have websites. Add a <code>.env.local</code> with <code>OPENAI_API_KEY</code> and <code>APIFY_TOKEN</code>.</p>
+      </div>
+      <p>Click <strong>Approve</strong> when it asks. Paste your two keys into <code>.env.local</code> — off camera.</p>
+      <div class="beat">
+        <strong>The beat</strong>
+        Run it. It talks, but it can't do anything. Say that out loud — this is the custom GPT everyone already has. Everything after this is the difference.
+      </div>
+      <span class="mins">≈ 5 min</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">3</div>
+    <div>
+      <h3>Give it the finder</h3>
+      <span class="where">Codex</span>
+      <div class="prompt">
+        <span class="lbl">Paste this</span>
+        <p>Add a tool called <code>find_businesses</code> that takes a business type and a town. It should call the Apify actor <code>code-node-tools/google-maps-businesses-without-websites</code> using <code>APIFY_TOKEN</code>, and return the businesses with no website — name, phone, email, address, hours, rating, and reviews.</p>
+      </div>
+      <div class="beat">
+        <strong>The beat</strong>
+        Ask it for dentists in your town. Real businesses come back, with real phone numbers. First moment where it does something you couldn't do in a chat box.
+      </div>
+      <span class="mins">≈ 4 min</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">4</div>
+    <div>
+      <h3>Give it eyes</h3>
+      <span class="where">Codex</span>
+      <div class="prompt">
+        <span class="lbl">Paste this</span>
+        <p>Add OpenAI's built-in <code>webSearchTool()</code>, plus a custom tool called <code>read_page</code> that fetches a URL and returns its text. Update the instructions so the agent researches each business it finds before doing anything else.</p>
+      </div>
+      <p>This is the one to slow down on. <code>read_page</code> is about twelve lines, and it's the whole idea: you <em>describe</em> a tool, and the agent decides when to use it. Nobody wrote logic saying "search now." Read the description out loud.</p>
+      <span class="mins">≈ 5 min</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">5</div>
+    <div>
+      <h3>Make it build the sites</h3>
+      <span class="where">Codex</span>
+      <div class="prompt">
+        <span class="lbl">Paste this</span>
+        <p>Add a tool called <code>save_site</code> that writes an HTML file to <code>/output</code>. Update the instructions: after researching each business, the agent writes a complete single-file website for them using their real name, services, hours, phone and address, with their actual Google reviews as testimonials. Use placeholder imagery, never their photos. Then save it.</p>
+      </div>
+      <div class="beat">
+        <strong>The climax</strong>
+        Run it on a real town. It grinds through business after business, and finished websites start landing in the folder. Open one. This is the shot the whole video exists for.
+      </div>
+      <span class="mins">≈ 5 min</span>
+    </div>
+  </div>
+
+  <div class="seam">
+    <p class="seam-cut">Video One ends here</p>
+    <p>Close on: <em>"You've got a tool that makes websites for local businesses. That alone is a business — and that's the next video."</em></p>
+  </div>
+
+  <div class="episode">
+    <p class="ep-label">Video Two &nbsp;·&nbsp; stands alone</p>
+    <h2 class="ep-title">How to Sell an AI Agent</h2>
+    <p class="ep-note">Assume the viewer has never heard the word "agent" and has nothing built. Show it working before you explain anything, and name the money before you ask for four minutes of building.</p>
+  </div>
+
+  <div class="step">
+    <div class="num">1</div>
+    <div>
+      <h3>Show the finished thing</h3>
+      <span class="where">Camera</span>
+      <p>No talking head, no definitions. A finished website for a real plumber, full screen, scrolling.</p>
+      <div class="beat">
+        <strong>Say this</strong>
+        "I have never spoken to this business. I don't know these people. This took ninety seconds and I didn't write a word of it."
+      </div>
+      <p>They understand what an agent is by watching one work. Defining it first loses them.</p>
+      <span class="mins">0:00 — 0:30</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">2</div>
+    <div>
+      <h3>Name it, then name the money</h3>
+      <span class="where">Camera</span>
+      <p>One sentence for what it is: something that finds local businesses with no website and builds each one a site.</p>
+      <p>Then show the folder — eleven finished websites, eleven phone numbers.</p>
+      <div class="beat">
+        <strong>The hook</strong>
+        "A web designer charges about $1,500 for one of these. There are eleven here. It cost me under a dollar to make them."
+      </div>
+      <p>That number is why they stay. Say it before you ask them to build anything.</p>
+      <span class="mins">0:30 — 1:30</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">3</div>
+    <div>
+      <h3>Build it fast</h3>
+      <span class="where">Codex</span>
+      <p>On camera: <em>"If you've already got this running, skip to 4:00. If not, three minutes."</em></p>
+      <p>Paste Video One's five prompts merged into one. Fast-forward the install. Don't explain the tools here — that's Video One's job, and this viewer doesn't need it yet.</p>
+      <div class="trap">
+        <strong>Never say "part two"</strong>
+        No "like I showed last time," no "as you saw in the first video." Anyone landing here cold has a working agent by 4:00 and never feels behind.
+      </div>
+      <span class="mins">1:30 — 4:00</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">4</div>
+    <div>
+      <h3>Put a page on it</h3>
+      <span class="where">Codex</span>
+      <div class="prompt">
+        <span class="lbl">Paste this</span>
+        <p>Add a chat page at <code>/</code> with a box for business type and town. Stream the agent's progress so every step shows as it happens, and list the finished sites with links to open them.</p>
+      </div>
+      <p>Quick. It exists so a customer can use this without ever opening Codex.</p>
+      <span class="mins">≈ 3 min</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">5</div>
+    <div>
+      <h3>Give every site a real link</h3>
+      <span class="where browser">Browser, then Codex</span>
+      <ol class="clicks">
+        <li>Vercel dashboard → <strong>Storage</strong> → <strong>Create</strong> → <strong>Blob</strong>.</li>
+        <li>Set it to <strong>Public</strong>. You can't change this later.</li>
+        <li>Open the store's <strong>Projects</strong> tab → <strong>Connect to Project</strong>.</li>
+      </ol>
+      <div class="prompt">
+        <span class="lbl">Then paste this</span>
+        <p>Install <code>@vercel/blob</code>. Change <code>save_site</code> so instead of writing to <code>/output</code> it uploads each site with <code>put()</code> using public access, and returns the URL.</p>
+      </div>
+      <p>Now each website has an address you can text to the owner. That's the whole difference between a folder on your laptop and something you can sell.</p>
+      <div class="trap">
+        <strong>Why not a database</strong>
+        Blob is already inside Vercel — no new account. 1GB is roughly 20,000 sites, and it's free.
+      </div>
+      <span class="mins">≈ 4 min</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">6</div>
+    <div>
+      <h3>Put it online</h3>
+      <span class="where browser">Browser</span>
+      <ol class="clicks">
+        <li><a href="https://github.com/new">github.com/new</a> → name it <code>site-scout</code> → <strong>Private</strong> → <strong>Create</strong>.</li>
+        <li>In Codex: <em>"Push this to my GitHub repo site-scout."</em></li>
+        <li><a href="https://vercel.com/new">vercel.com/new</a> → <strong>Import</strong> your repo.</li>
+        <li>Open <strong>Environment Variables</strong> and add <code>OPENAI_API_KEY</code> and <code>APIFY_TOKEN</code> before deploying.</li>
+        <li><strong>Deploy</strong>. Live URL in about a minute.</li>
+      </ol>
+      <div class="trap">
+        <strong>Don't skip step 4</strong>
+        Your keys live on your laptop, not in the code. Deploy without them and the page loads but the agent fails. This is the most common thing that breaks here.
+      </div>
+      <span class="mins">≈ 4 min</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">7</div>
+    <div>
+      <h3>The two ways to get paid</h3>
+      <span class="where">Camera</span>
+      <p>Now they've seen it work and they have one running. This is where the business talk lands.</p>
+      <div class="beat">
+        <strong>Model 1 · you offer the service</strong>
+        You're the web designer. The agent is your private tool. You sell websites to plumbers at $1,500 a job. No login, no payments, no support — you just need clients. <em>Everything they need for this, they already built.</em>
+      </div>
+      <div class="beat">
+        <strong>Model 2 · you sell the agent</strong>
+        Your customers are other designers. They pay you monthly for access and go find their own clients. That means accounts, billing, support — a real product.
+      </div>
+      <p>Then the handoff: <em>"Model 1 you can start this week. Model 2 needs logins and payments, and that's what I walk through in the community."</em></p>
+      <span class="mins">≈ 2 min</span>
+    </div>
+  </div>
+
+  <div class="tail">
+    <p><strong>Two things to say plainly, in both videos.</strong> The business data comes from public Google listings — against Google's terms, though not illegal. And the draft sites will get details wrong, which is fine: "here's a draft, tell me what I missed" opens a conversation that a cold pitch never does.</p>
+    <p style="margin-top:14px"><strong>On costs.</strong> Apify runs about 2¢ a lead and the free tier covers roughly 250 a month. OpenAI is the only thing you actually pay for, and a full run lands somewhere near 50¢. Say the real numbers — people assume this is expensive and it isn't.</p>
+  </div>
+
+</div>
+
+<p style="max-width:820px;margin:0 auto;padding:0 24px 60px;font-family:'Barlow Condensed',sans-serif;
+          font-size:14px;letter-spacing:.14em;text-transform:uppercase;">
+  <a href="/hub" style="color:var(--ink-soft);text-decoration:none;">← Back to hub</a>
+</p>
+</body>
+</html>
