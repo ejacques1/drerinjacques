@@ -398,6 +398,24 @@
     </div>
   </div>
 
+  <div class="step">
+    <div class="num">D</div>
+    <div>
+      <h3>Clear the screen</h3>
+      <span class="where">Terminal</span>
+      <p>Two things that don't break anything but look like breakage on camera. Both found by running these prompts through Claude Code before you did.</p>
+      <div class="trap">
+        <strong>Stray lockfile → yellow warning on every build</strong>
+        <p style="margin:0">An empty <code>package-lock.json</code> in your home folder makes Turbopack warn about the workspace root every time it builds.</p>
+        <pre style="margin:10px 0 0"><code>rm ~/package-lock.json</code></pre>
+      </div>
+      <div class="trap">
+        <strong>The Vercel plugin will flag your agent file</strong>
+        <p style="margin:0">It reads <code>@anthropic-ai/sdk</code> in <code>lib/agent.ts</code> as an error and tells you to switch to <code>@ai-sdk/anthropic</code>. It's a suggestion, not a problem — but on screen it looks like you broke something. Turn the plugin off while filming, or be ready to say "that's a plugin suggestion, ignore it."</p>
+      </div>
+    </div>
+  </div>
+
   <div class="episode">
     <p class="ep-label">Video One</p>
     <p class="ep-title">Build an AI Agent That Builds Websites</p>
@@ -425,7 +443,7 @@
       <span class="where">Claude Code</span>
       <div class="prompt">
         <span class="lbl">Paste this</span>
-        <p>Set up a Next.js app with TypeScript called site-scout. Install <code>@anthropic-ai/sdk</code> and <code>zod</code>.</p>
+        <p>Set up a Next.js app with TypeScript called site-scout. Install <b>the latest</b> <code>@anthropic-ai/sdk</code> and <code>zod</code> — run <code>npm install @anthropic-ai/sdk@latest zod</code> rather than writing versions into package.json.</p>
         <p>Create <code>lib/agent.ts</code> with a system prompt for an agent that helps web designers find local businesses without websites. Use model <code>claude-opus-5</code>. No tools yet.</p>
         <p>Add <code>.env.local</code> with <code>ANTHROPIC_API_KEY</code> and <code>APIFY_TOKEN</code>.</p>
       </div>
@@ -434,7 +452,7 @@
         <strong>The beat</strong>
         Run it. It talks, but it can't do anything. Say that out loud — this is the custom GPT everyone already has. Everything after this is what makes it an agent.
       </div>
-      <span class="mins">≈ 5 min</span>
+      <span class="mins">Measured: 3 min 56 sec</span>
     </div>
   </div>
 
@@ -645,7 +663,7 @@
   </div>
 
   <h2><span class="tag">From the test run</span></h2>
-  <p class="sub">Built and run end to end on 25 Aug 2026. These are measured, not estimated.</p>
+  <p class="sub">Built and run end to end on 25 Aug 2026 — including running these exact prompts through Claude Code. Measured, not estimated.</p>
 
   <div class="step">
     <div class="num">✓</div>
@@ -658,6 +676,10 @@
       <div class="trap">
         <strong>stream: true or it crashes</strong>
         <p style="margin:0"><code>max_tokens: 32000</code> without streaming throws <em>"Streaming is required for operations that may take longer than 10 minutes."</em> Hard stop, no output. This one would have happened on camera.</p>
+      </div>
+      <div class="trap">
+        <strong>Claude Code installs a stale SDK</strong>
+        <p style="margin:0">Left alone it writes <code>"@anthropic-ai/sdk": "^0.72.0"</code> from memory — 48 versions behind. The caret won't fix it: on a <code>0.x</code> version it only allows patch bumps. The Tool Runner does exist in 0.72 so the build still works, but everyone following along gets an old SDK. Say <b>"latest"</b> in the prompt.</p>
       </div>
       <div class="trap">
         <strong>Hours never exist</strong>
@@ -700,7 +722,7 @@
   <div class="tail">
     <p><b>Two things to say plainly, in both videos.</b> The business data comes from public Google listings — against Google's terms, though not illegal. And the draft sites will get some details wrong, which is fine: "here's a draft, tell me what I missed" opens a conversation that a cold pitch never does.</p>
     <p><b>On costs.</b> A 50-business run is roughly 38¢ of Apify plus maybe 50¢ of API — under a dollar for eleven finished websites. The free Apify credit covers about a thousand places a month. Say the real numbers on camera; people assume this is expensive and it isn't.</p>
-    <p><b>Verified 25 Aug 2026.</b> The Apify actor, its input, the review filter, the tool runner and a full site build were all run end to end. The one thing still untested is what Claude Code produces from these prompts when you paste them yourself.</p>
+    <p><b>Verified 25 Aug 2026.</b> The Apify actor and its input, the review filter, the tool runner, a full site build, and step 2's prompt driven through Claude Code itself — all run end to end. Every number on this page is measured.</p>
   </div>
 
 </div>
