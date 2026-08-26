@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Build a Vertical Drama App — Build Sheet — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --navy2:#0E2E57;
+    --gold:#F4B02E;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--navy);color:#fff;font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.85rem;color:#bcccdf;}
+  .brand b{color:var(--gold);}
+  .kicker{color:var(--gold);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;margin-bottom:12px;}
+  section{padding:44px 0;border-top:1px solid rgba(255,255,255,.12);}
+  section.hero{border-top:none;padding:44px 0 40px;}
+  h1{font-size:clamp(2.1rem,5.4vw,3.2rem);font-weight:900;letter-spacing:-.025em;line-height:1.06;margin:0 0 16px;}
+  h1 span{color:var(--gold);}
+  h2{font-size:clamp(1.4rem,3.6vw,2rem);font-weight:900;letter-spacing:-.02em;margin:0 0 8px;}
+  h2 .st{color:var(--gold);}
+  .lead{font-size:clamp(1.12rem,2.5vw,1.42rem);color:#dbe6f3;font-weight:600;margin:0 0 8px;max-width:70ch;}
+  p{font-size:clamp(1.0rem,2.1vw,1.14rem);color:#cdd9e8;margin:0 0 14px;max-width:74ch;}
+  p b, li b{color:#fff;}
+  ul{list-style:none;padding:0;margin:0 0 8px;}
+  li{font-size:clamp(1.0rem,2.2vw,1.16rem);color:#e6eef8;padding:10px 0 10px 30px;position:relative;border-bottom:1px solid rgba(255,255,255,.08);}
+  li:last-child{border-bottom:none;}
+  li::before{content:"";position:absolute;left:2px;top:18px;width:10px;height:10px;background:var(--gold);border-radius:50%;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0;}
+  .card{background:var(--navy2);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:16px 18px;}
+  .card h3{margin:0 0 4px;font-size:1.05rem;color:var(--gold);font-weight:900;}
+  .card p{font-size:.96rem;margin:0;color:#cdd9e8;}
+  .prompt{background:#0b1f3d;border:1px solid rgba(244,176,43,.4);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative;}
+  .prompt .lbl{color:var(--gold);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+  .prompt .js-copy{color:#eaf1fb;font-family:var(--mono);font-size:clamp(.86rem,1.8vw,.96rem);line-height:1.55;display:block;padding-right:76px;white-space:pre-wrap;}
+  .copy{position:absolute;top:14px;right:14px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:7px 12px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .note{background:rgba(244,176,43,.14);border-left:5px solid var(--gold);border-radius:10px;padding:13px 16px;margin:14px 0;font-size:1.0rem;color:#fff;}
+  .warn{background:#3a1414;border-left:5px solid #e0533a;border-radius:10px;padding:13px 16px;margin:14px 0;font-size:1.0rem;color:#ffe6e0;}
+  .warn b{color:#ff9a86;}
+  .mono{font-family:var(--mono);background:rgba(255,255,255,.08);border-radius:5px;padding:1px 7px;font-size:.9em;}
+  .stepnum{display:inline-flex;align-items:center;justify-content:center;min-width:40px;height:40px;background:var(--gold);color:var(--navy);border-radius:50%;font-weight:900;font-size:1.15rem;flex:none;}
+  .stephead{display:flex;align-items:center;gap:14px;margin-bottom:6px;}
+  .stephead .ph{color:#8ea3bd;font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:.72rem;}
+  .payoff{background:rgba(46,160,110,.16);border-left:5px solid #3ec98a;border-radius:10px;padding:11px 15px;margin:12px 0 0;color:#d6ffe9;font-size:.98rem;}
+  .payoff b{color:#8affc8;}
+  footer{padding:30px 0 60px;color:#8ea3bd;font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">Leveraging <b>AI</b> · Build Sheet</div>
+
+    <section class="hero">
+      <div class="kicker">Vertical Drama App · ReelShort / DramaBox style</div>
+      <h1>Build a vertical drama app, <span>in phases</span>.</h1>
+      <p class="lead">This is the whole product broken into build phases, in the order you should build them, each with one prompt you paste into Claude Code. Build the experience first, then the data, then the video, then the money, then the admin, then the AI. Don't try to do it all in one prompt.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Before you start — accounts you'll need</div>
+      <div class="cards">
+        <div class="card"><h3>VS Code + Claude Code</h3><p>Your build tool, with an Anthropic API key (billing on).</p></div>
+        <div class="card"><h3>GitHub</h3><p>Where your code lives.</p></div>
+        <div class="card"><h3>Vercel</h3><p>Where your app goes live.</p></div>
+        <div class="card"><h3>Supabase</h3><p>Login + database (free to start).</p></div>
+        <div class="card"><h3>Stripe</h3><p>Payments for premium episodes.</p></div>
+        <div class="card"><h3>Mux</h3><p>Video hosting. The one new tool, video can't be served from the app itself.</p></div>
+      </div>
+      <div class="note">👉 <b>Why Mux?</b> A drama app is mostly video, and you can't store or stream video from your own app, it's too heavy and premium clips would be easy to steal. Mux handles the upload, encoding, and smooth playback, and it can lock premium video with signed links so only paying users can watch. Cloudflare Stream is a fine alternative, this sheet uses Mux.</div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">1</span><div><div class="ph">Phase 1 · The experience</div><h2>Build the <span class="st">face</span> with sample data</h2></div></div>
+      <p>No database yet. Get the whole thing clickable first, so you have something real to look at and show.</p>
+      <div class="prompt">
+        <div class="lbl">Paste into Claude Code</div>
+        <span class="js-copy">Build me a mobile-first vertical drama streaming web app in Next.js, like ReelShort or DramaBox. Start with the front end only, using placeholder sample data, no database yet. Build three things: (1) a home/discovery screen with horizontal poster rows for Featured, Trending Now, Continue Watching, Recommended For You, New Releases, and genre rows like Romance, Revenge, Thriller, Fantasy; (2) a series detail page with title, poster, description, genre, tags, episode list, free-vs-premium badges on episodes, and Start Watching / Resume buttons; (3) a full-screen vertical 9:16 video player with play/pause, a progress bar, volume, fullscreen, next and previous episode, autoplay-next with a short countdown, and loading and error states. Use a few sample dramas with placeholder posters and one sample vertical video so I can click through the entire experience. Make it feel like a real, polished mobile streaming app. Don't ask me questions, make reasonable choices and build it.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="payoff">✓ Payoff: you can click through the app and watch a sample episode on your phone.</div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">2</span><div><div class="ph">Phase 2 · Accounts + memory</div><h2>Add <span class="st">login and the database</span></h2></div></div>
+      <p>Now the app gets real accounts and remembers everything. Create your Supabase project first, then paste this.</p>
+      <div class="prompt">
+        <div class="lbl">Paste into Claude Code</div>
+        <span class="js-copy">Now add Supabase for accounts and data. Add sign-up, login, logout, and password reset. Create tables for: dramas (title, description, poster, trailer, genres, tags, status), episodes (drama_id, episode number, video reference, thumbnail, duration, free-or-premium, price, publish status), viewing_progress (user, drama, episode, playback position, completion, last-watched time), favorites (user, drama), and transactions (user, what they bought, amount, payment status, date). Turn on Row Level Security on every table. Replace the sample data with real data from Supabase, and wire up Continue Watching, Favorites/Watchlist, and Recently Watched from these tables. Save playback progress automatically as the video plays. I've already created my Supabase project, so don't tell me to make one. Ask me once for my Project URL, publishable key, and secret key, put them in my .env, and save the SQL I need to run to a file called supabase/schema.sql. The secret key must never be exposed to the browser. Don't ask me anything else, build it.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="payoff">✓ Payoff: real accounts, and the app remembers what each person watched and saved.</div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">3</span><div><div class="ph">Phase 3 · Real video</div><h2>Host the video on <span class="st">Mux</span></h2></div></div>
+      <div class="prompt">
+        <div class="lbl">Paste into Claude Code</div>
+        <span class="js-copy">Set up real video hosting with Mux instead of storing video in the app. When an episode video is uploaded, send it to Mux, store the Mux playback ID on the episode, and play episodes back through Mux in the vertical player. For premium episodes, use Mux signed playback URLs so the video link can't be shared or opened without a valid entitlement, and generate the signing token server-side only. Free episodes can play with a normal public playback ID. Read my Mux credentials from environment variables, never in browser code. Check the current Mux documentation first so the setup is right. Don't ask me questions, build it.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="payoff">✓ Payoff: episodes stream smoothly, and premium video is protected.</div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">4</span><div><div class="ph">Phase 4 · The money</div><h2>Add the <span class="st">paywall and payments</span></h2></div></div>
+      <div class="prompt">
+        <div class="lbl">Paste into Claude Code</div>
+        <span class="js-copy">Add the premium paywall with Stripe. Free episodes play normally. When a user reaches a premium episode, show a clear unlock screen with what they get, the price, and a purchase button. Use Stripe Checkout for the purchase, and only unlock the content after a Stripe webhook confirms the payment, then record it in the transactions table. The entitlement check must happen server-side: a user must never unlock premium content by changing values in the browser, and premium video must never play without a verified purchase on the server. Turn on Row Level Security so only the webhook can write purchase records. Add this to a single Stripe webhook handler, don't create a second one. Save any SQL to supabase/schema.sql and tell me the exact webhook URL to paste into Stripe. Check current Stripe docs first. Don't ask me questions, build it.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="payoff">✓ Payoff: someone can pay to unlock a premium episode and keep watching.</div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">5</span><div><div class="ph">Phase 5 · The control room</div><h2>Build the <span class="st">admin dashboard</span></h2></div></div>
+      <div class="prompt">
+        <div class="lbl">Paste into Claude Code</div>
+        <span class="js-copy">Build a secure admin dashboard, separate from the user app and protected by an admin role checked on the server. In it the content owner can: create dramas (title, description, cover image, genres, tags); upload episodes and their video files to Mux; reorder episodes; mark each episode free or premium and set its price; publish and unpublish content, with unpublished drafts clearly separated from live content; edit existing content; and see reported playback problems. Add a basic analytics view: total users, active users, total views, episode and drama views, completion rate, average watch time, most popular dramas and episodes, premium unlocks, revenue, and the free-to-paid conversion rate. Protect every admin route on the server, not just by hiding buttons. Don't ask me questions, build it.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="payoff">✓ Payoff: the owner can upload dramas, price episodes, publish, and watch the numbers.</div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">6</span><div><div class="ph">Phase 6 · The AI layer</div><h2>Add the <span class="st">AI features</span></h2></div></div>
+      <p>AI improves the experience quietly, it's not the interface. Do this last, once the app works.</p>
+      <div class="prompt">
+        <div class="lbl">Paste into Claude Code</div>
+        <span class="js-copy">Add the AI features using the Anthropic Claude API. Read the API key from an environment variable and make every AI call server-side. (1) Natural-language search: let users type things like "a revenge romance with a female lead" or "something like the one I just watched," and have Claude turn it into a search across the drama metadata. Keep normal keyword search working too. (2) AI metadata helper: when an admin adds a drama or episode, use Claude to suggest a description, episode summary, genres, tags, and keywords. The admin reviews and edits before publishing, and AI must never overwrite what the admin typed. (3) Recommendations: recommend dramas from each user's watch history, genres watched, favorites, and completions, and fall back to trending titles for brand-new users. Check the current Anthropic API docs first. Don't ask me questions, build it.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="note">👉 <b>Captions:</b> Mux can auto-generate captions from the uploaded video. Add them as a small admin step, generate, review, edit, publish, rather than a separate build. Multi-language subtitles are a later enhancement.</div>
+      <div class="payoff">✓ Payoff: smarter search, auto-filled metadata, and recommendations that improve with use.</div>
+    </section>
+
+    <section>
+      <div class="kicker">The non-negotiables</div>
+      <h2>Security rules that <span class="st">cannot slip</span>.</h2>
+      <p>This app takes money and locks content, so these are not optional. Tell Claude to hold to them in every phase.</p>
+      <div class="warn"><b>Never trust the browser.</b>
+      • Whether someone owns a premium episode is checked <b>on the server</b>, every time. Changing a value in the browser must never unlock anything.<br>
+      • Premium video plays only through <b>signed Mux URLs</b>, so the link can't be shared or reused.<br>
+      • Access is granted only after a <b>Stripe webhook confirms payment</b>, never on the "success" page alone.<br>
+      • <b>Row Level Security on every Supabase table</b>, and only the webhook can write purchase records.<br>
+      • All secret keys (Stripe, Mux, Anthropic, Supabase secret) stay <b>server-side</b>. None ever gets a <span class="mono">NEXT_PUBLIC_</span> prefix.</div>
+    </section>
+
+    <section>
+      <div class="kicker">Version 1 — what "done" means</div>
+      <h2>Ship the <span class="st">core loop</span> first.</h2>
+      <p><b>The success test:</b> a person can create an account, quickly find a drama they like, watch the free episodes smoothly, resume where they left off, and securely pay to unlock more. If a feature doesn't serve that loop, defer it.</p>
+      <p style="margin-top:10px;"><b>Save for later (don't build in V1):</b></p>
+      <ul>
+        <li>Coin / credit system and bundles</li>
+        <li>Monthly subscriptions and VIP tiers</li>
+        <li>Native iOS / Android apps</li>
+        <li>Comments, reactions, ratings, social sharing</li>
+        <li>Multi-language subtitles and interface</li>
+        <li>Referral program and promo codes</li>
+      </ul>
+      <div class="note">👉 Build the phases <b>in order</b>, and deploy and test after each one. Six clean phases beats one giant prompt that half-works.</div>
+    </section>
+
+    <footer>Dr. Erin Jacques · Leveraging AI</footer>
+  </div>
+
+<script>
+  function copyText(btn){
+    var el=btn.parentElement.querySelector('.js-copy');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o=btn.textContent; btn.textContent='Copied!';
+      setTimeout(function(){btn.textContent=o;},1500);
+    });
+  }
+</script>
+</body>
+</html>
