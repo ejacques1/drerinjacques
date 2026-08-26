@@ -73,7 +73,7 @@
         <div class="card"><h3>Mux</h3><p>Video hosting. The one new tool, video can't be served from the app itself.</p></div>
       </div>
       <div class="note">👉 <b>Why Mux?</b> A drama app is mostly video, and you can't store or stream video from your own app, it's too heavy and premium clips would be easy to steal. Mux handles the upload, encoding, and smooth playback, and it can lock premium video with signed links so only paying users can watch. Cloudflare Stream is a fine alternative, this sheet uses Mux.</div>
-      <div class="note">💵 <b>What Mux costs:</b> it's the one paid tool here, but it starts free. The free tier gives you <b>100,000 streaming minutes a month and up to 10 stored videos</b>, plenty to build and test the whole app for $0. After that it's pay-as-you-go, and you only pay for what people actually use: roughly <b>2.5¢ per minute</b> to process a video one time, a tiny fraction of a cent per minute to store it, and about <b>$0.0008 per minute watched</b> once you pass the free 100k. So it stays near-free while you build, and your cost only grows as your viewership (and your revenue) grows.</div>
+      <div class="note">💵 <b>What Mux costs:</b> it's the one paid tool here, but it starts free. The free tier gives you <b>100,000 streaming minutes a month and up to 10 stored videos</b>, enough to build and test the whole app for $0. Note the 10-video limit, though: it's fine for testing, but a real catalog moves you to the paid plan as soon as you load actual episodes. After that it's pay-as-you-go, and you only pay for what people actually use: roughly <b>2.5¢ per minute</b> to process a video one time, a tiny fraction of a cent per minute to store it, and about <b>$0.0008 per minute watched</b> once you pass the free 100k. So it stays near-free while you build, and your cost only grows as your viewership (and your revenue) grows.</div>
     </section>
 
     <section>
@@ -92,7 +92,7 @@
       <p>Now the app gets real accounts and remembers everything. Create your Supabase project first, then paste this.</p>
       <div class="prompt">
         <div class="lbl">Paste into Claude Code</div>
-        <span class="js-copy">Now add Supabase for accounts and data. Add sign-up, login, logout, and password reset. Create tables for: dramas (title, description, poster, trailer, genres, tags, status), episodes (drama_id, episode number, video reference, thumbnail, duration, free-or-premium, price, publish status), viewing_progress (user, drama, episode, playback position, completion, last-watched time), favorites (user, drama), and transactions (user, what they bought, amount, payment status, date). Turn on Row Level Security on every table. Replace the sample data with real data from Supabase, and wire up Continue Watching, Favorites/Watchlist, and Recently Watched from these tables. Save playback progress automatically as the video plays. I've already created my Supabase project, so don't tell me to make one. Ask me once for my Project URL, publishable key, and secret key, put them in my .env, and save the SQL I need to run to a file called supabase/schema.sql. The secret key must never be exposed to the browser. Don't ask me anything else, build it.</span>
+        <span class="js-copy">Now add Supabase for accounts and data. Add sign-up, login, logout, and password reset. Create tables for: dramas (title, description, poster, trailer, genres, tags, status), episodes (drama_id, episode number, video reference, thumbnail, duration, free-or-premium, price, publish status), viewing_progress (user, drama, episode, playback position, completion, last-watched time), favorites (user, drama), and transactions (user, what they bought, amount, payment status, date). Turn on Row Level Security on every table. Replace the sample data with real data from Supabase, and wire up Continue Watching, Favorites/Watchlist, and Recently Watched from these tables. Save playback progress automatically as the video plays. Store uploaded images like posters and thumbnails in Supabase Storage, not in the database, and keep the image URLs on the drama and episode records. I've already created my Supabase project, so don't tell me to make one. Ask me once for my Project URL, publishable key, and secret key, put them in my .env, and save the SQL I need to run to a file called supabase/schema.sql. The secret key must never be exposed to the browser. Don't ask me anything else, build it.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
       <div class="payoff">✓ Payoff: real accounts, and the app remembers what each person watched and saved.</div>
@@ -116,6 +116,7 @@
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
       <div class="payoff">✓ Payoff: someone can pay to unlock a premium episode and keep watching.</div>
+      <div class="note">👉 <b>Heads-up on fees:</b> every card charge costs about <b>2.9% + 30¢</b>, so on a $0.99 episode unlock you lose roughly a third to fees. That's why platforms like ReelShort sell <b>coins</b> (one bigger purchase, then many unlocks) instead of charging per episode. Coins are in "save for later" below, but you'll likely want them sooner rather than later.</div>
     </section>
 
     <section>
@@ -150,6 +151,7 @@
       • Access is granted only after a <b>Stripe webhook confirms payment</b>, never on the "success" page alone.<br>
       • <b>Row Level Security on every Supabase table</b>, and only the webhook can write purchase records.<br>
       • All secret keys (Stripe, Mux, Anthropic, Supabase secret) stay <b>server-side</b>. None ever gets a <span class="mono">NEXT_PUBLIC_</span> prefix.</div>
+      <div class="note">⚖️ <b>Before you take real money, add your legal pages:</b> terms of service, a privacy policy, and a refund policy, same as the Week 3 legal step. Stripe expects them, and a paid content platform needs them. This is also where content licensing matters: only publish dramas you have the rights to.</div>
     </section>
 
     <section>
