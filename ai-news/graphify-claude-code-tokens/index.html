@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Claude Code Isn't Rereading Your Codebase. Here's Where Your Tokens Actually Go | Dr. Erin Jacques AI News</title>
+<meta name="description" content="A viral claim says Claude Code rereads your whole codebase every session. It doesn't. Here's what actually burns your tokens, and the free tool that cuts it.">
+<meta name="author" content="Dr. Erin Jacques">
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="Claude Code Isn't Rereading Your Codebase. Here's Where Your Tokens Actually Go">
+<meta property="og:description" content="A viral claim says Claude Code rereads your whole codebase every session. It doesn't. Here's what actually burns your tokens, and the free tool that cuts it.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://drerinjacques.com/ai-news/graphify-claude-code-tokens">
+<meta property="og:image" content="https://drerinjacques.com/ai-news/graphify-claude-code-tokens/og.png">
+<meta property="og:site_name" content="Dr. Erin Jacques AI News">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Code Isn't Rereading Your Codebase. Here's Where Your Tokens Actually Go">
+<meta name="twitter:description" content="A viral claim says Claude Code rereads your whole codebase every session. It doesn't. Here's what actually burns your tokens, and the free tool that cuts it.">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Claude Code Isn't Rereading Your Codebase. Here's Where Your Tokens Actually Go",
+    "description": "A viral claim says Claude Code rereads your whole codebase every session. It doesn't. Here's what actually burns your tokens, and the free tool that cuts it.",
+    "datePublished": "2026-08-26",
+    "dateModified": "2026-08-26",
+    "author": {
+        "@type": "Person",
+        "name": "Dr. Erin Jacques",
+        "url": "https://drerinjacques.com",
+        "jobTitle": "Professor of Informatics",
+        "worksFor": {
+            "@type": "EducationalOrganization",
+            "name": "City University of New York",
+            "sameAs": "https://en.wikipedia.org/wiki/City_University_of_New_York"
+        },
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Columbia University",
+            "sameAs": "https://en.wikipedia.org/wiki/Columbia_University"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/in/drerinjacques/",
+            "https://www.instagram.com/dr.erinjacques/",
+            "https://www.tiktok.com/@dr.erinjacques",
+            "https://x.com/dr_erinjacques",
+            "https://www.youtube.com/@Dr.ErinJacques"
+        ]
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Dr. Erin Jacques AI News",
+        "url": "https://drerinjacques.com/ai-news",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://drerinjacques.com/assets/logo.png"
+        }
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://drerinjacques.com/ai-news/graphify-claude-code-tokens"
+    },
+    "articleSection": "AI Tools",
+    "keywords": "Claude Code, tokens, Graphify, knowledge graph, context window, AI coding agents, tree-sitter, open source",
+    "wordCount": "712",
+    "isAccessibleForFree": true
+}
+</script>
+
+<!-- OPTIONAL: add an FAQPage block here for AEO when the post has clear Q&As -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#121212;
+    --ink-soft:#333333;
+    --gray:#5a5a5a;
+    --gray-light:#6b6b6b;
+    --rule:#dcdcdc;
+    --rule-dark:#121212;
+    --kicker:#d0021b;
+    --link:#326891;
+    --serif:'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans:'Libre Franklin', -apple-system, Helvetica, Arial, sans-serif;
+    --col:680px;
+    --page-width:1080px;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#fff;color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased;}
+
+  /* ===== site header ===== */
+  .site-header{background:#0A1628;position:relative;z-index:100;}
+  .header-inner{max-width:var(--page-width);margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .header-brand{text-decoration:none;font-size:1.1rem;font-weight:700;color:#fff;letter-spacing:-0.3px;font-family:var(--sans);}
+  .header-nav{display:flex;gap:30px;align-items:center;}
+  .header-nav a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:0.88rem;font-weight:500;font-family:var(--sans);transition:color .2s;}
+  .header-nav a:hover{color:#fff;}
+  .header-nav a.nav-active{color:#fff;}
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:1001;}
+  .hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,0.85);border-radius:2px;transition:all .3s ease;}
+  .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+  .hamburger.active span:nth-child(2){opacity:0;}
+  .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+  .mobile-nav{display:none;position:fixed;inset:0;background:#0A1628;z-index:1000;flex-direction:column;align-items:center;justify-content:center;gap:28px;}
+  .mobile-nav.open{display:flex;}
+  .mobile-nav a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:1.3rem;font-weight:600;font-family:var(--sans);}
+  .mobile-nav a:hover{color:#fff;}
+
+  /* ===== share bar ===== */
+  .share-bar{position:fixed;left:max(16px,calc((100vw - var(--page-width)) / 2 - 60px));top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:90;}
+  .share-btn{width:42px;height:42px;border-radius:50%;background:#f3f3f3;border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;text-decoration:none;}
+  .share-btn:hover{background:var(--ink);border-color:var(--ink);}
+  .share-btn svg{width:17px;height:17px;fill:#444;}
+  .share-btn:hover svg{fill:#fff;}
+  .share-btn-copied{background:#1a7f57 !important;border-color:#1a7f57 !important;}
+  .share-btn-copied svg{fill:#fff;}
+  .share-bar-mobile{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--rule);padding:10px 24px;z-index:90;justify-content:center;gap:16px;}
+  .share-bar-mobile .share-btn{width:38px;height:38px;}
+
+  /* ===== article shell ===== */
+  .article{max-width:var(--col);margin:0 auto;padding:34px 24px 64px;}
+  .kicker{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--kicker);margin-bottom:14px;}
+  .headline{font-family:var(--serif);font-weight:700;font-size:clamp(30px,5.2vw,46px);line-height:1.12;letter-spacing:-0.011em;color:var(--ink);margin-bottom:18px;}
+  .deck{font-family:var(--sans);font-weight:400;font-size:20px;line-height:1.45;color:var(--gray);margin-bottom:26px;}
+
+  .byline{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding:16px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:28px;}
+  .byline-author{font-family:var(--sans);font-size:14px;color:var(--ink);}
+  .byline-author .by{color:var(--gray-light);}
+  .byline-author a{color:var(--ink);text-decoration:none;font-weight:600;}
+  .byline-date{font-family:var(--sans);font-size:13px;color:var(--gray-light);margin-left:auto;}
+
+  figure{margin:0 0 8px;}
+  figure img{width:100%;height:auto;display:block;}
+  figcaption{font-family:var(--sans);font-size:13px;line-height:1.45;color:var(--gray-light);margin:8px 0 34px;}
+  figcaption .credit{color:#9a9a9a;}
+
+  .body p{font-size:19px;line-height:1.65;color:var(--ink-soft);margin-bottom:22px;}
+  .body p a{color:var(--link);text-decoration:underline;text-underline-offset:2px;}
+  .body > p.lead::first-letter{font-family:var(--serif);font-weight:700;float:left;font-size:66px;line-height:52px;padding:4px 10px 0 0;color:var(--ink);}
+  .body h2{font-family:var(--serif);font-weight:700;font-size:25px;line-height:1.25;color:var(--ink);margin:40px 0 14px;}
+
+  .body ol{margin:0 0 22px 0;padding:0;list-style:none;counter-reset:step;}
+  .body ol li{position:relative;font-size:19px;line-height:1.6;color:var(--ink-soft);padding-left:40px;margin-bottom:18px;counter-increment:step;}
+  .body ol li::before{content:counter(step);position:absolute;left:0;top:2px;font-family:var(--sans);font-weight:700;font-size:15px;color:var(--kicker);border:1px solid var(--rule);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;}
+  .body ol li strong{color:var(--ink);}
+
+  /* ===== prompt block (editorial, light) — for build posts ===== */
+  .prompt-label{font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink);margin:28px 0 8px;}
+  pre.prompt{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;line-height:1.6;background:#f6f6f4;border:1px solid var(--rule);border-left:3px solid var(--ink);padding:18px 20px;margin:0 0 26px;white-space:pre-wrap;overflow-x:auto;color:var(--ink-soft);}
+
+  .pullquote{margin:38px 0;padding:22px 0;border-top:1px solid var(--rule-dark);border-bottom:1px solid var(--rule-dark);text-align:center;}
+  .pullquote p{font-family:var(--serif);font-weight:600;font-size:27px;line-height:1.32;color:var(--ink);margin:0;}
+  .pullquote cite{display:block;margin-top:12px;font-family:var(--sans);font-style:normal;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-light);}
+
+  .author-note{display:flex;gap:16px;align-items:flex-start;margin:44px 0 0;padding-top:26px;border-top:1px solid var(--rule);}
+  .author-note img{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0;}
+  .author-note p{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--gray);}
+  .author-note strong{color:var(--ink);}
+  .author-note a{color:var(--link);text-decoration:underline;text-underline-offset:2px;font-weight:500;}
+
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin:34px 0 0;}
+  .tags a{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--gray);text-decoration:none;border:1px solid var(--rule);padding:4px 12px;border-radius:2px;}
+  .tags a:hover{color:var(--ink);border-color:var(--ink);}
+
+  .subscribe{margin-top:34px;padding:26px;border:1px solid var(--rule);}
+  .subscribe h3{font-family:var(--serif);font-weight:700;font-size:21px;color:var(--ink);margin-bottom:6px;}
+  .subscribe p{font-family:var(--sans);font-size:14px;color:var(--gray);margin-bottom:14px;}
+  .subscribe form{display:flex;gap:8px;}
+  .subscribe input{flex:1;padding:12px;border:1px solid #cfcfcf;font-family:var(--sans);font-size:14px;}
+  .subscribe input:focus{outline:none;border-color:var(--ink);}
+  .subscribe button{padding:12px 22px;border:none;background:var(--ink);color:#fff;font-family:var(--sans);font-weight:600;font-size:14px;cursor:pointer;}
+  .subscribe button:disabled{opacity:.5;cursor:not-allowed;}
+  .form-message{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;font-weight:600;}
+  .form-message.success{display:block;color:#1a7f57;}
+  .form-message.error{display:block;color:#c0392b;}
+
+  .site-footer{background:#0A1628;padding:36px 24px;text-align:center;margin-top:48px;}
+  .site-footer a{color:#8a97a8;font-family:var(--sans);font-size:13px;text-decoration:none;margin:0 12px;}
+  .site-footer a:hover{color:#fff;}
+  .site-footer p{color:#4A5568;font-family:var(--sans);font-size:12px;margin-top:14px;}
+
+  @media(max-width:768px){
+    .header-nav{display:none;}
+    .hamburger{display:flex;}
+    .share-bar{display:none;}
+    .share-bar-mobile{display:flex;}
+    .article{padding:28px 20px 90px;}
+    .headline{font-size:31px;}
+    .deck{font-size:18px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="header-brand">DR. ERIN JACQUES</a>
+    <nav class="header-nav">
+      <a href="/#about">About</a>
+      <a href="/#research">Research</a>
+      <a href="/#entrepreneurship">Work With Me</a>
+      <a href="/ai-news" class="nav-active">AI News</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-nav" id="mobileNav">
+  <a href="/#about" onclick="closeMobileNav()">About</a>
+  <a href="/#research" onclick="closeMobileNav()">Research</a>
+  <a href="/#entrepreneurship" onclick="closeMobileNav()">Work With Me</a>
+  <a href="/ai-news" onclick="closeMobileNav()">AI News</a>
+  <a href="/#contact" onclick="closeMobileNav()">Contact</a>
+</div>
+
+<div class="share-bar" aria-label="Share this article">
+  <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://drerinjacques.com/ai-news/graphify-claude-code-tokens" target="_blank" rel="noopener" title="Share on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://drerinjacques.com/ai-news/graphify-claude-code-tokens&text=Claude%20Code%20Isn%27t%20Rereading%20Your%20Codebase" target="_blank" rel="noopener" title="Share on X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+  <button class="share-btn" onclick="copyLink(this)" title="Copy link"><svg viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" fill="none" stroke="#444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+<div class="share-bar-mobile" aria-label="Share this article">
+  <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://drerinjacques.com/ai-news/graphify-claude-code-tokens" target="_blank" rel="noopener" title="Share on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://drerinjacques.com/ai-news/graphify-claude-code-tokens&text=Claude%20Code%20Isn%27t%20Rereading%20Your%20Codebase" target="_blank" rel="noopener" title="Share on X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+  <button class="share-btn" onclick="copyLink(this)" title="Copy link"><svg viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" fill="none" stroke="#444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+
+<article class="article" itemscope itemtype="https://schema.org/Article">
+
+  <div class="kicker">CLAUDE CODE</div>
+  <h1 class="headline" itemprop="headline">Claude Code Isn't Rereading Your Codebase. Here's Where Your Tokens Actually Go</h1>
+  <p class="deck">A viral claim says Claude Code rereads your whole codebase every session. It doesn't &mdash; but there is a real token problem, and a free tool that fixes it.</p>
+
+  <div class="byline">
+    <p class="byline-author"><span class="by">By</span> <a href="https://drerinjacques.com" itemprop="author">Dr. Erin Jacques</a></p>
+    <p class="byline-date"><time itemprop="datePublished" datetime="2026-08-26">August 26, 2026</time></p>
+  </div>
+
+  <figure>
+    <img src="/ai-news/graphify-claude-code-tokens/featured.png" alt="Editorial graphic reading: Stop paying Claude to hunt.">
+    <figcaption>Graphify maps a codebase once so the agent stops searching. <span class="credit">Illustration</span></figcaption>
+  </figure>
+
+  <div class="body" itemprop="articleBody">
+
+    <p class="lead">There's a claim going around that every time you start a Claude Code session, it reads your entire codebase &mdash; every file, every function &mdash; before you type a word. That's why your plan runs out, the story goes.</p>
+
+    <p>It isn't true. And the real answer is more useful than the myth.</p>
+
+    <h2>What actually loads when you start a session</h2>
+    <p>At startup, Claude Code loads your CLAUDE.md, your tool names, your skill descriptions, and your git status. Not your files. Files get read on demand, only when a task actually needs them.</p>
+
+    <p>So where do the tokens go?</p>
+
+    <p><strong>Hunting.</strong> In a large project, a lot of a session is spent searching for things &mdash; grepping for a function, opening a file, finding it's the wrong one, backing out, trying somewhere else. That happens before any real work starts.</p>
+
+    <p>And here's the part that compounds: everything the agent reads stays in the conversation. A session that did a lot of searching carries all of it forward on every message after that. You don't pay for the hunt once. You pay for it for the rest of the session.</p>
+
+    <h2>What Graphify does</h2>
+    <p>Graphify is a free, open-source tool that attacks exactly that problem. You point it at your project once and it maps the whole thing &mdash; files, functions, and how they all connect &mdash; into a single knowledge graph.</p>
+
+    <p>After that, the agent navigates the map instead of searching blind.</p>
+
+    <p>It parses code with tree-sitter across roughly 40 languages, which means the code path involves no LLM at all and nothing leaves your machine. It isn't a vector database &mdash; there are no embeddings, just a real graph you traverse. And every connection it draws is tagged <strong>EXTRACTED</strong>, <strong>INFERRED</strong>, or <strong>AMBIGUOUS</strong>, so you always know what it found versus what it guessed.</p>
+
+    <p>It also isn't limited to code. Point it at a folder holding your source, a few PDFs, some markdown notes and a handful of screenshots, and it maps the relationships across all of them.</p>
+
+    <div class="pullquote">
+      <p>You don't pay for the hunt once. You pay for it for the rest of the session.</p>
+      <cite>Dr. Erin Jacques</cite>
+    </div>
+
+    <h2>About that 70x number</h2>
+    <p>The figure being quoted everywhere is 71.5x fewer tokens per query. It's real, it comes from the project's own benchmark, and it deserves context that almost nobody includes.</p>
+
+    <p>That number was measured on a 52-file mixed corpus &mdash; code plus five papers plus four images. The project publishes its other results in the same table, and they're more honest than the marketing around them:</p>
+
+    <ul>
+      <li><strong>52 files</strong> &mdash; 71.5x reduction</li>
+      <li><strong>4 files</strong> &mdash; 5.4x</li>
+      <li><strong>6 files</strong> &mdash; roughly 1x, meaning no meaningful savings at all</li>
+    </ul>
+
+    <p>Their own explanation: token reduction scales with corpus size. A handful of files fits in a context window anyway, so on a small project the value is structural clarity, not compression.</p>
+
+    <p>Two more things worth knowing. The benchmark compares against reading all the raw files, which isn't what Claude Code does by default &mdash; so the baseline flatters the result. And building the graph over documents and images costs tokens itself, because that pass runs through Claude. Only the code parsing is LLM-free.</p>
+
+    <p>None of that makes the tool less useful. It makes the claim honest: on a real project, this cuts a genuine chunk of what you're spending. On six files, it won't.</p>
+
+    <h2>How to try it</h2>
+    <p>The repo is at <a href="https://github.com/Graphify-Labs/graphify" target="_blank" rel="noopener">github.com/Graphify-Labs/graphify</a> &mdash; Apache 2.0, over 110,000 stars, updated constantly.</p>
+
+    <p>One gotcha that will trip you up immediately: the install command is <strong>pip install graphifyy</strong>, with two y's. The single-y package name isn't theirs yet.</p>
+
+    <p>From there it runs as a <strong>/graphify</strong> skill inside Claude Code, and it works with Cursor, Codex and Gemini CLI too. You'll need Python 3.10 or later. Run it once on your project, then ask your agent a question you'd normally have to go find the answer to yourself.</p>
+
+    <p>If you want to see what the output looks like before installing anything, the repo ships finished examples &mdash; including an interactive graph you can open in a browser and click through.</p>
+
+    <p>This is the kind of thing we work through inside <a href="https://www.skool.com/leveragingai/about" target="_blank" rel="noopener">Leveraging AI</a>: what these tools actually do, and what they actually cost you.</p>
+
+    <p><a href="https://www.skool.com/leveragingai/about" target="_blank" rel="noopener">Come build with us.</a></p>
+
+    <div class="tags">
+      <a href="/ai-news">AI Tools</a>
+      <a href="/ai-news">Claude Code</a>
+    </div>
+
+    <!-- author-note: KEEP AS-IS. This is where we promote the community. -->
+    <div class="author-note">
+      <img src="/ai-news/graphify-claude-code-tokens/dr-erin-jacques_pic.jpg" alt="Dr. Erin Jacques">
+      <p><strong>Dr. Erin Jacques</strong> is a professor of informatics at the City University of New York and the founder of <a href="https://www.skool.com/leveragingai/about" target="_blank" rel="noopener">Leveraging AI</a> and <a href="https://chatifyit.com" target="_blank" rel="noopener">ChatifyIT</a>, where she helps people build and monetize AI-powered web apps people pay to subscribe to.</p>
+    </div>
+
+    <div class="subscribe">
+      <h3>Get AI News Weekly</h3>
+      <p>How to build and monetize with AI, in one short email.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+        <button type="submit" id="newsletterBtn">Subscribe</button>
+      </form>
+      <div id="newsletterMessage" class="form-message"></div>
+    </div>
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div>
+    <a href="https://drerinjacques.com">Dr. Erin Jacques</a>
+    <a href="https://drerinjacques.com/ai-news">AI News</a>
+    <a href="https://www.skool.com/leveragingai/about">Leveraging AI</a>
+    <a href="https://chatifyit.com">ChatifyIT</a>
+  </div>
+  <p>© 2026 Dr. Erin Jacques. All rights reserved.</p>
+</footer>
+
+<script>
+  function toggleMobileNav(){
+    document.getElementById('mobileNav').classList.toggle('open');
+    document.querySelector('.hamburger').classList.toggle('active');
+    document.body.style.overflow = document.getElementById('mobileNav').classList.contains('open') ? 'hidden' : '';
+  }
+  function closeMobileNav(){
+    document.getElementById('mobileNav').classList.remove('open');
+    document.querySelector('.hamburger').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function copyLink(btn){
+    const url = window.location.href;
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(url).then(()=>showCopied(btn)).catch(()=>legacyCopy(btn,url));
+    } else { legacyCopy(btn,url); }
+  }
+  function legacyCopy(btn,url){
+    const el=document.createElement('input');el.value=url;
+    el.style.cssText='position:fixed;top:0;left:0;opacity:0.01;';
+    document.body.appendChild(el);el.focus();el.select();
+    try{document.execCommand('copy');showCopied(btn);}catch(e){}
+    document.body.removeChild(el);
+  }
+  function showCopied(btn){
+    btn.classList.add('share-btn-copied');
+    const orig=btn.innerHTML;
+    btn.innerHTML='<span style="font-size:10px;font-weight:700;color:#fff;">OK</span>';
+    setTimeout(()=>{btn.classList.remove('share-btn-copied');btn.innerHTML=orig;},1600);
+  }
+  document.getElementById('newsletterForm').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const emailInput=document.getElementById('newsletterEmail');
+    const submitBtn=document.getElementById('newsletterBtn');
+    const msg=document.getElementById('newsletterMessage');
+    msg.className='form-message';msg.textContent='';
+    submitBtn.disabled=true;submitBtn.textContent='Subscribing...';
+    try{
+      const r=await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:emailInput.value})});
+      const d=await r.json();
+      if(r.ok){msg.className='form-message success';msg.textContent="Subscribed. Updates are on the way.";emailInput.value='';}
+      else{msg.className='form-message error';msg.textContent=d.error||'Something went wrong. Please try again.';}
+    }catch(err){msg.className='form-message error';msg.textContent='Network error. Please try again.';}
+    finally{submitBtn.disabled=false;submitBtn.textContent='Subscribe';}
+  });
+</script>
+
+</body>
+</html>
