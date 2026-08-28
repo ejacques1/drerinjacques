@@ -361,10 +361,19 @@
     <div class="num">A</div>
     <div>
       <h3>Claude Code in VS Code</h3>
-      <span class="where">Terminal</span>
-      <p>You already teach this one, so it can move fast — or be cut entirely if your audience has it.</p>
-      <pre><code>npm install -g @anthropic-ai/claude-code</code></pre>
-      <p>Then install the <strong>Claude Code</strong> extension from the VS Code marketplace.</p>
+      <span class="where">VS Code</span>
+      <ol class="clicks">
+        <li>Open <b>VS Code</b>. Free from <a href="https://code.visualstudio.com">code.visualstudio.com</a> if they don't have it.</li>
+        <li>Click the <b>Extensions</b> tab in the left sidebar.</li>
+        <li>Search <b>Claude Code</b>.</li>
+        <li><b>Install</b>, then sign in when it asks.</li>
+      </ol>
+      <div class="beat">
+        <strong>Say this</strong>
+        There's no terminal in this tutorial. The extension brings everything with it — from here it's pasting prompts and clicking Approve.
+      </div>
+      <p>Two names, one setup: <b>VS Code</b> is the editor, <b>Claude Code</b> is an extension inside it. Worth separating out loud — people hear "Claude Code" and think it's a second app to install.</p>
+      <p>You already teach this on <code>/live</code>, so it can move fast or be cut if your audience has it.</p>
     </div>
   </div>
 
@@ -402,12 +411,12 @@
     <div class="num">D</div>
     <div>
       <h3>Clear the screen</h3>
-      <span class="where">Terminal</span>
-      <p>Two things that don't break anything but look like breakage on camera. Both found by running these prompts through Claude Code before you did.</p>
+      <span class="where browser">Your machine only — not a viewer step</span>
+      <p>Two things specific to your laptop. Neither breaks anything; both put something yellow on screen while you film. <b>Leave this out of the page you share.</b></p>
       <div class="trap">
         <strong>Stray lockfile → yellow warning on every build</strong>
         <p style="margin:0">An empty <code>package-lock.json</code> in your home folder makes Turbopack warn about the workspace root every time it builds.</p>
-        <pre style="margin:10px 0 0"><code>rm ~/package-lock.json</code></pre>
+        <p style="margin:8px 0 0">Delete it in Finder — it's at the top of your home folder, called <code>package-lock.json</code>. Or in a terminal: <code>rm ~/package-lock.json</code></p>
       </div>
       <div class="trap">
         <strong>The Vercel plugin will flag your agent file</strong>
