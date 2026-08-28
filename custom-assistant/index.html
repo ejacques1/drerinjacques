@@ -289,6 +289,7 @@
     <div class="step">
       <h2><span class="n">15</span> Test the whole thing</h2>
       <p>Sign out. Create a new account. Subscribe using your 100%-off promo code. Get in.</p>
+      <p>That's the product. The three steps below are add-ons, except one: <b><a href="#step18">step 18 saves people's conversations</a></b>. Right now a refresh wipes the chat, and nobody pays twice for something that forgets them. Do that one before you sell this.</p>
     </div>
 
     <div class="done">🎉 <b>You just built a product.</b> Your instructions, your knowledge, your domain, your users, your money, not a GPT you rent from OpenAI.</div>
@@ -344,12 +345,12 @@
       <div class="tip">👉🏽 Test it with your 100%-off promo code, then check Contacts in Systeme.io. You should see yourself with the <span class="cmd">paid</span> tag and the welcome email on its way.</div>
     </div>
 
-    <div class="divider"><span>Optional — save their chats</span><small>Payoff: people close the app and pick up where they left off</small></div>
+    <div class="divider" id="step18"><span>Do this before you sell it</span><small>Payoff: people close the app and pick up where they left off</small></div>
 
     <div class="step">
       <h2><span class="n">18</span> Save people's conversations</h2>
       <p>Right now a refresh wipes everything. Close the tab and the conversation is gone. This adds a sidebar of past chats, the way ChatGPT has, so people come back and their work is still there.</p>
-      <p><b>Do this after your paywall is working.</b> It writes to the same database, and it's easier to tell what broke if only one thing is new. Then paste this in:</p>
+      <p><b>This isn't a bonus.</b> It's last on the list because it needs your database, not because it's optional — a paid assistant that forgets every conversation feels broken to the person paying for it. Do it once your paywall works, so only one thing is new at a time. Then paste this in:</p>
       <div class="prompt">
         <div class="lbl">Prompt — Save chat history</div>
         <span class="js-copy">Add saved chat history. Every conversation should be stored so people can close the app, come back, and pick up where they left off. Add a sidebar listing their past conversations, newest first, with a New chat button and a way to delete one. Name each conversation from the first message they sent. Save the messages on the server, in the same route that talks to the AI, not in the browser — that's the only place that sees the finished reply, and the only place someone can't fake a transcript. If I have more than one assistant, record which one each conversation belongs to: only show that assistant's chats in its sidebar, and don't load a conversation that belongs to a different assistant even if someone puts its id in the address bar. Turn on row level security so people can only ever see their own conversations. When a message is written, check two things — that it belongs to the person writing it, and that the conversation it's going into is also theirs. Checking only the first still lets someone write into a stranger's chat. Save the SQL I need to run in Supabase to supabase/schema.sql, and tell me when it's there.</span>
