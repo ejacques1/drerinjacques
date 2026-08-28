@@ -301,7 +301,7 @@
       <p><b>Only do this once everything above is working.</b> Get one assistant running end to end first, then add the rest. Then paste this in:</p>
       <div class="prompt">
         <div class="lbl">Prompt — Add a dashboard</div>
-        <span class="js-copy">Add a dashboard after login that lists my assistants as cards. Move my instructions into an assistants folder with one markdown file per assistant, and have the dashboard read that folder, so adding a new file adds a new assistant automatically, with no code changes. Keep the same login and paywall covering all of them. Give each assistant its own knowledge folder named to match its file — assistants/email-writer.md reads knowledge/email-writer/ — and move my existing knowledge into the folder for my first assistant. Update the file tracing config in next.config.ts so the new folders still ship when I deploy.</span>
+        <span class="js-copy">Add a dashboard after login that lists my assistants as cards. Move my instructions into an assistants folder with one markdown file per assistant, and have the dashboard read that folder, so adding a new file adds a new assistant automatically, with no code changes. Keep the same login and paywall covering all of them. Give each assistant its own knowledge folder named to match its file — assistants/email-writer.md reads knowledge/email-writer/ — and move my existing knowledge into the folder for my first assistant. If I already have saved conversations, tag them to my first assistant so they don't disappear. Update the file tracing config in next.config.ts so the new folders still ship when I deploy.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
       <p>Your single <span class="cmd">assistant-instructions.md</span> becomes a folder, and each assistant gets its own knowledge to match:</p>
@@ -342,6 +342,22 @@
       <p>Then tell Claude <i>"push these changes to GitHub"</i>, add <span class="cmd">SYSTEME_API_KEY</span> to Vercel's Environment Variables, and redeploy.</p>
       <div class="warn">⚠️ <b>Don't let it build a second webhook.</b> You already have one from step 14 listening for <span class="cmd">checkout.session.completed</span>. Two handlers on the same event is how you end up with the tag firing but access not granted — that's why the prompt says to extend the existing one.</div>
       <div class="tip">👉🏽 Test it with your 100%-off promo code, then check Contacts in Systeme.io. You should see yourself with the <span class="cmd">paid</span> tag and the welcome email on its way.</div>
+    </div>
+
+    <div class="divider"><span>Optional — save their chats</span><small>Payoff: people close the app and pick up where they left off</small></div>
+
+    <div class="step">
+      <h2><span class="n">18</span> Save people's conversations</h2>
+      <p>Right now a refresh wipes everything. Close the tab and the conversation is gone. This adds a sidebar of past chats, the way ChatGPT has, so people come back and their work is still there.</p>
+      <p><b>Do this after your paywall is working.</b> It writes to the same database, and it's easier to tell what broke if only one thing is new. Then paste this in:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Save chat history</div>
+        <span class="js-copy">Add saved chat history. Every conversation should be stored so people can close the app, come back, and pick up where they left off. Add a sidebar listing their past conversations, newest first, with a New chat button and a way to delete one. Name each conversation from the first message they sent. Save the messages on the server, in the same route that talks to the AI, not in the browser — that's the only place that sees the finished reply, and the only place someone can't fake a transcript. If I have more than one assistant, record which one each conversation belongs to: only show that assistant's chats in its sidebar, and don't load a conversation that belongs to a different assistant even if someone puts its id in the address bar. Turn on row level security so people can only ever see their own conversations. When a message is written, check two things — that it belongs to the person writing it, and that the conversation it's going into is also theirs. Checking only the first still lets someone write into a stranger's chat. Save the SQL I need to run in Supabase to supabase/schema.sql, and tell me when it's there.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>When Claude says the file is ready, do the same thing you did in step 13: open <span class="cmd">supabase/schema.sql</span> in the side panel, copy all of it, and in Supabase go <b>SQL Editor → New query → paste → Run</b>. Then tell Claude <i>"push these changes to GitHub"</i> so your live site gets it.</p>
+      <div class="warn">⚠️ <b>Two checks, not one.</b> That line in the prompt about checking both the person and the conversation isn't padding. Without it, someone who's logged in can write messages into another customer's chat. It's the kind of thing that looks finished and isn't, so don't trim the prompt down.</div>
+      <div class="tip">👉🏽 Conversations from before you added this don't come back — nothing was being saved. History starts from the next message.</div>
     </div>
 
     <div class="divider"><span>If you get stuck</span></div>
