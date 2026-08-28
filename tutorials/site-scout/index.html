@@ -405,6 +405,14 @@
       </ol>
       <p>Apify is an app store for scrapers — thousands of small programs that go collect data from a site, built by other developers. You don't write one, you rent one per run.</p>
       <p>Free plan is $5/month of credit. The scraper charges $0.004 a place, so that covers roughly a thousand businesses a month.</p>
+
+      <div class="trap">
+        <strong>The scraper we use — and why</strong>
+        <p style="margin:0 0 8px"><code>compass/crawler-google-places</code> &nbsp;·&nbsp; <b>575,000 users</b> &nbsp;·&nbsp; <b>4.70 stars</b> &nbsp;·&nbsp; 36 million runs &nbsp;·&nbsp; 97% success rate</p>
+        <p style="margin:0 0 8px">It reads Google Maps listings and returns about 30 fields per business — name, category, phone, full address, rating, and review text. Crucially it has a <b>no-website filter built into its input</b>, so you ask for only the businesses that need what you're selling.</p>
+        <p style="margin:0 0 8px">Apify's store also has actors named things like "businesses without websites." Check ratings before trusting a name — the obvious-sounding one has <b>1.88 stars and 753 users</b>. Compass costs the same and is maintained by people with 36 million runs of feedback.</p>
+        <p style="margin:0">You don't have to go find it. Its name goes in the prompt in step 5, and you never open the Apify site again.</p>
+      </div>
       <span class="mins">≈ 90 sec</span>
     </div>
   </div>
@@ -455,14 +463,19 @@
   "reviewsSort": "highestRanking"
 }</code></pre>
         <p>Return name, phone, address, rating, category and review text for each business.</p>
+        <p><code>searchStringsArray</code> and <code>locationQuery</code> come from the tool's own inputs, not hardcoded — "dentist" and "White Plains, NY" above are just examples of the shape.</p>
         <p>The agent's goal is a target, not one call: keep going until it has 10 businesses with no website. If a search comes back short, widen it — a neighbouring town, a related category, a larger limit — and try again. Stop at 10, or after 5 attempts.</p>
         <p>Use the Tool Runner: <code>betaZodTool</code> from <code>@anthropic-ai/sdk/helpers/beta/zod</code>, run through <code>client.beta.messages.toolRunner()</code>.</p>
       </div>
       <p>Run it and ask for dentists in your town. Real businesses come back, with real phone numbers — and if the first search is short, watch it widen and go again.</p>
       <div class="trap">
-        <strong>Picking the scraper</strong>
-        <p style="margin:0">Apify has purpose-named "businesses without websites" actors. Check ratings first — the obvious-sounding one has <b>1.88 stars and 753 users</b>. <code>compass/crawler-google-places</code> has <b>575,000 users, 4.70 stars</b>, 36 million runs, and the no-website filter built into its input.</p>
-        <p style="margin:8px 0 0"><code>maxReviews</code> defaults to <code>0</code>. Leave it off and every generated site loses its testimonials.</p>
+        <strong>Don't drop maxReviews</strong>
+        <p style="margin:0">It defaults to <code>0</code>. Leave it out and every generated site loses its testimonials — which are the best thing on them.</p>
+      </div>
+
+      <div class="beat">
+        <strong>Nothing to edit after this</strong>
+        You never touch that JSON again. To scout somewhere else you just ask — "plumbers in Yonkers", "hair salons in New Rochelle" — and the agent fills in the search and location itself. That's the difference between running a tool and having an agent that runs it for you.
       </div>
       <span class="mins">≈ 4 min</span>
     </div>
