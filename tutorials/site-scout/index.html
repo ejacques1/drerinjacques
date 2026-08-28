@@ -175,12 +175,13 @@
   pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
 
   .prompt {
-    background: var(--navy-wash); border-left: 4px solid var(--navy);
-    border-radius: 8px; padding: 14px 16px; margin: 0 0 12px; font-size: .96rem;
+    background: var(--navy-wash); border: 2px solid var(--navy);
+    border-radius: 10px; padding: 14px 16px 16px; margin: 0 0 14px; font-size: .96rem;
   }
   .prompt .lbl {
-    display: block; font-size: .66rem; font-weight: 800; letter-spacing: .12em;
-    text-transform: uppercase; color: var(--navy); margin-bottom: 8px;
+    display: inline-block; font-size: .66rem; font-weight: 800; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--gold); background: var(--navy);
+    padding: 4px 11px; border-radius: 20px; margin-bottom: 10px;
   }
   .prompt p { margin: 0 0 8px; }
   .prompt p:last-child { margin-bottom: 0; }
@@ -188,6 +189,13 @@
   .beat {
     background: var(--gold-wash); border-left: 4px solid var(--gold);
     border-radius: 8px; padding: 13px 15px; margin: 0 0 12px; font-size: .96rem;
+  }
+  .beat strong, .trap strong { position: relative; padding-left: 15px; }
+  .beat strong::before, .trap strong::before {
+    content: "i"; position: absolute; left: 0; top: 0;
+    width: 11px; height: 11px; line-height: 11px; text-align: center;
+    border-radius: 50%; background: var(--gold-deep); color: var(--card);
+    font-size: 8px; font-weight: 800;
   }
   .beat strong {
     display: block; font-size: .66rem; font-weight: 800; letter-spacing: .11em;
@@ -359,6 +367,17 @@
     </div>
   </div>
 
+  <h2><span class="tag">How to read this</span></h2>
+  <p class="sub">Two kinds of box, and only one of them is an instruction.</p>
+  <div class="prompt" style="margin-bottom:10px">
+    <span class="lbl">Paste this</span>
+    <p style="margin:0">Navy outline. Copy the whole thing into Claude Code exactly as written and click Approve. Never edit what's inside.</p>
+  </div>
+  <div class="beat">
+    <strong>Just so you know</strong>
+    Gold. Context, warnings, and why something is the way it is. Nothing here gets pasted anywhere.
+  </div>
+
   <h2><span class="tag">What you need</span></h2>
   <p class="sub">One paid account. Everything else is free.</p>
   <ul class="kit">
@@ -435,7 +454,7 @@
       <span class="where">Claude Code</span>
       <p>New empty folder in VS Code, open the Claude Code panel, paste:</p>
       <div class="prompt">
-        <span class="lbl">Prompt</span>
+        <span class="lbl">Paste this</span>
         <p>Set up a Next.js app with TypeScript called site-scout in this folder. Run <code>npm install @anthropic-ai/sdk@latest zod</code> — install the latest, don't write versions into package.json.</p>
         <p>Create <code>lib/agent.ts</code> with a system prompt for an agent that helps web designers find local businesses without websites. Use model <code>claude-opus-5</code>. No tools yet.</p>
         <p>Add <code>.env.local</code> with <code>ANTHROPIC_API_KEY</code> and <code>APIFY_TOKEN</code>.</p>
@@ -452,7 +471,7 @@
       <h3>Give it the finder</h3>
       <span class="where">Claude Code</span>
       <div class="prompt">
-        <span class="lbl">Prompt</span>
+        <span class="lbl">Paste this</span>
         <p>Add a tool called <code>find_businesses</code> that takes a business type and a town. It calls the Apify actor <code>compass/crawler-google-places</code> using <code>APIFY_TOKEN</code>, with this input:</p>
         <pre><code>{
   "searchStringsArray": ["dentist"],
@@ -487,7 +506,7 @@
       <h3>Give it eyes</h3>
       <span class="where">Claude Code</span>
       <div class="prompt">
-        <span class="lbl">Prompt</span>
+        <span class="lbl">Paste this</span>
         <p>Add Anthropic's server-side web search tool — <code>{ type: "web_search_20260209", name: "web_search" }</code> in the tools array.</p>
         <p>Then add a custom tool <code>read_page</code> that fetches a URL and returns its text.</p>
         <p>Update the system prompt so the agent researches each business it finds before doing anything else.</p>
@@ -504,7 +523,7 @@
       <h3>Make it build the sites</h3>
       <span class="where">Claude Code</span>
       <div class="prompt">
-        <span class="lbl">Prompt</span>
+        <span class="lbl">Paste this</span>
         <p>Add a tool <code>save_site</code> that writes an HTML file to <code>/output</code>.</p>
         <p>After researching each business, the agent writes a complete single-file website using their real name, services, phone and address, with only <b>4-star-and-up</b> reviews as testimonials. Placeholder imagery, never their photos. Omit hours rather than inventing them. If nothing verifiable exists for a section, leave the section out.</p>
         <p>Also write <code>output/index.html</code> — a leads sheet listing every business with its phone number, category, and a link to the site you built them.</p>
