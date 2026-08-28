@@ -320,6 +320,42 @@
       </div>
       <p>Claude writes the file into your <span class="cmd">assistants</span> folder. Push it up and it appears on the dashboard on its own. You only do the dashboard step once — everything after that is this one line.</p>
       <div class="tip">👉🏽 Nothing changes in Supabase, Stripe, or Vercel. Same login, same payment, same keys — your assistants are just files in your project.</div>
+
+      <p style="margin-top:20px;"><b>Make the dashboard yours.</b> Three optional add-ons, in any order. Each one is a prompt, and two of them need you to put a file somewhere first.</p>
+
+      <p style="margin-top:14px;"><b>1. Put them in the order you want.</b> Right now they're alphabetical.</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Set the order</div>
+        <span class="js-copy">Let me control the order the assistant cards appear on the dashboard. Don't do it by renaming the files, since the filename is how each assistant is linked to its saved conversations and its knowledge folder. Use a small block at the top of each assistant's markdown file instead, and make sure that block is stripped out before the file is sent to the AI so it isn't read as an instruction. Anything without an order falls back to alphabetical.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>After that, each assistant file starts with a number you can change:</p>
+      <div class="prompt">
+        <div class="lbl">assistants/prd-builder.md</div>
+        <span class="js-copy">---
+order: 1
+---
+
+# PRD Builder</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>Change <span class="cmd">1</span> to <span class="cmd">3</span> and it moves down. The file is never renamed.</p>
+
+      <p style="margin-top:18px;"><b>2. Add your logo.</b> This one tells you where to save the file and opens the folder for you.</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Add your logo</div>
+        <span class="js-copy">Add my logo to the dashboard and to the header on each assistant's chat screen. First tell me the exact folder to put the logo file in, open that folder for me, and wait until I tell you it's there. Then size it by height so the shape of the file doesn't matter, keep it sharp on phones, and make sure it still reads in dark mode.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+
+      <p style="margin-top:18px;"><b>3. Give each assistant its own picture</b>, so they don't all look alike on the dashboard. Same as above, it walks you through where the images go and what to call them.</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Cover image per assistant</div>
+        <span class="js-copy">Let me give each assistant its own cover image on the dashboard card. First create the folder the images go in, open it for me, and tell me exactly what to name each file so it matches the right assistant. Wait until I tell you they're in. Then match the image to the assistant by name, the way the knowledge folders work, so I just drop a file in and it appears. Accept png, jpg, webp and svg. Crop images to a consistent shape so the cards line up no matter what size file I use, and if an assistant has no image, fall back to something that looks deliberate rather than a broken image.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>Then tell Claude <i>"push these changes to GitHub"</i> and your live site picks all of it up.</p>
+      <div class="tip">👉🏽 There's no upload screen, and you don't need one. You add the files in VS Code the same way you add an assistant. Keep each image under about half a megabyte though — they ship with your app, so a photo straight off your phone will slow the page down.</div>
     </div>
 
     <div class="divider"><span>Optional — email your buyers</span><small>Payoff: paying customers land on your list automatically</small></div>
