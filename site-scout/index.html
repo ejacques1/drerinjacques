@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Build an AI agent that finds local businesses without websites and builds each one a draft site. Seven steps, no coding.">
+<title>Site Scout — Build an AI Agent That Builds Websites</title>
+
+<style>
+  :root {
+    --navy:      #0A2547;
+    --navy2:     #0E2E57;
+    --gold:      #F4B02E;
+    --gold-deep: #8A5F06;
+    --ink:       #1c2733;
+    --muted:     #5f6b7a;
+    --bg:        #F6F5F1;
+    --card:      #ffffff;
+    --line:      #e7e3d9;
+    --gold-wash: #FDF4E0;
+    --navy-wash: #EAEFF6;
+    --code-bg:   #0A2547;
+    --code-fg:   #EAEFF6;
+    --banner:    #0A2547;
+    --banner-fg: #ffffff;
+    --banner-sub:#bcccdf;
+    --sans: "Helvetica Neue", Arial, "Segoe UI", system-ui, sans-serif;
+    --mono: ui-monospace, Menlo, Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --navy:      #EAEFF6;
+      --navy2:     #C6D4E6;
+      --gold:      #F4B02E;
+      --gold-deep: #F4B02E;
+      --ink:       #E8ECF1;
+      --muted:     #93A1B3;
+      --bg:        #071A31;
+      --card:      #0D2743;
+      --line:      #1B3A5C;
+      --gold-wash: #23200F;
+      --navy-wash: #102D4C;
+      --code-bg:   #04121F;
+      --code-fg:   #EAEFF6;
+   
+      --banner:    #0D2743;
+      --banner-fg: #E8ECF1;
+      --banner-sub:#93A1B3;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --navy:      #EAEFF6;
+    --navy2:     #C6D4E6;
+    --gold:      #F4B02E;
+    --gold-deep: #F4B02E;
+    --ink:       #E8ECF1;
+    --muted:     #93A1B3;
+    --bg:        #071A31;
+    --card:      #0D2743;
+    --line:      #1B3A5C;
+    --gold-wash: #23200F;
+    --navy-wash: #102D4C;
+    --code-bg:   #04121F;
+    --code-fg:   #EAEFF6;
+ 
+    --banner:    #0D2743;
+    --banner-fg: #E8ECF1;
+    --banner-sub:#93A1B3;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .top { background: var(--banner); padding: 34px 20px 30px; }
+
+  .top .in { max-width: 860px; margin: 0 auto; }
+  .brand {
+    font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+    font-size: .78rem; margin-bottom: 8px;
+  }
+  .brand b { color: var(--gold); }
+  .brand { color: var(--banner-sub); }
+  h1 {
+    margin: 0 0 10px; font-size: clamp(1.9rem, 5vw, 2.7rem);
+    font-weight: 900; letter-spacing: -.022em; color: var(--banner-fg); text-wrap: balance;
+  }
+  .logline { margin: 0; color: var(--banner-sub); font-size: 1.02rem; max-width: 62ch; }
+  .runtime {
+    margin: 16px 0 0; color: var(--banner-sub); font-size: .8rem;
+    letter-spacing: .1em; text-transform: uppercase; font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .wrap { max-width: 860px; margin: 0 auto; padding: 8px 20px 90px; }
+
+  h2 {
+    font-size: 1.12rem; color: var(--navy); margin: 44px 0 6px;
+    letter-spacing: -.01em; display: flex; align-items: center;
+    flex-wrap: wrap; gap: 10px;
+  }
+  h2 .tag {
+    display: inline-block; background: var(--navy); color: var(--gold);
+    border-radius: 20px; padding: 4px 13px; font-size: .68rem; font-weight: 800;
+    letter-spacing: .1em; text-transform: uppercase;
+  }
+  :root[data-theme="dark"] h2 .tag { background: var(--navy-wash); }
+  .sub { color: var(--muted); font-size: .93rem; margin: 0 0 14px; max-width: 64ch; }
+
+  /* Kit strip */
+  .kit {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 10px; margin: 16px 0 0; padding: 0; list-style: none;
+  }
+  .kit li {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 14px 16px;
+  }
+  .kit .k {
+    font-size: .68rem; font-weight: 800; letter-spacing: .11em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 4px;
+  }
+  .kit .v { font-weight: 800; font-size: 1rem; font-variant-numeric: tabular-nums; }
+  .kit .free { color: var(--navy); }
+  .kit .paid { color: var(--gold-deep); }
+
+  /* Steps */
+  .step {
+    display: grid; grid-template-columns: 46px 1fr; gap: 0 18px;
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 14px; padding: 18px 20px; margin: 12px 0;
+  }
+  .num {
+    font-weight: 900; font-size: 1.5rem; line-height: 1.1;
+    color: var(--gold-deep); font-variant-numeric: tabular-nums;
+  }
+  .step h3 {
+    margin: 0 0 8px; font-size: 1.12rem; color: var(--navy);
+    letter-spacing: -.012em; font-weight: 800;
+  }
+  .step p { margin: 0 0 11px; }
+  .step p:last-child { margin-bottom: 0; }
+
+  .where {
+    display: inline-block; font-size: .66rem; font-weight: 800;
+    letter-spacing: .12em; text-transform: uppercase;
+    background: var(--navy-wash); color: var(--navy);
+    border-radius: 20px; padding: 4px 11px; margin-bottom: 10px;
+  }
+  .where.browser { background: var(--gold-wash); color: var(--gold-deep); }
+
+  ol.clicks { margin: 0 0 12px; padding-left: 20px; }
+  ol.clicks li { margin-bottom: 6px; }
+
+  code {
+    font-family: var(--mono); font-size: .87em;
+    background: var(--navy-wash); color: var(--navy);
+    padding: 1px 5px; border-radius: 4px;
+  }
+  pre {
+    background: var(--code-bg); color: var(--code-fg); font-family: var(--mono);
+    font-size: .84rem; line-height: 1.6; padding: 14px 16px; margin: 0 0 12px;
+    border-radius: 10px; overflow-x: auto;
+  }
+  pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
+
+  .prompt {
+    background: var(--navy-wash); border: 2px solid var(--navy);
+    border-radius: 10px; padding: 14px 16px 16px; margin: 0 0 14px; font-size: .96rem;
+  }
+  .prompt .lbl {
+    display: inline-block; font-size: .66rem; font-weight: 800; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--gold); background: var(--navy);
+    padding: 4px 11px; border-radius: 20px; margin-bottom: 10px;
+  }
+  .prompt p { margin: 0 0 8px; }
+  .prompt p:last-child { margin-bottom: 0; }
+
+  .beat {
+    background: var(--gold-wash); border-left: 4px solid var(--gold);
+    border-radius: 8px; padding: 13px 15px; margin: 0 0 12px; font-size: .96rem;
+  }
+  .beat strong, .trap strong { position: relative; padding-left: 15px; }
+  .beat strong::before, .trap strong::before {
+    content: "i"; position: absolute; left: 0; top: 0;
+    width: 11px; height: 11px; line-height: 11px; text-align: center;
+    border-radius: 50%; background: var(--gold-deep); color: var(--card);
+    font-size: 8px; font-weight: 800;
+  }
+  .beat strong {
+    display: block; font-size: .66rem; font-weight: 800; letter-spacing: .11em;
+    text-transform: uppercase; color: var(--gold-deep); margin-bottom: 4px;
+  }
+  .trap {
+    background: var(--card); border: 1px solid var(--line);
+    border-left: 4px solid var(--gold); border-radius: 8px;
+    padding: 13px 15px; margin: 0 0 12px; font-size: .96rem;
+  }
+  .trap strong {
+    display: block; font-size: .66rem; font-weight: 800; letter-spacing: .11em;
+    text-transform: uppercase; color: var(--gold-deep); margin-bottom: 4px;
+  }
+  .mins {
+    display: block; margin-top: 10px; font-size: .72rem; font-weight: 800;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Episode banner */
+  .episode {
+    background: var(--banner); border: 1px solid var(--banner); border-radius: 14px;
+    padding: 22px 24px; margin: 48px 0 14px;
+  }
+  .ep-label {
+    margin: 0 0 6px; font-size: .68rem; font-weight: 800;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--gold);
+  }
+  .ep-title {
+    margin: 0 0 8px; font-size: clamp(1.4rem, 3.6vw, 1.9rem);
+    font-weight: 900; letter-spacing: -.02em; color: var(--banner-fg); text-wrap: balance;
+  }
+  .ep-note { margin: 0; color: var(--banner-sub); font-size: .95rem; max-width: 64ch; }
+
+  .seam {
+    text-align: center; margin: 26px 0 0; padding: 16px;
+    border: 1px dashed var(--line); border-radius: 12px; background: var(--card);
+  }
+  .seam .cut {
+    font-size: .72rem; font-weight: 800; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--gold-deep); margin: 0 0 6px;
+  }
+  .seam p:last-child { margin: 0; color: var(--muted); font-size: .93rem; }
+
+  /* Script block */
+  .script {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 14px; padding: 22px 24px; margin: 14px 0;
+  }
+  .script .wip {
+    display: inline-block; background: var(--gold); color: var(--navy);
+    font-size: .64rem; font-weight: 800; letter-spacing: .12em;
+    text-transform: uppercase; padding: 4px 11px; border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  :root[data-theme="dark"] .script .wip { color: #0A2547; }
+  .script p { margin: 0 0 10px; font-size: 1.03rem; line-height: 1.62; }
+  .script .cue {
+    display: block; margin: 14px 0; padding: 10px 14px;
+    background: var(--navy-wash); border-radius: 8px;
+    font-size: .74rem; font-weight: 800; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--navy); text-align: center;
+  }
+  .script .beats p { margin: 0 0 3px; }
+  .script hr { border: 0; border-top: 1px solid var(--line); margin: 18px 0; }
+
+  /* Swap table */
+  .swap { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .95rem; }
+  .swap th, .swap td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  .swap th { font-size: .68rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; color: var(--muted); }
+  .swap td:first-child { font-weight: 700; color: var(--navy); }
+  .scroll { overflow-x: auto; }
+
+  .tail {
+    margin-top: 40px; padding: 20px 22px; background: var(--card);
+    border: 1px solid var(--line); border-radius: 14px;
+    color: var(--muted); font-size: .95rem;
+  }
+  .tail p { margin: 0 0 12px; max-width: 64ch; }
+  .tail p:last-child { margin: 0; }
+  .tail b { color: var(--navy); }
+
+  a { color: var(--gold-deep); }
+  a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  @media (max-width: 560px) {
+    .step { grid-template-columns: 34px 1fr; gap: 0 13px; padding: 16px; }
+    .num { font-size: 1.2rem; }
+    body { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+<div class="top"><div class="in">
+  <div class="brand">Dr. Erin Jacques · <b>Tutorial</b></div>
+  <h1>Site Scout</h1>
+  <p class="logline">An agent that finds local businesses with no website, researches each one, and builds them a draft site — so a web designer can call and say "I already made you something."</p>
+  <p class="runtime">Two videos &nbsp;·&nbsp; Built with Claude Code &nbsp;·&nbsp; ≈ 10 min each after the cut</p>
+</div></div>
+
+<div class="wrap">
+
+  <h2><span class="tag">Where it becomes an agent</span></h2>
+  <p class="sub">Worth knowing before you start, because it's the whole point.</p>
+
+  <div class="step">
+    <div class="num">→</div>
+    <div>
+      <h3>Step 5 is the moment</h3>
+      <p>Steps 1–4 build something that talks. Useful, but it's the custom GPT everyone already has.</p>
+      <p><b>Step 5 is where it changes</b>, and not because it gets a tool — because of how the tool is aimed. You don't tell it "run one search and stop." You tell it <em>keep going until you have 10 businesses with no website</em>. If a search comes back short it widens — a neighbouring town, a related category — and tries again.</p>
+      <p>One search with a limit of 10 is an automation. Deciding how to reach 10 is an agent. That's the whole distinction, and it's one line in a prompt.</p>
+      <p><b>Step 6 is where it gets proof of it.</b> Given a business with four facts and no reviews, the agent found her specialty, her training, her languages, her full treatment list, and 19 reviews on a site nobody told it to check. Nobody wrote logic saying "search now" — it decided that was the next thing worth doing.</p>
+    </div>
+  </div>
+
+  <h2><span class="tag">How to read this</span></h2>
+  <p class="sub">Two kinds of box, and only one of them is an instruction.</p>
+  <div class="prompt" style="margin-bottom:10px">
+    <span class="lbl">Paste this</span>
+    <p style="margin:0">Navy outline. Copy the whole thing into Claude Code exactly as written and click Approve. Never edit what's inside.</p>
+  </div>
+  <div class="beat">
+    <strong>Just so you know</strong>
+    Gold. Context, warnings, and why something is the way it is. Nothing here gets pasted anywhere.
+  </div>
+
+  <h2><span class="tag">What you need</span></h2>
+  <p class="sub">One paid account. Everything else is free.</p>
+  <ul class="kit">
+    <li><div class="k">Anthropic key</div><div class="v paid">Pay per use</div></li>
+    <li><div class="k">Apify</div><div class="v free">Free · $5/mo</div></li>
+    <li><div class="k">GitHub</div><div class="v free">Free</div></li>
+    <li><div class="k">Vercel</div><div class="v free">Free</div></li>
+  </ul>
+
+
+  <div class="episode">
+    <p class="ep-label">Video One</p>
+    <p class="ep-title">Build an AI Agent That Builds Websites</p>
+    <p class="ep-note">Seven steps. Runs on your laptop. No terminal anywhere. Ends with a folder of finished websites and the phone numbers to go with them.</p>
+  </div>
+
+  <div class="step">
+    <div class="num">1</div>
+    <div>
+      <h3>Install Claude Code</h3>
+      <span class="where">VS Code</span>
+      <ol class="clicks">
+        <li>Open <b>VS Code</b>. Free at <a href="https://code.visualstudio.com">code.visualstudio.com</a>.</li>
+        <li><b>Extensions</b> tab in the left sidebar.</li>
+        <li>Search <b>Claude Code</b>.</li>
+        <li><b>Install</b>, then sign in.</li>
+      </ol>
+      <p>Two names, one setup — VS Code is the editor, Claude Code is an extension inside it. Worth separating out loud; people hear "Claude Code" and think it's a second app.</p>
+      <p>The extension brings everything with it. No terminal in this build.</p>
+      <span class="mins">≈ 2 min</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">2</div>
+    <div>
+      <h3>Get an Apify token</h3>
+      <span class="where browser">apify.com</span>
+      <ol class="clicks">
+        <li><a href="https://apify.com">apify.com</a> → <b>Sign up</b>. Free, no credit card.</li>
+        <li><b>Settings</b> in the left sidebar.</li>
+        <li><b>API &amp; Integrations</b>.</li>
+        <li>Copy the <b>Personal API token</b>.</li>
+      </ol>
+      <p>Apify is an app store for scrapers — thousands of small programs that go collect data from a site, built by other developers. You don't write one, you rent one per run.</p>
+      <p>Free plan is $5/month of credit. The scraper charges $0.004 a place, so that covers roughly a thousand businesses a month.</p>
+
+      <div class="trap">
+        <strong>The scraper we use — and why</strong>
+        <p style="margin:0 0 8px"><code>compass/crawler-google-places</code> &nbsp;·&nbsp; <b>575,000 users</b> &nbsp;·&nbsp; <b>4.70 stars</b> &nbsp;·&nbsp; 36 million runs &nbsp;·&nbsp; 97% success rate</p>
+        <p style="margin:0 0 8px">It reads Google Maps listings and returns about 30 fields per business — name, category, phone, full address, rating, and review text. Crucially it has a <b>no-website filter built into its input</b>, so you ask for only the businesses that need what you're selling.</p>
+        <p style="margin:0 0 8px">Apify's store also has actors named things like "businesses without websites." Check ratings before trusting a name — the obvious-sounding one has <b>1.88 stars and 753 users</b>. Compass costs the same and is maintained by people with 36 million runs of feedback.</p>
+        <p style="margin:0">You don't have to go find it. Its name goes in the prompt in step 5, and you never open the Apify site again.</p>
+      </div>
+      <span class="mins">≈ 90 sec</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">3</div>
+    <div>
+      <h3>Get an Anthropic key</h3>
+      <span class="where browser">console.anthropic.com</span>
+      <p><a href="https://console.anthropic.com">console.anthropic.com</a> → <b>API Keys</b> → <b>Create Key</b>. Copy it — it's shown once.</p>
+      <p>This is the only thing in the build you pay for. A run of ten businesses lands around $1–2.</p>
+      <span class="mins">≈ 1 min</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">4</div>
+    <div>
+      <h3>Set up the project</h3>
+      <span class="where">Claude Code</span>
+      <p>New empty folder in VS Code, open the Claude Code panel, paste:</p>
+      <div class="prompt">
+        <span class="lbl">Paste this</span>
+        <p>Set up a Next.js app with TypeScript called site-scout in this folder. Run <code>npm install @anthropic-ai/sdk@latest zod</code> — install the latest, don't write versions into package.json.</p>
+        <p>Create <code>lib/agent.ts</code> with a system prompt for an agent that helps web designers find local businesses without websites. Use model <code>claude-opus-5</code>. No tools yet.</p>
+        <p>Add <code>.env.local</code> with <code>ANTHROPIC_API_KEY</code> and <code>APIFY_TOKEN</code>.</p>
+      </div>
+      <p>Approve when it asks, then paste your two keys into <code>.env.local</code>.</p>
+      <p>Run it. It talks, and that's all it can do — no searching, no data, nothing outside the conversation.</p>
+      <span class="mins">Measured: 3 min 56 sec</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">5</div>
+    <div>
+      <h3>Give it the finder</h3>
+      <span class="where">Claude Code</span>
+      <div class="prompt">
+        <span class="lbl">Paste this</span>
+        <p>Add a tool called <code>find_businesses</code> that takes a business type and a town. It calls the Apify actor <code>compass/crawler-google-places</code> using <code>APIFY_TOKEN</code>, with this input:</p>
+        <pre><code>{
+  "searchStringsArray": ["dentist"],
+  "locationQuery": "White Plains, NY",
+  "website": "withoutWebsite",
+  "maxCrawledPlacesPerSearch": 10,
+  "maxReviews": 10,
+  "reviewsSort": "highestRanking"
+}</code></pre>
+        <p>Return name, phone, address, rating, category and review text for each business.</p>
+        <p><code>searchStringsArray</code> and <code>locationQuery</code> come from the tool's own inputs, not hardcoded — "dentist" and "White Plains, NY" above are just examples of the shape.</p>
+        <p>The agent's goal is a target, not one call: keep going until it has 10 businesses with no website. If a search comes back short, widen it — a neighbouring town, a related category, a larger limit — and try again. Stop at 10, or after 5 attempts.</p>
+        <p>Use the Tool Runner: <code>betaZodTool</code> from <code>@anthropic-ai/sdk/helpers/beta/zod</code>, run through <code>client.beta.messages.toolRunner()</code>.</p>
+      </div>
+      <p>Run it and ask for dentists in your town. Real businesses come back, with real phone numbers — and if the first search is short, watch it widen and go again.</p>
+      <div class="trap">
+        <strong>Don't drop maxReviews</strong>
+        <p style="margin:0">It defaults to <code>0</code>. Leave it out and every generated site loses its testimonials — which are the best thing on them.</p>
+      </div>
+
+      <div class="beat">
+        <strong>Nothing to edit after this</strong>
+        You never touch that JSON again. To scout somewhere else you just ask — "plumbers in Yonkers", "hair salons in New Rochelle" — and the agent fills in the search and location itself. That's the difference between running a tool and having an agent that runs it for you.
+      </div>
+      <span class="mins">≈ 4 min</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">6</div>
+    <div>
+      <h3>Give it eyes</h3>
+      <span class="where">Claude Code</span>
+      <div class="prompt">
+        <span class="lbl">Paste this</span>
+        <p>Add Anthropic's server-side web search tool — <code>{ type: "web_search_20260209", name: "web_search" }</code> in the tools array.</p>
+        <p>Then add a custom tool <code>read_page</code> that fetches a URL and returns its text.</p>
+        <p>Update the system prompt so the agent researches each business it finds before doing anything else.</p>
+      </div>
+      <p><code>read_page</code> is about twelve lines. You <em>describe</em> what a tool does, and the agent decides when to use it.</p>
+      <p>This step is what makes the sites real. Apify finds <em>who</em> to build for; the search finds <em>what to say</em>. Skip it and you're generating templates with names swapped in.</p>
+      <span class="mins">≈ 5 min</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">7</div>
+    <div>
+      <h3>Make it build the sites</h3>
+      <span class="where">Claude Code</span>
+      <div class="prompt">
+        <span class="lbl">Paste this</span>
+        <p>Add a tool <code>save_site</code> that writes an HTML file to <code>/output</code>.</p>
+        <p>After researching each business, the agent writes a complete single-file website using their real name, services, phone and address, with only <b>4-star-and-up</b> reviews as testimonials. Placeholder imagery, never their photos. Omit hours rather than inventing them. If nothing verifiable exists for a section, leave the section out.</p>
+        <p>Also write <code>output/index.html</code> — a leads sheet listing every business with its phone number, category, and a link to the site you built them.</p>
+        <p>Set <code>stream: true</code> on the tool runner.</p>
+      </div>
+      <p>Run it on a real town. Open <code>output/index.html</code> — every business, every phone number, and a link to the site built for each one. Then open one of the sites.</p>
+      <div class="trap">
+        <strong>stream: true or it crashes</strong>
+        <p style="margin:0"><code>max_tokens: 32000</code> without streaming throws <em>"Streaming is required for operations that may take longer than 10 minutes."</em> Hard stop, no output.</p>
+      </div>
+      <span class="mins">≈ 5 min</span>
+    </div>
+  </div>
+
+  <div class="seam">
+    <p class="cut">Video One ends here</p>
+    <p>"You've got a tool that makes websites for local businesses. That alone is a business — and that's the next video."</p>
+  </div>
+
+  <div class="episode">
+    <p class="ep-label">Video Two &nbsp;·&nbsp; stands alone</p>
+    <p class="ep-title">How to Sell an AI Agent</p>
+    <p class="ep-note">Assume the viewer has never heard the word "agent" and has nothing built. Show it working before you explain anything, and name the money before you ask for four minutes of building.</p>
+  </div>
+
+  <div class="step">
+    <div class="num">1</div>
+    <div>
+      <h3>Start with the finished website</h3>
+      <p>A real business's site, built from nothing, before any explanation. No definitions first — people understand what an agent is by watching one work.</p>
+      <p>The framing: nobody spoke to this business. Ninety seconds, and not a line of it written by hand.</p>
+      <span class="mins">0:00 — 0:30</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">2</div>
+    <div>
+      <h3>Name it, then name the money</h3>
+      <p>What it is, in one sentence: it finds local businesses with no website and builds each one a site.</p>
+      <p>Then the folder — eleven finished websites, eleven phone numbers. A web designer charges around $1,500 for one of these. Making all eleven cost under a dollar.</p>
+      <span class="mins">0:30 — 1:30</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">3</div>
+    <div>
+      <h3>Build it fast</h3>
+      <span class="where">Claude Code</span>
+      <p>Anyone who already has the agent running skips ahead. Anyone starting cold gets one in about three minutes.</p>
+      <p>Paste steps 4 through 7 merged into one prompt. Fast-forward the install. Don't explain the tools here — that's Video One's job, and this viewer doesn't need it yet.</p>
+      <div class="trap">
+        <strong>Never say "part two"</strong>
+        No "like I showed last time," no "as you saw in the first video." Anyone landing here cold has a working agent by 4:00 and never feels behind.
+      </div>
+      <span class="mins">1:30 — 4:00</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">4</div>
+    <div>
+      <h3>Put a page on it</h3>
+      <span class="where">Claude Code</span>
+      <div class="prompt">
+        <span class="lbl">Paste this</span>
+        <p>Add a chat page at <code>/</code> with a box for business type and town. Stream the agent's progress so every step shows as it happens, and list the finished sites with links to open them.</p>
+      </div>
+      <p>Quick. It exists so a customer can use this without ever opening Claude Code.</p>
+      <span class="mins">≈ 3 min</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">5</div>
+    <div>
+      <h3>Give every site a real link</h3>
+      <span class="where browser">Browser, then Claude Code</span>
+      <ol class="clicks">
+        <li>Vercel dashboard → <strong>Storage</strong> → <strong>Create</strong> → <strong>Blob</strong>.</li>
+        <li>Set it to <strong>Public</strong>. You can't change this later.</li>
+        <li>Open the store's <strong>Projects</strong> tab → <strong>Connect to Project</strong>.</li>
+      </ol>
+      <div class="prompt">
+        <span class="lbl">Then paste this</span>
+        <p>Install <code>@vercel/blob</code>. Change <code>save_site</code> so instead of writing to <code>/output</code> it uploads each site with <code>put()</code> using public access, and returns the URL.</p>
+      </div>
+      <p>Now each website has an address you can text to the owner. That's the whole difference between a folder on your laptop and something you can sell.</p>
+      <div class="trap">
+        <strong>Why not a database</strong>
+        Blob is already inside Vercel — no new account. 1GB is roughly 20,000 sites, and it's free.
+      </div>
+      <span class="mins">≈ 4 min</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">6</div>
+    <div>
+      <h3>Put it online</h3>
+      <span class="where browser">Browser</span>
+      <ol class="clicks">
+        <li><a href="https://github.com/new">github.com/new</a> → name it <code>site-scout</code> → <strong>Private</strong> → <strong>Create</strong>.</li>
+        <li>In Claude Code: <em>"Push this to my GitHub repo site-scout."</em></li>
+        <li><a href="https://vercel.com/new">vercel.com/new</a> → <strong>Import</strong> your repo.</li>
+        <li>Open <strong>Environment Variables</strong> and add <code>ANTHROPIC_API_KEY</code> and <code>APIFY_TOKEN</code> before deploying.</li>
+        <li><strong>Deploy</strong>. Live URL in about a minute.</li>
+      </ol>
+      <div class="trap">
+        <strong>Don't skip step 4</strong>
+        Your keys live on your laptop, not in the code. Deploy without them and the page loads but the agent fails. This is the most common thing that breaks here.
+      </div>
+      <span class="mins">≈ 4 min</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">7</div>
+    <div>
+      <h3>The two ways to get paid</h3>
+      <p>By here they've seen it work and have one running. That's when pricing means something.</p>
+      <div class="beat">
+        <strong>Model 1 · you offer the service</strong>
+        You're the web designer. The agent is your private tool. You sell websites to plumbers at $1,500 a job. No login, no payments, no support — you just need clients. <em>Everything they need for this, they already built.</em>
+      </div>
+      <div class="beat">
+        <strong>Model 2 · you sell the agent</strong>
+        Your customers are other designers. They pay you monthly for access and go find their own clients. That means accounts, billing, support — a real product.
+      </div>
+      <p>Model 1 you can start this week with what you've already built. Model 2 needs logins and payments — that part lives in the community.</p>
+      <span class="mins">≈ 2 min</span>
+    </div>
+  </div>
+
+  <h2><span class="tag">Same build, OpenAI</span></h2>
+  <p class="sub">If you reshoot this with Codex later, only these four rows change. Apify, GitHub, Vercel and Blob are identical.</p>
+
+  <div class="scroll">
+    <table class="swap">
+      <thead>
+        <tr><th>Piece</th><th>Claude version</th><th>OpenAI version</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Builder</td><td>Claude Code</td><td>Codex — <code>npm i -g @openai/codex</code>, then <code>codex auth</code></td></tr>
+        <tr><td>Package</td><td><code>@anthropic-ai/sdk</code></td><td><code>@openai/agents</code></td></tr>
+        <tr><td>Agent loop</td><td>Tool Runner — <code>betaZodTool</code> + <code>toolRunner()</code></td><td><code>new Agent({...})</code> + <code>run()</code></td></tr>
+        <tr><td>Web search</td><td><code>web_search_20260209</code> server tool</td><td><code>webSearchTool()</code></td></tr>
+        <tr><td>Key</td><td><code>ANTHROPIC_API_KEY</code></td><td><code>OPENAI_API_KEY</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="trap">
+    <strong>Codex install trap</strong>
+    It's <code>@openai/codex</code>, not <code>codex</code>. The unscoped package is an unrelated project from 2012 and people install it by mistake constantly.
+  </div>
+
+  <div class="tail">
+    <p><b>Two things worth being upfront about.</b> The business data comes from public Google listings — against Google's terms, though not illegal. And the draft sites will get some details wrong, which is fine: "here's a draft, tell me what I missed" opens a conversation that a cold pitch never does.</p>
+    <p><b>On costs.</b> A ten-business run is about 7¢ of Apify plus $1–2 of API — under two dollars for ten finished websites. The free Apify credit covers roughly a thousand places a month. Worth stating the real numbers; people assume this is expensive and it isn't.</p>
+    <p><b>Verified 25 Aug 2026.</b> The Apify actor and its input, the review filter, the tool runner, a full site build, and step 2's prompt driven through Claude Code itself — all run end to end. Every number on this page is measured.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
