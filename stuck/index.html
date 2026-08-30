@@ -219,6 +219,13 @@ Don't change or delete anything. End with: what stage am I at, and what's the si
           </div>
         </div></details>
 
+      <details><summary>After installing GitHub CLI, it says "gh is not recognized"</summary>
+        <div class="a">
+          <p>This one is different from the <code>claude</code> fix above, don't use the <code>.local\bin</code> command here. GitHub CLI (<code>gh</code>) installs to its own location, and Windows only picks up that new location in a <b>fresh terminal</b>. The install worked, your current terminal is just too old to see it.</p>
+          <p><b>The fix:</b> close your terminal and open a new one (<b>Terminal → New Terminal</b>), or reload VS Code (<b>Ctrl+Shift+P → "Developer: Reload Window"</b>). Then type <code>gh --version</code> to confirm it's found.</p>
+          <div class="tip">👉 If it's still not recognized after a fresh terminal, fully quit VS Code with <b>File → Exit</b> and reopen it, that forces Windows to reload the PATH. Reinstalling won't help; it lands in the same place.</div>
+        </div></details>
+
       <details><summary>The install command from the video won't work ("bash is not recognized")</summary>
         <div class="a">
           <p>That command is the Mac version. On Windows (PowerShell), use this one instead, in the same terminal:</p>
