@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Friday Live — Get Settled, Get Moving — Dr. Erin Jacques</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1A2E; --navy2:#1a3658; --yellow:#FFD93D; --yellow-dark:#E8C12B;
+    --teal:#0DB4DB; --teal-dark:#0A8FAF; --cream:#FAF6EC; --text:#0B1A2E;
+    --soft:#4A5568; --faint:#718096; --line:#E2E8F0;
+    --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:52px 0;border-top:1px solid var(--line);}
+  section.hero{border-top:none;padding:40px 0 40px;}
+  section.cream{background:var(--cream);border-top:none;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.02em;font-size:1rem;color:var(--navy);}
+  .brand b{color:var(--teal-dark);}
+  .step{color:var(--teal-dark);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;margin-bottom:12px;}
+  h1{font-size:clamp(2.1rem,5.6vw,3.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.07;margin:0 0 16px;color:var(--navy);}
+  .hl{background:linear-gradient(180deg,transparent 58%,rgba(255,217,61,.75) 58%);padding:0 3px;}
+  h2{font-size:clamp(1.6rem,4.2vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin:0 0 14px;color:var(--navy);}
+  .lead{font-size:clamp(1.18rem,2.6vw,1.5rem);color:var(--navy);font-weight:700;margin:0 0 10px;}
+  p{font-size:clamp(1.06rem,2.2vw,1.24rem);color:var(--soft);margin:0 0 14px;max-width:74ch;}
+  p b{color:var(--navy);}
+  .agenda{list-style:none;padding:0;margin:14px 0 0;counter-reset:ag;}
+  .agenda li{position:relative;padding:11px 0 11px 40px;font-size:clamp(1.1rem,2.3vw,1.32rem);color:var(--navy);font-weight:700;border-bottom:1px solid var(--line);}
+  .agenda li:last-child{border-bottom:none;}
+  .agenda li::before{counter-increment:ag;content:counter(ag);position:absolute;left:0;top:12px;width:26px;height:26px;background:var(--yellow);color:var(--navy);border-radius:50%;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .punch{font-size:clamp(1.3rem,3.1vw,1.8rem);font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.22;border-left:5px solid var(--yellow);padding:6px 0 6px 22px;margin:22px 0;}
+  .punch span{color:var(--teal-dark);}
+  .prules{list-style:none;padding:0;margin:14px 0 0;}
+  .prules li{position:relative;padding:12px 0 12px 34px;border-bottom:1px solid var(--line);font-size:clamp(1.05rem,2.2vw,1.26rem);color:var(--soft);}
+  .prules li:last-child{border-bottom:none;}
+  .prules li b{color:var(--navy);}
+  .prules li::before{content:"";position:absolute;left:4px;top:20px;width:11px;height:11px;background:var(--yellow);border-radius:50%;}
+  .defn{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 18px;margin:10px 0;}
+  .defn h4{margin:0 0 4px;color:var(--navy);font-size:1.14rem;font-weight:800;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .defn p{margin:0;font-size:1.02rem;color:var(--soft);}
+  .defn .ex{color:var(--teal-dark);font-weight:700;font-size:.96rem;margin-top:7px;}
+  .badge{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;border-radius:20px;padding:3px 10px;}
+  .badge.pv{background:var(--yellow);color:var(--navy);}
+  .promptbox{background:var(--navy);border-radius:16px;padding:18px 20px;position:relative;margin:16px 0;}
+  .promptbox .pl2{color:var(--yellow);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
+  .promptbox code{color:#eaf1fb;font-family:var(--mono);font-size:.98rem;line-height:1.55;display:block;white-space:pre-wrap;padding-right:70px;}
+  .copy{position:absolute;top:16px;right:16px;background:var(--yellow);color:var(--navy);border:none;border-radius:8px;padding:7px 13px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .note{background:var(--cream);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:1.05rem;color:var(--navy);font-weight:600;}
+  section.cream .note{background:#fff;}
+  .btn{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:800;font-size:1.2rem;text-decoration:none;padding:14px 30px;border-radius:12px;margin-top:12px;box-shadow:0 8px 22px rgba(255,217,61,.4);}
+  .btn.ghost{background:#fff;color:var(--navy);border:2px solid var(--navy);box-shadow:none;}
+  .disc{font-size:.95rem;color:var(--faint);margin-top:6px;font-style:italic;}
+  /* pricing tiers */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0 4px;}
+  @media(max-width:720px){ .tiers{grid-template-columns:1fr;} }
+  .tier{background:#fff;border:2px solid var(--navy);border-radius:16px;padding:20px 20px;display:flex;flex-direction:column;}
+  .tier.hero{border-color:var(--yellow-dark);background:rgba(255,217,61,.1);position:relative;}
+  .tier .flag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--yellow);color:var(--navy);font-weight:800;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;border-radius:20px;padding:4px 12px;white-space:nowrap;}
+  .tier .price{font-size:1.9rem;font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1;}
+  .tier .price small{font-size:.9rem;font-weight:700;color:var(--faint);}
+  .tier .name{font-weight:800;color:var(--faint);margin:2px 0 12px;font-size:1rem;}
+  .tier ul{list-style:none;padding:0;margin:0;flex:1;}
+  .tier ul li{position:relative;padding:7px 0 7px 26px;font-size:.98rem;color:var(--soft);}
+  .tier ul li b{color:var(--navy);}
+  .tier ul li::before{content:"✓";position:absolute;left:0;top:7px;color:var(--teal-dark);font-weight:800;}
+  footer{padding:34px 0 60px;color:var(--faint);font-size:.9rem;}
+</style>
+</head>
+<body>
+<div style="background:#081d3a;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:11px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);">
+  <a href="/site-scout" style="color:#F4B02E;text-decoration:none;font-weight:800;">← Aug 28 · Site Scout</a>
+  <a href="/lives" style="color:#fff;text-decoration:none;font-weight:800;">☰ All Live Sessions</a>
+  <span style="color:#6f83a0;font-weight:700;">Friday Live · Reset</span>
+</div>
+  <div class="wrap"><div class="brand">Dr. Erin Jacques · <b>Friday Live</b></div></div>
+
+  <section class="hero"><div class="wrap">
+    <div class="step">Friday Live · September 4</div>
+    <h1>Get settled. Get <span class="hl">moving</span>.</h1>
+    <p class="lead">Today we're not adding more. We're getting you settled on the one thing to do next.</p>
+    <p>A lot of you have watched the videos but haven't moved. That's normal, there's a lot. If you've felt stuck, you're not behind, you're just overwhelmed. By the end of today you'll know exactly where you are and the single next move to make.</p>
+    <ul class="agenda">
+      <li>Where you are: the map</li>
+      <li>Make your app feel alive (UX)</li>
+      <li>Get people on your list (Systeme.io)</li>
+      <li>Stuck? Build with me (new)</li>
+      <li>Earn while you learn (bonus)</li>
+      <li>Your one next move</li>
+    </ul>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">The map</div>
+    <h2>Find yourself on the map.</h2>
+    <p>You don't need to be everywhere. Find where you are, and take the next step from there.</p>
+    <ul class="prules">
+      <li><b>Week 1 — Set Up.</b> Your first build: the landing page and the foundation.</li>
+      <li><b>Week 2 — Build.</b> Validate first, then build the platform behind a login.</li>
+      <li><b>Week 3 — Launch.</b> Domain, payments with Stripe, and going live.</li>
+      <li><b>Grow.</b> Make it feel alive, grow your list, and sell what you've built.</li>
+    </ul>
+    <div class="note">👉 Every past live is in one place: <b>drerinjacques.com/lives</b>. Missed one? It's there, newest first.</div>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">Week 1, piece by piece</div>
+    <h2>The hardest week, in five moves.</h2>
+    <p>Most people stall in Week 1. Here's what each piece actually is, and exactly how you know it's done.</p>
+    <div class="defn">
+      <h4>1 · Accounts + Repo</h4>
+      <p>Create your GitHub account, make the repository, add the README. Done by hand on github.com, no prompts.</p>
+      <div class="ex">✓ Done when: the repo exists on GitHub with a README.</div>
+    </div>
+    <div class="defn">
+      <h4>2 · Set up your workspace</h4>
+      <p>Install VS Code and GitHub Desktop, clone the project to your computer, and add the Claude Code extension.</p>
+      <div class="ex">✓ Done when: the Claude sunburst opens in VS Code and responds.</div>
+    </div>
+    <div class="defn">
+      <h4>3 · Build + deploy</h4>
+      <p>Log in to GitHub, build your landing page, push it, and deploy to Vercel.</p>
+      <div class="ex">✓ Done when: your landing page is live on a Vercel URL.</div>
+    </div>
+    <div class="defn">
+      <h4>4 · Give your app a database</h4>
+      <p>Connect Supabase. Two connections: the MCP (Claude ↔ Supabase, to build tables) and the keys in Vercel (your live site ↔ Supabase).</p>
+      <div class="ex">✓ Done when: Claude can create tables AND the Supabase keys show in Vercel.</div>
+    </div>
+    <div class="defn">
+      <h4>5 · Build your login</h4>
+      <p>Add sign-up and log-in so your people have real accounts on your platform.</p>
+      <div class="ex">✓ Done when: a test account shows up in Supabase.</div>
+    </div>
+    <a class="btn ghost" href="/week1">Full Week 1 map + prompts →</a>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <div class="step">Make it feel alive</div>
+    <h2>Always tell the user what's happening.</h2>
+    <p>The #1 usability rule (Nielsen Group): <b>visibility of system status</b>. Keep people informed about what's going on, clearly and quickly. It matters double for AI apps, because AI takes a few seconds to respond.</p>
+    <div class="punch">A frozen screen doesn't say "loading." <span>It says "broken."</span></div>
+    <p>Four things make an AI app feel trustworthy. <b>Nail these first, the rest is polish:</b></p>
+    <div class="defn">
+      <h4>Streaming <span class="badge pv">Pivotal</span></h4>
+      <p>The response appears word-by-word as it's generated, instead of making them wait for the whole thing.</p>
+      <div class="ex">You've seen it: Claude and ChatGPT "typing" the answer out live.</div>
+    </div>
+    <div class="defn">
+      <h4>Thinking indicator <span class="badge pv">Pivotal</span></h4>
+      <p>The little dots or "thinking…" shown while the AI or an agent is working, so it doesn't feel frozen.</p>
+      <div class="ex">You've seen it: the three bouncing dots in any chat app.</div>
+    </div>
+    <div class="defn">
+      <h4>Graceful fallback / retry <span class="badge pv">Pivotal</span></h4>
+      <p>When something fails, show a plain message and a way to try again, instead of crashing or going blank.</p>
+      <div class="ex">You've seen it: "That took too long, tap to try again." AI calls fail more, so this is a must.</div>
+    </div>
+    <div class="defn">
+      <h4>Inline validation <span class="badge pv">Pivotal</span></h4>
+      <p>The error shows right at the field as they type, not after they submit.</p>
+      <div class="ex">You've seen it: an email with no "@" gets "Please enter a valid email" under the box instantly. Matters for logins and sign-ups.</div>
+    </div>
+    <p>Their takeaway, drop this into Claude Code and it audits your own build:</p>
+    <div class="promptbox">
+      <div class="pl2">Copy this into Claude Code</div>
+      <code>Look at what I'm building and tell me where a user could be left staring at a frozen or blank screen. Then add proper feedback: stream the AI's responses so they appear as they're generated, show a "thinking" indicator while an agent is working, and give clear, plain-language error messages that say what happened and what to do next. Never let the user wonder if it's broken.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+    <a class="btn ghost" href="/week4/live">Full breakdown → /week4/live</a>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">Grow your list</div>
+    <h2>Get people on your list.</h2>
+    <p>The next move that actually grows the business: start collecting emails. Create your free Systeme.io account and you can start sending to your community this week.</p>
+    <a class="btn" href="/systeme">Create your free account →</a>
+    <p class="disc">The Systeme.io link is my affiliate link.</p>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <div class="step">New</div>
+    <h2>Stuck? Don't build alone.</h2>
+    <p>If you've been spinning, this is for you. Come build <b>with me</b>, live and screen-shared, until it's done.</p>
+    <div class="tiers">
+      <div class="tier">
+        <div class="price">$49<small>/mo</small></div>
+        <div class="name">Standard</div>
+        <ul>
+          <li>Complete AI web app building system</li>
+          <li>Implementation videos &amp; guides</li>
+          <li>Templates, prompts &amp; scripts</li>
+          <li>Marketing &amp; funnel setup</li>
+          <li>Weekly live Q&amp;A with Dr. Erin</li>
+          <li>Daily Q&amp;A in the community</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <div class="price">$29<small>/mo</small></div>
+        <div class="name">Premium · billed yearly</div>
+        <ul>
+          <li>12 months of access, save $238</li>
+          <li>1-on-1 Welcome Call with Dr. Erin</li>
+          <li>Your Personalized Build Plan</li>
+          <li>$29 rate locked for 12 months</li>
+        </ul>
+      </div>
+      <div class="tier hero">
+        <div class="flag">Build with me</div>
+        <div class="price">$998<small>/mo</small></div>
+        <div class="name">VIP</div>
+        <ul>
+          <li>Everything in Standard, plus:</li>
+          <li><b>2× build sessions a month</b>, 60 min, screen-shared, I build with you</li>
+          <li>30-min kickoff call, we map what you're building first</li>
+          <li>Your Personalized Build Plan</li>
+        </ul>
+      </div>
+    </div>
+    <a class="btn" href="/leveraging-ai">See the plans →</a>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">Bonus</div>
+    <h2>Earn while you learn.</h2>
+    <p>Optional, but if you'd like income coming in while you build: <b>Mercor</b> hires people to help train AI on all kinds of projects. Here's my referral link.</p>
+    <a class="btn ghost" href="https://t.mercor.com/CfI6N">Apply to Mercor →</a>
+    <p class="disc">This is my referral link.</p>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <h2>Your one next move.</h2>
+    <div class="punch">Don't leave with ten things. <span>Leave with one.</span></div>
+    <p>Take the next step from where you are on the map, and do it this weekend. Everything else can wait. Post your win in the community when it's done.</p>
+    <a class="btn" href="https://skool.com/leveragingai/about">Join us →</a>
+  </div></section>
+
+  <footer><div class="wrap">Dr. Erin Jacques · Friday Live · September 4 · Affiliate/referral links: Systeme.io, Mercor.</div></footer>
+
+<script>
+  function copyPrompt(btn){
+    var el = btn.parentElement.querySelector('code');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = o; }, 1500);
+    });
+  }
+</script>
+</body>
+</html>
