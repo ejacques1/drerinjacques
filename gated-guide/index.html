@@ -129,27 +129,35 @@
     <div class="step">
       <h2><span class="n">5</span> Create a free Systeme.io account</h2>
       <p>Go to <a href="https://systeme.io/?sa=sa01702408010a2c50ae4ddb5fc0b72a3a97b1dcb6" target="_blank" rel="noopener"><b>systeme.io</b></a> and sign up. This is where the emails you collect will land, and the free plan covers everything here.</p>
-      <p>Already use something else for email? Skip this — the prompt in step 7 works with most email tools, you'll just paste in a different key.</p>
+      <p>Already use something else for email? Skip this — the prompt in step 8 works with most email tools, you'll just paste in a different key.</p>
     </div>
 
     <div class="step">
-      <h2><span class="n">6</span> Get your key and make a tag</h2>
-      <p>Two things inside Systeme.io, both quick:</p>
-      <ul class="check">
-        <li><b>Contacts → Tags</b> → create a tag. Name it after this guide, so you know later where each person came from.</li>
-        <li><b>Settings → Public API Keys</b> → create one and copy it.</li>
-      </ul>
+      <h2><span class="n">6</span> Copy your API key</h2>
+      <p>In Systeme.io: <b>Settings → Public API Keys</b> → create one and copy it.</p>
       <div class="warn">⚠️ That key is a password. Don't paste it into a video, a screenshot, or anywhere public. If it ever gets out, delete it on that same screen and make a new one.</div>
     </div>
 
     <div class="step">
-      <h2><span class="n">7</span> Cut the guide in half</h2>
-      <p>Back in VS Code. Have your key and your tag name ready — it will ask.</p>
+      <h2><span class="n">7</span> Put the key in Vercel</h2>
+      <p>Do this before you write any code, so the key only ever lives in one place and never touches your computer.</p>
+      <p>In Vercel, open the project from step 4 → <b>Settings</b> → <b>Environment Variables</b>. Add one:</p>
+      <ul class="check">
+        <li>Name: <span class="cmd">SYSTEME_API_KEY</span></li>
+        <li>Value: the key you just copied</li>
+      </ul>
+      <p>Save it. Use that name exactly — the next prompt tells Claude to look for it.</p>
+      <div class="tip">👉🏽 Claude never sees your key and never needs to. It writes code that asks for it by name, and Vercel hands it over when the page is running.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">8</span> Cut the guide in half</h2>
+      <p>Back in VS Code:</p>
       <div class="prompt">
         <div class="lbl">Prompt — Add the email gate</div>
-        <span class="js-copy">Cut my guide off after the first section and put an email box there, with one line telling people to enter their email to read the rest. When someone submits it, the rest of the guide opens on the same page. Nothing gets emailed to them and nothing gets downloaded.
+        <span class="js-copy">Cut my guide off after the first section and put an email box there, with one line telling people to enter their email to read the rest. When someone submits it, the rest of the guide opens on the same page.
 
-Send the address to Systeme.io: create the contact and add my tag. Ask me for my API key and my tag name, and keep the key out of the page and out of anything that gets published.
+Send the address to Systeme.io as a new contact. Read my API key from an environment variable called SYSTEME_API_KEY — don't ask me for the key and don't put it in any file.
 
 The most important part: the second half of the guide must NOT be in the page until after someone submits their email. If the whole thing is sent to the browser and just hidden, anyone can read it by viewing the page source and the gate is fake. Fetch the rest from the server only after the email goes through.
 
@@ -159,21 +167,14 @@ Handle someone entering a nonsense email, and don't let a Systeme.io problem sto
     </div>
 
     <div class="step">
-      <h2><span class="n">8</span> Give Vercel your key</h2>
-      <p>Your key works on your laptop now, but Vercel doesn't have it yet, so the live page can't talk to Systeme.io.</p>
-      <p>In Vercel, open your project → <b>Settings</b> → <b>Environment Variables</b>. Add the key using the exact name Claude used in step 7 — ask it if you're not sure — and paste the value in.</p>
-      <div class="warn">⚠️ Skip this and the live page looks fine but silently collects nothing. It's the one step with no visible symptom.</div>
-    </div>
-
-    <div class="step">
       <h2><span class="n">9</span> Put it live and test it</h2>
       <div class="prompt">
         <div class="lbl">Prompt — Deploy again</div>
         <span class="js-copy">Deploy this again with the changes and give me the live link. Then tell me how to check that the email is actually reaching Systeme.io, and what to look at if it isn't.</span>
         <button class="copy" onclick="copyText(this)">Copy</button>
       </div>
-      <p>Open the link on your phone. Read the first section, hit the email box, put in a real address you can check. The rest should open, and that address should appear in Systeme.io with your tag on it.</p>
-      <div class="tip">👉🏽 Test the gate properly: right-click the page before you enter an email and choose <b>View Page Source</b>. If you can find the second half of your guide in there, it isn't gated — go back to step 7 and tell Claude that.</div>
+      <p>Open the link on your phone. Read the first section, hit the email box, put in a real address you can check. The rest should open, and that address should appear in Systeme.io in your contacts.</p>
+      <div class="tip">👉🏽 Test the gate properly: right-click the page before you enter an email and choose <b>View Page Source</b>. If you can find the second half of your guide in there, it isn't gated — go back to step 8 and tell Claude exactly that.</div>
     </div>
 
     <div class="divider"><span>If you get stuck</span></div>
@@ -181,7 +182,7 @@ Handle someone entering a nonsense email, and don't let a Systeme.io problem sto
     <div class="step">
       <h2>Common problems</h2>
       <p><b>The page looks nothing like my document.</b> Tell Claude exactly what's wrong, in plain words: "you dropped my numbered list," "the headings are in the wrong order." It has your file and can look again.</p>
-      <p><b>Emails aren't showing up in Systeme.io.</b> Nine times out of ten it's step 8 — the key is on your laptop but not in Vercel. Add it there and deploy again.</p>
+      <p><b>Emails aren't showing up in Systeme.io.</b> Check step 7 — the variable has to be named <span class="cmd">SYSTEME_API_KEY</span> exactly, and it only takes effect on the next deploy. Add it, then run the deploy prompt again.</p>
       <p><b>I changed my guide. How do I update the page?</b> Replace the file in the folder, tell Claude what changed, then run the deploy prompt again.</p>
       <p><b>Can I do this for a second guide?</b> New folder, new document, run through it again. They're separate pages with separate links.</p>
     </div>
