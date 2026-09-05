@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Turn Your Free Guide Into an Email-Gated Page — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --gold:#F4B02E; --ink:#1c2733; --muted:#5f6b7a;
+    --bg:#F6F5F1; --card:#ffffff; --line:#e7e3d9;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .top{background:var(--navy);color:#fff;padding:26px 20px;}
+  .top .in{max-width:740px;margin:0 auto;}
+  .brand{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.9rem;}
+  .brand b{color:var(--gold);}
+  h1{margin:.35em 0 .1em;font-size:clamp(1.7rem,4.6vw,2.5rem);font-weight:900;letter-spacing:-.02em;}
+  .top p{margin:.2em 0 0;color:#bcccdf;font-size:1.02rem;}
+  .wrap{max-width:740px;margin:0 auto;padding:24px 20px 80px;}
+  .explain{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:16px;padding:18px 22px;margin:16px 0;}
+  .explain p{margin:.5em 0;}
+  .explain .big{font-weight:800;color:var(--navy);}
+  .divider{text-align:center;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);font-size:.9rem;margin:40px 0 6px;position:relative;}
+  .divider span{background:var(--bg);padding:0 14px;position:relative;z-index:1;}
+  .divider::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line);}
+  .divider small{display:block;color:var(--muted);font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:none;margin-top:4px;}
+  .prep{background:rgba(244,176,43,.14);border:1px solid var(--gold);border-radius:12px;padding:14px 18px;margin:14px 0;font-weight:600;}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:16px 0;}
+  .step h2{margin:0 0 4px;font-size:1.22rem;display:flex;align-items:baseline;gap:12px;}
+  .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;background:var(--navy);color:var(--gold);border-radius:50%;font-size:.95rem;font-weight:900;flex:none;}
+  .step p{margin:8px 0 0;}
+  .tip{background:rgba(244,176,43,.16);border-left:4px solid var(--gold);border-radius:8px;padding:11px 14px;margin-top:12px;font-size:.96rem;}
+  .tip b{color:var(--navy);}
+  .warn{background:#fdecea;border-left:4px solid #d0021b;border-radius:8px;padding:11px 14px;margin-top:12px;font-size:.96rem;}
+  .warn b{color:#a11;}
+  .check{list-style:none;padding:0;margin:8px 0 0;}
+  .check li{position:relative;padding:8px 0 8px 30px;border-bottom:1px solid var(--line);}
+  .check li:last-child{border-bottom:none;}
+  .check li::before{content:"\2713";position:absolute;left:0;top:8px;color:#1c8a4a;font-weight:900;}
+  .prompt{margin-top:12px;background:#0f2748;border-radius:12px;padding:14px 16px;position:relative;}
+  .prompt .lbl{color:var(--gold);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
+  .prompt .js-copy{color:#eaf1fb;font-family:var(--mono);font-size:.96rem;line-height:1.5;display:block;padding-right:76px;white-space:pre-wrap;}
+  .copy{position:absolute;top:12px;right:12px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:7px 12px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .cmd{display:inline-block;background:#0f2748;color:#eaf1fb;font-family:var(--mono);border-radius:6px;padding:1px 8px;font-weight:700;font-size:.92em;}
+  .done{background:var(--navy);color:#fff;border-radius:16px;padding:20px 22px;margin-top:20px;}
+  .done b{color:var(--gold);}
+  .topjoin{max-width:740px;margin:0 auto;padding:14px 20px 0;font-size:.93rem;color:var(--muted);}
+  .topjoin a{color:var(--navy);font-weight:800;text-decoration:none;border-bottom:2px solid var(--gold);}
+  .invite{background:var(--navy);border:1px solid var(--gold);border-radius:16px;padding:30px 24px;margin-top:16px;text-align:center;color:#fff;}
+  .invite h3{margin:0 0 10px;font-size:clamp(1.35rem,3.4vw,1.7rem);font-weight:900;color:var(--gold);}
+  .invite p{margin:0 auto 16px;color:#cdd9e8;max-width:54ch;}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy);text-decoration:none;font-weight:900;font-size:1.05rem;padding:14px 26px;border-radius:12px;}
+  .urlline{color:#8ea3bd;font-size:.9rem;margin-top:12px;}
+  .urlline b{color:var(--gold);}
+  footer{max-width:740px;margin:0 auto;padding:0 20px 60px;color:var(--muted);font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="top"><div class="in">
+    <div class="brand">Leveraging <b>AI</b></div>
+    <h1>Stop Giving Your Free Guide Away for Free</h1>
+    <p>Turn the PDF or Word doc you already have into a page people have to enter an email to finish reading. No code, no website builder, about 20 minutes.</p>
+  </div></div>
+
+  <div class="topjoin">With Dr. Erin Jacques · <a href="https://skool.com/leveragingai/about">Join the Leveraging AI community →</a></div>
+
+  <div class="wrap">
+
+    <div class="explain">
+      <p>You wrote a guide. You send it to people as a file, and that's the end of it. They forward it, you never find out who read it, and you have no way to follow up.</p>
+      <p class="big">Here you turn that same document into a page on the internet that stops halfway and asks for an email before it opens the rest.</p>
+      <p>You keep the email. They keep the guide. Nothing is downloaded and nothing is emailed.</p>
+    </div>
+
+    <div class="divider"><span>Set this up first</span></div>
+    <div class="step">
+      <h2>Your checklist</h2>
+      <ul class="check">
+        <li><b>VS Code</b> installed, free at <a href="https://code.visualstudio.com" target="_blank" rel="noopener">code.visualstudio.com</a>.</li>
+        <li>The <b>Claude Code extension</b>. In VS Code, click <b>Extensions</b> in the left sidebar, search <span class="cmd">Claude Code</span>, install the one by <b>Anthropic</b>, then sign in. <b>You need a paid Claude account</b> — free won't run it.</li>
+        <li>Your guide, as a <b>Word document or PDF</b>. Whatever you already send people.</li>
+      </ul>
+      <div class="tip">👉🏽 That's the whole list. No GitHub, no database, and nothing that costs money beyond the Claude account you already have.</div>
+    </div>
+
+    <div class="divider"><span>Part 1 — get your guide online</span><small>Payoff: a real link with your guide on it</small></div>
+
+    <div class="step">
+      <h2><span class="n">1</span> Put your guide in a folder</h2>
+      <p>Make a new folder anywhere — Desktop is fine — and drop your Word doc or PDF inside it. Then in VS Code, <b>File → Open Folder</b> and pick that folder.</p>
+      <div class="tip">👉🏽 One guide per folder. That's the whole project.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">2</span> Turn it into a page</h2>
+      <p>Open the Claude Code panel and paste this in:</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Make the page</div>
+        <span class="js-copy">There's a document in this folder. Read it and turn it into a single web page that reads like a real guide, not a file dumped on a screen. Keep my headings and lists, make it look right on a phone, and give it a clear title at the top. Use my words — don't rewrite my content, add sections, or invent anything that isn't in the document. Tell me when it's ready and how to look at it.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>Approve it when it asks. When it's done, read the page and check it against your original. This is the moment to say <i>"the second heading is wrong"</i> or <i>"you dropped my bullet list"</i> and have it fixed.</p>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">3</span> Create a Vercel account</h2>
+      <p>Go to <a href="https://vercel.com/signup" target="_blank" rel="noopener">vercel.com/signup</a> and sign up. The free plan is all you need and it doesn't ask for a card.</p>
+      <p>You don't have to set anything up there. Just have the account.</p>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">4</span> Put it online</h2>
+      <div class="prompt">
+        <div class="lbl">Prompt — Deploy it</div>
+        <span class="js-copy">Put this page on the internet using Vercel, straight from this folder. I don't have a GitHub repo and I don't want one. Install whatever you need, walk me through logging in when it asks, and when it's live give me the link on its own line so I can click it.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>A browser window opens once so you can log into Vercel. Approve it, and a minute later you have a link.</p>
+      <div class="tip">👉🏽 That link is real. Send it to someone right now and they'll see your guide. This is the first thing worth stopping to look at.</div>
+    </div>
+
+    <div class="divider"><span>Part 2 — make them pay with an email</span><small>Payoff: the page stops halfway until someone signs up</small></div>
+
+    <div class="step">
+      <h2><span class="n">5</span> Create a free Systeme.io account</h2>
+      <p>Go to <a href="https://systeme.io/?sa=sa01702408010a2c50ae4ddb5fc0b72a3a97b1dcb6" target="_blank" rel="noopener"><b>systeme.io</b></a> and sign up. This is where the emails you collect will land, and the free plan covers everything here.</p>
+      <p>Already use something else for email? Skip this — the prompt in step 7 works with most email tools, you'll just paste in a different key.</p>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">6</span> Get your key and make a tag</h2>
+      <p>Two things inside Systeme.io, both quick:</p>
+      <ul class="check">
+        <li><b>Contacts → Tags</b> → create a tag. Name it after this guide, so you know later where each person came from.</li>
+        <li><b>Settings → Public API Keys</b> → create one and copy it.</li>
+      </ul>
+      <div class="warn">⚠️ That key is a password. Don't paste it into a video, a screenshot, or anywhere public. If it ever gets out, delete it on that same screen and make a new one.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">7</span> Cut the guide in half</h2>
+      <p>Back in VS Code. Have your key and your tag name ready — it will ask.</p>
+      <div class="prompt">
+        <div class="lbl">Prompt — Add the email gate</div>
+        <span class="js-copy">Cut my guide off after the first section and put an email box there, with one line telling people to enter their email to read the rest. When someone submits it, the rest of the guide opens on the same page. Nothing gets emailed to them and nothing gets downloaded.
+
+Send the address to Systeme.io: create the contact and add my tag. Ask me for my API key and my tag name, and keep the key out of the page and out of anything that gets published.
+
+The most important part: the second half of the guide must NOT be in the page until after someone submits their email. If the whole thing is sent to the browser and just hidden, anyone can read it by viewing the page source and the gate is fake. Fetch the rest from the server only after the email goes through.
+
+Handle someone entering a nonsense email, and don't let a Systeme.io problem stop them reading the guide — I'd rather lose the contact than block a real person.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">8</span> Give Vercel your key</h2>
+      <p>Your key works on your laptop now, but Vercel doesn't have it yet, so the live page can't talk to Systeme.io.</p>
+      <p>In Vercel, open your project → <b>Settings</b> → <b>Environment Variables</b>. Add the key using the exact name Claude used in step 7 — ask it if you're not sure — and paste the value in.</p>
+      <div class="warn">⚠️ Skip this and the live page looks fine but silently collects nothing. It's the one step with no visible symptom.</div>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">9</span> Put it live and test it</h2>
+      <div class="prompt">
+        <div class="lbl">Prompt — Deploy again</div>
+        <span class="js-copy">Deploy this again with the changes and give me the live link. Then tell me how to check that the email is actually reaching Systeme.io, and what to look at if it isn't.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>Open the link on your phone. Read the first section, hit the email box, put in a real address you can check. The rest should open, and that address should appear in Systeme.io with your tag on it.</p>
+      <div class="tip">👉🏽 Test the gate properly: right-click the page before you enter an email and choose <b>View Page Source</b>. If you can find the second half of your guide in there, it isn't gated — go back to step 7 and tell Claude that.</div>
+    </div>
+
+    <div class="divider"><span>If you get stuck</span></div>
+
+    <div class="step">
+      <h2>Common problems</h2>
+      <p><b>The page looks nothing like my document.</b> Tell Claude exactly what's wrong, in plain words: "you dropped my numbered list," "the headings are in the wrong order." It has your file and can look again.</p>
+      <p><b>Emails aren't showing up in Systeme.io.</b> Nine times out of ten it's step 8 — the key is on your laptop but not in Vercel. Add it there and deploy again.</p>
+      <p><b>I changed my guide. How do I update the page?</b> Replace the file in the folder, tell Claude what changed, then run the deploy prompt again.</p>
+      <p><b>Can I do this for a second guide?</b> New folder, new document, run through it again. They're separate pages with separate links.</p>
+    </div>
+
+    <div class="invite">
+      <h3>Want the parts that turn this into a business?</h3>
+      <p>Your own domain instead of a Vercel link, the welcome sequence that follows up automatically, and what to actually sell these people once they're on your list, that's what we build together inside the community.</p>
+      <a class="btn" href="https://skool.com/leveragingai/about">Join Leveraging AI →</a>
+      <div class="urlline">or go to <b>skool.com/leveragingai</b></div>
+    </div>
+
+  </div>
+
+  <footer>Dr. Erin Jacques · Leveraging AI</footer>
+
+<script>
+  function copyText(btn){
+    var el = btn.parentElement.querySelector('.js-copy');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = o; }, 1500);
+    });
+  }
+</script>
+</body>
+</html>
