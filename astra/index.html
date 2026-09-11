@@ -14,6 +14,7 @@
     --teal:#0DB4DB; --teal-dark:#0A8FAF; --cream:#FAF6EC; --text:#0B1A2E;
     --soft:#4A5568; --faint:#718096; --line:#E2E8F0;
     --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
   }
   *{box-sizing:border-box;}
   body{margin:0;background:#fff;color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
@@ -52,6 +53,11 @@
   section.cream .note{background:#fff;}
   .btn{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:800;font-size:1.2rem;text-decoration:none;padding:14px 30px;border-radius:12px;margin-top:12px;box-shadow:0 8px 22px rgba(255,217,61,.4);}
   .btn.ghost{background:#fff;color:var(--navy);border:2px solid var(--navy);box-shadow:none;margin-right:10px;}
+  .promptbox{background:var(--navy);border-radius:16px;padding:18px 20px;position:relative;margin:16px 0;}
+  .promptbox .pl2{color:var(--yellow);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
+  .promptbox code{color:#eaf1fb;font-family:var(--mono);font-size:.98rem;line-height:1.55;display:block;white-space:pre-wrap;padding-right:70px;}
+  .copy{position:absolute;top:16px;right:16px;background:var(--yellow);color:var(--navy);border:none;border-radius:8px;padding:7px 13px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
   .disc{font-size:.95rem;color:var(--faint);margin-top:6px;font-style:italic;}
   footer{padding:34px 0 60px;color:var(--faint);font-size:.9rem;}
 </style>
@@ -162,7 +168,23 @@
     <div class="step">My real example</div>
     <h2>What I built with Codex.</h2>
     <p>I had a PDF, and I wanted people to see part of it, then give their email to open the rest.</p>
-    <p>I asked Codex to review the workflow. My prompt: <b>"Please look at this and see if this could be accomplished here,"</b> followed by my <a href="/gated-guide">gated-guide tutorial</a> link. Codex reviewed it and confirmed it could build the webpage and email gate.</p>
+    <p>I gave Codex my <a href="/gated-guide">gated-guide tutorial</a> and asked it to follow it. These are the two prompts from the tutorial that did the work:</p>
+    <div class="promptbox">
+      <div class="pl2">Prompt 1 — Make the page</div>
+      <code>There's a document in this folder. Read it and turn it into a single web page that reads like a real guide, not a file dumped on a screen. Keep my headings and lists, make it look right on a phone, and give it a clear title at the top. Use my words — don't rewrite my content, add sections, or invent anything that isn't in the document. Tell me when it's ready and how to look at it.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+    <div class="promptbox">
+      <div class="pl2">Prompt 2 — Add the email gate</div>
+      <code>Cut my guide off after the first section and put an email box there, with one line telling people to enter their email to read the rest. When someone submits it, the rest of the guide opens on the same page.
+
+Send the address to Systeme.io as a new contact. Read my API key from an environment variable called SYSTEME_API_KEY — don't ask me for the key and don't put it in any file.
+
+The most important part: the second half of the guide must NOT be in the page until after someone submits their email. If the whole thing is sent to the browser and just hidden, anyone can read it by viewing the page source and the gate is fake. Fetch the rest from the server only after the email goes through.
+
+Handle someone entering a nonsense email, and don't let a Systeme.io problem stop them reading the guide — I'd rather lose the contact than block a real person.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
     <ul class="steps">
       <li><b>I gave Codex the document's location.</b> I shared the path to my CHES study guide PDF on my desktop. Codex read it and turned it into a mobile-friendly webpage, preserving all ten topics and 31 knowledge checks.</li>
       <li><b>Codex built the email gate and published the page.</b> The first topic is freely readable. After someone enters an email, the remaining nine topics load from the server. Codex deployed the page to my Vercel account and tested the unlock.</li>
@@ -180,5 +202,15 @@
   </div></section>
 
   <footer><div class="wrap">Dr. Erin Jacques · Friday Live · September 11 · Sources: OpenAI, How I AI (ChatPRD), 9to5Mac, Fortune, TechCrunch, Notebookcheck.</div></footer>
+<script>
+  function copyPrompt(btn){
+    var el = btn.parentElement.querySelector('code');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = o; }, 1500);
+    });
+  }
+</script>
 </body>
 </html>
