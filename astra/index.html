@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Friday Live — Meet GPT-6 Astra — Dr. Erin Jacques</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1A2E; --navy2:#1a3658; --yellow:#FFD93D; --yellow-dark:#E8C12B;
+    --teal:#0DB4DB; --teal-dark:#0A8FAF; --cream:#FAF6EC; --text:#0B1A2E;
+    --soft:#4A5568; --faint:#718096; --line:#E2E8F0;
+    --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:52px 0;border-top:1px solid var(--line);}
+  section.hero{border-top:none;padding:40px 0 40px;}
+  section.cream{background:var(--cream);border-top:none;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.02em;font-size:1rem;color:var(--navy);}
+  .brand b{color:var(--teal-dark);}
+  .step{color:var(--teal-dark);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;margin-bottom:12px;}
+  h1{font-size:clamp(2.1rem,5.6vw,3.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.07;margin:0 0 16px;color:var(--navy);}
+  .hl{background:linear-gradient(180deg,transparent 58%,rgba(255,217,61,.75) 58%);padding:0 3px;}
+  h2{font-size:clamp(1.6rem,4.2vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin:0 0 14px;color:var(--navy);}
+  .lead{font-size:clamp(1.18rem,2.6vw,1.5rem);color:var(--navy);font-weight:700;margin:0 0 10px;}
+  p{font-size:clamp(1.06rem,2.2vw,1.24rem);color:var(--soft);margin:0 0 14px;max-width:74ch;}
+  p b{color:var(--navy);}
+  .agenda{list-style:none;padding:0;margin:14px 0 0;counter-reset:ag;}
+  .agenda li{position:relative;padding:11px 0 11px 40px;font-size:clamp(1.1rem,2.3vw,1.32rem);color:var(--navy);font-weight:700;border-bottom:1px solid var(--line);}
+  .agenda li:last-child{border-bottom:none;}
+  .agenda li::before{counter-increment:ag;content:counter(ag);position:absolute;left:0;top:12px;width:26px;height:26px;background:var(--yellow);color:var(--navy);border-radius:50%;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .prules{list-style:none;padding:0;margin:14px 0 0;}
+  .prules li{position:relative;padding:12px 0 12px 34px;border-bottom:1px solid var(--line);font-size:clamp(1.05rem,2.2vw,1.26rem);color:var(--soft);}
+  .prules li:last-child{border-bottom:none;}
+  .prules li b{color:var(--navy);}
+  .prules li::before{content:"";position:absolute;left:4px;top:20px;width:11px;height:11px;background:var(--yellow);border-radius:50%;}
+  .steps{list-style:none;padding:0;margin:14px 0 0;counter-reset:st;}
+  .steps li{position:relative;padding:12px 0 12px 40px;border-bottom:1px solid var(--line);font-size:clamp(1.05rem,2.2vw,1.26rem);color:var(--soft);}
+  .steps li:last-child{border-bottom:none;}
+  .steps li b{color:var(--navy);}
+  .steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:13px;width:26px;height:26px;background:var(--yellow);color:var(--navy);border-radius:50%;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .defn{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 18px;margin:10px 0;}
+  .defn h4{margin:0 0 4px;color:var(--navy);font-size:1.14rem;font-weight:800;}
+  .defn p{margin:0;font-size:1.02rem;color:var(--soft);}
+  .defn .ex{color:var(--teal-dark);font-weight:700;font-size:.96rem;margin-top:7px;}
+  .note{background:var(--cream);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:1.05rem;color:var(--navy);font-weight:600;}
+  section.cream .note{background:#fff;}
+  .btn{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:800;font-size:1.2rem;text-decoration:none;padding:14px 30px;border-radius:12px;margin-top:12px;box-shadow:0 8px 22px rgba(255,217,61,.4);}
+  .disc{font-size:.95rem;color:var(--faint);margin-top:6px;font-style:italic;}
+  footer{padding:34px 0 60px;color:var(--faint);font-size:.9rem;}
+</style>
+</head>
+<body>
+<div style="background:#081d3a;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:11px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);">
+  <a href="/wrap-up" style="color:#F4B02E;text-decoration:none;font-weight:800;">← Sep 4 · Get Settled</a>
+  <a href="/lives" style="color:#fff;text-decoration:none;font-weight:800;">☰ All Live Sessions</a>
+  <span style="color:#6f83a0;font-weight:700;">Friday Live · What's New</span>
+</div>
+  <div class="wrap"><div class="brand">Dr. Erin Jacques · <b>Friday Live</b></div></div>
+
+  <section class="hero"><div class="wrap">
+    <div class="step">Friday Live · September 11</div>
+    <h1>Meet GPT-6 <span class="hl">Astra</span>.</h1>
+    <p class="lead">OpenAI's newest model can use your computer to finish a task for you.</p>
+    <p>It came out on September 3. Today I'll show you what it is, what it can do, how to turn it on, and three real examples of people using it.</p>
+    <ul class="agenda">
+      <li>What it is</li>
+      <li>What it can do</li>
+      <li>How to turn it on</li>
+      <li>Three real examples</li>
+      <li>What to be careful with</li>
+      <li>My real example</li>
+      <li>Your one next move</li>
+    </ul>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">What it is</div>
+    <h2>What is GPT-6 Astra?</h2>
+    <p>GPT-6 Astra is OpenAI's newest and most capable model. It was released on September 3, 2026.</p>
+    <p>The big new thing is <b>computer use</b>. Astra can look at your screen, move the mouse, type, and click through apps and websites to finish a task. You tell it what you want done, and it does it.</p>
+    <div class="note">👉🏽 OpenAI describes it this way: <b>"Anything you can do on a computer, Astra can do for you."</b></div>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <div class="step">What it can do</div>
+    <h2>What it can do for you.</h2>
+    <div class="defn">
+      <h4>Work inside the apps you already use</h4>
+      <p>It uses your apps the way you would, through the screen. That includes tools that don't connect to AI at all.</p>
+      <div class="ex">Example: updating a customer record, filling out an online form, organizing your calendar.</div>
+    </div>
+    <div class="defn">
+      <h4>Finish work that takes several steps</h4>
+      <p>It can move between apps and keep going until the whole task is done.</p>
+      <div class="ex">Example: building a document, spreadsheet, or presentation from start to finish.</div>
+    </div>
+    <div class="defn">
+      <h4>Keep working while you step away</h4>
+      <p>Longer tasks can keep running without you watching every click.</p>
+    </div>
+    <div class="defn">
+      <h4>Work faster than before</h4>
+      <p>OpenAI says it's about twice as fast at computer use as its last model.</p>
+    </div>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">How to turn it on</div>
+    <h2>How to turn it on.</h2>
+    <p>Astra is included in ChatGPT <b>Plus, Pro, Business, and Enterprise</b>. It uses your existing plan, so there's no extra charge.</p>
+    <div class="note">👉🏽 You might open ChatGPT and say, "I don't see it." If you don't, you're not doing anything wrong. On the Plus plan, Astra isn't in regular Chat. It's in <b>Work</b> and <b>Codex</b>.</div>
+    <ul class="steps">
+      <li>Open the <b>ChatGPT desktop app</b> and update it to the latest version.</li>
+      <li>In the top-left menu, switch from <b>Chat</b> to <b>Work</b>.</li>
+      <li>To let it use your computer, go to <b>Plugins → Computer Use</b> and turn it on.</li>
+      <li>On a Mac, allow <b>Screen Recording</b> and <b>Accessibility</b> when it asks.</li>
+      <li>Start a task by typing <b>@Computer</b> and saying what you want done.</li>
+    </ul>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <div class="step">Three real examples</div>
+    <h2>Three real examples.</h2>
+    <p>These come from people who tested Astra and wrote up what happened.</p>
+    <div class="defn">
+      <h4>1 · It set up a business workflow on its own</h4>
+      <p>A reviewer on the How I AI show asked Astra to update their lead system, so every new lead would go to the right business partner and get a custom email. Astra took over their Chrome browser and built the whole thing. Doing it by hand had taken them about an hour.</p>
+      <div class="ex">What this means for you: it can work inside the tools you already pay for.</div>
+    </div>
+    <div class="defn">
+      <h4>2 · It made a YouTube thumbnail across two apps</h4>
+      <p>The same reviewer had Astra make a thumbnail. It created the images in one design tool, then opened Figma and put together the finished thumbnail, all while their designer was out.</p>
+      <div class="ex">What this means for you: it can take on the repetitive part of creative work, and you still make the final call.</div>
+    </div>
+    <div class="defn">
+      <h4>3 · It built financial models four times faster than the champion</h4>
+      <p>OpenAI reports that Astra finished Financial Modeling World Cup challenges about four times faster than the winning human competitor. This is OpenAI's own result, not an independent test.</p>
+      <div class="ex">What this means for you: less time building the spreadsheet, more time deciding what the numbers mean.</div>
+    </div>
+    <p class="disc">Sources: the How I AI review of GPT-6 Astra (ChatPRD) and OpenAI's announcement.</p>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">Be careful</div>
+    <h2>What to be careful with.</h2>
+    <ul class="prules">
+      <li><b>Don't give it your passwords.</b> Sign in yourself, then let it work inside that session.</li>
+      <li><b>Tell it what not to do.</b> It won't guess, so say it plainly in your instructions.</li>
+      <li><b>Start with something low-stakes.</b> Don't point it at live business data you haven't backed up.</li>
+      <li><b>Some tasks are blocked.</b> OpenAI rates Astra's cybersecurity ability at its highest risk level, so hacking-related tasks are turned off on regular plans.</li>
+    </ul>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <div class="step">My real example</div>
+    <h2>What I built with Codex.</h2>
+    <p>I had a PDF, and I wanted people to see part of it, then give their email to open the rest.</p>
+    <p>I asked Codex to review the workflow. My prompt: <b>"Please look at this and see if this could be accomplished here,"</b> followed by my <a href="/gated-guide">gated-guide tutorial</a> link. Codex reviewed it and confirmed it could build the webpage and email gate.</p>
+    <ul class="steps">
+      <li><b>I gave Codex the document's location.</b> I shared the path to my CHES study guide PDF on my desktop. Codex read it and turned it into a mobile-friendly webpage, preserving all ten topics and 31 knowledge checks.</li>
+      <li><b>Codex built the email gate and published the page.</b> The first topic is freely readable. After someone enters an email, the remaining nine topics load from the server. Codex deployed the page to my Vercel account and tested the unlock.</li>
+      <li><b>We attempted to connect email collection.</b> I supplied a Systeme.io key, and Codex saved it as a secret in Vercel. Testing showed it was an MCP key rather than the required Public API key. The webpage and unlock work; saving emails to Systeme.io remains unfinished.</li>
+    </ul>
+    <a class="btn" href="https://ches-area-three-guide.vercel.app/" target="_blank" rel="noopener">View the guide →</a>
+  </div></section>
+
+  <section><div class="wrap">
+    <h2>Your one next move.</h2>
+    <p>Turn Astra on this weekend and give it one small task you do every week. Watch what it does, then post what happened in the community.</p>
+    <a class="btn" href="https://skool.com/leveragingai/about">Join us →</a>
+  </div></section>
+
+  <footer><div class="wrap">Dr. Erin Jacques · Friday Live · September 11 · Sources: OpenAI, How I AI (ChatPRD), 9to5Mac, Fortune, TechCrunch, Notebookcheck.</div></footer>
+</body>
+</html>
