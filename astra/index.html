@@ -51,6 +51,7 @@
   .note{background:var(--cream);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:1.05rem;color:var(--navy);font-weight:600;}
   section.cream .note{background:#fff;}
   .btn{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:800;font-size:1.2rem;text-decoration:none;padding:14px 30px;border-radius:12px;margin-top:12px;box-shadow:0 8px 22px rgba(255,217,61,.4);}
+  .btn.ghost{background:#fff;color:var(--navy);border:2px solid var(--navy);box-shadow:none;margin-right:10px;}
   .disc{font-size:.95rem;color:var(--faint);margin-top:6px;font-style:italic;}
   footer{padding:34px 0 60px;color:var(--faint);font-size:.9rem;}
 </style>
@@ -167,7 +168,9 @@
       <li><b>Codex built the email gate and published the page.</b> The first topic is freely readable. After someone enters an email, the remaining nine topics load from the server. Codex deployed the page to my Vercel account and tested the unlock.</li>
       <li><b>We attempted to connect email collection.</b> I supplied a Systeme.io key, and Codex saved it as a secret in Vercel. Testing showed it was an MCP key rather than the required Public API key. The webpage and unlock work; saving emails to Systeme.io remains unfinished.</li>
     </ul>
-    <a class="btn" href="https://ches-area-three-guide.vercel.app/" target="_blank" rel="noopener">View the guide →</a>
+    <p style="margin-top:18px;"><b>Before and after.</b> Here's the PDF I gave Codex, and the webpage it built from it.</p>
+    <a class="btn ghost" href="/astra/ches-study-guide-before.pdf" target="_blank" rel="noopener">Before: the PDF →</a>
+    <a class="btn" href="https://ches-area-three-guide.vercel.app/" target="_blank" rel="noopener">After: the webpage →</a>
   </div></section>
 
   <section><div class="wrap">
