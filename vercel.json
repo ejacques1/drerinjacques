@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "node scripts/generate-sitemap.js",
-  "outputDirectory": ".",
+  "buildCommand": "node scripts/build-public.js",
+  "outputDirectory": "public",
   "functions": {
     "api/*.js": {
       "maxDuration": 300

@@ -2,6 +2,6 @@
   "name": "drerinjacques",
   "private": true,
   "scripts": {
-    "build": "node scripts/generate-sitemap.js"
+    "build": "node scripts/build-public.js"
   }
 }
