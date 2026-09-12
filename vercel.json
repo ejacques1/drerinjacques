@@ -5,9 +5,6 @@
   "functions": {
     "api/*.js": {
       "maxDuration": 300
-    },
-    "api/unlock-prompts.js": {
-      "maxDuration": 15
     }
   },
   "headers": [
