@@ -1,0 +1,7 @@
+Look at https://drerinjacques.com/blackwell as an example of the email signup and unlock I want. Create a page for the document in this folder using my own information.
+
+My name or business: [YOUR NAME]
+
+People should enter their email to unlock the document. Save them in Systeme.io with the Download tag before unlocking, including existing contacts. My key is already in Vercel as SYSTEME_API_KEY; keep it private and keep the document protected until signup.
+
+Show me a preview so I can see how the page looks.
