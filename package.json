@@ -3,5 +3,8 @@
   "private": true,
   "scripts": {
     "build": "node scripts/build-public.js"
+  },
+  "dependencies": {
+    "stripe": "^22.4.0"
   }
 }
