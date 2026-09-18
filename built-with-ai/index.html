@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>What I Built With AI — 7 Case Studies — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --navy2:#0E2E57; --gold:#F4B02E;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--navy);color:#fff;font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.85rem;color:#bcccdf;}
+  .brand b{color:var(--gold);}
+  .kicker{color:var(--gold);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;margin-bottom:12px;}
+  section{padding:44px 0;border-top:1px solid rgba(255,255,255,.12);}
+  section.hero{border-top:none;padding:44px 0 40px;}
+  h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:900;letter-spacing:-.025em;line-height:1.07;margin:0 0 16px;}
+  h1 span{color:var(--gold);}
+  h2{font-size:clamp(1.35rem,3.4vw,1.9rem);font-weight:900;letter-spacing:-.02em;margin:0 0 8px;}
+  h2 .st{color:var(--gold);}
+  .lead{font-size:clamp(1.1rem,2.4vw,1.4rem);color:#dbe6f3;font-weight:600;margin:0 0 8px;max-width:72ch;}
+  p{font-size:clamp(1.0rem,2.1vw,1.14rem);color:#cdd9e8;margin:0 0 14px;max-width:74ch;}
+  p b, li b{color:#fff;}
+  a{color:var(--gold);}
+  ul{list-style:none;padding:0;margin:0 0 8px;}
+  li{font-size:clamp(1.0rem,2.2vw,1.14rem);color:#e6eef8;padding:9px 0 9px 30px;position:relative;border-bottom:1px solid rgba(255,255,255,.08);}
+  li:last-child{border-bottom:none;}
+  li::before{content:"";position:absolute;left:2px;top:17px;width:10px;height:10px;background:var(--gold);border-radius:50%;}
+  ol.num{list-style:none;padding:0;margin:0 0 8px;counter-reset:s;}
+  ol.num li{padding:9px 0 9px 40px;counter-increment:s;}
+  ol.num li::before{content:counter(s);width:26px;height:26px;background:var(--gold);color:var(--navy);border-radius:50%;font-weight:900;font-size:.85rem;display:flex;align-items:center;justify-content:center;top:8px;left:0;}
+  .flow{background:var(--navy2);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 16px;margin:12px 0;font-size:1rem;color:#dbe6f3;}
+  .flow b{color:var(--gold);}
+  .show{display:inline-block;background:rgba(244,176,46,.14);border:1px solid var(--gold);border-radius:999px;padding:6px 14px;font-weight:700;font-size:.95rem;margin:2px 0 12px;}
+  .prompt{background:#0b1f3d;border:1px solid rgba(244,176,43,.4);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative;}
+  .prompt .lbl{color:var(--gold);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+  .prompt .js-copy{color:#eaf1fb;font-family:var(--mono);font-size:clamp(.86rem,1.8vw,.96rem);line-height:1.55;display:block;padding-right:76px;white-space:pre-wrap;}
+  .copy{position:absolute;top:14px;right:14px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:7px 12px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .note{background:rgba(244,176,43,.14);border-left:5px solid var(--gold);border-radius:10px;padding:13px 16px;margin:14px 0;font-size:1.0rem;color:#fff;}
+  .mono{font-family:var(--mono);background:rgba(255,255,255,.08);border-radius:5px;padding:1px 7px;font-size:.9em;}
+  .stepnum{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:44px;background:var(--gold);color:var(--navy);border-radius:50%;font-weight:900;font-size:1.2rem;flex:none;}
+  .stephead{display:flex;align-items:center;gap:14px;margin-bottom:6px;}
+  footer{padding:30px 0 60px;color:#8ea3bd;font-size:.9rem;}
+  .cta{display:inline-block;background:var(--gold);color:var(--navy);text-decoration:none;font-weight:900;font-size:1.05rem;padding:13px 24px;border-radius:12px;margin-top:6px;}
+</style>
+</head>
+<body>
+  <div style="background:#081d3a;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:11px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);">
+    <a href="/astra" style="color:#F4B02E;text-decoration:none;font-weight:800;">← Previous</a>
+    <a href="/lives" style="color:#fff;text-decoration:none;font-weight:800;">☰ All Live Sessions</a>
+    <span style="color:#6f83a0;font-weight:700;">Sept 18 · Friday Live</span>
+  </div>
+
+  <div class="wrap">
+    <div class="brand">Leveraging <b>AI</b> · Friday Live · Noon</div>
+
+    <section class="hero">
+      <div class="kicker">Friday Live — What I Built</div>
+      <h1>What I built with AI: <span>seven real case studies</span>.</h1>
+      <p class="lead">Today you'll see how I used AI to build a free signup page, a paid registration process, a transformed video, a purchasing comparison, automatic coaching routing, a provider training experience, and a full college course hub. Each one comes with the finished result, the workflow, and the exact prompts behind it.</p>
+    </section>
+
+    <section>
+      <div class="kicker">Start here — one foundation for the first two</div>
+      <h2>Set this up <span class="st">once</span>.</h2>
+      <p>Case Study 1 (free resource) and Case Study 2 (paid registration) start from the same website foundation. Do this once, then pick either one. You don't have to build Case Study 1 before Case Study 2.</p>
+      <ol class="num">
+        <li>Install and sign into the Codex or Claude desktop app.</li>
+        <li>Create a project folder on your computer and open it in the AI app.</li>
+        <li>Create a GitHub repository and connect the folder to it.</li>
+        <li>Go to <a href="https://vercel.com/new" target="_blank" rel="noopener">vercel.com/new</a>, import the repo, and deploy.</li>
+        <li>Create a free Systeme.io account and create the tag the case study needs.</li>
+        <li>Create a Systeme.io API key and save it privately in Vercel as <span class="mono">SYSTEME_API_KEY</span>.</li>
+      </ol>
+      <div class="note"><b>Choose what to build:</b> Case Study 1 collects an email before opening a free resource. Case Study 2 collects an email and payment for a paid offer. Stripe is added only for the paid workflow.</div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">1</span><h2>Blackwell: <span class="st">collect an email, unlock the guide</span></h2></div>
+      <div class="show">Show: <a href="https://drerinjacques.com/blackwell" target="_blank" rel="noopener">drerinjacques.com/blackwell</a></div>
+      <div class="flow"><b>Workflow:</b> Email signup → Systeme.io contact + Blackwell tag → guide opens.</div>
+      <p><b>Walk through:</b> Put a document in a desktop folder → open it in your AI coding app → connect the GitHub repo → import into Vercel → create the Systeme.io tag and save SYSTEME_API_KEY privately in Vercel → build and preview → publish → test the signup and tag.</p>
+      <p>Step-by-step guide: <a href="https://drerinjacques.com/gating-workshop" target="_blank" rel="noopener">drerinjacques.com/gating-workshop</a></p>
+      <div class="prompt">
+        <div class="lbl">Workshop prompt — exact wording</div>
+        <span class="js-copy">Look at https://drerinjacques.com/blackwell as an example of the email signup and unlock I want. Create a page for the document in this folder using my own information.
+
+My name or business: [YOUR NAME]
+
+People should enter their email to unlock the document. Save them in Systeme.io with the Download tag before unlocking, including existing contacts. My key is already in Vercel as SYSTEME_API_KEY; keep it private and keep the document protected until signup.
+
+Show me a preview so I can see how the page looks.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="note">👉 Blackwell is my existing resource tag. <b>Download</b> is the practice tag attendees create in their own accounts.</div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">2</span><h2>Mac training: <span class="st">a paid registration process</span></h2></div>
+      <div class="show">Show: <a href="https://drerinjacques.com/mac-training" target="_blank" rel="noopener">drerinjacques.com/mac-training</a></div>
+      <p><b>You can start here.</b> Do the shared setup above, create the <span class="mono">Mac Training</span> tag in Systeme.io, and gather the offer details: title, price, date, instructor, description, what buyers receive, and what happens after payment. You don't need to build Blackwell first.</p>
+      <div class="flow"><b>Workflow:</b> Paid registration page → Stripe Checkout collects email + payment → Stripe verifies payment → Systeme.io contact + Mac Training tag → confirmation, Zoom info, reminders.</div>
+      <p><b>Stripe setup used here:</b> sign into the Stripe dashboard in a browser, then give the AI browser access so it can help create the $25 payment setup and a testing promo code. This uses Stripe's website and does <b>not</b> require a Stripe MCP.</p>
+      <div class="prompt">
+        <div class="lbl">Teaching prompt — reusable wording</div>
+        <span class="js-copy">Build a registration page for my $25 Mac class with Dr. Vincent Jones II. I will sign into Stripe in my browser and give you browser access to help me create and connect the checkout. Save confirmed buyers in Systeme.io with the Mac Training tag. Show me a preview, guide me through any setup I need to complete, and use verified Stripe payment notifications to trigger registration. Buyers should receive the Zoom details by email; tell me what email automation still needs setting up.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="note">👉 <b>Proof:</b> a completed checkout, the matching contact and tag, and the session email. A success page alone is not proof of payment. This class promises the Zoom link by email before the session, not an immediate protected Zoom-page unlock.</div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">3</span><h2>Video: <span class="st">give AI an exemplar, build your own</span></h2></div>
+      <p><b>Show:</b> the video whose style I liked, its AI style breakdown, my raw footage, one still-image option, and the finished Wharton edit. See the example on <a href="https://www.instagram.com/dr.erinjacques/" target="_blank" rel="noopener">Instagram</a> (the video that opens with "CHATGPT FEELS LIKE LEARNING" / "Wharton research").</p>
+      <p>Put a completed video you like in a folder the AI can access (the reference, not your own footage). The AI can use FFmpeg/FFprobe to detect scenes and pull frames, OCR to read on-screen text, and Whisper to make a timestamped transcript, so it can study composition, colors, fonts, captions, pacing, and timing.</p>
+      <div class="prompt">
+        <div class="lbl">Prompt 1 — analyze the exemplar</div>
+        <span class="js-copy">Analyze the reference video in this folder. Check whether you have the tools needed to inspect the video, extract frames, read its on-screen text and transcribe its audio. If anything is missing, explain it in plain language and guide me through installing it. Do not edit anything yet. Create a timestamped breakdown of the hook, spoken message, scenes, images, on-screen text, colors, fonts, layout, transitions and pacing. Explain the visual system clearly enough that we can apply the same approach to a different video without copying its exact content.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <p>Then add your own footage to the folder, labeled clearly (e.g. <span class="mono">REFERENCE-VIDEO.mp4</span> and <span class="mono">MY-RAW-FOOTAGE.mp4</span>).</p>
+      <div class="prompt">
+        <div class="lbl">Prompt 2 — create the editing plan</div>
+        <span class="js-copy">Now analyze MY-RAW-FOOTAGE.mp4. Use the style breakdown from the reference video, but use my topic, identity and content. Identify the strongest hook, map the spoken content by timestamp, list every image, logo, screenshot, headline or other asset the new edit needs, and tell me which assets already exist and which ones need to be found or created. Do not render the full video yet.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="prompt">
+        <div class="lbl">Prompt 3 — show stills before rendering</div>
+        <span class="js-copy">Create still-image mockups of the most important scenes using my real video frame. Preserve my face, body, clothing and setting. Show me the opening hook and each major visual treatment before you edit the full video.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="prompt">
+        <div class="lbl">Iterate one change at a time</div>
+        <span class="js-copy">Keep everything I approved. Change only [DESCRIBE THE ONE THING TO CHANGE], then show me another still image before rendering the video.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="prompt">
+        <div class="lbl">Prompt 4 — render the approved video</div>
+        <span class="js-copy">Apply only the approved visuals and text to my raw footage. Preserve my original voice, timing and identity. Export the complete vertical MP4, then verify every name and caption, the visual timing, dimensions, video playback and original audio.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="note">👉 Check the subject's age, identity, setting and visual accuracy before using any AI-created image. The AI reverse-engineers the exemplar's approach, then builds a new edit around <b>your</b> real performance and footage.</div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">4</span><h2>Equipment research: <span class="st">a wish list into a purchasing comparison</span></h2></div>
+      <p><b>Starting point:</b> a broad equipment wish list. Through conversation I explained how I actually work, running several apps, testing local AI models, storing large files, and using multiple screens.</p>
+      <div class="flow"><b>Workflow:</b> Describe how it'll be used → clarify workloads, budget, priorities → narrow specs → check compatibility → research exact part numbers across vendors → compare prices/availability → revise as preferences change → total it → produce a comparison sheet and purchasing PDF.</div>
+      <p>The finished document held 14 exact products with quantities, part numbers, vendor links, unit prices, line totals, and cautions. The Sept 16, 2026 snapshot totaled <b>$18,331.29 before tax, shipping, installation and coverage</b>.</p>
+      <div class="prompt">
+        <div class="lbl">Prompt 1 — clarify the need first</div>
+        <span class="js-copy">Help me turn a broad equipment wish list into a purchasing plan. Ask me focused questions about how I work, the applications I run together, whether I want to run local AI models, file-storage needs, the number and arrangement of screens, workspace limitations, compatibility requirements, budget and priorities. Help me separate requirements from preferences before recommending specific products.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="prompt">
+        <div class="lbl">Prompt 2 — research exact products and vendors</div>
+        <span class="js-copy">Use the requirements we approved to create an exact equipment list with quantities, specifications and part numbers. Research the same configuration across multiple independent vendors. For each listing, record the source link, unit price, line total, availability and any concern about the configuration, seller or delivery. Do not substitute a different model without telling me, and do not treat a missing price as zero. Flag anything that needs confirmation before purchase.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="prompt">
+        <div class="lbl">Prompt 3 — revise as decisions change</div>
+        <span class="js-copy">Update the recommendations using my latest decisions. Recheck compatibility across the computers, displays, mounting equipment, storage and accessories. Show what changed, why it changed and how it affects the total budget. Preserve the approved specifications unless I explicitly change them.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="prompt">
+        <div class="lbl">Prompt 4 — create the purchasing document</div>
+        <span class="js-copy">Turn the approved research into a clear comparison sheet and PDF purchasing document. Group related equipment, preserve clickable vendor links, show quantities, unit prices, line totals, availability notes and a complete total. Include the date of the price research, assumptions, exclusions and every item that still needs verification. Check the calculations and visually inspect every page before giving me the final PDF.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="note">👉 Before purchasing: refresh every price and availability, confirm configs with the seller, and get formal quotes when required. The document is a dated research comparison, not a current quotation.</div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">5</span><h2>Coaching: <span class="st">route each request to the right coach</span></h2></div>
+      <div class="show">Live: <a href="https://earlyscholars.org/coaching" target="_blank" rel="noopener">earlyscholars.org/coaching</a></div>
+      <p><b>The goal:</b> a coaching program with five coaches. Every registration had to reach me and my team plus the specific coach the family chose, with no manual forwarding, no paid form service, and no parent accounts.</p>
+      <div class="flow"><b>Workflow:</b> Parent completes the form → it posts to a Google Apps Script web app → the script emails me and my team → it looks up the chosen coach and CCs them → the parent gets a friendly confirmation.</div>
+      <div class="prompt">
+        <div class="lbl">Prompt 1 — audit the current setup</div>
+        <span class="js-copy">Help me determine whether this website form already connects to a Google Apps Script web app. Inspect the form code and identify its submission URL. Then guide me through finding the matching Apps Script project in my Google accounts. Do not create a new script or deployment until we confirm whether an existing one should be updated.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="prompt">
+        <div class="lbl">Prompt 2 — build the email router</div>
+        <span class="js-copy">Write or update a Google Apps Script web app that receives a POST from my website's coaching registration form. It should always email my core team at [TEAM EMAILS]. If the form includes a selected coach, CC that coach using an editable name-to-email directory stored only in the script. If a coach's email is blank, send the request to the core team without CC'ing that coach. Include a friendly auto-reply to the parent's email. Validate the required fields, escape submitted content safely and add basic spam protection. Give me the complete script and explain every setting in plain language.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="prompt">
+        <div class="lbl">Prompt 3 — preserve the existing URL when updating</div>
+        <span class="js-copy">This form already uses an Apps Script deployment. Update the existing script without changing the website's /exec URL. After editing and saving the code, guide me through Deploy → Manage deployments → Edit → Version: New version → Deploy. Confirm that the deployment URL remains the same before we change anything on the website.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="note">👉 <b>What tripped me up:</b> my routing script already existed under one Google account, named "Untitled." The right task was to update that project, not create a second deployment with a new URL. Deploy as a web app with <b>Execute as: Me</b> and <b>Who has access: Anyone</b>. Then test No preference and each coach.</div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">6</span><h2>Provider training: <span class="st">a missing video into a searchable curriculum</span></h2></div>
+      <div class="show">Public: <a href="https://www.earlyscholars.org/coach-training" target="_blank" rel="noopener">earlyscholars.org/coach-training</a></div>
+      <p>Protected provider portal: <a href="https://www.earlyscholars.org/provider/mittal/training" target="_blank" rel="noopener">earlyscholars.org/provider/mittal/training</a> (I'll enter the access code live; it's not in this guide).</p>
+      <p><b>The challenge:</b> I knew the date the training happened, but not the video's filename, whether it was renamed, or its folder. AI searched my computer using the date, found the recording, and turned it into a usable training resource, plus a public coach page separate from the licensed curriculum.</p>
+      <div class="prompt">
+        <div class="lbl">Prompt 1 — locate the missing recording safely</div>
+        <span class="js-copy">Help me find a training video that was recorded on or around [DATE]. I do not know its filename, whether it was renamed, or which folder it is in. Search this computer for video files connected to that date, then use the file dates, duration and sample frames to identify the most likely recording. Do not move, rename or delete anything. Show me the likely matches so I can confirm the correct video before you use it.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="prompt">
+        <div class="lbl">Prompt 2 — transcribe and create chapters</div>
+        <span class="js-copy">Transcribe the confirmed training video with timestamps. Review the transcript and divide it into clear chapters based on topic changes. Give every chapter an accurate, plain-language title and starting time. Create a complete transcript file and a timestamp list that can be connected to the video player so selecting a chapter starts the correct section.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="prompt">
+        <div class="lbl">Prompt 3 — build the public coach-training page</div>
+        <span class="js-copy">Build a polished public training page for coaches using this video, transcript and chapter list. Include the video player, training title, date and duration, presenter profile and photo, downloadable video and transcript, clickable chapter timestamps and an expandable full transcript. Keep licensed curriculum files off this public page and direct authorized users to the curriculum portal provided by their program administrator.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="prompt">
+        <div class="lbl">Prompt 4 — add it to the protected provider portal</div>
+        <span class="js-copy">Add the approved training experience to the existing protected provider portal without weakening or replacing its current access controls. Include the curriculum overview, implementation guidance, training recordings, clickable chapters, transcripts, downloads and coach resources in a clear order. Reuse the portal's visual style and navigation. Do not expose the access code or protected file locations in public code, page text or documentation. Show me a preview and an inventory of every file and link before publishing.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="note">👉 The public page: a 27-minute walkthrough with Hillary Jacques, presenter profile, downloads, clickable chapters, expandable transcript, no licensed files. The protected portal: full curriculum, week-by-week guidance, syllabi, recordings, transcripts, and coach resources for authorized providers only.</div>
+    </section>
+
+    <section>
+      <div class="stephead"><span class="stepnum">7</span><h2>PH 320: <span class="st">a syllabus into a student course hub</span></h2></div>
+      <div class="show">Live: <a href="https://ph320.vercel.app" target="_blank" rel="noopener">ph320.vercel.app</a></div>
+      <p><b>The goal:</b> one clear place for students to understand the course, see each week, and open the lessons, activities, assignments, datasets and documents they need, no digging through emails or scattered folders.</p>
+      <div class="flow"><b>Workflow:</b> Give AI the syllabus and files → explain how the class is organized → identify what students need most → build the homepage and navigation → build the syllabus and weekly pages → connect each asset where students need it → preview → correct → publish and update all semester.</div>
+      <div class="prompt">
+        <div class="lbl">Prompt — create the student course hub</div>
+        <span class="js-copy">Turn the syllabus and course materials in this folder into a student course hub. Create a homepage that explains the course in plain language, shows students what we are doing this week and gives them easy access to the syllabus, weekly lessons, activities, assignments, documents and dataset. Create a consistent page for each week with the date, topic, class agenda and links to everything students need. Show future weeks as "Coming Soon" until their materials are ready. Make the site clear, mobile-friendly and easy to scan. Do not invent missing policies or course information. Tell me what is missing and show me a preview before publishing.</span>
+        <button class="copy" onclick="copyText(this)">Copy</button>
+      </div>
+      <div class="note">👉 One dependable link for students, updated as the semester moves. Future weeks stay "Coming Soon" until ready.</div>
+    </section>
+
+    <section>
+      <div class="kicker">Your turn</div>
+      <h2>What could <span class="st">you</span> build?</h2>
+      <p>Your own document, a paid offer, a video, a purchasing decision, a registration workflow, a training library, or your course materials. Pick one and start.</p>
+      <a class="cta" href="https://www.skool.com/leveragingai/about" target="_blank" rel="noopener">Join the Leveraging AI community →</a>
+    </section>
+
+    <footer>Dr. Erin Jacques · Leveraging AI</footer>
+  </div>
+
+<script>
+  function copyText(btn){
+    var el=btn.parentElement.querySelector('.js-copy');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o=btn.textContent; btn.textContent='Copied!';
+      setTimeout(function(){btn.textContent=o;},1500);
+    });
+  }
+</script>
+</body>
+</html>
