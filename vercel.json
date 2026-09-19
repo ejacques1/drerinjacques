@@ -7,6 +7,13 @@
       "maxDuration": 300
     }
   },
+  "redirects": [
+    {
+      "source": "/gate",
+      "destination": "/gating-workshop",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/100-prompts/:path*",
