@@ -1,163 +1,197 @@
-# YouTube Script: Build Your Own Testimonial System With AI
+# YouTube Script: Build a Testimonial System With AI
 
-**Target length:** About 8 minutes  
-**Working title:** I Built My Own Testimonial System With AI  
+**Target length:** 8–10 minutes
+
+**Working title:** Build Your Own Testimonial System With AI
+
 **Thumbnail:** BUILD IT WITH AI
 
-## 0:00 — Hook
+## Opening pattern taken from Erin's existing videos
 
-**ON CAMERA**
+1. Open on the problem and visible result.
+2. Explain why the result matters.
+3. Tell viewers what they will accomplish.
+4. Introduce Erin and remove the technical objection.
+5. Preview a short plan with a payoff at each stage.
+6. Move directly into the first build.
 
-Businesses pay every month for tools that collect customer testimonials and display them on a website. Those tools can be useful—but I wanted to know whether AI could help me build a testimonial system directly into a website I already own.
+## 0:00 — Hook and visible result
 
-So that is what we are doing today.
+**[OPEN ON ERIN. THEN CUT QUICKLY BETWEEN THE FORM, DASHBOARD, AND WALL.]**
 
-## 0:20 — What viewers will build
+What if your customers could share their experience through one simple link—and you could decide exactly which stories appear on your website?
 
-**SHOW THE FINISHED FORM, DASHBOARD, AND WALL AS EACH ITEM IS NAMED**
+That is what I built here.
 
-We are going to do four things:
+A customer chooses a rating, answers a few questions, and can add a photo or video. Their testimonial comes into a private review page. I approve it once, and then I can place it on my homepage, a workshop page, or a full wall of testimonials.
 
-1. Prompt AI to build the system.
-2. Connect the services it needs.
-3. Create the collection and approval process.
-4. Display approved testimonials on the website.
+And I built the entire system with AI, directly inside my existing website.
 
-By the end, customers will have one link where they can share their experience, and you will control what appears publicly and where it appears.
+## 0:30 — What viewers will do
 
-## 0:45 — Decide what the system needs
+**[KEEP THE FINISHED SYSTEM ON SCREEN.]**
 
-**SHOW EXAMPLE SCREENSHOTS OF A RATING, CUSTOMER DETAILS, AND A TESTIMONIAL WALL**
+In this video, I am going to show you how to build one too.
 
-Before I prompted AI, I looked at how testimonial tools usually work.
+We will prompt AI to create the first version, connect a database so the form can save real submissions, put the system online, and then test the complete journey from customer submission to published testimonial.
 
-Most begin with a rating. Then they guide the customer through a few questions, collect their name and email, and give them the option to add a photo or video. The business owner reviews the submission before it appears on a public testimonial wall.
+So you are not leaving with a mockup. You are leaving with the process for building a working testimonial system of your own.
 
-Those are the features I wanted. I also wanted to connect each testimonial to a specific workshop or training, because the same story might belong on that workshop page, the homepage, and a larger testimonial wall.
+## 0:55 — Who I am
 
-You do not need to copy another company's design. You need to understand the workflow you want AI to create.
+**[RETURN TO ERIN. OPTIONAL LOWER THIRD: DR. ERIN JACQUES · PROFESSOR & AI STRATEGIST.]**
 
-## 1:25 — Give AI the first prompt
+By the way, if we have not met, I am Dr. Erin Jacques. I am a professor and AI strategist, and I teach people without technical backgrounds how to build practical AI applications for their work and businesses.
 
-**SCREEN RECORDING: OPEN THE EXISTING WEBSITE PROJECT IN CODEX**
+You do not need to write the code we are using today. Your job is to explain the experience you want, review what AI creates, and test whether it works.
 
-I opened my existing website project in Codex and gave it the job.
+## 1:15 — Preview the wins
 
-**SHOW THIS PROMPT ON SCREEN**
+**[ON SCREEN: BUILD IT · SAVE IT · PUBLISH IT · TEST IT.]**
 
-> Inspect my existing website before making changes. Build a branded testimonial system that includes a customer submission form, private review dashboard, and public testimonial display. Customers should be able to submit written or video testimonials, select a star rating, answer guided questions, and optionally add a photo. Nothing should appear publicly until I approve it. One testimonial must be able to appear on multiple pages or connect to multiple trainings. Build and test a local preview first.
+Here is the plan.
 
-This prompt describes the result, the important rules, and how the system should fit into the website. I do not have to tell AI how to write every line of code.
+First, we will build the form and see it working on the computer. That is our first win.
 
-## 2:10 — Connect the services
+Then we will connect Supabase and save a real submission. Second win.
 
-**SHOW A SIMPLE DIAGRAM: GITHUB → VERCEL, SUPABASE, AND RESEND**
+Then GitHub and Vercel will put it online. Third win.
 
-The website needs four connected services.
+Finally, we will submit, approve, and publish one testimonial from beginning to end.
 
-GitHub stores the website code and records every change. Vercel publishes the website. Supabase stores the testimonials, photos, videos, approval status, and login information. Resend sends the secure email code used to enter the private dashboard.
+Let us build it.
 
-If your website is already connected to GitHub and Vercel, you do not need to create them again.
+## 1:40 — Decide what the experience should include
 
-## 2:40 — Connect GitHub to Supabase
+**[SHOW SIMPLE REFERENCE IMAGES: STAR RATING, GUIDED QUESTIONS, CUSTOMER DETAILS, AND A TESTIMONIAL WALL.]**
 
-**SHOW THE SUPABASE GITHUB CONNECTION SCREEN**
+Before prompting AI, decide what should happen for the customer and for the business owner.
 
-Inside Supabase, I first connected my GitHub account. Then I selected the specific website repository and authorized it. Those are two separate steps.
+For the customer, I want a star rating, guided questions, written or video responses, and an optional photo. If they do not upload a photo, I want them to see the initials that will represent them.
 
-Because the `supabase` folder is at the top level of my repository, I entered a period for the working directory. I selected `main` as the production branch and turned automatic branching off because I did not need paid preview databases for this project.
+For the owner, I want every new story to wait for review. Once it is approved, I want to choose where it appears.
 
-This connection matters because AI can create the database instructions as files inside the project. When those files are pushed to GitHub, Supabase can apply them. I do not have to copy and paste every new SQL command manually.
+You can use screenshots or rough sketches to show AI the experience you have in mind. You are giving it a reference, then asking it to create something that fits your own website and branding.
 
-## 3:25 — Connect Supabase to Vercel
+## 2:15 — Prompt AI to build the first version
 
-**SHOW THE VERCEL CONNECTION SETTINGS**
+**[OPEN THE EXISTING WEBSITE PROJECT IN CODEX.]**
 
-Next, I connected the Supabase project to my existing Vercel project. I turned on Production and left Preview and Development off.
+I opened my existing website project in Codex and started with this prompt.
 
-That places the Supabase connection values in the live website environment. Secret values still stay in server-side code; they are never placed in the public page.
+**[SHOW THIS PROMPT ON SCREEN AND MAKE IT AVAILABLE BELOW THE VIDEO.]**
 
-## 3:50 — Ask AI to create the foundation
+> Inspect my existing website before making changes. Create a branded testimonial system with three parts: a customer submission form, a private review dashboard, and a public testimonial wall. Start the form with a required one-to-five-star rating. Let customers submit a written or video testimonial, answer guided questions, and optionally add a photo. If no photo is selected, preview their initials. Nothing should appear publicly until I approve it. One testimonial should be able to appear on multiple pages or connect to multiple trainings. Build a local preview first and do not publish anything yet.
 
-**SHOW THE DATABASE MIGRATION FILE AND LOCAL PREVIEW**
+**[SHOW CODEX WORKING, THEN OPEN THE LOCAL FORM.]**
 
-Then I gave AI the next job.
+Here is the first payoff: a real form I can click through before connecting any outside services.
 
-**SHOW THIS PROMPT ON SCREEN**
+At this point I test the customer experience. I check the questions, choose a rating, try it without a photo, and look at it on a phone. If something feels confusing, this is when I tell AI to change it.
 
-> Create the Supabase database and storage foundation for the testimonial system. Store each testimonial once, but allow it to connect to multiple trainings and display locations. Keep contact information and consent private. Add secure photo and video storage, approval status, display order, and submission rate limiting. Create the SQL as versioned migration files in the repository.
+## 3:20 — Explain the three connections
 
-AI created the database structure and the code that safely sends form submissions to it.
+**[SHOW A SIMPLE DIAGRAM: CODEX → GITHUB → VERCEL, WITH SUPABASE CONNECTED TO THE SITE.]**
 
-## 4:25 — Build the customer experience
+The form looks real, but it cannot remember a submission yet, and nobody else can reach it. That is what the connections solve.
 
-**DEMONSTRATE THE FORM**
+Supabase is the filing cabinet. It stores the testimonials, ratings, photos, approval status, and page assignments.
 
-The customer starts by choosing a one-to-five-star rating. Then they choose a written or video testimonial and answer a few focused questions.
+GitHub stores the website project and keeps a history of every change.
 
-They add their name and email, and they can upload a photo if they want. If they do not choose one, the form shows the initials avatar that can represent them. The system can also check for a Gravatar connected to their email.
+Vercel takes the project from GitHub and publishes it as a real website.
 
-At the end, they review what they wrote, give permission to publish it, and submit it. They never need to create an account.
+You can think of it this way: Supabase saves it, GitHub protects it, and Vercel publishes it.
 
-## 5:05 — Build the approval dashboard
+## 3:55 — Connect Supabase and GitHub
 
-**OPEN A PENDING TESTIMONIAL IN THE DASHBOARD**
+**[SHOW THE SUPABASE GITHUB CONNECTION SCREEN.]**
 
-Every new testimonial arrives in a private dashboard as “Needs review.”
+Inside Supabase, create a project and connect GitHub. There are two parts: connect your GitHub account, then select and authorize the repository for this website.
 
-From here, I can approve it, hide it, feature it, connect it to a training, and choose where it should appear. I can place the same testimonial on the full testimonial wall, the homepage, and a workshop page without creating three separate copies.
+My `supabase` folder is at the top level of the project, so the working directory is a period. I use `main` as the production branch. I turn automatic branching off because I do not need separate paid preview databases for this project.
 
-Checking a location does not automatically publish the testimonial. I still have to approve it and save my changes.
+This connection gives us a cleaner workflow. AI can create each database change as a migration file inside the project. When that file reaches GitHub, Supabase can apply it without me copying and pasting the SQL by hand.
 
-## 5:40 — Set up secure email login
+## 4:45 — Ask AI to create the database
 
-**SHOW RESEND AND SUPABASE SMTP FIELDS—DO NOT SHOW THE API KEY**
+**[SHOW A MIGRATION FILE BRIEFLY. DO NOT DWELL ON THE SQL.]**
 
-The dashboard uses a secure code sent by email. Supabase's built-in email service is fine for early testing, but it has a low sending limit, so I connected Resend for reliable email delivery.
+Now I give AI the second prompt.
 
-I verified my sending domain in Resend and created an API key. Then, in Supabase's custom SMTP settings, I used `smtp.resend.com` as the host, `465` as the port, `resend` as the username, and the API key as the password.
+**[SHOW THIS PROMPT ON SCREEN.]**
 
-Never display or paste your API key into a public page, a video, or GitHub.
+> Connect this testimonial system to Supabase. Create versioned migration files for testimonials, ratings, trainings, approval status, and display locations. Store each testimonial once, but allow it to appear on several pages. Keep customer contact information and consent private. Add secure photo and video storage, submission validation, and rate limiting. Then connect the form and dashboard to the database and test them locally.
 
-## 6:20 — Display the approved testimonials
+I do not need to write or explain the SQL myself. I need to review the plan, let AI create it, and test the result.
 
-**SHOW THE WALL AND WORKSHOP PAGE**
+**[SUBMIT A CLEARLY LABELED TEST TESTIMONIAL.]**
 
-Finally, AI created the public testimonial wall and reusable testimonial sections for other pages.
+Now the form is doing more than looking good. The submission is saved. That is our second win.
 
-Only approved testimonials with publication permission are returned to the public website. Email addresses and private information are never included.
+## 5:40 — Connect Supabase and Vercel
 
-For a specific workshop, I can send a link with that workshop's name built into it. The testimonial is automatically connected to the correct training, and after I approve it, I can display it at the bottom of that workshop page.
+**[SHOW THE SUPABASE-TO-VERCEL CONNECTION.]**
 
-## 6:55 — Demonstrate the complete journey
+Next, connect the Supabase project to the existing Vercel project. For this build, I turn on Production and leave Preview and Development off.
 
-**SHOW THE STEPS QUICKLY AS A CONTINUOUS DEMO**
+That gives the live website the connection information it needs. Private keys remain behind the website in server-side functions; they never appear on the public page.
 
-Here is the complete workflow.
+Then I ask AI to commit and push the tested project to GitHub. Vercel detects the change and publishes it.
 
-I open the customer link, select a rating, answer the questions, and submit a testimonial. Then I sign into the private dashboard, open the new submission, approve it, and select the testimonial wall and workshop page.
+**[OPEN THE LIVE FORM URL.]**
 
-When I refresh those pages, the approved story appears. If I hide it later, it disappears from every public location without deleting the original record.
+That is our third win: the form now has a real link that can be sent to anyone.
 
-## 7:30 — Closing lesson
+## 6:25 — Review and place a testimonial
 
-**ON CAMERA**
+**[OPEN THE PRIVATE DASHBOARD WITH A TEST SUBMISSION WAITING.]**
 
-AI did not create the customer relationship or the result behind the testimonial. It helped me build the system that collects, organizes, and displays those stories.
+Every new testimonial arrives in the private dashboard as “Needs review.” Customers do not create an account and they do not log in. They only use the public submission link.
 
-The process came down to four things: describe the system clearly, connect the services, test the customer and approval workflows, and decide where each approved story belongs.
+Inside the dashboard, I can approve or hide the story, feature it, connect it to a specific workshop, and choose where it should appear.
 
-If you want to build practical tools like this directly into your own website, subscribe. I will continue showing you the real prompts, connections, and decisions behind the tools I build with AI.
+The testimonial is stored once. Its placement settings tell the website whether to show it on the full wall, the homepage, a workshop page, or several of those places at the same time.
 
-## Optional closing call to action
+## 7:10 — Complete end-to-end demonstration
 
-If you want more help building practical tools with AI, join my AI-Powered Web App Community. The link is below.
+**[SHOW THIS AS ONE CONTINUOUS, QUICK DEMONSTRATION.]**
 
-## Editing notes
+Now let us run the complete system.
 
-- Keep the four outcomes visible on screen during the opening.
-- Use screenshots for setup screens and short recordings for the customer journey.
-- Blur customer information, project secrets, DNS values when appropriate, and all API keys.
-- Put the two longer prompts on screen and provide them in the video description or a downloadable resource.
-- Avoid explaining the Senja export in this video; make migration and import a separate follow-up.
-- If the runtime is long, shorten the SMTP explanation before cutting the complete end-to-end demonstration.
+I open the public link as a customer. I choose a rating, select a written testimonial, answer the questions, enter my details, and submit it.
+
+Then I open the private dashboard as the website owner. The new story is waiting for review. I approve it, connect it to this workshop, select the testimonial wall, and save the changes.
+
+**[OPEN THE WALL AND WORKSHOP PAGE.]**
+
+The same approved story now appears in both places. If I hide it later, it disappears from every public location without deleting the original submission.
+
+That is the final win: one working journey from customer response to published proof.
+
+## 8:10 — Closing
+
+**[RETURN TO ERIN.]**
+
+We started with a description and a few visual references. AI turned that into a working form. Supabase gave it a place to save information. GitHub preserved the project, and Vercel gave us a live link.
+
+The important part is that you did not need to begin by understanding databases or writing code. You needed to understand the experience you wanted to create and test each win as you built it.
+
+If you want to learn how to build practical tools like this with AI, subscribe. I share the prompts, connections, and real decisions behind the applications I build.
+
+## Optional community call to action
+
+If you want help building tools like this for your own business, join my AI-Powered Web App Community. The link is below.
+
+## Production notes
+
+- Stay on Erin's face for the first question, then reveal the finished form, dashboard, and wall quickly.
+- Return to Erin for the introduction. This is the trust beat; use only a simple lower third.
+- Keep **Build it · Save it · Publish it · Test it** visible during the plan.
+- Show setup screens quickly. The payoffs deserve more screen time than account settings.
+- Put both prompts in the description or a downloadable follow-along page.
+- Do not require or mention a Senja account.
+- Do not teach Resend. It is an owner-side production email detail and is not part of the customer testimonial workflow.
+- Customers never log in. The dashboard is private to the website owner.
+- Blur all API keys, database secrets, customer email addresses, and private consent information.
+- If the runtime is long, shorten the connection explanations before cutting the final end-to-end demonstration.
