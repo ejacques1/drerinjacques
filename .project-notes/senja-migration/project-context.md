@@ -47,6 +47,14 @@ External foundation completed on 2026-09-20:
 - Applied and verified the testimonial schema, photo/video buckets, and database-backed submission rate limiter.
 - Verified the expected Supabase environment-variable names in Vercel without revealing values.
 
+Production release completed on 2026-09-20:
+- Deployed the submission form, private dashboard, admin API, and Supabase migrations from GitHub `main` through Vercel.
+- Added `TESTIMONIAL_ADMIN_EMAILS` in the Vercel Production environment for `drerintj@gmail.com` and `info@erinjacques.com`.
+- Set the Supabase Site URL to `https://drerinjacques.com` and allowed the `/testimonials-admin/` redirect.
+- Verified that the two production pages and admin configuration endpoint return successfully.
+- Submitted a clearly labeled integration-test testimonial through the live form API and received its Supabase record ID.
+- Replaced magic-link dashboard login with a six-digit email code after Gmail security scanning invalidated the one-time links.
+
 Proposed walkthrough sequence:
 1. Inspect the existing Senja wall and collection form; identify required features.
 2. Export and back up existing testimonial text and media using available account features; verify permissions and completeness.

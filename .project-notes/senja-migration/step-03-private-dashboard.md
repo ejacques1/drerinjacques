@@ -29,7 +29,11 @@ Demonstrate this sequence:
 
 ## Live security
 
-The deployed dashboard uses Supabase passwordless email sign-in. The server checks the signed-in email against `TESTIMONIAL_ADMIN_EMAILS` before returning testimonial records or accepting edits. Contact information and consent data are never available through the public browser key alone.
+The deployed dashboard uses a six-digit Supabase email code. We initially tried one-click magic links, but Gmail's security scanning consumed both one-time links before they could be used. For the tutorial, configure the Supabase **Magic link or OTP** email template to display `{{ .Token }}`, then have the dashboard verify that code with `verifyOtp`.
+
+The server checks the signed-in email against `TESTIMONIAL_ADMIN_EMAILS` before returning testimonial records or accepting edits. The current approved addresses are `drerintj@gmail.com` and `info@erinjacques.com`. Contact information and consent data are never available through the public browser key alone.
+
+Supabase's built-in email service is limited to two emails per hour for this project, and that field cannot be increased while using the built-in sender. Configure custom SMTP before relying on frequent production sign-ins. During setup, avoid repeatedly requesting test messages or the quota will delay verification.
 
 ## Files
 
