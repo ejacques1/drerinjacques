@@ -233,9 +233,32 @@ function bindEvents() {
         if (event.target.value==='sales_page') $('#salesSlugWrap').hidden=!event.target.checked;
     });
     $('#loginForm').addEventListener('submit',async event=>{
-        event.preventDefault(); $('#loginMessage').textContent='Sending your secure link…';
-        const {error}=await state.client.auth.signInWithOtp({email:$('#loginEmail').value,options:{emailRedirectTo:`${location.origin}/testimonials-admin/`}});
-        $('#loginMessage').textContent=error?error.message:'Check your email for the secure sign-in link.';
+        event.preventDefault();
+        const email=$('#loginEmail').value.trim();
+        const code=$('#loginCode').value.trim();
+        if ($('#loginCodeWrap').hidden) {
+            $('#loginMessage').textContent='Sending your sign-in code…';
+            const {error}=await state.client.auth.signInWithOtp({email});
+            if (error) { $('#loginMessage').textContent=error.message; return; }
+            $('#loginCodeWrap').hidden=false;
+            $('#loginCode').required=true;
+            $('#loginEmail').readOnly=true;
+            $('#loginButton').textContent='Sign in';
+            $('#loginMessage').textContent='Enter the six-digit code from your email.';
+            $('#loginCode').focus();
+            return;
+        }
+        $('#loginMessage').textContent='Checking your code…';
+        const {data,error}=await state.client.auth.verifyOtp({email,token:code,type:'email'});
+        if (error) { $('#loginMessage').textContent=error.message; return; }
+        state.token=data.session.access_token;
+        try {
+            await loadLive();
+            $('#modePill').textContent='Live workspace';
+            showApp();
+        } catch (loadError) {
+            $('#loginMessage').textContent=loadError.message || 'The dashboard could not load.';
+        }
     });
     $('#signOutButton').addEventListener('click',async()=>{await state.client.auth.signOut();location.reload();});
 }
