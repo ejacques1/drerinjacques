@@ -5,6 +5,9 @@ const PHOTO_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp']);
 const VIDEO_TYPES = new Set(['video/mp4', 'video/quicktime', 'video/webm']);
 const MAX_PHOTO_SIZE = 10 * 1024 * 1024;
 const MAX_VIDEO_SIZE = 500 * 1024 * 1024;
+const WORKSHOPS = {
+  'gating-workshop': 'Email Signup Page Workshop'
+};
 
 function text(value, maxLength) {
   return typeof value === 'string' ? value.trim().slice(0, maxLength) : '';
@@ -88,6 +91,17 @@ export default async function handler(req, res) {
 
   try {
     const admin = getSupabaseAdmin();
+    const workshopSlug = text(body.workshop, 120).toLowerCase();
+    const workshopName = WORKSHOPS[workshopSlug] || '';
+    let trainingId = null;
+    if (workshopName) {
+      const { data: training, error: trainingError } = await admin.from('trainings')
+        .upsert({ name: workshopName, slug: workshopSlug, active: true }, { onConflict: 'slug' })
+        .select('id')
+        .single();
+      if (trainingError) throw trainingError;
+      trainingId = training.id;
+    }
     const { data: allowed, error: rateError } = await admin.rpc('check_testimonial_rate_limit', {
       p_key_hash: submissionKey(req),
       p_limit: 5,
@@ -117,13 +131,24 @@ export default async function handler(req, res) {
       photo_path: photoPath,
       video_path: videoPath,
       source: 'website_form',
-      source_reference: text(body.program, 200) || null,
+      source_reference: workshopName || text(body.program, 200) || null,
       consent_granted: true,
       consent_version: '2026-09-20',
       consented_at: new Date().toISOString()
     });
 
     if (error) throw error;
+
+    if (trainingId) {
+      const { error: connectionError } = await admin.from('testimonial_trainings').insert({
+        testimonial_id: id,
+        training_id: trainingId
+      });
+      if (connectionError) {
+        await admin.from('testimonials').delete().eq('id', id);
+        throw connectionError;
+      }
+    }
 
     const publishableKey = process.env.SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
     if (Object.keys(uploads).length && !publishableKey) throw new Error('Supabase publishable key is missing.');

@@ -32,6 +32,7 @@
         .eyebrow { display:inline-block; font:700 11px 'JetBrains Mono',monospace; letter-spacing:.2em; text-transform:uppercase; color:var(--teal-dark); margin-bottom:12px; }
         h1 { font-size:clamp(2.2rem,6vw,3.8rem); line-height:1.04; letter-spacing:-.045em; margin:0 0 16px; }
         .intro p { margin:0; color:var(--soft); font-size:1.08rem; }
+        .experience-context { display:none; width:max-content; max-width:100%; margin:18px auto 0; padding:8px 13px; border-radius:999px; color:var(--navy); background:#fff3b8; font-size:.84rem!important; font-weight:800; }
         .card { background:#fff; border:1px solid rgba(11,26,46,.08); border-radius:22px; padding:clamp(24px,5vw,46px); box-shadow:0 18px 50px rgba(11,26,46,.08); }
         .progress { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:34px; }
         .progress span { height:5px; border-radius:99px; background:var(--line); transition:.25s; }
@@ -95,6 +96,7 @@
                 <span class="eyebrow">Your story matters</span>
                 <h1>What did you build, change, or finally start?</h1>
                 <p>Your experience could help someone else believe they can take the next step, too.</p>
+                <p class="experience-context" id="experienceContext"></p>
             </div>
 
             <form class="card" id="storyForm" novalidate>
@@ -180,8 +182,20 @@
         const form = document.getElementById('storyForm');
         const steps = [...document.querySelectorAll('.step')];
         const bars = [...document.querySelectorAll('.progress span')];
+        const workshopParam = new URLSearchParams(location.search).get('training') || '';
+        const workshops = {'gating-workshop':'Email Signup Page Workshop'};
+        const workshopName = workshops[workshopParam] || '';
         const startedAt = Date.now();
         let current = 1;
+
+        if (workshopName) {
+            const program = document.getElementById('program');
+            const context = document.getElementById('experienceContext');
+            program.value = workshopName;
+            program.readOnly = true;
+            context.textContent = `Sharing feedback about: ${workshopName}`;
+            context.style.display = 'block';
+        }
 
         function showStep(step) {
             current = step;
@@ -266,6 +280,7 @@
                         email: document.getElementById('email').value,
                         role: document.getElementById('role').value,
                         program: document.getElementById('program').value,
+                        workshop: workshopParam,
                         story: document.getElementById('story').value,
                         recommendation: document.getElementById('recommendation').value,
                         consent: document.getElementById('consent').checked,

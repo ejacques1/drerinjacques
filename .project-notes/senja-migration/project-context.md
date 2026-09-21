@@ -73,4 +73,8 @@ Milestone 4 prepared on 2026-09-20:
 - Added `/testimonials/` as the owned Wall of Love. It supports uploaded photos, Gravatar fallback, initials fallback, written and video stories, featured styling, program labels, and program filters.
 - Kept the existing Senja homepage embed in place until real testimonials are imported and approved, preventing an empty replacement from appearing on the live homepage.
 
+Workshop collection pattern added on 2026-09-20:
+- A workshop can link to `/share-your-story/?training=WORKSHOP-SLUG`; recognized workshop links prefill the experience and securely attach the submission to its training record.
+- The Gating Workshop uses `gating-workshop`, includes a share button at the end, and has an embedded story section that remains hidden until approved stories are assigned to that training page.
+
 Record actual steps, results, limitations, and ongoing service costs. Do not describe planned functionality as implemented or assume self-hosting eliminates all recurring costs.
