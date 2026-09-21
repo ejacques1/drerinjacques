@@ -78,7 +78,8 @@ button { color:inherit; }
 .icon-button { width:34px; height:34px; border:1px solid var(--line); border-radius:9px; background:#fff; font-size:1.3rem; cursor:pointer; }
 .story-card { margin:0 30px 24px; padding:20px; background:#fff; border:1px solid var(--line); border-radius:12px; }
 .story-card > p { margin:0; white-space:pre-wrap; }
-.story-card > div { border-top:1px solid var(--line); margin-top:17px; padding-top:15px; }
+.editor-rating { margin-bottom:12px; color:#d99b00; font-weight:800; letter-spacing:.08em; }
+.story-card > div:not(.editor-rating) { border-top:1px solid var(--line); margin-top:17px; padding-top:15px; }
 .story-card span { font:700 10px 'JetBrains Mono',monospace; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); }
 .story-card div p { margin:6px 0 0; color:var(--soft); }
 .editor-section { padding:24px 30px; border-top:1px solid var(--line); }

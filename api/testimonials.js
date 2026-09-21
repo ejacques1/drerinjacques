@@ -78,10 +78,11 @@ export default async function handler(req, res) {
   const name = text(body.name, 120);
   const email = text(body.email, 254).toLowerCase();
   const story = text(body.story, 10000);
+  const rating = Number(body.rating);
   const consentGranted = body.consent === true;
 
-  if (!name || !validEmail(email) || !story || !consentGranted) {
-    return res.status(400).json({ error: 'Name, valid email, story, and publication permission are required.' });
+  if (!name || !validEmail(email) || !story || !Number.isInteger(rating) || rating < 1 || rating > 5 || !consentGranted) {
+    return res.status(400).json({ error: 'Rating, name, valid email, story, and publication permission are required.' });
   }
 
   const photoError = validateFile(body.photo, 'photo');
@@ -128,6 +129,7 @@ export default async function handler(req, res) {
       customer_company: text(body.company, 160) || null,
       story,
       recommendation: text(body.recommendation, 5000) || null,
+      rating,
       photo_path: photoPath,
       video_path: videoPath,
       source: 'website_form',

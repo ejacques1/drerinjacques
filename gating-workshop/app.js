@@ -21,7 +21,8 @@ async function loadWorkshopStories() {
       const initial=(item.name || '?').trim().charAt(0).toUpperCase();
       const avatar=item.avatarUrl ? `<img src="${escapeHtml(item.avatarUrl)}" alt="" loading="lazy"><span>${escapeHtml(initial)}</span>` : `<span>${escapeHtml(initial)}</span>`;
       const detail=[item.role,item.company].filter(Boolean).join(' · ');
-      return `<article class="workshop-story"><blockquote>“${escapeHtml(item.story)}”</blockquote><div class="workshop-person"><span class="workshop-avatar">${avatar}</span><span><strong>${escapeHtml(item.name)}</strong><small>${escapeHtml(detail)}</small></span></div></article>`;
+      const rating=item.rating ? `<div class="workshop-rating" aria-label="${item.rating} out of 5 stars">${'★'.repeat(item.rating)}</div>` : '';
+      return `<article class="workshop-story">${rating}<blockquote>“${escapeHtml(item.story)}”</blockquote><div class="workshop-person"><span class="workshop-avatar">${avatar}</span><span><strong>${escapeHtml(item.name)}</strong><small>${escapeHtml(detail)}</small></span></div></article>`;
     }).join('');
     grid.querySelectorAll('.workshop-avatar img').forEach(image => image.addEventListener('error', () => image.remove()));
     document.getElementById('workshopStories').hidden=false;

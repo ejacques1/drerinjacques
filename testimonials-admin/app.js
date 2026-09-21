@@ -120,6 +120,8 @@ function selectTestimonial(id) {
     $('#editorStatus').className=`status-badge ${item.status}`;
     $('#editorName').textContent=item.customer_name;
     $('#editorMeta').textContent=[item.customer_role,item.customer_company,item.customer_email].filter(Boolean).join(' · ');
+    $('#editorRating').textContent=item.rating ? `${'★'.repeat(item.rating)}${'☆'.repeat(5-item.rating)}  ${item.rating}/5` : '';
+    $('#editorRating').hidden=!item.rating;
     $('#editorStory').textContent=item.story;
     $('#editorRecommendation').textContent=item.recommendation || '';
     $('#editorRecommendationWrap').hidden=!item.recommendation;

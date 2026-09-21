@@ -34,7 +34,7 @@
         .intro p { margin:0; color:var(--soft); font-size:1.08rem; }
         .experience-context { display:none; width:max-content; max-width:100%; margin:18px auto 0; padding:8px 13px; border-radius:999px; color:var(--navy); background:#fff3b8; font-size:.84rem!important; font-weight:800; }
         .card { background:#fff; border:1px solid rgba(11,26,46,.08); border-radius:22px; padding:clamp(24px,5vw,46px); box-shadow:0 18px 50px rgba(11,26,46,.08); }
-        .progress { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:34px; }
+        .progress { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:34px; }
         .progress span { height:5px; border-radius:99px; background:var(--line); transition:.25s; }
         .progress span.active { background:var(--teal); }
         .step { display:none; }
@@ -48,6 +48,10 @@
         .type-card .icon { display:grid; place-items:center; width:42px; height:42px; border-radius:12px; background:var(--navy); color:#fff; margin-bottom:14px; font-size:1.2rem; }
         .type-card strong { display:block; font-size:1.05rem; margin-bottom:4px; }
         .type-card small { color:var(--soft); display:block; line-height:1.45; }
+        .rating-picker { display:flex; justify-content:center; gap:8px; margin:28px 0 8px; }
+        .rating-star { width:64px; padding:5px 0; border:0; color:#d6dbe2; background:transparent; font-size:3.4rem; line-height:1; cursor:pointer; transition:color .15s,transform .15s; }
+        .rating-star:hover,.rating-star:focus-visible { transform:scale(1.08); }
+        .rating-star.selected { color:#f4b41f; }
         .field { margin-bottom:20px; }
         label,.label { display:block; font-weight:700; margin-bottom:7px; }
         label small { color:var(--faint); font-weight:500; }
@@ -62,6 +66,13 @@
         .video-panel.show { display:block; }
         .video-panel p { color:var(--soft); font-size:.92rem; margin:0 0 13px; }
         input[type=file] { background:#fff; }
+        .photo-picker { display:flex; align-items:center; gap:16px; padding:16px; border:1px solid var(--line); border-radius:14px; background:#f8fafc; }
+        .photo-preview { position:relative; width:72px; height:72px; flex:none; display:grid; place-items:center; overflow:hidden; border-radius:50%; color:#fff; background:var(--navy); font-size:1.4rem; font-weight:800; }
+        .photo-preview img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:none; }
+        .photo-actions { min-width:0; }
+        .photo-button { display:inline-block; margin:0; padding:10px 14px; border:1px solid #cbd5e1; border-radius:9px; color:var(--navy); background:#fff; cursor:pointer; font-weight:800; }
+        .photo-input { position:absolute; width:1px!important; height:1px; padding:0!important; opacity:0; overflow:hidden; }
+        .photo-status { display:block; margin-top:7px; color:var(--soft); font-size:.82rem; overflow-wrap:anywhere; }
         .consent { display:flex; gap:11px; align-items:flex-start; padding:16px; background:#f8fafc; border-radius:12px; color:var(--soft); font-size:.9rem; }
         .consent input { width:18px; height:18px; margin-top:2px; flex:none; }
         .consent label { margin:0; font-weight:500; }
@@ -80,7 +91,7 @@
         .success-mark { width:68px; height:68px; margin:0 auto 20px; display:grid; place-items:center; border-radius:50%; background:var(--yellow); color:var(--navy); font-size:2rem; font-weight:800; }
         .success p { max-width:520px; margin:10px auto 0; color:var(--soft); }
         .website-field { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
-        @media (max-width:650px) { .type-grid,.row { grid-template-columns:1fr; } .topbar-inner { padding:16px 20px; } main { padding:36px 16px 60px; } .private-note { display:none; } .card { border-radius:17px; } }
+        @media (max-width:650px) { .type-grid,.row { grid-template-columns:1fr; } .rating-picker { gap:1px; }.rating-star { width:52px; font-size:2.8rem; } .topbar-inner { padding:16px 20px; } main { padding:36px 16px 60px; } .private-note { display:none; } .card { border-radius:17px; } }
     </style>
 </head>
 <body>
@@ -101,9 +112,24 @@
 
             <form class="card" id="storyForm" novalidate>
                 <div class="website-field" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
-                <div class="progress" aria-label="Form progress"><span class="active"></span><span></span><span></span></div>
+                <div class="progress" aria-label="Form progress"><span class="active"></span><span></span><span></span><span></span></div>
 
                 <section class="step active" data-step="1">
+                    <h2 id="ratingQuestion">How would you rate your experience?</h2>
+                    <p class="helper">Choose the number of stars that feels right.</p>
+                    <input type="hidden" id="rating" name="rating">
+                    <div class="rating-picker" role="radiogroup" aria-labelledby="ratingQuestion">
+                        <button class="rating-star" type="button" data-rating="1" role="radio" aria-checked="false" aria-label="1 star">★</button>
+                        <button class="rating-star" type="button" data-rating="2" role="radio" aria-checked="false" aria-label="2 stars">★</button>
+                        <button class="rating-star" type="button" data-rating="3" role="radio" aria-checked="false" aria-label="3 stars">★</button>
+                        <button class="rating-star" type="button" data-rating="4" role="radio" aria-checked="false" aria-label="4 stars">★</button>
+                        <button class="rating-star" type="button" data-rating="5" role="radio" aria-checked="false" aria-label="5 stars">★</button>
+                    </div>
+                    <div class="error" id="ratingError" role="alert"></div>
+                    <div class="actions"><button class="btn btn-primary next" type="button">Continue →</button></div>
+                </section>
+
+                <section class="step" data-step="2">
                     <h2>How would you like to share?</h2>
                     <p class="helper">Choose whichever feels easiest. You can change your mind before submitting.</p>
                     <input type="hidden" id="storyType" name="storyType">
@@ -123,7 +149,7 @@
                     <div class="actions"><button class="btn btn-primary next" type="button">Continue →</button></div>
                 </section>
 
-                <section class="step" data-step="2">
+                <section class="step" data-step="3">
                     <h2>Tell me who you are.</h2>
                     <p class="helper">Your email will never appear publicly. If you do not upload a photo, we may use the Gravatar connected to your email.</p>
                     <div class="row">
@@ -134,12 +160,18 @@
                         <div class="field"><label for="role">Role or business <small>(optional)</small></label><input id="role" name="role" placeholder="Founder, coach, consultant…"></div>
                         <div class="field"><label for="program">What did you join or use? <small>(optional)</small></label><input id="program" name="program" placeholder="Course, workshop, community…"></div>
                     </div>
-                    <div class="field"><label for="photo">Photo <small>(optional)</small></label><input id="photo" name="photo" type="file" accept="image/png,image/jpeg,image/webp"></div>
+                    <div class="field">
+                        <span class="label">Photo <small>(optional)</small></span>
+                        <div class="photo-picker">
+                            <span class="photo-preview" id="photoPreview"><span id="photoInitials">?</span><img id="photoPreviewImage" alt=""></span>
+                            <span class="photo-actions"><label class="photo-button" for="photo">Choose a photo</label><input class="photo-input" id="photo" name="photo" type="file" accept="image/png,image/jpeg,image/webp"><small class="photo-status" id="photoStatus">Your initials will appear if no profile photo is found.</small></span>
+                        </div>
+                    </div>
                     <div class="error" id="identityError" role="alert"></div>
                     <div class="actions"><button class="btn btn-secondary back" type="button">← Back</button><button class="btn btn-primary next" type="button">Continue →</button></div>
                 </section>
 
-                <section class="step" data-step="3">
+                <section class="step" data-step="4">
                     <h2>Share what changed.</h2>
                     <p class="helper">Specific details make your story more useful. A few sentences is plenty.</p>
                     <div class="prompt">
@@ -158,7 +190,7 @@
                     <div class="actions"><button class="btn btn-secondary back" type="button">← Back</button><button class="btn btn-primary" id="reviewButton" type="button">Review my story →</button></div>
                 </section>
 
-                <section class="step" data-step="4">
+                <section class="step" data-step="5">
                     <h2>Review your story.</h2>
                     <p class="helper">Make sure everything looks right before you send it.</p>
                     <dl class="review" id="review"></dl>
@@ -167,7 +199,7 @@
                     <div class="actions"><button class="btn btn-secondary back" type="button">← Edit</button><button class="btn btn-primary" id="submitButton" type="submit">Submit my story</button></div>
                 </section>
 
-                <section class="step" data-step="5">
+                <section class="step" data-step="6">
                     <div class="success">
                         <div class="success-mark">✓</div>
                         <h2>Thank you for sharing your story.</h2>
@@ -195,14 +227,26 @@
             program.readOnly = true;
             context.textContent = `Sharing feedback about: ${workshopName}`;
             context.style.display = 'block';
+            document.getElementById('ratingQuestion').textContent = 'How valuable was this workshop for you?';
         }
 
         function showStep(step) {
             current = step;
             steps.forEach(el => el.classList.toggle('active', Number(el.dataset.step) === step));
-            bars.forEach((bar, index) => bar.classList.toggle('active', index < Math.min(step, 3)));
+            bars.forEach((bar, index) => bar.classList.toggle('active', index < Math.min(step, 4)));
             document.querySelector('.card').scrollIntoView({behavior:'smooth', block:'start'});
         }
+
+        document.querySelectorAll('.rating-star').forEach(button => button.addEventListener('click', () => {
+            const rating = Number(button.dataset.rating);
+            document.getElementById('rating').value = rating;
+            document.querySelectorAll('.rating-star').forEach(star => {
+                const selected = Number(star.dataset.rating) <= rating;
+                star.classList.toggle('selected', selected);
+                star.setAttribute('aria-checked', String(star === button));
+            });
+            document.getElementById('ratingError').textContent = '';
+        }));
 
         document.querySelectorAll('.type-card').forEach(button => button.addEventListener('click', () => {
             document.querySelectorAll('.type-card').forEach(el => el.classList.remove('selected'));
@@ -213,10 +257,13 @@
         }));
 
         document.querySelectorAll('.next').forEach(button => button.addEventListener('click', () => {
-            if (current === 1 && !document.getElementById('storyType').value) {
+            if (current === 1 && !document.getElementById('rating').value) {
+                document.getElementById('ratingError').textContent = 'Choose a rating from 1 to 5 stars to continue.'; return;
+            }
+            if (current === 2 && !document.getElementById('storyType').value) {
                 document.getElementById('typeError').textContent = 'Choose written or video to continue.'; return;
             }
-            if (current === 2) {
+            if (current === 3) {
                 const name = document.getElementById('name');
                 const email = document.getElementById('email');
                 if (!name.value.trim() || !email.validity.valid) {
@@ -228,6 +275,70 @@
         }));
 
         document.querySelectorAll('.back').forEach(button => button.addEventListener('click', () => showStep(current - 1)));
+
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const photoInput = document.getElementById('photo');
+        const photoImage = document.getElementById('photoPreviewImage');
+        const photoInitials = document.getElementById('photoInitials');
+        const photoStatus = document.getElementById('photoStatus');
+        let avatarMode = 'initials';
+        let photoObjectUrl = '';
+        let gravatarTimer = 0;
+
+        function initialsFor(value) {
+            const parts = value.trim().split(/\s+/).filter(Boolean);
+            if (!parts.length) return '?';
+            return `${parts[0][0]}${parts.length > 1 ? parts.at(-1)[0] : ''}`.toUpperCase();
+        }
+
+        function showInitials() {
+            avatarMode = 'initials';
+            photoImage.style.display = 'none';
+            photoImage.removeAttribute('src');
+            photoInitials.textContent = initialsFor(nameInput.value);
+            photoStatus.textContent = 'Your initials will appear if no profile photo is found.';
+        }
+
+        async function emailHash(value) {
+            const bytes = new TextEncoder().encode(value.trim().toLowerCase());
+            const digest = await crypto.subtle.digest('SHA-256', bytes);
+            return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function tryGravatar() {
+            if (photoInput.files.length || !emailInput.validity.valid) { if (!photoInput.files.length) showInitials(); return; }
+            const requestedEmail = emailInput.value.trim().toLowerCase();
+            const hash = await emailHash(requestedEmail);
+            if (photoInput.files.length || requestedEmail !== emailInput.value.trim().toLowerCase()) return;
+            photoImage.onload = () => {
+                if (photoInput.files.length || requestedEmail !== emailInput.value.trim().toLowerCase()) return;
+                avatarMode = 'gravatar';
+                photoImage.style.display = 'block';
+                photoStatus.textContent = 'This profile photo will be used unless you choose another.';
+            };
+            photoImage.onerror = () => { if (!photoInput.files.length) showInitials(); };
+            photoImage.src = `https://www.gravatar.com/avatar/${hash}?s=240&d=404`;
+        }
+
+        nameInput.addEventListener('input', () => { if (avatarMode === 'initials') photoInitials.textContent = initialsFor(nameInput.value); });
+        emailInput.addEventListener('input', () => {
+            if (photoInput.files.length) return;
+            clearTimeout(gravatarTimer);
+            showInitials();
+            gravatarTimer = setTimeout(tryGravatar, 500);
+        });
+        photoInput.addEventListener('change', () => {
+            if (photoObjectUrl) URL.revokeObjectURL(photoObjectUrl);
+            const file = photoInput.files[0];
+            if (!file) { tryGravatar(); return; }
+            avatarMode = 'upload';
+            photoObjectUrl = URL.createObjectURL(file);
+            photoImage.onload = () => { photoImage.style.display = 'block'; };
+            photoImage.onerror = showInitials;
+            photoImage.src = photoObjectUrl;
+            photoStatus.textContent = file.name;
+        });
 
         document.getElementById('reviewButton').addEventListener('click', () => {
             const type = document.getElementById('storyType').value;
@@ -242,6 +353,7 @@
             }
             document.getElementById('storyError').textContent = '';
             const values = [
+                ['Rating', `${document.getElementById('rating').value} out of 5 stars`],
                 ['Format', type === 'video' ? 'Video testimonial' : 'Written testimonial'],
                 ['From', document.getElementById('name').value.trim()],
                 ['Role or business', document.getElementById('role').value.trim() || 'Not provided'],
@@ -251,7 +363,7 @@
             ];
             document.getElementById('review').innerHTML = values.map(([label,value]) =>
                 `<div class="review-item"><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join('');
-            showStep(4);
+            showStep(5);
         });
 
         form.addEventListener('submit', async event => {
@@ -266,7 +378,7 @@
 
             if (['localhost', '127.0.0.1'].includes(location.hostname)) {
                 document.getElementById('successCopy').textContent = 'The complete flow works. This local preview did not transmit or save your test information.';
-                showStep(5);
+                showStep(6);
                 return;
             }
 
@@ -276,6 +388,7 @@
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({
                         storyType: document.getElementById('storyType').value,
+                        rating: Number(document.getElementById('rating').value),
                         name: document.getElementById('name').value,
                         email: document.getElementById('email').value,
                         role: document.getElementById('role').value,
@@ -304,7 +417,7 @@
                     }
                 }
 
-                showStep(5);
+                showStep(6);
             } catch (error) {
                 submitError.textContent = error.message || 'Your story could not be submitted. Please try again.';
                 submitButton.disabled = false;
