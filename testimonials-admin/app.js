@@ -253,7 +253,7 @@ function bindEvents() {
             $('#loginCode').required=true;
             $('#loginEmail').readOnly=true;
             $('#loginButton').textContent='Sign in';
-            $('#loginMessage').textContent='Enter the six-digit code from your email.';
+            $('#loginMessage').textContent='Enter the complete code from your email.';
             $('#loginCode').focus();
             return;
         }

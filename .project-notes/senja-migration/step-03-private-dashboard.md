@@ -29,7 +29,7 @@ Demonstrate this sequence:
 
 ## Live security
 
-The deployed dashboard uses a six-digit Supabase email code. We initially tried one-click magic links, but Gmail's security scanning consumed both one-time links before they could be used. For the tutorial, configure the Supabase **Magic link or OTP** email template to display `{{ .Token }}`, then have the dashboard verify that code with `verifyOtp`.
+The deployed dashboard uses a Supabase email code. We initially tried one-click magic links, but Gmail's security scanning consumed both one-time links before they could be used. For the tutorial, configure the Supabase **Magic link or OTP** email template to display `{{ .Token }}`, then have the dashboard verify that code with `verifyOtp`. Do not assume the code has six digits: this project is configured for eight, and Supabase supports configurable lengths.
 
 The server checks the signed-in email against `TESTIMONIAL_ADMIN_EMAILS` before returning testimonial records or accepting edits. The current approved addresses are `drerintj@gmail.com` and `info@erinjacques.com`. Contact information and consent data are never available through the public browser key alone.
 

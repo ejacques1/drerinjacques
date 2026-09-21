@@ -16,13 +16,13 @@
         <div class="login-card">
             <span class="eyebrow">Private workspace</span>
             <h1>Testimonial dashboard</h1>
-            <p>Enter your approved administrator email. We’ll send you a six-digit sign-in code.</p>
+            <p>Enter your approved administrator email. We’ll send you a secure sign-in code.</p>
             <form id="loginForm">
                 <label for="loginEmail">Email address</label>
                 <input id="loginEmail" type="email" autocomplete="email" required>
                 <div id="loginCodeWrap" hidden>
-                    <label for="loginCode">Six-digit code</label>
-                    <input id="loginCode" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6">
+                    <label for="loginCode">Sign-in code</label>
+                    <input id="loginCode" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6,10}" maxlength="10">
                 </div>
                 <button class="button button-primary button-wide" id="loginButton" type="submit">Send sign-in code</button>
                 <p class="form-message" id="loginMessage" role="status"></p>
