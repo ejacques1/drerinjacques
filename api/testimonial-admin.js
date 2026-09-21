@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { createHash } from 'node:crypto';
 
 const VALID_STATUSES = new Set(['pending', 'approved', 'hidden', 'archived']);
 const VALID_DESTINATIONS = new Set(['homepage', 'testimonial_wall', 'training_page', 'sales_page']);
@@ -42,7 +43,15 @@ async function listDashboard(admin, res) {
   ]);
   if (testimonialError) throw testimonialError;
   if (trainingError) throw trainingError;
-  return res.status(200).json({ testimonials, trainings });
+  const dashboardTestimonials = testimonials.map(testimonial => {
+    if (testimonial.photo_path) {
+      const { data } = admin.storage.from('testimonial-photos').getPublicUrl(testimonial.photo_path);
+      return { ...testimonial, avatar_url: data.publicUrl };
+    }
+    const hash = createHash('sha256').update(testimonial.customer_email.trim().toLowerCase()).digest('hex');
+    return { ...testimonial, avatar_url: `https://www.gravatar.com/avatar/${hash}?s=160&d=404` };
+  });
+  return res.status(200).json({ testimonials: dashboardTestimonials, trainings });
 }
 
 async function updateTestimonial(admin, body, res) {

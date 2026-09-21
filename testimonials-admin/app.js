@@ -90,12 +90,21 @@ function render() {
     $('#testimonialList').innerHTML=items.map(item=>{
         const date=new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric'}).format(new Date(item.submitted_at));
         const initial=(item.customer_name || '?').trim().charAt(0).toUpperCase();
+        const avatar=item.avatar_url?`<img src="${escapeHtml(item.avatar_url)}" alt="" loading="lazy"><span class="avatar-fallback">${escapeHtml(initial)}</span>`:`<span class="avatar-fallback visible">${escapeHtml(initial)}</span>`;
         return `<button class="testimonial-item ${state.selectedId===item.id?'selected':''}" data-id="${escapeHtml(item.id)}" type="button">
-            <span class="avatar">${escapeHtml(initial)}</span>
+            <span class="avatar">${avatar}</span>
             <span class="item-copy"><span class="item-topline"><i class="status-dot ${escapeHtml(item.status)}"></i><strong>${escapeHtml(item.customer_name)}</strong>${item.featured?' <span title="Featured">★</span>':''}</span><p>${escapeHtml(item.story)}</p><span class="item-meta">${escapeHtml(item.source_reference || 'General testimonial')} · ${date}</span></span>
             <span class="chevron">›</span>
         </button>`;
     }).join('');
+    $$('.avatar img').forEach(image=>{
+        image.addEventListener('load',()=>image.classList.add('loaded'));
+        image.addEventListener('error',()=>{image.hidden=true;image.nextElementSibling?.classList.add('visible');});
+        if (image.complete) {
+            if (image.naturalWidth) image.classList.add('loaded');
+            else { image.hidden=true; image.nextElementSibling?.classList.add('visible'); }
+        }
+    });
     $$('.testimonial-item').forEach(button=>button.addEventListener('click',()=>selectTestimonial(button.dataset.id)));
     if (state.selectedId && !state.testimonials.some(item=>item.id===state.selectedId)) closeEditor();
 }

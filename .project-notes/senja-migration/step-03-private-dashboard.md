@@ -33,6 +33,8 @@ The deployed dashboard uses a six-digit Supabase email code. We initially tried 
 
 The server checks the signed-in email against `TESTIMONIAL_ADMIN_EMAILS` before returning testimonial records or accepting edits. The current approved addresses are `drerintj@gmail.com` and `info@erinjacques.com`. Contact information and consent data are never available through the public browser key alone.
 
+For testimonial portraits, an uploaded photo takes priority. When no photo was uploaded, the server normalizes and SHA-256 hashes the customer's email and requests the matching Gravatar. If no Gravatar exists, the interface displays the customer's initial. The collection form discloses this fallback beside the email field; the email address itself is never placed in the image URL or shown publicly.
+
 Supabase's built-in email service is limited to two emails per hour for this project, and that field cannot be increased while using the built-in sender. Configure custom SMTP before relying on frequent production sign-ins. During setup, avoid repeatedly requesting test messages or the quota will delay verification.
 
 ## Files
