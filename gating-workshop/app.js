@@ -10,7 +10,12 @@ async function loadWorkshopStories() {
   try {
     const response = await fetch('/api/testimonial-public?destination=training_page&training=gating-workshop');
     const result = await response.json();
-    if (!response.ok || !result.testimonials?.length) return;
+    if (!response.ok) return;
+    if (!result.testimonials?.length) {
+      document.getElementById('workshopStories').hidden=true;
+      document.getElementById('workshopStoryGrid').innerHTML='';
+      return;
+    }
     const grid = document.getElementById('workshopStoryGrid');
     grid.innerHTML = result.testimonials.slice(0, 6).map(item => {
       const initial=(item.name || '?').trim().charAt(0).toUpperCase();
@@ -23,4 +28,10 @@ async function loadWorkshopStories() {
   } catch (_) {}
 }
 
-if (!['localhost','127.0.0.1'].includes(location.hostname)) loadWorkshopStories();
+if (!['localhost','127.0.0.1'].includes(location.hostname)) {
+  loadWorkshopStories();
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) loadWorkshopStories();
+  });
+  window.setInterval(loadWorkshopStories, 60000);
+}
