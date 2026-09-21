@@ -94,7 +94,10 @@ export default async function handler(req, res) {
     const trainings = [...new Map(testimonials.flatMap(item => item.trainings).map(item => [item.slug, item])).values()]
       .sort((a, b) => a.name.localeCompare(b.name));
 
-    res.setHeader('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=600');
+    // Reviewers expect a newly approved or hidden story to change the wall on
+    // the next refresh. The collection is small, so freshness is preferable to
+    // a CDN cache here.
+    res.setHeader('Cache-Control', 'no-store');
     return res.status(200).json({ testimonials, trainings });
   } catch (error) {
     console.error('Public testimonial request failed:', error);
