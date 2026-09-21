@@ -2,6 +2,8 @@
 
 The user supplied a tentative YouTube outline, preserved in original-video-outline.md. Keep it as context, not as a completed migration or a final script.
 
+The consolidated beginner-facing build and training sequence is recorded in `actual-build-guide.md`. Update that guide as the export, import, homepage replacement, and final testing are completed.
+
 The user wants to see the real steps so the eventual script can reflect what actually happened. Explain each stage, preserve useful prompts and decisions, and record verified results as work proceeds.
 
 Working interpretation: build an owned testimonial system into the existing website. Confirm whether “recreating my own website” means this testimonial workflow or a broader website rebuild before making substantial changes.
