@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonial Dashboard | Dr. Erin Jacques</title>
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/testimonials-admin/styles.css">
+</head>
+<body>
+    <section class="login-screen" id="loginScreen" hidden>
+        <div class="login-card">
+            <span class="eyebrow">Private workspace</span>
+            <h1>Testimonial dashboard</h1>
+            <p>Enter your approved administrator email. We’ll send you a secure sign-in link.</p>
+            <form id="loginForm">
+                <label for="loginEmail">Email address</label>
+                <input id="loginEmail" type="email" autocomplete="email" required>
+                <button class="button button-primary button-wide" type="submit">Send secure sign-in link</button>
+                <p class="form-message" id="loginMessage" role="status"></p>
+            </form>
+        </div>
+    </section>
+
+    <div class="app-shell" id="appShell" hidden>
+        <aside class="sidebar">
+            <a class="brand" href="/">Dr. Erin Jacques</a>
+            <nav aria-label="Dashboard navigation">
+                <button class="nav-item active" type="button"><span>✦</span> Testimonials</button>
+            </nav>
+            <div class="sidebar-footer">
+                <span class="preview-pill" id="modePill">Local preview</span>
+                <button class="text-button" id="signOutButton" type="button" hidden>Sign out</button>
+            </div>
+        </aside>
+
+        <main class="dashboard">
+            <header class="topbar">
+                <div>
+                    <span class="eyebrow">Your proof library</span>
+                    <h1>Testimonials</h1>
+                    <p>Review each story once, then choose everywhere it should appear.</p>
+                </div>
+                <a class="button button-secondary" href="/share-your-story/" target="_blank">View collection form ↗</a>
+            </header>
+
+            <section class="stats" aria-label="Testimonial summary">
+                <article><span>Waiting for review</span><strong id="pendingCount">0</strong></article>
+                <article><span>Approved</span><strong id="approvedCount">0</strong></article>
+                <article><span>Featured</span><strong id="featuredCount">0</strong></article>
+                <article><span>Total stories</span><strong id="totalCount">0</strong></article>
+            </section>
+
+            <section class="workspace">
+                <div class="toolbar">
+                    <div class="tabs" id="statusTabs" role="tablist" aria-label="Filter by status">
+                        <button class="tab active" data-filter="all" type="button">All</button>
+                        <button class="tab" data-filter="pending" type="button">Needs review</button>
+                        <button class="tab" data-filter="approved" type="button">Approved</button>
+                        <button class="tab" data-filter="hidden" type="button">Hidden</button>
+                    </div>
+                    <label class="search"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search stories or people"></label>
+                </div>
+
+                <div class="content-grid">
+                    <div class="list-panel">
+                        <div class="list-heading"><span id="resultCount">0 stories</span><span>Newest first</span></div>
+                        <div class="testimonial-list" id="testimonialList"></div>
+                        <div class="empty-state" id="emptyState" hidden>No testimonials match this view.</div>
+                    </div>
+
+                    <aside class="editor-panel" id="editorPanel" aria-live="polite">
+                        <div class="editor-empty" id="editorEmpty">
+                            <div class="empty-icon">✦</div>
+                            <h2>Select a testimonial</h2>
+                            <p>Choose a story to review it, organize it, and decide where it appears.</p>
+                        </div>
+
+                        <form id="editorForm" hidden>
+                            <div class="editor-header">
+                                <div>
+                                    <span class="status-badge" id="editorStatus"></span>
+                                    <h2 id="editorName"></h2>
+                                    <p id="editorMeta"></p>
+                                </div>
+                                <button class="icon-button" id="closeEditor" type="button" aria-label="Close editor">×</button>
+                            </div>
+
+                            <div class="story-card">
+                                <p id="editorStory"></p>
+                                <div id="editorRecommendationWrap" hidden>
+                                    <span>Recommendation</span>
+                                    <p id="editorRecommendation"></p>
+                                </div>
+                            </div>
+
+                            <section class="editor-section">
+                                <div class="section-heading">
+                                    <div><h3>Review decision</h3><p>Nothing publishes until you approve it.</p></div>
+                                </div>
+                                <div class="segmented" id="statusChoices">
+                                    <label><input type="radio" name="status" value="pending"><span>Needs review</span></label>
+                                    <label><input type="radio" name="status" value="approved"><span>Approve</span></label>
+                                    <label><input type="radio" name="status" value="hidden"><span>Hide</span></label>
+                                </div>
+                                <label class="switch-row"><span><strong>Featured story</strong><small>Give this story priority in selected locations.</small></span><input id="featuredInput" type="checkbox"><i></i></label>
+                            </section>
+
+                            <section class="editor-section">
+                                <div class="section-heading">
+                                    <div><h3>Connect to trainings</h3><p>Select every program this story supports.</p></div>
+                                    <button class="small-button" id="addTrainingButton" type="button">+ Add training</button>
+                                </div>
+                                <div class="check-grid" id="trainingChoices"></div>
+                                <div class="inline-add" id="trainingCreator" hidden>
+                                    <input id="newTrainingName" placeholder="Training name">
+                                    <button class="small-button dark" id="saveTrainingButton" type="button">Add</button>
+                                </div>
+                            </section>
+
+                            <section class="editor-section">
+                                <div class="section-heading">
+                                    <div><h3>Choose where it appears</h3><p>A single testimonial can appear in several places.</p></div>
+                                </div>
+                                <div class="destination-list" id="destinationChoices">
+                                    <label class="destination"><input type="checkbox" value="homepage"><span><strong>Homepage</strong><small>Main social-proof section</small></span><input class="order-input" data-order="homepage" type="number" min="0" value="0" aria-label="Homepage display order"></label>
+                                    <label class="destination"><input type="checkbox" value="testimonial_wall"><span><strong>Testimonial wall</strong><small>Full public story collection</small></span><input class="order-input" data-order="testimonial_wall" type="number" min="0" value="0" aria-label="Wall display order"></label>
+                                    <label class="destination"><input type="checkbox" value="training_page"><span><strong>Training pages</strong><small>Uses the trainings selected above</small></span><input class="order-input" data-order="training_page" type="number" min="0" value="0" aria-label="Training page display order"></label>
+                                    <label class="destination sales-destination"><input type="checkbox" value="sales_page"><span><strong>Another sales page</strong><small>Enter the page address below</small></span><input class="order-input" data-order="sales_page" type="number" min="0" value="0" aria-label="Sales page display order"></label>
+                                    <div class="slug-field" id="salesSlugWrap" hidden><label for="salesSlug">Page address</label><div><span>/</span><input id="salesSlug" placeholder="my-offer"></div></div>
+                                </div>
+                            </section>
+
+                            <div class="save-bar">
+                                <p id="saveMessage" role="status"></p>
+                                <button class="button button-primary" id="saveButton" type="submit">Save changes</button>
+                            </div>
+                        </form>
+                    </aside>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0"></script>
+    <script src="/testimonials-admin/app.js"></script>
+</body>
+</html>

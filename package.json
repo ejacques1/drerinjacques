@@ -5,6 +5,7 @@
     "build": "node scripts/build-public.js"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.116.0",
     "stripe": "^22.4.0"
   }
 }
