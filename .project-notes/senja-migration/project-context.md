@@ -53,7 +53,10 @@ Production release completed on 2026-09-20:
 - Set the Supabase Site URL to `https://drerinjacques.com` and allowed the `/testimonials-admin/` redirect.
 - Verified that the two production pages and admin configuration endpoint return successfully.
 - Submitted a clearly labeled integration-test testimonial through the live form API and received its Supabase record ID.
-- Replaced magic-link dashboard login with a six-digit email code after Gmail security scanning invalidated the one-time links.
+- Replaced magic-link dashboard login with an email code after Gmail security scanning invalidated the one-time links.
+- Configured Resend custom SMTP in Supabase using the verified `drerinjacques.com` domain and `login@drerinjacques.com` sender. This removes the built-in two-auth-emails-per-hour restriction.
+- During the first SMTP test, Supabase sent an eight-digit OTP while the dashboard field accepted only six digits. Updated the field to accept Supabase's configurable 6–10 digit range and verified a successful production login.
+- Confirmed that the authenticated production dashboard reads the live Supabase record (`Integration Test - Delete Me`).
 
 Proposed walkthrough sequence:
 1. Inspect the existing Senja wall and collection form; identify required features.
