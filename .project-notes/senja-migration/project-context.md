@@ -68,4 +68,9 @@ Proposed walkthrough sequence:
 7. Test submission through approval and public display, including mobile.
 8. Review the finished result before publishing.
 
+Milestone 4 prepared on 2026-09-20:
+- Added a public testimonial endpoint that returns only approved, consented records assigned to the requested destination. It never returns email addresses, consent records, or storage paths.
+- Added `/testimonials/` as the owned Wall of Love. It supports uploaded photos, Gravatar fallback, initials fallback, written and video stories, featured styling, program labels, and program filters.
+- Kept the existing Senja homepage embed in place until real testimonials are imported and approved, preventing an empty replacement from appearing on the live homepage.
+
 Record actual steps, results, limitations, and ongoing service costs. Do not describe planned functionality as implemented or assume self-hosting eliminates all recurring costs.

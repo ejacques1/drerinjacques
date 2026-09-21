@@ -8,6 +8,7 @@ const ROOT = path.resolve(__dirname, '..');
 const staticPages = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
   { path: '/ai-news', priority: '0.9', changefreq: 'daily' },
+  { path: '/testimonials', priority: '0.8', changefreq: 'weekly' },
   { path: '/tos-checker', priority: '0.7', changefreq: 'monthly' },
   { path: '/converter', priority: '0.8', changefreq: 'monthly' },
 ];
