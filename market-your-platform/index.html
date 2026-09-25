@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Market What You Build — Leveraging AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1A2E; --navy2:#1a3658; --yellow:#FFD93D; --yellow-dark:#E8C12B;
+    --teal:#0DB4DB; --teal-dark:#0A8FAF; --cream:#FAF6EC; --text:#0B1A2E;
+    --soft:#4A5568; --faint:#718096; --line:#E2E8F0;
+    --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:52px 0;border-top:1px solid var(--line);}
+  section.hero{border-top:none;padding:40px 0 40px;}
+  section.cream{background:var(--cream);border-top:none;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.02em;font-size:1rem;color:var(--navy);}
+  .brand b{color:var(--teal-dark);}
+  .step{color:var(--teal-dark);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;margin-bottom:12px;}
+  h1{font-size:clamp(2.1rem,5.6vw,3.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.07;margin:0 0 16px;color:var(--navy);}
+  .hl{background:linear-gradient(180deg,transparent 58%,rgba(255,217,61,.75) 58%);padding:0 3px;}
+  h2{font-size:clamp(1.6rem,4.2vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin:0 0 14px;color:var(--navy);}
+  h3{font-size:1.25rem;font-weight:800;color:var(--navy);margin:26px 0 8px;}
+  .lead{font-size:clamp(1.18rem,2.6vw,1.5rem);color:var(--navy);font-weight:700;margin:0 0 10px;}
+  p{font-size:clamp(1.06rem,2.2vw,1.24rem);color:var(--soft);margin:0 0 14px;max-width:74ch;}
+  p b{color:var(--navy);}
+  a{color:var(--teal-dark);}
+  .agenda{list-style:none;padding:0;margin:14px 0 0;counter-reset:ag;}
+  .agenda li{position:relative;padding:11px 0 11px 40px;font-size:clamp(1.1rem,2.3vw,1.32rem);color:var(--navy);font-weight:700;border-bottom:1px solid var(--line);}
+  .agenda li:last-child{border-bottom:none;}
+  .agenda li::before{counter-increment:ag;content:counter(ag);position:absolute;left:0;top:12px;width:26px;height:26px;background:var(--yellow);color:var(--navy);border-radius:50%;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .punch{font-size:clamp(1.3rem,3.1vw,1.8rem);font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.22;border-left:5px solid var(--yellow);padding:6px 0 6px 22px;margin:22px 0;}
+  .punch span{color:var(--teal-dark);}
+  .prules{list-style:none;padding:0;margin:14px 0 0;}
+  .prules li{position:relative;padding:12px 0 12px 34px;border-bottom:1px solid var(--line);font-size:clamp(1.05rem,2.2vw,1.26rem);color:var(--soft);}
+  .prules li:last-child{border-bottom:none;}
+  .prules li b{color:var(--navy);}
+  .prules li::before{content:"";position:absolute;left:4px;top:20px;width:11px;height:11px;background:var(--yellow);border-radius:50%;}
+  .steps{list-style:none;padding:0;margin:14px 0 0;counter-reset:st;}
+  .steps li{position:relative;padding:12px 0 12px 44px;border-bottom:1px solid var(--line);font-size:clamp(1.04rem,2.2vw,1.2rem);color:var(--soft);}
+  .steps li:last-child{border-bottom:none;}
+  .steps li b{color:var(--navy);}
+  .steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:12px;width:28px;height:28px;background:var(--navy);color:#fff;border-radius:8px;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0;}
+  .stat{background:#fff;border:2px solid var(--navy);border-radius:16px;padding:18px 20px;}
+  .stat .num{font-size:clamp(2rem,5vw,2.6rem);font-weight:800;color:var(--navy);line-height:1;letter-spacing:-.02em;}
+  .stat .what{font-size:1.02rem;color:var(--soft);margin-top:8px;line-height:1.4;}
+  .stat .src{font-size:.78rem;color:var(--faint);margin-top:8px;}
+  .stat .src a{color:var(--faint);}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px;}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px;}
+  @media(max-width:760px){ .three{grid-template-columns:1fr;} }
+  @media(max-width:640px){ .two{grid-template-columns:1fr;} }
+  .half{background:#fff;border:2px solid var(--navy);border-radius:16px;padding:18px 20px;}
+  .half h3{margin:0 0 6px;color:var(--navy);font-size:1.15rem;font-weight:800;}
+  .half p{font-size:1.02rem;margin:0;}
+  .half .tag{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:6px;}
+  .promptbox{background:var(--navy);border-radius:16px;padding:18px 20px;position:relative;margin:16px 0;}
+  .promptbox .pl2{color:var(--yellow);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
+  .promptbox code{color:#eaf1fb;font-family:var(--mono);font-size:.95rem;line-height:1.55;display:block;white-space:pre-wrap;padding-right:70px;}
+  .copy{position:absolute;top:16px;right:16px;background:var(--yellow);color:var(--navy);border:none;border-radius:8px;padding:7px 13px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .note{background:var(--cream);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:1.05rem;color:var(--navy);font-weight:600;}
+  section.cream .note{background:#fff;}
+  details.tpl{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0;}
+  details.tpl summary{cursor:pointer;font-weight:800;color:var(--navy);font-size:1.08rem;}
+  details.tpl .promptbox{margin-bottom:4px;}
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0;}
+  @media(max-width:760px){ .flow{grid-template-columns:1fr 1fr;} }
+  .flow div{background:#fff;border:2px solid var(--navy);border-radius:14px;padding:14px;font-weight:700;color:var(--navy);font-size:1rem;line-height:1.35;}
+  .flow div small{display:block;color:var(--teal-dark);font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:.7rem;margin-bottom:4px;}
+  .btn{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:800;font-size:1.2rem;text-decoration:none;padding:14px 30px;border-radius:12px;margin-top:12px;box-shadow:0 8px 22px rgba(255,217,61,.4);}
+  .btn.ghost{background:#fff;border:2px solid var(--navy);box-shadow:none;margin-left:8px;}
+  footer{padding:34px 0 60px;color:var(--faint);font-size:.9rem;}
+</style>
+</head>
+<body>
+<div style="background:#081d3a;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:11px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);">
+  <a href="/built-with-ai" style="color:#F4B02E;text-decoration:none;font-weight:800;">← Previous</a>
+  <a href="/lives" style="color:#fff;text-decoration:none;font-weight:800;">☰ All Live Sessions</a>
+  <span style="color:#6f83a0;font-weight:700;">Sept 25 · Friday Live</span>
+</div>
+  <div class="wrap"><div class="brand">Dr. Erin Jacques · <b>Friday Live</b></div></div>
+
+  <section class="hero"><div class="wrap">
+    <div class="step">Friday Live · September 25</div>
+    <h1>You built it. Now make sure <span class="hl">people know</span>.</h1>
+    <p class="lead">This week: marketing what you build, without it taking over your life.</p>
+    <p>Most of us finish something great and then… nothing. No emails, no posts, no one knows it exists. Today we fix that with three moves: warm up your list, claim your spot on LinkedIn, and show up consistently. Then I'll show you how to let AI do most of the posting for you.</p>
+    <ul class="agenda">
+      <li>Why LinkedIn (the real numbers)</li>
+      <li>Your list: export your contacts into Systeme.io</li>
+      <li>Your first 3 emails: the Soap Opera Sequence</li>
+      <li>Create your LinkedIn Page</li>
+      <li>Post consistently (what and how often)</li>
+      <li>Let your AI do the posting: ChatifyIT</li>
+    </ul>
+  </div></section>
+
+  <!-- ============ 1. WHY LINKEDIN ============ -->
+  <section class="cream" id="why-linkedin"><div class="wrap">
+    <div class="step">1 · Why LinkedIn</div>
+    <h2>Where business actually happens.</h2>
+    <p>LinkedIn isn't where people scroll to be entertained. It's where they go to get better at work, find tools, and make buying decisions. And almost nobody is creating there.</p>
+    <!--STATS-->
+    <div class="punch">Huge audience. Tiny number of creators. <span>That gap is your opportunity.</span></div>
+  </div></section>
+
+  <!-- ============ 2. YOUR LIST ============ -->
+  <section id="your-list"><div class="wrap">
+    <div class="step">2 · Your list</div>
+    <h2>Start with people who already know you.</h2>
+    <p>Your first customers are already in your phone and inbox. Export them once, bring them into <b>Systeme.io</b>, and you have a list you own, no algorithm in the way.</p>
+
+    <h3>Export your contacts</h3>
+    <div class="three">
+      <div class="half">
+        <span class="tag">Gmail</span>
+        <h3>Google Contacts</h3>
+        <p>Go to <b>contacts.google.com</b> → select all → <b>Export</b> → choose <b>Google CSV</b>.</p>
+      </div>
+      <div class="half">
+        <span class="tag">Outlook</span>
+        <h3>Outlook / Microsoft</h3>
+        <p>Open <b>People</b> → <b>Manage contacts</b> → <b>Export contacts</b> → save as <b>CSV</b>.</p>
+      </div>
+      <div class="half">
+        <span class="tag">iPhone / Mac</span>
+        <h3>iCloud</h3>
+        <p><b>icloud.com/contacts</b> → select all → <b>Export vCard</b>. Then import that file into Google Contacts and export it as CSV.</p>
+      </div>
+    </div>
+
+    <h3>Bring them into Systeme.io</h3>
+    <ol class="steps">
+      <li>In Systeme.io, open <b>Contacts</b> and choose <b>Import</b>.</li>
+      <li>Upload your <b>CSV</b> and match the columns: <b>email</b>, <b>first name</b>, last name.</li>
+      <li>Add a <b>tag</b> like <b>my-network</b> so you can email just this group.</li>
+      <li>Clean it up: remove anyone you'd never actually email (old vendors, no-reply addresses).</li>
+    </ol>
+    <div class="note">👉 These are people who know you, so warm them up gently. Start with a small batch and grow from there. The full import and warm-up rules are in <a href="/week4/video2">Week 4, Video 2</a>.</div>
+  </div></section>
+
+  <!-- ============ 3. SOAP OPERA ============ -->
+  <section class="cream" id="soap-opera"><div class="wrap">
+    <div class="step">3 · Your first 3 emails</div>
+    <h2>The Soap Opera Sequence.</h2>
+    <p>Russell Brunson borrowed this from the soap operas we grew up on: every episode ends on a cliffhanger, so you <b>have</b> to tune in tomorrow. Your emails work the same way. Each one tells part of your story and ends with a hook that makes them watch for the next one.</p>
+    <div class="three">
+      <div class="half">
+        <span class="tag">Email 1 · Day 1</span>
+        <h3>Set the stage</h3>
+        <p>Who you are, why you're writing, and a promise: "Over the next few days I'm going to tell you how I ended up building ___." End on an open loop.</p>
+      </div>
+      <div class="half">
+        <span class="tag">Email 2 · Day 2</span>
+        <h3>The backstory</h3>
+        <p>Where you were stuck (the wall), how it felt, and the moment everything clicked (your epiphany). End by teasing what you built.</p>
+      </div>
+      <div class="half">
+        <span class="tag">Email 3 · Day 3</span>
+        <h3>The reveal</h3>
+        <p>What you built, who it's for, the benefits they didn't expect, and a clear invitation to check out your platform.</p>
+      </div>
+    </div>
+    <div class="punch">Every email ends on a cliffhanger. <span>That's what gets tomorrow's email opened.</span></div>
+
+    <h3>Let AI interview you and write them</h3>
+    <p>Paste this into Claude or ChatGPT. It asks you the questions Brunson uses to find your story, one at a time, then writes all three emails in your voice, promoting <b>your</b> platform.</p>
+    <div class="promptbox">
+      <div class="pl2">Copy this into Claude or ChatGPT</div>
+      <code>You are an email copywriter trained in Russell Brunson's Soap Opera Sequence and his Epiphany Bridge story framework. I want to write a 3-email sequence to people who already know me (friends, colleagues, past clients) to introduce the platform I built.
+
+First, interview me. Ask me these questions ONE AT A TIME and wait for my answer before asking the next:
+1. What's your name, and how do most of these people know you?
+2. What did you build? Describe it in one sentence, and include the link.
+3. Who is it for, and what result does it give them?
+4. Your backstory: where were you before you built this? What were you trying to do?
+5. The wall: what problem or frustration did you keep hitting? How did it make you feel?
+6. The epiphany: what was the moment or realization that changed everything?
+7. What does your platform do that people won't expect (a hidden benefit)?
+8. What do you want readers to do after the third email (visit, sign up, book a call, reply)?
+9. Share a sentence or two you've written before, so you can match my voice.
+
+Then write the three emails:
+- Email 1, "Set the stage": warm and personal. Say why I'm reaching out and promise a short story over the next few days. End with a cliffhanger that makes them want Email 2.
+- Email 2, "The backstory": tell my backstory, the wall I hit, how it felt, and my epiphany. End with a cliffhanger teasing what I built.
+- Email 3, "The reveal": introduce my platform as the answer, share the hidden benefit, and give one clear call to action with my link.
+
+Rules: write like a real person emailing a friend, not a marketer. Short paragraphs, under 250 words per email, no hype words, no fake urgency. Give each email 2 subject line options. Include a P.S. that teases the next email (Emails 1 and 2) or restates the offer (Email 3).</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+
+    <h3>Prefer to write them yourself?</h3>
+    <details class="tpl">
+      <summary>Email 1 template: Set the stage</summary>
+      <div class="promptbox"><div class="pl2">Fill in the blanks</div><code>Subject: Something I've been working on
+
+Hi [First name],
+
+It's been a while, and I wanted you to hear this from me first.
+
+For the past [time], I've been quietly building something called [Platform name]. It started because of [one-line problem].
+
+Over the next couple of days I want to tell you the story of how it happened, because honestly, I almost didn't do it.
+
+Tomorrow I'll tell you about the moment I hit a wall.
+
+Talk soon,
+[Your name]
+
+P.S. Keep an eye out for tomorrow's email. It's the part most people don't know.</code><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+    </details>
+    <details class="tpl">
+      <summary>Email 2 template: The backstory</summary>
+      <div class="promptbox"><div class="pl2">Fill in the blanks</div><code>Subject: The wall I kept hitting
+
+Hi [First name],
+
+Yesterday I promised you the story.
+
+A while back, I was trying to [goal]. But every time I tried, [the wall / frustration]. Honestly, it made me feel [feeling].
+
+Then [the moment it clicked: a person, an idea, a realization]. That's when I realized [your epiphany in one sentence].
+
+So I decided to build something to fix it.
+
+Tomorrow I'll show you what I built, and who I built it for.
+
+[Your name]
+
+P.S. If you've ever felt [the same frustration], tomorrow's email is for you.</code><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+    </details>
+    <details class="tpl">
+      <summary>Email 3 template: The reveal</summary>
+      <div class="promptbox"><div class="pl2">Fill in the blanks</div><code>Subject: Here it is
+
+Hi [First name],
+
+Here's what I built: [Platform name]. It helps [who] [get what result].
+
+What surprised me most is [hidden benefit people don't expect].
+
+If you (or someone you know) [have this problem], I'd love for you to check it out:
+👉 [Your link]
+
+And if you reply to this email, I read every one.
+
+Thank you for being part of this,
+[Your name]
+
+P.S. [Restate the offer or trial in one line.]</code><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+    </details>
+    <div class="note">👉 Send them in Systeme.io as a 3-day <b>campaign</b> (one email per day) to your <b>my-network</b> tag. Then keep emailing: once a week is plenty.</div>
+  </div></section>
+
+  <!-- ============ 4. LINKEDIN PAGE ============ -->
+  <section id="linkedin-page"><div class="wrap">
+    <div class="step">4 · Create your LinkedIn Page</div>
+    <h2>Give your platform its own home on LinkedIn.</h2>
+    <p>Your personal profile is you. A <b>LinkedIn Page</b> is your platform, so people can follow it, and it shows up when they search for tools like yours. Takes about 10 minutes.</p>
+    <ol class="steps">
+      <li>On LinkedIn, click <b>For Business</b> (the grid icon, top right) → <b>Create a Company Page</b>.</li>
+      <li>Choose <b>Company</b>.</li>
+      <li>Add your <b>platform name</b>, pick your <b>LinkedIn public URL</b> (linkedin.com/company/<b>yourname</b>), and add your <b>website</b>.</li>
+      <li>Choose your <b>industry</b>, <b>company size</b> (2–10 is fine), and <b>type</b>.</li>
+      <li>Upload your <b>logo</b> (square, 300×300 or larger) and write a one-line <b>tagline</b>: who it's for + what it does.</li>
+      <li>Check the verification box and click <b>Create page</b>.</li>
+      <li>Finish it: add a <b>cover image</b> (1128×191), your <b>About</b> section, and a <b>custom button</b> (like "Visit website" or "Sign up").</li>
+      <li>On your personal profile, add your platform under <b>Experience</b> so your Page shows up there too.</li>
+      <li>Click <b>Invite to follow</b> and invite your first connections.</li>
+    </ol>
+    <div class="note">👉 Tip: post from your <b>personal profile</b> for reach, then reshare to your Page. People follow people first.</div>
+  </div></section>
+
+  <!-- ============ 5. POST CONSISTENTLY ============ -->
+  <section class="cream" id="post-consistently"><div class="wrap">
+    <div class="step">5 · Post consistently</div>
+    <h2>Show up on a rhythm, not on a whim.</h2>
+    <p>You don't need to go viral. You need to be <b>visible every week</b>, so when someone needs what you built, you're the one they remember.</p>
+    <ul class="prules">
+      <li><b>Pick a rhythm you can keep:</b> 3 posts a week beats 10 posts and then disappearing.</li>
+      <li><b>Every new feature is a post.</b> "Introducing ___" plus what it does and why it matters.</li>
+      <li><b>Show the build:</b> behind the scenes, what broke, what you learned.</li>
+      <li><b>Share wins:</b> a customer result, a milestone, a before and after.</li>
+      <li><b>Use video</b> when you can, even a 15-second clip.</li>
+      <li><b>Stay for the first hour:</b> reply to every comment. That's when LinkedIn decides who sees it.</li>
+    </ul>
+    <div class="punch">The problem isn't knowing what to post. <span>It's finding the time, every single week.</span></div>
+  </div></section>
+
+  <!-- ============ 6. CHATIFYIT ============ -->
+  <section id="chatifyit"><div class="wrap">
+    <div class="step">6 · Let your AI do the posting</div>
+    <h2>Meet <span class="hl">ChatifyIT</span>.</h2>
+    <p><b>ChatifyIT</b> gives you AI chat agents that live on your link-in-bio page and your website. They answer questions about what you do and capture emails 24/7, sending every lead straight into Systeme.io.</p>
+    <p>And now it does your marketing too. Connect ChatifyIT to Claude once. Then, while you're building, just say <b>"announce this release."</b></p>
+    <div class="flow">
+      <div><small>Step 1</small>You build a new feature with Claude</div>
+      <div><small>Step 2</small>Claude writes the post, in your voice</div>
+      <div><small>Step 3</small>It makes a branded video, with music</div>
+      <div><small>Step 4</small>One click posts it to LinkedIn</div>
+    </div>
+    <ul class="prules">
+      <li><b>Links to your product</b>, and every lead lands in your ChatifyIT dashboard.</li>
+      <li><b>Nothing posts without you:</b> you review every post and click Post.</li>
+      <li><b>No terminal, no keys:</b> Claude → Settings → Connectors → Add custom connector → sign in → Allow.</li>
+    </ul>
+    <div class="note">👉 Every feature you ship becomes a post, automatically, so your marketing keeps pace with your building.</div>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <h2>Your homework this week.</h2>
+    <ol class="steps">
+      <li>Export your contacts and import them into Systeme.io with a tag.</li>
+      <li>Use the prompt to write your 3 Soap Opera emails, and schedule them.</li>
+      <li>Create your LinkedIn Page and invite your first connections.</li>
+      <li>Post 3 times this week. Bonus: let ChatifyIT write your first release.</li>
+    </ol>
+    <a class="btn" href="https://www.chatifyit.com">Start your free ChatifyIT trial →</a>
+    <a class="btn ghost" href="https://skool.com/leveragingai/about">Join the community</a>
+  </div></section>
+
+  <footer><div class="wrap">Dr. Erin Jacques · Friday Live · September 25</div></footer>
+
+<script>
+  function copyPrompt(btn){
+    var el = btn.parentElement.querySelector('code');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = o; }, 1500);
+    });
+  }
+</script>
+</body>
+</html>
