@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Your AI's Working Memory — Leveraging AI</title>
+<style>
+  :root{
+    --navy:#0A2547; --navy2:#0E2E57; --gold:#F4B02E;
+    --sans:"Helvetica Neue",Arial,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--navy);color:#fff;font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.85rem;color:#bcccdf;}
+  .brand b{color:var(--gold);}
+  .kicker{color:var(--gold);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;margin-bottom:12px;}
+  section{padding:42px 0;border-top:1px solid rgba(255,255,255,.12);}
+  section.hero{border-top:none;padding:44px 0 36px;}
+  h1{font-size:clamp(2.1rem,5.4vw,3.2rem);font-weight:900;letter-spacing:-.025em;line-height:1.06;margin:0 0 14px;}
+  h1 span{color:var(--gold);}
+  h2{font-size:clamp(1.4rem,3.6vw,2rem);font-weight:900;letter-spacing:-.02em;margin:0 0 14px;}
+  h2 .st{color:var(--gold);}
+  .lead{font-size:clamp(1.14rem,2.5vw,1.45rem);color:#dbe6f3;font-weight:600;margin:0;max-width:60ch;}
+  ul{list-style:none;padding:0;margin:0;}
+  li{font-size:clamp(1.08rem,2.3vw,1.3rem);color:#e6eef8;padding:13px 0 13px 34px;position:relative;border-bottom:1px solid rgba(255,255,255,.08);font-weight:600;}
+  li:last-child{border-bottom:none;}
+  li::before{content:"";position:absolute;left:3px;top:21px;width:12px;height:12px;background:var(--gold);border-radius:50%;}
+  li b{color:#fff;}
+  .big{font-size:clamp(1.25rem,2.8vw,1.6rem);font-weight:800;color:#fff;margin:0;}
+  .big .g{color:var(--gold);}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:6px 0 0;}
+  .card{background:var(--navy2);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:22px 20px;text-align:center;}
+  .card.hi{border-color:var(--gold);}
+  .card .who{font-weight:800;font-size:1.05rem;color:#bcccdf;letter-spacing:.02em;}
+  .card .num{font-weight:900;font-size:clamp(2rem,5vw,2.8rem);color:var(--gold);line-height:1;margin:10px 0 4px;}
+  .card .words{color:#aebfd4;font-size:.98rem;}
+  .verdict{text-align:center;font-weight:900;font-size:clamp(1.3rem,3.2vw,1.8rem);color:#fff;margin:22px 0 0;}
+  .verdict .g{color:var(--gold);}
+  .note{background:rgba(244,176,43,.14);border-left:5px solid var(--gold);border-radius:10px;padding:15px 18px;margin:16px 0 0;font-size:1.05rem;color:#fff;}
+  .paid{color:#aebfd4;font-size:1.02rem;margin:16px 0 0;}
+  .paid b{color:#fff;}
+  footer{padding:30px 0 60px;color:#8ea3bd;font-size:.9rem;}
+  @media(max-width:560px){.cards{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+  <div style="background:#081d3a;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:11px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);">
+    <a href="/market-your-platform" style="color:#F4B02E;text-decoration:none;font-weight:800;">← Previous</a>
+    <a href="/lives" style="color:#fff;text-decoration:none;font-weight:800;">☰ All Live Sessions</a>
+    <span style="color:#6f83a0;font-weight:700;">Oct 2 · Friday Live</span>
+  </div>
+
+  <div class="wrap">
+    <div class="brand">Leveraging <b>AI</b> · Friday Live</div>
+
+    <section class="hero">
+      <div class="kicker">Friday Live — The Basics</div>
+      <h1>Your AI's <span>working memory</span>.</h1>
+      <p class="lead">Why your AI forgets things in a long chat, and how much memory each one actually gives you, free vs. paid.</p>
+    </section>
+
+    <section>
+      <div class="kicker">What it is</div>
+      <h2>The <span class="st">context window</span>.</h2>
+      <ul>
+        <li>How much the AI can hold in mind <b>at once, in one conversation</b>.</li>
+        <li>Measured in <b>tokens</b>. One token is about <b>¾ of a word</b>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="kicker">Why it forgets</div>
+      <h2>It fills up, then it <span class="st">drops the oldest parts</span>.</h2>
+      <ul>
+        <li><b>Everything</b> counts against it: your messages, its replies, files, instructions.</li>
+        <li>Long chat → it fills up → it starts summarizing or dropping the beginning.</li>
+        <li>That's why it "forgets." <b>Not broken, just full.</b></li>
+        <li>The fix: <b>start a fresh chat</b> (and if you're building, save where you are first).</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="kicker">Free vs. paid</div>
+      <h2>On the <span class="st">free plan</span>, it's not close.</h2>
+      <div class="cards">
+        <div class="card hi">
+          <div class="who">Claude · Free</div>
+          <div class="num">200K</div>
+          <div class="words">~150,000 words</div>
+        </div>
+        <div class="card">
+          <div class="who">ChatGPT · Free</div>
+          <div class="num">27K</div>
+          <div class="words">~20,000 words</div>
+        </div>
+      </div>
+      <div class="verdict">Claude's free plan gives you about <span class="g">7x more</span> working memory.</div>
+      <p class="paid"><b>When you pay:</b> Claude Pro/Max jumps to <b>1,000,000 tokens</b> (~750,000 words). ChatGPT Plus is about 54K, Pro up to 128K on the instant models.</p>
+    </section>
+
+    <section>
+      <div class="kicker">The honest note</div>
+      <h2>"Worth $60 a month"?</h2>
+      <div class="note">That's not an official number, nobody publishes it. It's just a way of saying the free tier gives you a lot. And on Claude's side, that's fair: 200,000 tokens of working memory for free really is generous.</div>
+    </section>
+
+    <section>
+      <div class="kicker">The takeaway</div>
+      <p class="big">When your AI forgets, that's the window <span class="g">filling up</span>, not a glitch. Start fresh, and pick the tool with the most room to think, especially on the free plan.</p>
+    </section>
+
+    <footer>Dr. Erin Jacques · Leveraging AI</footer>
+  </div>
+</body>
+</html>
