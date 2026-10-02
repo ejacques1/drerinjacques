@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>How Your AI Really Works · Leveraging AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1A2E; --navy2:#1a3658; --yellow:#FFD93D; --yellow-dark:#E8C12B;
+    --teal:#0DB4DB; --teal-dark:#0A8FAF; --cream:#FAF6EC; --text:#0B1A2E;
+    --soft:#4A5568; --faint:#718096; --line:#E2E8F0;
+    --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:52px 0;border-top:1px solid var(--line);}
+  section.hero{border-top:none;padding:40px 0 40px;}
+  section.cream{background:var(--cream);border-top:none;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.02em;font-size:1rem;color:var(--navy);}
+  .brand b{color:var(--teal-dark);}
+  .step{color:var(--teal-dark);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;margin-bottom:12px;}
+  h1{font-size:clamp(2.1rem,5.6vw,3.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.07;margin:0 0 16px;color:var(--navy);}
+  .hl{background:linear-gradient(180deg,transparent 58%,rgba(255,217,61,.75) 58%);padding:0 3px;}
+  h2{font-size:clamp(1.6rem,4.2vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin:0 0 14px;color:var(--navy);}
+  h3{font-size:1.25rem;font-weight:800;color:var(--navy);margin:26px 0 8px;}
+  .lead{font-size:clamp(1.18rem,2.6vw,1.5rem);color:var(--navy);font-weight:700;margin:0 0 10px;}
+  p{font-size:clamp(1.06rem,2.2vw,1.24rem);color:var(--soft);margin:0 0 14px;max-width:74ch;}
+  p b{color:var(--navy);}
+  a{color:var(--teal-dark);}
+  .agenda{list-style:none;padding:0;margin:14px 0 0;counter-reset:ag;}
+  .agenda li{position:relative;padding:11px 0 11px 40px;font-size:clamp(1.1rem,2.3vw,1.32rem);color:var(--navy);font-weight:700;border-bottom:1px solid var(--line);}
+  .agenda li:last-child{border-bottom:none;}
+  .agenda li::before{counter-increment:ag;content:counter(ag);position:absolute;left:0;top:12px;width:26px;height:26px;background:var(--yellow);color:var(--navy);border-radius:50%;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .punch{font-size:clamp(1.3rem,3.1vw,1.8rem);font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.22;border-left:5px solid var(--yellow);padding:6px 0 6px 22px;margin:22px 0;}
+  .punch span{color:var(--teal-dark);}
+  .prules{list-style:none;padding:0;margin:14px 0 0;}
+  .prules li{position:relative;padding:12px 0 12px 34px;border-bottom:1px solid var(--line);font-size:clamp(1.05rem,2.2vw,1.26rem);color:var(--soft);}
+  .prules li:last-child{border-bottom:none;}
+  .prules li b{color:var(--navy);}
+  .prules li::before{content:"";position:absolute;left:4px;top:20px;width:11px;height:11px;background:var(--yellow);border-radius:50%;}
+  .steps{list-style:none;padding:0;margin:14px 0 0;counter-reset:st;}
+  .steps li{position:relative;padding:12px 0 12px 44px;border-bottom:1px solid var(--line);font-size:clamp(1.04rem,2.2vw,1.2rem);color:var(--soft);}
+  .steps li:last-child{border-bottom:none;}
+  .steps li b{color:var(--navy);}
+  .steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:12px;width:28px;height:28px;background:var(--navy);color:#fff;border-radius:8px;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0;}
+  .stat{background:#fff;border:2px solid var(--navy);border-radius:16px;padding:18px 20px;}
+  .stat .num{font-size:clamp(2rem,5vw,2.6rem);font-weight:800;color:var(--navy);line-height:1;letter-spacing:-.02em;}
+  .stat .what{font-size:1.02rem;color:var(--soft);margin-top:8px;line-height:1.4;}
+  .stat .src{font-size:.78rem;color:var(--faint);margin-top:8px;}
+  .stat .src a{color:var(--faint);}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px;}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px;}
+  @media(max-width:760px){ .three{grid-template-columns:1fr;} }
+  @media(max-width:640px){ .two{grid-template-columns:1fr;} }
+  .half{background:#fff;border:2px solid var(--navy);border-radius:16px;padding:18px 20px;}
+  .half h3{margin:0 0 6px;color:var(--navy);font-size:1.15rem;font-weight:800;}
+  .half p{font-size:1.02rem;margin:0;}
+  .half .tag{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:6px;}
+  .promptbox{background:var(--navy);border-radius:16px;padding:18px 20px;position:relative;margin:16px 0;}
+  .promptbox .pl2{color:var(--yellow);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
+  .promptbox code{color:#eaf1fb;font-family:var(--mono);font-size:.95rem;line-height:1.55;display:block;white-space:pre-wrap;padding-right:70px;}
+  .copy{position:absolute;top:16px;right:16px;background:var(--yellow);color:var(--navy);border:none;border-radius:8px;padding:7px 13px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .note{background:var(--cream);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:1.05rem;color:var(--navy);font-weight:600;}
+  section.cream .note{background:#fff;}
+  details.tpl{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0;}
+  details.tpl summary{cursor:pointer;font-weight:800;color:var(--navy);font-size:1.08rem;}
+  details.tpl .promptbox{margin-bottom:4px;}
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0;}
+  @media(max-width:760px){ .flow{grid-template-columns:1fr 1fr;} }
+  .flow div{background:#fff;border:2px solid var(--navy);border-radius:14px;padding:14px;font-weight:700;color:var(--navy);font-size:1rem;line-height:1.35;}
+  .flow div small{display:block;color:var(--teal-dark);font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:.7rem;margin-bottom:4px;}
+  .btn{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:800;font-size:1.2rem;text-decoration:none;padding:14px 30px;border-radius:12px;margin-top:12px;box-shadow:0 8px 22px rgba(255,217,61,.4);}
+  .btn.ghost{background:#fff;border:2px solid var(--navy);box-shadow:none;margin-left:8px;}
+  footer{padding:34px 0 60px;color:var(--faint);font-size:.9rem;}
+  .tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:clamp(.98rem,2vw,1.12rem);}
+  .tbl th{background:var(--navy);color:#fff;text-align:left;padding:12px 14px;font-weight:800;}
+  .tbl td{border-bottom:1px solid var(--line);padding:12px 14px;color:var(--soft);vertical-align:top;}
+  .tbl td b{color:var(--navy);}
+  .tbl code,.inl{font-family:var(--mono);background:rgba(13,180,219,.12);color:var(--navy);padding:1px 6px;border-radius:5px;font-size:.92em;}
+  .tree{background:var(--navy);color:#eaf1fb;border-radius:16px;padding:20px 22px;font-family:var(--mono);font-size:clamp(.82rem,1.9vw,.98rem);line-height:1.7;white-space:pre;overflow-x:auto;margin:16px 0;}
+  .tree .c{color:var(--yellow);}
+  .tree .f{color:#7fdcf3;}
+  @media(max-width:640px){ .tbl th,.tbl td{padding:10px 8px;} }
+  .part{display:inline-block;background:var(--navy);color:var(--yellow);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem;padding:6px 12px;border-radius:8px;margin-bottom:14px;}
+  .map{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 0;}
+  @media(max-width:760px){ .map{grid-template-columns:1fr 1fr;} }
+  .map a{display:block;text-decoration:none;background:#fff;border:2px solid var(--navy);border-radius:16px;padding:16px;color:var(--navy);transition:transform .15s,box-shadow .15s;}
+  .map a:hover{transform:translateY(-3px);box-shadow:0 8px 0 var(--yellow);}
+  .map .n{font-size:2rem;font-weight:800;color:var(--teal-dark);line-height:1;}
+  .map .t{font-weight:800;font-size:1.08rem;margin-top:8px;line-height:1.25;}
+  .map .d{font-size:.92rem;color:var(--soft);margin-top:4px;line-height:1.35;}
+  .desk{margin:20px 0 8px;}
+  .bar{display:flex;height:54px;border-radius:12px;overflow:hidden;border:2px solid var(--navy);}
+  .bar div{display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;color:var(--navy);text-align:center;line-height:1.1;padding:0 4px;}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.95rem;color:var(--soft);}
+  .legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c);}
+  .vs{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;margin:18px 0;}
+  .vs .mid{display:flex;align-items:center;font-weight:800;color:var(--teal-dark);font-size:1.3rem;}
+  @media(max-width:640px){ .vs{grid-template-columns:1fr;} .vs .mid{justify-content:center;} }
+  .conn{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0;}
+  @media(max-width:760px){ .conn{grid-template-columns:1fr;} }
+  .conn .half .big{font-size:1.7rem;}
+  .tag.warn{color:#b45309;}
+  .tbl td.y{color:#0A8FAF;font-weight:800;}
+</style>
+</head>
+<body>
+<div style="background:#081d3a;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:11px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);">
+  <a href="/market-your-platform" style="color:#F4B02E;text-decoration:none;font-weight:800;">← Previous</a>
+  <a href="/lives" style="color:#fff;text-decoration:none;font-weight:800;">☰ All Live Sessions</a>
+  <span style="color:#6f83a0;font-weight:700;">Oct 2 · Friday Live</span>
+</div>
+  <div class="wrap"><div class="brand">Dr. Erin Jacques · <b>Friday Live</b></div></div>
+
+  <section class="hero"><div class="wrap">
+    <div class="step">Friday Live · October 2</div>
+    <h1>How your AI <span class="hl">really works</span>.</h1>
+    <p class="lead">Four things nobody explains, so you can stop guessing and start building smarter.</p>
+    <p>Why does your AI "forget" halfway through a project? Why does it work great in one chat and fall apart in the next? Which app builder should you actually use? And how is it clicking around your browser? Today we answer all four.</p>
+    <div class="map">
+      <a href="#models"><div class="n">1</div><div class="t">Models &amp; the context window</div><div class="d">The brain, and how much it can hold at once</div></a>
+      <a href="#memory"><div class="n">2</div><div class="t">Memory &amp; instruction files</div><div class="d">What stays in the app vs. what travels with your project</div></a>
+      <a href="#builders"><div class="n">3</div><div class="t">Replit, Bolt, Lovable &amp; more</div><div class="d">Which builder, and when</div></a>
+      <a href="#browser"><div class="n">4</div><div class="t">AI in your browser &amp; connectors</div><div class="d">Clicking for you, plus Supabase, Vercel, GitHub</div></a>
+    </div>
+  </div></section>
+
+  <!-- ================= PART 1: MODELS + CONTEXT ================= -->
+  <section class="cream" id="models"><div class="wrap">
+    <div class="part">Part 1</div>
+    <div class="step">Models &amp; the context window</div>
+    <h2>The brain, and the desk it works on.</h2>
+    <p>A <b>model</b> is the brain behind the app. Claude, ChatGPT, and Gemini are the apps. Inside each one are different models: bigger ones that think deeper, and smaller ones that move faster and cost less.</p>
+    <div class="three">
+      <div class="half"><span class="tag">Biggest</span><h3>The deep thinker</h3><p>Best for building apps, hard problems, and long projects. Slower and costs more.</p></div>
+      <div class="half"><span class="tag">Middle</span><h3>The everyday worker</h3><p>Great balance of smart and fast. Most daily tasks live here.</p></div>
+      <div class="half"><span class="tag">Smallest</span><h3>The quick helper</h3><p>Fast and cheap. Good for simple, repeated tasks.</p></div>
+    </div>
+
+    <h3>So what's the context window?</h3>
+    <p>Think of the <b>context window</b> as the model's <b>desk</b>. Everything it's working with right now has to fit on that desk: your messages, its replies, the files it opened, the screenshots it took. The size is measured in <b>tokens</b>, roughly three quarters of a word each.</p>
+    <div class="desk">
+      <div class="bar">
+        <div style="background:#0B1A2E;color:#FFD93D;flex:1">Instructions</div>
+        <div style="background:#FFD93D;flex:2">Your messages</div>
+        <div style="background:#0DB4DB;flex:3">Its replies</div>
+        <div style="background:#9ee3f3;flex:3">Files it read</div>
+        <div style="background:#e2e8f0;flex:2">Tool results &amp; screenshots</div>
+        <div style="background:repeating-linear-gradient(45deg,#fff,#fff 6px,#f1f5f9 6px,#f1f5f9 12px);flex:1;color:#718096">Space left</div>
+      </div>
+      <div class="legend">
+        <span style="--c:#0B1A2E">CLAUDE.md / system instructions</span>
+        <span style="--c:#FFD93D">what you typed</span>
+        <span style="--c:#0DB4DB">what it wrote</span>
+        <span style="--c:#9ee3f3">files and pages</span>
+        <span style="--c:#e2e8f0">everything else</span>
+      </div>
+    </div>
+    <p>When the desk fills up, something has to go. The AI either <b>summarizes</b> the older stuff to make room, or starts <b>losing track</b> of what you said at the beginning. That's why a long chat suddenly "forgets" your rules.</p>
+    <div class="punch">It's not getting dumber. <span>Its desk is full.</span></div>
+    <h3>How to keep the desk clean</h3>
+    <ul class="prules">
+      <li><b>One task, one chat.</b> Finished the login page? Start a fresh chat for payments.</li>
+      <li><b>Don't paste the whole world.</b> Point it to the file it needs instead of dumping everything.</li>
+      <li><b>In Claude Code:</b> <span class="inl">/clear</span> wipes the desk for a new task. <span class="inl">/compact</span> squeezes the conversation into a summary so you can keep going.</li>
+      <li><b>Save what matters first.</b> Before you clear, put the important decisions somewhere permanent. That's Part 2.</li>
+    </ul>
+  </div></section>
+
+  <!-- ================= PART 2: MEMORY ================= -->
+  <section id="memory"><div class="wrap">
+    <div class="part">Part 2</div>
+    <div class="step">Memory &amp; instruction files</div>
+    <h2>Memory vs. <span class="hl">instruction files</span>.</h2>
+    <div class="vs">
+      <div class="half"><span class="tag">Short-term</span><h3>Context window</h3><p>The desk. Gone when the chat ends or gets cleared.</p></div>
+      <div class="mid">vs</div>
+      <div class="half"><span class="tag">Long-term</span><h3>Memory</h3><p>The filing cabinet. Still there next week, in a brand new chat.</p></div>
+    </div>
+    <h3>Memory stays in the app. Instruction files travel with the project.</h3>
+    <div class="two">
+      <div class="half"><span class="tag">Memory</span><h3>Lives inside one app</h3><p><b>Memory settings</b> remember facts about you, but only in that app. <b>Projects</b> hold instructions and files, but only for that one project in that one app. Switch tools and it's gone.</p></div>
+      <div class="half"><span class="tag">Instruction files</span><h3>Go wherever your project goes</h3><p><b>CLAUDE.md</b> and <b>AGENTS.md</b> are files inside your project folder. Move the folder, push it to GitHub, open it on another computer or in another tool, and the instructions come with it.</p></div>
+    </div>
+    <div class="punch">Memory belongs to the app. <span>Instruction files belong to your project.</span></div>
+
+    <h3>The instruction files</h3>
+    <table class="tbl">
+      <tr><th>Tool</th><th>What <span style="font-family:var(--mono)">/init</span> creates</th><th>Reads AGENTS.md?</th></tr>
+      <tr><td><b>Claude Code</b></td><td><b>CLAUDE.md</b></td><td>Only if CLAUDE.md points to it</td></tr>
+      <tr><td><b>Codex</b></td><td><b>AGENTS.md</b> (there's no "Codex.md")</td><td class="y">Yes, it's Codex's main file</td></tr>
+      <tr><td><b>Cursor</b></td><td>Nothing on its own. You ask.</td><td class="y">Yes</td></tr>
+      <tr><td><b>Copilot</b></td><td>Nothing on its own. You ask.</td><td class="y">Yes</td></tr>
+    </table>
+    <p><span class="inl">/init</span> is short for <b>initialize</b>: <b>set it up for the first time</b>. The AI reads your whole project and writes the file for you. The slash tells it "this is a command."</p>
+<div class="tree">my-project/
+├── <span class="f">CLAUDE.md</span>              <span class="c">← one line: @AGENTS.md</span>
+├── <span class="f">AGENTS.md</span>              <span class="c">← the real instructions, every tool reads it</span>
+├── <span class="f">.mcp.json</span>              <span class="c">← your connectors (Part 4)</span>
+└── <span class="f">.claude/</span>               <span class="c">← Claude's toolbox</span>
+    ├── settings.json      <span class="c">← what it can do without asking</span>
+    ├── commands/          <span class="c">← your own slash shortcuts</span>
+    ├── agents/            <span class="c">← specialist helpers</span>
+    └── skills/            <span class="c">← step-by-step processes it knows</span></div>
+    <h3>When to update the file</h3>
+    <ol class="steps">
+      <li><b>You make a big decision</b>: database, login, hosting.</li>
+      <li><b>You correct the AI twice</b> about the same thing.</li>
+      <li><b>You add a major feature</b> or a new folder.</li>
+      <li><b>How you run or deploy changes.</b></li>
+      <li><b>You fix a tricky bug</b>, so it never comes back.</li>
+      <li><b>Before you clear or start a new chat.</b></li>
+    </ol>
+    <div class="promptbox">
+      <div class="pl2">Say this at any of those moments</div>
+      <code>Update AGENTS.md with what we just decided and anything you learned in this session that you'd need to know next time. Keep it short. Remove anything that's no longer true. Make sure CLAUDE.md contains only: @AGENTS.md</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+    <div class="note">👉 <b>Not just for code.</b> Any folder you work in with AI can have one: your syllabus, your slides, your book, your brand. New chat? Open with "Read the AGENTS.md in this folder first."</div>
+  </div></section>
+
+  <!-- ================= PART 3: BUILDERS ================= -->
+  <section class="cream" id="builders"><div class="wrap">
+    <div class="part">Part 3</div>
+    <div class="step">Replit, Bolt, Lovable &amp; more</div>
+    <h2>Browser builders vs. building for real.</h2>
+    <p>Type an idea, get an app. These tools are amazing for getting started. The question is what happens when real people start paying you.</p>
+    <table class="tbl">
+      <tr><th>Tool</th><th>Best at</th><th>Database &amp; hosting</th></tr>
+      <tr><td><b>Lovable</b></td><td>Beautiful designs from a prompt</td><td>Connects to Supabase, hosts for you</td></tr>
+      <tr><td><b>Bolt</b></td><td>Fast full apps right in the browser</td><td>Connects to Supabase, hosts for you</td></tr>
+      <tr><td><b>Replit</b></td><td>Everything in one place: editor, database, hosting</td><td>Built in, lives on Replit</td></tr>
+      <tr><td><b>v0</b> (by Vercel)</td><td>Clean front ends and pages</td><td>Deploys to Vercel</td></tr>
+      <tr><td><b>Claude Code / Codex</b></td><td>Real production apps you fully control</td><td class="y">Your GitHub, your Supabase, your Vercel</td></tr>
+    </table>
+    <div class="two">
+      <div class="half"><span class="tag">Browser builders</span><h3>Great for</h3><p>Testing an idea fast. No setup, nothing to install, results in minutes. Perfect for a prototype or a demo.</p></div>
+      <div class="half"><span class="tag warn">Watch out for</span><h3>The hidden costs</h3><p>Credits that run out fast when it gets stuck in a fix loop. Harder to customize. Your app lives in <b>their</b> house.</p></div>
+    </div>
+    <h3>What "production-ready" actually means</h3>
+    <ul class="prules">
+      <li><b>Real logins</b> that keep each user's data private.</li>
+      <li><b>A database with security rules</b>, so one user can't see another's info.</li>
+      <li><b>Payments</b> that actually work, with Stripe.</li>
+      <li><b>Your own domain</b>, not their-app.something.app.</li>
+      <li><b>Your code in your GitHub</b>, so you can move, fix, or grow it anytime.</li>
+    </ul>
+    <div class="punch">Prototype anywhere. <span>Build your business where you own it.</span></div>
+    <div class="note">👉 These tools change fast, and so does their pricing. Check what's current before you commit to one.</div>
+  </div></section>
+
+  <!-- ================= PART 4: BROWSER + CONNECTORS ================= -->
+  <section id="browser"><div class="wrap">
+    <div class="part">Part 4</div>
+    <div class="step">AI in your browser &amp; connectors</div>
+    <h2>Two ways your AI can do things for you.</h2>
+    <div class="vs">
+      <div class="half"><span class="tag">Browser control</span><h3>It clicks like you would</h3><p>The AI sees the screen, moves the mouse, clicks buttons, fills in forms. Works on almost any website. But it's <b>slower</b>, and it can get lost when a page changes.</p></div>
+      <div class="mid">vs</div>
+      <div class="half"><span class="tag">Connectors (MCP)</span><h3>It talks to the app directly</h3><p>A direct line into the tool, no clicking needed. <b>Faster and more reliable</b>. Think of it like installing an app on your phone.</p></div>
+    </div>
+    <h3>Where you'll see browser control</h3>
+    <ul class="prules">
+      <li><b>Claude in Chrome:</b> Claude works inside your own Chrome browser.</li>
+      <li><b>Claude Code's built-in browser:</b> it opens your app, clicks through it, and checks its own work.</li>
+      <li><b>ChatGPT's agent:</b> the same idea from OpenAI.</li>
+    </ul>
+    <div class="note">👉 <b>You stay in the driver's seat.</b> You log in yourself. Never let AI type your passwords or card numbers, and watch for it to ask before it sends, buys, or deletes anything.</div>
+
+    <h3>The three connectors every builder needs</h3>
+    <div class="conn">
+      <div class="half"><span class="tag">Your database</span><h3><span class="big">🗄️</span> Supabase</h3><p>Claude can look at your tables, check your security rules, and read your logs when something breaks.</p></div>
+      <div class="half"><span class="tag">Your live site</span><h3><span class="big">🚀</span> Vercel</h3><p>Claude can check your deployments, read error logs, and tell you why the live site isn't working.</p></div>
+      <div class="half"><span class="tag">Your code</span><h3><span class="big">📦</span> GitHub</h3><p>Claude can save your work, open pull requests, and keep track of every change.</p></div>
+    </div>
+    <h3>How to add a connector</h3>
+    <ol class="steps">
+      <li><b>In the Claude app:</b> Settings → <b>Connectors</b>. Find Supabase, Vercel, or GitHub and click <b>Connect</b>.</li>
+      <li>Sign in to that tool <b>yourself</b> and click <b>Allow</b>.</li>
+      <li><b>In Claude Code:</b> type <span class="inl">/mcp</span> to see what's connected and sign in to any that need it.</li>
+      <li>Test it: ask "What Supabase projects can you see?"</li>
+    </ol>
+    <div class="promptbox">
+      <div class="pl2">Try this once you're connected</div>
+      <code>My live site isn't working the way it does on my computer. Using the Vercel and Supabase connectors, check my latest deployment, read the error logs, and confirm my Supabase keys are set in Vercel. Tell me in plain language what's wrong before you change anything.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+    <div class="punch">Browser control is the AI's hands. <span>Connectors are its phone line.</span></div>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <h2>Your homework this week.</h2>
+    <ol class="steps">
+      <li>Start one fresh chat per task this week, and notice the difference.</li>
+      <li>Open a project and check for a CLAUDE.md or AGENTS.md. Missing? Run <span class="inl">/init</span>.</li>
+      <li>Connect Supabase, Vercel, and GitHub to Claude, and ask it one question about each.</li>
+      <li>Bonus: make an AGENTS.md for something that isn't code.</li>
+    </ol>
+    <a class="btn" href="https://skool.com/leveragingai/about">Join the community →</a>
+    <p style="margin-top:22px;">Missed a week? <a href="/lives"><b>See all past live sessions →</b></a></p>
+  </div></section>
+
+  <footer><div class="wrap">Dr. Erin Jacques · Friday Live · October 2 · <a href="/lives" style="color:var(--faint);">All live sessions</a></div></footer>
+
+<script>
+  function copyPrompt(btn){
+    var el = btn.parentElement.querySelector('code');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = o; }, 1500);
+    });
+  }
+</script>
+</body>
+</html>
