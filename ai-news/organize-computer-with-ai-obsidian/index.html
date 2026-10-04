@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>I Let AI Organize My Messy Desktop. Here&#x27;s How to Do It Without Losing Anything. | Dr. Erin Jacques AI News</title>
+<meta name="description" content="I let AI organize a Desktop with 48 folders and 20 code projects — without deleting anything. The four prompts I used, and how Obsidian makes it all findable.">
+<meta name="author" content="Dr. Erin Jacques">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://drerinjacques.com/ai-news/organize-computer-with-ai-obsidian">
+
+<meta property="og:title" content="I Let AI Organize My Messy Desktop. Here&#x27;s How to Do It Without Losing Anything.">
+<meta property="og:description" content="I let AI organize a Desktop with 48 folders and 20 code projects — without deleting anything. The four prompts I used, and how Obsidian makes it all findable.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://drerinjacques.com/ai-news/organize-computer-with-ai-obsidian">
+<meta property="og:image" content="https://drerinjacques.com/ai-news/organize-computer-with-ai-obsidian/og.png">
+<meta property="og:site_name" content="Dr. Erin Jacques AI News">
+<meta property="article:published_time" content="2026-09-23">
+<meta property="article:section" content="AI Tools">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="I Let AI Organize My Messy Desktop. Here&#x27;s How to Do It Without Losing Anything.">
+<meta name="twitter:image" content="https://drerinjacques.com/ai-news/organize-computer-with-ai-obsidian/og.png">
+<meta name="twitter:description" content="I let AI organize a Desktop with 48 folders and 20 code projects — without deleting anything. The four prompts I used, and how Obsidian makes it all findable.">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "I Let AI Organize My Messy Desktop. Here's How to Do It Without Losing Anything.",
+    "description": "I let AI organize a Desktop with 48 folders and 20 code projects — without deleting anything. The four prompts I used, and how Obsidian makes it all findable.",
+    "image": [
+        "https://drerinjacques.com/ai-news/organize-computer-with-ai-obsidian/featured.png",
+        "https://drerinjacques.com/ai-news/organize-computer-with-ai-obsidian/og.png"
+    ],
+    "datePublished": "2026-09-23",
+    "dateModified": "2026-09-23",
+    "author": {
+        "@type": "Person",
+        "name": "Dr. Erin Jacques",
+        "url": "https://drerinjacques.com",
+        "jobTitle": "Professor of Informatics",
+        "worksFor": {
+            "@type": "EducationalOrganization",
+            "name": "City University of New York",
+            "sameAs": "https://en.wikipedia.org/wiki/City_University_of_New_York"
+        },
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Columbia University",
+            "sameAs": "https://en.wikipedia.org/wiki/Columbia_University"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/in/drerinjacques/",
+            "https://www.instagram.com/dr.erinjacques/",
+            "https://www.tiktok.com/@dr.erinjacques",
+            "https://x.com/dr_erinjacques",
+            "https://www.youtube.com/@Dr.ErinJacques"
+        ]
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Dr. Erin Jacques AI News",
+        "url": "https://drerinjacques.com/ai-news",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://drerinjacques.com/assets/logo.png"
+        }
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://drerinjacques.com/ai-news/organize-computer-with-ai-obsidian"
+    },
+    "articleSection": "AI Tools",
+    "keywords": "organize computer with AI, Obsidian AI, AI desktop cleanup, Codex, Claude Desktop, find files with AI, Obsidian vault, AI file organization",
+    "wordCount": "740",
+    "isAccessibleForFree": true,
+    "inLanguage": "en-US",
+    "about": [
+        {
+            "@type": "SoftwareApplication",
+            "name": "Obsidian",
+            "applicationCategory": "Note-taking",
+            "sameAs": "https://en.wikipedia.org/wiki/Obsidian_(software)"
+        }
+    ],
+    "mentions": [
+        {
+            "@type": "SoftwareApplication",
+            "name": "ChatGPT",
+            "sameAs": "https://en.wikipedia.org/wiki/ChatGPT"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "Claude",
+            "sameAs": "https://en.wikipedia.org/wiki/Claude_(language_model)"
+        }
+    ],
+    "citation": [
+        {
+            "@type": "Article",
+            "name": "Obsidian + AI: three levels deep",
+            "url": "https://cybercorsairs.com/obsidian-plus-ai-three-levels-deep/"
+        }
+    ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Can AI organize my computer safely?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, if you make it look before it moves anything. Start with a read-only inventory prompt, approve the categories yourself, tell it not to delete anything, keep old paths for active projects, and put anything uncertain into a dated review folder. Back up your computer first."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Why does Obsidian work so well with AI?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "An Obsidian vault is just a normal folder of plain Markdown text files. Any desktop AI that has been given access to that folder can read, write and search it, so it can build and update a map of your projects without a special database."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Do I need a special Obsidian plugin to use it with AI?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Because the vault is plain text files in a folder, a desktop AI like ChatGPT with Codex or Claude Desktop can work with it directly once you give it access to the vault folder."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "What should I not let AI access when organizing my computer?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A cloud AI can read whatever you give it access to. Leave out medical, financial, client-confidential and password or credential files unless you have deliberately chosen a private setup for them."
+            }
+        }
+    ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to organize your computer with AI without losing anything",
+    "description": "Use a desktop AI (ChatGPT with Codex or Claude Desktop) to inventory, organize and map a messy Desktop safely, then use Obsidian to find any file later.",
+    "tool": [
+        {
+            "@type": "HowToTool",
+            "name": "ChatGPT desktop with Codex or Claude Desktop"
+        },
+        {
+            "@type": "HowToTool",
+            "name": "Obsidian (optional)"
+        }
+    ],
+    "supply": [
+        {
+            "@type": "HowToSupply",
+            "name": "A current backup of your computer"
+        }
+    ],
+    "step": [
+        {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Inventory only",
+            "text": "Review everything on my Desktop without moving, renaming, or deleting anything. Create an inventory that identifies folders, files, Git repositories, duplicates, unfinished work, unusually large items, and anything that may be unsafe to move. Recommend six to eight broad categories based on the work you actually find. Show me the plan before changing anything."
+        },
+        {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Organize safely",
+            "text": "Using the categories I approved, organize my Desktop. Do not delete anything. Preserve old paths for active projects when necessary, and verify afterward that Git repositories and saved project locations still work. Leave anything you cannot classify confidently in a clearly labeled review folder. Give me a summary of what moved and what you left alone."
+        },
+        {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Build the Obsidian command center",
+            "text": "Create an Obsidian command center for my organized files. Make one note for each project with its category, status, location, and relevant links. Add a searchable table, a visual Canvas grouped by category, a project index, an append-only organization log, and a \"Find Anything\" page with a reusable search prompt. The actual files should remain in Finder; Obsidian should serve as the map. Before writing, show me the structure you plan to create."
+        },
+        {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Find anything later",
+            "text": "Search my organized Desktop and Obsidian Project Command Center for [describe what I remember]. Tell me the most likely file or folder, where it is located, and open it for me. Do not move or delete anything."
+        }
+    ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Dr. Erin Jacques",
+            "item": "https://drerinjacques.com"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "AI News",
+            "item": "https://drerinjacques.com/ai-news"
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "I Let AI Organize My Messy Desktop. Here's How to Do It Without Losing Anything.",
+            "item": "https://drerinjacques.com/ai-news/organize-computer-with-ai-obsidian"
+        }
+    ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#121212;
+    --ink-soft:#333333;
+    --gray:#5a5a5a;
+    --gray-light:#6b6b6b;
+    --rule:#dcdcdc;
+    --rule-dark:#121212;
+    --kicker:#d0021b;
+    --link:#326891;
+    --serif:'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans:'Libre Franklin', -apple-system, Helvetica, Arial, sans-serif;
+    --col:680px;
+    --page-width:1080px;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#fff;color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased;}
+
+  /* ===== site header ===== */
+  .site-header{background:#0A1628;position:relative;z-index:100;}
+  .header-inner{max-width:var(--page-width);margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .header-brand{text-decoration:none;font-size:1.1rem;font-weight:700;color:#fff;letter-spacing:-0.3px;font-family:var(--sans);}
+  .header-nav{display:flex;gap:30px;align-items:center;}
+  .header-nav a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:0.88rem;font-weight:500;font-family:var(--sans);transition:color .2s;}
+  .header-nav a:hover{color:#fff;}
+  .header-nav a.nav-active{color:#fff;}
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:1001;}
+  .hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,0.85);border-radius:2px;transition:all .3s ease;}
+  .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+  .hamburger.active span:nth-child(2){opacity:0;}
+  .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+  .mobile-nav{display:none;position:fixed;inset:0;background:#0A1628;z-index:1000;flex-direction:column;align-items:center;justify-content:center;gap:28px;}
+  .mobile-nav.open{display:flex;}
+  .mobile-nav a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:1.3rem;font-weight:600;font-family:var(--sans);}
+  .mobile-nav a:hover{color:#fff;}
+
+  /* ===== share bar ===== */
+  .share-bar{position:fixed;left:max(16px,calc((100vw - var(--page-width)) / 2 - 60px));top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:90;}
+  .share-btn{width:42px;height:42px;border-radius:50%;background:#f3f3f3;border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;text-decoration:none;}
+  .share-btn:hover{background:var(--ink);border-color:var(--ink);}
+  .share-btn svg{width:17px;height:17px;fill:#444;}
+  .share-btn:hover svg{fill:#fff;}
+  .share-btn-copied{background:#1a7f57 !important;border-color:#1a7f57 !important;}
+  .share-btn-copied svg{fill:#fff;}
+  .share-bar-mobile{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--rule);padding:10px 24px;z-index:90;justify-content:center;gap:16px;}
+  .share-bar-mobile .share-btn{width:38px;height:38px;}
+
+  /* ===== article shell ===== */
+  .article{max-width:var(--col);margin:0 auto;padding:34px 24px 64px;}
+  .kicker{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--kicker);margin-bottom:14px;}
+  .headline{font-family:var(--serif);font-weight:700;font-size:clamp(30px,5.2vw,46px);line-height:1.12;letter-spacing:-0.011em;color:var(--ink);margin-bottom:18px;}
+  .deck{font-family:var(--sans);font-weight:400;font-size:20px;line-height:1.45;color:var(--gray);margin-bottom:26px;}
+
+  .byline{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding:16px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:28px;}
+  .byline-author{font-family:var(--sans);font-size:14px;color:var(--ink);}
+  .byline-author .by{color:var(--gray-light);}
+  .byline-author a{color:var(--ink);text-decoration:none;font-weight:600;}
+  .byline-date{font-family:var(--sans);font-size:13px;color:var(--gray-light);margin-left:auto;}
+
+  figure{margin:0 0 8px;}
+  figure img{width:100%;height:auto;display:block;}
+  figcaption{font-family:var(--sans);font-size:13px;line-height:1.45;color:var(--gray-light);margin:8px 0 34px;}
+  figcaption .credit{color:#9a9a9a;}
+  figcaption .credit a{color:#9a9a9a;}
+  .body figure{margin:30px 0 8px;}
+
+  .body p{font-size:19px;line-height:1.65;color:var(--ink-soft);margin-bottom:22px;}
+  .body p a{color:var(--link);text-decoration:underline;text-underline-offset:2px;}
+  .body > p.lead::first-letter{font-family:var(--serif);font-weight:700;float:left;font-size:66px;line-height:52px;padding:4px 10px 0 0;color:var(--ink);}
+  .body h2{font-family:var(--serif);font-weight:700;font-size:25px;line-height:1.25;color:var(--ink);margin:40px 0 14px;}
+
+  .body ol{margin:0 0 22px 0;padding:0;list-style:none;counter-reset:step;}
+  .body ol li{position:relative;font-size:19px;line-height:1.6;color:var(--ink-soft);padding-left:40px;margin-bottom:18px;counter-increment:step;}
+  .body ol li::before{content:counter(step);position:absolute;left:0;top:2px;font-family:var(--sans);font-weight:700;font-size:15px;color:var(--kicker);border:1px solid var(--rule);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;}
+  .body ol li strong{color:var(--ink);}
+
+  /* ===== prompt block (editorial, light) — for build posts ===== */
+  .prompt-label{font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink);margin:28px 0 8px;}
+  pre.prompt{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;line-height:1.6;background:#f6f6f4;border:1px solid var(--rule);border-left:3px solid var(--ink);padding:18px 20px;margin:0 0 26px;white-space:pre-wrap;overflow-x:auto;color:var(--ink-soft);}
+
+  .pullquote{margin:38px 0;padding:22px 0;border-top:1px solid var(--rule-dark);border-bottom:1px solid var(--rule-dark);text-align:center;}
+  .pullquote p{font-family:var(--serif);font-weight:600;font-size:27px;line-height:1.32;color:var(--ink);margin:0;}
+  .pullquote cite{display:block;margin-top:12px;font-family:var(--sans);font-style:normal;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-light);}
+
+  .author-note{display:flex;gap:16px;align-items:flex-start;margin:44px 0 0;padding-top:26px;border-top:1px solid var(--rule);}
+  .author-note img{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0;}
+  .author-note p{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--gray);}
+  .author-note strong{color:var(--ink);}
+  .author-note a{color:var(--link);text-decoration:underline;text-underline-offset:2px;font-weight:500;}
+
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin:34px 0 0;}
+  .tags a{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--gray);text-decoration:none;border:1px solid var(--rule);padding:4px 12px;border-radius:2px;}
+  .tags a:hover{color:var(--ink);border-color:var(--ink);}
+
+  .subscribe{margin-top:34px;padding:26px;border:1px solid var(--rule);}
+  .subscribe h3{font-family:var(--serif);font-weight:700;font-size:21px;color:var(--ink);margin-bottom:6px;}
+  .subscribe p{font-family:var(--sans);font-size:14px;color:var(--gray);margin-bottom:14px;}
+  .subscribe form{display:flex;gap:8px;}
+  .subscribe input{flex:1;padding:12px;border:1px solid #cfcfcf;font-family:var(--sans);font-size:14px;}
+  .subscribe input:focus{outline:none;border-color:var(--ink);}
+  .subscribe button{padding:12px 22px;border:none;background:var(--ink);color:#fff;font-family:var(--sans);font-weight:600;font-size:14px;cursor:pointer;}
+  .subscribe button:disabled{opacity:.5;cursor:not-allowed;}
+  .form-message{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;font-weight:600;}
+  .form-message.success{display:block;color:#1a7f57;}
+  .form-message.error{display:block;color:#c0392b;}
+
+  .site-footer{background:#0A1628;padding:36px 24px;text-align:center;margin-top:48px;}
+  .site-footer a{color:#8a97a8;font-family:var(--sans);font-size:13px;text-decoration:none;margin:0 12px;}
+  .site-footer a:hover{color:#fff;}
+  .site-footer p{color:#4A5568;font-family:var(--sans);font-size:12px;margin-top:14px;}
+
+  @media(max-width:768px){
+    .header-nav{display:none;}
+    .hamburger{display:flex;}
+    .share-bar{display:none;}
+    .share-bar-mobile{display:flex;}
+    .article{padding:28px 20px 90px;}
+    .headline{font-size:31px;}
+    .deck{font-size:18px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="header-brand">DR. ERIN JACQUES</a>
+    <nav class="header-nav">
+      <a href="/#about">About</a>
+      <a href="/#research">Research</a>
+      <a href="/#entrepreneurship">Work With Me</a>
+      <a href="/ai-news" class="nav-active">AI News</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-nav" id="mobileNav">
+  <a href="/#about" onclick="closeMobileNav()">About</a>
+  <a href="/#research" onclick="closeMobileNav()">Research</a>
+  <a href="/#entrepreneurship" onclick="closeMobileNav()">Work With Me</a>
+  <a href="/ai-news" onclick="closeMobileNav()">AI News</a>
+  <a href="/#contact" onclick="closeMobileNav()">Contact</a>
+</div>
+
+<div class="share-bar" aria-label="Share this article">
+  <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://drerinjacques.com/ai-news/organize-computer-with-ai-obsidian" target="_blank" rel="noopener" title="Share on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://drerinjacques.com/ai-news/organize-computer-with-ai-obsidian&text=I%20Let%20AI%20Organize%20My%20Messy%20Desktop.%20Here%27s%20How%20to%20Do%20It%20Without%20Losing%20Anything." target="_blank" rel="noopener" title="Share on X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+  <button class="share-btn" onclick="copyLink(this)" title="Copy link"><svg viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" fill="none" stroke="#444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+<div class="share-bar-mobile" aria-label="Share this article">
+  <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://drerinjacques.com/ai-news/organize-computer-with-ai-obsidian" target="_blank" rel="noopener" title="Share on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://drerinjacques.com/ai-news/organize-computer-with-ai-obsidian&text=I%20Let%20AI%20Organize%20My%20Messy%20Desktop.%20Here%27s%20How%20to%20Do%20It%20Without%20Losing%20Anything." target="_blank" rel="noopener" title="Share on X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+  <button class="share-btn" onclick="copyLink(this)" title="Copy link"><svg viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" fill="none" stroke="#444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+
+<article class="article" itemscope itemtype="https://schema.org/Article">
+
+  <div class="kicker">AI WORKFLOWS</div>
+  <h1 class="headline" itemprop="headline">I Let AI Organize My Messy Desktop. Here&#x27;s How to Do It Without Losing Anything.</h1>
+  <p class="deck">48 folders, 20 code projects and a lot of files I was afraid to touch. The trick wasn&rsquo;t letting AI clean up &mdash; it was making it look first, then building a map so I can find anything later.</p>
+
+  <div class="byline">
+    <p class="byline-author"><span class="by">By</span> <a href="https://drerinjacques.com" itemprop="author">Dr. Erin Jacques</a></p>
+    <p class="byline-date"><time itemprop="datePublished" datetime="2026-09-23">September 23, 2026</time></p>
+  </div>
+
+  <figure>
+    <img src="/ai-news/organize-computer-with-ai-obsidian/featured.png" alt="Editorial graphic reading: 48 folders. 8 that make sense. Inventory, organize, map, find.">
+    <figcaption>Look first. Organize second. Then build a map. <span class="credit">Illustration</span></figcaption>
+  </figure>
+
+  <div class="body" itemprop="articleBody">
+
+    <p class="lead">My Desktop had 48 folders on it.</p>
+
+    <p>Client work. Unfinished projects. Course materials. Videos. Twenty separate code projects. Old copies of my website I was afraid to delete because I wasn&rsquo;t sure which one was live.</p>
+
+    <p>So I gave AI access to the folder. But I did not let it start moving things.</p>
+
+    <p>That&rsquo;s the most important part of this whole process, and it&rsquo;s the part most people skip.</p>
+
+    <h2>Don&rsquo;t start with &ldquo;clean my Desktop&rdquo;</h2>
+    <p>If you tell an AI to clean up your computer, it will. That&rsquo;s the problem.</p>
+
+    <p>A messy Desktop isn&rsquo;t just clutter. Some of those folders are code projects that other apps point to. Some are client files. Some are video projects where the editing software remembers exactly where every clip lives. Move the wrong folder and something quietly breaks.</p>
+
+    <p>So the first prompt doesn&rsquo;t change anything. It just looks.</p>
+
+    <p class="prompt-label">Prompt 1 &mdash; Inventory only</p>
+    <pre class="prompt">Review everything on my Desktop without moving, renaming, or deleting anything. Create an inventory that identifies folders, files, Git repositories, duplicates, unfinished work, unusually large items, and anything that may be unsafe to move. Recommend six to eight broad categories based on the work you actually find. Show me the plan before changing anything.</pre>
+
+    <p>Mine came back with a full report: 48 top-level folders, 20 Git repositories &mdash; including which ones had unsaved changes &mdash; and sizes for everything. I learned things about my own computer I didn&rsquo;t know.</p>
+
+    <h2>Approve the categories yourself</h2>
+    <p>The AI suggested categories based on what it found. I adjusted them. Mine ended up as:</p>
+
+    <ul>
+      <li>Active Projects</li>
+      <li>Client Projects</li>
+      <li>Early Scholars</li>
+      <li>Teaching and Research</li>
+      <li>Content Production</li>
+      <li>Knowledge and Documents</li>
+      <li>Archive and Review</li>
+      <li>My Obsidian vault</li>
+    </ul>
+
+    <p>This is where you have to stay involved. AI can guess that two folders belong together. Only I knew that two different-looking folders were actually the same client. You know whose work is whose. It doesn&rsquo;t.</p>
+
+    <h2>Then organize &mdash; without deleting anything</h2>
+    <p class="prompt-label">Prompt 2 &mdash; Organize safely</p>
+    <pre class="prompt">Using the categories I approved, organize my Desktop. Do not delete anything. Preserve old paths for active projects when necessary, and verify afterward that Git repositories and saved project locations still work. Leave anything you cannot classify confidently in a clearly labeled review folder. Give me a summary of what moved and what you left alone.</pre>
+
+    <p>Three rules are doing the heavy lifting in that prompt.</p>
+
+    <p><strong>Nothing gets deleted.</strong> Anything uncertain goes into a dated &ldquo;Review Before Deleting&rdquo; folder. I look at it in a month. Nothing disappears automatically.</p>
+
+    <p><strong>Old paths are preserved.</strong> Where an app expected a project in its old spot, the AI left a shortcut there. Everything kept working.</p>
+
+    <p><strong>It checks its own work.</strong> After moving the code projects, it verified they still ran.</p>
+
+    <p>48 folders became 8.</p>
+
+    <div class="pullquote">
+      <p>We didn&rsquo;t just hide the clutter. We created context that AI can search later.</p>
+      <cite>Dr. Erin Jacques</cite>
+    </div>
+
+    <h2>Why Obsidian works so well with AI</h2>
+    <p>A clean Desktop is nice. But in a month, I&rsquo;d forget where things went. That&rsquo;s where <a href="https://obsidian.md/download" target="_blank" rel="noopener">Obsidian</a> comes in.</p>
+
+    <p>Here&rsquo;s the part that surprised me: an Obsidian vault is just a normal folder full of plain text files. That&rsquo;s it. No special database, no complicated integration. Which means any desktop AI you&rsquo;ve given access to that folder can read it, write to it and search it.</p>
+
+    <p>So the setup works like this:</p>
+
+    <ul>
+      <li><strong>Finder</strong> holds the actual files.</li>
+      <li><strong>Obsidian</strong> holds the map &mdash; what each project is, its status, where it lives.</li>
+      <li><strong>AI</strong> builds and updates the map.</li>
+      <li><strong>You</strong> just ask questions.</li>
+    </ul>
+
+    <p class="prompt-label">Prompt 3 &mdash; Build the command center</p>
+    <pre class="prompt">Create an Obsidian command center for my organized files. Make one note for each project with its category, status, location, and relevant links. Add a searchable table, a visual Canvas grouped by category, a project index, an append-only organization log, and a &quot;Find Anything&quot; page with a reusable search prompt. The actual files should remain in Finder; Obsidian should serve as the map. Before writing, show me the structure you plan to create.</pre>
+
+    <p>Mine now has 55 project cards, a sortable dashboard (built with Obsidian&rsquo;s <a href="https://obsidian.md/help/bases" target="_blank" rel="noopener">Bases</a>), a visual map grouped by category (a <a href="https://obsidian.md/help/plugins/canvas" target="_blank" rel="noopener">Canvas</a>), and a log of every change that was made.</p>
+
+    <h2>Find anything, even when you forget the name</h2>
+    <p>This is the payoff.</p>
+
+    <p class="prompt-label">Prompt 4 &mdash; Find anything later</p>
+    <pre class="prompt">Search my organized Desktop and Obsidian Project Command Center for [describe what I remember]. Tell me the most likely file or folder, where it is located, and open it for me. Do not move or delete anything.</pre>
+
+    <p>I don&rsquo;t need the filename. &ldquo;Find the gardening videos I made for a client.&rdquo; &ldquo;Find the equipment comparison PDF from a few weeks ago.&rdquo; &ldquo;Find the project where I built the Blackwell page.&rdquo; It finds it and opens it.</p>
+
+    <h2>What you need &mdash; and one warning</h2>
+    <ol>
+      <li><strong>A current backup.</strong> Always, before you let anything touch your files.</li>
+      <li><strong>A desktop AI that can work in a folder</strong> &mdash; <a href="https://chatgpt.com/download/" target="_blank" rel="noopener">ChatGPT with Codex</a> or <a href="https://claude.com/download" target="_blank" rel="noopener">Claude Desktop</a>. You choose which folder it can see.</li>
+      <li><strong>Obsidian</strong> (free), if you want the map. The cleanup works without it.</li>
+    </ol>
+
+    <p>And the warning: a cloud AI can read whatever you give it access to. Leave out medical, financial, client-confidential and password files unless you&rsquo;ve deliberately chosen a private setup for them.</p>
+
+    <p>One more thing. I stopped at the first two of <a href="https://cybercorsairs.com/obsidian-plus-ai-three-levels-deep/" target="_blank" rel="noopener">three levels</a> of what&rsquo;s possible here: AI reading my vault, and AI writing to it. The third level, where AI runs a whole knowledge base on its own, is powerful &mdash; but it also brings stale information and contradictions you have to manage. Start with the first two.</p>
+
+    <p>This is the kind of practical, real-work AI we build inside <a href="https://www.skool.com/leveragingai/about" target="_blank" rel="noopener">Leveraging AI</a>: not just asking questions, actually getting things done.</p>
+
+    <p><a href="https://www.skool.com/leveragingai/about" target="_blank" rel="noopener">Come build with us.</a></p>
+
+    <div class="tags">
+      <a href="/ai-news">AI Tools</a>
+      <a href="/ai-news">Obsidian</a>
+      <a href="/ai-news">Productivity</a>
+    </div>
+
+    <!-- author-note: KEEP AS-IS. This is where we promote the community. -->
+    <div class="author-note">
+      <img src="/ai-news/organize-computer-with-ai-obsidian/dr-erin-jacques_pic.jpg" alt="Dr. Erin Jacques">
+      <p><strong>Dr. Erin Jacques</strong> is a professor of informatics at the City University of New York and the founder of <a href="https://www.skool.com/leveragingai/about" target="_blank" rel="noopener">Leveraging AI</a> and <a href="https://chatifyit.com" target="_blank" rel="noopener">ChatifyIT</a>, where she helps people build and monetize AI-powered web apps people pay to subscribe to.</p>
+    </div>
+
+    <div class="subscribe">
+      <h3>Get AI News Weekly</h3>
+      <p>How to build and monetize with AI, in one short email.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+        <button type="submit" id="newsletterBtn">Subscribe</button>
+      </form>
+      <div id="newsletterMessage" class="form-message"></div>
+    </div>
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div>
+    <a href="https://drerinjacques.com">Dr. Erin Jacques</a>
+    <a href="https://drerinjacques.com/ai-news">AI News</a>
+    <a href="https://www.skool.com/leveragingai/about">Leveraging AI</a>
+    <a href="https://chatifyit.com">ChatifyIT</a>
+  </div>
+  <p>© 2026 Dr. Erin Jacques. All rights reserved.</p>
+</footer>
+
+<script>
+  function toggleMobileNav(){
+    document.getElementById('mobileNav').classList.toggle('open');
+    document.querySelector('.hamburger').classList.toggle('active');
+    document.body.style.overflow = document.getElementById('mobileNav').classList.contains('open') ? 'hidden' : '';
+  }
+  function closeMobileNav(){
+    document.getElementById('mobileNav').classList.remove('open');
+    document.querySelector('.hamburger').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function copyLink(btn){
+    const url = window.location.href;
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(url).then(()=>showCopied(btn)).catch(()=>legacyCopy(btn,url));
+    } else { legacyCopy(btn,url); }
+  }
+  function legacyCopy(btn,url){
+    const el=document.createElement('input');el.value=url;
+    el.style.cssText='position:fixed;top:0;left:0;opacity:0.01;';
+    document.body.appendChild(el);el.focus();el.select();
+    try{document.execCommand('copy');showCopied(btn);}catch(e){}
+    document.body.removeChild(el);
+  }
+  function showCopied(btn){
+    btn.classList.add('share-btn-copied');
+    const orig=btn.innerHTML;
+    btn.innerHTML='<span style="font-size:10px;font-weight:700;color:#fff;">OK</span>';
+    setTimeout(()=>{btn.classList.remove('share-btn-copied');btn.innerHTML=orig;},1600);
+  }
+  document.getElementById('newsletterForm').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const emailInput=document.getElementById('newsletterEmail');
+    const submitBtn=document.getElementById('newsletterBtn');
+    const msg=document.getElementById('newsletterMessage');
+    msg.className='form-message';msg.textContent='';
+    submitBtn.disabled=true;submitBtn.textContent='Subscribing...';
+    try{
+      const r=await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:emailInput.value})});
+      const d=await r.json();
+      if(r.ok){msg.className='form-message success';msg.textContent="Subscribed. Updates are on the way.";emailInput.value='';}
+      else{msg.className='form-message error';msg.textContent=d.error||'Something went wrong. Please try again.';}
+    }catch(err){msg.className='form-message error';msg.textContent='Network error. Please try again.';}
+    finally{submitBtn.disabled=false;submitBtn.textContent='Subscribe';}
+  });
+</script>
+
+</body>
+</html>
