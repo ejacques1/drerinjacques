@@ -13,3 +13,4 @@ for (const entry of fs.readdirSync(root, { withFileTypes: true })) {
   if (entry.name.startsWith('.') || excluded.has(entry.name)) continue;
   fs.cpSync(path.join(root, entry.name), path.join(output, entry.name), { recursive: true });
 }
+require('./more-from.js').addMoreFrom(path.join(output, 'ai-news'));
