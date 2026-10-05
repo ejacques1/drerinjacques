@@ -1,6 +1,33 @@
 // Vercel Serverless Function - api/subscribe.js
 // Handles email subscriptions via Systeme.io API
 
+const SIO = 'https://api.systeme.io/api';
+const NEWSLETTER_TAG = 'AI Upfront';
+
+// Adds the "AI Upfront" tag (creating it the first time). Never blocks the signup.
+async function tagAiUpfront(apiKey, email, contactId) {
+  const headers = { 'Content-Type': 'application/json', 'X-API-Key': apiKey };
+  try {
+    if (!contactId) {
+      const r = await fetch(`${SIO}/contacts?email=${encodeURIComponent(email)}`, { headers });
+      const d = await r.json().catch(() => ({}));
+      contactId = d.items && d.items[0] && d.items[0].id;
+      if (!contactId) return;
+    }
+    const tr = await fetch(`${SIO}/tags?query=${encodeURIComponent(NEWSLETTER_TAG)}`, { headers });
+    const td = await tr.json().catch(() => ({}));
+    let tag = (td.items || []).find((t) => t.name === NEWSLETTER_TAG);
+    if (!tag) {
+      const cr = await fetch(`${SIO}/tags`, { method: 'POST', headers, body: JSON.stringify({ name: NEWSLETTER_TAG }) });
+      tag = await cr.json().catch(() => null);
+    }
+    if (!tag || !tag.id) return;
+    await fetch(`${SIO}/contacts/${contactId}/tags`, { method: 'POST', headers, body: JSON.stringify({ tagId: tag.id }) });
+  } catch (err) {
+    console.error('AI Upfront tag failed:', err && err.message);
+  }
+}
+
 export default async function handler(req, res) {
   // Only allow POST requests
   if (req.method !== 'POST') {
@@ -52,6 +79,7 @@ export default async function handler(req, res) {
         createData.message?.includes('already used') ||
         createData.detail?.includes('already used')
       ) {
+        await tagAiUpfront(apiKey, email, null);
         return res.status(200).json({ 
           success: true, 
           message: 'You are already subscribed!' 
@@ -72,6 +100,7 @@ export default async function handler(req, res) {
     }
 
     console.log('Contact created successfully with campaign subscription:', createData);
+    await tagAiUpfront(apiKey, email, contactId);
 
     // Success!
     return res.status(200).json({ 
