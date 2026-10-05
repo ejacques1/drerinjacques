@@ -42,16 +42,43 @@
         "url": "https://drerinjacques.com",
         "jobTitle": "Professor of Informatics",
         "worksFor": {
-            "@type": "EducationalOrganization",
-            "name": "City University of New York",
-            "sameAs": "https://en.wikipedia.org/wiki/City_University_of_New_York"
+            "@type": "CollegeOrUniversity",
+            "name": "York College",
+            "url": "https://www.york.cuny.edu",
+            "parentOrganization": {
+                "@type": "CollegeOrUniversity",
+                "name": "The City University of New York",
+                "sameAs": "https://en.wikipedia.org/wiki/City_University_of_New_York"
+            }
         },
-        "alumniOf": {
-            "@type": "EducationalOrganization",
-            "name": "Columbia University",
-            "sameAs": "https://en.wikipedia.org/wiki/Columbia_University"
-        },
+        "alumniOf": [
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Teachers College, Columbia University",
+                "sameAs": "https://en.wikipedia.org/wiki/Teachers_College,_Columbia_University"
+            },
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "University of Pennsylvania",
+                "sameAs": "https://en.wikipedia.org/wiki/University_of_Pennsylvania"
+            }
+        ],
+        "hasCredential": [
+            {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "degree",
+                "name": "Doctorate in Health Education and Promotion",
+                "recognizedBy": { "@type": "CollegeOrUniversity", "name": "Teachers College, Columbia University" }
+            },
+            {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "degree",
+                "name": "MSEd in Education Entrepreneurship",
+                "recognizedBy": { "@type": "CollegeOrUniversity", "name": "University of Pennsylvania" }
+            }
+        ],
         "sameAs": [
+            "https://www.york.cuny.edu/directory/ejacques1",
             "https://www.linkedin.com/in/drerinjacques/",
             "https://www.instagram.com/dr.erinjacques/",
             "https://www.tiktok.com/@dr.erinjacques",
@@ -532,12 +559,12 @@
     <!-- author-note: KEEP AS-IS. This is where we promote the community. -->
     <div class="author-note">
       <img src="/ai-news/organize-computer-with-ai-obsidian/dr-erin-jacques_pic.jpg" alt="Dr. Erin Jacques">
-      <p><strong>Dr. Erin Jacques</strong> is a professor of informatics at the City University of New York and the founder of <a href="https://www.skool.com/leveragingai/about" target="_blank" rel="noopener">Leveraging AI</a> and <a href="https://chatifyit.com" target="_blank" rel="noopener">ChatifyIT</a>, where she helps people build and monetize AI-powered web apps people pay to subscribe to.</p>
+      <p><strong>Dr. Erin Jacques</strong> is a professor, AI strategist and the founder of <a href="https://www.skool.com/leveragingai/about" target="_blank" rel="noopener">Leveraging AI</a> and <a href="https://chatifyit.com" target="_blank" rel="noopener">ChatifyIT</a>. She helps entrepreneurs and creators use AI safely and turn what they know into income.</p>
     </div>
 
     <div class="subscribe">
-      <h3>Get AI Upfront</h3>
-      <p>Straight talk on the AI economy, and how to claim your place in it. Three short emails a week.</p>
+      <h3>AI Upfront</h3>
+      <p>Straight talk on the AI economy, and how to claim your place in it. Three short emails a week: what's true, what's changing, and your move.</p>
       <form class="newsletter-form" id="newsletterForm">
         <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
         <button type="submit" id="newsletterBtn">Subscribe</button>
