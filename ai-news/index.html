@@ -71,8 +71,11 @@ figcaption b{color:var(--ink)}
 .sec h2{font-size:12.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}
 .every{font-family:var(--serif);font-size:1.3rem;line-height:1.6;max-width:760px}
 .every b{font-weight:700;box-shadow:inset 0 -.38em 0 var(--yellow)}
-.list a{display:grid;grid-template-columns:160px 1fr;gap:20px;padding:16px 0;border-top:1px solid var(--rule);text-decoration:none}
+.list a{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:16px 0;border-top:1px solid var(--rule);text-decoration:none}
 .list a:first-child{border-top:0}
+.list .month{font-family:var(--serif);font-weight:700;font-size:1.45rem;margin:34px 0 4px;padding-bottom:8px;border-bottom:2px solid var(--ink)}
+.list .month:first-child{margin-top:4px}
+.list .month + a{border-top:0}
 .list .d{font-size:.85rem;color:var(--faint);padding-top:4px}
 .list .h{font-family:var(--serif);font-weight:600;font-size:1.2rem;line-height:1.35}
 .list a:hover .h{text-decoration:underline}
@@ -663,8 +666,15 @@ footer{border-top:1px solid var(--rule);text-align:center;padding:28px 24px;font
     const esc = (s) => String(s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
     const live = articles.filter((a) => a.slug && a.slug !== 'your-article-slug')
         .sort((a, b) => String(b.dateISO || '').localeCompare(String(a.dateISO || '')));
-    document.getElementById('issueList').innerHTML = live.map((a) =>
-        `<a href="/ai-news/${esc(a.slug)}/"><span class="d">${esc(a.date)}</span><span class="h">${esc(a.title)}</span></a>`).join('');
+    // Grouped by month, newest first (e.g. "October 2026").
+    const monthOf = (a) => new Date((a.dateISO || '') + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    let html = '', current = '';
+    live.forEach((a) => {
+        const m = monthOf(a);
+        if (m !== current) { html += `<div class="month">${esc(m)}</div>`; current = m; }
+        html += `<a href="/ai-news/${esc(a.slug)}/"><span class="d">${esc(a.date.replace(/,? ?\d{4}$/, ''))}</span><span class="h">${esc(a.title)}</span></a>`;
+    });
+    document.getElementById('issueList').innerHTML = html;
 
     // ============ SUBSCRIBE (Systeme.io via /api/subscribe) ============
     document.querySelectorAll('.js-sub').forEach((form) => {

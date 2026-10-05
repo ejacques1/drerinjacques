@@ -234,7 +234,31 @@
             .article-container { padding: 0; max-width: 100%; }
             body { font-size: 12pt; }
         }
-    </style>
+    
+  /* ===== AI Upfront look (Oct 2026): white header, teal label, light footer ===== */
+  .site-header{background:#fff;border-bottom:1px solid #dcdcdc;}
+  .header-brand{color:#121212;letter-spacing:1.5px;font-size:.95rem;}
+  .header-nav a{color:#5a5a5a;}
+  .header-nav a:hover,.header-nav a.nav-active{color:#121212;}
+  .header-nav a.nav-active{font-weight:600;}
+  .header-nav a.nav-cta{background:#0B1A2E;color:#fff;padding:8px 14px;border-radius:8px;font-weight:600;}
+  .hamburger span{background:#121212;}
+  .kdot{margin:0 8px;color:#8a8a8a;}
+  .upfront-label{display:inline;text-decoration:none;color:#121212;box-shadow:inset 0 -.45em 0 #FFD93D;}
+  .kicker{color:#0A8FAF;}
+  .site-footer{background:#fff;border-top:1px solid #dcdcdc;}
+  .site-footer a{color:#5a5a5a;}
+  .site-footer a:hover{color:#121212;}
+  .site-footer p{color:#8a8a8a;}
+  .article-category{background:none!important;border:0!important;padding:0!important;color:#0A8FAF!important;border-radius:0!important;}
+  .article-category::before{display:none!important;}
+  .newsletter-cta{background:#fff!important;border:1px solid #dcdcdc;border-radius:0!important;text-align:left!important;}
+  .newsletter-cta h3{color:#121212!important;}
+  .newsletter-cta p{color:#5a5a5a!important;}
+  .newsletter-form{margin:0!important;}
+  .newsletter-form .form-group input{border:1px solid #cfcfcf!important;border-radius:0!important;}
+  .newsletter-form .form-group button{background:#121212!important;color:#fff!important;border-radius:0!important;}
+</style>
 </head>
 <body>
 
@@ -242,12 +266,12 @@
         <div class="header-inner">
             <a href="/" class="header-brand">DR. ERIN JACQUES</a>
             <nav class="header-nav">
-                <a href="/#about">About</a>
-                <a href="/#research">Research</a>
-                <a href="/#entrepreneurship">Work With Me</a>
-                <a href="/ai-news" class="nav-active">AI News</a>
-                <a href="/#contact">Contact</a>
-            </nav>
+      <a href="/#about">About</a>
+      <a href="/leveraging-ai/">Work With Me</a>
+      <a href="/ai-upfront" class="nav-active">AI Upfront</a>
+      <a href="/#speaking">Speaking</a>
+      <a href="https://www.skool.com/leveragingai/about" class="nav-cta" target="_blank" rel="noopener">Join Leveraging AI</a>
+    </nav>
             <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -256,12 +280,12 @@
         </div>
     </header>
     <div class="mobile-nav" id="mobileNav">
-        <a href="/#about" onclick="closeMobileNav()">About</a>
-        <a href="/#research" onclick="closeMobileNav()">Research</a>
-        <a href="/#entrepreneurship" onclick="closeMobileNav()">Work With Me</a>
-        <a href="/ai-news" class="nav-active" onclick="closeMobileNav()">AI News</a>
-        <a href="/#contact" onclick="closeMobileNav()">Contact</a>
-    </div>
+  <a href="/#about" onclick="closeMobileNav()">About</a>
+  <a href="/leveraging-ai/" onclick="closeMobileNav()">Work With Me</a>
+  <a href="/ai-upfront" onclick="closeMobileNav()">AI Upfront</a>
+  <a href="/#speaking" onclick="closeMobileNav()">Speaking</a>
+  <a href="https://www.skool.com/leveragingai/about" target="_blank" rel="noopener" onclick="closeMobileNav()">Join Leveraging AI</a>
+</div>
 
     <div class="share-bar" aria-label="Share this article">
         <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://drerinjacques.com/ai-news/ai-companies-new-prestige-jobs" target="_blank" rel="noopener" title="Share on LinkedIn">
@@ -289,7 +313,7 @@
 
     <article class="article-container" itemscope itemtype="https://schema.org/Article">
 
-        <div class="article-category">AI Industry</div>
+        <div class="article-category"><a class="upfront-label" href="/ai-upfront">AI UPFRONT</a><span class="kdot">·</span>AI Industry</div>
 
         <h1 class="article-title" itemprop="headline">Are AI Companies Building the New Prestige Jobs of the Future?</h1>
 
@@ -416,8 +440,8 @@
             </div>
 
             <div class="newsletter-cta">
-                <h3>Get AI News Weekly</h3>
-                <p>Join the community learning how to get discovered by AI systems.</p>
+                <h3>Get AI Upfront</h3>
+                <p>Straight talk on the AI economy, and how to claim your place in it. Three short emails a week.</p>
                 <form class="newsletter-form" id="newsletterForm">
                     <div class="form-group">
                         <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
@@ -435,7 +459,7 @@
         <div class="footer-inner">
             <div class="footer-links">
                 <a href="https://drerinjacques.com">Dr. Erin Jacques</a>
-                <a href="https://drerinjacques.com/ai-news">AI News</a>
+                <a href="https://drerinjacques.com/ai-upfront">AI Upfront</a>
                 <a href="https://chatifyit.com">ChatifyIT</a>
                 <a href="https://scholar.google.com/citations?user=3AYqKZMAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Research</a>
             </div>
