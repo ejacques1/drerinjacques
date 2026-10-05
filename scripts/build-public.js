@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 require('./generate-sitemap.js');
+require('./generate-llms.js');
 const root = path.resolve(__dirname, '..');
 const output = path.join(root, 'public');
 fs.rmSync(output, { recursive: true, force: true });
