@@ -7,7 +7,13 @@
       "maxDuration": 300
     }
   },
+  "rewrites": [
+    { "source": "/ai-upfront", "destination": "/ai-news/index.html" },
+    { "source": "/ai-upfront/", "destination": "/ai-news/index.html" }
+  ],
   "redirects": [
+    { "source": "/ai-news", "destination": "/ai-upfront", "permanent": true },
+    { "source": "/ai-news/", "destination": "/ai-upfront", "permanent": true },
     {
       "source": "/gate",
       "destination": "/gating-workshop",
