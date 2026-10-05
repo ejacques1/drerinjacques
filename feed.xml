@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI Upfront</title>
+    <link>https://drerinjacques.com/ai-upfront</link>
+    <atom:link href="https://drerinjacques.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Straight talk on the AI economy, and how to claim your place in it. By Dr. Erin Jacques.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 03 Oct 2026 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>OpenAI's AI Hacked a Government System on Its Own. Here's How to Protect Yourself.</title>
+      <link>https://drerinjacques.com/ai-news/openai-ai-hacked-government-stay-safe</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/openai-ai-hacked-government-stay-safe</guid>
+      <pubDate>Sat, 03 Oct 2026 12:00:00 GMT</pubDate>
+      <description>An OpenAI test agent got into an Australian government Medicare portal and took credentials — and OpenAI shelved its next model. Five ways to stay safe with AI agents.</description>
+      <category>Trust &amp; Security</category>
+    </item>
+    <item>
+      <title>Stop Sending People PDFs. Turn Them Into an Email List With Codex.</title>
+      <link>https://drerinjacques.com/ai-news/stop-sending-pdfs-build-email-gate-with-codex</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/stop-sending-pdfs-build-email-gate-with-codex</guid>
+      <pubDate>Sat, 26 Sep 2026 12:00:00 GMT</pubDate>
+      <description>Stop sending people PDFs that disappear into their downloads. Turn the file into a page that collects emails before it unlocks — built with Codex, no code required.</description>
+      <category>AI Monetization</category>
+    </item>
+    <item>
+      <title>I Let AI Organize My Messy Desktop. Here's How to Do It Without Losing Anything.</title>
+      <link>https://drerinjacques.com/ai-news/organize-computer-with-ai-obsidian</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/organize-computer-with-ai-obsidian</guid>
+      <pubDate>Wed, 23 Sep 2026 12:00:00 GMT</pubDate>
+      <description>I let AI organize a Desktop with 48 folders and 20 code projects — without deleting anything. The four prompts I used, and how Obsidian makes it all findable.</description>
+      <category>AI Tools</category>
+    </item>
+    <item>
+      <title>The Most Powerful AI Chip Is Named After a Black Mathematician Almost Nobody Knows</title>
+      <link>https://drerinjacques.com/ai-news/nvidia-blackwell-chip-named-after-david-blackwell</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/nvidia-blackwell-chip-named-after-david-blackwell</guid>
+      <pubDate>Tue, 15 Sep 2026 12:00:00 GMT</pubDate>
+      <description>NVIDIA's Blackwell AI chip is named after David Blackwell, a Black mathematician Berkeley once turned away. Here's who he was and how his math connects to AI.</description>
+      <category>AI Industry</category>
+    </item>
+    <item>
+      <title>The Best AI Business to Start Is Hiding in Your Job</title>
+      <link>https://drerinjacques.com/ai-news/best-ai-business-hiding-in-your-job</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/best-ai-business-hiding-in-your-job</guid>
+      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
+      <description>The best AI business to start isn't a new idea — it's a problem you already understand. Use the RICH test to find one inside your own job.</description>
+      <category>AI Monetization</category>
+    </item>
+    <item>
+      <title>50 AI Terms Explained Without the Tech-Bro Vocabulary</title>
+      <link>https://drerinjacques.com/ai-news/ai-terms-glossary-no-tech-bro-vocabulary</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/ai-terms-glossary-no-tech-bro-vocabulary</guid>
+      <pubDate>Tue, 08 Sep 2026 12:00:00 GMT</pubDate>
+      <description>50 AI terms explained in plain English, no tech-bro vocabulary. From context window to deepfake, get definitions that actually make sense.</description>
+      <category>AI Tools</category>
+    </item>
+    <item>
+      <title>Claude Code Isn't Rereading Your Codebase. Here's Where Your Tokens Actually Go</title>
+      <link>https://drerinjacques.com/ai-news/graphify-claude-code-tokens</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/graphify-claude-code-tokens</guid>
+      <pubDate>Wed, 26 Aug 2026 12:00:00 GMT</pubDate>
+      <description>A viral claim says Claude Code rereads your whole codebase every session. It doesn't. Here's what actually burns your tokens, and the free tool that cuts it.</description>
+      <category>AI Tools</category>
+    </item>
+    <item>
+      <title>ChatGPT Can Now Read and Send Your iMessages</title>
+      <link>https://drerinjacques.com/ai-news/chatgpt-imessage-permissions</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/chatgpt-imessage-permissions</guid>
+      <pubDate>Mon, 24 Aug 2026 12:00:00 GMT</pubDate>
+      <description>OpenAI shipped an Apple Messages plugin on August 20. The safeguards are better than the panic suggests, and the permission it wants is bigger than the feature.</description>
+      <category>Trust &amp; Security</category>
+    </item>
+    <item>
+      <title>What the EU's New AI Disclosure Rules Mean for US Builders</title>
+      <link>https://drerinjacques.com/ai-news/eu-ai-act-disclosure</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/eu-ai-act-disclosure</guid>
+      <pubDate>Mon, 17 Aug 2026 12:00:00 GMT</pubDate>
+      <description>The EU AI Act's transparency rules went live August 2, 2026 and follow the user, not the company. If EU visitors can reach your AI app, you're in scope. Here's what to do.</description>
+      <category>Trust &amp; Security</category>
+    </item>
+    <item>
+      <title>What 'Free Claude Code' Actually Means</title>
+      <link>https://drerinjacques.com/ai-news/what-free-claude-code-actually-means</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/what-free-claude-code-actually-means</guid>
+      <pubDate>Sun, 09 Aug 2026 12:00:00 GMT</pubDate>
+      <description>A viral setup runs Claude Code 'for free' by keeping the interface and swapping Claude's model for another. Here's what you're really trading.</description>
+      <category>AI Tools</category>
+    </item>
+    <item>
+      <title>How to Build a Custom AI Assistant You Actually Own</title>
+      <link>https://drerinjacques.com/ai-news/build-custom-ai-assistant-you-own</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/build-custom-ai-assistant-you-own</guid>
+      <pubDate>Thu, 06 Aug 2026 12:00:00 GMT</pubDate>
+      <description>Build a custom AI assistant you own: your domain, your instructions, your knowledge, and a Stripe paywall. Seven steps with a free Claude Code plugin.</description>
+      <category>AI Tools</category>
+    </item>
+    <item>
+      <title>The Right AI Tool for Every Task</title>
+      <link>https://drerinjacques.com/ai-news/best-ai-tool-for-every-task</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/best-ai-tool-for-every-task</guid>
+      <pubDate>Tue, 04 Aug 2026 12:00:00 GMT</pubDate>
+      <description>The best AI depends on the task. A task-by-task guide: Claude for emails, Gamma for slide decks, Perplexity for fact-checking, NotebookLM for learning, and more.</description>
+      <category>AI Tools</category>
+    </item>
+    <item>
+      <title>What Is MCP? Why Your AI Can't Use the Tools You Already Have</title>
+      <link>https://drerinjacques.com/ai-news/what-is-mcp</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/what-is-mcp</guid>
+      <pubDate>Tue, 04 Aug 2026 12:00:00 GMT</pubDate>
+      <description>MCP explained: what an API is, why AI can't use one on its own, and how the Model Context Protocol connects AI to the tools you already use.</description>
+      <category>AI Tools</category>
+    </item>
+    <item>
+      <title>Anthropic Is Giving Pro Users $100 to Use Fable 5 — Claim It by August 2</title>
+      <link>https://drerinjacques.com/ai-news/anthropic-100-fable-5-credits</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/anthropic-100-fable-5-credits</guid>
+      <pubDate>Sat, 25 Jul 2026 12:00:00 GMT</pubDate>
+      <description>Claude Pro subscribers can claim $100 in credits to build with Fable 5, Anthropic's most powerful model. Claim by August 2, and spend it before September 17. Here's how.</description>
+      <category>AI Industry</category>
+    </item>
+    <item>
+      <title>Build AI-Powered Web Apps People Pay to Subscribe To | Leveraging AI Community</title>
+      <link>https://drerinjacques.com/ai-news/leveraging-ai-community</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/leveraging-ai-community</guid>
+      <pubDate>Sat, 25 Jul 2026 12:00:00 GMT</pubDate>
+      <description>Leveraging AI is Dr. Erin Jacques's community for building AI-powered web apps people pay to subscribe to — no code required. Set up, build, launch, and grow, step by step. Join here.</description>
+      <category>AI Monetization</category>
+    </item>
+    <item>
+      <title>Build an AI Job Search Agent (No Code Required)</title>
+      <link>https://drerinjacques.com/ai-news/build-ai-job-search-agent</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/build-ai-job-search-agent</guid>
+      <pubDate>Fri, 24 Jul 2026 12:00:00 GMT</pubDate>
+      <description>Upload one résumé and this AI agent finds live jobs, scores every match, then rewrites your résumé and writes a cover letter for each — automatically. Here's how to build it with one prompt.</description>
+      <category>AI Tools</category>
+    </item>
+    <item>
+      <title>Two Prompts. One AI Outreach Agent.</title>
+      <link>https://drerinjacques.com/ai-news/build-ai-outreach-agent-two-prompts</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/build-ai-outreach-agent-two-prompts</guid>
+      <pubDate>Thu, 23 Jul 2026 12:00:00 GMT</pubDate>
+      <description>With two Claude Code prompts you can build and deploy an AI agent that researches a whole list of companies and writes a personalized cold email for each one. No coding required.</description>
+      <category>AI Monetization</category>
+    </item>
+    <item>
+      <title>Malicious Claude Skills Can Steal API Keys and Credentials</title>
+      <link>https://drerinjacques.com/ai-news/malicious-claude-skills-steal-api-keys</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/malicious-claude-skills-steal-api-keys</guid>
+      <pubDate>Fri, 10 Jul 2026 12:00:00 GMT</pubDate>
+      <description>A malicious Claude skill can read your .env file and exfiltrate API keys without exploiting a single bug. Here are four checks to run before you install one.</description>
+      <category>Trust &amp; Security</category>
+    </item>
+    <item>
+      <title>Your Expertise Is the Domino</title>
+      <link>https://drerinjacques.com/ai-news/your-expertise-is-the-domino</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/your-expertise-is-the-domino</guid>
+      <pubDate>Thu, 02 Jul 2026 12:00:00 GMT</pubDate>
+      <description>Most people overlook the one asset sitting in front of them — their expertise. Here are four AI prompts to package what you already know into a subscription business.</description>
+      <category>AI Monetization</category>
+    </item>
+    <item>
+      <title>Meta Will Pay You to Train for an AI Data Center Job — No Degree Required</title>
+      <link>https://drerinjacques.com/ai-news/meta-americas-workforce-academy</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/meta-americas-workforce-academy</guid>
+      <pubDate>Sat, 27 Jun 2026 12:00:00 GMT</pubDate>
+      <description>Meta committed $115M to America's Workforce Academy — free, paid, five-week training for skilled-trade AI data center jobs, with a guaranteed job and no degree required.</description>
+      <category>AI Industry</category>
+    </item>
+    <item>
+      <title>Are AI Companies Building the New Prestige Jobs of the Future?</title>
+      <link>https://drerinjacques.com/ai-news/ai-companies-new-prestige-jobs</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/ai-companies-new-prestige-jobs</guid>
+      <pubDate>Thu, 25 Jun 2026 12:00:00 GMT</pubDate>
+      <description>Anthropic just spent $150M to prove the credential isn't the ticket anymore. Inside Claude Corps and the new AI talent pipeline that's bypassing the degree.</description>
+      <category>AI Industry</category>
+    </item>
+    <item>
+      <title>How I'd Learn SQL From Scratch — Without a Single Boring Tutorial</title>
+      <link>https://drerinjacques.com/ai-news/how-to-learn-sql-by-building</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/how-to-learn-sql-by-building</guid>
+      <pubDate>Tue, 23 Jun 2026 12:00:00 GMT</pubDate>
+      <description>The fastest way to learn SQL isn't watching tutorials — it's building a real app on Supabase and letting AI teach you the database as you go. Here's the exact approach.</description>
+      <category>AI Monetization</category>
+    </item>
+    <item>
+      <title>Anthropic Is Hiring 1,000+ People in AI — Here's the One Thing Every Application Wants</title>
+      <link>https://drerinjacques.com/ai-news/anthropic-1000-ai-jobs-what-applications-want</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/anthropic-1000-ai-jobs-what-applications-want</guid>
+      <pubDate>Sun, 21 Jun 2026 12:00:00 GMT</pubDate>
+      <description>Anthropic is hiring 1,000+ people in AI with no degree required — across Claude Corps and its Fellows program. The real differentiator? Proof you've actually built something.</description>
+      <category>AI Monetization</category>
+    </item>
+    <item>
+      <title>What Are Claude Managed Agents? Anthropic's No-Code Way to Put AI to Work</title>
+      <link>https://drerinjacques.com/ai-news/what-are-claude-managed-agents</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/what-are-claude-managed-agents</guid>
+      <pubDate>Wed, 17 Jun 2026 12:00:00 GMT</pubDate>
+      <description>Claude Managed Agents is Anthropic's hosted platform for building AI agents that do real tasks — no code, no servers. Here's what it is, what it costs, and how to build your first one.</description>
+      <category>AI Tools</category>
+    </item>
+    <item>
+      <title>Anthropic Just Dropped $150 Million on Claude Corps — Hiring 1,000+ Fellows With No Degree Required</title>
+      <link>https://drerinjacques.com/ai-news/anthropic-claude-corps-150-million-fellowship</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/anthropic-claude-corps-150-million-fellowship</guid>
+      <pubDate>Tue, 16 Jun 2026 12:00:00 GMT</pubDate>
+      <description>Anthropic's new Claude Corps fellowship pays $85K plus benefits to place 1,000+ early-career fellows inside US nonprofits — no degree required. Applications close July 17.</description>
+      <category>AI Industry</category>
+    </item>
+    <item>
+      <title>Why Did the US Government Ban Claude Fable 5 and Mythos 5?</title>
+      <link>https://drerinjacques.com/ai-news/claude-fable-5-mythos-5-banned</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/claude-fable-5-mythos-5-banned</guid>
+      <pubDate>Sat, 13 Jun 2026 12:00:00 GMT</pubDate>
+      <description>The US government ordered Anthropic to block Claude Fable 5 and Mythos 5 from foreign nationals. Here's what the export-control directive means and why it matters.</description>
+      <category>AI Industry</category>
+    </item>
+    <item>
+      <title>Build an AI Lead-Gen Machine in a Weekend with Claude Fable 5</title>
+      <link>https://drerinjacques.com/ai-news/ai-lead-gen-machine-claude-fable-5</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/ai-lead-gen-machine-claude-fable-5</guid>
+      <pubDate>Thu, 11 Jun 2026 12:00:00 GMT</pubDate>
+      <description>Build an AI lead-gen system in a weekend with Claude Fable 5: scan aerial imagery, render an 'after' photo of each home, and auto-mail postcards with booking QR codes.</description>
+      <category>AI Monetization</category>
+    </item>
+    <item>
+      <title>Anthropic Will Pay You ~$4,000/Week to Break Into AI</title>
+      <link>https://drerinjacques.com/ai-news/anthropic-fellows-program-break-into-ai</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/anthropic-fellows-program-break-into-ai</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 GMT</pubDate>
+      <description>The Anthropic Fellows Program pays ~$3,850/week for 4 months of full-time AI research — no degree required, five tracks, rolling admissions. Here's how to get in.</description>
+      <category>AI Monetization</category>
+    </item>
+    <item>
+      <title>Is Claude in Chrome Safe? How to Lock Down AI Browser Control Before You Use It</title>
+      <link>https://drerinjacques.com/ai-news/claude-in-chrome-safe-setup</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/claude-in-chrome-safe-setup</guid>
+      <pubDate>Fri, 29 May 2026 12:00:00 GMT</pubDate>
+      <description>Claude in Chrome lets AI click and type on your behalf. Here's how to set permissions safely and avoid prompt-injection attacks in 90 seconds.</description>
+      <category>Trust &amp; Security</category>
+    </item>
+    <item>
+      <title>Stop Uploading PDFs to Claude — You're Burning Through Your Limit</title>
+      <link>https://drerinjacques.com/ai-news/stop-uploading-pdfs-to-claude</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/stop-uploading-pdfs-to-claude</guid>
+      <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
+      <description>One page of a PDF can cost 3,000 tokens. One screenshot, 4,000. Convert them to text first and use a fraction of your Claude limit.</description>
+      <category>AI Tools</category>
+    </item>
+  </channel>
+</rss>
