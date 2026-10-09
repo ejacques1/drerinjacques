@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Protect Your Web App · Leveraging AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1A2E; --navy2:#1a3658; --yellow:#FFD93D; --yellow-dark:#E8C12B;
+    --teal:#0DB4DB; --teal-dark:#0A8FAF; --cream:#FAF6EC; --text:#0B1A2E;
+    --soft:#4A5568; --faint:#718096; --line:#E2E8F0;
+    --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:52px 0;border-top:1px solid var(--line);}
+  section.hero{border-top:none;padding:40px 0 40px;}
+  section.cream{background:var(--cream);border-top:none;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.02em;font-size:1rem;color:var(--navy);}
+  .brand b{color:var(--teal-dark);}
+  .step{color:var(--teal-dark);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;margin-bottom:12px;}
+  h1{font-size:clamp(2.1rem,5.6vw,3.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.07;margin:0 0 16px;color:var(--navy);}
+  .hl{background:linear-gradient(180deg,transparent 58%,rgba(255,217,61,.75) 58%);padding:0 3px;}
+  h2{font-size:clamp(1.6rem,4.2vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin:0 0 14px;color:var(--navy);}
+  h3{font-size:1.25rem;font-weight:800;color:var(--navy);margin:26px 0 8px;}
+  .lead{font-size:clamp(1.18rem,2.6vw,1.5rem);color:var(--navy);font-weight:700;margin:0 0 10px;}
+  p{font-size:clamp(1.06rem,2.2vw,1.24rem);color:var(--soft);margin:0 0 14px;max-width:74ch;}
+  p b{color:var(--navy);}
+  a{color:var(--teal-dark);}
+  .agenda{list-style:none;padding:0;margin:14px 0 0;counter-reset:ag;}
+  .agenda li{position:relative;padding:11px 0 11px 40px;font-size:clamp(1.1rem,2.3vw,1.32rem);color:var(--navy);font-weight:700;border-bottom:1px solid var(--line);}
+  .agenda li:last-child{border-bottom:none;}
+  .agenda li::before{counter-increment:ag;content:counter(ag);position:absolute;left:0;top:12px;width:26px;height:26px;background:var(--yellow);color:var(--navy);border-radius:50%;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .punch{font-size:clamp(1.3rem,3.1vw,1.8rem);font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.22;border-left:5px solid var(--yellow);padding:6px 0 6px 22px;margin:22px 0;}
+  .punch span{color:var(--teal-dark);}
+  .prules{list-style:none;padding:0;margin:14px 0 0;}
+  .prules li{position:relative;padding:12px 0 12px 34px;border-bottom:1px solid var(--line);font-size:clamp(1.05rem,2.2vw,1.26rem);color:var(--soft);}
+  .prules li:last-child{border-bottom:none;}
+  .prules li b{color:var(--navy);}
+  .prules li::before{content:"";position:absolute;left:4px;top:20px;width:11px;height:11px;background:var(--yellow);border-radius:50%;}
+  .steps{list-style:none;padding:0;margin:14px 0 0;counter-reset:st;}
+  .steps li{position:relative;padding:12px 0 12px 44px;border-bottom:1px solid var(--line);font-size:clamp(1.04rem,2.2vw,1.2rem);color:var(--soft);}
+  .steps li:last-child{border-bottom:none;}
+  .steps li b{color:var(--navy);}
+  .steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:12px;width:28px;height:28px;background:var(--navy);color:#fff;border-radius:8px;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0;}
+  .stat{background:#fff;border:2px solid var(--navy);border-radius:16px;padding:18px 20px;}
+  .stat .num{font-size:clamp(2rem,5vw,2.6rem);font-weight:800;color:var(--navy);line-height:1;letter-spacing:-.02em;}
+  .stat .what{font-size:1.02rem;color:var(--soft);margin-top:8px;line-height:1.4;}
+  .stat .src{font-size:.78rem;color:var(--faint);margin-top:8px;}
+  .stat .src a{color:var(--faint);}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px;}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px;}
+  @media(max-width:760px){ .three{grid-template-columns:1fr;} }
+  @media(max-width:640px){ .two{grid-template-columns:1fr;} }
+  .half{background:#fff;border:2px solid var(--navy);border-radius:16px;padding:18px 20px;}
+  .half h3{margin:0 0 6px;color:var(--navy);font-size:1.15rem;font-weight:800;}
+  .half p{font-size:1.02rem;margin:0;}
+  .half .tag{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:6px;}
+  .promptbox{background:var(--navy);border-radius:16px;padding:18px 20px;position:relative;margin:16px 0;}
+  .promptbox .pl2{color:var(--yellow);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
+  .promptbox code{color:#eaf1fb;font-family:var(--mono);font-size:.95rem;line-height:1.55;display:block;white-space:pre-wrap;padding-right:70px;}
+  .copy{position:absolute;top:16px;right:16px;background:var(--yellow);color:var(--navy);border:none;border-radius:8px;padding:7px 13px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .note{background:var(--cream);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:1.05rem;color:var(--navy);font-weight:600;}
+  section.cream .note{background:#fff;}
+  details.tpl{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0;}
+  details.tpl summary{cursor:pointer;font-weight:800;color:var(--navy);font-size:1.08rem;}
+  details.tpl .promptbox{margin-bottom:4px;}
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0;}
+  @media(max-width:760px){ .flow{grid-template-columns:1fr 1fr;} }
+  .flow div{background:#fff;border:2px solid var(--navy);border-radius:14px;padding:14px;font-weight:700;color:var(--navy);font-size:1rem;line-height:1.35;}
+  .flow div small{display:block;color:var(--teal-dark);font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:.7rem;margin-bottom:4px;}
+  .btn{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:800;font-size:1.2rem;text-decoration:none;padding:14px 30px;border-radius:12px;margin-top:12px;box-shadow:0 8px 22px rgba(255,217,61,.4);}
+  .btn.ghost{background:#fff;border:2px solid var(--navy);box-shadow:none;margin-left:8px;}
+  footer{padding:34px 0 60px;color:var(--faint);font-size:.9rem;}
+  .tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:clamp(.98rem,2vw,1.12rem);}
+  .tbl th{background:var(--navy);color:#fff;text-align:left;padding:12px 14px;font-weight:800;}
+  .tbl td{border-bottom:1px solid var(--line);padding:12px 14px;color:var(--soft);vertical-align:top;}
+  .tbl td b{color:var(--navy);}
+  .tbl code,.inl{font-family:var(--mono);background:rgba(13,180,219,.12);color:var(--navy);padding:1px 6px;border-radius:5px;font-size:.92em;}
+  .tree{background:var(--navy);color:#eaf1fb;border-radius:16px;padding:20px 22px;font-family:var(--mono);font-size:clamp(.82rem,1.9vw,.98rem);line-height:1.7;white-space:pre;overflow-x:auto;margin:16px 0;}
+  .tree .c{color:var(--yellow);}
+  .tree .f{color:#7fdcf3;}
+  @media(max-width:640px){ .tbl th,.tbl td{padding:10px 8px;} }
+  .part{display:inline-block;background:var(--navy);color:var(--yellow);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem;padding:6px 12px;border-radius:8px;margin-bottom:14px;}
+  .map{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 0;}
+  @media(max-width:760px){ .map{grid-template-columns:1fr 1fr;} }
+  .map a{display:block;text-decoration:none;background:#fff;border:2px solid var(--navy);border-radius:16px;padding:16px;color:var(--navy);transition:transform .15s,box-shadow .15s;}
+  .map a:hover{transform:translateY(-3px);box-shadow:0 8px 0 var(--yellow);}
+  .map .n{font-size:2rem;font-weight:800;color:var(--teal-dark);line-height:1;}
+  .map .t{font-weight:800;font-size:1.08rem;margin-top:8px;line-height:1.25;}
+  .map .d{font-size:.92rem;color:var(--soft);margin-top:4px;line-height:1.35;}
+  .desk{margin:20px 0 8px;}
+  .bar{display:flex;height:54px;border-radius:12px;overflow:hidden;border:2px solid var(--navy);}
+  .bar div{display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;color:var(--navy);text-align:center;line-height:1.1;padding:0 4px;}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.95rem;color:var(--soft);}
+  .legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c);}
+  .vs{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;margin:18px 0;}
+  .vs .mid{display:flex;align-items:center;font-weight:800;color:var(--teal-dark);font-size:1.3rem;}
+  @media(max-width:640px){ .vs{grid-template-columns:1fr;} .vs .mid{justify-content:center;} }
+  .conn{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0;}
+  @media(max-width:760px){ .conn{grid-template-columns:1fr;} }
+  .conn .half .big{font-size:1.7rem;}
+  .tag.warn{color:#b45309;}
+  .tbl td.y{color:#0A8FAF;font-weight:800;}
+</style>
+</head>
+<body>
+<div style="background:#081d3a;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:11px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);">
+  <a href="/how-ai-works" style="color:#F4B02E;text-decoration:none;font-weight:800;">← Previous</a>
+  <a href="/lives" style="color:#fff;text-decoration:none;font-weight:800;">☰ All Live Sessions</a>
+  <span style="color:#6f83a0;font-weight:700;">Oct 9 · Friday Live</span>
+</div>
+  <div class="wrap"><div class="brand">Dr. Erin Jacques · <b>Friday Live</b></div></div>
+
+  <section class="hero"><div class="wrap">
+    <div class="step">Friday Live · October 9</div>
+    <h1>Protect the web app <span class="hl">you just built</span>.</h1>
+    <p class="lead">Two things that get small businesses sued, one thing that protects your users' data, and the build that fixes each one.</p>
+    <p>AI made it easy to build and launch fast. It did not check whether your tracking pixel fires before someone says yes, or whether a blind person can use your app. Today: what's happening, why it matters, and exactly what to ask your AI to build.</p>
+    <div class="map" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+      <a href="#cookies"><div class="n">1</div><div class="t">Cookies &amp; tracking pixels</div><div class="d">Why tracking is being called wiretapping, and how to fix it</div></a>
+      <a href="#access"><div class="n">2</div><div class="t">Accessibility</div><div class="d">Can everyone use your app? Plus your accessibility statement</div></a>
+      <a href="#rls"><div class="n">3</div><div class="t">Row Level Security</div><div class="d">Who can see the data in your Supabase database</div></a>
+      <a href="#chatifyit"><div class="n">4</div><div class="t">ChatifyIT now has an MCP</div><div class="d">Your AI marketer, plus why you could build one too</div></a>
+    </div>
+    <div class="note">👉 <b>"I'm too small for this to apply to me."</b> Not true. The cookie and accessibility rules have no minimum business size. If your web app is open to the public, they apply to you.</div>
+  </div></section>
+
+  <!-- ================= PART 1: COOKIES ================= -->
+  <section class="cream" id="cookies"><div class="wrap">
+    <div class="part">Part 1</div>
+    <div class="step">Cookies &amp; tracking pixels</div>
+    <h2>First, what's a cookie?</h2>
+    <p>A cookie is a small note a website saves in your browser so it remembers you.</p>
+    <div class="two">
+      <div class="half"><span class="tag">Helpful cookies</span><h3>🛒 Remember you</h3><p>Keep you logged in, keep items in your cart, and remember your language.</p></div>
+      <div class="half"><span class="tag warn">Tracking cookies</span><h3>👀 Follow you</h3><p>Follow what you do so a company can show you ads or measure results, including companies other than the site you're on.</p></div>
+    </div>
+    <h3>What's a cookie banner?</h3>
+    <p>It's the pop-up you see on almost every website, usually at the bottom of the screen:</p>
+    <div class="note" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;">
+      <span style="flex:1 1 260px;">We use cookies to improve your experience.</span>
+      <span style="background:var(--navy);color:#fff;border-radius:8px;padding:6px 14px;font-weight:800;font-size:.95rem;">Accept</span>
+      <span style="background:#fff;border:2px solid var(--navy);border-radius:8px;padding:5px 14px;font-weight:800;font-size:.95rem;">Decline</span>
+      <span style="text-decoration:underline;font-size:.95rem;">Settings</span>
+    </div>
+
+    <h2 style="margin-top:44px;">It started with phone calls.</h2>
+    <p>In <b>1967</b>, California passed the <b>California Invasion of Privacy Act (CIPA)</b> to stop people from secretly tapping phone calls. Someone could literally clip onto the line and listen. The rule: <b>you can't listen in on or record a conversation unless everyone on it agrees.</b></p>
+    <p>That's why calls start with <b>"this call may be recorded."</b> That announcement is how they get your consent.</p>
+    <table class="tbl">
+      <tr><th></th><th>Who has to agree to a recording?</th></tr>
+      <tr><td><b>New York</b> (one-party consent)</td><td>Just one person on the call. That can be you.</td></tr>
+      <tr><td><b>California</b> (all-party consent)</td><td class="y">Everyone on the call.</td></tr>
+    </table>
+    <p>That stricter California rule is why most of these lawsuits are filed there.</p>
+    <div class="two">
+      <div class="half"><span class="tag">Wiretapping</span><h3>📞 What was said</h3><p>Listening to the actual conversation.</p></div>
+      <div class="half"><span class="tag">"Pen register"</span><h3>🔢 Who called whom</h3><p>An old device that recorded which numbers someone dialed and when, without the conversation.</p></div>
+    </div>
+
+    <h3>Now replace the phone call with your website.</h3>
+    <div class="flow">
+      <div><small>The conversation</small>Someone visits your site</div>
+      <div><small>What they "say"</small>Clicks, scrolls, searches, types</div>
+      <div><small>On the line</small>Meta Pixel, Google Analytics, chat &amp; recording tools</div>
+      <div><small>The problem</small>They never agreed to it</div>
+    </div>
+    <p>Lawyers argue that a tracking tool from another company, recording what your visitor does without permission, is <b>a third party listening in</b>. That's the wiretapping argument. Collecting their IP address and device info gets compared to the pen register.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="num">4,300+</div><div class="what">digital wiretapping lawsuits since May 2022, about 75% in California</div><div class="src"><a href="https://kvia.com/?p=1493996">KVIA</a></div></div>
+      <div class="stat"><div class="num">$5,000</div><div class="what">per violation. No proof of harm needed.</div><div class="src"><a href="https://www.goodwinlaw.com/en/insights/publications/2026/09/alerts-technology-cldr-california-curbs-cipa-pen-register-suits">Goodwin</a></div></div>
+      <div class="stat"><div class="num">$10M</div><div class="what">Forbes settlement in 2026. The LA Times paid $3.85M.</div><div class="src"><a href="https://kvia.com/?p=1493996">KVIA</a></div></div>
+    </div>
+    <div class="note">👉 It's about where your <b>visitor</b> is, not where your business is. Your business can be in New York. A Californian visiting your site is enough.</div>
+
+    <h3>"But I have a cookie banner."</h3>
+    <p>So did a lot of the businesses that got sued. <b>A banner is a promise. It doesn't block anything on its own.</b></p>
+    <ul class="prules">
+      <li><b>The millisecond problem:</b> the pixel fires the instant the page loads, before anyone has even seen the banner.</li>
+      <li><b>"Decline" does nothing:</b> the banner isn't connected to the tracking, so it keeps running after someone says no.</li>
+      <li><b>No banner at all.</b></li>
+    </ul>
+  </div></section>
+
+  <section id="pixel"><div class="wrap">
+    <div class="step">So what is a Meta Pixel?</div>
+    <h2>Yes, it's the one that retargets you.</h2>
+    <p>A <b>Meta Pixel</b> is a small piece of Meta's code you add to your site. When someone visits, it reports back to Meta: "this person viewed the pricing page," "this person signed up," "this person bought." It's why you look at something and then see an ad for it on Instagram.</p>
+    <h3>Why you want one as a business owner</h3>
+    <div class="two">
+      <div class="half"><span class="tag">Retargeting</span><h3>🎯 Bring them back</h3><p>Show ads to people who visited but didn't buy. They're your warmest audience.</p></div>
+      <div class="half"><span class="tag">Tracking results</span><h3>📊 Know what's working</h3><p>See which ad led to a sign-up or sale, so you stop paying for the ones that don't.</p></div>
+      <div class="half"><span class="tag">Lookalikes</span><h3>👯 Find more buyers</h3><p>Meta studies the people who bought from you and finds more people like them.</p></div>
+      <div class="half"><span class="tag">Without it</span><h3>🙈 Ads run blind</h3><p>If you plan to run Meta ads, you'll want it.</p></div>
+    </div>
+    <h3>Build a lookalike audience from your buyers</h3>
+    <ol class="steps">
+      <li>Go to <b>Meta Ads Manager</b> (this covers Facebook and Instagram ads).</li>
+      <li>Audiences → <b>Create Audience → Custom Audience → Website</b>.</li>
+      <li>Choose the <b>Purchase</b> event, not just "all visitors." Your pixel has to be set up to report purchases.</li>
+      <li>Create a <b>Lookalike Audience</b> from it. You'll need about 100 people to start.</li>
+      <li><b>No pixel yet?</b> Upload your buyer email list as a Customer List and build the lookalike from that.</li>
+    </ol>
+    <div class="punch">Keep the pixel. <span>Just turn it on after they say yes.</span></div>
+  </div></section>
+
+  <section class="cream" id="fix"><div class="wrap">
+    <div class="step">The fix</div>
+    <h2>It's a build, not just a banner.</h2>
+    <p>Your AI has to change <b>how your site loads tracking</b>. Here's what that build looks like:</p>
+    <ol class="steps">
+      <li><b>Take the pixel out of the page.</b> Right now it probably loads for everyone, automatically.</li>
+      <li><b>Build a real consent banner</b> that remembers the visitor's choice.</li>
+      <li><b>Load the pixel only after they click Accept.</b> If they decline, it never loads.</li>
+      <li><b>Add a "Cookie settings" link</b> in the footer so people can change their mind.</li>
+      <li><b>Do the same for</b> Google Analytics, TikTok, Hotjar, and chat widgets.</li>
+    </ol>
+    <h3>How does the banner remember the choice?</h3>
+    <p>It's connected to your <b>browser</b>. Not your Wi-Fi, and not your IP address (your device's return address on the internet). Your actual browser.</p>
+    <p>Each browser keeps its <b>own separate storage</b>: your passwords, your history, your logins, and your cookie choices. Chrome on your laptop and Safari on your phone don't share any of it.</p>
+    <p>When you click Accept, the site saves a small note in that browser, something like <span class="inl">consent = accepted</span>. Every page checks that note first. Accepted? The pixel loads. Declined or no note? It doesn't.</p>
+    <table class="tbl">
+      <tr><th>If you...</th><th>Does the banner pop up again?</th></tr>
+      <tr><td>Take your laptop to a café (same browser, new Wi-Fi)</td><td class="y">No. Your browser remembers.</td></tr>
+      <tr><td>Switch from Chrome to Safari</td><td><b>Yes.</b> Different browser, nothing saved.</td></tr>
+      <tr><td>Open the site on your phone</td><td><b>Yes.</b> Different device, different browser.</td></tr>
+      <tr><td>Open a private / incognito window</td><td><b>Yes.</b> Private windows start with nothing saved.</td></tr>
+      <tr><td>Clear your cookies</td><td><b>Yes.</b> The note was erased.</td></tr>
+    </table>
+    <div class="note">👉 That one "consent" cookie is allowed without asking, because it's what makes the banner work.</div>
+    <div class="promptbox">
+      <div class="pl2">Paste this into Claude Code</div>
+      <code>Remove the Meta Pixel and any other tracking scripts from loading automatically. Build a cookie consent banner that saves the visitor's choice. Only load tracking scripts after they click Accept. If they decline, never load them. Add a "Cookie settings" link in the footer so they can change their choice. Then tell me how to test it in the browser's Network tab.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+    <h3>Check it yourself</h3>
+    <ol class="steps">
+      <li>Open your site in a <b>private / incognito window</b>.</li>
+      <li>Right-click → <b>Inspect</b> → open the <b>Network</b> tab.</li>
+      <li>Type <span class="inl">facebook</span> in the filter box, then reload the page.</li>
+    </ol>
+    <table class="tbl">
+      <tr><th>What you see</th><th>What it means</th></tr>
+      <tr><td>Requests show up before you click Accept</td><td><b>Still exposed.</b> Run the prompt again.</td></tr>
+      <tr><td>Nothing shows up until you click Accept</td><td class="y">Fixed ✅</td></tr>
+      <tr><td>You click Decline and nothing ever shows up</td><td class="y">Fixed ✅</td></tr>
+    </table>
+  </div></section>
+
+  <!-- ================= PART 2: ACCESSIBILITY ================= -->
+  <section id="access"><div class="wrap">
+    <div class="part">Part 2</div>
+    <div class="step">Accessibility</div>
+    <h2>Can everyone actually use your app?</h2>
+    <p>Businesses get sued under the <b>ADA</b> (the Americans with Disabilities Act) thousands of times a year when people with disabilities can't use their website. Think of someone who is blind using a screen reader that reads the page out loud, or someone who can't use a mouse.</p>
+    <h3>What gets checked</h3>
+    <div class="two">
+      <div class="half"><span class="tag">Images</span><h3>🖼️ Alt text</h3><p>A short description of each image, so a screen reader can say what's there. (Example below.)</p></div>
+      <div class="half"><span class="tag">Keyboard</span><h3>⌨️ No mouse needed</h3><p>Can you reach every button and link using only the Tab key?</p></div>
+      <div class="half"><span class="tag">Color</span><h3>🎨 Contrast</h3><p>Is the text dark or light enough against its background to read?</p></div>
+      <div class="half"><span class="tag">Forms</span><h3>📝 Labels</h3><p>Every field says what it's for, not just a gray hint that disappears.</p></div>
+    </div>
+    <h3>What alt text sounds like</h3>
+    <p>Alt text is a short written description hidden in your site's code. A <b>screen reader</b> (software that reads the page out loud for people who are blind or have low vision) reads it aloud. Picture a photo of you teaching on your laptop:</p>
+    <table class="tbl">
+      <tr><th>Alt text</th><th>What the screen reader says</th></tr>
+      <tr><td>❌ None</td><td>"Image. IMG_4382.jpg"</td></tr>
+      <tr><td>❌ Too vague</td><td>"Photo"</td></tr>
+      <tr><td class="y">✅ Good</td><td>"Dr. Erin Jacques teaching a live class on her laptop"</td></tr>
+    </table>
+    <p><b>Rule of thumb:</b> describe what someone would miss if they couldn't see it. Purely decorative images should be skipped so the screen reader doesn't read out clutter.</p>
+
+    <h3>"But I have the accessibility button."</h3>
+    <div style="display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin:14px 0;">
+      <svg width="96" height="96" viewBox="0 0 96 96" role="img" aria-label="The round accessibility widget icon: a stick figure with arms out">
+        <circle cx="48" cy="48" r="46" fill="#0B66C3"/>
+        <circle cx="48" cy="48" r="38" fill="none" stroke="#fff" stroke-width="3"/>
+        <circle cx="48" cy="25" r="6" fill="#fff"/>
+        <path d="M24 37 L48 41 L72 37" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M48 41 L48 56 M48 56 L39 74 M48 56 L57 74" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <p style="flex:1 1 280px;margin:0;">You've seen this little figure in the corner of websites. Click it and a menu opens: bigger text, more contrast, and so on. <b>It adds a menu on top of your site. It doesn't fix the missing alt text, keyboard problems, or labels underneath.</b></p>
+    </div>
+    <div class="note">👉 <b>Those accessibility widgets don't protect you.</b> In 2025 the FTC fined accessiBe $1M for claiming its widget made sites compliant.</div>
+    <h3>Your accessibility statement</h3>
+    <p>A short page linked in your footer that says:</p>
+    <ul class="prules">
+      <li>You're <b>committed</b> to making your app usable for everyone.</li>
+      <li>The <b>standard</b> you're aiming for: <b>WCAG 2.2 AA</b>.</li>
+      <li>Any <b>known issues</b> you're still working on.</li>
+      <li><b>How to reach you</b> if something doesn't work for them.</li>
+      <li>The <b>date</b> it was last updated.</li>
+    </ul>
+    <div class="promptbox">
+      <div class="pl2">Paste this into Claude Code</div>
+      <code>Audit my web app for accessibility. Check alt text on images, keyboard navigation, color contrast, and form labels. Fix every issue you find, then add an accessibility statement to the footer.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+    <div class="punch">Accessible isn't extra. <span>It's more people who can buy from you.</span></div>
+  </div></section>
+
+  <!-- ================= PART 3: RLS ================= -->
+  <section class="cream" id="rls"><div class="wrap">
+    <div class="part">Part 3</div>
+    <div class="step">Row Level Security (RLS)</div>
+    <h2>Who can see the data in your app?</h2>
+    <p>Your Supabase database is like one big <b>filing cabinet</b> holding every user's information: names, emails, profiles, what they paid for. Each user's information is a <b>row</b>.</p>
+    <p>Here's the part most people don't know: your website has a <b>public key</b> in its code so it can talk to that cabinet. <b>Anyone</b> can find that key. That's normal and by design, as long as the cabinet has locks.</p>
+    <div class="two">
+      <div class="half"><span class="tag warn">Without RLS</span><h3>🔓 No locks</h3><p>Anyone with your public key could read, change, or delete <b>every user's</b> row.</p></div>
+      <div class="half"><span class="tag">With RLS</span><h3>🔐 A lock on every drawer</h3><p>Each user can only open <b>their own</b> rows. Everyone else gets nothing.</p></div>
+    </div>
+    <h3>What RLS prevents</h3>
+    <ul class="prules">
+      <li><b>Data leaks:</b> a stranger downloading your whole list of users and their emails.</li>
+      <li><b>Snooping:</b> one logged-in user seeing another user's information.</li>
+      <li><b>Damage:</b> someone changing or deleting records that aren't theirs.</li>
+    </ul>
+    <div class="stats">
+      <div class="stat"><div class="num">170+</div><div class="what">apps built with Lovable were found leaking user data in 2025 because RLS wasn't set up right</div><div class="src"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-48757">CVE-2025-48757</a></div></div>
+    </div>
+    <div class="note">👉 <b>In our community, we turn RLS on from day one.</b> It's part of how we set up Supabase. If you've added new tables since, check them too.</div>
+    <div class="promptbox">
+      <div class="pl2">Paste this into Claude Code</div>
+      <code>Using the Supabase connector, check every table in my database. Confirm Row Level Security is turned on for each one, and that users can only see and change their own rows. Run Supabase's security advisor too. Explain anything that's wrong in plain language before you change it.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+    <div class="punch">The public key is the front door. <span>RLS is the lock on every drawer.</span></div>
+  </div></section>
+
+  <!-- ================= PART 4: CHATIFYIT ================= -->
+  <section id="chatifyit"><div class="wrap">
+    <div class="part">Part 4</div>
+    <div class="step">ChatifyIT + MCP</div>
+    <h2>Meet <span class="hl">ChatifyIT</span>.</h2>
+    <p class="lead">Your link-in-bio page for everything you sell and share.</p>
+    <p>We build your free AI lead magnet. You add what you sell. One link grows your email list.</p>
+    <h3>Now connected to Claude, it becomes your AI marketer too.</h3>
+    <p>It turns what you build and the videos you post into <b>LinkedIn posts, release announcements, and newsletter emails</b>, in your voice. Nothing posts without your click.</p>
+    <div class="note">👉 <b>What's an MCP?</b> It's what lets Claude use another app for you. You connect it once, and then you just ask.</div>
+    <h3>How to connect ChatifyIT (one time)</h3>
+    <ol class="steps">
+      <li>In Claude, go to <b>Settings → Connectors → Add custom connector</b>.</li>
+      <li>Paste <span class="inl">https://www.chatifyit.com/api/mcp</span> and click <b>Connect</b>.</li>
+      <li>Sign in to ChatifyIT and click <b>Allow</b>.</li>
+    </ol>
+    <div class="punch">I built this MCP in a few hours. <span>If your app does something valuable, you can build one for it too.</span></div>
+    <h3>MCPs real companies have built</h3>
+    <div class="two">
+      <div class="half"><span class="tag">Payments</span><h3>💳 Stripe</h3><p>"Create a payment link for my $47 course." "How many sales did I make this week?"</p></div>
+      <div class="half"><span class="tag">Design</span><h3>🎨 Canva</h3><p>"Make me an Instagram post for my new feature," and the design shows up in your Canva.</p></div>
+      <div class="half"><span class="tag">Store</span><h3>🛍️ Shopify</h3><p>"What were my best-selling products this month?" "Add this new product to my store."</p></div>
+      <div class="half"><span class="tag">Notes</span><h3>📝 Notion</h3><p>"Find my notes from Tuesday's call and turn them into a to-do list."</p></div>
+    </div>
+    <a class="btn" href="https://www.chatifyit.com">Start your free ChatifyIT trial →</a>
+    <p style="margin-top:18px;">Want the full explanation? <a href="/mcp"><b>Understanding MCP →</b></a></p>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <h2>Your homework this week.</h2>
+    <ol class="steps">
+      <li>Do the Network tab check on your own site. Does anything fire before Accept?</li>
+      <li>Run the cookie prompt, then check again.</li>
+      <li>Run the accessibility prompt and add your statement to the footer.</li>
+      <li>Try getting around your app using only the Tab key.</li>
+      <li>Run the RLS prompt and confirm every table is locked.</li>
+      <li>Bonus: connect ChatifyIT to Claude and ask it to write your first post.</li>
+    </ol>
+    <div class="note">This is context to help you build responsibly, not legal advice. If you're running paid ads or collecting sensitive data, talk to a lawyer.</div>
+    <a class="btn" href="https://skool.com/leveragingai/about">Join the community →</a>
+    <p style="margin-top:22px;">Missed a week? <a href="/lives"><b>See all past live sessions →</b></a></p>
+  </div></section>
+
+  <footer><div class="wrap">Dr. Erin Jacques · Friday Live · October 9 · <a href="/lives" style="color:var(--faint);">All live sessions</a></div></footer>
+
+<script>
+  function copyPrompt(btn){
+    var el = btn.parentElement.querySelector('code');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = o; }, 1500);
+    });
+  }
+</script>
+</body>
+</html>
