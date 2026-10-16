@@ -1,9 +1,6 @@
 const isLocal = ['localhost', '127.0.0.1'].includes(location.hostname);
-const demoTestimonials = [
-  {id:'demo-a',name:'Maya Thompson',role:'Consultant',company:'Northstar Strategy',story:'I had ideas everywhere but no clear way to turn them into something useful. After the training, I built my first working AI tool in a weekend and finally understood how all the pieces connected.',recommendation:'Dr. Erin makes technical work feel possible without talking down to you.',rating:5,featured:true,avatarUrl:null,videoUrl:null,trainings:[{name:'Leveraging AI',slug:'leveraging-ai'}]},
-  {id:'demo-b',name:'Jordan Lee',role:'Founder',company:'Bright Path Studio',story:'The step-by-step process helped me stop overthinking and launch the client portal I had postponed for months.',recommendation:'Come ready to build. You will leave with something real.',rating:5,featured:false,avatarUrl:null,videoUrl:null,trainings:[{name:'SaaS Sprint',slug:'saas-sprint'}]},
-  {id:'demo-c',name:'Alexis Carter',role:'Course Creator',company:'',story:'I used the workflow to protect a paid resource and connect it to my checkout. It saved me days of trying to piece together conflicting tutorials.',recommendation:'The explanations are clear, practical, and focused on the result.',rating:null,featured:false,avatarUrl:null,videoUrl:null,trainings:[{name:'Content Gating Workshop',slug:'content-gating'}]}
-];
+// Local preview shows no sample stories. Never add made-up testimonials here.
+const demoTestimonials = [];
 
 const state = { testimonials: [], filter: 'all' };
 const $ = selector => document.querySelector(selector);

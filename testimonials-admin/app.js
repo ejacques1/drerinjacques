@@ -5,12 +5,8 @@ const demoTrainings = [
     {id:'training-saas', name:'SaaS Sprint'},
     {id:'training-gating', name:'Content Gating Workshop'}
 ];
-const demoTestimonials = [
-    {id:'demo-1',status:'pending',featured:false,format:'written',customer_name:'Maya Thompson',customer_email:'maya@example.com',customer_role:'Consultant',customer_company:'Northstar Strategy',story:'I had ideas everywhere but no clear way to turn them into something useful. After the training, I built my first working AI tool in a weekend and finally understood how all the pieces connected.',recommendation:'Dr. Erin makes technical work feel possible without talking down to you.',source_reference:'Leveraging AI',submitted_at:'2026-09-19T14:25:00Z',trainingIds:['training-leveraging-ai'],destinations:[]},
-    {id:'demo-2',status:'approved',featured:true,format:'video',customer_name:'Jordan Lee',customer_email:'jordan@example.com',customer_role:'Founder',customer_company:'Bright Path Studio',story:'The step-by-step process helped me stop overthinking and launch the client portal I had postponed for months.',recommendation:'Come ready to build. You will leave with something real.',source_reference:'SaaS Sprint',submitted_at:'2026-09-17T10:10:00Z',trainingIds:['training-saas'],destinations:[{destination:'homepage',sort_order:1},{destination:'testimonial_wall',sort_order:2},{destination:'training_page',training_id:'training-saas',sort_order:1}]},
-    {id:'demo-3',status:'approved',featured:false,format:'written',customer_name:'Alexis Carter',customer_email:'alexis@example.com',customer_role:'Course Creator',customer_company:'',story:'I used the workflow to protect a paid resource and connect it to my checkout. It saved me days of trying to piece together conflicting tutorials.',recommendation:'The explanations are clear, practical, and focused on the result.',source_reference:'Content Gating Workshop',submitted_at:'2026-09-12T18:45:00Z',trainingIds:['training-gating'],destinations:[{destination:'testimonial_wall',sort_order:3},{destination:'training_page',training_id:'training-gating',sort_order:2}]},
-    {id:'demo-4',status:'hidden',featured:false,format:'written',customer_name:'Taylor Morgan',customer_email:'taylor@example.com',customer_role:'Coach',customer_company:'',story:'This is a shorter draft that I may want to follow up on before publishing.',recommendation:'',source_reference:'',submitted_at:'2026-09-08T09:20:00Z',trainingIds:[],destinations:[]}
-];
+// Local preview shows no sample stories. Never add made-up testimonials here.
+const demoTestimonials = [];
 
 const state = {testimonials:[], trainings:[], selectedId:null, filter:'all', query:'', client:null, token:null};
 const $ = selector => document.querySelector(selector);

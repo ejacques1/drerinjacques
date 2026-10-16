@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Real Proof, Real Protection · Leveraging AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1A2E; --navy2:#1a3658; --yellow:#FFD93D; --yellow-dark:#E8C12B;
+    --teal:#0DB4DB; --teal-dark:#0A8FAF; --cream:#FAF6EC; --text:#0B1A2E;
+    --soft:#4A5568; --faint:#718096; --line:#E2E8F0;
+    --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:52px 0;border-top:1px solid var(--line);}
+  section.hero{border-top:none;padding:40px 0 40px;}
+  section.cream{background:var(--cream);border-top:none;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.02em;font-size:1rem;color:var(--navy);}
+  .brand b{color:var(--teal-dark);}
+  .step{color:var(--teal-dark);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;margin-bottom:12px;}
+  h1{font-size:clamp(2.1rem,5.6vw,3.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.07;margin:0 0 16px;color:var(--navy);}
+  .hl{background:linear-gradient(180deg,transparent 58%,rgba(255,217,61,.75) 58%);padding:0 3px;}
+  h2{font-size:clamp(1.6rem,4.2vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin:0 0 14px;color:var(--navy);}
+  h3{font-size:1.25rem;font-weight:800;color:var(--navy);margin:26px 0 8px;}
+  .lead{font-size:clamp(1.18rem,2.6vw,1.5rem);color:var(--navy);font-weight:700;margin:0 0 10px;}
+  p{font-size:clamp(1.06rem,2.2vw,1.24rem);color:var(--soft);margin:0 0 14px;max-width:74ch;}
+  p b{color:var(--navy);}
+  a{color:var(--teal-dark);}
+  .agenda{list-style:none;padding:0;margin:14px 0 0;counter-reset:ag;}
+  .agenda li{position:relative;padding:11px 0 11px 40px;font-size:clamp(1.1rem,2.3vw,1.32rem);color:var(--navy);font-weight:700;border-bottom:1px solid var(--line);}
+  .agenda li:last-child{border-bottom:none;}
+  .agenda li::before{counter-increment:ag;content:counter(ag);position:absolute;left:0;top:12px;width:26px;height:26px;background:var(--yellow);color:var(--navy);border-radius:50%;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .punch{font-size:clamp(1.3rem,3.1vw,1.8rem);font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.22;border-left:5px solid var(--yellow);padding:6px 0 6px 22px;margin:22px 0;}
+  .punch span{color:var(--teal-dark);}
+  .prules{list-style:none;padding:0;margin:14px 0 0;}
+  .prules li{position:relative;padding:12px 0 12px 34px;border-bottom:1px solid var(--line);font-size:clamp(1.05rem,2.2vw,1.26rem);color:var(--soft);}
+  .prules li:last-child{border-bottom:none;}
+  .prules li b{color:var(--navy);}
+  .prules li::before{content:"";position:absolute;left:4px;top:20px;width:11px;height:11px;background:var(--yellow);border-radius:50%;}
+  .steps{list-style:none;padding:0;margin:14px 0 0;counter-reset:st;}
+  .steps li{position:relative;padding:12px 0 12px 44px;border-bottom:1px solid var(--line);font-size:clamp(1.04rem,2.2vw,1.2rem);color:var(--soft);}
+  .steps li:last-child{border-bottom:none;}
+  .steps li b{color:var(--navy);}
+  .steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:12px;width:28px;height:28px;background:var(--navy);color:#fff;border-radius:8px;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0;}
+  .stat{background:#fff;border:2px solid var(--navy);border-radius:16px;padding:18px 20px;}
+  .stat .num{font-size:clamp(2rem,5vw,2.6rem);font-weight:800;color:var(--navy);line-height:1;letter-spacing:-.02em;}
+  .stat .what{font-size:1.02rem;color:var(--soft);margin-top:8px;line-height:1.4;}
+  .stat .src{font-size:.78rem;color:var(--faint);margin-top:8px;}
+  .stat .src a{color:var(--faint);}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px;}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px;}
+  @media(max-width:760px){ .three{grid-template-columns:1fr;} }
+  @media(max-width:640px){ .two{grid-template-columns:1fr;} }
+  .half{background:#fff;border:2px solid var(--navy);border-radius:16px;padding:18px 20px;}
+  .half h3{margin:0 0 6px;color:var(--navy);font-size:1.15rem;font-weight:800;}
+  .half p{font-size:1.02rem;margin:0;}
+  .half .tag{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:6px;}
+  .promptbox{background:var(--navy);border-radius:16px;padding:18px 20px;position:relative;margin:16px 0;}
+  .promptbox .pl2{color:var(--yellow);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
+  .promptbox code{color:#eaf1fb;font-family:var(--mono);font-size:.95rem;line-height:1.55;display:block;white-space:pre-wrap;padding-right:70px;}
+  .copy{position:absolute;top:16px;right:16px;background:var(--yellow);color:var(--navy);border:none;border-radius:8px;padding:7px 13px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .note{background:var(--cream);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:1.05rem;color:var(--navy);font-weight:600;}
+  section.cream .note{background:#fff;}
+  details.tpl{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0;}
+  details.tpl summary{cursor:pointer;font-weight:800;color:var(--navy);font-size:1.08rem;}
+  details.tpl .promptbox{margin-bottom:4px;}
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0;}
+  @media(max-width:760px){ .flow{grid-template-columns:1fr 1fr;} }
+  .flow div{background:#fff;border:2px solid var(--navy);border-radius:14px;padding:14px;font-weight:700;color:var(--navy);font-size:1rem;line-height:1.35;}
+  .flow div small{display:block;color:var(--teal-dark);font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:.7rem;margin-bottom:4px;}
+  .btn{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:800;font-size:1.2rem;text-decoration:none;padding:14px 30px;border-radius:12px;margin-top:12px;box-shadow:0 8px 22px rgba(255,217,61,.4);}
+  .btn.ghost{background:#fff;border:2px solid var(--navy);box-shadow:none;margin-left:8px;}
+  footer{padding:34px 0 60px;color:var(--faint);font-size:.9rem;}
+  .tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:clamp(.98rem,2vw,1.12rem);}
+  .tbl th{background:var(--navy);color:#fff;text-align:left;padding:12px 14px;font-weight:800;}
+  .tbl td{border-bottom:1px solid var(--line);padding:12px 14px;color:var(--soft);vertical-align:top;}
+  .tbl td b{color:var(--navy);}
+  .tbl code,.inl{font-family:var(--mono);background:rgba(13,180,219,.12);color:var(--navy);padding:1px 6px;border-radius:5px;font-size:.92em;}
+  .tree{background:var(--navy);color:#eaf1fb;border-radius:16px;padding:20px 22px;font-family:var(--mono);font-size:clamp(.82rem,1.9vw,.98rem);line-height:1.7;white-space:pre;overflow-x:auto;margin:16px 0;}
+  .tree .c{color:var(--yellow);}
+  .tree .f{color:#7fdcf3;}
+  @media(max-width:640px){ .tbl th,.tbl td{padding:10px 8px;} }
+  .part{display:inline-block;background:var(--navy);color:var(--yellow);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem;padding:6px 12px;border-radius:8px;margin-bottom:14px;}
+  .map{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 0;}
+  @media(max-width:760px){ .map{grid-template-columns:1fr 1fr;} }
+  .map a{display:block;text-decoration:none;background:#fff;border:2px solid var(--navy);border-radius:16px;padding:16px;color:var(--navy);transition:transform .15s,box-shadow .15s;}
+  .map a:hover{transform:translateY(-3px);box-shadow:0 8px 0 var(--yellow);}
+  .map .n{font-size:2rem;font-weight:800;color:var(--teal-dark);line-height:1;}
+  .map .t{font-weight:800;font-size:1.08rem;margin-top:8px;line-height:1.25;}
+  .map .d{font-size:.92rem;color:var(--soft);margin-top:4px;line-height:1.35;}
+  .desk{margin:20px 0 8px;}
+  .bar{display:flex;height:54px;border-radius:12px;overflow:hidden;border:2px solid var(--navy);}
+  .bar div{display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;color:var(--navy);text-align:center;line-height:1.1;padding:0 4px;}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.95rem;color:var(--soft);}
+  .legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c);}
+  .vs{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;margin:18px 0;}
+  .vs .mid{display:flex;align-items:center;font-weight:800;color:var(--teal-dark);font-size:1.3rem;}
+  @media(max-width:640px){ .vs{grid-template-columns:1fr;} .vs .mid{justify-content:center;} }
+  .conn{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0;}
+  @media(max-width:760px){ .conn{grid-template-columns:1fr;} }
+  .conn .half .big{font-size:1.7rem;}
+  .tag.warn{color:#b45309;}
+  .tbl td.y{color:#0A8FAF;font-weight:800;}
+</style>
+</head>
+<body>
+<div style="background:#081d3a;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:11px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);">
+  <a href="/protect-your-app" style="color:#F4B02E;text-decoration:none;font-weight:800;">← Previous</a>
+  <a href="/lives" style="color:#fff;text-decoration:none;font-weight:800;">☰ All Live Sessions</a>
+  <span style="color:#6f83a0;font-weight:700;">Oct 16 · Friday Live</span>
+</div>
+  <div class="wrap"><div class="brand">Dr. Erin Jacques · <b>Friday Live</b></div></div>
+
+  <section class="hero"><div class="wrap">
+    <div class="step">Friday Live · October 16</div>
+    <h1>Real proof. <span class="hl">Real protection.</span></h1>
+    <p class="lead">Stop faking testimonials, start collecting real ones, and run four checks before your app goes live.</p>
+    <p>Last week we covered cookies and accessibility. This week: the testimonials AI quietly made up for you, how to build a system that collects real ones, and four more things that protect your visitors and your users' data.</p>
+    <div class="map" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+      <a href="#fake"><div class="n">1</div><div class="t">Fake testimonials</div><div class="d">Why AI-written reviews can get you fined</div></a>
+      <a href="#build"><div class="n">2</div><div class="t">Collect real ones</div><div class="d">How I built my own testimonial system</div></a>
+      <a href="#checks"><div class="n">3</div><div class="t">4 checks before launch</div><div class="d">Google Fonts, RLS, rate limiting, consent records</div></a>
+    </div>
+  </div></section>
+
+  <!-- ================= PART 1: FAKE TESTIMONIALS ================= -->
+  <section class="cream" id="fake"><div class="wrap">
+    <div class="part">Part 1</div>
+    <div class="step">Fake testimonials</div>
+    <h2>"Sarah J., Marketing Director ★★★★★"</h2>
+    <p>Ask AI to build a landing page and it will happily fill the testimonial section with glowing reviews from people who don't exist. Placeholder names, five stars, a stock photo. A lot of people launch without ever deleting them.</p>
+    <div class="stats">
+      <div class="stat"><div class="num">Oct 2024</div><div class="what">The FTC's rule banning fake reviews and testimonials took effect, including AI-generated ones</div><div class="src"><a href="https://www.ftc.gov/news-events/news/press-releases/2024/08/federal-trade-commission-announces-final-rule-banning-fake-reviews-testimonials">FTC</a></div></div>
+      <div class="stat"><div class="num">$50,000+</div><div class="what">possible fine per violation</div><div class="src"><a href="https://www.ftc.gov/news-events/news/press-releases/2024/08/federal-trade-commission-announces-final-rule-banning-fake-reviews-testimonials">FTC</a></div></div>
+    </div>
+    <h3>What the rule bans</h3>
+    <ul class="prules">
+      <li><b>Reviews from people who don't exist,</b> including ones AI wrote.</li>
+      <li><b>Reviews from people who never used</b> your product or service.</li>
+      <li><b>Buying reviews,</b> or paying for only positive ones.</li>
+      <li><b>Fake numbers:</b> made-up customer counts, star ratings, or follower counts.</li>
+    </ul>
+    <div class="promptbox">
+      <div class="pl2">Paste this into Claude Code</div>
+      <code>Search my entire web app, every page, component, and data file, for testimonials, reviews, star ratings, customer counts, and customer logos. Remove anything that didn't come from a real customer, and show me what you removed.
+
+Then add this as a permanent rule to my project's rules file (like AGENTS.md or CLAUDE.md):
+Never create or keep fake or placeholder testimonials, reviews, star ratings, customer counts, or customer logos. Only use reviews I provide from real customers. If a section needs reviews and I haven't given any, leave it empty and tell me.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+    <div class="punch">An empty section is better than a fake one. <span>So let's fill it with real ones.</span></div>
+  </div></section>
+
+  <!-- ================= PART 2: BUILD YOUR OWN ================= -->
+  <section id="build"><div class="wrap">
+    <div class="part">Part 2</div>
+    <div class="step">Collect real testimonials</div>
+    <h2>I built my own testimonial system.</h2>
+    <p>I was paying for <b>Senja</b> to collect and display testimonials. So I built my own inside my website, using Claude, Supabase, and Vercel. Now I own the testimonials and the system that collects them.</p>
+    <div class="two">
+      <div class="half"><span class="tag">For your clients</span><h3>📝 Share your story</h3><p>A simple form: star rating, written or video story, optional photo, and permission to publish. No account needed.</p></div>
+      <div class="half"><span class="tag">Just for you</span><h3>🔐 Private dashboard</h3><p>Nothing goes public until you approve it. Choose where each story shows up.</p></div>
+      <div class="half"><span class="tag">For everyone</span><h3>⭐ Wall of Love</h3><p>A public page showing only approved stories. Emails are never shown.</p></div>
+      <div class="half"><span class="tag">Per workshop</span><h3>🔗 One link per offer</h3><p>Each workshop gets its own link, so its stories land on that workshop's page.</p></div>
+    </div>
+
+    <h3>How to build yours</h3>
+    <ol class="steps">
+      <li><b>Save what you already have.</b> If you use a testimonial tool now, export every story, photo, and video <b>before</b> you cancel anything. The testimonials are the valuable part. The tool is just the container.</li>
+      <li><b>Open your project in Claude Code</b> and describe what you want (prompt below). Ask it to match your branding and build on your computer first.</li>
+      <li><b>Set up the database in Supabase,</b> with Row Level Security on, so people's emails and permissions stay private.</li>
+      <li><b>Build the "Share your story" form:</b> rating, story, photo, and a permission checkbox.</li>
+      <li><b>Build your private approval dashboard,</b> protected by a login only you can use.</li>
+      <li><b>Build the public wall</b> that only shows approved stories.</li>
+      <li><b>Test the whole journey:</b> submit a test story, approve it, see it go live, then hide it and make sure it disappears.</li>
+    </ol>
+    <div class="promptbox">
+      <div class="pl2">Paste this into Claude Code</div>
+      <code>Build a testimonial system into my existing website. Match my current branding. Build it locally first.
+
+1. A public "Share your story" page with a 1 to 5 star rating, a written or video testimonial, name, email, role or business, an optional photo, and a required checkbox giving me permission to publish it. Show a thank-you screen after submitting.
+2. Store submissions in Supabase with Row Level Security turned on, so names, emails, and permissions can never be read from the browser. Add a limit on how many times someone can submit, to stop spam.
+3. A private dashboard, protected by a login only I can use, where I approve, hide, or feature each story and choose where it appears.
+4. A public testimonials page that only shows approved stories and never shows anyone's email.
+5. Let me create a separate link for each workshop or offer, so stories are tagged automatically.
+
+Explain each step in plain language before you build it, and walk me through testing the whole journey at the end.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+
+    <h3>Start collecting now. Everywhere.</h3>
+    <p>You don't need something to sell yet. Every time you help someone, ask for their story. You'll want them later.</p>
+    <ul class="prules">
+      <li><b>Your email signature:</b> every email you send becomes an invitation.</li>
+      <li><b>After any project:</b> helped someone build a website or fix a problem? Send the link.</li>
+      <li><b>After every workshop or class:</b> put the link at the end of your slides and in your follow-up email.</li>
+    </ul>
+    <div class="note" style="font-weight:500;">
+      <div style="font-weight:800;margin-bottom:6px;">Example email signature</div>
+      Dr. Erin Jacques · Leveraging AI<br>
+      Worked with me? I'd love to hear how it went → <b>drerinjacques.com/share-your-story</b>
+    </div>
+    <h3>See mine</h3>
+    <a class="btn" href="/testimonials" target="_blank" rel="noopener">My Wall of Love →</a>
+    <a class="btn ghost" href="/share-your-story" target="_blank" rel="noopener">My "Share your story" form →</a>
+    <p style="margin-top:18px;">I used Senja as my example, but it doesn't have to be Senja. It could be any testimonial tool you're paying for, or one you like that does a good job. Study what it does well, then build your own version.</p>
+  </div></section>
+
+  <!-- ================= PART 3: 4 CHECKS ================= -->
+  <section class="cream" id="checks"><div class="wrap">
+    <div class="part">Part 3</div>
+    <div class="step">4 checks before launch</div>
+    <h2>Protect your visitors and your users' data.</h2>
+    <div class="map" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+      <a href="#fonts"><div class="n">A</div><div class="t">Google Fonts</div><div class="d">Your font is phoning Google</div></a>
+      <a href="#rls"><div class="n">B</div><div class="t">Row Level Security</div><div class="d">How strangers read your database</div></a>
+      <a href="#rate"><div class="n">C</div><div class="t">Rate limiting</div><div class="d">Stop bots without locking out people</div></a>
+      <a href="#consent"><div class="n">D</div><div class="t">Consent records</div><div class="d">Proof of every cookie choice</div></a>
+    </div>
+  </div></section>
+
+  <!-- A: GOOGLE FONTS -->
+  <section id="fonts"><div class="wrap">
+    <div class="step">Check A · Google Fonts</div>
+    <h2>Your font is phoning Google.</h2>
+    <p>Most AI-built sites get their fonts from Google with one line of code, hidden in the page:</p>
+    <div class="tree">&lt;link href="<span class="f">https://fonts.googleapis.com/css2?family=DM+Sans</span>" rel="stylesheet"&gt;</div>
+    <p>That line tells every visitor's browser: <b>"Go to Google and get this font."</b></p>
+    <h3>What it looks like (from my own site, which I'm fixing)</h3>
+    <p>When someone opens the page, their browser quietly makes two trips to Google before they've clicked anything:</p>
+    <table class="tbl">
+      <tr><th>Request</th><th>What it is</th></tr>
+      <tr><td><span class="inl">fonts.googleapis.com/css2?family=DM+Sans…</span></td><td>Asks Google for the font instructions</td></tr>
+      <tr><td><span class="inl">fonts.gstatic.com/s/dmsans/…woff2</span></td><td>Downloads the font file from Google</td></tr>
+    </table>
+    <h3>What Google receives with each trip</h3>
+    <ul class="prules">
+      <li>The visitor's <b>IP address</b> (their device's return address on the internet, which can reveal roughly where they are)</li>
+      <li>Their <b>browser and device</b> type</li>
+      <li><b>Which website</b> they're on</li>
+      <li><b>When</b> they visited</li>
+    </ul>
+    <h3>Why that's a problem</h3>
+    <p>Your visitor never agreed to share any of that with Google. In 2022, a German court ruled a website broke Europe's privacy law by doing exactly this, and ordered it to pay the visitor €100. That started a wave of demand letters across Europe. It's the same issue as the pixel: <b>a third party gets your visitor's data without asking.</b></p>
+    <h3>What about the US?</h3>
+    <ul class="prules">
+      <li><b>No US ruling on Google Fonts yet.</b></li>
+      <li><b>But IP addresses do count.</b> California's privacy law lists an IP address as personal information, and so do the privacy laws many other states have passed.</li>
+      <li><b>Remember last week's "pen register"?</b> Lawyers have sued under California's CIPA, arguing that tools quietly collecting visitors' IP addresses are a modern pen register. Courts are split: some threw those cases out, and one in late 2025 let a case move forward.</li>
+    </ul>
+    <h3>See it yourself</h3>
+    <ol class="steps">
+      <li>Open your site, right-click, choose <b>Inspect</b>, and open the <b>Network</b> tab.</li>
+      <li>Type <span class="inl">fonts.g</span> in the filter box, then reload.</li>
+      <li>See <span class="inl">fonts.googleapis.com</span> or <span class="inl">fonts.gstatic.com</span>? Your site is doing this.</li>
+    </ol>
+    <h3>The fix: host the font yourself</h3>
+    <p>Download the font and serve it from your own site. Same look, no trip to Google, and it often loads faster.</p>
+    <div class="promptbox">
+      <div class="pl2">Paste this into Claude Code</div>
+      <code>Find every place my site loads fonts from Google Fonts (fonts.googleapis.com or fonts.gstatic.com). Download those fonts, save them in my project, and load them from my own site instead. Keep the same fonts and weights so nothing looks different. Then show me how to confirm in the Network tab that nothing loads from Google anymore.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+    <div class="punch">Same font. <span>Zero trips to Google.</span></div>
+  </div></section>
+
+  <!-- B: RLS -->
+  <section class="cream" id="rls"><div class="wrap">
+    <div class="step">Check B · Row Level Security</div>
+    <h2>How a stranger reads your database.</h2>
+    <p>Supabase <b>has</b> Row Level Security (RLS), but it's a switch, and it isn't on for every table. Tables made in Supabase's Table Editor usually have it on. <b>Tables your AI creates with code often don't.</b></p>
+    <h3>How someone gets in</h3>
+    <ol class="steps">
+      <li><b>Every Supabase project gets a web address for each table.</b> Ask that address for the "users" table and it answers.</li>
+      <li><b>Your site's code contains your project address and public key,</b> so your app can talk to the database. Anyone can find them: right-click, Inspect, Network tab.</li>
+      <li><b>With RLS off,</b> a stranger pastes that address and key into a simple request and gets <b>every row</b>: names, emails, phone numbers. They can also add, change, or delete rows.</li>
+      <li><b>With RLS on,</b> the same request comes back empty, unless a rule allows it, like "users can only see their own rows."</li>
+    </ol>
+    <div class="two">
+      <div class="half"><span class="tag warn">Without RLS</span><h3>🔓 Everything</h3><p>The stranger's request returns every user's information.</p></div>
+      <div class="half"><span class="tag">With RLS</span><h3>🔐 Nothing</h3><p>The same request returns an empty list, and adding fake data is blocked.</p></div>
+    </div>
+    <div class="note">👉 <b>I tested this on my own testimonial system.</b> Using only my site's public key, reading the testimonials came back empty, and trying to add a fake testimonial was blocked: "new row violates row-level security policy."</div>
+    <div class="stats">
+      <div class="stat"><div class="num">170+</div><div class="what">apps built with Lovable were found leaking user data in 2025 because RLS wasn't set up right</div><div class="src"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-48757">CVE-2025-48757</a></div></div>
+    </div>
+    <div class="promptbox">
+      <div class="pl2">Paste this into Claude Code</div>
+      <code>Using the Supabase connector, check every table in my database. Confirm Row Level Security is turned on for each one, and that users can only see and change their own rows. Run Supabase's security advisor too. Then test it: using only my public key, try to read and add rows the way a stranger would, and show me the results. Explain anything that's wrong in plain language before you change it.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+    <div class="punch">The public key is the front door. <span>RLS is the lock on every drawer.</span></div>
+  </div></section>
+
+  <!-- C: RATE LIMITING -->
+  <section id="rate"><div class="wrap">
+    <div class="step">Check C · Rate limiting</div>
+    <h2>Stop bots without locking out people.</h2>
+    <p><b>Rate limiting</b> is a cap on how many times someone can try something in a set amount of time, like 5 login attempts per minute.</p>
+    <h3>Why you need it</h3>
+    <ul class="prules">
+      <li><b>Password guessing:</b> bots try thousands of password combinations on your login page.</li>
+      <li><b>Spam:</b> bots flood your forms with junk submissions.</li>
+      <li><b>Your bill:</b> bots hammer your AI features and run up your costs.</li>
+    </ul>
+    <p>Supabase limits some things automatically, like login emails. <b>Your own forms and AI features need their own limit.</b> My testimonial form has one.</p>
+    <h3>Nobody has to wait hours</h3>
+    <p>You choose the rules. The common options:</p>
+    <table class="tbl">
+      <tr><th>Option</th><th>How it works</th></tr>
+      <tr><td><b>Short window</b></td><td>"5 tries per minute." After that, wait 60 seconds. Most people never notice.</td></tr>
+      <tr><td><b>Gradual slowdown</b></td><td>Each failed try adds a longer wait: 1 second, then 5, then 30. People barely feel it. Bots slow to a crawl.</td></tr>
+      <tr><td><b>Prove you're human</b></td><td>After a few failed tries, show a "Verify you're human" checkbox instead of blocking.</td></tr>
+      <tr><td><b>Reset by email</b></td><td>Offer "Send me a login link" so a real person is never stuck.</td></tr>
+    </table>
+    <p>Limits reset on their own once the time window passes. Nothing to do manually.</p>
+    <div class="promptbox">
+      <div class="pl2">Paste this into Claude Code</div>
+      <code>Add rate limiting to my web app. Cover login, sign-up, password reset, every form, and any feature that calls an AI or other paid service. Use short time windows (like 5 tries per minute) so real people are never locked out for long. After repeated failed logins, show a "verify you're human" check and offer a login link by email. Explain the limits you chose in plain language, then show me how to test that they work.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+    <div class="punch">Small enough that people never hit it. <span>Strict enough that bots hit it right away.</span></div>
+  </div></section>
+
+  <!-- D: CONSENT RECORDS -->
+  <section class="cream" id="consent"><div class="wrap">
+    <div class="step">Check D · Consent records</div>
+    <h2>Save a record of every cookie choice.</h2>
+    <p><b>Last week:</b> your cookie banner asks before tracking anyone. <b>This week:</b> keep proof of the answer.</p>
+    <h3>Why it matters</h3>
+    <ul class="prules">
+      <li><b>In Europe,</b> privacy law (GDPR) requires you to be able to <b>prove</b> someone agreed.</li>
+      <li><b>In the US,</b> there isn't a strict rule for small sites, but if someone ever claims your pixel tracked them without permission, <b>this record is your proof.</b></li>
+    </ul>
+    <h3>Where it's kept</h3>
+    <p>In your database (Supabase), in its own table. One row per choice:</p>
+    <table class="tbl">
+      <tr><th>What's saved</th><th>Example</th></tr>
+      <tr><td>A random ID for that browser</td><td><span class="inl">a7f3-29c1</span></td></tr>
+      <tr><td>What they chose</td><td>Accepted</td></tr>
+      <tr><td>When</td><td>Oct 16, 2026, 2:14 PM</td></tr>
+      <tr><td>Which banner version they saw</td><td>v2</td></tr>
+    </table>
+    <h3>How the random ID protects you</h3>
+    <p>That same random ID is also saved in the visitor's browser cookie. If anyone claims they were tracked without permission, you can match the ID in their browser to your record showing that browser clicked Accept on a specific date, without ever storing who they are.</p>
+    <h3>Why not save their name or IP address?</h3>
+    <p>Your record has to prove a choice was made, not who made it. An IP address counts as personal data, so storing it means more to protect, more to disclose in your privacy policy, and more to delete if someone asks. If your database ever leaked, a list of random IDs exposes nobody.</p>
+    <ul class="prules"><li><b>Logged-in users?</b> Attach the record to their account ID instead.</li></ul>
+    <div class="promptbox">
+      <div class="pl2">Paste this into Claude Code</div>
+      <code>Add a consent record to my cookie banner. When a visitor clicks Accept or Decline, create a random ID, save it in their browser cookie, and save a record in a new Supabase table with that ID, their choice, the date and time, and the banner version. Don't store their name or IP address. If they're logged in, link the record to their account ID. Turn on Row Level Security so no one can read these records from the browser. Then show me how to check that a record was saved.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+    <div class="punch">Store what proves it, <span>and nothing more.</span></div>
+  </div></section>
+
+  <section><div class="wrap">
+    <h2>What's next: one tool that checks it all.</h2>
+    <p>I'm building a tool that checks your site for all of these at once: tracking that fires too early, Google Fonts, missing accessibility basics, and more. As I build it and fix my own platform, I'll keep you in the loop.</p>
+    <h2 style="margin-top:36px;">Your homework this week.</h2>
+    <ol class="steps">
+      <li>Run the fake testimonials prompt and add the rule to your CLAUDE.md or AGENTS.md.</li>
+      <li>Start collecting real testimonials: add a link to your email signature today.</li>
+      <li>Do the Network tab check for <span class="inl">fonts.g</span> on your site.</li>
+      <li>Run the RLS prompt and confirm a stranger gets nothing.</li>
+      <li>Bonus: add rate limiting and consent records.</li>
+    </ol>
+    <div class="note">This is context to help you build responsibly, not legal advice. If you're collecting sensitive data or running paid ads, talk to a lawyer.</div>
+    <a class="btn" href="https://skool.com/leveragingai/about">Join the community →</a>
+    <p style="margin-top:22px;">Missed a week? <a href="/lives"><b>See all past live sessions →</b></a></p>
+  </div></section>
+
+  <footer><div class="wrap">Dr. Erin Jacques · Friday Live · October 16 · <a href="/lives" style="color:var(--faint);">All live sessions</a></div></footer>
+
+<script>
+  function copyPrompt(btn){
+    var el = btn.parentElement.querySelector('code');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = o; }, 1500);
+    });
+  }
+</script>
+</body>
+</html>
