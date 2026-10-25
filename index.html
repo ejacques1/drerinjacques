@@ -82,6 +82,8 @@
         .header-nav a:hover { color: var(--navy); }
         .header-nav a.cta { background: var(--navy); color: #fff; padding: 9px 16px; border-radius: 8px; font-weight: 700; }
         .header-nav a.cta:hover { background: var(--navy-2); color: #fff; }
+        .header-nav a.cta.cta-chatify { background: var(--teal); color: #fff; }
+        .header-nav a.cta.cta-chatify:hover { background: var(--teal-dark); color: #fff; }
         .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 1001; }
         .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.3s ease; }
         .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -889,7 +891,7 @@
                 <a href="/leveraging-ai/">Work With Me</a>
                 <a href="/ai-news/">AI News</a>
                 <a href="#speaking">Speaking</a>
-                <a href="https://www.skool.com/leveragingai/about" class="cta" target="_blank" rel="noopener">Join Leveraging AI</a>
+                <a href="https://www.chatifyit.com" class="cta cta-chatify" target="_blank" rel="noopener">ChatifyIT &rarr;</a>
             </nav>
             <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
@@ -902,7 +904,7 @@
         <a href="/leveraging-ai/" onclick="closeMobileNav()">Work With Me</a>
         <a href="/ai-news/" onclick="closeMobileNav()">AI News</a>
         <a href="#speaking" onclick="closeMobileNav()">Speaking</a>
-        <a href="https://www.skool.com/leveragingai/about" target="_blank" rel="noopener" onclick="closeMobileNav()">Join Leveraging AI</a>
+        <a href="https://www.chatifyit.com" target="_blank" rel="noopener" onclick="closeMobileNav()">ChatifyIT &rarr;</a>
     </div>
 
     <!-- ============ HERO ============ -->
