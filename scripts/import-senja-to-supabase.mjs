@@ -30,6 +30,10 @@ function stableUuid(seed){
 }
 
 const normalize=value=>(value||'').trim().replace(/\s+/g,' ').toLowerCase();
+const plainText=value=>(value||'')
+  .replace(/<br\s*\/?\s*>/gi,'\n').replace(/<\/p\s*>/gi,'\n').replace(/<[^>]+>/g,'')
+  .replace(/&nbsp;/gi,' ').replace(/&amp;/gi,'&').replace(/&quot;/gi,'"').replace(/&#(?:39|x27);/gi,"'").replace(/&lt;/gi,'<').replace(/&gt;/gi,'>')
+  .replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim();
 const reviewKey=review=>[normalize(review.customer_name),review.type,review.date].join('|');
 const rowKey=row=>[normalize(row.customer_name),row.type,row.date].join('|');
 const safeSegment=value=>normalize(value).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,80)||'testimonial';
@@ -106,8 +110,8 @@ async function main(){
     records.push({
       id,format:row.type==='video'?'video':'written',status:isPublic?'approved':'pending',customer_name:row.customer_name.trim()||'Anonymous',
       customer_email:row.customer_email.trim()||`senja-${id}@archive.invalid`,customer_role:row.customer_tagline.trim()||null,customer_company:row.customer_company.trim()||null,
-      story:row.text.trim()||row.title.trim()||'Video testimonial',recommendation:null,rating:Number(row.rating)||null,photo_path:photoPath,video_path:videoPath,
-      transcript:row.type==='video'&&row.text.trim()?row.text.trim():null,source:'senja_import',source_reference:`Senja archive · ${id}`,language:'en',featured:false,
+      story:plainText(row.text)||plainText(row.title)||'Video testimonial',recommendation:null,rating:Number(row.rating)||null,photo_path:photoPath,video_path:videoPath,
+      transcript:row.type==='video'&&plainText(row.text)?plainText(row.text):null,source:'senja_import',source_reference:`Senja archive · ${id}`,language:'en',featured:false,
       consent_granted:true,consent_version:'senja-archive-2026-10-24',consented_at:row.date||null,submitted_at:row.date||new Date().toISOString(),approved_at:isPublic?(row.date||new Date().toISOString()):null
     });
     if(wallReview){
