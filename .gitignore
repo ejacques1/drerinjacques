@@ -2,3 +2,7 @@
 .env*
 public/
 node_modules/
+__pycache__/
+
+# Local archives can contain customer data and large media files.
+.project-notes/senja-backup-*/

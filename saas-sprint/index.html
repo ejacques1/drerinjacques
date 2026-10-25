@@ -1562,11 +1562,7 @@
             <span class="vt-eyebrow">Proof</span>
             <h2 class="vt-title">What People Are Saying About <span class="accent">Working With Dr. Erin.</span></h2>
         </div>
-        <div class="vt-widget" id="senjaVideoWidget">
-            <!-- Senja video testimonials widget (shadow DOM mode — styles stay isolated from page CSS) -->
-            <script src="https://widget.senja.io/widget/aefb05ed-5b42-43ba-a2bb-f6a17deb6df1/platform.js" type="text/javascript" async></script>
-            <div class="senja-embed" data-id="aefb05ed-5b42-43ba-a2bb-f6a17deb6df1" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
-        </div>
+        <div class="vt-widget testimonial-widget" data-destination="sales_page" data-page="saas-sprint" data-format="video" data-layout="carousel" data-limit="12"></div>
     </section>
 
     <!-- ============ REFRAME ============ -->
@@ -2118,11 +2114,7 @@
             <span class="cw-eyebrow">More From The Community</span>
             <h2 class="cw-title">Wall of <span class="accent">Wins.</span></h2>
         </div>
-        <div class="cw-widget">
-            <!-- Senja written testimonials Wall of Love (shadow DOM keeps Senja styles isolated) -->
-            <script src="https://widget.senja.io/widget/7b98730e-c5f3-4579-99d1-b9e1ceff3467/platform.js" type="text/javascript" async></script>
-            <div class="senja-embed" data-id="7b98730e-c5f3-4579-99d1-b9e1ceff3467" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
-        </div>
+        <div class="cw-widget testimonial-widget" data-destination="sales_page" data-page="saas-sprint" data-format="written" data-layout="grid" data-limit="28"></div>
     </section>
 
     <!-- ============ FOOTER ============ -->
@@ -2136,6 +2128,7 @@
         <a href="https://buy.stripe.com/dRmfZjaYOc1edq81bFbfO03" class="cta-primary">Claim Your Spot — $2,600</a>
     </div>
 
+    <script src="/testimonial-widgets/widget.js" defer></script>
     <script>
         function toggleMobileNav() {
             const nav = document.getElementById('mobileNav');

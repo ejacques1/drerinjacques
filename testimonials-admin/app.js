@@ -82,6 +82,7 @@ function render() {
     $('#featuredCount').textContent=state.testimonials.filter(item=>item.featured).length;
     $('#totalCount').textContent=state.testimonials.length;
     $('#resultCount').textContent=`${items.length} ${items.length===1?'story':'stories'}`;
+    renderDisplayCards();
     $('#emptyState').hidden=items.length>0;
     $('#testimonialList').innerHTML=items.map(item=>{
         const date=new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric'}).format(new Date(item.submitted_at));
@@ -103,6 +104,19 @@ function render() {
     });
     $$('.testimonial-item').forEach(button=>button.addEventListener('click',()=>selectTestimonial(button.dataset.id)));
     if (state.selectedId && !state.testimonials.some(item=>item.id===state.selectedId)) closeEditor();
+}
+
+function renderDisplayCards() {
+    const displays=[
+        {name:'Homepage community',description:'Grid below the main homepage proof section.',href:'/#stories',match:d=>d.destination==='homepage'},
+        {name:'Full testimonial wall',description:'All approved public stories with training filters.',href:'/testimonials/',match:d=>d.destination==='testimonial_wall'},
+        {name:'SaaS Sprint videos',description:'Scrollable video proof on the SaaS Sprint page.',href:'/saas-sprint/',match:d=>d.destination==='sales_page'&&d.page_slug==='saas-sprint',format:'video'},
+        {name:'SaaS Sprint written wall',description:'Written proof near the bottom of the sales page.',href:'/saas-sprint/',match:d=>d.destination==='sales_page'&&d.page_slug==='saas-sprint',format:'written'}
+    ];
+    $('#displayCards').innerHTML=displays.map(display=>{
+        const count=state.testimonials.filter(item=>item.status==='approved'&&(!display.format||item.format===display.format)&&(item.destinations||item.testimonial_destinations||[]).some(display.match)).length;
+        return `<article class="display-card"><div><span>${count} ${count===1?'story':'stories'}</span><h3>${escapeHtml(display.name)}</h3><p>${escapeHtml(display.description)}</p></div><a href="${escapeHtml(display.href)}" target="_blank">Preview ↗</a></article>`;
+    }).join('');
 }
 
 function selectTestimonial(id) {

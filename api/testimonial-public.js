@@ -2,6 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 import { createHash } from 'node:crypto';
 
 const VALID_DESTINATIONS = new Set(['homepage', 'testimonial_wall', 'training_page', 'sales_page']);
+const VALID_FORMATS = new Set(['written', 'video', 'image']);
 
 function clean(value, max = 160) {
   return typeof value === 'string' ? value.trim().slice(0, max) : '';
@@ -31,9 +32,13 @@ export default async function handler(req, res) {
   const destination = clean(req.query?.destination, 40) || 'testimonial_wall';
   const training = clean(req.query?.training, 120).toLowerCase();
   const page = clean(req.query?.page, 160).replace(/^\/+|\/+$/g, '');
+  const format = clean(req.query?.format, 20).toLowerCase();
+  const requestedLimit = Number.parseInt(req.query?.limit, 10);
+  const limit = Number.isFinite(requestedLimit) ? Math.min(Math.max(requestedLimit, 1), 120) : 120;
   if (!VALID_DESTINATIONS.has(destination)) return res.status(400).json({ error: 'Invalid testimonial destination.' });
   if (destination === 'training_page' && !training) return res.status(400).json({ error: 'A training slug is required.' });
   if (destination === 'sales_page' && !page) return res.status(400).json({ error: 'A page slug is required.' });
+  if (format && !VALID_FORMATS.has(format)) return res.status(400).json({ error: 'Invalid testimonial format.' });
 
   try {
     const admin = getAdmin();
@@ -54,10 +59,11 @@ export default async function handler(req, res) {
       .eq('status', 'approved')
       .eq('consent_granted', true)
       .eq('testimonial_destinations.destination', destination)
-      .limit(120);
+      .limit(limit);
 
     if (trainingId) query = query.eq('testimonial_destinations.training_id', trainingId);
     if (page) query = query.eq('testimonial_destinations.page_slug', page);
+    if (format) query = query.eq('format', format);
 
     const { data, error } = await query;
     if (error) throw error;
