@@ -110,8 +110,8 @@ function renderDisplayCards() {
     const displays=[
         {name:'Homepage community',description:'Grid below the main homepage proof section.',href:'/#stories',match:d=>d.destination==='homepage'},
         {name:'Full testimonial wall',description:'All approved public stories with training filters.',href:'/testimonials/',match:d=>d.destination==='testimonial_wall'},
-        {name:'SaaS Sprint videos',description:'Scrollable video proof on the SaaS Sprint page.',href:'/saas-sprint/',match:d=>d.destination==='sales_page'&&d.page_slug==='saas-sprint',format:'video'},
-        {name:'SaaS Sprint written wall',description:'Written proof near the bottom of the sales page.',href:'/saas-sprint/',match:d=>d.destination==='sales_page'&&d.page_slug==='saas-sprint',format:'written'}
+        {name:'SaaS Sprint carousel',description:'The exact 7-card proof carousel from the former Senja widget.',href:'/saas-sprint/',match:d=>d.destination==='sales_page'&&d.page_slug==='saas-sprint-video'},
+        {name:'SaaS Sprint written wall',description:'The exact 28-story wall near the bottom of the sales page.',href:'/saas-sprint/',match:d=>d.destination==='sales_page'&&d.page_slug==='saas-sprint-wall'}
     ];
     $('#displayCards').innerHTML=displays.map(display=>{
         const count=state.testimonials.filter(item=>item.status==='approved'&&(!display.format||item.format===display.format)&&(item.destinations||item.testimonial_destinations||[]).some(display.match)).length;

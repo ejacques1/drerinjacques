@@ -113,11 +113,11 @@ async function main(){
     if(wallReview){
       const order=wall.findIndex(review=>review.id===wallReview.id)+1;
       for(const destination of ['homepage','testimonial_wall']) destinations.push({testimonial_id:id,destination,training_id:null,page_slug:null,sort_order:order});
-      destinations.push({testimonial_id:id,destination:'sales_page',training_id:null,page_slug:'saas-sprint',sort_order:order});
+      destinations.push({testimonial_id:id,destination:'sales_page',training_id:null,page_slug:'saas-sprint-wall',sort_order:order});
     }
     if(videoReview){
       const order=video.findIndex(review=>review.id===videoReview.id)+1;
-      destinations.push({testimonial_id:id,destination:'sales_page',training_id:null,page_slug:'saas-sprint',sort_order:order});
+      destinations.push({testimonial_id:id,destination:'sales_page',training_id:null,page_slug:'saas-sprint-video',sort_order:order});
     }
   }
 
