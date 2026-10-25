@@ -6,7 +6,87 @@
     <atom:link href="https://drerinjacques.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Straight talk on the AI economy, and how to claim your place in it. By Dr. Erin Jacques.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Oct 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>AI Will Make the Economy Richer by 2030, but Not Your Paycheck</title>
+      <link>https://drerinjacques.com/ai-news/ai-economy-2030-paychecks-anthropic-scenarios</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/ai-economy-2030-paychecks-anthropic-scenarios</guid>
+      <pubDate>Sat, 24 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Anthropic modeled three futures for 2030. The economy grows in all three, but workers get a smaller share. Who comes out ahead, and how to become an owner.</description>
+      <category>AI Industry</category>
+    </item>
+    <item>
+      <title>Built an App With Claude Code? Here's How to Announce Every Feature on LinkedIn and Email</title>
+      <link>https://drerinjacques.com/ai-news/announce-app-features-claude-code-linkedin-email</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/announce-app-features-claude-code-linkedin-email</guid>
+      <pubDate>Wed, 21 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Your app is live but nobody knows it exists. Turn your last five updates into LinkedIn posts and emails with Claude Code, plus the prompt to do it.</description>
+      <category>AI Monetization</category>
+    </item>
+    <item>
+      <title>Should You Be Nice to AI? Research Shows Stress Makes It Perform Worse</title>
+      <link>https://drerinjacques.com/ai-news/be-nice-to-ai-anxiety-research</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/be-nice-to-ai-anxiety-research</guid>
+      <pubDate>Sun, 18 Oct 2026 12:00:00 GMT</pubDate>
+      <description>ChatGPT's anxiety score doubled after traumatic stories, and Claude cheats more when desperate. What the research shows, plus 5 ways to get better AI results.</description>
+      <category>AI Tools</category>
+    </item>
+    <item>
+      <title>Meta's Muse vs. OpenAI's Dots: Which Always-On AI Agent Should You Use?</title>
+      <link>https://drerinjacques.com/ai-news/meta-muse-vs-openai-dots</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/meta-muse-vs-openai-dots</guid>
+      <pubDate>Sat, 17 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Meta's Muse and OpenAI's Dots are always-on AI agents with their own cloud computers. Compare price, access and setup, and see which one to use.</description>
+      <category>AI Tools</category>
+    </item>
+    <item>
+      <title>Your AI-Built Login Page Is the Easiest Way Into Your App. Add This Before You Launch.</title>
+      <link>https://drerinjacques.com/ai-news/ai-built-login-page-rate-limiting</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/ai-built-login-page-rate-limiting</guid>
+      <pubDate>Fri, 16 Oct 2026 12:00:00 GMT</pubDate>
+      <description>AI-built login pages often let bots guess passwords nonstop. Learn what rate limiting is and get a copy-paste prompt to add it before you launch.</description>
+      <category>Trust &amp; Security</category>
+    </item>
+    <item>
+      <title>Your Vibe-Coded Web App's Login Page Isn't Protecting Your Users' Data</title>
+      <link>https://drerinjacques.com/ai-news/vibe-coded-app-row-level-security</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/vibe-coded-app-row-level-security</guid>
+      <pubDate>Fri, 16 Oct 2026 12:00:00 GMT</pubDate>
+      <description>If AI built your app on Supabase, one setting decides whether strangers can read your users' data. How to check it, plus the prompt that turns it on.</description>
+      <category>Trust &amp; Security</category>
+    </item>
+    <item>
+      <title>AI Wrote Fake Reviews for Your Web App. The FTC Can Fine You $53,088 for Each One.</title>
+      <link>https://drerinjacques.com/ai-news/fake-reviews-ftc-ai-web-app</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/fake-reviews-ftc-ai-web-app</guid>
+      <pubDate>Tue, 13 Oct 2026 12:00:00 GMT</pubDate>
+      <description>AI often fills new web apps with made-up reviews. A federal rule bans fake and AI-written reviews. Here's how to find them, even hidden ones, and fix it.</description>
+      <category>Trust &amp; Security</category>
+    </item>
+    <item>
+      <title>Can a Blind Person Use Your Web App? If Not, You Can Get Sued.</title>
+      <link>https://drerinjacques.com/ai-news/web-app-accessibility-lawsuits</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/web-app-accessibility-lawsuits</guid>
+      <pubDate>Sat, 10 Oct 2026 12:00:00 GMT</pubDate>
+      <description>If a blind person can't use your web app, you can get sued, and that little accessibility icon won't protect you. Here's the 10-minute check.</description>
+      <category>Trust &amp; Security</category>
+    </item>
+    <item>
+      <title>Amazon Blocked Meta's Muse. Use This Prompt So AI Shoppers Can Find You.</title>
+      <link>https://drerinjacques.com/ai-news/amazon-blocks-meta-muse-ai-shopping</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/amazon-blocks-meta-muse-ai-shopping</guid>
+      <pubDate>Fri, 09 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Amazon blocked Meta's Muse AI agent from shopping its store. What it means if you sell online, plus a prompt to make your offer easy for AI to buy.</description>
+      <category>AI Monetization</category>
+    </item>
+    <item>
+      <title>Your Cookie Banner Won't Protect You If Your Tracking Pixel Fires First</title>
+      <link>https://drerinjacques.com/ai-news/cookie-banner-tracking-pixel-lawsuits</link>
+      <guid isPermaLink="true">https://drerinjacques.com/ai-news/cookie-banner-tracking-pixel-lawsuits</guid>
+      <pubDate>Wed, 07 Oct 2026 12:00:00 GMT</pubDate>
+      <description>If your web app's Meta, Google or TikTok pixel loads before visitors click accept, a cookie banner won't protect you. Here's the 2-minute check.</description>
+      <category>Trust &amp; Security</category>
+    </item>
     <item>
       <title>OpenAI's AI Hacked a Government System on Its Own. Here's How to Protect Yourself.</title>
       <link>https://drerinjacques.com/ai-news/openai-ai-hacked-government-stay-safe</link>
@@ -166,86 +246,6 @@
       <pubDate>Sat, 27 Jun 2026 12:00:00 GMT</pubDate>
       <description>Meta committed $115M to America's Workforce Academy — free, paid, five-week training for skilled-trade AI data center jobs, with a guaranteed job and no degree required.</description>
       <category>AI Industry</category>
-    </item>
-    <item>
-      <title>Are AI Companies Building the New Prestige Jobs of the Future?</title>
-      <link>https://drerinjacques.com/ai-news/ai-companies-new-prestige-jobs</link>
-      <guid isPermaLink="true">https://drerinjacques.com/ai-news/ai-companies-new-prestige-jobs</guid>
-      <pubDate>Thu, 25 Jun 2026 12:00:00 GMT</pubDate>
-      <description>Anthropic just spent $150M to prove the credential isn't the ticket anymore. Inside Claude Corps and the new AI talent pipeline that's bypassing the degree.</description>
-      <category>AI Industry</category>
-    </item>
-    <item>
-      <title>How I'd Learn SQL From Scratch — Without a Single Boring Tutorial</title>
-      <link>https://drerinjacques.com/ai-news/how-to-learn-sql-by-building</link>
-      <guid isPermaLink="true">https://drerinjacques.com/ai-news/how-to-learn-sql-by-building</guid>
-      <pubDate>Tue, 23 Jun 2026 12:00:00 GMT</pubDate>
-      <description>The fastest way to learn SQL isn't watching tutorials — it's building a real app on Supabase and letting AI teach you the database as you go. Here's the exact approach.</description>
-      <category>AI Monetization</category>
-    </item>
-    <item>
-      <title>Anthropic Is Hiring 1,000+ People in AI — Here's the One Thing Every Application Wants</title>
-      <link>https://drerinjacques.com/ai-news/anthropic-1000-ai-jobs-what-applications-want</link>
-      <guid isPermaLink="true">https://drerinjacques.com/ai-news/anthropic-1000-ai-jobs-what-applications-want</guid>
-      <pubDate>Sun, 21 Jun 2026 12:00:00 GMT</pubDate>
-      <description>Anthropic is hiring 1,000+ people in AI with no degree required — across Claude Corps and its Fellows program. The real differentiator? Proof you've actually built something.</description>
-      <category>AI Monetization</category>
-    </item>
-    <item>
-      <title>What Are Claude Managed Agents? Anthropic's No-Code Way to Put AI to Work</title>
-      <link>https://drerinjacques.com/ai-news/what-are-claude-managed-agents</link>
-      <guid isPermaLink="true">https://drerinjacques.com/ai-news/what-are-claude-managed-agents</guid>
-      <pubDate>Wed, 17 Jun 2026 12:00:00 GMT</pubDate>
-      <description>Claude Managed Agents is Anthropic's hosted platform for building AI agents that do real tasks — no code, no servers. Here's what it is, what it costs, and how to build your first one.</description>
-      <category>AI Tools</category>
-    </item>
-    <item>
-      <title>Anthropic Just Dropped $150 Million on Claude Corps — Hiring 1,000+ Fellows With No Degree Required</title>
-      <link>https://drerinjacques.com/ai-news/anthropic-claude-corps-150-million-fellowship</link>
-      <guid isPermaLink="true">https://drerinjacques.com/ai-news/anthropic-claude-corps-150-million-fellowship</guid>
-      <pubDate>Tue, 16 Jun 2026 12:00:00 GMT</pubDate>
-      <description>Anthropic's new Claude Corps fellowship pays $85K plus benefits to place 1,000+ early-career fellows inside US nonprofits — no degree required. Applications close July 17.</description>
-      <category>AI Industry</category>
-    </item>
-    <item>
-      <title>Why Did the US Government Ban Claude Fable 5 and Mythos 5?</title>
-      <link>https://drerinjacques.com/ai-news/claude-fable-5-mythos-5-banned</link>
-      <guid isPermaLink="true">https://drerinjacques.com/ai-news/claude-fable-5-mythos-5-banned</guid>
-      <pubDate>Sat, 13 Jun 2026 12:00:00 GMT</pubDate>
-      <description>The US government ordered Anthropic to block Claude Fable 5 and Mythos 5 from foreign nationals. Here's what the export-control directive means and why it matters.</description>
-      <category>AI Industry</category>
-    </item>
-    <item>
-      <title>Build an AI Lead-Gen Machine in a Weekend with Claude Fable 5</title>
-      <link>https://drerinjacques.com/ai-news/ai-lead-gen-machine-claude-fable-5</link>
-      <guid isPermaLink="true">https://drerinjacques.com/ai-news/ai-lead-gen-machine-claude-fable-5</guid>
-      <pubDate>Thu, 11 Jun 2026 12:00:00 GMT</pubDate>
-      <description>Build an AI lead-gen system in a weekend with Claude Fable 5: scan aerial imagery, render an 'after' photo of each home, and auto-mail postcards with booking QR codes.</description>
-      <category>AI Monetization</category>
-    </item>
-    <item>
-      <title>Anthropic Will Pay You ~$4,000/Week to Break Into AI</title>
-      <link>https://drerinjacques.com/ai-news/anthropic-fellows-program-break-into-ai</link>
-      <guid isPermaLink="true">https://drerinjacques.com/ai-news/anthropic-fellows-program-break-into-ai</guid>
-      <pubDate>Wed, 10 Jun 2026 12:00:00 GMT</pubDate>
-      <description>The Anthropic Fellows Program pays ~$3,850/week for 4 months of full-time AI research — no degree required, five tracks, rolling admissions. Here's how to get in.</description>
-      <category>AI Monetization</category>
-    </item>
-    <item>
-      <title>Is Claude in Chrome Safe? How to Lock Down AI Browser Control Before You Use It</title>
-      <link>https://drerinjacques.com/ai-news/claude-in-chrome-safe-setup</link>
-      <guid isPermaLink="true">https://drerinjacques.com/ai-news/claude-in-chrome-safe-setup</guid>
-      <pubDate>Fri, 29 May 2026 12:00:00 GMT</pubDate>
-      <description>Claude in Chrome lets AI click and type on your behalf. Here's how to set permissions safely and avoid prompt-injection attacks in 90 seconds.</description>
-      <category>Trust &amp; Security</category>
-    </item>
-    <item>
-      <title>Stop Uploading PDFs to Claude — You're Burning Through Your Limit</title>
-      <link>https://drerinjacques.com/ai-news/stop-uploading-pdfs-to-claude</link>
-      <guid isPermaLink="true">https://drerinjacques.com/ai-news/stop-uploading-pdfs-to-claude</guid>
-      <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
-      <description>One page of a PDF can cost 3,000 tokens. One screenshot, 4,000. Convert them to text first and use a fraction of your Claude limit.</description>
-      <category>AI Tools</category>
     </item>
   </channel>
 </rss>
