@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work With Me | Dr. Erin Jacques</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="canonical" href="https://drerinjacques.com/work-with-me/">
+    <meta name="description" content="AI is changing who gets seen, trusted, and paid. Three ways to work with Dr. Erin Jacques: free live training, ChatifyIT, or keynotes and workshops.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Work With Me — Dr. Erin Jacques">
+    <meta property="og:description" content="AI is changing who gets seen, trusted, and paid. Here's how we can make sure it's you.">
+    <meta property="og:url" content="https://drerinjacques.com/work-with-me/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://drerinjacques.com/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Work With Me — Dr. Erin Jacques">
+    <meta name="twitter:description" content="AI is changing who gets seen, trusted, and paid. Here's how we can make sure it's you.">
+    <meta name="twitter:image" content="https://drerinjacques.com/og-image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy: #0B1A2E; --navy-2: #1a3658;
+            --yellow: #FFD93D; --yellow-dark: #E8C12B;
+            --teal: #0DB4DB; --teal-dark: #0A8FAF;
+            --green: #00B9A3;
+            --cream: #FAF6EC; --blush: #F4D5C7;
+            --text: #0B1A2E; --text-soft: #4A5568; --text-faint: #718096;
+            --gray-100: #F1F5F9; --gray-200: #E2E8F0;
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============ HEADER ============ */
+        .site-header { background: #fff; border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .header-inner { max-width: 1200px; margin: 0 auto; padding: 18px 40px; display: flex; align-items: center; justify-content: space-between; }
+        .header-brand { text-decoration: none; font-size: 1.1rem; font-weight: 800; color: var(--navy); letter-spacing: -0.3px; }
+        .header-nav { display: flex; gap: 28px; align-items: center; }
+        .header-nav a { color: var(--text-soft); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
+        .header-nav a:hover { color: var(--navy); }
+        .header-nav a.cta { background: var(--navy); color: #fff; padding: 9px 16px; border-radius: 8px; font-weight: 700; }
+        .header-nav a.cta:hover { background: var(--navy-2); color: #fff; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 1001; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.3s ease; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--cream); z-index: 1000; flex-direction: column; align-items: center; justify-content: center; gap: 28px; }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a { color: var(--text); text-decoration: none; font-size: 1.3rem; font-weight: 700; }
+
+        /* ============ SECTION DEFAULTS ============ */
+        section { padding: 96px 40px; position: relative; }
+        .container { max-width: 1080px; margin: 0 auto; }
+        .container-narrow { max-width: 860px; margin: 0 auto; }
+        section.bg-white { background: #fff; }
+        section.bg-cream { background: var(--cream); }
+        section.bg-cream-white { background: linear-gradient(180deg, var(--cream) 0%, #fff 100%); }
+        section.bg-white-cream { background: linear-gradient(180deg, #fff 0%, var(--cream) 100%); }
+
+        .sec-head { margin-bottom: 44px; }
+        .sec-eyebrow { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 12px; }
+        .sec-title { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800; color: var(--text); line-height: 1.15; letter-spacing: -0.7px; margin: 0; }
+        .sec-title .accent { color: var(--teal-dark); }
+        .sec-title .hl { color: var(--navy); background: linear-gradient(180deg, transparent 65%, rgba(255,217,61,0.55) 65%); padding: 0 4px; }
+        .sec-head p { margin: 16px 0 0; color: var(--text-soft); font-size: 1.08rem; max-width: 62ch; }
+
+        /* ============ BUTTONS ============ */
+        .cta-secondary { display: inline-flex; align-items: center; gap: 8px; background: var(--yellow); color: var(--navy); font-size: 1rem; font-weight: 700; padding: 16px 26px; border-radius: 10px; text-decoration: none; transition: all 0.2s; box-shadow: 0 6px 18px rgba(255,217,61,0.4); }
+        .cta-secondary:hover { background: var(--yellow-dark); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(255,217,61,0.55); }
+        .cta-secondary svg { transition: transform 0.2s; }
+        .cta-secondary:hover svg { transform: translateX(3px); }
+        .cta-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--navy); font-size: 1rem; font-weight: 700; padding: 14px 24px; border-radius: 10px; text-decoration: none; border: 2px solid var(--navy); transition: all 0.2s; }
+        .cta-outline:hover { background: var(--navy); color: #fff; transform: translateY(-2px); }
+
+        /* ============ HERO ============ */
+        .lp-hero { background: linear-gradient(180deg, #fff 0%, var(--cream) 100%); padding: 96px 40px 72px; text-align: center; overflow: hidden; }
+        .lp-hero-glow { position: absolute; top: -12%; left: 50%; transform: translateX(-50%); width: 840px; max-width: 120%; height: 540px; background: radial-gradient(ellipse at center, rgba(255,217,61,0.30) 0%, rgba(13,180,219,0.18) 45%, transparent 70%); filter: blur(60px); z-index: 0; opacity: 0.9; }
+        .lp-hero .container { position: relative; z-index: 1; }
+        .lp-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal-dark); padding: 8px 14px; background: rgba(13,180,219,0.08); border: 1px solid rgba(13,180,219,0.25); border-radius: 100px; margin-bottom: 24px; }
+        .lp-hero h1 { font-size: clamp(2.4rem, 5.6vw, 4.2rem); font-weight: 800; line-height: 1.05; letter-spacing: -1.5px; color: var(--navy); margin: 0 auto 26px; max-width: 14ch; }
+        .lp-hero h1 .accent { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .lp-hero .sub { font-size: clamp(1.1rem, 1.7vw, 1.32rem); color: var(--text-soft); line-height: 1.6; max-width: 52ch; margin: 0 auto 10px; }
+        .lp-hero .sub strong { color: var(--text); font-weight: 700; }
+
+        /* ============ PATHS ============ */
+        .paths-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+        .path-card { background: #fff; border-radius: 18px; border: 1px solid rgba(11,26,46,0.08); box-shadow: 0 6px 18px rgba(11,26,46,0.05); padding: 36px 32px; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; position: relative; }
+        .path-card:hover { transform: translateY(-4px); box-shadow: 0 20px 44px rgba(11,26,46,0.09); border-color: var(--teal); }
+        .path-card.featured { border-color: var(--yellow-dark); box-shadow: 0 10px 28px rgba(255,217,61,0.25); }
+        .path-card.featured::before { content: "START HERE"; position: absolute; top: -12px; left: 32px; background: var(--yellow); color: var(--navy); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; padding: 5px 12px; border-radius: 6px; }
+        .path-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 10px; }
+        .path-card h3 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.4px; color: var(--navy); margin: 0 0 14px; line-height: 1.2; }
+        .path-card p { color: var(--text-soft); font-size: 1rem; line-height: 1.6; margin: 0 0 24px; flex-grow: 1; }
+        .path-card .cta-secondary, .path-card .cta-outline { width: 100%; justify-content: center; }
+
+        /* ============ WHY ME ============ */
+        .cred { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+        .cred .pill { background: #fff; border: 1px solid rgba(11,26,46,0.08); box-shadow: 0 4px 12px rgba(11,26,46,0.04); border-radius: 12px; padding: 15px 22px; font-size: 1.02rem; color: var(--text); font-weight: 600; }
+        .cred .pill b { color: var(--teal-dark); font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; letter-spacing: 0.04em; margin-right: 4px; }
+        .why-copy { color: var(--text-soft); font-size: 1.08rem; line-height: 1.65; max-width: 62ch; margin: 0; }
+        .why-copy strong { color: var(--text); }
+
+        /* ============ TESTIMONIALS ============ */
+        .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .proof-card { background: #fff; border-radius: 14px; padding: 34px 28px 26px; border: 1px solid rgba(11,26,46,0.06); box-shadow: 0 6px 18px rgba(11,26,46,0.05); position: relative; display: flex; flex-direction: column; }
+        .proof-quote-mark { position: absolute; top: 22px; left: 28px; font-size: 3rem; line-height: 1; color: var(--yellow); font-family: Georgia, serif; opacity: 0.5; }
+        .proof-card blockquote { font-size: 1.02rem; line-height: 1.6; color: var(--text); margin: 32px 0 20px; font-style: italic; flex-grow: 1; }
+        .proof-card .who { display: flex; align-items: center; gap: 14px; border-top: 1px solid var(--gray-200); padding-top: 16px; }
+        .proof-avatar { width: 60px; height: 60px; border-radius: 50%; flex-shrink: 0; border: 2px solid var(--yellow); object-fit: cover; }
+        .proof-card .who-text { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-faint); letter-spacing: 0.04em; line-height: 1.4; }
+        .proof-card .who-text strong { color: var(--text); display: block; font-family: 'DM Sans', sans-serif; font-style: normal; font-size: 0.92rem; font-weight: 700; margin-bottom: 1px; letter-spacing: 0; }
+
+        /* ============ CLOSE ============ */
+        .close-card { max-width: 900px; margin: 0 auto; background: #fff; color: var(--navy); border-radius: 22px; padding: 60px 50px; text-align: center; position: relative; overflow: hidden; border: 1px solid rgba(11,26,46,0.08); box-shadow: 0 10px 30px rgba(11,26,46,0.06); }
+        .close-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 100% 0%, rgba(255,217,61,0.22), transparent 55%), radial-gradient(circle at 0% 100%, rgba(13,180,219,0.14), transparent 55%); }
+        .close-card > * { position: relative; z-index: 1; }
+        .close-card h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); font-weight: 800; letter-spacing: -0.6px; line-height: 1.14; margin: 0 auto 18px; max-width: 21ch; color: var(--navy); }
+        .close-card h2 em { font-style: normal; color: var(--teal-dark); background: linear-gradient(180deg, transparent 65%, rgba(255,217,61,0.55) 65%); padding: 0 4px; }
+        .close-card p { color: var(--text-soft); font-size: 1.12rem; max-width: 44ch; margin: 0 auto 32px; }
+
+        /* ============ FOOTER ============ */
+        .footer { background: var(--navy); color: rgba(255,255,255,0.65); text-align: center; padding: 36px 40px; font-size: 0.88rem; }
+        .footer .tagline { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--yellow); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px; font-weight: 700; }
+        .footer a { color: var(--yellow); text-decoration: none; }
+
+        @media (max-width: 860px) {
+            .header-nav { display: none; }
+            .hamburger { display: flex; }
+            section { padding: 64px 22px; }
+            .header-inner { padding: 16px 22px; }
+            .paths-grid, .proof-grid { grid-template-columns: 1fr; }
+            .close-card { padding: 44px 26px; }
+        }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="/" class="header-brand">DR. ERIN JACQUES</a>
+            <nav class="header-nav">
+                <a href="/#about">About</a>
+                <a href="/work-with-me/">Work With Me</a>
+                <a href="/ai-news/">AI News</a>
+                <a href="/#speaking">Speaking</a>
+                <a href="https://www.chatifyit.com" class="cta" target="_blank" rel="noopener">ChatifyIT</a>
+            </nav>
+            <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-nav" id="mobileNav">
+        <a href="/#about" onclick="closeMobileNav()">About</a>
+        <a href="/work-with-me/" onclick="closeMobileNav()">Work With Me</a>
+        <a href="/ai-news/" onclick="closeMobileNav()">AI News</a>
+        <a href="/#speaking" onclick="closeMobileNav()">Speaking</a>
+        <a href="https://www.chatifyit.com" target="_blank" rel="noopener" onclick="closeMobileNav()">ChatifyIT</a>
+    </div>
+
+    <!-- ============ HERO ============ -->
+    <header class="lp-hero">
+        <div class="lp-hero-glow"></div>
+        <div class="container">
+            <span class="lp-eyebrow">Work With Me</span>
+            <h1>Work <span class="accent">With Me</span></h1>
+            <p class="sub">AI is changing who gets seen, trusted, and paid. <strong>Here's how we can make sure it's you.</strong></p>
+        </div>
+    </header>
+
+    <!-- ============ PATHS ============ -->
+    <section class="bg-cream" style="padding-top: 56px;">
+        <div class="container">
+            <div class="paths-grid">
+                <div class="path-card featured">
+                    <div class="path-eyebrow">Free Live Training</div>
+                    <h3>Grow your email list with AI</h3>
+                    <p>Learn how to grow your email list with AI, without working 16-hour days. Live on Zoom.</p>
+                    <a class="cta-secondary" href="https://chatifyit.com/training" target="_blank" rel="noopener">Save my free spot
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
+                <div class="path-card">
+                    <div class="path-eyebrow">Do It Yourself, With Support</div>
+                    <h3>ChatifyIT</h3>
+                    <p>The platform I built to grow your email list with AI: your link-in-bio page, AI lead magnets that collect emails, and a free setup call with me.</p>
+                    <a class="cta-outline" href="https://chatifyit.com" target="_blank" rel="noopener">Try ChatifyIT free
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
+                <div class="path-card">
+                    <div class="path-eyebrow">Bring Me To Your Organization</div>
+                    <h3>Speaking &amp; workshops</h3>
+                    <p>Keynotes and workshops on how AI is reshaping work, and what people and organizations can do to stay ahead.</p>
+                    <a class="cta-outline" href="mailto:info@erinjacques.com?subject=Speaking%20inquiry">Book Dr. Erin
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ WHY ME ============ -->
+    <section class="bg-white">
+        <div class="container">
+            <div class="sec-head">
+                <span class="sec-eyebrow">Why Me</span>
+                <h2 class="sec-title">I help everyday people <span class="hl">own their audience.</span></h2>
+            </div>
+            <div class="cred">
+                <div class="pill"><b>EDU</b> Columbia · UPenn</div>
+                <div class="pill"><b>FOUNDER</b> ChatifyIT</div>
+                <div class="pill"><b>400,000+</b> followers</div>
+            </div>
+            <p class="why-copy">My research focuses on <strong>how AI decides who gets seen, trusted, and paid.</strong> Through ChatifyIT, I help everyday people stop renting attention and start owning their audience.</p>
+        </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="bg-white-cream">
+        <div class="container">
+            <div class="sec-head">
+                <span class="sec-eyebrow">What People Are Saying</span>
+                <h2 class="sec-title">Real results, <span class="accent">in their words.</span></h2>
+            </div>
+            <div class="proof-grid">
+                <div class="proof-card">
+                    <span class="proof-quote-mark">"</span>
+                    <blockquote>Clarifying my positioning statement and differentiator cut through years of noise. My message tightened. My decisions sped up. This process gave me real clarity and authority.</blockquote>
+                    <div class="who">
+                        <img src="/home-assets/berdine.jpg" alt="Berdine Roque" class="proof-avatar" width="180" height="180" loading="lazy">
+                        <div class="who-text"><strong>Berdine Roque</strong>The Roque Co.</div>
+                    </div>
+                </div>
+                <div class="proof-card">
+                    <span class="proof-quote-mark">"</span>
+                    <blockquote>Dr. Erin's work has truly transformed the way I run my business. I feel much more confident integrating AI into my workflow, and I'm already seeing real results. This is a game-changer.</blockquote>
+                    <div class="who">
+                        <img src="/home-assets/susan.jpg" alt="Susan Watkins" class="proof-avatar" width="180" height="180" loading="lazy">
+                        <div class="who-text"><strong>Susan Watkins</strong>Business Owner</div>
+                    </div>
+                </div>
+                <div class="proof-card">
+                    <span class="proof-quote-mark">"</span>
+                    <blockquote>The biggest aha moment for me didn't come from talking about myself — it came from studying the competition. Seeing other programs side by side gave me real clarity on my niche.</blockquote>
+                    <div class="who">
+                        <img src="/home-assets/frederick.jpg" alt="Dr. Frederick Scott Jr." class="proof-avatar" width="180" height="180" loading="lazy">
+                        <div class="who-text"><strong>Dr. Frederick Scott, Jr.</strong>Pastor &amp; Coach</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CLOSE ============ -->
+    <section class="bg-cream">
+        <div class="close-card">
+            <h2>Not sure where to start? <em>Start with the free training.</em></h2>
+            <p>Learn how to grow your email list with AI, live on Zoom.</p>
+            <a class="cta-secondary" href="https://chatifyit.com/training" target="_blank" rel="noopener">Save my free spot
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="tagline">Build Your Place In The New Economy</div>
+        <p>© Dr. Erin Jacques · <a href="https://www.chatifyit.com">ChatifyIT</a> · <a href="/ai-news/">AI News</a> · <a href="mailto:info@erinjacques.com">info@erinjacques.com</a></p>
+    </footer>
+
+    <script>
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobileNav');
+            const hamburger = document.querySelector('.hamburger');
+            nav.classList.toggle('open');
+            hamburger.classList.toggle('active');
+        }
+        function closeMobileNav() {
+            document.getElementById('mobileNav').classList.remove('open');
+            document.querySelector('.hamburger').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
