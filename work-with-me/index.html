@@ -55,6 +55,8 @@
         .header-nav a:hover { color: var(--navy); }
         .header-nav a.cta { background: var(--navy); color: #fff; padding: 9px 16px; border-radius: 8px; font-weight: 700; }
         .header-nav a.cta:hover { background: var(--navy-2); color: #fff; }
+        .header-nav a.cta.cta-chatify { background: var(--teal); color: #fff; }
+        .header-nav a.cta.cta-chatify:hover { background: var(--teal-dark); color: #fff; }
         .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 1001; }
         .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.3s ease; }
         .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -159,7 +161,7 @@
                 <a href="/work-with-me/">Work With Me</a>
                 <a href="/ai-news/">AI News</a>
                 <a href="/#speaking">Speaking</a>
-                <a href="https://www.chatifyit.com" class="cta" target="_blank" rel="noopener">ChatifyIT</a>
+                <a href="https://www.chatifyit.com" class="cta cta-chatify" target="_blank" rel="noopener">ChatifyIT</a>
             </nav>
             <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
