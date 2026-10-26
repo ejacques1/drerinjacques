@@ -6,3 +6,8 @@ __pycache__/
 
 # Local archives can contain customer data and large media files.
 .project-notes/senja-backup-*/
+
+# Local working directories (video renders, scratch outputs, observation notes)
+output/
+observation_*/
+.claude/

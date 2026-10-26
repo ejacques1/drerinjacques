@@ -83,12 +83,14 @@
         .sec-head p { margin: 16px 0 0; color: var(--text-soft); font-size: 1.08rem; max-width: 62ch; }
 
         /* ============ BUTTONS ============ */
-        .cta-secondary { display: inline-flex; align-items: center; gap: 8px; background: var(--yellow); color: var(--navy); font-size: 1rem; font-weight: 700; padding: 16px 26px; border-radius: 10px; text-decoration: none; transition: all 0.2s; box-shadow: 0 6px 18px rgba(255,217,61,0.4); }
-        .cta-secondary:hover { background: var(--yellow-dark); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(255,217,61,0.55); }
-        .cta-secondary svg { transition: transform 0.2s; }
-        .cta-secondary:hover svg { transform: translateX(3px); }
-        .cta-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--navy); font-size: 1rem; font-weight: 700; padding: 14px 24px; border-radius: 10px; text-decoration: none; border: 2px solid var(--navy); transition: all 0.2s; }
+        .cta-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--navy); color: #fff; font-size: 1rem; font-weight: 700; padding: 16px 28px; border-radius: 10px; text-decoration: none; box-shadow: 0 8px 24px rgba(11,26,46,0.18); transition: transform 0.2s, box-shadow 0.2s, background 0.2s; }
+        .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(11,26,46,0.28); background: var(--navy-2); color: #fff; }
+        .cta-primary svg { transition: transform 0.2s; }
+        .cta-primary:hover svg { transform: translateX(3px); }
+        .cta-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--navy); font-size: 1rem; font-weight: 700; padding: 14px 26px; border-radius: 10px; text-decoration: none; border: 2px solid var(--navy); transition: all 0.2s; }
         .cta-outline:hover { background: var(--navy); color: #fff; transform: translateY(-2px); }
+        .cta-outline svg { transition: transform 0.2s; }
+        .cta-outline:hover svg { transform: translateX(3px); }
 
         /* ============ HERO ============ */
         .lp-hero { background: linear-gradient(180deg, #fff 0%, var(--cream) 100%); padding: 96px 40px 72px; text-align: center; overflow: hidden; }
@@ -181,7 +183,6 @@
     <header class="lp-hero">
         <div class="lp-hero-glow"></div>
         <div class="container">
-            <span class="lp-eyebrow">Work With Me</span>
             <h1>Work <span class="accent">With Me</span></h1>
             <p class="sub">AI is changing who gets seen, trusted, and paid. <strong>Here's how we can make sure it's you.</strong></p>
         </div>
@@ -195,7 +196,7 @@
                     <div class="path-eyebrow">Free Live Training</div>
                     <h3>Grow your email list with AI</h3>
                     <p>Learn how to grow your email list with AI, without working 16-hour days. Live on Zoom.</p>
-                    <a class="cta-secondary" href="https://chatifyit.com/training" target="_blank" rel="noopener">Save my free spot
+                    <a class="cta-primary" href="https://chatifyit.com/training" target="_blank" rel="noopener">Save my free spot
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
                 </div>
@@ -276,7 +277,7 @@
         <div class="close-card">
             <h2>Not sure where to start? <em>Start with the free training.</em></h2>
             <p>Learn how to grow your email list with AI, live on Zoom.</p>
-            <a class="cta-secondary" href="https://chatifyit.com/training" target="_blank" rel="noopener">Save my free spot
+            <a class="cta-primary" href="https://chatifyit.com/training" target="_blank" rel="noopener">Save my free spot
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
         </div>
