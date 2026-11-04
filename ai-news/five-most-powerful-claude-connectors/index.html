@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The 5 Most Powerful Claude Connectors for Anyone Building an App | Dr. Erin Jacques AI News</title>
+<meta name="description" content="Playwright, Supabase, PostHog, Firecrawl and ChatifyIT: what each Claude connector does, how to connect it, and the first prompt to try.">
+<meta name="author" content="Dr. Erin Jacques">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://drerinjacques.com/ai-news/five-most-powerful-claude-connectors">
+
+<meta property="og:title" content="The 5 Most Powerful Claude Connectors for Anyone Building an App">
+<meta property="og:description" content="Playwright, Supabase, PostHog, Firecrawl and ChatifyIT: what each Claude connector does, how to connect it, and the first prompt to try.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://drerinjacques.com/ai-news/five-most-powerful-claude-connectors">
+<meta property="og:image" content="https://drerinjacques.com/ai-news/five-most-powerful-claude-connectors/og.png">
+<meta property="og:site_name" content="Dr. Erin Jacques AI News">
+<meta property="article:published_time" content="2026-11-03">
+<meta property="article:section" content="AI Tools">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The 5 Most Powerful Claude Connectors for Anyone Building an App">
+<meta name="twitter:image" content="https://drerinjacques.com/ai-news/five-most-powerful-claude-connectors/og.png">
+<meta name="twitter:description" content="Playwright, Supabase, PostHog, Firecrawl and ChatifyIT: what each Claude connector does, how to connect it, and the first prompt to try.">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The 5 Most Powerful Claude Connectors for Anyone Building an App",
+    "description": "Playwright, Supabase, PostHog, Firecrawl and ChatifyIT: what each Claude connector does, how to connect it, and the first prompt to try.",
+    "image": [
+        "https://drerinjacques.com/ai-news/five-most-powerful-claude-connectors/featured.png",
+        "https://drerinjacques.com/ai-news/five-most-powerful-claude-connectors/og.png"
+    ],
+    "datePublished": "2026-11-03",
+    "dateModified": "2026-11-03",
+    "author": {
+        "@type": "Person",
+        "name": "Dr. Erin Jacques",
+        "url": "https://drerinjacques.com",
+        "jobTitle": "Professor of Informatics",
+        "worksFor": {
+            "@type": "CollegeOrUniversity",
+            "name": "York College",
+            "url": "https://www.york.cuny.edu",
+            "parentOrganization": {
+                "@type": "CollegeOrUniversity",
+                "name": "The City University of New York",
+                "sameAs": "https://en.wikipedia.org/wiki/City_University_of_New_York"
+            }
+        },
+        "alumniOf": [
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Teachers College, Columbia University",
+                "sameAs": "https://en.wikipedia.org/wiki/Teachers_College,_Columbia_University"
+            },
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "University of Pennsylvania",
+                "sameAs": "https://en.wikipedia.org/wiki/University_of_Pennsylvania"
+            }
+        ],
+        "hasCredential": [
+            {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "degree",
+                "name": "Doctorate in Health Education and Promotion",
+                "recognizedBy": {
+                    "@type": "CollegeOrUniversity",
+                    "name": "Teachers College, Columbia University"
+                }
+            },
+            {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "degree",
+                "name": "MSEd in Education Entrepreneurship",
+                "recognizedBy": {
+                    "@type": "CollegeOrUniversity",
+                    "name": "University of Pennsylvania"
+                }
+            }
+        ],
+        "sameAs": [
+            "https://www.york.cuny.edu/directory/ejacques1",
+            "https://www.linkedin.com/in/drerinjacques/",
+            "https://www.instagram.com/dr.erinjacques/",
+            "https://www.tiktok.com/@dr.erinjacques",
+            "https://x.com/dr_erinjacques",
+            "https://www.youtube.com/@Dr.ErinJacques"
+        ]
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Dr. Erin Jacques AI News",
+        "url": "https://drerinjacques.com/ai-news",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://drerinjacques.com/assets/logo.png"
+        }
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://drerinjacques.com/ai-news/five-most-powerful-claude-connectors"
+    },
+    "articleSection": "AI Tools",
+    "keywords": "best Claude connectors, Claude Code MCP servers, Playwright MCP, Supabase MCP, PostHog MCP, Firecrawl MCP, ChatifyIT connector, vibe coding tools",
+    "wordCount": "1050",
+    "isAccessibleForFree": true,
+    "inLanguage": "en-US",
+    "mentions": [
+        {
+            "@type": "SoftwareApplication",
+            "name": "Claude Code"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "Playwright"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "Supabase"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "PostHog"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "Firecrawl"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "ChatifyIT"
+        }
+    ],
+    "citation": [
+        {
+            "@type": "CreativeWork",
+            "name": "Using Playwright MCP with Claude Code",
+            "publisher": "Simon Willison",
+            "url": "https://til.simonwillison.net/claude-code/playwright-mcp-claude-code"
+        },
+        {
+            "@type": "CreativeWork",
+            "name": "Supabase is now an official Claude connector",
+            "publisher": "Supabase",
+            "url": "https://supabase.com/blog/claude-connector"
+        },
+        {
+            "@type": "CreativeWork",
+            "name": "Supabase MCP Server",
+            "publisher": "Supabase",
+            "url": "https://supabase.com/docs/guides/ai-tools/mcp"
+        },
+        {
+            "@type": "CreativeWork",
+            "name": "PostHog MCP for Claude Code",
+            "publisher": "PostHog",
+            "url": "https://posthog.com/docs/model-context-protocol/claude-code.md"
+        },
+        {
+            "@type": "CreativeWork",
+            "name": "Firecrawl MCP Server",
+            "publisher": "GitHub",
+            "url": "https://github.com/mcp/firecrawl/firecrawl-mcp-server"
+        }
+    ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "What is a Claude connector?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A connector plugs Claude into another tool so it can use that tool for you. Most use the Model Context Protocol (MCP). In the Claude app you add them under Customize, then Connectors; in Claude Code you add them with a command."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "What are the best Claude connectors for building an app?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Playwright to test your app like a real customer, Supabase to find database security problems, PostHog to see where visitors leave, Firecrawl to read competitors' pages, and ChatifyIT to turn what you ship into LinkedIn posts and emails."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Does Playwright work in the Claude app?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Playwright runs in Claude Code, not the regular Claude chat app. Add it with: claude mcp add playwright npx '@playwright/mcp@latest'."
+            }
+        }
+    ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Dr. Erin Jacques",
+            "item": "https://drerinjacques.com"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "AI News",
+            "item": "https://drerinjacques.com/ai-news"
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "The 5 Most Powerful Claude Connectors for Anyone Building an App",
+            "item": "https://drerinjacques.com/ai-news/five-most-powerful-claude-connectors"
+        }
+    ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#121212;
+    --ink-soft:#333333;
+    --gray:#5a5a5a;
+    --gray-light:#6b6b6b;
+    --rule:#dcdcdc;
+    --rule-dark:#121212;
+    --kicker:#d0021b;
+    --link:#326891;
+    --serif:'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans:'Libre Franklin', -apple-system, Helvetica, Arial, sans-serif;
+    --col:680px;
+    --page-width:1080px;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#fff;color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased;}
+
+  /* ===== site header ===== */
+  .site-header{background:#0A1628;position:relative;z-index:100;}
+  .header-inner{max-width:var(--page-width);margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .header-brand{text-decoration:none;font-size:1.1rem;font-weight:700;color:#fff;letter-spacing:-0.3px;font-family:var(--sans);}
+  .header-nav{display:flex;gap:30px;align-items:center;}
+  .header-nav a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:0.88rem;font-weight:500;font-family:var(--sans);transition:color .2s;}
+  .header-nav a:hover{color:#fff;}
+  .header-nav a.nav-active{color:#fff;}
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:1001;}
+  .hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,0.85);border-radius:2px;transition:all .3s ease;}
+  .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+  .hamburger.active span:nth-child(2){opacity:0;}
+  .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+  .mobile-nav{display:none;position:fixed;inset:0;background:#0A1628;z-index:1000;flex-direction:column;align-items:center;justify-content:center;gap:28px;}
+  .mobile-nav.open{display:flex;}
+  .mobile-nav a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:1.3rem;font-weight:600;font-family:var(--sans);}
+  .mobile-nav a:hover{color:#fff;}
+
+  /* ===== share bar ===== */
+  .share-bar{position:fixed;left:max(16px,calc((100vw - var(--page-width)) / 2 - 60px));top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:90;}
+  .share-btn{width:42px;height:42px;border-radius:50%;background:#f3f3f3;border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;text-decoration:none;}
+  .share-btn:hover{background:var(--ink);border-color:var(--ink);}
+  .share-btn svg{width:17px;height:17px;fill:#444;}
+  .share-btn:hover svg{fill:#fff;}
+  .share-btn-copied{background:#1a7f57 !important;border-color:#1a7f57 !important;}
+  .share-btn-copied svg{fill:#fff;}
+  .share-bar-mobile{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--rule);padding:10px 24px;z-index:90;justify-content:center;gap:16px;}
+  .share-bar-mobile .share-btn{width:38px;height:38px;}
+
+  /* ===== article shell ===== */
+  .article{max-width:var(--col);margin:0 auto;padding:34px 24px 64px;}
+  .kicker{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--kicker);margin-bottom:14px;}
+  .headline{font-family:var(--serif);font-weight:700;font-size:clamp(30px,5.2vw,46px);line-height:1.12;letter-spacing:-0.011em;color:var(--ink);margin-bottom:18px;}
+  .deck{font-family:var(--sans);font-weight:400;font-size:20px;line-height:1.45;color:var(--gray);margin-bottom:26px;}
+
+  .byline{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding:16px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:28px;}
+  .byline-author{font-family:var(--sans);font-size:14px;color:var(--ink);}
+  .byline-author .by{color:var(--gray-light);}
+  .byline-author a{color:var(--ink);text-decoration:none;font-weight:600;}
+  .byline-date{font-family:var(--sans);font-size:13px;color:var(--gray-light);margin-left:auto;}
+
+  figure{margin:0 0 8px;}
+  figure img{width:100%;height:auto;display:block;}
+  figcaption{font-family:var(--sans);font-size:13px;line-height:1.45;color:var(--gray-light);margin:8px 0 34px;}
+  figcaption .credit{color:#9a9a9a;}
+  figcaption .credit a{color:#9a9a9a;}
+  .body figure{margin:30px 0 8px;}
+
+  .body p{font-size:19px;line-height:1.65;color:var(--ink-soft);margin-bottom:22px;}
+  .body p a{color:var(--link);text-decoration:underline;text-underline-offset:2px;}
+  .body > p.lead::first-letter{font-family:var(--serif);font-weight:700;float:left;font-size:66px;line-height:52px;padding:4px 10px 0 0;color:var(--ink);}
+  .body h2{font-family:var(--serif);font-weight:700;font-size:25px;line-height:1.25;color:var(--ink);margin:40px 0 14px;}
+
+  .body ol{margin:0 0 22px 0;padding:0;list-style:none;counter-reset:step;}
+  .body ol li{position:relative;font-size:19px;line-height:1.6;color:var(--ink-soft);padding-left:40px;margin-bottom:18px;counter-increment:step;}
+  .body ol li::before{content:counter(step);position:absolute;left:0;top:2px;font-family:var(--sans);font-weight:700;font-size:15px;color:var(--kicker);border:1px solid var(--rule);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;}
+  .body ol li strong{color:var(--ink);}
+
+  /* ===== prompt block (editorial, light) — for build posts ===== */
+  .prompt-label{font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink);margin:28px 0 8px;}
+  pre.prompt{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;line-height:1.6;background:#f6f6f4;border:1px solid var(--rule);border-left:3px solid var(--ink);padding:18px 20px;margin:0 0 26px;white-space:pre-wrap;overflow-x:auto;color:var(--ink-soft);}
+
+  .pullquote{margin:38px 0;padding:22px 0;border-top:1px solid var(--rule-dark);border-bottom:1px solid var(--rule-dark);text-align:center;}
+  .pullquote p{font-family:var(--serif);font-weight:600;font-size:27px;line-height:1.32;color:var(--ink);margin:0;}
+  .pullquote cite{display:block;margin-top:12px;font-family:var(--sans);font-style:normal;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-light);}
+
+  .author-note{display:flex;gap:16px;align-items:flex-start;margin:44px 0 0;padding-top:26px;border-top:1px solid var(--rule);}
+  .author-note img{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0;}
+  .author-note p{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--gray);}
+  .author-note strong{color:var(--ink);}
+  .author-note a{color:var(--link);text-decoration:underline;text-underline-offset:2px;font-weight:500;}
+
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin:34px 0 0;}
+  .tags a{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--gray);text-decoration:none;border:1px solid var(--rule);padding:4px 12px;border-radius:2px;}
+  .tags a:hover{color:var(--ink);border-color:var(--ink);}
+
+  .subscribe{margin-top:34px;padding:26px;border:1px solid var(--rule);}
+  .subscribe h3{font-family:var(--serif);font-weight:700;font-size:21px;color:var(--ink);margin-bottom:6px;}
+  .subscribe p{font-family:var(--sans);font-size:14px;color:var(--gray);margin-bottom:14px;}
+  .subscribe form{display:flex;gap:8px;}
+  .subscribe input{flex:1;padding:12px;border:1px solid #cfcfcf;font-family:var(--sans);font-size:14px;}
+  .subscribe input:focus{outline:none;border-color:var(--ink);}
+  .subscribe button{padding:12px 22px;border:none;background:var(--ink);color:#fff;font-family:var(--sans);font-weight:600;font-size:14px;cursor:pointer;}
+  .subscribe button:disabled{opacity:.5;cursor:not-allowed;}
+  .form-message{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;font-weight:600;}
+  .form-message.success{display:block;color:#1a7f57;}
+  .form-message.error{display:block;color:#c0392b;}
+
+  .site-footer{background:#0A1628;padding:36px 24px;text-align:center;margin-top:48px;}
+  .site-footer a{color:#8a97a8;font-family:var(--sans);font-size:13px;text-decoration:none;margin:0 12px;}
+  .site-footer a:hover{color:#fff;}
+  .site-footer p{color:#4A5568;font-family:var(--sans);font-size:12px;margin-top:14px;}
+
+  @media(max-width:768px){
+    .header-nav{display:none;}
+    .hamburger{display:flex;}
+    .share-bar{display:none;}
+    .share-bar-mobile{display:flex;}
+    .article{padding:28px 20px 90px;}
+    .headline{font-size:31px;}
+    .deck{font-size:18px;}
+  }
+
+  /* ===== AI Upfront look (Oct 2026): white header, teal label, light footer ===== */
+  .site-header{background:#fff;border-bottom:1px solid #dcdcdc;}
+  .header-brand{color:#121212;letter-spacing:1.5px;font-size:.95rem;}
+  .header-nav a{color:#5a5a5a;}
+  .header-nav a:hover,.header-nav a.nav-active{color:#121212;}
+  .header-nav a.nav-active{font-weight:600;}
+  .header-nav a.nav-cta{background:#0B1A2E;color:#fff;padding:8px 14px;border-radius:8px;font-weight:600;}
+  .hamburger span{background:#121212;}
+  .kdot{margin:0 8px;color:#8a8a8a;}
+  .upfront-label{display:inline;text-decoration:none;color:#121212;box-shadow:inset 0 -.45em 0 #FFD93D;}.upfront-label:hover{text-decoration:underline;text-underline-offset:3px;}
+  .kicker{color:#0A8FAF;}
+  .site-footer{background:#fff;border-top:1px solid #dcdcdc;}
+  .site-footer a{color:#5a5a5a;}
+  .site-footer a:hover{color:#121212;}
+  .site-footer p{color:#8a8a8a;}
+  .ai-note{display:block;margin-top:4px;font-family:var(--sans,inherit);font-size:13px;font-style:italic;color:#8a8a8a;font-weight:400;}
+  /* sources list */
+  .sources{margin:34px 0 0;padding-top:20px;border-top:1px solid var(--rule);}
+  .sources h2{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink);margin:0 0 10px;}
+  .sources ol{list-style:decimal;margin:0 0 0 20px;padding:0;counter-reset:none;}
+  .sources ol li{font-family:var(--sans);font-size:14px;line-height:1.5;color:var(--gray);padding-left:4px;margin-bottom:6px;}
+  .sources ol li::before{content:none;}
+  .sources a{color:var(--link);text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere;}
+  .body p code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:15px;background:#f6f6f4;padding:1px 5px;border-radius:3px;overflow-wrap:anywhere;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="header-brand">DR. ERIN JACQUES</a>
+    <nav class="header-nav">
+      <a href="/#about">About</a>
+      <a href="/work-with-me/">Work With Me</a>
+      <a href="/ai-upfront" class="nav-active">AI Upfront</a>
+      <a href="/#speaking">Speaking</a>
+      <a href="https://www.skool.com/leveragingai/about" class="nav-cta" target="_blank" rel="noopener">Join Leveraging AI</a>
+    </nav>
+    <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-nav" id="mobileNav">
+  <a href="/#about" onclick="closeMobileNav()">About</a>
+  <a href="/leveraging-ai/" onclick="closeMobileNav()">Work With Me</a>
+  <a href="/ai-upfront" onclick="closeMobileNav()">AI Upfront</a>
+  <a href="/#speaking" onclick="closeMobileNav()">Speaking</a>
+  <a href="https://www.skool.com/leveragingai/about" target="_blank" rel="noopener" onclick="closeMobileNav()">Join Leveraging AI</a>
+</div>
+
+<div class="share-bar" aria-label="Share this article">
+  <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://drerinjacques.com/ai-news/five-most-powerful-claude-connectors" target="_blank" rel="noopener" title="Share on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://drerinjacques.com/ai-news/five-most-powerful-claude-connectors&text=The%205%20Most%20Powerful%20Claude%20Connectors%20for%20Anyone%20Building%20an%20App" target="_blank" rel="noopener" title="Share on X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+  <button class="share-btn" onclick="copyLink(this)" title="Copy link"><svg viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" fill="none" stroke="#444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+<div class="share-bar-mobile" aria-label="Share this article">
+  <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://drerinjacques.com/ai-news/five-most-powerful-claude-connectors" target="_blank" rel="noopener" title="Share on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://drerinjacques.com/ai-news/five-most-powerful-claude-connectors&text=The%205%20Most%20Powerful%20Claude%20Connectors%20for%20Anyone%20Building%20an%20App" target="_blank" rel="noopener" title="Share on X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+  <button class="share-btn" onclick="copyLink(this)" title="Copy link"><svg viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" fill="none" stroke="#444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+
+
+
+<article class="article" itemscope itemtype="https://schema.org/Article">
+
+  <div class="kicker"><a class="upfront-label" href="/ai-upfront">AI UPFRONT</a><span class="kdot">&middot;</span>CLAUDE CONNECTORS</div>
+  <h1 class="headline" itemprop="headline">The 5 Most Powerful Claude Connectors for Anyone Building an App</h1>
+  <p class="deck">These five connectors let Claude test your app, lock down your database, find where visitors leave, size up your competitors and announce what you ship. Here&rsquo;s what each one does and how to connect it.</p>
+
+  <div class="byline">
+    <p class="byline-author"><span class="by">By</span> <a href="https://drerinjacques.com" itemprop="author">Dr. Erin Jacques</a><span class="ai-note">Human ideas, AI assist. Upfront, as always.</span></p>
+    <p class="byline-date"><time itemprop="datePublished" datetime="2026-11-03">November 3, 2026</time></p>
+  </div>
+
+  <figure>
+    <img src="/ai-news/five-most-powerful-claude-connectors/featured.png" alt="Dozens of colorful patch cables plugged into a panel of jacks and knobs">
+    <figcaption>Every connector you add gives Claude one more thing it can actually do. <span class="credit">Photo: John Barkiple / <a href="https://unsplash.com/photos/assorted-electric-cables-l090uFWoPaI" target="_blank" rel="noopener">Unsplash</a></span></figcaption>
+  </figure>
+
+  <div class="body" itemprop="articleBody">
+
+    <p class="lead">Claude can build your app. On its own, it can&rsquo;t see how your app is doing.</p>
+
+    <p>It can&rsquo;t click through it like a customer. It can&rsquo;t check who can read your database. It doesn&rsquo;t know where visitors give up, what your competitors charge or who knows you just shipped something new.</p>
+
+    <p>Connectors fix that. Here are the five most powerful ones, and the fifth is the one almost everyone skips.</p>
+
+    <h2>What is a Claude connector?</h2>
+    <p>A connector plugs Claude into another tool so it can use that tool for you. Under the hood, most connectors use the Model Context Protocol (MCP), an open standard for linking AI to apps. In the Claude app you add them under Customize, then Connectors. In Claude Code you add them with one command.</p>
+
+    <h2>1. Playwright: test your app like a real customer</h2>
+    <p>Playwright lets Claude open your app in a real browser and click through it the way a customer would: sign up, log in, check out. It finds what&rsquo;s broken before your customers do.</p>
+
+    <p>Playwright runs in Claude Code, not the regular Claude chat app. In your project folder, run:</p>
+    <pre class="prompt">claude mcp add playwright npx '@playwright/mcp@latest'</pre>
+    <p>That&rsquo;s the command from Simon Willison&rsquo;s <a href="https://til.simonwillison.net/claude-code/playwright-mcp-claude-code" target="_blank" rel="noopener">Playwright setup guide</a>. Then try: &ldquo;Open my app, sign up as a new user and tell me everything that breaks.&rdquo;</p>
+
+    <h2>2. Supabase: find the database holes strangers can see</h2>
+    <p>If AI built your app on Supabase, this one matters most for safety. Claude can run Supabase&rsquo;s security check and flag problems like tables any stranger can read, then fix them for you.</p>
+
+    <p>Supabase is now an <a href="https://supabase.com/blog/claude-connector" target="_blank" rel="noopener">official Claude connector</a>. Supabase&rsquo;s own <a href="https://supabase.com/docs/guides/ai-tools/mcp" target="_blank" rel="noopener">setup guide</a> recommends connecting to a development project first, using read-only mode on anything with real customer data, and approving each action before it runs. Then try: &ldquo;Run the security advisors on my project and explain each problem in plain English.&rdquo;</p>
+
+    <div class="pullquote">
+      <p>Claude can build your app. Connectors let it see how your app is actually doing.</p>
+      <cite>Dr. Erin Jacques</cite>
+    </div>
+
+    <h2>3. PostHog: see exactly where visitors leave</h2>
+    <p>PostHog is product analytics. Connected to Claude, it lets Claude query your data and tell you where visitors drop off before they sign up, so you know what to fix first.</p>
+
+    <p>In Claude Code, PostHog&rsquo;s <a href="https://posthog.com/docs/model-context-protocol/claude-code.md" target="_blank" rel="noopener">docs</a> give this command, then you log in the first time you use it:</p>
+    <pre class="prompt">claude mcp add --transport http posthog https://mcp.posthog.com/mcp -s user</pre>
+    <p>Then try: &ldquo;Where do most visitors leave before signing up? What should I fix first?&rdquo; You&rsquo;ll need PostHog tracking on your site for it to have data to read.</p>
+
+    <h2>4. Firecrawl: read your competitors&rsquo; pages</h2>
+    <p>Firecrawl lets Claude search the web and read pages as clean text. Point it at a competitor and Claude can lay out what they offer and what they charge.</p>
+
+    <p>Firecrawl&rsquo;s <a href="https://github.com/mcp/firecrawl/firecrawl-mcp-server" target="_blank" rel="noopener">MCP server</a> connects at <code>https://mcp.firecrawl.dev/v2/mcp</code>. Search and basic reading work without a key, with limits; a free Firecrawl account unlocks more. Then try: &ldquo;Read the pricing pages of my top three competitors and compare them to mine in a table.&rdquo; Use it for research, not to copy anyone&rsquo;s site.</p>
+
+    <h2>5. ChatifyIT: tell people what you shipped</h2>
+    <p>This is the most important one, and it&rsquo;s the one everyone skips. Full disclosure: I built it.</p>
+
+    <p>Every time you ship something, Claude writes the LinkedIn post and the email about it and saves them to your <a href="https://www.chatifyit.com/claude" target="_blank" rel="noopener">ChatifyIT</a> dashboard. You approve it, and it goes to your LinkedIn and your email list. Nothing goes out until you click.</p>
+
+    <p>In Claude, go to Customize, then Connectors, then Discover, and search &ldquo;ChatifyIT.&rdquo; In Claude Code, add it with <code>https://www.chatifyit.com/api/mcp</code>. The connector is on ChatifyIT&rsquo;s Growth and Pro plans.</p>
+
+    <h2>Why is the fifth one the most important?</h2>
+    <p>Because the first four make your app better, and none of that matters if nobody knows it exists. A fixed bug, a safer database and a better signup page only pay off when people come back to see them.</p>
+
+    <h2>What&rsquo;s changing: one person can now run a whole product team</h2>
+    <p>Testing, security, analytics, research and marketing used to be five different jobs. With connectors, Claude can do the first pass on all five while you make the decisions.</p>
+
+    <p>The builders who get ahead aren&rsquo;t the ones with the most tools. They&rsquo;re the ones who connect the right ones and check the work.</p>
+
+    <h2>Your move</h2>
+    <ol>
+      <li><strong>Pick the connector for your biggest problem today.</strong> Broken app? Playwright. Worried about data? Supabase. No signups? PostHog.</li>
+      <li><strong>Connect it and run the &ldquo;then try&rdquo; prompt above.</strong> Read what Claude finds before you let it change anything.</li>
+      <li><strong>Add ChatifyIT</strong> so every fix you ship becomes a post and an email.</li>
+    </ol>
+
+    <p>This one gives you leverage: one person, five jobs covered, and you stay in charge of every change.</p>
+
+    <p>Your app is only as good as what you can see. Connect one tonight.</p>
+
+    <div class="sources">
+      <h2>Sources</h2>
+      <ol>
+        <li>Simon Willison: <a href="https://til.simonwillison.net/claude-code/playwright-mcp-claude-code" target="_blank" rel="noopener">Using Playwright MCP with Claude Code</a></li>
+        <li>Supabase: <a href="https://supabase.com/blog/claude-connector" target="_blank" rel="noopener">Supabase is now an official Claude connector</a></li>
+        <li>Supabase Docs: <a href="https://supabase.com/docs/guides/ai-tools/mcp" target="_blank" rel="noopener">Supabase MCP Server</a></li>
+        <li>PostHog Docs: <a href="https://posthog.com/docs/model-context-protocol/claude-code.md" target="_blank" rel="noopener">PostHog MCP for Claude Code</a></li>
+        <li>GitHub: <a href="https://github.com/mcp/firecrawl/firecrawl-mcp-server" target="_blank" rel="noopener">Firecrawl MCP Server</a></li>
+        <li>ChatifyIT: <a href="https://www.chatifyit.com/claude" target="_blank" rel="noopener">ChatifyIT for Claude</a></li>
+      </ol>
+    </div>
+
+    <div class="tags">
+      <a href="/ai-news">AI Tools</a>
+      <a href="/ai-news">Claude Code</a>
+      <a href="/ai-news">Connectors</a>
+      <a href="/ai-news">Vibe Coding</a>
+    </div>
+
+
+    <!-- author-note: KEEP AS-IS. This is where we promote the community. -->
+    <div class="author-note">
+      <img src="/ai-news/five-most-powerful-claude-connectors/dr-erin-jacques_pic.jpg" alt="Dr. Erin Jacques">
+      <p><strong>Dr. Erin Jacques</strong> is a professor, AI strategist and the founder of <a href="https://www.skool.com/leveragingai/about" target="_blank" rel="noopener">Leveraging AI</a> and <a href="https://chatifyit.com" target="_blank" rel="noopener">ChatifyIT</a>. She helps entrepreneurs and creators use AI safely and turn what they know into income.</p>
+    </div>
+
+    <div class="subscribe">
+      <h3>AI Upfront</h3>
+      <p>Straight talk on the AI economy, and how to claim your place in it. Three short emails a week: what's true, what's changing, and your move.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+        <button type="submit" id="newsletterBtn">Subscribe</button>
+      </form>
+      <div id="newsletterMessage" class="form-message"></div>
+    </div>
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div>
+    <a href="https://drerinjacques.com">Dr. Erin Jacques</a>
+    <a href="https://drerinjacques.com/ai-upfront">AI Upfront</a>
+    <a href="https://www.skool.com/leveragingai/about">Leveraging AI</a>
+    <a href="https://chatifyit.com">ChatifyIT</a>
+  </div>
+  <p>© 2026 Dr. Erin Jacques. All rights reserved.</p>
+</footer>
+
+<script>
+  function toggleMobileNav(){
+    document.getElementById('mobileNav').classList.toggle('open');
+    document.querySelector('.hamburger').classList.toggle('active');
+    document.body.style.overflow = document.getElementById('mobileNav').classList.contains('open') ? 'hidden' : '';
+  }
+  function closeMobileNav(){
+    document.getElementById('mobileNav').classList.remove('open');
+    document.querySelector('.hamburger').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function copyLink(btn){
+    const url = window.location.href;
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(url).then(()=>showCopied(btn)).catch(()=>legacyCopy(btn,url));
+    } else { legacyCopy(btn,url); }
+  }
+  function legacyCopy(btn,url){
+    const el=document.createElement('input');el.value=url;
+    el.style.cssText='position:fixed;top:0;left:0;opacity:0.01;';
+    document.body.appendChild(el);el.focus();el.select();
+    try{document.execCommand('copy');showCopied(btn);}catch(e){}
+    document.body.removeChild(el);
+  }
+  function showCopied(btn){
+    btn.classList.add('share-btn-copied');
+    const orig=btn.innerHTML;
+    btn.innerHTML='<span style="font-size:10px;font-weight:700;color:#fff;">OK</span>';
+    setTimeout(()=>{btn.classList.remove('share-btn-copied');btn.innerHTML=orig;},1600);
+  }
+  document.getElementById('newsletterForm').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const emailInput=document.getElementById('newsletterEmail');
+    const submitBtn=document.getElementById('newsletterBtn');
+    const msg=document.getElementById('newsletterMessage');
+    msg.className='form-message';msg.textContent='';
+    submitBtn.disabled=true;submitBtn.textContent='Subscribing...';
+    try{
+      const r=await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:emailInput.value})});
+      const d=await r.json();
+      if(r.ok){msg.className='form-message success';msg.textContent="Subscribed. Updates are on the way.";emailInput.value='';}
+      else{msg.className='form-message error';msg.textContent=d.error||'Something went wrong. Please try again.';}
+    }catch(err){msg.className='form-message error';msg.textContent='Network error. Please try again.';}
+    finally{submitBtn.disabled=false;submitBtn.textContent='Subscribe';}
+  });
+</script>
+
+</body>
+</html>
