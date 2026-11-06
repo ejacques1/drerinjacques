@@ -283,31 +283,30 @@ Explain each step in plain language before you run it. Then build the graph for 
     <div class="part">Part 4</div>
     <div class="step">Claude does chores</div>
     <h2>A messy Google Drive, <span class="hl">fixed in 2 prompts.</span></h2>
-    <p>Claude can connect to your Google Drive, look at what's there, and organize it for you. First it plans, then it does the work after you approve.</p>
+    <p>Claude sorts years of clutter into folders, flags your copies, and renames files based on what's actually inside them. So "IMG_4471" finally becomes "2025 Tax Return."</p>
     <h3>Set up once</h3>
     <ol class="steps">
-      <li><b>In Claude, open Settings, then Connectors.</b></li>
-      <li><b>Connect Google Drive</b> and sign in with your Google account.</li>
+      <li><b>Install Claude in Chrome</b> from the Chrome Web Store, sign in with your Claude account, and pin it to your toolbar. It needs a paid Claude plan and desktop Google Chrome.</li>
+      <li><b>Open Google Drive and click into your messiest folder.</b> Start with one folder, not your whole Drive, so you can check its work first.</li>
+      <li><b>Click the Claude icon</b> to open the side panel.</li>
     </ol>
 
-    <h3>Prompt 1: look and plan (changes nothing)</h3>
+    <h3>Prompt 1: the plan</h3>
     <div class="promptbox">
-      <div class="pl2">Paste this into Claude</div>
-      <code>Look through my Google Drive. Don't move, rename, or delete anything yet.
-
-Tell me what's there, then suggest a simple folder structure that fits how I actually use it. Show me which files would go where, which ones look like duplicates, and which file names are unclear.</code>
+      <div class="pl2">Paste this into the Claude side panel</div>
+      <code>Look through this folder and plan a folder structure for my files. Flag any copies and anything you can't identify. Don't move or delete anything until I approve.</code>
       <button class="copy" onclick="copyPrompt(this)">Copy</button>
     </div>
+    <p>Read the plan before you say yes. Then tell Claude to go. It builds the folders and moves the files in.</p>
 
-    <h3>Prompt 2: do it</h3>
+    <h3>Prompt 2: the rename</h3>
     <div class="promptbox">
-      <div class="pl2">Paste this after you've checked the plan</div>
-      <code>Go ahead with the plan. Create the folders, move the files, and rename unclear files so I can tell what they are.
-
-Do not delete anything. Put possible duplicates and junk in a folder called "Review before deleting" so I can decide myself. When you're done, give me a short summary of what changed.</code>
+      <div class="pl2">Same chat, paste this next</div>
+      <code>Rename any file with a useless name based on what's inside it, and show me the before and after first.</code>
       <button class="copy" onclick="copyPrompt(this)">Copy</button>
     </div>
-    <div class="note">Always plan first, then act. Reading the plan before you say yes is how you stay in control of what AI does with your files.</div>
+    <div class="note">The side panel starts in "Automatically approve" mode, so it keeps working unless it thinks it needs you. That's why both prompts tell Claude to stop and show you first. Keep it to your own Drive.</div>
+    <p style="font-size:.95rem;">Read more: <a href="/ai-news/clean-up-google-drive-with-claude">Clean up your Google Drive with Claude</a> · <a href="/ai-news/claude-in-chrome-safe-setup">Set up Claude in Chrome safely</a></p>
   </div></section>
 
   <section><div class="wrap">
