@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Where to Launch Your App · Leveraging AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1A2E; --navy2:#1a3658; --yellow:#FFD93D; --yellow-dark:#E8C12B;
+    --teal:#0DB4DB; --teal-dark:#0A8FAF; --cream:#FAF6EC; --text:#0B1A2E;
+    --soft:#4A5568; --faint:#718096; --line:#E2E8F0;
+    --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:52px 0;border-top:1px solid var(--line);}
+  section.hero{border-top:none;padding:40px 0 40px;}
+  section.cream{background:var(--cream);border-top:none;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.02em;font-size:1rem;color:var(--navy);}
+  .brand b{color:var(--teal-dark);}
+  .step{color:var(--teal-dark);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;margin-bottom:12px;}
+  h1{font-size:clamp(2.1rem,5.6vw,3.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.07;margin:0 0 16px;color:var(--navy);}
+  .hl{background:linear-gradient(180deg,transparent 58%,rgba(255,217,61,.75) 58%);padding:0 3px;}
+  h2{font-size:clamp(1.6rem,4.2vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin:0 0 14px;color:var(--navy);}
+  h3{font-size:1.25rem;font-weight:800;color:var(--navy);margin:26px 0 8px;}
+  .lead{font-size:clamp(1.18rem,2.6vw,1.5rem);color:var(--navy);font-weight:700;margin:0 0 10px;}
+  p{font-size:clamp(1.06rem,2.2vw,1.24rem);color:var(--soft);margin:0 0 14px;max-width:74ch;}
+  p b{color:var(--navy);}
+  a{color:var(--teal-dark);}
+  .agenda{list-style:none;padding:0;margin:14px 0 0;counter-reset:ag;}
+  .agenda li{position:relative;padding:11px 0 11px 40px;font-size:clamp(1.1rem,2.3vw,1.32rem);color:var(--navy);font-weight:700;border-bottom:1px solid var(--line);}
+  .agenda li:last-child{border-bottom:none;}
+  .agenda li::before{counter-increment:ag;content:counter(ag);position:absolute;left:0;top:12px;width:26px;height:26px;background:var(--yellow);color:var(--navy);border-radius:50%;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .punch{font-size:clamp(1.3rem,3.1vw,1.8rem);font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.22;border-left:5px solid var(--yellow);padding:6px 0 6px 22px;margin:22px 0;}
+  .punch span{color:var(--teal-dark);}
+  .prules{list-style:none;padding:0;margin:14px 0 0;}
+  .prules li{position:relative;padding:12px 0 12px 34px;border-bottom:1px solid var(--line);font-size:clamp(1.05rem,2.2vw,1.26rem);color:var(--soft);}
+  .prules li:last-child{border-bottom:none;}
+  .prules li b{color:var(--navy);}
+  .prules li::before{content:"";position:absolute;left:4px;top:20px;width:11px;height:11px;background:var(--yellow);border-radius:50%;}
+  .steps{list-style:none;padding:0;margin:14px 0 0;counter-reset:st;}
+  .steps li{position:relative;padding:12px 0 12px 44px;border-bottom:1px solid var(--line);font-size:clamp(1.04rem,2.2vw,1.2rem);color:var(--soft);}
+  .steps li:last-child{border-bottom:none;}
+  .steps li b{color:var(--navy);}
+  .steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:12px;width:28px;height:28px;background:var(--navy);color:#fff;border-radius:8px;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0;}
+  .stat{background:#fff;border:2px solid var(--navy);border-radius:16px;padding:18px 20px;}
+  .stat .num{font-size:clamp(2rem,5vw,2.6rem);font-weight:800;color:var(--navy);line-height:1;letter-spacing:-.02em;}
+  .stat .what{font-size:1.02rem;color:var(--soft);margin-top:8px;line-height:1.4;}
+  .stat .src{font-size:.78rem;color:var(--faint);margin-top:8px;}
+  .stat .src a{color:var(--faint);}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px;}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px;}
+  @media(max-width:760px){ .three{grid-template-columns:1fr;} }
+  @media(max-width:640px){ .two{grid-template-columns:1fr;} }
+  .half{background:#fff;border:2px solid var(--navy);border-radius:16px;padding:18px 20px;}
+  .half h3{margin:0 0 6px;color:var(--navy);font-size:1.15rem;font-weight:800;}
+  .half p{font-size:1.02rem;margin:0;}
+  .half .tag{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:6px;}
+  .promptbox{background:var(--navy);border-radius:16px;padding:18px 20px;position:relative;margin:16px 0;}
+  .promptbox .pl2{color:var(--yellow);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
+  .promptbox code{color:#eaf1fb;font-family:var(--mono);font-size:.95rem;line-height:1.55;display:block;white-space:pre-wrap;padding-right:70px;}
+  .copy{position:absolute;top:16px;right:16px;background:var(--yellow);color:var(--navy);border:none;border-radius:8px;padding:7px 13px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .note{background:var(--cream);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:1.05rem;color:var(--navy);font-weight:600;}
+  section.cream .note{background:#fff;}
+  details.tpl{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0;}
+  details.tpl summary{cursor:pointer;font-weight:800;color:var(--navy);font-size:1.08rem;}
+  details.tpl .promptbox{margin-bottom:4px;}
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0;}
+  @media(max-width:760px){ .flow{grid-template-columns:1fr 1fr;} }
+  .flow div{background:#fff;border:2px solid var(--navy);border-radius:14px;padding:14px;font-weight:700;color:var(--navy);font-size:1rem;line-height:1.35;}
+  .flow div small{display:block;color:var(--teal-dark);font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:.7rem;margin-bottom:4px;}
+  .btn{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:800;font-size:1.2rem;text-decoration:none;padding:14px 30px;border-radius:12px;margin-top:12px;box-shadow:0 8px 22px rgba(255,217,61,.4);}
+  .btn.ghost{background:#fff;border:2px solid var(--navy);box-shadow:none;margin-left:8px;}
+  footer{padding:34px 0 60px;color:var(--faint);font-size:.9rem;}
+  .tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:clamp(.98rem,2vw,1.12rem);}
+  .tbl th{background:var(--navy);color:#fff;text-align:left;padding:12px 14px;font-weight:800;}
+  .tbl td{border-bottom:1px solid var(--line);padding:12px 14px;color:var(--soft);vertical-align:top;}
+  .tbl td b{color:var(--navy);}
+  .tbl code,.inl{font-family:var(--mono);background:rgba(13,180,219,.12);color:var(--navy);padding:1px 6px;border-radius:5px;font-size:.92em;}
+  .tree{background:var(--navy);color:#eaf1fb;border-radius:16px;padding:20px 22px;font-family:var(--mono);font-size:clamp(.82rem,1.9vw,.98rem);line-height:1.7;white-space:pre;overflow-x:auto;margin:16px 0;}
+  .tree .c{color:var(--yellow);}
+  .tree .f{color:#7fdcf3;}
+  @media(max-width:640px){ .tbl th,.tbl td{padding:10px 8px;} }
+  .part{display:inline-block;background:var(--navy);color:var(--yellow);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem;padding:6px 12px;border-radius:8px;margin-bottom:14px;}
+  .map{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 0;}
+  @media(max-width:760px){ .map{grid-template-columns:1fr 1fr;} }
+  .map a{display:block;text-decoration:none;background:#fff;border:2px solid var(--navy);border-radius:16px;padding:16px;color:var(--navy);transition:transform .15s,box-shadow .15s;}
+  .map a:hover{transform:translateY(-3px);box-shadow:0 8px 0 var(--yellow);}
+  .map .n{font-size:2rem;font-weight:800;color:var(--teal-dark);line-height:1;}
+  .map .t{font-weight:800;font-size:1.08rem;margin-top:8px;line-height:1.25;}
+  .map .d{font-size:.92rem;color:var(--soft);margin-top:4px;line-height:1.35;}
+  .desk{margin:20px 0 8px;}
+  .bar{display:flex;height:54px;border-radius:12px;overflow:hidden;border:2px solid var(--navy);}
+  .bar div{display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;color:var(--navy);text-align:center;line-height:1.1;padding:0 4px;}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.95rem;color:var(--soft);}
+  .legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c);}
+  .vs{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;margin:18px 0;}
+  .vs .mid{display:flex;align-items:center;font-weight:800;color:var(--teal-dark);font-size:1.3rem;}
+  @media(max-width:640px){ .vs{grid-template-columns:1fr;} .vs .mid{justify-content:center;} }
+  .conn{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0;}
+  @media(max-width:760px){ .conn{grid-template-columns:1fr;} }
+  .conn .half .big{font-size:1.7rem;}
+  .tag.warn{color:#b45309;}
+  .tbl td.y{color:#0A8FAF;font-weight:800;}
+  .role{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:18px 0;}
+  .role .half .emoji{font-size:1.7rem;line-height:1;margin-bottom:6px;}
+  .case{background:#fff;border:2px dashed var(--navy);border-radius:16px;padding:18px 22px;margin:18px 0;}
+  .case .lbl{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:6px;}
+  .case p{margin:0 0 8px;}
+  .tbl tr.win td{background:rgba(255,217,61,.22);}
+</style>
+</head>
+<body>
+<div style="background:#081d3a;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:11px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);">
+  <a href="/ai-panel" style="color:#F4B02E;text-decoration:none;font-weight:800;">← Previous</a>
+  <a href="/lives" style="color:#fff;text-decoration:none;font-weight:800;">☰ All Live Sessions</a>
+  <span style="color:#6f83a0;font-weight:700;">Nov 6 · Friday Live</span>
+</div>
+  <div class="wrap"><div class="brand">Dr. Erin Jacques · <b>Friday Live</b></div></div>
+
+  <section class="hero"><div class="wrap">
+    <div class="step">Friday Live · November 6</div>
+    <h1>Where to post your app <span class="hl">so people find it.</span></h1>
+    <p class="lead">Most apps don't fail because they're bad. They fail because nobody ever sees them.</p>
+    <p>This week: the sites where you can list what you built, what each one is, and the order to use them. Then a free tool that makes Claude Code cheaper to build with, and a fun one: Claude cleaning up a messy Google Drive.</p>
+    <div class="map" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr));">
+      <a href="#ready"><div class="n">1</div><div class="t">Before you post</div><div class="d">Is your app ready to be seen?</div></a>
+      <a href="#sites"><div class="n">2</div><div class="t">Where to post it</div><div class="d">The sites, and what each one is</div></a>
+      <a href="#graphify"><div class="n">3</div><div class="t">Build cheaper</div><div class="d">Graphify for Claude Code</div></a>
+      <a href="#drive"><div class="n">4</div><div class="t">Claude does chores</div><div class="d">Clean up Google Drive in 2 prompts</div></a>
+    </div>
+  </div></section>
+
+  <!-- ================= PART 1: READY ================= -->
+  <section class="cream" id="ready"><div class="wrap">
+    <div class="part">Part 1</div>
+    <div class="step">Before you post anywhere</div>
+    <h2>You only get one first impression.</h2>
+    <p>The moment you post, strangers click. If the link is broken or the page looks unfinished, they leave and they don't come back. Check these first.</p>
+    <ol class="steps">
+      <li><b>It's live on a real domain.</b> Not a link that only works on your laptop, and not a random <span class="inl">-b65p.vercel.app</span> address.</li>
+      <li><b>It has a privacy policy and terms.</b> Every directory visitor is a stranger, and strangers trust sites that look legitimate. Review <a href="/protect-your-app">Protect Your App</a> if you skipped this.</li>
+      <li><b>It works on a phone.</b> Most people will click your link from their phone. Open it on yours before you post.</li>
+      <li><b>You can say what it does in one sentence.</b> Who it's for and what it does for them. Every site will ask you for this.</li>
+      <li><b>You have 3 screenshots or a 30-second video.</b> People decide in seconds. Show them, don't just tell them.</li>
+      <li><b>You can catch an email.</b> Most visitors won't buy today. A waitlist or free signup means you can reach them tomorrow.</li>
+    </ol>
+    <div class="punch">A change on your computer <span>is not a change on your site.</span></div>
+    <p>Open your live link in a private window before you post it anywhere. That's what a stranger sees.</p>
+  </div></section>
+
+  <!-- ================= PART 2: SITES ================= -->
+  <section id="sites"><div class="wrap">
+    <div class="part">Part 2</div>
+    <div class="step">Where to post it</div>
+    <h2>Pick 2 or 3. <span class="hl">Not all of them.</span></h2>
+    <p>Each site has a different crowd and different rules. Posting the same ad everywhere doesn't work. Pick the ones that fit your app and do them well.</p>
+
+    <h3>Big launch days</h3>
+    <table class="tbl">
+      <tr><th>Site</th><th>What it is</th><th>Best for</th></tr>
+      <tr><td><b><a href="https://www.producthunt.com">Product Hunt</a></b></td><td>The best-known launch site. You pick a launch day, people upvote, and the top apps of the day get featured.</td><td>A polished app you're ready to show off</td></tr>
+      <tr><td><b><a href="https://news.ycombinator.com/show">Hacker News (Show HN)</a></b></td><td>A community of developers and tech founders. Post with "Show HN:" in the title.</td><td>Honest feedback. They're blunt and dislike anything that sounds like an ad.</td></tr>
+    </table>
+
+    <h3>Communities: start here</h3>
+    <table class="tbl">
+      <tr><th>Site</th><th>What it is</th><th>Best for</th></tr>
+      <tr><td><b><a href="https://www.reddit.com/r/SideProject/">Reddit</a></b><br><span style="font-size:.9rem;">r/SideProject, r/SaaS, r/indiehackers</span></td><td>Online forums by topic. Each one has its own rules, so read them before posting.</td><td>Your first app. Share the story of building it, not a sales pitch.</td></tr>
+      <tr><td><b><a href="https://www.indiehackers.com">Indie Hackers</a></b></td><td>A community of solo founders sharing what they're building, what's working, and what they're earning.</td><td>Connections, advice, and accountability</td></tr>
+    </table>
+
+    <h3>Directories: list once, get found for months</h3>
+    <table class="tbl">
+      <tr><th>Site</th><th>What it is</th><th>Best for</th></tr>
+      <tr><td><b><a href="https://betalist.com">BetaList</a></b></td><td>A directory of early-stage apps looking for their first users.</td><td>Building a waitlist before your big launch</td></tr>
+      <tr><td><b><a href="https://www.uneed.best">Uneed</a></b></td><td>A daily launch board, similar to Product Hunt but smaller and friendlier.</td><td>A real launch day with less competition</td></tr>
+      <tr><td><b><a href="https://peerlist.io/launchpad">Peerlist Launchpad</a></b></td><td>A weekly launch for builders, on a professional network for people who make things.</td><td>Getting seen by other builders</td></tr>
+      <tr><td><b><a href="https://theresanaiforthat.com">There's An AI For That</a></b></td><td>A huge search directory of AI tools. People go there looking for a tool for a specific job.</td><td>Any app that uses AI</td></tr>
+      <tr><td><b><a href="https://www.futurepedia.io">Futurepedia</a></b></td><td>Another large AI tools directory, organized by category.</td><td>Any app that uses AI</td></tr>
+    </table>
+
+    <h3>Proof: once you're making money</h3>
+    <table class="tbl">
+      <tr><th>Site</th><th>What it is</th><th>Best for</th></tr>
+      <tr><td><b><a href="https://trustmrr.com">TrustMRR</a></b></td><td>A directory where your revenue is verified straight from your payment account, so nobody has to take your word for it.</td><td>Credibility once you have paying customers</td></tr>
+    </table>
+    <div class="note">Some of these sites offer paid upgrades to skip the line or get featured. Start with the free listing. Pay only once you know that crowd fits your app.</div>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <div class="step">The order</div>
+    <h2>Launch is a week, not a day.</h2>
+    <div class="flow">
+      <div><small>2 weeks before</small>List on BetaList and start a waitlist</div>
+      <div><small>Launch week</small>Product Hunt, Uneed, or Peerlist</div>
+      <div><small>Same week</small>Tell your build story on Reddit and Indie Hackers</div>
+      <div><small>After launch</small>AI directories, then TrustMRR once you have sales</div>
+    </div>
+    <h3>The rules that matter everywhere</h3>
+    <ul class="prules">
+      <li><b>Tell the story, not the ad.</b> "I'm a teacher and I built this in 3 weeks with Claude Code" gets read. "Check out my app!" gets skipped.</li>
+      <li><b>Reply to every comment the same day.</b> On launch day, your replies matter as much as your post.</li>
+      <li><b>Write it new for each site.</b> Same app, different words for each crowd.</li>
+      <li><b>Save every piece of feedback.</b> Strangers will tell you what your friends won't.</li>
+    </ul>
+
+    <h3>Let Claude write your listings</h3>
+    <p>Run this inside your project in Claude Code, so it can read what your app actually does.</p>
+    <div class="promptbox">
+      <div class="pl2">Paste this into Claude Code</div>
+      <code>I'm about to list this app on launch sites. Read my project so you understand what it does and who it's for, then write:
+
+1. A one-sentence description: who it's for and what it does for them.
+2. A short tagline, under 60 characters.
+3. A Product Hunt description, plus a first comment from me telling the story of why I built it.
+4. A Reddit post for r/SideProject that tells my build story and asks for feedback. No sales language.
+5. A "Show HN:" title and a short, plain post for Hacker News.
+6. A short listing for AI tool directories, with 3 categories it fits.
+
+Use plain language. Don't invent features or numbers my app doesn't have. Ask me questions first if anything is unclear.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+    <p style="font-size:.95rem;">Read every word before you post. You're the one putting your name on it.</p>
+  </div></section>
+
+  <!-- ================= PART 3: GRAPHIFY ================= -->
+  <section id="graphify"><div class="wrap">
+    <div class="part">Part 3</div>
+    <div class="step">Build cheaper</div>
+    <h2>Stop paying Claude to search.</h2>
+    <p>When you ask Claude Code about your app, it doesn't know where anything is. So it searches: opens a file, finds it's the wrong one, opens another. All of that reading uses up your plan before any real work starts.</p>
+    <p>And everything it read stays in the conversation, so you keep paying for that search on every message after.</p>
+    <div class="punch">You don't pay for the search once. <span>You pay for it the rest of the session.</span></div>
+
+    <h3>What Graphify does</h3>
+    <p><b>Graphify</b> is a free tool that reads your project once and builds a map: every file, every function, and how they connect. After that, Claude checks the map first and only opens the files it needs.</p>
+    <div class="vs">
+      <div class="half"><span class="tag">Without Graphify</span><h3>Rereading the whole book</h3><p>Every question, Claude flips through pages looking for the answer.</p></div>
+      <div class="mid">vs.</div>
+      <div class="half"><span class="tag">With Graphify</span><h3>Using the index</h3><p>Claude looks it up, goes straight to the right page, and gets to work.</p></div>
+    </div>
+
+    <h3>About the "70x fewer tokens"</h3>
+    <p>That number is real, but it comes from Graphify's own testing, and the savings depend on how big your project is.</p>
+    <table class="tbl">
+      <tr><th>Project size in their test</th><th>Tokens saved</th></tr>
+      <tr class="win"><td><b>52 files</b></td><td class="y">71.5x fewer</td></tr>
+      <tr><td><b>4 files</b></td><td>5.4x fewer</td></tr>
+      <tr><td><b>6 files</b></td><td>About the same, no real savings</td></tr>
+    </table>
+    <p><b>Small project? You don't need it yet.</b> It's for when your app has grown and you keep hitting your limits. Building the map the first time also uses some tokens.</p>
+
+    <h3>How to install it</h3>
+    <ol class="steps">
+      <li><b>Open Claude Code</b> in your app's project folder.</li>
+      <li><b>Paste the prompt below.</b> Claude installs it and builds the map for you.</li>
+      <li><b>Then just work normally.</b> It adds a note to your CLAUDE.md telling Claude to check the map first.</li>
+    </ol>
+    <div class="promptbox">
+      <div class="pl2">Paste this into Claude Code</div>
+      <code>Install Graphify in this project: https://github.com/Graphify-Labs/graphify
+
+Notes: the package name is "graphifyy" with two y's. It needs Python 3.10 or later, so check my version first.
+
+Explain each step in plain language before you run it. Then build the graph for this project, and show me the report it creates and how you'll use it from now on.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+    <div class="note">Only use the official repo, github.com/Graphify-Labs/graphify. There are many copies on GitHub, and you don't want to install code from a stranger's copy.</div>
+    <p style="font-size:.95rem;">Read more: <a href="/ai-news/graphify-claude-code-tokens">Where your Claude Code tokens actually go</a> · <a href="https://github.com/Graphify-Labs/graphify">Graphify on GitHub</a></p>
+  </div></section>
+
+  <!-- ================= PART 4: DRIVE ================= -->
+  <section class="cream" id="drive"><div class="wrap">
+    <div class="part">Part 4</div>
+    <div class="step">Claude does chores</div>
+    <h2>A messy Google Drive, <span class="hl">fixed in 2 prompts.</span></h2>
+    <p>Claude can connect to your Google Drive, look at what's there, and organize it for you. First it plans, then it does the work after you approve.</p>
+    <h3>Set up once</h3>
+    <ol class="steps">
+      <li><b>In Claude, open Settings, then Connectors.</b></li>
+      <li><b>Connect Google Drive</b> and sign in with your Google account.</li>
+    </ol>
+
+    <h3>Prompt 1: look and plan (changes nothing)</h3>
+    <div class="promptbox">
+      <div class="pl2">Paste this into Claude</div>
+      <code>Look through my Google Drive. Don't move, rename, or delete anything yet.
+
+Tell me what's there, then suggest a simple folder structure that fits how I actually use it. Show me which files would go where, which ones look like duplicates, and which file names are unclear.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+
+    <h3>Prompt 2: do it</h3>
+    <div class="promptbox">
+      <div class="pl2">Paste this after you've checked the plan</div>
+      <code>Go ahead with the plan. Create the folders, move the files, and rename unclear files so I can tell what they are.
+
+Do not delete anything. Put possible duplicates and junk in a folder called "Review before deleting" so I can decide myself. When you're done, give me a short summary of what changed.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+    <div class="note">Always plan first, then act. Reading the plan before you say yes is how you stay in control of what AI does with your files.</div>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">After launch day</div>
+    <h2>Launch is one day. <span class="hl">Posting is every week.</span></h2>
+    <p>The apps that grow keep showing up after launch. Every new feature you build is a reason to post again. <b>ChatifyIT</b> turns what you ship into LinkedIn posts and emails, right from Claude Code.</p>
+    <p>You can build your ChatifyIT page free, with no card.</p>
+    <a class="btn" href="https://www.chatifyit.com">Try ChatifyIT →</a>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <h2>Your homework this week.</h2>
+    <ol class="steps">
+      <li>Run through the "before you post" checklist on your live site.</li>
+      <li>Pick 2 or 3 sites from the list that fit your app.</li>
+      <li>Use the listing prompt to draft your posts, then rewrite them in your own words.</li>
+      <li>Post your build story in one community this week.</li>
+      <li>If your project has grown, install Graphify.</li>
+      <li>Bonus: let Claude clean up your Google Drive.</li>
+    </ol>
+    <a class="btn" href="https://skool.com/leveragingai/about">Join the community →</a>
+    <p style="margin-top:22px;">Missed a week? <a href="/lives"><b>See all past live sessions →</b></a></p>
+  </div></section>
+
+  <footer><div class="wrap">Dr. Erin Jacques · Friday Live · November 6 · <a href="/lives" style="color:var(--faint);">All live sessions</a></div></footer>
+<script>
+  function copyPrompt(btn){
+    var el = btn.parentElement.querySelector('code');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = o; }, 1500);
+    });
+  }
+</script>
+</body>
+</html>
