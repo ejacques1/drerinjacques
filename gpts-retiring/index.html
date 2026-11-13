@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Friday Live — Your Custom GPTs Are Being Retired — Dr. Erin Jacques</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1A2E; --navy2:#1a3658; --yellow:#FFD93D; --yellow-dark:#E8C12B;
+    --teal:#0DB4DB; --teal-dark:#0A8FAF; --cream:#FAF6EC; --text:#0B1A2E;
+    --soft:#4A5568; --faint:#718096; --line:#E2E8F0; --red:#C0392B;
+    --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:52px 0;border-top:1px solid var(--line);}
+  section.hero{border-top:none;padding:40px 0 40px;}
+  section.cream{background:var(--cream);border-top:none;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.02em;font-size:1rem;color:var(--navy);}
+  .brand b{color:var(--teal-dark);}
+  .step{color:var(--teal-dark);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;margin-bottom:12px;}
+  h1{font-size:clamp(2.1rem,5.6vw,3.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.07;margin:0 0 16px;color:var(--navy);}
+  .hl{background:linear-gradient(180deg,transparent 58%,rgba(255,217,61,.75) 58%);padding:0 3px;}
+  h2{font-size:clamp(1.6rem,4.2vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin:0 0 14px;color:var(--navy);}
+  .lead{font-size:clamp(1.18rem,2.6vw,1.5rem);color:var(--navy);font-weight:700;margin:0 0 10px;}
+  p{font-size:clamp(1.06rem,2.2vw,1.24rem);color:var(--soft);margin:0 0 14px;max-width:74ch;}
+  p b{color:var(--navy);}
+  .agenda{list-style:none;padding:0;margin:14px 0 0;counter-reset:ag;}
+  .agenda li{position:relative;padding:11px 0 11px 40px;font-size:clamp(1.1rem,2.3vw,1.32rem);color:var(--navy);font-weight:700;border-bottom:1px solid var(--line);}
+  .agenda li:last-child{border-bottom:none;}
+  .agenda li::before{counter-increment:ag;content:counter(ag);position:absolute;left:0;top:12px;width:26px;height:26px;background:var(--yellow);color:var(--navy);border-radius:50%;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .prules{list-style:none;padding:0;margin:14px 0 0;}
+  .prules li{position:relative;padding:12px 0 12px 34px;border-bottom:1px solid var(--line);font-size:clamp(1.05rem,2.2vw,1.26rem);color:var(--soft);}
+  .prules li:last-child{border-bottom:none;}
+  .prules li b{color:var(--navy);}
+  .prules li::before{content:"";position:absolute;left:4px;top:20px;width:11px;height:11px;background:var(--yellow);border-radius:50%;}
+  .steps{list-style:none;padding:0;margin:14px 0 0;counter-reset:st;}
+  .steps li{position:relative;padding:12px 0 12px 40px;border-bottom:1px solid var(--line);font-size:clamp(1.05rem,2.2vw,1.26rem);color:var(--soft);}
+  .steps li:last-child{border-bottom:none;}
+  .steps li b{color:var(--navy);}
+  .steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:13px;width:26px;height:26px;background:var(--yellow);color:var(--navy);border-radius:50%;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .defn{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 18px;margin:10px 0;}
+  .defn h4{margin:0 0 4px;color:var(--navy);font-size:1.14rem;font-weight:800;}
+  .defn p{margin:0;font-size:1.02rem;color:var(--soft);}
+  .defn .ex{color:var(--teal-dark);font-weight:700;font-size:.96rem;margin-top:7px;}
+  .note{background:var(--cream);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:1.05rem;color:var(--navy);font-weight:600;}
+  section.cream .note{background:#fff;}
+  .warn{background:#fdecea;border:1px solid #f5c6c0;border-left:5px solid var(--red);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:1.05rem;color:var(--navy);font-weight:600;}
+  .countdown{background:var(--navy);border-radius:18px;padding:24px 26px;margin:20px 0 0;color:#fff;}
+  .countdown .big{font-size:clamp(2.4rem,7vw,3.6rem);font-weight:800;line-height:1;color:var(--yellow);letter-spacing:-.02em;}
+  .countdown .cl{font-size:1.1rem;font-weight:700;color:#cbd5e0;margin-top:6px;}
+  .dates{list-style:none;padding:0;margin:14px 0 0;}
+  .dates li{display:flex;gap:16px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--line);font-size:clamp(1.02rem,2.1vw,1.2rem);color:var(--soft);}
+  .dates li:last-child{border-bottom:none;}
+  .dates .d{flex:none;width:122px;font-weight:800;color:var(--navy);}
+  .dates li b{color:var(--navy);}
+  .promptbox{background:var(--navy);border-radius:16px;padding:18px 20px;position:relative;margin:16px 0;}
+  .promptbox .pl2{color:var(--yellow);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
+  .promptbox code{color:#eaf1fb;font-family:var(--mono);font-size:.98rem;line-height:1.55;display:block;white-space:pre-wrap;padding-right:70px;}
+  .copy{position:absolute;top:16px;right:16px;background:var(--yellow);color:var(--navy);border:none;border-radius:8px;padding:7px 13px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .cmd{display:inline-block;background:#0f2748;color:#eaf1fb;font-family:var(--mono);border-radius:6px;padding:1px 8px;font-weight:700;font-size:.92em;}
+  .places{list-style:none;padding:0;margin:14px 0 0;counter-reset:pl;}
+  .places li{position:relative;padding:16px 0 16px 46px;border-bottom:1px solid var(--line);font-size:clamp(1.04rem,2.1vw,1.22rem);color:var(--soft);}
+  .places li:last-child{border-bottom:none;}
+  .places li b{color:var(--navy);}
+  .places li::before{counter-increment:pl;content:counter(pl);position:absolute;left:0;top:16px;width:30px;height:30px;background:var(--navy);color:var(--yellow);border-radius:50%;font-size:.95rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .btn{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:800;font-size:1.2rem;text-decoration:none;padding:14px 30px;border-radius:12px;margin-top:12px;box-shadow:0 8px 22px rgba(255,217,61,.4);}
+  .btn.ghost{background:#fff;color:var(--navy);border:2px solid var(--navy);box-shadow:none;margin-right:10px;}
+  .disc{font-size:.95rem;color:var(--faint);margin-top:6px;font-style:italic;}
+  footer{padding:34px 0 60px;color:var(--faint);font-size:.9rem;}
+</style>
+</head>
+<body>
+<div style="background:#081d3a;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:11px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);">
+  <a href="/where-to-launch" style="color:#F4B02E;text-decoration:none;font-weight:800;">← Nov 6 · Where to Launch</a>
+  <a href="/lives" style="color:#fff;text-decoration:none;font-weight:800;">☰ All Live Sessions</a>
+  <span style="color:#6f83a0;font-weight:700;">Friday Live · Own It</span>
+</div>
+  <div class="wrap"><div class="brand">Dr. Erin Jacques · <b>Friday Live</b></div></div>
+
+  <section class="hero"><div class="wrap">
+    <div class="step">Friday Live · November 13</div>
+    <h1>Your custom GPTs are <span class="hl">being retired</span>.</h1>
+    <p class="lead">On December 11, every custom GPT stops working.</p>
+    <p>If you built a GPT, this is the week to deal with it. Today I'll show you what's happening, what OpenAI is replacing it with, why that replacement may not do what you want, and how to take your assistant off their platform so nobody can retire it on you again.</p>
+    <div class="countdown">
+      <div class="big">28 days</div>
+      <div class="cl">until custom GPTs stop working</div>
+    </div>
+    <ul class="agenda">
+      <li>What's happening, and when</li>
+      <li>What a plugin is, and the catch</li>
+      <li>Get your instructions out today</li>
+      <li>Own it instead: rebuild it as your app</li>
+      <li>You don't need VS Code anymore</li>
+      <li>Five places to post your app</li>
+      <li>Your one next move</li>
+    </ul>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">What's happening</div>
+    <h2>OpenAI is retiring custom GPTs.</h2>
+    <p>This is straight from OpenAI's own help page. They're retiring custom GPTs and moving creators to something called <b>plugins</b>.</p>
+    <ul class="dates">
+      <li><span class="d">Dec 11, 2026</span><span><b>Custom GPTs retire.</b> OpenAI's wording: custom GPTs and their GPT pages "become inaccessible."</span></li>
+      <li><span class="d">Feb 11, 2027</span><span>A later date, but only for FedRAMP workspaces and Enterprise workspaces with an approved deferral. <b>This almost certainly isn't you.</b></span></li>
+    </ul>
+    <div class="note">👉🏽 <b>Your old chats are safe.</b> OpenAI says existing conversations with custom GPTs stay accessible after retirement. It's the GPT itself that stops working.</div>
+    <p>It affects <b>all ChatGPT plans</b>. And if you use someone else's GPT, that one is going away too.</p>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <div class="step">The replacement</div>
+    <h2>What's a plugin?</h2>
+    <p>A plugin is OpenAI's replacement for a GPT. It bundles your instructions, your reference files, and connected apps together.</p>
+    <p>If you created a GPT, you go to <b>My GPTs</b> and select <b>Migrate to plugin</b>.</p>
+    <div class="defn">
+      <h4>What carries over</h4>
+      <p>Your instructions become a "skill" inside the plugin. Your knowledge files get copied over as reference files. Connected apps come along.</p>
+    </div>
+    <div class="defn">
+      <h4>What does not</h4>
+      <p><b>Custom actions don't transfer.</b> If your GPT connects to an outside service, that breaks, and rebuilding it may take a developer. The model you picked doesn't carry over either.</p>
+    </div>
+    <div class="warn">⚠️ <b>Migrating makes the original read-only, and you can't delete it.</b> Finish any edits you care about <i>before</i> you migrate.</div>
+
+    <h2 style="margin-top:34px;">Here's the catch.</h2>
+    <p>If you built your GPT to share it, read this part twice.</p>
+    <ul class="prules">
+      <li><b>A migrated plugin starts private.</b> OpenAI's words: migration "does not automatically install it or give other people access."</li>
+      <li><b>The people using your GPT today don't come with it.</b> They lose access and don't automatically get the replacement.</li>
+      <li><b>Making a personal plugin public requires a separate submission process.</b> It's not a switch you flip.</li>
+      <li><b>Prefilling your old audience is a managed-workspace feature.</b> On a personal account you don't get it.</li>
+    </ul>
+    <div class="note">👉🏽 So if you were using a GPT as something you give out, promote, or sell access to, the replacement doesn't do that job out of the box. That's the real story this week.</div>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">Do this today</div>
+    <h2>Get your instructions out. Right now.</h2>
+    <p>Before anything else, go save what you wrote. Those instructions are the actual work, and they're sitting on a platform with a shutdown date.</p>
+    <ul class="steps">
+      <li>Open ChatGPT and go to <b>My GPTs</b>.</li>
+      <li>Open your GPT and click <b>Edit</b> (or Configure).</li>
+      <li>Select all the text in the <b>Instructions</b> box and copy it.</li>
+      <li>Paste it into a document on your own computer and save it.</li>
+      <li>Download any knowledge files you uploaded, so you have your own copies.</li>
+    </ul>
+    <div class="note">👉🏽 Do this even if you plan to migrate. Takes two minutes, and it's the thing you can't get back.</div>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <div class="step">The real fix</div>
+    <h2>Own it instead.</h2>
+    <p>A custom GPT was always a rental. It lives inside ChatGPT, your people need a ChatGPT account to use it, you can't charge for it, and OpenAI can retire it. Which is exactly what just happened.</p>
+    <p>The alternative is to take the same instructions and rebuild them as <b>your own web app</b>: your link, your login, your subscription, your customers.</p>
+    <p>I've already written the whole thing out, step by step. It's the same tutorial we built this summer, and it works today.</p>
+    <a class="btn" href="/custom-assistant">The full tutorial →</a>
+    <div class="note" style="margin-top:22px;">👉🏽 <b>You don't have to use Claude.</b> The steps are written for Claude Code, but ChatGPT and Codex can follow them too. Give it the tutorial link and the instructions you just saved.</div>
+    <div class="promptbox">
+      <div class="pl2">Prompt — Start it in ChatGPT or Codex</div>
+      <code>I had a custom GPT and OpenAI is retiring it. I want to rebuild it as my own web app that I own, with its own link, a login, and a subscription.
+
+Read this tutorial and follow it: https://drerinjacques.com/custom-assistant
+
+Here are my GPT's instructions:
+
+[PASTE YOUR INSTRUCTIONS HERE]
+
+Start at the beginning and walk me through it one step at a time. Stop and wait for me after each step. Don't assume I know any of the tools.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">Easier now</div>
+    <h2>You don't need VS Code anymore.</h2>
+    <p>When I first taught this, you had to install VS Code and work inside it. A lot of you hated that part, and honestly, it was the step where most people quit.</p>
+    <p>You can skip it. Claude Code and Codex both work in their own app now. And instead of pasting keys around, you connect your tools once and they stay connected.</p>
+    <div class="defn">
+      <h4>Do this first, before you build anything</h4>
+      <p>In Claude or in ChatGPT, go to <b>Settings → Connectors</b> and connect the tools you'll use.</p>
+      <div class="ex">GitHub · Supabase · Stripe · Vercel</div>
+    </div>
+    <p>Once those are connected, you can just say what you want and it can act in those tools for you, instead of you clicking through four dashboards and copying keys between them.</p>
+    <div class="note">👉🏽 This is the biggest quality-of-life change since I first taught this. If you started the tutorial and gave up at the VS Code part, start again from here.</div>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <div class="step">Then get users</div>
+    <h2>Five places to post your app.</h2>
+    <p>We went deep on this <a href="/where-to-launch">last week</a>. Here's the short version, because it's what you do the moment the app is live: don't post it everywhere, post it to these five first.</p>
+    <ul class="places">
+      <li><b>There's An AI For That.</b> People go there to find an AI tool for a specific job, so they're already looking for something like yours.</li>
+      <li><b>AlternativeTo.</b> List your app as an alternative to a big-name tool, and you'll reach people who are already looking to switch.</li>
+      <li><b>Capterra.</b> If your app is for businesses, this is where small business owners compare software before they buy.</li>
+      <li><b>The subreddit where your customers hang out.</b> Not the builder subreddits, the ones for whoever your app is for. Don't just drop a link. Say you built it, explain the problem it solves, and ask for feedback.</li>
+      <li><b>ChatifyIT as your link in bio.</b> The one everyone skips, and the most important. You give it one sentence and its AI builds a free offer right on your link-in-bio page. Every visitor who grabs it leaves their email, so you're building a list of people who want what you offer.</li>
+    </ul>
+  </div></section>
+
+  <section><div class="wrap">
+    <h2>Your one next move.</h2>
+    <p>Go copy your GPT's instructions into a document on your computer. Today, not next week. Then pick your date to rebuild it, and post it in the community so I know you did it.</p>
+    <p>Then come back to <a href="/where-to-launch">last week's session</a> for the full launch walkthrough.</p>
+    <a class="btn" href="https://skool.com/leveragingai/about">Join us →</a>
+  </div></section>
+
+  <footer><div class="wrap">Dr. Erin Jacques · Friday Live · November 13 · Dates and quotes from OpenAI's "Custom GPT retirement and migration FAQ," help.openai.com.</div></footer>
+
+<script>
+  function copyPrompt(btn){
+    var el = btn.parentElement.querySelector('code');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = o; }, 1500);
+    });
+  }
+</script>
+</body>
+</html>
