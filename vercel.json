@@ -14,6 +14,8 @@
   "redirects": [
     { "source": "/ai-news", "destination": "/ai-upfront", "permanent": true },
     { "source": "/ai-news/", "destination": "/ai-upfront", "permanent": true },
+    { "source": "/leveraging-ai", "destination": "/work-with-me/", "permanent": true },
+    { "source": "/leveraging-ai/", "destination": "/work-with-me/", "permanent": true },
     {
       "source": "/gate",
       "destination": "/gating-workshop",
