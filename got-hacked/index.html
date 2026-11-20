@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Friday Live — I Got Hacked. Here's What to Set Up — Dr. Erin Jacques</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1A2E; --navy2:#1a3658; --yellow:#FFD93D; --yellow-dark:#E8C12B;
+    --teal:#0DB4DB; --teal-dark:#0A8FAF; --cream:#FAF6EC; --text:#0B1A2E;
+    --soft:#4A5568; --faint:#718096; --line:#E2E8F0; --red:#C0392B;
+    --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:52px 0;border-top:1px solid var(--line);}
+  section.hero{border-top:none;padding:40px 0 40px;}
+  section.cream{background:var(--cream);border-top:none;}
+  .brand{padding:22px 0 0;font-weight:800;letter-spacing:.02em;font-size:1rem;color:var(--navy);}
+  .brand b{color:var(--teal-dark);}
+  .step{color:var(--teal-dark);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;margin-bottom:12px;}
+  h1{font-size:clamp(2.1rem,5.6vw,3.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.07;margin:0 0 16px;color:var(--navy);}
+  .hl{background:linear-gradient(180deg,transparent 58%,rgba(255,217,61,.75) 58%);padding:0 3px;}
+  h2{font-size:clamp(1.6rem,4.2vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin:0 0 14px;color:var(--navy);}
+  .lead{font-size:clamp(1.18rem,2.6vw,1.5rem);color:var(--navy);font-weight:700;margin:0 0 10px;}
+  p{font-size:clamp(1.06rem,2.2vw,1.24rem);color:var(--soft);margin:0 0 14px;max-width:74ch;}
+  p b{color:var(--navy);}
+  .agenda{list-style:none;padding:0;margin:14px 0 0;counter-reset:ag;}
+  .agenda li{position:relative;padding:11px 0 11px 40px;font-size:clamp(1.1rem,2.3vw,1.32rem);color:var(--navy);font-weight:700;border-bottom:1px solid var(--line);}
+  .agenda li:last-child{border-bottom:none;}
+  .agenda li::before{counter-increment:ag;content:counter(ag);position:absolute;left:0;top:12px;width:26px;height:26px;background:var(--yellow);color:var(--navy);border-radius:50%;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .prules{list-style:none;padding:0;margin:14px 0 0;}
+  .prules li{position:relative;padding:12px 0 12px 34px;border-bottom:1px solid var(--line);font-size:clamp(1.05rem,2.2vw,1.26rem);color:var(--soft);}
+  .prules li:last-child{border-bottom:none;}
+  .prules li b{color:var(--navy);}
+  .prules li::before{content:"";position:absolute;left:4px;top:20px;width:11px;height:11px;background:var(--yellow);border-radius:50%;}
+  .steps{list-style:none;padding:0;margin:14px 0 0;counter-reset:st;}
+  .steps li{position:relative;padding:12px 0 12px 40px;border-bottom:1px solid var(--line);font-size:clamp(1.05rem,2.2vw,1.26rem);color:var(--soft);}
+  .steps li:last-child{border-bottom:none;}
+  .steps li b{color:var(--navy);}
+  .steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:13px;width:26px;height:26px;background:var(--yellow);color:var(--navy);border-radius:50%;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .defn{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 18px;margin:10px 0;}
+  .defn h4{margin:0 0 4px;color:var(--navy);font-size:1.14rem;font-weight:800;}
+  .defn p{margin:0;font-size:1.02rem;color:var(--soft);}
+  .defn .ex{color:var(--teal-dark);font-weight:700;font-size:.96rem;margin-top:7px;}
+  .note{background:var(--cream);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:1.05rem;color:var(--navy);font-weight:600;}
+  section.cream .note{background:#fff;}
+  .warn{background:#fdecea;border:1px solid #f5c6c0;border-left:5px solid var(--red);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:1.05rem;color:var(--navy);font-weight:600;}
+  .countdown{background:var(--navy);border-radius:18px;padding:24px 26px;margin:20px 0 0;color:#fff;}
+  .countdown .big{font-size:clamp(2.4rem,7vw,3.6rem);font-weight:800;line-height:1;color:var(--yellow);letter-spacing:-.02em;}
+  .countdown .cl{font-size:1.1rem;font-weight:700;color:#cbd5e0;margin-top:6px;}
+  .dates{list-style:none;padding:0;margin:14px 0 0;}
+  .dates li{display:flex;gap:16px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--line);font-size:clamp(1.02rem,2.1vw,1.2rem);color:var(--soft);}
+  .dates li:last-child{border-bottom:none;}
+  .dates .d{flex:none;width:122px;font-weight:800;color:var(--navy);}
+  .dates li b{color:var(--navy);}
+  .promptbox{background:var(--navy);border-radius:16px;padding:18px 20px;position:relative;margin:16px 0;}
+  .promptbox .pl2{color:var(--yellow);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
+  .promptbox code{color:#eaf1fb;font-family:var(--mono);font-size:.98rem;line-height:1.55;display:block;white-space:pre-wrap;padding-right:70px;}
+  .copy{position:absolute;top:16px;right:16px;background:var(--yellow);color:var(--navy);border:none;border-radius:8px;padding:7px 13px;font-weight:800;font-size:.82rem;cursor:pointer;font-family:var(--sans);}
+  .copy:active{transform:translateY(1px);}
+  .cmd{display:inline-block;background:#0f2748;color:#eaf1fb;font-family:var(--mono);border-radius:6px;padding:1px 8px;font-weight:700;font-size:.92em;}
+  .places{list-style:none;padding:0;margin:14px 0 0;counter-reset:pl;}
+  .places li{position:relative;padding:16px 0 16px 46px;border-bottom:1px solid var(--line);font-size:clamp(1.04rem,2.1vw,1.22rem);color:var(--soft);}
+  .places li:last-child{border-bottom:none;}
+  .places li b{color:var(--navy);}
+  .places li::before{counter-increment:pl;content:counter(pl);position:absolute;left:0;top:16px;width:30px;height:30px;background:var(--navy);color:var(--yellow);border-radius:50%;font-size:.95rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .btn{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:800;font-size:1.2rem;text-decoration:none;padding:14px 30px;border-radius:12px;margin-top:12px;box-shadow:0 8px 22px rgba(255,217,61,.4);}
+  .btn.ghost{background:#fff;color:var(--navy);border:2px solid var(--navy);box-shadow:none;margin-right:10px;}
+  .disc{font-size:.95rem;color:var(--faint);margin-top:6px;font-style:italic;}
+  footer{padding:34px 0 60px;color:var(--faint);font-size:.9rem;}
+  .rtable{width:100%;border-collapse:collapse;margin:14px 0 0;font-size:clamp(.98rem,2vw,1.1rem);}
+  .rtable th{text-align:left;color:var(--navy);font-weight:800;padding:10px 10px 10px 0;border-bottom:2px solid var(--navy);}
+  .rtable td{vertical-align:top;padding:12px 10px 12px 0;border-bottom:1px solid var(--line);color:var(--soft);}
+  .rtable td b{color:var(--navy);}
+  .rtable a{color:var(--teal-dark);font-weight:700;}
+  @media(max-width:640px){.rtable thead{display:none}.rtable tr{display:block;padding:10px 0;border-bottom:1px solid var(--line)}.rtable td{display:block;border:none;padding:3px 0}}
+</style>
+</head>
+<body>
+<div style="background:#081d3a;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:11px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);">
+  <a href="/gpts-retiring" style="color:#F4B02E;text-decoration:none;font-weight:800;">← Nov 13 · GPTs Retiring</a>
+  <a href="/lives" style="color:#fff;text-decoration:none;font-weight:800;">☰ All Live Sessions</a>
+  <span style="color:#6f83a0;font-weight:700;">Friday Live · Protect It</span>
+</div>
+  <div class="wrap"><div class="brand">Dr. Erin Jacques · <b>Friday Live</b></div></div>
+
+  <section class="hero"><div class="wrap">
+    <div class="step">Friday Live · November 20</div>
+    <h1>I got hacked. Here's what to <span class="hl">set up before it happens to you</span>.</h1>
+    <p class="lead">Getting hacked is bad. Not telling anyone is worse.</p>
+    <p>Today I'll walk you through what happened, what was already in place, the tests and watchers to put on your app, how to protect your accounts even if you never build anything, and where you have to report if it ever happens to you.</p>
+    <div class="countdown">
+      <div class="big">72 hours</div>
+      <div class="cl">to report a data breach if you have customers in Europe or the UK</div>
+    </div>
+    <ul class="agenda">
+      <li>What happened</li>
+      <li>What was already in place</li>
+      <li>Tests to employ</li>
+      <li>Not a builder? Protect your accounts</li>
+      <li>If it happens to you</li>
+      <li>Where you have to report</li>
+      <li>Your subprocessors page</li>
+    </ul>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">What happened</div>
+    <h2>He didn't break down the door. He was let in.</h2>
+    <p>Someone signed up as a regular member. Ten minutes later he started guessing the names of the lists in my database: "users," "accounts," "password," "payments." Most of his guesses came back "doesn't exist."</p>
+    <p>Then he found the profiles list. <b>One access rule on it was too wide.</b> It was meant to let the internet see what's on a public page, like a name and bio. But it let a signed-in member read the whole profile record, including the login email. He downloaded every member's name and email, over and over, through the night.</p>
+    <div class="note">👉🏾 No passwords, payments, leads or chats were exposed. The rule was gone within about 30 minutes of me finding out, and every member was told the same day.</div>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <div class="step">What was already in place</div>
+    <h2>The locks were on. One window was open.</h2>
+    <ul class="prules">
+      <li><b>Row level security on every table.</b> Each account can only see its own data. It's why leads, chats and connected tools stayed safe.</li>
+      <li><b>Passwords stored in scrambled form</b> by the login provider. Nobody can read them, including me.</li>
+      <li><b>Card details handled only by Stripe.</b> The app never stores card numbers.</li>
+      <li><b>Connection keys kept on the server</b>, never readable from the browser.</li>
+      <li><b>HTTPS everywhere and daily database backups.</b></li>
+    </ul>
+    <div class="note">👉🏾 The lesson: security isn't one switch. You can do almost everything right, and one rule that's a little too wide is enough. That's why you need tests and watchers, not just locks.</div>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">Tests to employ · 1</div>
+    <h2>Your first firewall: floods and snooping.</h2>
+    <p>You need protection from two kinds of trouble:</p>
+    <div class="defn">
+      <h4>Floods</h4>
+      <p>Someone doing too much, too fast: guessing passwords, spamming your forms, running up your AI bill. A firewall rule on your host can slow them down or block them.</p>
+    </div>
+    <div class="defn">
+      <h4>Snooping</h4>
+      <p>Someone acting strangely, even slowly. A brand-new account guessing list names, or one person downloading everyone's records. That's what happened here: only 174 requests across a whole night, far too slow for a speed limit to notice, and straight to the database. Only a watcher on your database sees that.</p>
+    </div>
+
+    <h3 style="color:var(--navy);margin:28px 0 6px;">For floods: rate limits on Vercel</h3>
+    <p>You set rules like "no more than 10 login tries a minute per visitor." Each rule counts only its own kind of request, so a busy normal visitor never trips the login rule.</p>
+    <div class="promptbox">
+      <div class="pl2">Prompt — Rate limits</div>
+      <code>Set up Vercel Firewall rate limiting for my app. First, look at my app and list every page and form address it has. Then suggest a rule for each type below, with a limit per visitor (IP address) that fits my traffic:
+
+- Login: about 10 tries a minute
+- Sign-up: about 5 a minute
+- Password reset: about 3 a minute
+- Contact or help forms: about 5 an hour
+- Checkout or payment pages: about 10 a minute
+- AI chat or anything that costs me money per use: about 30 a minute
+- Email sign-up / lead forms: about 10 an hour
+- Search: about 60 a minute
+- Everything else: about 300 a minute
+
+Rules:
+- Never limit payment, webhook or other services that call my app (Stripe, Instagram, my email tool), or they'll break.
+- Start every rule in "log only" mode for a week so I can see who would have been blocked, then switch to blocking.
+- Explain each rule in plain words and tell me how to undo it.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+
+    <h3 style="color:var(--navy);margin:28px 0 6px;">For snooping: a watcher on your database</h3>
+    <p>Every few minutes it reads your database's activity and alerts you when someone acts strangely. This would have caught it within minutes instead of the next morning.</p>
+    <div class="promptbox">
+      <div class="pl2">Prompt — Database watcher</div>
+      <code>Build me a watcher for my app's database (Supabase or whatever I use). Every 5 minutes it reads the database's request logs and emails me when someone acts unusually:
+
+- a new account (less than a day old) making lots of requests
+- requests for lists or tables that don't exist (someone guessing names)
+- one person reading far more records than a normal member would, or all of a list
+- the same full download repeated
+- lots of "permission denied" answers from one person
+- many failed logins from one place
+
+Don't block anyone, just alert me with who, what and when. Explain each step in plain words and show me how to test it safely.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <div class="step">Tests to employ · 2</div>
+    <h2>Let an AI try to break in.</h2>
+    <p><b>Strix</b> (<a href="https://github.com/usestrix/strix" target="_blank" rel="noopener">github.com/usestrix/strix</a>) is a free tool where AI agents attack your app the way a hacker would, then report what they found.</p>
+    <div class="warn">⚠️ <b>Never point it at your live site.</b> It really attacks. Run it on a test copy only.</div>
+    <ul class="prules">
+      <li><b>A copy of your app on your own computer.</b> If you built your app with Claude Code, Cursor or similar, you already have it. It's the version you see at "localhost" while you're building.</li>
+      <li><b>A separate test database with fake data.</b> Never your real customers. On Supabase, that's a second free project you fill with made-up people.</li>
+      <li><b>No real keys.</b> No real payment keys, email tool or Instagram connection in the copy.</li>
+    </ul>
+    <p>Strix attacks the copy, and your real site and customers are never touched.</p>
+    <div class="promptbox">
+      <div class="pl2">Prompt — Test safely with Strix</div>
+      <code>I want to safely test my app for security problems with Strix (github.com/usestrix/strix). Help me step by step:
+
+1. Set up a test copy of my app on my computer that uses a separate test database with fake data, never my real database or real customers.
+2. Make sure no real keys are used: no real payment keys, no real email tool, no real Instagram connection.
+3. Install Strix and run it against the test copy only.
+4. Set a spending limit on the AI it uses.
+5. Explain the results in plain words, most serious first, with the fix for each.
+
+Stop and ask me before anything touches my live site.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">Tests to employ · 3</div>
+    <h2>Know the minute something breaks.</h2>
+    <p>Every 5 minutes, a small program visits your most important pages and features (homepage, login, sign-up, checkout, your AI chat) and makes sure each one works. If one fails twice in a row, you get an email. When it works again, you get another. You find out before your customers do.</p>
+    <div class="promptbox">
+      <div class="pl2">Prompt — 5-minute site check</div>
+      <code>Build me a site check for my app. Every 5 minutes it visits my most important pages and features (homepage, login, sign-up, checkout, and anything customers depend on) and checks that each one loads and answers correctly.
+
+If a part fails twice in a row, email me once with which part and when. Email me again when it works. Don't email me over and over for the same problem.
+
+List the parts it will check so I can add more.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <div class="step">Tests to employ · 4</div>
+    <h2>Check every time you ship.</h2>
+    <p>Every new feature can open a door you didn't notice. Say you add a "featured members" section to your homepage. To show it, your AI loosens one access rule so the homepage can read member profiles. The feature works and looks great, but that same rule now lets anyone read every member's email too. Nothing looks broken, so you'd never know.</p>
+    <p>So have an automatic check run every time you publish an update, before it reaches customers:</p>
+    <ul class="prules">
+      <li><b>Try to read other people's data</b> as a stranger and as a regular member. If it works, the update stops.</li>
+      <li><b>Look for database lists with no access rules</b>, or rules that are too wide.</li>
+      <li><b>Look for passwords or keys</b> showing up in code the browser can see.</li>
+      <li><b>After it goes live</b>, run the site check to confirm the main pages still work.</li>
+    </ul>
+    <div class="promptbox">
+      <div class="pl2">Prompt — Check every update</div>
+      <code>Set up an automatic security check that runs every time I publish an update to my app (for example with GitHub Actions). It should:
+
+- try to read other users' data as a logged-out stranger and as a regular member, and stop the update if either works
+- flag any database table with no access rules, or rules that let people read more than they should
+- flag any passwords, keys or secrets in code the browser can see
+- after the update goes live, check that my main pages and features still work, and email me if not
+
+Explain it in plain words and show me how to test that it really stops a bad update.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">Tests to employ · 5</div>
+    <h2>Bring in outside testers.</h2>
+    <ul class="places">
+      <li><b>AI reviews.</b> Cheap and fast. Run one every time you change something, but know they miss things.</li>
+      <li><b>Professional penetration testing companies.</b> A team spends days trying to break in and gives you a report. It typically starts in the low thousands of dollars. Do one once a year or before a big launch.</li>
+      <li><b>Bug bounty programs</b> (HackerOne, Bugcrowd, Intigriti). Outside hackers test your app, and you pay only when they find a real problem. The closest thing to people checking your doors while you sleep.</li>
+    </ul>
+    <div class="note">👉🏾 A test is a snapshot of one day. Attackers don't keep your hours. You need it around the clock: a firewall for floods, a watcher for snooping, a site check, a check on every update, and outside eyes.</div>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <div class="step">Not a builder?</div>
+    <h2>Protect your accounts today.</h2>
+    <p>Most hacks don't happen through code. They happen through accounts. Do these during the live:</p>
+    <ul class="steps">
+      <li><b>Two-step login, starting with your email.</b> Whoever controls your email can reset everything else. Then Instagram and Facebook, your payment account, and your domain (GoDaddy and similar).</li>
+      <li><b>A password manager</b>, with a different password for every account.</li>
+      <li><b>Remove old assistants and apps.</b> Former VAs, contractors, shared logins, and apps you no longer use. Check Instagram → Settings → Apps and websites, and your Google account → Third-party connections.</li>
+      <li><b>Expect scam emails after any breach.</b> Scammers follow the news. "Pay us," "consulting fee," "your account is suspended." Don't click; go to the site yourself.</li>
+      <li><b>Keep a copy of your email list.</b> If an account is taken over or shut down, your list is what survives.</li>
+    </ul>
+    <div class="promptbox">
+      <div class="pl2">Prompt — Security checkup for your accounts</div>
+      <code>Walk me through a security checkup of my online business accounts, one at a time. First ask me which tools I use (email, Instagram, Facebook, payment, website, domain, email list).
+
+Then for each one tell me exactly where to turn on two-step login, check who has access, and remove old people and connected apps.
+
+One step at a time. Wait for me to say done before the next one.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">If it happens to you</div>
+    <h2>The first steps, in order.</h2>
+    <ul class="steps">
+      <li><b>Close the gap.</b> Stop it from continuing before anything else.</li>
+      <li><b>Save the evidence before you delete anything.</b> Logs, the account that did it, the emails. You'll need them for reports and lawyers.</li>
+      <li><b>Find out exactly what was seen</b>, and what wasn't. Be precise.</li>
+      <li><b>Change your keys and passwords</b> for anything that might have been touched.</li>
+      <li><b>Call a lawyer</b> about your reporting deadlines. Some are counted in hours.</li>
+      <li><b>Tell the people affected</b>, plainly and quickly: what happened, what was seen, what you did, and what they should do.</li>
+      <li><b>Report it</b> (next section).</li>
+    </ul>
+    <div class="note">👉🏾 And before any of this happens: make sure your database backs up every day, and that you know how to restore it.</div>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <div class="step">Reporting</div>
+    <h2>Where you have to report.</h2>
+    <p>People worry about getting hacked. But the real trouble usually comes from <b>not disclosing it</b>: hiding it, waiting too long, or not telling the people affected. Breaking into someone's system without permission is a crime. Reporting it protects you.</p>
+    <table class="rtable">
+      <thead><tr><th>Where</th><th>When</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><b>The people affected</b></td><td>As soon as you know what was seen</td><td>Plain email: what happened, what was and wasn't exposed, what you did, what they should do.</td></tr>
+        <tr><td><b>FBI Internet Crime Complaint Center (IC3)</b><br><a href="https://www.ic3.gov" target="_blank" rel="noopener">ic3.gov</a></td><td>Soon after</td><td>Free. Creates an official federal record of unauthorized access to your system. Save your complaint ID.</td></tr>
+        <tr><td><b>CISA</b><br><a href="https://www.cisa.gov/report" target="_blank" rel="noopener">cisa.gov/report</a></td><td>Optional</td><td>The U.S. cybersecurity agency. Voluntary for small businesses.</td></tr>
+        <tr><td><b>Your state attorney general</b></td><td>Depends on the state</td><td>Every U.S. state has a breach law. Many require telling the attorney general once enough of that state's residents are affected (Florida: 500). Your lawyer checks each state your customers live in.</td></tr>
+        <tr><td><b>Europe: the data protection authority</b><br><a href="https://www.edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener">Find your country's authority</a></td><td><b>Within 72 hours</b> of finding out</td><td>If you have customers in the EU, GDPR says you report a breach of personal data to the authority unless it's unlikely to put people at risk. If the risk is high, you also tell the people affected.</td></tr>
+        <tr><td><b>UK: the ICO</b><br><a href="https://ico.org.uk/for-organisations/report-a-breach/" target="_blank" rel="noopener">ico.org.uk</a></td><td><b>Within 72 hours</b></td><td>Same rule for UK customers.</td></tr>
+        <tr><td><b>Canada: the Privacy Commissioner</b><br><a href="https://www.priv.gc.ca/en/report-a-concern/report-a-privacy-breach-at-your-organization/" target="_blank" rel="noopener">priv.gc.ca</a></td><td>As soon as possible</td><td>If there's a real risk of significant harm to Canadian customers.</td></tr>
+        <tr><td><b>Health information</b></td><td>Strict deadlines</td><td>If you handle health data, extra rules apply (HIPAA in the U.S., or the FTC's health breach rule for health apps). Talk to a lawyer the same day.</td></tr>
+        <tr><td><b>Local police</b></td><td>Optional</td><td>A report number helps with insurance and lawyers.</td></tr>
+      </tbody>
+    </table>
+    <div class="warn">⚠️ The 72 hours start when you find out, not when you finish investigating. You can report what you know and add details later.</div>
+    <p class="disc">This is general information, not legal advice. Rules depend on where you and your customers are. Talk to a lawyer about your situation.</p>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="step">Do this before anything happens</div>
+    <h2>Your subprocessors page.</h2>
+    <p>A subprocessor is any company that handles your customers' data for you: your host, your database, your payment processor, your email tool, the AI you use. Customers have a right to know who they are, and European law expects you to tell them.</p>
+    <p>It's one simple page on your site: each company, what it does, and where it stores data. Link it from your privacy policy. When something goes wrong, this is the list you check first to know who's involved and who else to tell.</p>
+    <div class="promptbox">
+      <div class="pl2">Prompt — Make your subprocessors page</div>
+      <code>Look through my app and list every outside company that handles my customers' data (hosting, database, login, payments, email, AI, analytics, file storage).
+
+Make me a simple "Subprocessors" page with a table: company, what it does for my app, what data it handles, and where it stores data. Link it from my privacy policy and footer.
+
+Ask me about anything you can't tell from the code. Remind me to update this page whenever I add or remove a tool.</code>
+      <button class="copy" onclick="copyPrompt(this)">Copy</button>
+    </div>
+  </div></section>
+
+  <section class="cream"><div class="wrap">
+    <h2>Your one next move.</h2>
+    <p>If you never build anything: turn on two-step login on your email today. If you have an app: copy the rate limit prompt and the database watcher prompt, and run them this week. Then post in the community which one you did.</p>
+    <a class="btn" href="https://skool.com/leveragingai/about">Join us →</a>
+  </div></section>
+
+  <footer><div class="wrap">Dr. Erin Jacques · Friday Live · November 20 · General information, not legal advice.</div></footer>
+
+<script>
+  function copyPrompt(btn){
+    var el = btn.parentElement.querySelector('code');
+    if(!el) return;
+    navigator.clipboard.writeText(el.innerText).then(function(){
+      var o = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = o; }, 1500);
+    });
+  }
+</script>
+</body>
+</html>
